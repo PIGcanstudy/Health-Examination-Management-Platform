@@ -38,6 +38,7 @@
         <module>healthy-apis</module>
         <module>healthy-doc</module>
         <module>healthy-sample</module>
+        <module>healthy-sample-captcha</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
