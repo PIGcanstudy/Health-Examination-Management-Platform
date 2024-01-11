@@ -142,6 +142,9 @@ if(UNIX)
 	add_subdirectory ("nacos-register")
 endif()
 # 这是示例模块，后期可以不编译它
-add_subdirectory ("arch-demo")
+#add_subdirectory ("arch-demo")
 # 在后面添加你的模块
-add_subdirectory ("healthy-sample")
+#add_subdirectory ("healthy-sample")
+add_subdirectory ("healthy-c8-common")
+add_subdirectory ("healthy-c8-healthcertificate-manage")
+add_subdirectory ("healthy-c8-inspection-report")
