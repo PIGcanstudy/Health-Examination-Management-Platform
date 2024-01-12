@@ -37,6 +37,7 @@
         <module>healthy-domain</module>
         <module>healthy-apis</module>
         <module>healthy-doc</module>
+        <module>healthy-j3-sysmanager</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
