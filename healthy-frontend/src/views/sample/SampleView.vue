@@ -7,19 +7,8 @@
       <el-aside>
         <div class="menu-wrap">
           <el-scrollbar max-height="95vh">
-            <el-menu
-              default-active="/sample/file"
-              active-text-color="#409EFF"
-              text-color="#fff"
-              background-color="#545c64"
-              unique-opened
-              router
-            >
-              <el-menu-item
-                v-for="(menu, index) in menus"
-                :key="index"
-                :index="menu.path"
-              >
+            <el-menu default-active="/sample/file" active-text-color="#409EFF" text-color="#fff" background-color="#545c64" unique-opened router>
+              <el-menu-item v-for="(menu, index) in menus" :key="index" :index="menu.path">
                 <el-icon>
                   <icon-menu />
                 </el-icon>
@@ -90,6 +79,42 @@ const menus = reactive([
   {
     path: '/sample/pdfobject',
     text: 'PDF预览演示'
+  },
+  {
+    path: '/sample/basedatalist',
+    text: '基础表格数据-张张奶酪包'
+  },
+  {
+    path: '/sample/basedatalisttest',
+    text: '基础表格数据测试-Yetta'
+  },
+  {
+    path: '/sample/checkitems',
+    text: '抽屉组件-回信'
+  },
+  {
+    path: '/sample/search',
+    text: '搜索框-intersellar'
+  },
+  {
+    path: '/sample/medicalinfo',
+    text: '体检人员信息-Rom'
+  },
+  {
+    path: '/sample/details',
+    text: '体检结果详情|统计页面-成果'
+  },
+  {
+    path: '/sample/newbutton',
+    text: '新增按钮-云里的龙'
+  },
+  {
+    path: '/sample/navigation',
+    text: '流程导航-洛翼忆'
+  },
+  {
+    path: '/sample/peoplelist',
+    text: '人员列表-枇杷子'
   }
 ])
 </script>

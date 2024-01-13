@@ -24,6 +24,42 @@ const routes = [
       {
         path: '/sample/pdfobject',
         component: () => import('@/views/sample/pdfobject/PdfObject.vue')
+      },
+      {
+        path: '/sample/basedatalist',
+        component: () => import('@/views/sample/pdfobject/BaseDataList.vue')
+      },
+      {
+        path: '/sample/basedatalisttest',
+        component: () => import('@/views/sample/pdfobject/BaseDataListTest.vue')
+      },
+      {
+        path: '/sample/checkitems',
+        component: () => import('@/views/sample/pdfobject/CheckItems.vue')
+      },
+      {
+        path: '/sample/search',
+        component: () => import('@/views/sample/pdfobject/Search.vue')
+      },
+      {
+        path: '/sample/medicalinfo',
+        component: () => import('@/views/sample/pdfobject/MedicalInfo.vue')
+      },
+      {
+        path: '/sample/details',
+        component: () => import('@/views/sample/pdfobject/Details.vue')
+      },
+      {
+        path: '/sample/newbutton',
+        component: () => import('@/views/sample/pdfobject/NewButton.vue')
+      },
+      {
+        path: '/sample/navigation',
+        component: () => import('@/views/sample/pdfobject/Navigation.vue')
+      },
+      {
+        path: '/sample/peoplelist',
+        component: () => import('@/views/sample/pdfobject/PeopleList.vue')
       }
     ]
   }
