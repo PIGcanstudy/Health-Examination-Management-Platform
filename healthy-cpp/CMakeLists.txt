@@ -144,3 +144,9 @@ endif()
 # 这是示例模块，后期可以不编译它
 add_subdirectory ("arch-demo")
 # 在后面添加你的模块
+#add_subdirectory ("healthy-c3-sales/healthy-c3-unit")
+#add_subdirectory ("healthy-c3-sales/healthy-c3-order")
+
+add_subdirectory ("healthy-c3-sales-unit")
+add_subdirectory ("healthy-c3-sales-order")
+
