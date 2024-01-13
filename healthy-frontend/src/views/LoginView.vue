@@ -70,7 +70,7 @@ function doLogin(code) {
 function submitForm() {
   //TODO[TEST_CODE]:测试直接进入主界面
   //$router.push('/home')
-  doLogin("res.captchaVerification")
+  doLogin('res.captchaVerification')
 
   // 弹出验证码框
   //useVerify('blockPuzzle')
