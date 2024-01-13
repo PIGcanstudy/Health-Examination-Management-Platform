@@ -1,7 +1,6 @@
 #pragma once
-
-#ifndef _GroupPerson_VO_
-#define _GroupPerson_VO_
+#ifndef _GROUP_PERSON_VO_
+#define _GROUP_PERSON_VO_
 
 #include "../../GlobalInclude.h"
 #include "../../dto/GroupPerson/GroupPersonDTO.h"
@@ -20,4 +19,4 @@ class GroupPersonPageJsonVO : public JsonVO<GroupPersonPageDTO::Wrapper> {
 
 #include OATPP_CODEGEN_END(DTO)
 
-#endif // !_GroupPerson_VO_
+#endif // !_GROUP_PERSON_VO_

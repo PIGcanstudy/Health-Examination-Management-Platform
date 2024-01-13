@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _GroupPerson_SERVICE_
-#define _GroupPerson_SERVICE_
+#ifndef _GROUP_PERSON_SERVICE_
+#define _GROUP_PERSON_SERVICE_
 #include <list>
 #include "domain/vo/GroupPerson/GroupPersonVO.h"
 #include "domain/query/GroupPerson/GroupPersonQuery.h"
@@ -14,5 +14,5 @@ public:
 	GroupPersonPageDTO::Wrapper listAll(const GroupPersonQuery::Wrapper& query);
 };
 
-#endif // !_GroupPerson_SERVICE_
+#endif // !_GROUP_PERSON_SERVICE_
 

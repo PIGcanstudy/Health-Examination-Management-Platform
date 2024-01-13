@@ -1,7 +1,6 @@
 #pragma once
-
-#ifndef _GroupPerson_DTO_
-#define _GroupPerson_DTO_
+#ifndef _GROUP_PERSON_DTO_
+#define _GROUP_PERSON_DTO_
 #include "../../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
@@ -42,4 +41,4 @@ class GroupPersonPageDTO : public PageDTO<GroupPersonDTO::Wrapper>
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_GroupPerson_DTO_
+#endif // !_GROUP_PERSON_DTO_

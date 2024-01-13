@@ -1,16 +1,12 @@
 #pragma once
-
-#ifndef _GroupPerson_QUERY_
-#define _GroupPerson_QUERY_
+#ifndef _GROUP_PERSON_QUERY_
+#define _GROUP_PERSON_QUERY_
 
 #include "../../GlobalInclude.h"
 #include "domain/query/PageQuery.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
-/**
- * 示例分页查询对象
- */
 class GroupPersonQuery : public PageQuery
 {
 	DTO_INIT(GroupPersonQuery, PageQuery);
@@ -57,4 +53,4 @@ class GroupPersonQuery : public PageQuery
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_GroupPerson_QUERY_
+#endif // !_GROUP_PERSON_QUERY_

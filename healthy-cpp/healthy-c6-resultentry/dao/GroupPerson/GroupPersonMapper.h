@@ -1,14 +1,10 @@
 #pragma once
-
-#ifndef _GroupPerson_MAPPER_
-#define _GroupPerson_MAPPER_
+#ifndef _GROUP_PERSON_MAPPER_
+#define _GROUP_PERSON_MAPPER_
 
 #include "Mapper.h"
 #include "../../domain/do/GroupPerson/GroupPersonDO.h"
 
-/**
- * Ê¾Àý±í×Ö¶ÎÆ¥ÅäÓ³Éä
- */
 class GroupPersonMapper : public Mapper<GroupPersonDO>
 {
 public:
@@ -24,4 +20,4 @@ public:
 	}
 };
 
-#endif // !_GroupPerson_MAPPER_
+#endif // !_GROUP_PERSON_MAPPER_

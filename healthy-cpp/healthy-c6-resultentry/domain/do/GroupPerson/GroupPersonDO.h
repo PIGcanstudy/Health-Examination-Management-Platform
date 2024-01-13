@@ -1,12 +1,8 @@
 #pragma once
-
 #ifndef _GroupPerson_DO_
 #define _GroupPerson_DO_
 #include "../DoInclude.h"
 
-/**
- * 示例数据库实体类
- */
 class GroupPersonDO
 {
 	// 姓名
