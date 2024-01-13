@@ -15,7 +15,7 @@ if (query->name) { \
 uint64_t GroupPersonDAO::count(const GroupPersonQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT COUNT(*) FROM GroupPerson";
+	sql << "SELECT COUNT(*) FROM t_group_person";
 	GroupPerson_TERAM_PARSE(query, sql);
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
@@ -24,7 +24,7 @@ uint64_t GroupPersonDAO::count(const GroupPersonQuery::Wrapper& query)
 std::list<GroupPersonDO> GroupPersonDAO::selectWithPage(const GroupPersonQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT id,name,sex,age FROM GroupPerson";
+	sql << "SELECT person_name,sex,age,physical_type,sporadic_physical FROM t_group_person";
 	GroupPerson_TERAM_PARSE(query, sql);
 	sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
 	GroupPersonMapper mapper;
@@ -34,7 +34,7 @@ std::list<GroupPersonDO> GroupPersonDAO::selectWithPage(const GroupPersonQuery::
 
 std::list<GroupPersonDO> GroupPersonDAO::selectByName(const string& name)
 {
-	string sql = "SELECT id,name,sex,age FROM GroupPerson WHERE `name` LIKE CONCAT('%',?,'%')";
+	string sql = "SELECT person_name,sex,age,physical_type,sporadic_physical FROM t_group_person WHERE `name` LIKE CONCAT('%',?,'%')";
 	GroupPersonMapper mapper;
 	return sqlSession->executeQuery<GroupPersonDO, GroupPersonMapper>(sql, mapper, "%s", name);
 }

@@ -15,8 +15,11 @@ public:
 	GroupPersonDO mapper(ResultSet* resultSet) const override
 	{
 		GroupPersonDO data;
-		data.setId(resultSet->getUInt64(1));
-		data.setName(resultSet->getString(2));
+		data.setName(resultSet->getString(1));
+		data.setAge(resultSet->getInt(2));
+		data.setSex(resultSet->getString(3));
+		data.setPhysical_type(resultSet->getString(4));
+		data.setSporadic_physical(resultSet->getInt(5));
 		return data;
 	}
 };

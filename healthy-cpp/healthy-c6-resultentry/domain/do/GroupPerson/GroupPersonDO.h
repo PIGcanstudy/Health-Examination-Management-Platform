@@ -9,16 +9,25 @@
  */
 class GroupPersonDO
 {
-	// 编号
-	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 姓名
 	CC_SYNTHESIZE(string, name, Name);
+	// 性别
+	CC_SYNTHESIZE(string, sex, Sex);
+	// 年龄
+	CC_SYNTHESIZE(int, age, Age);
+	// 体检类型
+	CC_SYNTHESIZE(string, physical_type, Physical_type);
+	// 是否零星体检
+	CC_SYNTHESIZE(int, sporadic_physical, Sporadic_physical);
+
+
 public:
 	GroupPersonDO() {
-		id = 0;
 		name = "";
-		//sex = "";
-		//age = -1;
+		sex = "";
+		age = -1;
+		physical_type = "";
+		sporadic_physical = -1;
 	}
 };
 

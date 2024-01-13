@@ -25,7 +25,7 @@ GroupPersonPageDTO::Wrapper GroupPersonService::listAll(const GroupPersonQuery::
 	for (GroupPersonDO sub : result)
 	{
 		auto dto = GroupPersonDTO::createShared();
-		ZO_STAR_DOMAIN_DO_TO_DTO(dto, sub, id, Id, name, Name)
+		ZO_STAR_DOMAIN_DO_TO_DTO(dto, sub, name, Name, sex, Sex, age, Age, physical_type, Physical_type, sporadic_physical, Sporadic_physical)
 			pages->addData(dto);
 
 	}
