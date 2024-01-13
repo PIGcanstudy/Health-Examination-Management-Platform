@@ -1,16 +1,14 @@
 #include "stdafx.h"
 #include "GroupPersonController.h"
 
-StringJsonVO::Wrapper GroupPersonController::execQueryTest(const PageQuery::Wrapper& pq)
+GroupPersonPageJsonVO::Wrapper GroupPersonController::execQueryByGroupPerson(const GroupPersonQuery::Wrapper& gpq)
 {
-	StringJsonVO::Wrapper vo = StringJsonVO::createShared();
-	if (pq->pageIndex == 1)
-	{
-		vo->success(String(ZH_WORDS_GETTER("qls_hep.field.succ")));
-	}
-	else
-	{
-		vo->fail(String(ZH_WORDS_GETTER("qls_hep.field.fail")));
-	}
-	return vo;
+	// 定义一个Service
+	GroupPersonService service;
+	// 查询数据
+	auto result = service.listAll(gpq);
+	// 响应结果
+	auto jvo = GroupPersonPageJsonVO::createShared();
+	jvo->success(result);
+	return jvo;
 }
