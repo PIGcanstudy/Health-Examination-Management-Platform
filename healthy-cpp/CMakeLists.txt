@@ -144,5 +144,5 @@ endif()
 # 这是示例模块，后期可以不编译它
 add_subdirectory ("arch-demo")
 # 在后面添加你的模块
-add_subdirectory ("healthy-c5-ExaLanding")
-add_subdirectory ("healthy-c5-QueStatistics")
+add_subdirectory ("healthy-c5-exalanding")
+add_subdirectory ("healthy-c5-questatistics")
