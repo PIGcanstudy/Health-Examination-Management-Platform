@@ -8,23 +8,23 @@
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>healthy-j1-percenter</artifactId>
+    <artifactId>healthy-j1-sysmanager</artifactId>
     <dependencies>
-        <!-- spring web mvc -->
+        <!-- spring mvc -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <!-- 系统内置模块 -->
+        <dependency>
+            <groupId>com.zeroone.star</groupId>
+            <artifactId>healthy-apis</artifactId>
+        </dependency>
         <!-- common -->
         <dependency>
             <groupId>com.zeroone.star</groupId>
             <artifactId>healthy-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zeroone.star</groupId>
-            <artifactId>healthy-apis</artifactId>
         </dependency>
 
         <!-- nacos -->
@@ -33,13 +33,13 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <!-- alibaba discovery config -->
+        <!-- alibaba nacos config -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <!-- 数据库相关 -->
+        <!-- mp -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -54,7 +54,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-
         <!-- mapstruct -->
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -67,7 +66,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.zeroone.star.percenter.PerCenterApplication</mainClass>
+                    <mainClass>com.zeroone.star.sysmanager.SysManagerApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
