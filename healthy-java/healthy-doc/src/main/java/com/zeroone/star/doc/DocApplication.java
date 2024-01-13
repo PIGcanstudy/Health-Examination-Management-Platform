@@ -1,6 +1,5 @@
 package com.zeroone.star.doc;
 
-import com.zeroone.star.sysmanager.SysManagerApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -17,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DocApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SysManagerApplication.class, args);
+        SpringApplication.run(DocApplication.class, args);
     }
 
 }
