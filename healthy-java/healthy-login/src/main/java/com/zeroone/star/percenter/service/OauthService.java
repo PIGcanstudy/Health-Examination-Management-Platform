@@ -1,6 +1,6 @@
-package com.zeroone.star.login.service;
+package com.zeroone.star.percenter.service;
 
-import com.zeroone.star.login.fallback.OauthServiceFallbackFactory;
+import com.zeroone.star.percenter.fallback.OauthServiceFallbackFactory;
 import com.zeroone.star.project.dto.login.Oauth2TokenDTO;
 import com.zeroone.star.project.vo.JsonVO;
 import org.springframework.cloud.openfeign.FeignClient;
