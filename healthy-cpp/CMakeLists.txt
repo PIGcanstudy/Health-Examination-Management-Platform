@@ -2,7 +2,7 @@
 # 并包含子项目。
 #
 cmake_minimum_required (VERSION 3.8)
-
+ 
 # 指定工程名
 project ("zero-one-healthy-check")
 
@@ -144,3 +144,4 @@ endif()
 # 这是示例模块，后期可以不编译它
 add_subdirectory ("arch-demo")
 # 在后面添加你的模块
+add_subdirectory ("healthy-c6-resultentry")
