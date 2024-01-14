@@ -16,3 +16,17 @@ sample:
   age: 年龄
   name: 姓名
   sex: 性别，如：男
+positive:
+ resRules:
+  field:
+   id: 编号
+   condition: 条件
+   genderAppropriate: 适合性别
+   positiveId: 阳性Id
+   projectName: 规则
+   judgmentCondition: 判断条件
+   excludePositive: 排除阳性结果
+   type: 类型
+ rules:
+  
+  
