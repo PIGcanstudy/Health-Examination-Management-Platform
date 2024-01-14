@@ -7,7 +7,7 @@
 */
 class deleteRuleQuery : public PageQuery
 {
-	DTO_INIT(deleteQuery, DTO);
+	DTO_INIT(deleteRuleQuery, DTO);
 	// 规则/项目名称
 	API_DTO_FIELD_DEFAULT(String, projectName, ZH_WORDS_GETTER("positive.resRules.field.projectName"));
 	// 条件
