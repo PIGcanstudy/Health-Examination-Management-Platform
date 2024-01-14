@@ -144,3 +144,8 @@ endif()
 # 这是示例模块，后期可以不编译它
 add_subdirectory ("arch-demo")
 # 在后面添加你的模块
+add_subdirectory ("healthy-c4-checkpeople")
+add_subdirectory ("healthy-c4-reportcheck")
+add_subdirectory ("healthy-c4-reportprint")
+add_subdirectory ("healthy-c4-unitreport")
+
