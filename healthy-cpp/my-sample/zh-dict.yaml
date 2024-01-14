@@ -1,0 +1,18 @@
+﻿MedExamUnitOrder:
+ get:
+  summary: 分页查询团检单位名称列表
+ field:
+  unit-name: 单位名称
+UnitReport:
+ field:
+  unit-code: 报告编号
+  physical-unit: 体检单位
+  physical-date: 体检日期
+  physical-project: 体检项目
+  concluding-observations: 体检意见
+  physical-type: 体检类型
+  entrust-unit: 委托单位
+  physical-number: 体检人数
+  evaluation-basis: 评论依据
+ get:
+  summary: 获取单位报告 
