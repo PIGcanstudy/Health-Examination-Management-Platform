@@ -1,9 +1,9 @@
-package com.zeroone.star.percenter.service.impl;
+package com.zeroone.star.login.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zeroone.star.percenter.entity.Menu;
-import com.zeroone.star.percenter.mapper.MenuMapper;
-import com.zeroone.star.percenter.service.IMenuService;
+import com.zeroone.star.login.entity.Menu;
+import com.zeroone.star.login.mapper.MenuMapper;
+import com.zeroone.star.login.service.IMenuService;
 import com.zeroone.star.project.utils.tree.TreeNode;
 import com.zeroone.star.project.utils.tree.TreeNodeMapper;
 import com.zeroone.star.project.utils.tree.TreeUtils;

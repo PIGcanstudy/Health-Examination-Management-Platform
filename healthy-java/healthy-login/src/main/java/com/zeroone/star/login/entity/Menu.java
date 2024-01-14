@@ -1,4 +1,4 @@
-package com.zeroone.star.percenter.entity;
+package com.zeroone.star.login.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
