@@ -28,5 +28,11 @@ positive:
    excludePositive: 排除阳性结果
    type: 类型
  rules:
+  field:
+   id: 编号
+   projectName: 项目名称
+   type: 类型
+   regularValue: 规则值
+   positiveResultsId: 阳性规则Id
   
   
