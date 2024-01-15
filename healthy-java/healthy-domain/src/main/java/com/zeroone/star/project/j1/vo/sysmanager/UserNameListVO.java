@@ -1,0 +1,14 @@
+package com.zeroone.star.project.j1.vo.sysmanager;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@Data
+@ApiModel("用户名称")
+public class UserNameListVO {
+    @ApiModelProperty(value = "唯一ID", example = "682265633886208")
+    private String id;
+    @ApiModelProperty(value = "用户昵称", example = "管理员")
+    private String nickname;
+}
