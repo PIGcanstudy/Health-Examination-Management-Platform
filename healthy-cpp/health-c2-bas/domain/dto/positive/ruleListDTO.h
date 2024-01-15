@@ -1,5 +1,5 @@
-#ifndef _RULE_DTO_
-#define _RULE_DTO_
+#ifndef _RULELIST_DTO_
+#define _RULELIST_DTO_
 
 #include "../../GlobalInclude.h"
 
@@ -7,9 +7,9 @@
 /**
  * 规则传输数据对象实体
  */
-class ruleDTO : public oatpp::DTO
+class ruleListDTO : public oatpp::DTO
 {
-	DTO_INIT(ruleDTO, DTO);
+	DTO_INIT(ruleListDTO, DTO);
 	// 唯一编号
 	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("positive.rules.field.id"));
 	// 项目名称
@@ -24,4 +24,4 @@ class ruleDTO : public oatpp::DTO
 
 #include OATPP_CODEGEN_END(DTO)
 
-#endif // !_RULE_DTO_
+#endif // !_RULELIST_DTO_

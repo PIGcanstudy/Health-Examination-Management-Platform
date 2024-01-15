@@ -1,11 +1,11 @@
-#ifndef _RULE_DO_
-#define _RULE_DO_
+#ifndef _RULELIST_DO_
+#define _RULELIST_DO_
 #include "../DoInclude.h"
 
 /**
  * 数据库实体类
  */
-class ruleDO
+class ruleListDO
 {
 	// 唯一编号
 	CC_SYNTHESIZE(string, id, Id);
@@ -18,7 +18,7 @@ class ruleDO
 	//阳性规则Id 
 	CC_SYNTHESIZE(string, positiveResultId, PositiveResultId);
 public:
-	ruleDO() {
+	ruleListDO() {
 		id = "0";
 		projectName = "";
 		type = "";
@@ -27,4 +27,4 @@ public:
 	}
 };
 
-#endif // !_RULE_DO_
+#endif // !_RULELIST_DO_
