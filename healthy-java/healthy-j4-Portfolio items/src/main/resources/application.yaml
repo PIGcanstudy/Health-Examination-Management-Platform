@@ -1,0 +1,5 @@
+server:
+  port: ${sp.Portfolioitems}
+spring:
+  application:
+    name: ${sn.Portfolioitems}
