@@ -1,11 +1,11 @@
 <template>
   <div>
-    <CheckItems>hello</CheckItems>
+    <CheckItems></CheckItems>
   </div>
 </template>
 
 <script setup>
-import CheckItems from '../../../components/checkitems/CheckItems.vue'
+import CheckItems from '@/components/checkitems/CheckItems.vue'
 </script>
 
 <style lang="scss" scoped></style>
