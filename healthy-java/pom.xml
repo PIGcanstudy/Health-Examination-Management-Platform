@@ -41,7 +41,9 @@
         <module>healthy-j2-role</module>
         <module>healthy-j2-menu</module>
         <module>healthy-j2-department</module>
-
+        <module>healthy-gateway</module>
+        <module>healthy-login</module>
+        <module>healthy-oauth2</module>
 
     </modules>
     <properties>
