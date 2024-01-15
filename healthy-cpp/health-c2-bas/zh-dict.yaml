@@ -18,6 +18,8 @@ sample:
   sex: 性别，如：男
 positive:
  resRules:
+  query:
+   summary: 查询阳性结果规则
   field:
    id: 编号
    condition: 条件
