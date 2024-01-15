@@ -1,7 +1,12 @@
+
 <template>
-  <div></div>
+  <div>
+    <Navigation></Navigation>
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import Navigation from '@/components/navigation/Navigation.vue'
+</script>
 
 <style lang="scss" scoped></style>
