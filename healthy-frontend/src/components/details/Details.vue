@@ -28,9 +28,22 @@
   </div>
 
   <!-- 统计 -->
-  <div style="background-color: white;padding: 10px;margin-top: 10px;">
+  <div style="background-color: white;padding: 15px;margin-top: 10px;">
     <div id="echars" style="height: 200px;"></div>
+  
+    <el-table :data="tableData" border style="width: 100%;margin-top: 10px;">
+      <el-table-column prop="id" label="体检编号" />
+      <el-table-column prop="name" label="姓名" />
+      <el-table-column prop="result" label="性别" />
+      <el-table-column prop="unit" label="年龄" />
+      <el-table-column prop="reference" label="身份证号" />
+      <el-table-column prop="prompt" label="体检状态" />
+      <el-table-column prop="abnormal" label="体检日期" />
+      <el-table-column prop="abnormal" label="未完成项目" width="250" />
+    </el-table>
   </div>
+
+  
 </template>
 
 <script setup>
@@ -148,8 +161,8 @@ onMounted(() => {
           show: true
         },
         data: [
-          { value: 1048, name: '已评价' },
-          { value: 335, name: '未评价' },
+          { value: 1048, name: '未评价' },
+          { value: 335, name: '已评价' },
         ]
       }
     ]

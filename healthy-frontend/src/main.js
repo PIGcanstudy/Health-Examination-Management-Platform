@@ -8,8 +8,6 @@ import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/src/message.scss'
 import './assets/main.css'
 
-
-
 const app = createApp(App)
 app.use(ElementPlus)
 app.use(createPinia())
