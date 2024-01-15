@@ -1,5 +1,5 @@
-#ifndef _RESRULE_DTO_
-#define _RESRULE_DTO_
+#ifndef _RESRULELIST_DTO_
+#define _RESRULELIST_DTO_
 
 #include "../../GlobalInclude.h"
 
@@ -7,9 +7,9 @@
 /**
  * 结果规则传输数据对象实体
  */
-class resRuleDTO : public oatpp::DTO
+class resRuleListDTO : public oatpp::DTO
 {
-	DTO_INIT(resRuleDTO, DTO);
+	DTO_INIT(resRuleListDTO, DTO);
 	// 唯一编号
 	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("positive.resRules.field.id"));
 	// 条件
@@ -30,4 +30,4 @@ class resRuleDTO : public oatpp::DTO
 
 #include OATPP_CODEGEN_END(DTO)
 
-#endif // !_RESRULE_DTO_
+#endif // !_RESRULELIST_DTO_

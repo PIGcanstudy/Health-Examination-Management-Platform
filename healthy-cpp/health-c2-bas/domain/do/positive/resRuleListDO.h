@@ -1,11 +1,11 @@
-#ifndef _RESRULE_DO_
-#define _RESRULE_DO_
+#ifndef _RESRULELIST_DO_
+#define _RESRULELIST_DO_
 #include "../DoInclude.h"
 
 /**
  * 数据库实体类
  */
-class resRuleDO 
+class resRuleListDO 
 {
 	// 唯一编号
 	CC_SYNTHESIZE(string, id, Id);
@@ -24,7 +24,7 @@ class resRuleDO
 	//类型
 	CC_SYNTHESIZE(string, type, Type);
 public:
-	resRuleDO() {
+	resRuleListDO() {
 		id = "0";
 		condition = "";
 		genderAppropriate = "";
@@ -36,4 +36,4 @@ public:
 	}
 };
 
-#endif // !_RESRULE_DO_
+#endif // !_RESRULELIST_DO_
