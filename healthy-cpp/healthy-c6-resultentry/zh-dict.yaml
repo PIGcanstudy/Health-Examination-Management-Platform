@@ -1,0 +1,8 @@
+result-entry:
+ cl-aban-proj:
+  put:
+   summary: 取消弃检
+  field:
+   personid: 人员id
+   order-group-item-id: 分组项目id
+   office-id: 科室id
