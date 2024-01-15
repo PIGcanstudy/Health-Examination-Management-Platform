@@ -6,11 +6,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
- * 演示示例表 Mapper 接口
+ *  Mapper 接口
  * </p>
  *
- * @author 阿伟
- * @since 2024-01-06
+ * @author TripleG
+ * @since 2024-01-15
  */
 @Mapper
 public interface SampleMapper extends BaseMapper<Sample> {

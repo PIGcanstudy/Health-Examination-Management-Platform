@@ -8,10 +8,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- * 演示示例表 服务类
+ *  服务类
  * </p>
- * @author 阿伟
- * @since 2024-01-06
+ *
+ * @author TripleG
+ * @since 2024-01-15
  */
 public interface ISampleService extends IService<Sample> {
     /**
@@ -24,7 +25,7 @@ public interface ISampleService extends IService<Sample> {
     /**
      * 通过ID查询数据
      * @param id 唯一ID
-     * @return 查询结果，如果没有查询到返回null
+     * @return 查询结果，如果没有返回null
      */
     SampleDTO getById(int id);
 }

@@ -14,7 +14,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @version 1.0.0
  */
 @SpringBootApplication
-@EnableDiscoveryClient
+@EnableDiscoveryClient  // 允许服务注册到Nacos
 public class SampleApplication {
 
     public static void main(String[] args) {

@@ -18,34 +18,32 @@ import javax.annotation.Resource;
  * <p>
  * 描述：Sample对应MapStruct映射接口
  * </p>
- * <p>版权：&copy;01星球</p>
- * <p>地址：01星球总部</p>
- * @author 阿伟学长
- * @version 1.0.0
+ *
+ * @author TripleG
+ * @since 2024-01-15
  */
 @Mapper(componentModel = "spring")
 interface MsSampleMapper {
     /**
      * 将SampleDO 转换成 SampleDTO
      * @param sample 待转换的DO
-     * @return 转换结果
+     * @return 转换结果DTO
      */
-    SampleDTO sampleToSampleDto(Sample sample);
+    SampleDTO sampleToSampleDTO(Sample sample);
 }
 
 /**
  * <p>
- * 演示示例表 服务实现类
+ *  服务实现类
  * </p>
- * @author 阿伟
- * @since 2024-01-06
+ *
+ * @author TripleG
+ * @since 2024-01-15
  */
 @Service
 public class SampleServiceImpl extends ServiceImpl<SampleMapper, Sample> implements ISampleService {
-
     @Resource
     MsSampleMapper msSampleMapper;
-
     @Override
     public PageDTO<SampleDTO> listPage(SampleQuery query) {
         // 构建分页条件对象
@@ -55,14 +53,14 @@ public class SampleServiceImpl extends ServiceImpl<SampleMapper, Sample> impleme
         wrapper.like("name", query.getName());
         // 执行查询
         Page<Sample> result = baseMapper.selectPage(page, wrapper);
-        return PageDTO.create(result, src -> msSampleMapper.sampleToSampleDto(src));
+        return PageDTO.create(result, src -> msSampleMapper.sampleToSampleDTO(src));
     }
 
     @Override
     public SampleDTO getById(int id) {
         Sample sample = baseMapper.selectById(id);
         if (sample != null) {
-            return msSampleMapper.sampleToSampleDto(sample);
+            return msSampleMapper.sampleToSampleDTO(sample);
         }
         return null;
     }

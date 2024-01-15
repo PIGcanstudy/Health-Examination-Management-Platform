@@ -8,11 +8,11 @@ import lombok.Setter;
 
 /**
  * <p>
- * 演示示例表
+ * 
  * </p>
  *
- * @author 阿伟
- * @since 2024-01-06
+ * @author TripleG
+ * @since 2024-01-15
  */
 @Getter
 @Setter
