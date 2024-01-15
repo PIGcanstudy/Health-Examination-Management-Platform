@@ -1,4 +1,5 @@
 <template>
+  <!-- 体检结果详情 -->
   <div>
     <el-tabs type="border-card">
       <el-tab-pane label="User">
@@ -25,10 +26,24 @@
       <el-tab-pane label="Task">Task</el-tab-pane>
     </el-tabs>
   </div>
+
+  <!-- 统计 -->
+  <div style="background-color: white;padding: 10px;margin-top: 10px;">
+    <el-space class="process" direction="vertical" :fill="100">
+      <div>
+        <span>统计</span>
+        <el-progress :text-inside="true" :stroke-width="20" :percentage="70" />
+      </div>
+      <div>
+        <span>统计</span>
+        <el-progress :text-inside="true" :stroke-width="20" :percentage="40" />
+      </div>
+    </el-space>
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+// import { ref } from 'vue'
 
 const tableData = [
   {
@@ -41,7 +56,7 @@ const tableData = [
     abnormal: false,
   },
   {
-    id: '1',
+    id: '2',
     name: 'Tom',
     result: '不正常',
     unit: '-',
@@ -50,7 +65,7 @@ const tableData = [
     abnormal: true,
   },
   {
-    id: '1',
+    id: '3',
     name: 'Tom',
     result: '正常',
     unit: '-',
@@ -59,7 +74,7 @@ const tableData = [
     abnormal: false,
   },
   {
-    id: '1',
+    id: '4',
     name: 'Tom',
     result: '正常',
     unit: '-',
@@ -68,7 +83,7 @@ const tableData = [
     abnormal: false,
   },
   {
-    id: '1',
+    id: '5',
     name: 'Tom',
     result: '正常',
     unit: '-',
@@ -77,7 +92,7 @@ const tableData = [
     abnormal: false,
   },
   {
-    id: '1',
+    id: '6',
     name: 'Tom',
     result: '不正常',
     unit: '-',
@@ -88,4 +103,13 @@ const tableData = [
 ]
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.process {
+  width: 100%;
+
+  // div {
+  //   display: flex;
+    
+  // }
+}
+</style>
