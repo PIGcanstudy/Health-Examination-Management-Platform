@@ -1,7 +1,9 @@
 <template>
-  <div></div>
+  <Details />
 </template>
 
-<script setup></script>
+<script setup>
+import Details from '@/components/details/Details.vue'
+</script>
 
 <style lang="scss" scoped></style>
