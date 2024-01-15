@@ -1,6 +1,6 @@
 # `healthy-frontend`
 
-下面说明能够帮助在基于Vite构建工具环境下开发`Vue3`。
+下面说明能够帮助在基于 Vite 构建工具环境下开发`Vue3`。
 
 ## `IDE`设置要求
 
@@ -64,4 +64,3 @@ npm run lint
 - `README.md`：项目自述文件
 - `vite.config.js`：`Vite`构建工具配置文件
 - `start.sh`：`Linux`下面的启动脚本
-
