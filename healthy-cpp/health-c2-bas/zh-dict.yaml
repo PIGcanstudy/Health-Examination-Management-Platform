@@ -1,40 +1,46 @@
 sample:
  get:
-  summary: ·ÖÒ³²éÑ¯Ê¾ÀıÊı¾İ
+  summary: åˆ†é¡µæŸ¥è¯¢ç¤ºä¾‹æ•°æ®
  post:
-  summary: ĞÂÔöÒ»ÌõÊ¾ÀıÊı¾İ
+  summary: æ–°å¢ä¸€æ¡ç¤ºä¾‹æ•°æ®
  put:
-  summary: ĞŞ¸ÄÒ»ÌõÊ¾ÀıÊı¾İ
+  summary: ä¿®æ”¹ä¸€æ¡ç¤ºä¾‹æ•°æ®
  delete:
-  summary: É¾³ıÒ»ÌõÊ¾ÀıÊı¾İ
+  summary: åˆ é™¤ä¸€æ¡ç¤ºä¾‹æ•°æ®
  query-one:
-  summary: Ê¹ÓÃÉùÃ÷Ê½·şÎñ²éÑ¯Ò»ÌõÊı¾İ
+  summary: ä½¿ç”¨å£°æ˜å¼æœåŠ¡æŸ¥è¯¢ä¸€æ¡æ•°æ®
  query-all:
-  summary: Ê¹ÓÃÉùÃ÷Ê½·şÎñ²éÑ¯¶àÌõÊı¾İ
+  summary: ä½¿ç”¨å£°æ˜å¼æœåŠ¡æŸ¥è¯¢å¤šæ¡æ•°æ®
  field:
-  id: ±àºÅ
-  age: ÄêÁä
-  name: ĞÕÃû
-  sex: ĞÔ±ğ£¬Èç£ºÄĞ
+  id: ç¼–å·
+  age: å¹´é¾„
+  name: å§“å
+  sex: æ€§åˆ«ï¼Œå¦‚ï¼šç”·
 positive:
  resRules:
   query:
-   summary: ²éÑ¯ÑôĞÔ½á¹û¹æÔò
+   summary: æŸ¥è¯¢é˜³æ€§ç»“æœè§„åˆ™
+  add:
+   summary: æ–°å¢é˜³æ€§ç»“æœè§„åˆ™
+  remove:
+   summary: åˆ é™¤é˜³æ€§ç»“æœè§„åˆ™
+  modify:
+   summary: ä¿®æ”¹é˜³æ€§ç»“æœè§„åˆ™
   field:
-   id: ±àºÅ
-   condition: Ìõ¼ş
-   genderAppropriate: ÊÊºÏĞÔ±ğ
-   positiveId: ÑôĞÔId
-   projectName: ¹æÔò
-   judgmentCondition: ÅĞ¶ÏÌõ¼ş
-   excludePositive: ÅÅ³ıÑôĞÔ½á¹û
-   type: ÀàĞÍ
+   id: ç¼–å·
+   condition: æ¡ä»¶
+   genderAppropriate: é€‚åˆæ€§åˆ«
+   positiveId: é˜³æ€§Id
+   projectName: è§„åˆ™
+   judgmentCondition: åˆ¤æ–­æ¡ä»¶
+   excludePositive: æ’é™¤é˜³æ€§ç»“æœ
+   type: ç±»å‹
  rules:
   field:
-   id: ±àºÅ
-   projectName: ÏîÄ¿Ãû³Æ
-   type: ÀàĞÍ
-   regularValue: ¹æÔòÖµ
-   positiveResultsId: ÑôĞÔ¹æÔòId
+   id: ç¼–å·
+   projectName: é¡¹ç›®åç§°
+   type: ç±»å‹
+   regularValue: è§„åˆ™å€¼
+   positiveResultsId: é˜³æ€§è§„åˆ™Id
   
   

@@ -6,3 +6,10 @@ resRuleListJsonVO::Wrapper resRuleController::execQueryResRule(const resRuleList
 {
 	return {};
 }
+Uint64JsonVO::Wrapper resRuleController::execRemoveResRule(const String& id)
+{
+	return {};
+}
+Uint64JsonVO::Wrapper resRuleController::execModifyResRule(const resRuleListDTO::Wrapper& dto) {
+	return {};
+}

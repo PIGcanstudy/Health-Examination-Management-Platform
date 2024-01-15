@@ -43,8 +43,21 @@ public: // 定义接口
 		// 呼叫执行函数响应结果
 		API_HANDLER_RESP_VO(execQueryResRule(resQuery));
 	}
+
+	// 定义删除接口描述
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("positive.resRules.remove.summary"), removeResRuleList, Uint64JsonVO::Wrapper);
+	// 定义删除接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "positive/remove-resRuleList", removeResRuleList, BODY_STRING(String, id), execRemoveResRule(id));
+
+	// 定义修改接口描述
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("positive.resRules.modify.summary"), modifyResRuleList, Uint64JsonVO::Wrapper);
+	// 定义修改接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "positive/modify-resRuleList", modifyResRuleList, BODY_DTO(resRuleListDTO::Wrapper, dto), execModifyResRule(dto));
+	
 private: // 定义接口执行函数
 	resRuleListJsonVO::Wrapper execQueryResRule(const resRuleListQuery::Wrapper& query); 
+	Uint64JsonVO::Wrapper execRemoveResRule(const String& id);
+	Uint64JsonVO::Wrapper execModifyResRule(const resRuleListDTO::Wrapper& dto);
 };
 
 #include OATPP_CODEGEN_END(ApiController)
