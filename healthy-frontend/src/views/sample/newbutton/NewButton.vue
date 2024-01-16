@@ -1,9 +1,9 @@
 <template>
-  
+    <NewButton></NewButton>
 </template>
 
 <script setup>
-import NewButton from '@/components/NewButton/NewButton.vue'
+import NewButton from '@/components/newButton/NewButton.vue'
 </script>
 
 
