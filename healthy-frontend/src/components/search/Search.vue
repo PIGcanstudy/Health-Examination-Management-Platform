@@ -52,7 +52,7 @@ const onReset = () => {
 
 <style>
 .demo-form-inline .el-input {
-  --el-input-width: 220px;
+  --el-input-width: 150px;
 }
 
 .bold-label .el-form-item__label {
