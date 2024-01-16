@@ -1,4 +1,4 @@
-package com.zeroone.star.project.j3.direct;
+package com.zeroone.star.project.j3.dictory;
 /**
  * @description: 字典数据api
  * @author: 坚强少年

@@ -1,8 +1,7 @@
 package com.zeroone.star.sysmanager.sysmanager.service.impl;
 
-import com.zeroone.star.sysmanager.sysmanager.entity.TDict;
 import com.zeroone.star.sysmanager.sysmanager.mapper.TDictMapper;
-import com.zeroone.star.sysmanager.sysmanager.service.ITDictService;
+import com.zeroone.star.sysmanager.sysmanager.service.DictService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +14,6 @@ import org.springframework.stereotype.Service;
  * @since 2024-01-16
  */
 @Service
-public class TDictServiceImpl extends ServiceImpl<TDictMapper, TDict> implements ITDictService {
+public class DictServiceImpl extends ServiceImpl<DictMapper, DictDTO> implements DictService {
 
 }

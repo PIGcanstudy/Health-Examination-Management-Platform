@@ -1,7 +1,6 @@
 package com.zeroone.star.sysmanager.controller;
 
-import com.zeroone.star.project.j3.direct.DirectApis;
-import com.zeroone.star.project.j3.direct.DirectSourceApis;
+import com.zeroone.star.project.j3.dictory.DirectSourceApis;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

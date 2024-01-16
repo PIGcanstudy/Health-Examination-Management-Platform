@@ -1,6 +1,5 @@
 package com.zeroone.star.sysmanager.sysmanager.service;
 
-import com.zeroone.star.sysmanager.sysmanager.entity.TDict;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +10,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author Anemon
  * @since 2024-01-16
  */
-public interface ITDictService extends IService<TDict> {
+public interface DictService extends IService<DictDTO> {
 
 }
