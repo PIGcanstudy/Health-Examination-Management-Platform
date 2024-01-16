@@ -1,0 +1,8 @@
+interro:
+ get:
+  summary: 症状询问
+ file:
+  id: 体检人编号
+  project: 体检项目
+  degree: 危及程度
+  time:	病程时间
