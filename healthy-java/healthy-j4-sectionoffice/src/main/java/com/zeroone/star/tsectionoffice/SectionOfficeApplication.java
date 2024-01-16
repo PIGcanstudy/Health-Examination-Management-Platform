@@ -1,4 +1,4 @@
-package com.zeroone.star.departmanagement;
+package com.zeroone.star.tsectionoffice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,10 +16,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class DepartmanagementApplication {
+public class SectionOfficeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DepartmanagementApplication.class, args);
+        SpringApplication.run(SectionOfficeApplication.class, args);
     }
 
 }

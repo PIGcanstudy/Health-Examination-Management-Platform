@@ -1,4 +1,4 @@
-package com.zeroone.star.departmanagement.config;
+package com.zeroone.star.tsectionoffice.config;
 
 import com.zeroone.star.project.config.swagger.SwaggerCore;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +15,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 public class SwaggerConfig {
     @Bean
     Docket sampleApis(){
-        return SwaggerCore.defaultDocketBuilder("科室管理模块","com.zeroone.star.departmanagement.controller","departmanagement");
+        return SwaggerCore.defaultDocketBuilder("科室管理模块","com.zeroone.star.tsectionoffice.controller","sectionoffice");
     }
 }
