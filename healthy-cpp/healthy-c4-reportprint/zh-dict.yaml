@@ -1,0 +1,15 @@
+print:
+ field:
+  id: 编号
+  name: 姓名
+  age: 年龄
+  sex: 性别
+  statu: 审核
+  printState: 打印
+  orderId: 订单编号
+  testNum: 体检编号
+  dept: 单位名称
+  checkDate: 体检日期
+  isRecheck: 复查
+ get:
+  summary: 获取体检人员报告
