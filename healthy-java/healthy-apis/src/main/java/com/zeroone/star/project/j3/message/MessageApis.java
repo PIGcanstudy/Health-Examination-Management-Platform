@@ -6,8 +6,7 @@ import com.zeroone.star.project.vo.JsonVO;
 
 
 import com.zeroone.star.project.dto.PageDTO;
-import com.zeroone.star.project.dto.j3.MessageDTO;
-import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.dto.j3.message.MessageDTO;
 
 /**
  * @description:消息管理Api
@@ -16,19 +15,6 @@ import com.zeroone.star.project.vo.JsonVO;
  **/
 public interface MessageApis {
 
-    /**
-     * 发送消息
-     * @param sendMessageDTO
-     * @return
-     */
-    JsonVO<String> sendMessage(SendMessageDTO sendMessageDTO);
-
-    /**
-     * 修改消息
-     * @param editMessageDTO
-     * @return
-     */
-    JsonVO<String> editMessage(EditMessageDTO editMessageDTO);
     /**
      * @description:批量删除/撤回接口
      * @author: 坚强少年

@@ -1,10 +1,13 @@
-package com.zeroone.star.project.dto.j3;
+package com.zeroone.star.project.dto.j3.message;
 
+import com.zeroone.star.project.dto.j3.message.BaseMessageDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotBlank;
 
 /**
  * 消息基本类型
