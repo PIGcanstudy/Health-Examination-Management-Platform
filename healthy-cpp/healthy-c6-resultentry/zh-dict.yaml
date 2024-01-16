@@ -1,0 +1,27 @@
+checkitem:
+ combo:
+  id: 唯一编号
+  name: 关键字
+  eg_name: A套餐
+ comboitem:
+  id: 唯一编号
+  name: 关键字
+  eg_name: 血常规
+  unit: 所属科室
+  eg_unit: 眼科
+  project_type: 项目类型
+  discount: 折扣
+  discount_price: 折扣价
+ portfolio_project:
+  id: 唯一编号
+  sale_price: 销售价
+ checkproject:
+  id: 唯一编号
+  combo_name: 套餐项目名称
+  eg_cn: 套餐A
+  comboitem_name: 选检项目名称
+  eg_cin: 血常规
+ query:
+  combosummary: 套餐选择
+  itemsummary: 选检项目
+  projectsummary: 所选体检项目
