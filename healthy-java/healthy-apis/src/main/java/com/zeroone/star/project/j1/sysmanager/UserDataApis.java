@@ -1,5 +1,6 @@
 package com.zeroone.star.project.j1.sysmanager;
 
+import com.zeroone.star.project.j1.vo.sysmanager.UserDataVO;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.project.vo.JsonVO;
 
@@ -10,4 +11,7 @@ import java.util.List;
  */
 public interface UserDataApis {
     JsonVO<List<UserNameListVO>> queryUserNameList();
+    JsonVO setUserStatus(Integer status);
+    JsonVO<UserDataVO> queryUserData(Long id);
+
 }
