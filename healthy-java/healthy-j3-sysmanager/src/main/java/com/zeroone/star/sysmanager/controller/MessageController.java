@@ -1,11 +1,17 @@
 package com.zeroone.star.sysmanager.controller;
 
-import com.zeroone.star.project.j3.dto.MessageDTO;
+import com.zeroone.star.project.dto.PageDTO;
+import com.zeroone.star.project.dto.j3.MessageDTO;
 import com.zeroone.star.project.j3.message.MessageApis;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.sysmanager.service.MessageService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * 消息管理Controller
@@ -18,4 +24,18 @@ import org.springframework.web.bind.annotation.RestController;
 @Api("消息控制")
 public class MessageController implements MessageApis {
 
+    @Resource
+    private MessageService messageService;
+    @Override
+    public JsonVO<Boolean> deleteByIds(Long id) {
+        return null;
+    }
+
+    @ApiOperation("获取消息详情页列表")
+    @GetMapping("/queryMessageDetail")
+    @Override
+    public JsonVO<PageDTO<MessageDTO>> queryMessageDetail(PageDTO<MessageDTO> detailDTO) {
+        PageDTO<MessageDTO> page = messageService.queryMessageDetail(detailDTO);
+        return JsonVO.success(page);
+    }
 }
