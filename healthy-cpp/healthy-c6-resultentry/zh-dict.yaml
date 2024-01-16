@@ -2,7 +2,7 @@ interro:
  get:
   summary: 症状询问
 interro1:
- file:
+ field:
   id: 体检人编号
   project: 体检项目
   degree: 危及程度
