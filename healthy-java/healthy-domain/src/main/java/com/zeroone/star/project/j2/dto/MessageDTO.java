@@ -1,8 +1,12 @@
 package com.zeroone.star.project.j2.dto;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -16,25 +20,34 @@ import lombok.Data;
 @Data
 @ApiModel
 public class MessageDTO {
-    @ApiModelProperty(value = "查询Id",example = "1")
-    private Integer id;
-    //用户Id
-    @ApiModelProperty(value = "发送用户Id",example = "1")
-    private String UserId;
-    //消息Id
-    @ApiModelProperty(value = "消息Id",example = "1")
-    private String MessageId;
-    //创建人
-    @ApiModelProperty(value = "创建人",example = "张三")
-    private String CreateBy;
-    //创建时间
-    @ApiModelProperty(value = "创建时间",example = "2024-01-15")
-    private String CreateTime;
-    //状态
-    @ApiModelProperty(value = "状态",example = "1")
-    private Integer Status;
-    //更新时间
-    @ApiModelProperty(value = "查询Id",example = "1")
-    private String UpdateTime;
+    @ApiModelProperty(value = "Id",example = "1")
+    private String id;
+
+    @ApiModelProperty(value = "创建人Id",example = "1")
+    private String createBy;
+
+    @ApiModelProperty(value = "创建时间")
+    private LocalDateTime createTime;
+
+    @ApiModelProperty(value = "修改人Id",example = "1")
+    private String updateBy;
+
+    @ApiModelProperty(value = "修改时间")
+    private LocalDateTime updateTime;
+
+    @ApiModelProperty(value = "删除标记 0 不删除 1 已删除",example = "0")
+    private Integer delFlag;
+
+    @ApiModelProperty(value = "标题",example = "标题")
+    private String title;
+
+    @ApiModelProperty(value = "内容",example = "内容")
+    private String content;
+
+    @ApiModelProperty(value = "是否发送给新人 0 否 1 是",example = "1")
+    private Boolean createSend;
+
+    @ApiModelProperty(value = "消息类型")
+    private String type;
 
 }

@@ -8,4 +8,6 @@ import com.zeroone.star.project.vo.JsonVO;
 public interface MessageApis {
 
     JsonVO<Object> removeMessage(String[] ids);
+
+    JsonVO<MessageDTO> queryMessage(String id);
 }
