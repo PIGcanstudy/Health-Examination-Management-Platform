@@ -48,16 +48,6 @@
       <el-button plain @click="handleCz">重置</el-button>
     </el-form-item>
   </el-form>
-
-  <el-table
-    :data="tableData"
-    style="width: 100%"
-    :row-class-name="tableRowClassName"
-  >
-    <el-table-column prop="xz" label="XZ" width="180" />
-    <el-table-column prop="tcmc" label="TCMC" width="180" />
-    <el-table-column prop="tcjp" label="TCJP" />
-  </el-table>
   </el-drawer>
 </template>
 
@@ -135,17 +125,11 @@ const tableData: User[] = [
   },
 ]
 </script>
-
 <style>
 .el-table .warning-row {
   --el-table-tr-bg-color: var(--el-color-warning-light-9);
 }
 .el-table .success-row {
   --el-table-tr-bg-color: var(--el-color-success-light-9);
-}
-.suibian{
-  display: flex;
-      justify-content: space-between;
-      align-items: center;
 }
 </style>

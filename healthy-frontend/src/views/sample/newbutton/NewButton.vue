@@ -1,7 +1,13 @@
 <template>
-  <div></div>
+    <NewButton></NewButton>
 </template>
 
-<script setup></script>
+<script setup>
+import NewButton from '@/components/newButton/NewButton.vue'
+</script>
 
-<style lang="scss" scoped></style>
+
+
+<style lang="scss" scoped>
+
+</style>
