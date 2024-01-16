@@ -7,5 +7,5 @@ import com.zeroone.star.project.vo.JsonVO;
 
 public interface MessageApis {
 
-    JsonVO<PageDTO<MessageDTO>> queryMessage(MessageQuery messageQuery);
+    JsonVO<Object> removeMessage(String[] ids);
 }

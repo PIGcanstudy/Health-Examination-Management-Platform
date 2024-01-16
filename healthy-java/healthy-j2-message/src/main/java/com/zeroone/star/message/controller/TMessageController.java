@@ -1,6 +1,8 @@
 package com.zeroone.star.message.controller;
 
 
+import com.zeroone.star.project.j2.MessageApis;
+import com.zeroone.star.project.vo.JsonVO;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/message/t-message")
-public class TMessageController {
+public class TMessageController implements MessageApis {
 
+    @Override
+    public JsonVO<Object> removeMessage(String[] ids) {
+        return null;
+    }
 }
 

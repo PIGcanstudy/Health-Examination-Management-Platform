@@ -24,10 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Api(tags = "消息详情")
 @RequestMapping("/message/t-message-send")
-public class TMessageSendController implements MessageApis {
+public class TMessageSendController {
     @ApiOperation("获取消息详情")
     @GetMapping("MessageSend")
-    @Override
     public JsonVO<PageDTO<MessageDTO>> queryMessage(MessageQuery messageQuery) {
         return null;
     }
