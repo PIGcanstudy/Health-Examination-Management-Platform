@@ -1,0 +1,14 @@
+Report:
+ field:
+  id: 唯一编号
+  type: 体检类型
+  name: 姓名
+  orderId: 订单编号
+  testNum: 体检编号
+  unitid: 单位名称
+  statu: 是否过审
+  isRecheck: 是否复查
+  checkDate: 体检日期
+  sex: 性别
+  age: 年龄
+  printState: 是否打印
