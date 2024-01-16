@@ -7,6 +7,8 @@
 
 <script setup>
 import { defineProps } from 'vue'
+import * as echarts from 'echarts'
+import { onMounted } from 'vue'
 
 const props = defineProps({
     statistics: {
@@ -14,9 +16,6 @@ const props = defineProps({
         default: () => []
     }
 })
-
-import * as echarts from 'echarts'
-import { onMounted } from 'vue'
 
 onMounted(() => {
     var myChart = echarts.init(document.getElementById('echars'))
