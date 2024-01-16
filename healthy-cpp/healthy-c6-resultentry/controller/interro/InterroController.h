@@ -6,7 +6,9 @@
 #include "domain/query/interro/InterroQuery.h"
 #include "domain/dto/interro/InterroDTO.h"
 #include "domain/vo/interro/InterroVO.h"
-
+/*
+* Interro控制器：获取症状问询
+*/
 
 // 0 定义API控制器使用宏
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
@@ -14,6 +16,7 @@ class InterroController : public oatpp::web::server::api::ApiController
 {
 	API_ACCESS_DECLARE(InterroController);
 public:
+	// 获取症状问询 负责人：小彬
 	ENDPOINT_INFO(queryInterro) {
 		// 定义接口标题
 		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("interro.get.summary"));
@@ -22,8 +25,8 @@ public:
 		// 定义响应参数格式
 		API_DEF_ADD_RSP_JSON_WRAPPER(InterroJsonVO);
 		// 定义其他查询参数描述
-		API_DEF_ADD_QUERY_PARAMS(Int32, "id", ZH_WORDS_GETTER("interro.field.id"), 1, true);
-		API_DEF_ADD_QUERY_PARAMS(String, "project", ZH_WORDS_GETTER("interro.field.project"), "xxx", false);
+		API_DEF_ADD_QUERY_PARAMS(Int32, "id", ZH_WORDS_GETTER("interro1.field.id"), 1, true);
+		API_DEF_ADD_QUERY_PARAMS(String, "project", ZH_WORDS_GETTER("interro1.field.project"),"xxx", false);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/c6-resultentry/Interro", queryInterro, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
@@ -33,7 +36,7 @@ public:
 		API_HANDLER_RESP_VO(execQueryInterro(userQuery, authObject->getPayload()));
 	}
 private:
-	InterroJsonVO::Wrapper execQueryInterro(const InterroQuery::Wrapper& query, const PayloadDTO& payload);
+	InterroJsonVO::Wrapper execQueryInterro(const InterroQuery::Wrapper& query, const PayloadDTO& payload); // 获取症状问询 负责人：小彬
 };
 
 
