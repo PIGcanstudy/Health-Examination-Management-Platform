@@ -9,6 +9,7 @@
 
 /*
 * 报告列表显示JsonVO实体
+* 负责人 Z
 */
 class CheckReportListJsonVO : public JsonVO<CheckReportListDTO::Wrapper> {
 	DTO_INIT(CheckReportListJsonVO, JsonVO<CheckReportListDTO::Wrapper>);

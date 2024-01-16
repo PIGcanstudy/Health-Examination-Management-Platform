@@ -7,6 +7,7 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 /*
 	这是报告审核查询
+	负责人 Z
 */
 class CheckReportQuery : public PageQuery
 {

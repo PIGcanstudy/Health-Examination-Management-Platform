@@ -7,6 +7,7 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 /*
 * 报告列表数据实体
+* 负责人：Z
 */
 class CheckReportListDTO : public oatpp::DTO
 {
@@ -38,6 +39,7 @@ class CheckReportListDTO : public oatpp::DTO
 };
 /*
 	报告列表分页实体
+	负责人 Z
 */
 class CheckReportListPageDTO : public PageDTO<CheckReportListDTO::Wrapper> {
 	DTO_INIT(CheckReportListPageDTO, PageDTO<CheckReportListDTO::Wrapper>);

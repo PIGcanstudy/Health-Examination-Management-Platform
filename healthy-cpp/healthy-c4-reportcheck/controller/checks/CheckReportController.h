@@ -10,6 +10,10 @@
 // 定义API控制器使用的宏
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
+/*
+* 接口的实现
+* 负责人 Z
+*/
 class CheckReportController : public oatpp::web::server::api::ApiController
 {
 	// 定义控制器访问接口
