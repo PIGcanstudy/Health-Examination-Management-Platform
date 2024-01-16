@@ -4,11 +4,8 @@
 
   <el-drawer v-model="drawer" title="I am the title" :with-header="false">
     <span>从业套餐选择</span>
-    <div class="demo-input-suffix">
-    <el-row :gutter="20">
-      <span class="suibian"
-        >关键字: </span
-      >
+    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+    <el-form-item label="关键字" class="bold-label">
       <el-input
         v-model="input1"
         class="suibian"
@@ -16,10 +13,12 @@
         placeholder="请输入关键字"
         :suffix-icon="Search"
       />
-      <el-button type="primary"  class="suibian" @click="handleSearch">查询</el-button>
-      <el-button @click="handleCz" class="suibian">重置</el-button>
-    </el-row>
-  </div>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
+      <el-button plain @click="handleCz">重置</el-button>
+    </el-form-item>
+  </el-form>
 
   <el-table
     :data="tableData"
@@ -34,22 +33,21 @@
 
   <el-drawer v-model="drawer2" title="I am the title" :with-header="false">
     <span>套餐项目</span>
-    <div class="demo-input-suffix">
-    <el-row :gutter="20">
-      <span class="suibian"
-        >关键字: </span
-      >
+    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+    <el-form-item label="关键字" class="bold-label">
       <el-input
-        v-model="input1"
+        v-model="input2"
         class="suibian"
         width="50px"
         placeholder="请输入关键字"
         :suffix-icon="Search"
       />
-      <el-button type="primary"  class="suibian" @click="handleSearch">查询</el-button>
-      <el-button @click="handleCz" class="suibian">重置</el-button>
-    </el-row>
-  </div>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
+      <el-button plain @click="handleCz">重置</el-button>
+    </el-form-item>
+  </el-form>
 
   <el-table
     :data="tableData"
@@ -65,12 +63,20 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { reactive } from 'vue'
 import { Calendar, Search } from '@element-plus/icons-vue'
-// import { ArrowDown } from '@element-plus/icons-vue'
+import { ArrowDown } from '@element-plus/icons-vue'
 
+const formInline = reactive({
+  name: '',
+  code: '',
+  contact: '',
+  phone: ''
+})
 const drawer = ref(false)
 const drawer2 = ref(false)
 const input1 = ref('')
+const input2 = ref('')
 // const handleCommand = (command: string | number | object) => {
 //   console.log(document.getElementById('keshi'))
 //   console.log(command)
@@ -78,7 +84,7 @@ const input1 = ref('')
 // }
 
 const handleSearch = () => {
-  console.log('search')
+  alert('search')
 }
 
 const handleCz = () => {
