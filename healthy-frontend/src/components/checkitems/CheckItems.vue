@@ -14,22 +14,8 @@
         placeholder="请输入关键字"
         :suffix-icon="Search"
       />
-      <span >所属科室: </span
-      >
-      <el-dropdown @command="handleCommand" >
-        <span class="el-dropdown-link" id="keshi">
-      请选择<el-icon class="el-icon--right"><arrow-down /></el-icon>
-    </span>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item>Action 1</el-dropdown-item>
-          <el-dropdown-item>Action 2</el-dropdown-item>
-          <el-dropdown-item>Action 3</el-dropdown-item>
-          <el-dropdown-item>Action 4</el-dropdown-item>
-          <el-dropdown-item>Action 5</el-dropdown-item>
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
+      <el-button type="primary" @click="handleSearch">查询</el-button>
+      <el-button @click="handleCz">重置</el-button>
     </el-row>
   </div>
   </el-drawer>
@@ -38,14 +24,22 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { Calendar, Search } from '@element-plus/icons-vue'
-import { ArrowDown } from '@element-plus/icons-vue'
+// import { ArrowDown } from '@element-plus/icons-vue'
 
 const drawer = ref(false)
 const input1 = ref('')
-const handleCommand = (command: string | number | object) => {
-  console.log(document.getElementById('keshi'))
-  console.log(command)
+// const handleCommand = (command: string | number | object) => {
+//   console.log(document.getElementById('keshi'))
+//   console.log(command)
 
+// }
+
+const handleSearch = () => {
+  console.log('search')
+}
+
+const handleCz = () => {
+  console.log('Cz')
 }
 </script>
 
