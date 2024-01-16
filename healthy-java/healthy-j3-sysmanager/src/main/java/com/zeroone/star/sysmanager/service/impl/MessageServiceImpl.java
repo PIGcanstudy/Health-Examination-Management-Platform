@@ -3,7 +3,7 @@ package com.zeroone.star.sysmanager.service.impl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.PageDTO;
-import com.zeroone.star.project.dto.j3.MessageDTO;
+import com.zeroone.star.project.dto.j3.message.MessageDTO;
 import com.zeroone.star.sysmanager.service.MessageService;
 import org.springframework.stereotype.Service;
 

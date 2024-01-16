@@ -1,8 +1,12 @@
 package com.zeroone.star.project.j3.message;
 
-import com.zeroone.star.project.dto.PageDTO;
-import com.zeroone.star.project.dto.j3.MessageDTO;
+import com.zeroone.star.project.dto.j3.message.EditMessageDTO;
+import com.zeroone.star.project.dto.j3.message.SendMessageDTO;
 import com.zeroone.star.project.vo.JsonVO;
+
+
+import com.zeroone.star.project.dto.PageDTO;
+import com.zeroone.star.project.dto.j3.message.MessageDTO;
 
 /**
  * @description:消息管理Api
@@ -10,6 +14,7 @@ import com.zeroone.star.project.vo.JsonVO;
  * @date: 2024/1/15 20:36
  **/
 public interface MessageApis {
+
     /**
      * @description:批量删除/撤回接口
      * @author: 坚强少年

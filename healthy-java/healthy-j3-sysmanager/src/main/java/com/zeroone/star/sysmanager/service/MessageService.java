@@ -1,7 +1,7 @@
 package com.zeroone.star.sysmanager.service;
 
 import com.zeroone.star.project.dto.PageDTO;
-import com.zeroone.star.project.dto.j3.MessageDTO;
+import com.zeroone.star.project.dto.j3.message.MessageDTO;
 
 public interface MessageService {
 

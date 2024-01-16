@@ -1,5 +1,6 @@
-package com.zeroone.star.project.dto.j3;
+package com.zeroone.star.project.dto.j3.message;
 
+import io.github.classgraph.json.Id;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
@@ -7,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 /**
@@ -20,12 +22,16 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BaseMessageDTO {
+    @Id
     @ApiModelProperty(value = "消息id",required = true)
     private Long id;
+    @NotBlank(message = "创建人不能为空")
     @ApiModelProperty(value = "创建人",required = true)
     private String createBy;
+    @NotBlank(message = "创建时间不为空")
     @ApiModelProperty(value = "创建时间",required = true)
     private Date createTime;
+    @NotBlank(message = "修改人不为空")
     @ApiModelProperty(value = "修改人",required = true)
     private String updateBy;
     @ApiModelProperty(value = "修改时间",required = true)

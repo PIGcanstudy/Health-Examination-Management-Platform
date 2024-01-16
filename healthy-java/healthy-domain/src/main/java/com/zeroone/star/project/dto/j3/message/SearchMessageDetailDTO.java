@@ -1,4 +1,4 @@
-package com.zeroone.star.project.dto.j3;
+package com.zeroone.star.project.dto.j3.message;
 
 import com.zeroone.star.project.dto.PageDTO;
 import io.swagger.annotations.Api;
