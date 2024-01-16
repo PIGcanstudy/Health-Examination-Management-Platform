@@ -1,0 +1,11 @@
+samplebarcodesview:
+ file:
+  personid: 体检人ID
+ get:
+  barcode: 样本条码查看
+
+reportpreview:
+ file:
+  personid: 体检人ID
+ get:
+  report: 报告预览
