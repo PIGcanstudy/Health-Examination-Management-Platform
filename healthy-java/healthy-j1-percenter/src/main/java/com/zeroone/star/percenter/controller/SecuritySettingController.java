@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "安全设置")
 public class SecuritySettingController implements SecuritySettingApis {
     @ApiOperation(value = "修改密码", notes = "用户修改自己的密码")
-    @PostMapping("/changePassword")
+    @PostMapping("/change-password")
     @Override
     public JsonVO<ModifyPasswordDTO> changePassword(@RequestBody ModifyPasswordVO modifyPasswordVO) {
         System.out.println("修改密码");
         return JsonVO.success(null);
     }
     @ApiOperation(value = "修改手机号", notes = "用户修改自己的手机号码")
-    @PostMapping("/changePhone")
+    @PostMapping("/change-phone")
     @Override
     public JsonVO<ModifyPhoneDTO> changePhone(@RequestBody ModifyPhoneVO modifyPhoneVO) {
         System.out.println("修改手机号");
