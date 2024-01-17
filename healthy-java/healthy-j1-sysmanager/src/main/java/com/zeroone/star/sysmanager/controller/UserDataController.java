@@ -1,5 +1,6 @@
 package com.zeroone.star.sysmanager.controller;
 
+import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
 import com.zeroone.star.project.j1.sysmanager.UserDataApis;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.project.vo.JsonVO;
@@ -27,4 +28,14 @@ public class UserDataController implements UserDataApis {
         list.add(userNameListVO);
         return JsonVO.success(list);
     }
+
+	@Override
+	public JsonVO<ModifyUserDTO> queryUserWhenModifying(String id) {
+		return null;
+	}
+
+	@Override
+	public void modifyUser(ModifyUserDTO user) {
+
+	}
 }

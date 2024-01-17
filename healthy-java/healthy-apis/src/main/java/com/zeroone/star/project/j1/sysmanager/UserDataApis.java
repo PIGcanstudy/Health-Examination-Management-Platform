@@ -1,5 +1,6 @@
 package com.zeroone.star.project.j1.sysmanager;
 
+import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.project.vo.JsonVO;
 
@@ -10,4 +11,8 @@ import java.util.List;
  */
 public interface UserDataApis {
     JsonVO<List<UserNameListVO>> queryUserNameList();
+	// 修改用户之前查询用户信息
+	JsonVO<ModifyUserDTO> queryUserWhenModifying(String id);
+	// 修改用户信息
+	void modifyUser(ModifyUserDTO user);
 }
