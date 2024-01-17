@@ -26,6 +26,7 @@
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
 #endif
+#include "itemResult/ItemResultController.h"
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -51,7 +52,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	ROUTER_SIMPLE_BIND(ItemResultController);
 }
 
 #ifdef HTTP_SERVER_DEMO
