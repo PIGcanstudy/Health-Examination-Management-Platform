@@ -1,0 +1,12 @@
+unitreport:
+  unit:
+    name: "单位名称"
+  order:
+    code: "订单编号"  
+    signingTime: "签订时间"
+    summary : "获取单位订单"
+  summaryTable: 
+     PhysicalExaminationPersonnel: "体检人员汇总表"
+     ReviewPersonnel : "复查人员汇总表"
+     ReviewResults : "复查结果汇总表"
+  
