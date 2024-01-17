@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Search></Search>
+    <BaseDataList></BaseDataList>
   </div>
 </template>
 
 <script setup>
-import Search from '@/components/search/Search.vue'
+import BaseDataList from '@/components/search/BaseDataList.vue'
 </script>
 
 <style lang="scss" scoped></style>
