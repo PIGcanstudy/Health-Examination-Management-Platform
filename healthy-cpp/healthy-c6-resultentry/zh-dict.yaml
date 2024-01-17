@@ -1,0 +1,28 @@
+save:
+ filed:
+  id: 唯一编号
+  personId: 体检人id
+  groupItemId: 分组项目id
+  groupItemName: 分组项目名称
+  diagnoseTip: 诊断提醒
+  diagnoseSum: 诊断小结
+  officeId: 科室id
+  officeName: 科室名称
+  checkDoc: 检查医生
+  checkDate: 检查日期
+  isCheck: 是否检查
+  delFlag: 删除标志（0-未删除）
+  addDepartRes: 新增诊台结果
+
+
+
+
+
+
+
+
+
+
+
+
+
