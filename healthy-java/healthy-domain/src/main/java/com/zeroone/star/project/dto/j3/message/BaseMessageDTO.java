@@ -25,13 +25,11 @@ public class BaseMessageDTO {
     @Id
     @ApiModelProperty(value = "消息id",required = true)
     private Long id;
-    @NotBlank(message = "创建人不能为空")
     @ApiModelProperty(value = "创建人",required = true)
     private String createBy;
     @NotBlank(message = "创建时间不为空")
     @ApiModelProperty(value = "创建时间",required = true)
     private Date createTime;
-    @NotBlank(message = "修改人不为空")
     @ApiModelProperty(value = "修改人",required = true)
     private String updateBy;
     @ApiModelProperty(value = "修改时间",required = true)

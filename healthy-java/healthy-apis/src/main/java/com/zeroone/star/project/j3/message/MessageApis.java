@@ -1,6 +1,7 @@
 package com.zeroone.star.project.j3.message;
 
 import com.zeroone.star.project.dto.j3.message.EditMessageDTO;
+import com.zeroone.star.project.dto.j3.message.SearchMessageDetailDTO;
 import com.zeroone.star.project.dto.j3.message.SendMessageDTO;
 import com.zeroone.star.project.vo.JsonVO;
 
@@ -31,5 +32,5 @@ public interface MessageApis {
      * @param: [id]
      * @return: com.zeroone.star.project.vo.JsonVO<com.zeroone.star.project.j3.dto.MessageDTO>
      **/
-    JsonVO<PageDTO<MessageDTO>> queryMessageDetail(PageDTO<MessageDTO> detailDTO);
+    JsonVO<PageDTO<SearchMessageDetailDTO>> queryMessageDetail(PageDTO<MessageDTO> detailDTO);
 }
