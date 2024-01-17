@@ -1,8 +1,11 @@
 package com.zeroone.star.percenter.controller;
 
+import com.zeroone.star.project.j1.dto.percenter.GetSmsCodeDTO;
+import com.zeroone.star.project.j1.dto.percenter.ModifyEmailDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPasswordDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPhoneDTO;
 import com.zeroone.star.project.j1.percenter.SecuritySettingApis;
+import com.zeroone.star.project.j1.vo.percenter.ModifyEmailVO;
 import com.zeroone.star.project.j1.vo.percenter.ModifyPasswordVO;
 import com.zeroone.star.project.j1.vo.percenter.ModifyPhoneVO;
 import com.zeroone.star.project.vo.JsonVO;
@@ -30,5 +33,20 @@ public class SecuritySettingController implements SecuritySettingApis {
     public JsonVO<ModifyPhoneDTO> changePhone(@RequestBody ModifyPhoneVO modifyPhoneVO) {
         System.out.println("修改手机号");
         return JsonVO.success(null);
+    }
+
+    @ApiOperation(value = "修改邮箱", notes = "用户修改自己的邮箱")
+    @PostMapping("/change-email")
+    @Override
+    public JsonVO<ModifyEmailDTO> changeEmail(ModifyEmailVO modifyEmailVO) {
+        return JsonVO.success(null);
+    }
+
+    @ApiOperation(value = "获取短信验证码")
+    @PostMapping("/get-sms-code")
+    @Override
+    public JsonVO<GetSmsCodeDTO> getSmsCode(ModifyPhoneVO modifyPhoneVO) {
+        GetSmsCodeDTO getSmsCodeDTO = new GetSmsCodeDTO();
+        return JsonVO.success(getSmsCodeDTO);
     }
 }
