@@ -32,25 +32,27 @@ public://定义接口
 		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
 		// 查询类型
-		API_DEF_ADD_QUERY_PARAMS(String, "type", ZH_WORDS_GETTER("Report.field.type"), "1", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "type", ZH_WORDS_GETTER("Report.field.type"), nullptr, true);
 		// 姓名
-		API_DEF_ADD_QUERY_PARAMS(String, "person_name", ZH_WORDS_GETTER("Report.field.name"), "li ming", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "person_name", ZH_WORDS_GETTER("Report.field.name"), nullptr, false);
 		// 订单编号
-		API_DEF_ADD_QUERY_PARAMS(String, "order_id", ZH_WORDS_GETTER("Report.field.orderId"), "123456", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "order_id", ZH_WORDS_GETTER("Report.field.orderId"), nullptr, false);
 		// 体检编号
-		API_DEF_ADD_QUERY_PARAMS(String, "test_num", ZH_WORDS_GETTER("Report.field.testNum"), "123", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "test_num", ZH_WORDS_GETTER("Report.field.testNum"), nullptr, false);
 		// 单位名称
-		API_DEF_ADD_QUERY_PARAMS(String, "unit_id", ZH_WORDS_GETTER("Report.field.unitId"), "huawei", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "unit_id", ZH_WORDS_GETTER("Report.field.unitId"), nullptr, false);
 		// 是否过审
-		API_DEF_ADD_QUERY_PARAMS(Boolean, "statu", ZH_WORDS_GETTER("Report.field.statu"), "1", false);
+		API_DEF_ADD_QUERY_PARAMS(Boolean, "statu", ZH_WORDS_GETTER("Report.field.statu"), "", true);
 		// 是否复查
-		API_DEF_ADD_QUERY_PARAMS(Boolean, "is_recheck", ZH_WORDS_GETTER("Report.field.isRecheck"), "1", false);
-		// 体检日期
-		API_DEF_ADD_QUERY_PARAMS(String, "check_date", ZH_WORDS_GETTER("Report.field.checkDate"), "20231209", false);
+		API_DEF_ADD_QUERY_PARAMS(Boolean, "is_recheck", ZH_WORDS_GETTER("Report.field.isRecheck"), "", true);
+		// 开始日期
+		API_DEF_ADD_QUERY_PARAMS(String, "stardate", ZH_WORDS_GETTER("Report.field.starDate"), "2023-12-17", true);
+		// 结束日期
+		API_DEF_ADD_QUERY_PARAMS(String, "enddate", ZH_WORDS_GETTER("Report.field.endDate"), "2024-1-17", true);
 	}
 	//定义查询接口处理
 	ENDPOINT(API_M_GET, "checks/query-report", queryCheckReport, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
-		//解析查询参数为Query领域模型
+		//解析查询参数为Query领域模型,也就是把查询参数的值解析
 		API_HANDLER_QUERY_PARAM(crq, CheckReportQuery, params);
 		//呼叫执行函数响应
 		API_HANDLER_RESP_VO(execCheckReport(crq));

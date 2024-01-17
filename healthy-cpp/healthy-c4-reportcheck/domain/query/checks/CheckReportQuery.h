@@ -33,8 +33,12 @@ class CheckReportQuery : public PageQuery
 	// 是否复查
 	API_DTO_FIELD_DEFAULT(Boolean, is_recheck, ZH_WORDS_GETTER("Report.field.isRecheck"));
 
-	// 体检日期
-	API_DTO_FIELD_DEFAULT(String, check_date, ZH_WORDS_GETTER("Report.field.checkDate"));
+	// 查询开始日期
+	API_DTO_FIELD_DEFAULT(String, stardate, ZH_WORDS_GETTER("Report.field.starDate"));
+
+	//查询结束日期
+	API_DTO_FIELD_DEFAULT(String, enddate, ZH_WORDS_GETTER("Report.field.endDate"));
+
 }; 
 
 #include OATPP_CODEGEN_END(DTO)

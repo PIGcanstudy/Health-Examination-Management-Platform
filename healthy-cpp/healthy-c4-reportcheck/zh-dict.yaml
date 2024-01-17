@@ -8,7 +8,8 @@ Report:
   unitid: 单位名称
   statu: 是否过审
   isRecheck: 是否复查
-  checkDate: 体检日期
+  starDate: 开始日期
+  endDate: 结束日期
   sex: 性别
   age: 年龄
   printState: 是否打印

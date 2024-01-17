@@ -33,9 +33,6 @@ class CheckReportListDTO : public oatpp::DTO
 	// 是否零星体检
 	API_DTO_FIELD_DEFAULT(Boolean, sporadic_physical, ZH_WORDS_GETTER("Report.field.sporadicPhysical"));
 
-	// 是否复查
-	API_DTO_FIELD_DEFAULT(Boolean, is_recheck, ZH_WORDS_GETTER("Report.field.isRecheck"));
-
 };
 /*
 	报告列表分页实体
