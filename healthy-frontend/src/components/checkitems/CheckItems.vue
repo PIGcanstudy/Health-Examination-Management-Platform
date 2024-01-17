@@ -31,6 +31,7 @@
     style="width: 100%"
     :row-class-name="tableRowClassNameForCy"
     @select="select"
+    @selection-change="handleSelectionChangeForCy"
   > 
     <el-table-column  type="selection" label="选择" width="180" />
     <el-table-column prop="tcmc" label="套餐名称" width="180" />
@@ -45,7 +46,7 @@
     <el-form-item label="关键字:" class="bold-label">
       <!-- 关键字输入框 -->
       <el-input
-        v-model="formInline.gjz"
+        v-model="formInlineTc.gjz"
         class="suibian"
         width="50px"
         placeholder="请输入关键字:"
@@ -55,7 +56,7 @@
 <!-- 套餐项目-所属科室-下拉菜单 -->
     <el-form-item label="所属科室" class="bold-label">
       <el-select
-    v-model="formInline.ssks"
+    v-model="formInlineTc.ssks"
     class="m-2"
     placeholder="请选择"
     size="large"
@@ -72,18 +73,19 @@
 </el-form-item>
   <!-- 套餐项目-from表单-按钮 -->
     <el-form-item>
-      <el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
-      <el-button plain @click="handleCz">重置</el-button>
+      <el-button type="primary" :icon="Search" @click="handleSearchTc">搜索</el-button>
+      <el-button plain @click="handleCzTc">重置</el-button>
     </el-form-item>
   </el-form>
 
   <!-- 套餐项目-表格数据table -->
   <el-table
     ref="multipleTableRefForTc"
-    :data="tableDataFtableRowClassNameForTc"
+    :data="tableDataForTc"
     style="width: 100%"
-    :row-class-name=""
+    :row-class-name="tableDataFtableRowClassNameForTc"
     @select="selectTc"
+    @selection-change="handleSelectionChangeForTc"
   >
     <!-- 单选框 -->
     <el-table-column type = "selection" label="XZ" width="180" />
@@ -103,12 +105,23 @@ import { ArrowDown } from '@element-plus/icons-vue'
 // 下拉菜单存放数据区域
 const options = [
   {
-    value: 'Option1',
+    value: 'Option',
     label: '蔡徐坤',
+    value1: 'Option1',
+    label1: '蔡徐坤1',
+    value2: 'Option2',
+    label2: '蔡徐坤2',
+    value3: 'Option3',
+    label3: '蔡徐坤3',
   }]
 
-  // 搜索框的字段存放区域
-  const formInline = ref({
+   // 搜索框的字段存放区域-从业套餐
+   const formInline = ref({
+  gjz: '',
+})
+
+  // 搜索框的字段存放区域-套餐项目
+  const formInlineTc = ref({
   gjz: '',
   ssks: ''
 })
@@ -133,19 +146,51 @@ const drawer2 = ref(false)
 
 // 点击事件区域
 
-//处理搜索
+//处理搜索-从业套餐
 const handleSearch = () => {
   alert('search')
 }
 
-//处理重置
+//处理重置-从业套餐
 const handleCz = () => {
   console.log('Cz')
+   // 将表单中的输入框清空
+   for (const key in formInline) {
+    formInline[key] = ''
+  }
+}
+
+//处理搜索-套餐项目
+const handleSearchTc = () => {
+  alert('search')
+}
+
+//处理重置-套餐项目
+const handleCzTc = () => {
+  console.log('Cz')
+   // 将表单中的输入框清空
+   for (const key in formInlineTc) {
+    formInlineTc[key] = ''
+  }
 }
 
 const multipleTableRef =  ref()
+const multipleSelectionForCy = ref([])
+const multipleSelectionForTc = ref([])
+
+const handleSelectionChangeForCy = (val) => {
+  console.log("从业套餐selectChangge: " + val);
+  multipleSelectionForCy.value = val
+}
+
+const handleSelectionChangeForTc = (val) => {
+  multipleSelectionForTc.value = val
+}
+
 // 从业套餐选择-表格绑定事件select
 const select = (selection, row) => {
+  console.log("从业套餐select: " + selection)
+  console.log("从业套餐select: " + row)
   // 清除 所有勾选项
   multipleTableRef.value.clearSelection()
   // 当表格数据都没有被勾选的时候 就返回
@@ -204,20 +249,20 @@ const tableDataFtableRowClassNameForTc = ({
 //从业套餐-表格数据
 const tableData: cytcTableFiled[] = [
   {
-    tcmc: '优惠套餐-ms',
+    tcmc: '优惠套餐1',
     tcjp: 'YHTC',
   },
   {
-    tcmc: '健康证',
+    tcmc: '健康套餐1',
     tcjp: 'CYTJ',
   },
   {
-    tcmc: 'Tom',
-    tcjp: 'No. 189, Grove St, Los Angeles',
+    tcmc: '优惠套餐2',
+    tcjp: 'JC3',
   },
   {
-    tcmc: 'Tom',
-    tcjp: 'No. 189, Grove St, Los Angeles',
+    tcmc: '健康套餐2',
+    tcjp: 'JC4',
   },
 ]
 
