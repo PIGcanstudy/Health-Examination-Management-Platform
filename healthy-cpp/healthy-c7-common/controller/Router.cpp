@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "ApiHelper.h"
 #include "personalReview/PersonalReviewController.h"
+#include "downloadWord/DownloadWordController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
@@ -53,7 +54,7 @@ void Router::initRouter()
 
 	//#TIP :系统扩展路由定义，写在这个后面
 	ROUTER_SIMPLE_BIND(PersonalReviewController);
-	
+	ROUTER_SIMPLE_BIND(DownloadWordController);
 }
 
 #ifdef HTTP_SERVER_DEMO
