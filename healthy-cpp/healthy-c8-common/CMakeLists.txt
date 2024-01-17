@@ -66,7 +66,7 @@ if(WIN32)
 endif()
 
 # 编译可执行文件
-add_executable (${appName} ${SC_FILES})
+add_executable (${appName} ${SC_FILES} "controller/common/CommonController.h" "controller/common/CommonController.cpp" "domain/dto/common/CommonDTO.h" "domain/query/common/CommonQuery.h" "domain/vo/common/CommonVO.h"    "service/common/PackagesListApiClient.h")
 
 # 链接库
 target_link_libraries (${appName} "lib-common" "lib-oatpp" "lib-mysql")
