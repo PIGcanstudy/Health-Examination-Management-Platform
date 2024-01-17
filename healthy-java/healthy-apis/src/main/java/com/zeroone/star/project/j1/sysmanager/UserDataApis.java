@@ -1,6 +1,7 @@
 package com.zeroone.star.project.j1.sysmanager;
 
 import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
+import com.zeroone.star.project.j1.vo.sysmanager.UserDataVO;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.project.vo.JsonVO;
 

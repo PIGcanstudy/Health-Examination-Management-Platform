@@ -1,11 +1,15 @@
 package com.zeroone.star.sysmanager.controller;
 
+import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
 import com.zeroone.star.project.j1.sysmanager.UserDataApis;
+import com.zeroone.star.project.j1.vo.sysmanager.UserDataVO;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,6 +35,7 @@ public class UserDataController implements UserDataApis {
     @Override
     @GetMapping("/setUserStatus/{status}")
     @ApiImplicitParam(name = "status",required = true)
+    @ApiOperation("设置用户状态")
     public JsonVO setUserStatus(@PathVariable Integer status){
         return JsonVO.success(null);
     }

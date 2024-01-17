@@ -9,11 +9,11 @@ import lombok.Data;
 public class UserDataVO {
     @ApiModelProperty(value = "唯一ID", example = "682265633886208")
     private Long id;
-    @ApiModelProperty(value = "登录账号", example = "test1")
+    @ApiModelProperty(value = "用户昵称", example = "test1")
     private String nickname;
     @ApiModelProperty(value = "头像")
     private Long avatar_id;
-    @ApiModelProperty(value = "用户昵称", example = "管理员")
+    @ApiModelProperty(value = "登录账号", example = "管理员")
     private String username;
     @ApiModelProperty(value = "性别")
     private String sex;
@@ -26,7 +26,7 @@ public class UserDataVO {
     @ApiModelProperty(value = "个人简介")
     private String description;
     @ApiModelProperty(value = "部门名称")
-    private String dept_id;
+    private String departmentTitle;
     @ApiModelProperty(value = "用户类型")
     private String type;
     @ApiModelProperty(value = "医生签名图片")
