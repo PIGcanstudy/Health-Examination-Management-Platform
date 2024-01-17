@@ -17,19 +17,19 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _MEDICALEXAMINATIONREGISTRATIONJSONVO_H_
-#define _MEDICALEXAMINATIONREGISTRATIONJSONVO_H_
+#ifndef _CHANGEINFORMATIONHJSONVO_H_
+#define _CHANGEINFORMATIONHJSONVO_H_
 
 #include "../../GlobalInclude.h"
-#include "../../dto/registration/MedicalExaminationRegistrationDTO.h"
+#include "../../dto/registration/ChangeInformationDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
  * 示例显示JsonVO，用于响应给客户端的Json对象
  */
-class MedicalExaminationRegistrationJsonVO : public JsonVO<MedicalExaminationRegistrationDTO::Wrapper> {
-	DTO_INIT(MedicalExaminationRegistrationJsonVO, JsonVO<MedicalExaminationRegistrationDTO::Wrapper>);
+class ChangeInformationJsonVO : public JsonVO<ChangeInformationDTO::Wrapper> {
+	DTO_INIT(ChangeInformationJsonVO, JsonVO<ChangeInformationDTO::Wrapper>);
 };
 
 
