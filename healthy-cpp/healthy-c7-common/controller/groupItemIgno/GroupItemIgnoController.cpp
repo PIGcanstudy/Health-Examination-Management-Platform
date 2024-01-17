@@ -1,7 +1,7 @@
  
 #include "stdafx.h"
 #include "GroupItemIgnoController.h"
-#include "../../service/GroupItemIgno/GroupItemIgnoService.h"
+#include "../../service/groupItemIgno/GroupItemIgnoService.h"
 #include "../ApiDeclarativeServicesHelper.h"
  
 // StringJsonVO
