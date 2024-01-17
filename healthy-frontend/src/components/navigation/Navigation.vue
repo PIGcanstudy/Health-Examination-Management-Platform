@@ -1,136 +1,235 @@
 <template>
 
-  <div>
-      <el-container>
+  <div class="main">
       <el-container class="mater" >
         <el-main >
-          <router-link to="/sample/file">
-            <img src="../../assets/logo.png" class="ic01"/>
-          </router-link>
-          <router-link to="/sample/excel">
-            <img src="../../assets/logo.png" class="ic02"/>
-          </router-link>
-          <router-link to="/sample/print">
-            <img src="../../assets/logo.png" class="ic03"/>
-          </router-link>
-          <router-link to="/sample/editor">
-            <img src="../../assets/logo.png" class="ic04"/>
-          </router-link>
-          <router-link to="/sample/pdfobject">
-            <img src="../../assets/logo.png" class="ic05"/>
-          </router-link>
-          <router-link to="/sample/basedatalist">
-            <img src="../../assets/logo.png" class="ic06"/>
-          </router-link>
-          <router-link to="/sample/basedatalisttest">
-            <img src="../../assets/logo.png" class="ic07"/>
-          </router-link>
-          <router-link to="/sample/checkitems">
-            <img src="../../assets/logo.png" class="ic08"/>
-          </router-link>
-          <router-link to="/sample/search">
-            <img src="../../assets/logo.png" class="ic09"/>
-          </router-link>
-          <router-link to="/sample/medicalinfo">
-            <img src="../../assets/logo.png" class="ic10"/>
-          </router-link>
-          <router-link to="/sample/details">
-            <img src="../../assets/logo.png" class="ic11"/>
-          </router-link>
-          <router-link to="/sample/newbutton">
-            <img src="../../assets/logo.png" class="ic12"/>
-          </router-link>          
-        </el-main>
-      </el-container>
-    </el-container>
-  </div>
+          <div class="ic01" >
+            <router-link to="/sample/file" >
+            <img src="../../assets/navigation/icon01.png" />
+            </router-link>
+            <el-text  size="large" >团检单位</el-text>
+          </div>
 
+          <!-- <div class="arrow01">
+            <img src="../../assets/navigation/arrow01.png"/>
+          </div>  -->
+          <!-- <img src="../../assets/navigation/arrow01.png"/> -->
+
+          <div class="ic02">
+            <router-link to="/sample/excel">
+            <img src="../../assets/navigation/icon02.png" />
+          </router-link>
+            <el-text  size="large">团检订单</el-text>
+          </div>
+          <div class="ic03">
+            <router-link to="/sample/print">
+            <img src="../../assets/navigation/icon03.png" />
+            </router-link>
+            <el-text  size="large">团检人员</el-text>
+          </div>
+          <div class="ic04">
+            <router-link to="/sample/print">
+            <img src="../../assets/navigation/icon04.png" />
+            </router-link>
+            <el-text  size="large">合同详情</el-text>
+          </div>
+          <div class="ic05">
+            <router-link to="/sample/print">
+            <img src="../../assets/navigation/icon05.png" />
+            </router-link>
+            <el-text  size="large">单位报告</el-text>
+          </div>
+          <div class="ic06">
+            <router-link to="/sample/print">
+            <img src="../../assets/navigation/icon06.png" />
+            </router-link>
+            <el-text  size="large">体检诊台</el-text>
+          </div>
+          <div class="ic07">
+            <router-link to="/sample/pdfobject">
+            <img src="../../assets/navigation/icon07.png" />
+            </router-link>
+            <el-text  size="large">医生总检</el-text>
+          </div>
+          <div class="ic08">
+            <router-link to="/sample/basedatalist">
+            <img src="../../assets/navigation/icon08.png" />
+            </router-link>
+            <el-text  size="large">报告审核</el-text>
+          </div>
+          <div class="ic09">
+            <router-link to="/sample/basedatalisttest">
+            <img src="../../assets/navigation/icon09.png" />
+            </router-link>
+            <el-text  size="large">体检报告</el-text>
+          </div>
+          <div class="ic10">
+            <router-link to="/sample/checkitems">
+            <img src="../../assets/navigation/icon10.png" />
+            </router-link>
+            <el-text  size="large">查询统计</el-text>
+          </div>
+          <div class="ic11">
+            <router-link to="/sample/search">
+            <img src="../../assets/navigation/icon11.png" />
+            </router-link>
+            <el-text  size="large">体检登记</el-text>
+          </div>
+          <div class="ic12">
+            <router-link to="/sample/medicalinfo">
+            <img src="../../assets/navigation/icon12.png" />
+            </router-link>
+            <el-text  size="large">数据网报</el-text>
+          </div>       
+        </el-main>
+        
+      </el-container>
+  </div>
 
 </template>
 
-<script setup></script>
+<script setup>
+</script>
 
 <style lang="scss" scoped>
 // 图标的编号先从左到右，然后从上到下，依次增加
 .ic01{
+  position:center;
   width: 64px;
   height: 64px;
   left: 80px;
-  top: 200px;
+  top: 100px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.7);
 }
 .ic02{
   width: 64px;
   height: 64px;
-  left: 140px;
-  top: 200px;
+  left: 200px;
+  top: 35px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.7);
 }
 .ic03{
   width: 64px;
   height: 64px;
-  left: 200px;
-  top: 200px;
+  left: 320px;
+  top: -30px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.7);
 }
 .ic04{
   width: 64px;
   height: 64px;
-  left: 260px;
-  top: 200px;
+  left: 440px;
+  top: -90px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.7);
 }
 .ic05{
   width: 64px;
   height: 64px;
-  left: 900px;
-  top: 200px;
+  left: 1100px;
+  top: -150px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.7);
 }
 .ic06{
   width: 64px;
   height: 64px;
-  left: 300px;
-  top: 320px;
+  left: 580px;
+  top: 30px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.7);
 }
 .ic07{
   width: 64px;
   height: 64px;
-  left: 360px;
-  top: 320px;
+  left: 700px;
+  top: -30px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.7);
 }
 .ic08{
   width: 64px;
   height: 64px;
-  left: 420px;
-  top: 320px;
+  left: 820px;
+  top: -100px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.7);
 }
 .ic09{
   width: 64px;
   height: 64px;
-  left: 480px;
-  top: 320px;
+  left: 940px;
+  top: -165px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.7);
 }
 .ic10{
   width: 64px;
   height: 64px;
-  left: 580px;
-  top: 320px;
+  left: 1100px;
+  top: -225px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.7);
 }
 .ic11{
   width: 64px;
   height: 64px;
-  left: -190px;
-  top: 450px;
+  left: 440px;
+  top: -30px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.7);
 }
 .ic12{
   width: 64px;
   height: 64px;
-  left: 450px;
-  top: 450px;
+  left: 1100px;
+  top: -100px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.7);
 }
-html,
+  html,
   body,
   .el-container{
+    background-image:url(../../assets/navigation/background03.jpg);
+    // opacity: 0.8;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center ;
+    border: 0;
     padding: 0;
     margin: 0;
     height: 90vh;
+    width: 100%;
   }
   /* 背景颜色 */
-  
+  .main{
+    border: 0;
+    padding: 0;
+    margin: 0;
+    height: 90vh;
+    width: 100%;
+  }
+  /* 横线 */
+.line{
+  float:right;
+  width: 100%;
+  height: 1px;
+  margin-top: -0.5em;
+  background:#d4c4c4;
+  position: relative;
+  text-align: center;
+}
+.arrow01{
+  top: 60px;
+  left :140px ;
+  height:1px;
+  width: 40px;
+  margin: 0 ;
+  border: 0 ;
+  padding: 0;
+}
+
 </style>
