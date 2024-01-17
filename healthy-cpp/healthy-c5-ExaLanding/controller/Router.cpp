@@ -20,12 +20,15 @@
 #include "Router.h"
 #include "ApiHelper.h"
 
+
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
 #endif
+
+#include "registration/ChangeInformationController.h"
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -51,6 +54,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	ROUTER_SIMPLE_BIND(ChangeInformationController);
 
 }
 
