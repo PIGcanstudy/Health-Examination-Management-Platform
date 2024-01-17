@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
  * @version 1.0.0
  */
 @Data
-@ApiModel
+@ApiModel("消息传输对象")
 public class MessageDTO {
     @ApiModelProperty(value = "Id",example = "1")
     private String id;
