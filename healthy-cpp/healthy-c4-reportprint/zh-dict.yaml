@@ -11,5 +11,6 @@ print:
   dept: 单位名称
   checkDate: 体检日期
   isRecheck: 复查
+  sporadicPhysical: 零星检查
  get:
   summary: 获取体检人员报告

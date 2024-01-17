@@ -42,6 +42,8 @@ class MedExamPrintReportDTO : public oatpp::DTO
 	API_DTO_FIELD_DEFAULT(Boolean, statu, ZH_WORDS_GETTER("print.field.statu"));
 	// ¥Ú”°
 	API_DTO_FIELD_DEFAULT(Boolean,printState, ZH_WORDS_GETTER("print.field.printState"));
+	// ¡„–«ÃÂºÏ
+	API_DTO_FIELD_DEFAULT(Boolean, sporadicPhysical, ZH_WORDS_GETTER("print.field.sporadicPhysical"));
 
 };
 

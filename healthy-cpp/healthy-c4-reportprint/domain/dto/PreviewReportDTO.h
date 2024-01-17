@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 11:34:14
+ @Date: 2024/01/16 10:59:38
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,31 +17,27 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _MEDEXAMPRINTREPORT_VO_
-#define _MEDEXAMPRINTREPORT_VO_
-
+#ifndef _PREVIEWREPORTDTO_H_
+#define _PREVIEWREPORTDTO_H_
 #include "../GlobalInclude.h"
-#include "../dto/MedExamPrintReportDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * 单位列表显示JsonVO实体
+ * 单位列表数据传输对象实体
  * 负责人：小智
  */
-class MedExamPrintReportJsonVO : public JsonVO<MedExamPrintReportDTO::Wrapper> {
-	DTO_INIT(MedExamPrintReportJsonVO, JsonVO<MedExamPrintReportDTO::Wrapper>);
+class PreviewReportDTO : public oatpp::DTO
+{
+	DTO_INIT(PreviewReportDTO, DTO);
+	// 唯一编号
+	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("print.field.id"));
+	// 报告编号
+	API_DTO_FIELD_DEFAULT(String, reportNum, ZH_WORDS_GETTER("print.field.reportNum"));
+	// PDF地址
+	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("print.field.href"));
 };
 
-/**
- * 单位分页列表显示JsonVO实体
- * 负责人：小智
- */
-
-class MedExamPrintReportPageJsonVO : public JsonVO<MedExamPrintReportPageDTO::Wrapper> {
-	DTO_INIT(MedExamPrintReportPageJsonVO, JsonVO<MedExamPrintReportPageDTO::Wrapper>);
-};
 
 #include OATPP_CODEGEN_END(DTO)
-
-#endif // !_MEDEXAMPRINTREPORT_VO_
+#endif // !_PREVIEWREPORTDTO_H_

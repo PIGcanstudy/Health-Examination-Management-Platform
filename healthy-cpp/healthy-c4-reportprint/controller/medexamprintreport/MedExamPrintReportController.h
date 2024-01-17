@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -74,7 +73,7 @@ public:
 
 private:
 	
-	MedExamPrintReportJsonVO::Wrapper execQueryMedExamPrintReport(const MedExamPrintReportQuery::Wrapper& query);
+	MedExamPrintReportPageJsonVO::Wrapper execQueryMedExamPrintReport(const MedExamPrintReportQuery::Wrapper& query);
 };
 
 // 0 取消API控制器使用宏

@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 11:34:14
+ @Date: 2024/01/16 11:36:29
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,31 +17,25 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _MEDEXAMPRINTREPORT_VO_
-#define _MEDEXAMPRINTREPORT_VO_
+#ifndef _PREVIEWREPORT_H_
+#define _PREVIEWREPORT_H_
 
 #include "../GlobalInclude.h"
-#include "../dto/MedExamPrintReportDTO.h"
+#include "domain/query/PageQuery.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * 单位列表显示JsonVO实体
+ * 报告打印报告预览
  * 负责人：小智
  */
-class MedExamPrintReportJsonVO : public JsonVO<MedExamPrintReportDTO::Wrapper> {
-	DTO_INIT(MedExamPrintReportJsonVO, JsonVO<MedExamPrintReportDTO::Wrapper>);
-};
+class PreviewReportQuery : public PageQuery
+{
+	DTO_INIT(PreviewReportQuery, PageQuery);
 
-/**
- * 单位分页列表显示JsonVO实体
- * 负责人：小智
- */
-
-class MedExamPrintReportPageJsonVO : public JsonVO<MedExamPrintReportPageDTO::Wrapper> {
-	DTO_INIT(MedExamPrintReportPageJsonVO, JsonVO<MedExamPrintReportPageDTO::Wrapper>);
+	// 体检人员编号
+	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("print.field.personId"));
 };
 
 #include OATPP_CODEGEN_END(DTO)
-
-#endif // !_MEDEXAMPRINTREPORT_VO_
+#endif // !_PREVIEWREPORT_H_

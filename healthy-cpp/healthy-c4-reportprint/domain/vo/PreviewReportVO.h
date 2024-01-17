@@ -17,11 +17,11 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _MEDEXAMPRINTREPORT_VO_
-#define _MEDEXAMPRINTREPORT_VO_
+#ifndef _PREVIEWREPORT_VO_
+#define _PREVIEWREPORT_VO_
 
 #include "../GlobalInclude.h"
-#include "../dto/MedExamPrintReportDTO.h"
+#include "../dto/PreviewReportDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
@@ -29,19 +29,10 @@
  * 单位列表显示JsonVO实体
  * 负责人：小智
  */
-class MedExamPrintReportJsonVO : public JsonVO<MedExamPrintReportDTO::Wrapper> {
-	DTO_INIT(MedExamPrintReportJsonVO, JsonVO<MedExamPrintReportDTO::Wrapper>);
-};
-
-/**
- * 单位分页列表显示JsonVO实体
- * 负责人：小智
- */
-
-class MedExamPrintReportPageJsonVO : public JsonVO<MedExamPrintReportPageDTO::Wrapper> {
-	DTO_INIT(MedExamPrintReportPageJsonVO, JsonVO<MedExamPrintReportPageDTO::Wrapper>);
+class PreviewReportJsonVO : public JsonVO<PreviewReportDTO::Wrapper> {
+	DTO_INIT(PreviewReportJsonVO, JsonVO<PreviewReportDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)
 
-#endif // !_MEDEXAMPRINTREPORT_VO_
+#endif // !_PREVIEWREPORT_VO_

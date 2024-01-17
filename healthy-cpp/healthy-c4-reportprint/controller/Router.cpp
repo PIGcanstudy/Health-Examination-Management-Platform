@@ -28,6 +28,7 @@
 #include "uselib/ws/WSController.h"
 #endif
 #include "medexamprintreport/MedExamPrintReportController.h"
+#include "previewreport/PreviewReportController.h"
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -54,6 +55,7 @@ void Router::initRouter()
 
 	//#TIP :系统扩展路由定义，写在这个后面
 	ROUTER_SIMPLE_BIND(MedExamPrintReportController);
+	ROUTER_SIMPLE_BIND(PreviewReportController);
 }
 
 #ifdef HTTP_SERVER_DEMO

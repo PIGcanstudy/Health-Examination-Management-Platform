@@ -17,20 +17,9 @@
  limitations under the License.
 */
 #include "stdafx.h"
-#include "MedExamPrintReportController.h"
+#include "PreviewReportController.h"
 
-MedExamPrintReportPageJsonVO::Wrapper MedExamPrintReportController::execQueryMedExamPrintReport(const MedExamPrintReportQuery::Wrapper& query)
+PreviewReportJsonVO::Wrapper PreviewReportController::execQueryPreviewReport(const PreviewReportQuery::Wrapper& query)
 {
-
-	MedExamPrintReportPageJsonVO::Wrapper vo = MedExamPrintReportPageJsonVO::createShared();
-	auto dto = MedExamPrintReportPageDTO::createShared();
-	if (query->pageIndex == 1)
-	{
-		vo->success(dto);
-	}
-	else
-	{
-		vo->fail(dto);
-	}
-	return vo;
+	return {};
 }
