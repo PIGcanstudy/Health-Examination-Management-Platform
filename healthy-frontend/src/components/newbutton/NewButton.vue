@@ -84,7 +84,91 @@
             </template>
   </el-card>
 </template>
+<script>
+import { ref, onMounted } from 'vue';
 
-<script setup></script>
+export default {
+  setup() {
+    const myCard = ref(null);
 
-<style lang="scss" scoped></style>
+    const closeCard = () => {
+      myCard.value.style.display = 'none'; // 将卡片的display设置为none，实现关闭效果
+    };
+
+    return {
+      myCard,
+      closeCard,
+    };
+  },
+};
+const options = [
+  {
+    value: 'Option1',
+    label: 'Option1',
+  },
+  {
+    value: 'Option2',
+    label: 'Option2',
+  },
+  {
+    value: 'Option3',
+    label: 'Option3',
+  },
+  {
+    value: 'Option4',
+    label: 'Option4',
+  },
+  {
+    value: 'Option5',
+    label: 'Option5',
+  },
+]
+</script>
+<script setup>
+/* 没有给输入框独立赋值 */
+import { ref } from 'vue'
+const input = ref('')
+</script>
+<style>
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text {
+  font-size: 14px;
+}
+
+.item {
+  margin-bottom: 18px;
+}
+
+.box-card {
+  width: 800px;
+  height: 800px;
+}
+.column-1,.column-2{
+display: inline-block;
+column-count: 2;
+text-align:left;
+}
+.card-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.button1{
+  position: absolute; 
+  top: 20px;
+left: 85%;
+}
+.button2{
+  position: absolute;/*或relative*/ 
+top: 20px;
+left: 90%;
+}
+.size{
+  size: 20px;
+}
+</style>
