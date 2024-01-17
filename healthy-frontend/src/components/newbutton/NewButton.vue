@@ -1,126 +1,114 @@
 <template>
-  <el-card class="box-card">
-    <template #header>
-      <div class="card-header">
-        <span>新增</span>
+  <div>
+    <el-button @click="showDrawer">新增</el-button>
+
+    <el-drawer :model-value="drawerVisible" title="新增" class="custom-drawer">
+      <el-form :model="formData" label-position="right">
+        <div class="form-row">
+          <el-form-item label="单位名称">
+            <el-input v-model="formData.unitName"></el-input>
+          </el-form-item>
+          <el-form-item label="体检类型">
+            <el-select v-model="formData.checkupType" placeholder="请选择">
+              <el-option label="类型1" value="type1"></el-option>
+              <el-option label="类型2" value="type2"></el-option>
+              <!-- 其他选项... -->
+            </el-select>
+          </el-form-item>
+        </div>
+        <!-- 其他输入框和下拉框... -->
+      </el-form>
+
+      <div class="form-row">
+          <el-form-item label="统一社会信用代码">
+            <el-input v-model="formData.unitName"></el-input>
+          </el-form-item>
+          <el-form-item label="行业类型">
+            <el-select v-model="formData.checkupType" placeholder="请选择">
+              <el-option label="类型1" value="type1"></el-option>
+              <el-option label="类型2" value="type2"></el-option>
+              <!-- 其他选项... -->
+            </el-select>
+          </el-form-item>
+        </div>
+        <div class="form-row">
+          <el-form-item label="所属地区">
+            <el-select v-model="formData.checkupType" placeholder="请选择">
+              <el-option label="类型1" value="type1"></el-option>
+              <el-option label="类型2" value="type2"></el-option>
+              <!-- 其他选项... -->
+            </el-select>
+          </el-form-item>
+          <el-form-item label="经济类型">
+            <el-select v-model="formData.checkupType" placeholder="请选择">
+              <el-option label="类型1" value="type1"></el-option>
+              <el-option label="类型2" value="type2"></el-option>
+              <!-- 其他选项... -->
+            </el-select>
+          </el-form-item>
+        </div>
+        <div class="form-row">
+          <el-form-item label="单位注册地址">
+            <el-input v-model="formData.unitName"></el-input>
+          </el-form-item>
+          <el-form-item label="企业规模">
+            <el-select v-model="formData.checkupType" placeholder="请选择">
+              <el-option label="类型1" value="type1"></el-option>
+              <el-option label="类型2" value="type2"></el-option>
+              <!-- 其他选项... -->
+            </el-select>
+          </el-form-item>
+        </div>
+        <div class="form-row">
+          <el-form-item label="体检联系人姓名">
+            <el-input v-model="formData.unitName"></el-input>
+          </el-form-item>
+          <el-form-item label="体检联系人电话">
+            <el-input v-model="formData.unitName"></el-input>
+          </el-form-item>
+        </div>
+
+      <div class="drawer-footer">
+        <el-button @click="closeDrawer">取消</el-button>
+        <el-button type="primary" @click="saveData">保存</el-button>
       </div>
-    </template>
-    <div class="column-1">单位名称 <el-input class="size" v-model="input" placeholder="请输入单位名称" /></div>
-    <div class="column-2">体检类型</div>
-    <el-select v-model="value" class="m-2" placeholder="Select" size="default" style="width: 150px">
-      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-    </el-select>
-    <div class="column-1">统一社会信用代码 <el-input class="size" v-model="input" placeholder="请输入统一注册和信用代码" /></div>
-    <div class="column-2">行业类型</div>
-    <el-select v-model="value" class="m-2" placeholder="Select" size="default" style="width: 150px">
-      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-    </el-select>
-    <div class="column-1">所属地区</div>
-    <el-select v-model="value" class="m-2" placeholder="Select" size="default" style="width: 150px">
-      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-    </el-select>
-    <div class="column-2">经济类型</div>
-    <el-select v-model="value" class="m-2" placeholder="Select" size="default" style="width: 150px">
-      <el-option class="option" />
-    </el-select>
-    <div class="column-1">单位注册地址 <el-input class="size" v-model="input" placeholder="请输入单位注册地址" /></div>
-    <div class="column-2">企业规模</div>
-    <el-select v-model="value" class="m-2" placeholder="Select" size="default" style="width: 150px">
-      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-    </el-select>
-    <div class="column-1">体检联系人姓名 <el-input class="size" v-model="input" placeholder="请输入联系人姓名" /></div>
-
-    <div class="column-2">体检联系人电话<el-input class="size" v-model="input" placeholder="请输入联系人电话 " /></div>
-    <template #footer
-      ><el-button class="button1" @click="closeCard">取消</el-button>
-      <el-button class="button2" text>提交</el-button>
-    </template>
-  </el-card>
+    </el-drawer>
+  </div>
 </template>
+
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue';
 
-const myCard = ref(null)
+const drawerVisible = ref(false);
 
-const closeCard = () => {
-  if (myCard.value) {
-    myCard.value.style.display = 'none'
-  }
-}
+const formData = {
+  unitName: '',
+  checkupType: '',
+  // 其他字段...
+};
 
-const options = [
-  {
-    value: 'Option1',
-    label: 'Option1'
-  },
-  {
-    value: 'Option2',
-    label: 'Option2'
-  },
-  {
-    value: 'Option3',
-    label: 'Option3'
-  },
-  {
-    value: 'Option4',
-    label: 'Option4'
-  },
-  {
-    value: 'Option5',
-    label: 'Option5'
-  }
-]
+const showDrawer = () => {
+  drawerVisible.value = true;
+};
 
-// 如果需要在组件挂载后执行一些逻辑，可以使用 onMounted 钩子
-onMounted(() => {
-  console.log('已挂载')
-})
+const closeDrawer = () => {
+  drawerVisible.value = false;
+};
+
+const saveData = () => {
+  // 处理保存逻辑，根据实际需求进行调整
+  console.log('Saving data:', formData);
+  closeDrawer();
+};
 </script>
 
 <style scoped>
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.custom-drawer {
+  width: 2000px; /* 调整为你需要的宽度 */
 }
 
-.text {
-  font-size: 14px;
-}
-
-.item {
-  margin-bottom: 18px;
+.form-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.box-card {
-  width: 800px;
-  height: 800px;
-}
-.column-1,
-.column-2 {
-  display: inline-block;
-  column-count: 2;
-  text-align: left;
-}
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.button1 {
-  position: absolute;
-  top: 20px;
-  left: 85%;
-}
-.button2 {
-  position: absolute; /*或relative*/
-  top: 20px;
-  left: 90%;
-}
-.size {
-  size: 20px;
 }
 </style>
