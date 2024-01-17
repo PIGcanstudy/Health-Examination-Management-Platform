@@ -1,0 +1,7 @@
+personalReview:
+ update:
+  summary: 审查
+ field:
+  personId: 体检人员id
+  updateId: 更新人id
+  
