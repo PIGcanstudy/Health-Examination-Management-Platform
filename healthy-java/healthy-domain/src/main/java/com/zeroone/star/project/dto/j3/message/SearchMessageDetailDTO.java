@@ -17,7 +17,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SearchMessageDetailDTO extends PageDTO {
+public class SearchMessageDetailDTO extends BaseMessageDTO{
     @ApiModelProperty(value = "消息id",example = "1",required = true)
     private Long id;
     @ApiModelProperty(value = "用户id",example = "1",required = true)
