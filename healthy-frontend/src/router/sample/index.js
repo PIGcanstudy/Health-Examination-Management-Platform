@@ -43,11 +43,11 @@ const routes = [
       },
       {
         path: '/sample/medicalinfo',
-        component: () => import('@/views/sample/pdfobject/MedicalInfo.vue')
+        component: () => import('@/views/sample/medicalinfo/MedicalInfo.vue')
       },
       {
         path: '/sample/details',
-        component: () => import('@/views/sample/pdfobject/Details.vue')
+        component: () => import('@/views/sample/details/Details.vue')
       },
       {
         path: '/sample/newbutton',
