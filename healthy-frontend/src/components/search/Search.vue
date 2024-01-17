@@ -32,17 +32,17 @@ const formInline = reactive({
   phone: ''
 })
 
-let props = defineProps(['sendToSearch', 'sendToReset'])
+const props = defineProps(['sendToSearch', 'sendToReset'])
 
 /**
  * 将输入框的值传给表格组件
  */
 const onSearch = () => {
   console.log('search!')
-  const data = formInline
+  const data = { ...formInline }
   for (let each in data) {
-    if (each === '') {
-      each === '--'
+    if (data[each] === '') {
+      data[each] = '--'
     }
   }
   props.sendToSearch(data)
