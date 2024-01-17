@@ -16,3 +16,16 @@ sample:
   age: 年龄
   name: 姓名
   sex: 性别，如：男
+deatil:
+ get: 
+  summary:  阳性结果详细查询接口
+ field: 
+  type: 阳性结果
+  name: 名称
+  namePinYin: 简拼
+  degree: 严重程度
+  positive: 是否阳性
+  sectionName: 科室名称
+  advise: 职业建议
+  healthKnowledge: 健康建议
+ 

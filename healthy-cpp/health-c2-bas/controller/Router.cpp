@@ -19,13 +19,15 @@
 #include "stdafx.h"
 #include "Router.h"
 #include "ApiHelper.h"
-
+#include "positive/DeatilController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
 #endif
+#include "positive/ModifyResultController.h"
+
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -51,8 +53,13 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	//绑定阳性结果详细控制器
+	ROUTER_SIMPLE_BIND(DeatilController);
+	//绑定修改阳性结果控制器
+	ROUTER_SIMPLE_BIND(ModifyResultController);
 }
+
+
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
@@ -62,9 +69,9 @@ void Router::createSampleRouter()
 	// 绑定用户控制器
 	ROUTER_SIMPLE_BIND(UserController);
 	// 绑定文件控制器
-	ROUTER_SIMPLE_BIND(FileController);
+   ROUTER_SIMPLE_BIND(FileController);
 	
 	// 绑定WebSocket控制器
 	router->addController(WSContorller::createShared());
 }
-#endif
+#endif // !_ROUTER_
