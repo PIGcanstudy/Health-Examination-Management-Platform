@@ -11,7 +11,7 @@
 */
 class CheckReportQuery : public PageQuery
 {
-	DTO_INIT(CheckReportQuery, DTO);
+	DTO_INIT(CheckReportQuery, PageQuery);
 	// ≤È—Ø¿‡–Õ
 	API_DTO_FIELD_DEFAULT(String, type, ZH_WORDS_GETTER("report.field.type"));
 
