@@ -2,7 +2,9 @@
   <el-button type="primary" style="margin-left: 16px" @click="drawer = true">套餐类型</el-button>
   <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true">选检项目</el-button>
 
+  
   <!-- 套餐类型抽屉 -->
+  <div id = 'tclx'>
   <el-drawer v-model="drawer" title="I am the title" :with-header="false">
     <span>从业套餐选择</span>
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
@@ -38,9 +40,11 @@
     <el-table-column prop="tcjp" label="套餐简拼" />
   </el-table>
   </el-drawer>
+</div>
 
-    <!-- 选检项目-抽屉 -->
-  <el-drawer v-model="drawer2" title="I am the title" :with-header="false">
+ <!-- 选检项目-抽屉 -->
+<div id = 'xjxm' class="darwer-box">
+  <el-drawer v-model="drawer2" title="I am the title" :with-header="false" >
     <span>套餐项目</span>
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
     <el-form-item label="关键字:" class="bold-label">
@@ -92,13 +96,18 @@
     <el-table-column prop="mc" label="名称" width="180" />
     <el-table-column prop="xsj" label="销售价(元)" />
   </el-table>
+  <el-pagination layout="prev, pager, next" :total="1000" />
+  <el-button @handleClose="close">关闭 </el-button>
+  <el-button type="primary" @click="submit">确定</el-button>
   </el-drawer>
+</div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { Calendar, Search } from '@element-plus/icons-vue'
+import { reactive,ref,defineProps,watch,defineEmits  } from 'vue'
+import { Search } from '@element-plus/icons-vue'
 import { ArrowDown } from '@element-plus/icons-vue'
+
 
 
 
@@ -106,22 +115,28 @@ import { ArrowDown } from '@element-plus/icons-vue'
 const options = [
   {
     value: 'Option',
-    label: '蔡徐坤',
-    value1: 'Option1',
-    label1: '蔡徐坤1',
-    value2: 'Option2',
-    label2: '蔡徐坤2',
-    value3: 'Option3',
-    label3: '蔡徐坤3',
+    label: '蔡徐坤'},
+    {
+    value: 'Option1',
+    label: '蔡徐坤1'
+    },
+    {
+    value: 'Option2',
+    label: '蔡徐坤2'
+    },
+    {value: 'Option3',
+    label: '蔡徐坤3',
   }]
 
+  
+
    // 搜索框的字段存放区域-从业套餐
-   const formInline = ref({
+   const formInline = reactive({
   gjz: '',
 })
 
   // 搜索框的字段存放区域-套餐项目
-  const formInlineTc = ref({
+  const formInlineTc = reactive({
   gjz: '',
   ssks: ''
 })
@@ -142,6 +157,48 @@ interface tcxmTableFiled {
 const value = ref('')
 const drawer = ref(false)
 const drawer2 = ref(false)
+
+
+// 定义抽屉预设
+defineProps({
+  title: {
+    type: String
+  },
+  size: {
+    type: String,
+    default: "45%"
+  },
+  destroyOnClose: {
+    default: false,
+    type: Boolean
+  },
+  confirmText: {
+    default: "提交",
+    type: String
+  }
+})
+
+//定义触发事件,就是底部2个按钮
+const emit = defineEmits(['submit', 'cancel'])
+
+//抽屉的打开与关闭
+const open = () => drawer.value = true
+const close = () => drawer.value = false
+
+
+// 抽屉的确认与取消按钮
+const submit = () => emit('submit')
+const cancel = () => emit('cancel')
+
+let loading = ref(false)
+
+const showloading = () => loading.value = true
+const hideloading = () => loading.value = false
+// 暴露出去
+defineExpose({
+  open, close, submit, cancel, showloading, hideloading
+})
+
 
 
 // 点击事件区域
@@ -173,6 +230,7 @@ const handleCzTc = () => {
     formInlineTc[key] = ''
   }
 }
+
 
 const multipleTableRef =  ref()
 const multipleSelectionForCy = ref([])
