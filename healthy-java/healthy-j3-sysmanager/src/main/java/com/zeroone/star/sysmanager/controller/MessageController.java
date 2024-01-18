@@ -7,12 +7,10 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.service.ITMessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 
 
 /**
@@ -28,8 +26,10 @@ public class MessageController implements MessageApis {
 
     @Resource
     private ITMessageService messageService;
+
+    @DeleteMapping("/deleteByIds")
     @Override
-    public JsonVO<Boolean> deleteByIds(Long id) {
+    public JsonVO<Boolean> deleteByIds(@RequestParam ArrayList<Long> ids) {
         return null;
     }
 
