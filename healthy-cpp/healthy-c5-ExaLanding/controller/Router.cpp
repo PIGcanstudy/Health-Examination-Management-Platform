@@ -28,7 +28,7 @@
 #include "uselib/ws/WSController.h"
 #endif
 
-#include "registration/ChangeInformationController.h"
+#include "registration/UpdateInformationController.h"
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -54,7 +54,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-	ROUTER_SIMPLE_BIND(ChangeInformationController);
+	ROUTER_SIMPLE_BIND(UpdateInformationController);
 
 }
 

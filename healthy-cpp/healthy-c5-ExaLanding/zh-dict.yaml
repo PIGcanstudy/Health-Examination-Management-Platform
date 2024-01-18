@@ -1,7 +1,7 @@
-﻿registration:
+﻿exalanding:
  put:
-  changeInformation: 修改人员信息
- changeInformation:
+  updateInformation: 修改人员信息
+ updateInformation:
   personName: 人员姓名
   sex: 性别
   age: 年龄

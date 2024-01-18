@@ -17,11 +17,11 @@
  limitations under the License.
 */
 #include "stdafx.h"
-#include "ChangeInformationController.h"
+#include "UpdateInformationController.h"
 
-ChangeInformationJsonVO::Wrapper ChangeInformationController::execChangeInformation(const ChangeInformationDTO::Wrapper& dto)
+UpdateInformationJsonVO::Wrapper UpdateInformationController::execUpdateInformation(const UpdateInformationDTO::Wrapper& dto)
 {
 	// TODO:写一些测试数据
 	return {};
-	//return ChangeInformationJsonVO::Wrapper();
+	//return UpdateInformationJsonVO::Wrapper();
 }
