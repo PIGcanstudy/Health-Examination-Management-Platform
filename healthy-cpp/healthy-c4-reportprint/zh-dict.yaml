@@ -1,0 +1,23 @@
+select:
+ field:
+  id: 编号
+  name: 姓名
+  age: 年龄
+  sex: 性别
+  statu: 审核
+  downloadState: 打印
+  orderId: 报告编号
+  testNum: 报告名称
+  dept: 单位名称
+  checkDate: 体检日期
+ get:
+  summary: 选择要下载的报告
+setting:
+ field:
+  personId: 体检人员编号
+  id: 编号
+  reportNum: 报告编号
+  href: 文件地址
+  downloadpath: 下载路径
+ get:
+  view: 下载设置
