@@ -9,12 +9,28 @@
 > > `conf` -- Windows平台需要的配置文件
 > >
 > > `controller` -- `MVC`中Controller实现，用于接收用户请求
-> >
+> > 
+> > > `medexamprintreport` -- 获取体检人员信息的接口文件
+> > >
+> > > `previewreport` -- 报告预览的接口文件
+> > >
 > > `service` -- 业务逻辑服务层
 > >
 > > `dao` -- 数据库访问层
 > >
 > > `domain`  -- 领域模型实体
+> > 
+> > > `MedExamPrintReportDTO.h` -- 获取体检人员信息的数据传输对象
+> > >
+> > > `PreviewReportDTO.h` -- 报告预览的数据传输对象
+> > >
+> > > `MedExamPrintReportQuery.h` -- 获取体检人员信息的数据查询对象
+> > >
+> > > `PreviewReportQuery.h` -- 报告预览的数据查询对象
+> > >
+> > > `MedExamPrintReportVO.h` -- 获取体检人员信息的显示层数据
+> > >
+> > > `PreviewReportVO.h` -- 报告预览的显示层数据
 > >
 > > `public` -- 测试访问网页案例
 > >
