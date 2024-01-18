@@ -1,8 +1,12 @@
 package com.zeroone.star.project.j1.vo.sysmanager;
 
+import cn.hutool.core.date.DateTime;
+import com.zeroone.star.project.j1.vo.sysmanager.entiy.Role;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @ApiModel("用户详情")
@@ -18,7 +22,7 @@ public class UserDataVO {
     @ApiModelProperty(value = "性别")
     private String sex;
     @ApiModelProperty(value = "生日")
-    private String birth;
+    private DateTime birth;
     @ApiModelProperty(value = "区域")
     private String address;
     @ApiModelProperty(value = "街道")
@@ -31,5 +35,11 @@ public class UserDataVO {
     private String type;
     @ApiModelProperty(value = "医生签名图片")
     private String autograph;
+    @ApiModelProperty(value = "邮箱")
+    private String email;
+    @ApiModelProperty(value = "手机号")
+    private String phone;
+    @ApiModelProperty(value = "角色")
+    private List<Role> roleList;
 
 }
