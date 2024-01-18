@@ -8,12 +8,14 @@
 -->
 <template>
   <div>
-    <PeopleList></PeopleList>
+    <!-- <PeopleList></PeopleList> -->
+    <PeopleListTest></PeopleListTest>
   </div>
 </template>
 
 <script setup>
-import PeopleList from '@/components/peoplelist/PeopleList.vue'
+// import PeopleList from '@/components/peoplelist/PeopleList.vue'
+import PeopleListTest from '../../../components/peoplelist/PeopleList-test.vue'
 </script>
 
 <style lang="scss" scoped></style>

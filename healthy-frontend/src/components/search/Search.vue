@@ -1,17 +1,8 @@
 <template>
-  <div class="top">
-    <el-form :inline="true" :model="formInline">
-      <el-form-item label="单位名称" class="bold-label">
-        <el-input v-model="formInline.name" placeholder="请输入" clearable />
-      </el-form-item>
-      <el-form-item label="信用代码" class="bold-label">
-        <el-input v-model="formInline.credit" placeholder="请输入" clearable />
-      </el-form-item>
-      <el-form-item label="联系人" class="bold-label">
-        <el-input v-model="formInline.contact" placeholder="请输入" clearable />
-      </el-form-item>
-      <el-form-item label="联系电话" class="bold-label">
-        <el-input v-model="formInline.phone" placeholder="请输入" clearable />
+  <div class="form">
+    <el-form :inline="true">
+      <el-form-item v-for="(item, index) of formItem" :key="index" :label="item.label">
+        <el-input v-model="item.input" placeholder="请输入" clearable />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" :icon="Search" @click="onSearch">搜索</el-button>
@@ -19,52 +10,75 @@
       </el-form-item>
     </el-form>
   </div>
+  <slot :tableColumnAttribute="dataColumn" :tableData="row"></slot>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { ref } from 'vue'
 import { Search } from '@element-plus/icons-vue'
 
-const formInline = reactive({
-  name: '',
-  credit: '',
-  contact: '',
-  phone: ''
+const props = defineProps({
+  // 哪些需要搜索的标签
+  toSearchLabel: {
+    type: Array,
+    require: true
+  },
+  // 列属性
+  dataColumn: {
+    type: Array,
+    require: true
+  },
+  // 每行数据
+  dataRow: {
+    type: Array,
+    require: true
+  }
 })
 
-const props = defineProps(['sendToSearch', 'sendToReset'])
+let row = ref(props.dataRow)
+let formItem = ref(props.toSearchLabel)
 
-/**
- * 将输入框的值传给表格组件
- */
 const onSearch = () => {
   console.log('search!')
-  const data = { ...formInline }
-  for (let each in data) {
-    if (data[each] === '') {
-      data[each] = '--'
+  let data = ref(props.toSearchLabel)
+  // 没输入默认 --
+  for (let item in data.value) {
+    if (item.input === '') {
+      item.input = '--'
     }
   }
-  props.sendToSearch(data)
+  // 表格数据置空
+  row.value = []
+  // 模糊搜索
+  for (let item of props.dataRow) {
+    let flag = 0
+    for (let to of data.value) {
+      item[to.prop]
+      console.log(item[to.prop])
+      if (item[to.prop].includes(to.input)) {
+        flag++
+      }
+    }
+    if (flag === 4) {
+      row.value.push(item)
+    }
+  }
 }
 
-/**
- * 将表单中的输入框清空
- * ？
- */
 const onReset = () => {
   console.log('reset!')
   // 将表单中的输入框清空
-  for (const key in formInline) {
-    formInline[key] = ''
+  for (let item of formItem.value) {
+    console.log(item.input)
+    item.input = ''
   }
   // parent
-  props.sendToReset()
+  row.value = props.dataRow
 }
 </script>
 
 <style lang="scss" scoped>
-.top {
+.form {
   border-bottom: 2px dashed rgb(224, 224, 238);
 
   .el-form {
