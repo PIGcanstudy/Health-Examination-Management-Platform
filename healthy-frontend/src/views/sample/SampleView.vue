@@ -101,8 +101,12 @@ const menus = reactive([
     text: '体检人员信息-Rom'
   },
   {
-    path: '/sample/details',
+    path: '/sample/details/Details.vue',
     text: '体检结果详情|统计页面-成果'
+  },
+  {
+    path: '/sample/details/NewButtonCG.vue',
+    text: '新增按钮|更多操作-成果'
   },
   {
     path: '/sample/newbutton',
