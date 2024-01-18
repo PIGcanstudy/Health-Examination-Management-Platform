@@ -1,5 +1,6 @@
 package com.zeroone.star.project.dto.j3.message;
 
+import com.zeroone.star.project.query.PageQuery;
 import io.github.classgraph.json.Id;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,19 +22,24 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BaseMessageDTO {
-    @Id
+public class MessageDetailDTO extends PageQuery {
+    /*pageNumber=1&pageSize=10&sort=createTime&order=desc&userId=&messageId=7&status=
+请求方法:
+GET*/
     @ApiModelProperty(value = "消息id",required = true)
     private Long id;
-    @ApiModelProperty(value = "创建人",required = true)
+    @NotBlank(message = "用户id不为空")
+    @ApiModelProperty(value = "用户id",required = true)
+    private Long userId;
+    @NotBlank(message = "发送用户不为空")
+    @ApiModelProperty(value = "发送用户",required = true)
     private String createBy;
     @NotBlank(message = "创建时间不为空")
     @ApiModelProperty(value = "创建时间",required = true)
     private Date createTime;
-    @ApiModelProperty(value = "修改人",required = true)
-    private String updateBy;
-    @ApiModelProperty(value = "修改时间",required = true)
+    @NotBlank(message = "更新时间不为空")
+    @ApiModelProperty(value = "更新时间",required = true)
     private Date updateTime;
-    @ApiModelProperty(value = "逻辑删除字段",example = "0",required = true)
+    @ApiModelProperty(value = "逻辑删除字段（状态）",example = "0",required = true)
     private Integer delFlag;
 }
