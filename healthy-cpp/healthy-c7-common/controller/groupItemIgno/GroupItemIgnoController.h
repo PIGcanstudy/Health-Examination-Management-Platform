@@ -31,21 +31,21 @@ public:
 		API_DEF_ADD_RSP_JSON_WRAPPER(StringJsonVO);
 		
 		// 定义其他查询参数描述
-		API_DEF_ADD_QUERY_PARAMS(String, "orderGroupItemProjectId", ZH_WORDS_GETTER("groupItemIgno.field.orderGroupItemProjectId"), "v789zd7f98saf79s78a", true);
-		API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("groupItemIgno.field.personId"), "0000 <- failtest", true);
-		API_DEF_ADD_QUERY_PARAMS(String, "updateId", ZH_WORDS_GETTER("groupItemIgno.field.updateId"), "3478237482374", true);
+		//API_DEF_ADD_QUERY_PARAMS(String, "orderGroupItemProjectId", ZH_WORDS_GETTER("groupItemIgno.field.orderGroupItemProjectId"), "v789zd7f98saf79s78a", true);
+		//API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("groupItemIgno.field.personId"), "0000 <- failtest", true);
+		//API_DEF_ADD_QUERY_PARAMS(String, "updateId", ZH_WORDS_GETTER("groupItemIgno.field.updateId"), "3478237482374", true);
  
 	}
 
 
 
 	// 3.2 定义修改接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/groupItemIgno", updateItem, BODY_DTO(GroupItemIgnoDTO::Wrapper, dto), execIgnoItem(dto));
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/healthy-c7-common/update-depart-item-result", updateItem, BODY_DTO(GroupItemIgnoDTO::Wrapper, dto), execUpdateDepartItemResult(dto));
 	  
 private:
  
 	// 3.3 演示修改数据
-	StringJsonVO::Wrapper execIgnoItem(const GroupItemIgnoDTO::Wrapper& dto);
+	StringJsonVO::Wrapper execUpdateDepartItemResult(const GroupItemIgnoDTO::Wrapper& dto);
  
 };
 

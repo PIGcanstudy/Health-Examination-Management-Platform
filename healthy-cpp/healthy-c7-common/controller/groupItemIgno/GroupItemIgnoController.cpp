@@ -5,7 +5,7 @@
 #include "../ApiDeclarativeServicesHelper.h"
  
 // StringJsonVO
-StringJsonVO::Wrapper GroupItemIgnoController::execIgnoItem(const GroupItemIgnoDTO::Wrapper& dto)
+StringJsonVO::Wrapper GroupItemIgnoController::execUpdateDepartItemResult(const GroupItemIgnoDTO::Wrapper& dto)
 {
 	//// 定义返回数据对象
 	auto jvo = StringJsonVO::createShared();
