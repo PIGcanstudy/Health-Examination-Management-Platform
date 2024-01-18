@@ -10,78 +10,76 @@
     <!-- 主体部分 -->
     <el-card class="body" shadow="hover">
       <!-- 表单控件区域 -->
-      <div class="form-area">
-        <el-form :model="form">
-          <el-form-item>
-            <el-radio-group v-model="form.checkbox" style="margin-right: auto">
-              <el-radio label="已检" />
-              <el-radio label="未检" />
-            </el-radio-group>
-            <el-switch v-model="slider" inline-prompt active-text="复查" inactive-text="非复"></el-switch>
-          </el-form-item>
-
-          <el-form-item>
-            <el-row clearable>
-              <el-date-picker v-model="form.startDate" style="width: 49%" type="date" placeholder="开始时间" />
-              <span style="width: 2%">~</span>
-              <el-date-picker v-model="form.endDate" style="width: 49%" type="date" placeholder="结束时间" />
-            </el-row>
-          </el-form-item>
-
+      <div class="form">
+        <el-form ref="ruleFormRef" :model="form">
           <template v-for="item in formConfig.formItems" :key="item.name">
-            <div class="input-area">
-              <el-form-item>
-                <el-input v-model="form.name" :placeholder="item.placeholder" clearable />
-              </el-form-item>
-              <!-- 点击按钮折叠区域 -->
-              <div v-show="isShowInput">
-                <el-form-item>
-                  <el-input v-model="form.serialNumber" placeholder="请输入体检编号" clearable />
-                </el-form-item>
-                <el-form-item>
-                  <el-input v-model="form.workplace" placeholder="请输入单位名称" clearable></el-input>
-                </el-form-item>
-              </div>
-            </div>
-          </template>
+            <el-form-item :prop="item.name">
+              <template v-if="item.type === 'select' || item.type === 'slider'">
+                <el-radio-group v-model="form[item.name]" style="margin-right: auto">
+                  <el-radio label="已检" />
+                  <el-radio label="未检" />
+                </el-radio-group>
+                <el-switch v-model="slider" inline-prompt active-text="复查" inactive-text="非复"></el-switch>
+              </template>
 
-          <el-form-item>
-            <el-button type="primary" @click="onSubmit">查询</el-button>
-            <el-button plain @click="resetForm">重置</el-button>
-            <div>
-              <el-button type="text" style="margin-left: 14px" @click="toggleCollapse"
-                >{{ isShowInput ? '收起' : '展开' }}
-                <el-icon v-show="isShowInput === true"><ArrowUp /></el-icon>
-                <el-icon v-show="isShowInput === false"><ArrowDown /></el-icon>
-              </el-button>
-            </div>
-          </el-form-item>
+              <template v-else-if="item.type === 'datepicker'">
+                <el-row clearable>
+                  <el-date-picker v-model="form" style="width: 49%" type="date" placeholder="开始时间" />
+                  <span style="width: 2%">~</span>
+                  <el-date-picker v-model="form.endDate" style="width: 49%" type="date" placeholder="结束时间" />
+                </el-row>
+              </template>
+
+              <div class="input-area">
+                <el-form-item>
+                  <el-input v-model="form.name" :placeholder="item.placeholder" clearable />
+                </el-form-item>
+                <!-- 点击按钮折叠区域 -->
+                <div v-show="isShowInput">
+                  <el-form-item>
+                    <el-input v-model="form.serialNumber" placeholder="请输入体检编号" clearable />
+                  </el-form-item>
+                  <el-form-item>
+                    <el-input v-model="form.workplace" placeholder="请输入单位名称" clearable></el-input>
+                  </el-form-item>
+                </div>
+              </div>
+
+              <el-button type="primary" @click="onSubmit">查询</el-button>
+              <el-button plain @click="resetForm">重置</el-button>
+              <div>
+                <el-button type="text" style="margin-left: 14px" @click="toggleCollapse"
+                  >{{ isShowInput ? '收起' : '展开' }}
+                  <el-icon v-show="isShowInput === true"><ArrowUp /></el-icon>
+                  <el-icon v-show="isShowInput === false"><ArrowDown /></el-icon>
+                </el-button>
+              </div>
+            </el-form-item>
+          </template>
         </el-form>
       </div>
 
       <!-- 表格数据区域 -->
-      <div class="table-area">
+      <div class="table">
         <el-table
-          ref="multipleTableRef"
+          ref="tableRef"
           v-loading="loading"
           height="300"
           :data="tableData"
           :show-header="false"
           highlight-current-row
+          fit
           @select="select"
           @selection-change="handleSelectionChange"
           @row-click="selectClick"
         >
-          <el-table-column type="selection" width="40%" />
-          <el-table-column property="name" width="80%">
-            <!-- <template>{{ scope.row.name }}</template> -->
-          </el-table-column>
-          <el-table-column property="gender" width="45%">
-            <!-- <template>{{ scope.row.gender }}</template> -->
-          </el-table-column>
-          <el-table-column property="age" width="45%">
-            <!-- <template>{{ scope.row.age }}</template> -->
-          </el-table-column>
+          <el-table-column type="selection" width="40%"></el-table-column>
+          <el-table-column v-for="(item, index) in tableTitle" :key="index" :prop="item.prop" label="item.label"> </el-table-column>
+
+          <template #default="{ row }" v-if="item.useTag">
+            <el-tag :type="row[item.prop].tagType">{{ row[item.prop].value }}</el-tag>
+          </template>
+
           <el-table-column>
             <el-tag type="success" style="margin-right: 4px">健</el-tag>
             <el-tag type="danger">零</el-tag>
@@ -125,6 +123,43 @@ const form = ref({
 const formConfig = {
   formItems: [
     {
+      type: 'select',
+      name: 'select',
+      options: [
+        {
+          label: '已检',
+          value: 1
+        },
+        {
+          label: '未检',
+          value: 0
+        }
+      ]
+    },
+    {
+      type: 'slider',
+      name: 'slider',
+      options: [
+        {
+          label: '复查',
+          value: 1
+        },
+        {
+          label: '非复',
+          value: 0
+        }
+      ]
+    },
+    {
+      type: 'datepicker',
+      name: 'datepicker',
+      Option: {
+        startPlaceholder: '开始日期',
+        endPlaceholder: '结束日期',
+        type: 'daterange'
+      }
+    },
+    {
       type: 'input',
       name: 'user',
       placeholder: '请输入姓名'
@@ -150,101 +185,107 @@ const toggleCollapse = () => {
 const loading = ref(false)
 
 // 表格数据存放区域
+const tableTitle = [
+  { prop: 'name', label: '姓名' },
+  { prop: 'gender', label: '性别' },
+  { prop: 'age', label: '年龄' },
+  { prop: 'tag', label: '状态' }
+]
 const tableData = [
   {
     name: '张楠楠',
     gender: '女',
     age: '30',
-    tags: '健'
+    tag: '健'
+  },
+  {
+    name: '王勇',
+    gender: '男',
+    age: '26',
+    tag: '团'
   },
   {
     name: '张楠楠',
     gender: '女',
     age: '30',
-    tags: '零'
+    tag: '零'
   },
   {
     name: '张楠楠',
     gender: '女',
     age: '30',
-    tags: '零'
+    tag: '零'
   },
   {
     name: '张楠楠',
     gender: '女',
     age: '30',
-    tags: '零'
+    tag: '零'
   },
   {
     name: '张楠楠',
     gender: '女',
     age: '30',
-    tags: '零'
+    tag: '零'
   },
   {
     name: '张楠楠',
     gender: '女',
     age: '30',
-    tags: '零'
+    tag: '零'
   },
   {
     name: '张楠楠',
     gender: '女',
     age: '30',
-    tags: '零'
+    tag: '零'
   },
   {
     name: '张楠楠',
     gender: '女',
     age: '30',
-    tags: '零'
+    tag: '零'
   },
   {
     name: '张楠楠',
     gender: '女',
     age: '30',
-    tags: '零'
-  },
-  {
-    name: '张楠楠',
-    gender: '女',
-    age: '30',
-    tags: '零'
+    tag: '零'
   }
 ]
 
-const multipleTableRef = ref()
+const tableRef = ref()
 const multipleSelection = ref([])
 const handleSelectionChange = (val) => {
   multipleSelection.value = val
 }
 const select = (selection, row) => {
   // 清除 所有勾选项
-  multipleTableRef.value.clearSelection()
+  tableRef.value.clearSelection()
   // 当表格数据都没有被勾选的时候 就返回
   // 主要用于将当前勾选的表格状态清除
   if (selection.length === 0) return
-  multipleTableRef.value.toggleRowSelection(row, true)
+  tableRef.value.toggleRowSelection(row, true)
 }
 // 控制单选——table选择项发生变化时
 const selectClick = (row) => {
   const selectData = multipleSelection.value
-  multipleTableRef.value.clearSelection()
+  tableRef.value.clearSelection()
   if (selectData.length === 1) {
     console.log('获取该行数据')
 
     selectData.forEach((item) => {
       // 判断 如果当前的一行被勾选, 再次点击的时候就会取消选中
       if (item === row) {
-        multipleTableRef.value.toggleRowSelection(row, false)
+        tableRef.value.toggleRowSelection(row, false)
       }
       // 不然就让当前的一行勾选
       else {
-        multipleTableRef.value.toggleRowSelection(row, true)
+        tableRef.value.toggleRowSelection(row, true)
       }
     })
   } else {
-    multipleTableRef.value.toggleRowSelection(row, true)
+    tableRef.value.toggleRowSelection(row, true)
   }
 }
 

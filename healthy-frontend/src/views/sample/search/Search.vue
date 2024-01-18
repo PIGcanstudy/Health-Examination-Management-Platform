@@ -1,55 +1,129 @@
+<!-- Parent.vue -->
 <template>
-  <el-form :inline="true" :model="formInline" class="demo-form-inline">
-    <el-form-item label="单位名称">
-      <el-input v-model="formInline.user" placeholder="请输入" clearable />
-    </el-form-item>
-    <el-form-item label="信用代码">
-      <el-input v-model="formInline.user" placeholder="请输入" clearable />
-    </el-form-item>
-    <el-form-item label="联系人">
-      <el-input v-model="formInline.user" placeholder="请输入" clearable />
-    </el-form-item>
-    <el-form-item label="联系电话">
-      <el-input v-model="formInline.user" placeholder="请输入" clearable />
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" @click="onSearch">搜索</el-button>
-      <el-button plain @click="onReset">重置</el-button>
-    </el-form-item>
-  </el-form>
+  <div>
+    <Search :toSearchLabel="toSearch" :dataColumn="dataOneColumn" :dataRow="dataOneRow">
+      <template v-slot="{ tableColumnAttribute, tableData }">
+        <TestTable :tableColumnAttribute="tableColumnAttribute" :tableData="tableData"></TestTable>
+      </template>
+    </Search>
+  </div>
 </template>
 
-<script lang="ts" setup>
-import { reactive } from 'vue'
+<script setup>
+import { ref } from 'vue'
+import Search from '@/components/search/Search.vue'
+import TestTable from '@/components/search/TestTable.vue'
 
-const formInline = reactive({
-  user: '',
-  region: '',
-  date: ''
-})
+// 需要搜索的数据传入
+// const toSearch = ['单位名称', '信用代码', '联系人', '联系电话']
+const toSearch = [
+  {
+    prop: 'name',
+    label: '单位名称',
+    input: ''
+  },
+  {
+    prop: 'credit',
+    label: '信用代码',
+    input: ''
+  },
+  {
+    prop: 'contact',
+    label: '联系人',
+    input: ''
+  },
+  {
+    prop: 'phone',
+    label: '联系电话',
+    input: ''
+  }
+]
 
-/**
- * ？
- */
-const onSearch = () => {
-  console.log('search!')
-}
-
-/**
- * 将表单中的输入框清空
- * ？
- */
-const onReset = () => {
-  console.log('reset!')
-}
+// 表格数据 1
+// 列属性 attribute
+const dataOneColumn = [
+  {
+    prop: 'name',
+    label: '单位名称',
+    sortable: false
+  },
+  {
+    prop: 'credit',
+    label: '信用代码',
+    sortable: false
+  },
+  {
+    prop: 'examination',
+    label: '体检类型',
+    sortable: false
+  },
+  {
+    prop: 'address',
+    label: '所属地区',
+    sortable: false
+  },
+  {
+    prop: 'category',
+    label: '行业类别',
+    sortable: false
+  },
+  {
+    prop: 'etype',
+    label: '经济类型',
+    sortable: false
+  },
+  {
+    prop: 'scale',
+    label: '企业规模',
+    sortable: false
+  },
+  {
+    prop: 'contact',
+    label: '联系人',
+    sortable: false
+  },
+  {
+    prop: 'phone',
+    label: '联系电话',
+    sortable: false
+  }
+]
+// 每行的数据
+const dataOneRow = [
+  {
+    name: '乐山市峨边盛和矿业',
+    credit: '--',
+    examination: '健康体检',
+    address: '--',
+    category: '铁矿采选*',
+    etype: '国有企业',
+    scale: '--',
+    contact: '--',
+    phone: '--'
+  },
+  {
+    name: '习水宏旭纸箱有限公司',
+    credit: '--',
+    examination: '健康体检',
+    address: '--',
+    category: '--',
+    etype: '--',
+    scale: '--',
+    contact: '蔡徐坤',
+    phone: '--'
+  },
+  {
+    name: '四川峨边三丰冶金材料',
+    credit: '--',
+    examination: '健康体检',
+    address: '--',
+    category: '--',
+    etype: '国有企业',
+    scale: '--',
+    contact: '--',
+    phone: '--'
+  }
+]
 </script>
 
-<style>
-.demo-form-inline .el-input {
-  --el-input-width: 220px;
-}
-
-.demo-form-inline .el-select {
-  --el-select-width: 220px;
-}
-</style>
+<style lang="scss" scoped></style>

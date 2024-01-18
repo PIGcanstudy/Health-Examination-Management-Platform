@@ -1,11 +1,11 @@
 <template>
   <div>
-    <CheckItems></CheckItems>
+    <NewButtonCG></NewButtonCG>
   </div>
 </template>
 
 <script setup>
-import CheckItems from '@/components/checkitems/CheckItems.vue'
+import NewButtonCG from '@/components/details/NewButtonCG.vue'
 </script>
 
 <style lang="scss" scoped></style>

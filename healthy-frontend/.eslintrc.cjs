@@ -5,6 +5,7 @@ module.exports = {
   root: true,
   extends: [
     'plugin:vue/vue3-essential',
+    'plugin:vue/vue3-recommended',
     'eslint:recommended',
     '@vue/eslint-config-prettier'
   ],
@@ -12,6 +13,7 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
+    "vue/no-multiple-template-root": "off",
     'space-before-function-paren': 0,
     'editor.detectIndentation': 0,
     'vue/multi-word-component-names': 0,

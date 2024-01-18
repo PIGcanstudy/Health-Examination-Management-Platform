@@ -1,7 +1,11 @@
 <template>
-  <div></div>
+  <div>
+    <BaseDataListTest></BaseDataListTest>
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import BaseDataListTest from '@/components/basedatalisttest/BaseDataListTest.vue'
+</script>
 
 <style lang="scss" scoped></style>
