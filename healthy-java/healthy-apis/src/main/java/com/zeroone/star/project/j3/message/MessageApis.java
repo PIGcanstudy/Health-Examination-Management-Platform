@@ -1,13 +1,10 @@
 package com.zeroone.star.project.j3.message;
 
-import com.zeroone.star.project.dto.j3.message.EditMessageDTO;
-import com.zeroone.star.project.dto.j3.message.SearchMessageDetailDTO;
-import com.zeroone.star.project.dto.j3.message.SendMessageDTO;
+import com.zeroone.star.project.dto.j3.message.MessageDetailDTO;
 import com.zeroone.star.project.vo.JsonVO;
 
 
 import com.zeroone.star.project.dto.PageDTO;
-import com.zeroone.star.project.dto.j3.message.MessageDTO;
 
 /**
  * @description:消息管理Api
@@ -32,5 +29,5 @@ public interface MessageApis {
      * @param: [id]
      * @return: com.zeroone.star.project.vo.JsonVO<com.zeroone.star.project.j3.dto.MessageDTO>
      **/
-    JsonVO<PageDTO<SearchMessageDetailDTO>> queryMessageDetail(PageDTO<MessageDTO> detailDTO);
+    JsonVO<PageDTO<MessageDetailDTO>> queryMessageDetail(MessageDetailDTO detailDTO);
 }
