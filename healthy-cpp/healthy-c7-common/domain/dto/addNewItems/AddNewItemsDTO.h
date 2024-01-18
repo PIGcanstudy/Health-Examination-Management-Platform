@@ -20,7 +20,7 @@ class AddNewItemsDTO : public oatpp::DTO
 };
 
 /**
-*  复查列表分页数据实体
+*  新增复查项目分页数据实体
 */
 class AddNewItemsPageDTO : public PageDTO<AddNewItemsDTO::Wrapper> {
 	DTO_INIT(AddNewItemsPageDTO, PageDTO<AddNewItemsDTO::Wrapper>);

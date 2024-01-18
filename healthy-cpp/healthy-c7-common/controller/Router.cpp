@@ -21,6 +21,7 @@
 #include "ApiHelper.h"
 #include "review/ReviewController.h"
 #include "addNewItems/AddNewItemsController.h"
+#include "id/IdController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
@@ -54,6 +55,7 @@ void Router::initRouter()
 	//#TIP :系统扩展路由定义，写在这个后面
 	ROUTER_SIMPLE_BIND(ReviewController);
 	ROUTER_SIMPLE_BIND(AddNewItemsController);
+	ROUTER_SIMPLE_BIND(IdController);
 }
 
 #ifdef HTTP_SERVER_DEMO
