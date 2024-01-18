@@ -26,6 +26,7 @@ class UnitListDTO : public oatpp::DTO
 	//检测类型
 	API_DTO_FIELD_DEFAULT(String, detectionType, "");
 };
+
 /*
 * 单位分页列表数据实体
 */

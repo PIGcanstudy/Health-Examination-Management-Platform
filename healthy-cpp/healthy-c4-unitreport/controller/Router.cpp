@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "ApiHelper.h"
 #include "./unitreportlist/UnitListController.h"
+#include "./ReportStatistics/ReportStatisticsController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
@@ -51,8 +52,10 @@ void Router::initRouter()
 	createSampleRouter();
 #endif
 	//#TIP :系统扩展路由定义，写在这个后面
-	ROUTER_SIMPLE_BIND(UnitListController);
-
+	ROUTER_SIMPLE_BIND(UnitListController);//分页查询体检单位订单列表
+	ROUTER_SIMPLE_BIND(PhysicalExaminationPersonnelController);//查询体检人员汇总表
+	ROUTER_SIMPLE_BIND(ReviewPersonnelController);//查询复查人员汇总表
+	ROUTER_SIMPLE_BIND(ReviewResultsController);//查询复查结果汇总表
 }
 
 #ifdef HTTP_SERVER_DEMO
