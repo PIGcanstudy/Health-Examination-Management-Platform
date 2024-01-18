@@ -21,5 +21,8 @@
 
 PreviewReportJsonVO::Wrapper PreviewReportController::execQueryPreviewReport(const PreviewReportQuery::Wrapper& query)
 {
-	return {};
+	PreviewReportJsonVO::Wrapper vo = PreviewReportJsonVO::Wrapper::createShared();
+	auto dto = PreviewReportDTO::createShared();
+	vo->success(dto);
+	return vo;
 }
