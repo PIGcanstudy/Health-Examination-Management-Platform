@@ -51,7 +51,7 @@ public://定义接口
 		//是否通过检查
 		API_DEF_ADD_QUERY_PARAMS(UInt32, "ispass", ZH_WORDS_GETTER("evalue.field.ispass"),2,true);
 		// 复查状态  复查人员在复检人员信息表中查询
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "isRecheck", ZH_WORDS_GETTER("evalue.field.reviewStatu"),1,true);
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "isRecheck", ZH_WORDS_GETTER("evalue.field.isRecheck"),1,true);
 		//开始时间
 		API_DEF_ADD_QUERY_PARAMS(String, "startDate", ZH_WORDS_GETTER("evalue.field.startDate"), "2020-10-12", false);
 		//结束时间
