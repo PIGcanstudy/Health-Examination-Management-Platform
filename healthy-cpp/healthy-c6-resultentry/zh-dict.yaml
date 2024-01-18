@@ -4,6 +4,7 @@ interro:
 interro1:
  field:
   id: 体检人编号
-  project: 体检项目
+  project: 体检项目编码
+  project1: 体检项目
   degree: 危及程度
   time:	病程时间

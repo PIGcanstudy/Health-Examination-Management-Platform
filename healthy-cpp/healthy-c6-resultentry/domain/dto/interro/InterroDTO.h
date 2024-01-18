@@ -12,14 +12,14 @@ class InterroDTO : public oatpp::DTO
 {
 	DTO_INIT(InterroDTO, DTO);
 	// 体检人编号
-	DTO_FIELD(Int32, id);
+	DTO_FIELD(String, id);
 	DTO_FIELD_INFO(id) {
 		info->description = ZH_WORDS_GETTER("interro1.field.id");
 	}
 	// 体检项目
 	DTO_FIELD(String, project);
 	DTO_FIELD_INFO(project) {
-		info->description = ZH_WORDS_GETTER("interro1.field.project");
+		info->description = ZH_WORDS_GETTER("interro1.field.project1");
 	}
 	// 危急程度
 	DTO_FIELD(String, degree);

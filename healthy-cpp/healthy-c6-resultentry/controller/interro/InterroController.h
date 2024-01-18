@@ -25,8 +25,8 @@ public:
 		// 定义响应参数格式
 		API_DEF_ADD_RSP_JSON_WRAPPER(InterroJsonVO);
 		// 定义其他查询参数描述
-		API_DEF_ADD_QUERY_PARAMS(Int32, "id", ZH_WORDS_GETTER("interro1.field.id"), 1, true);
-		API_DEF_ADD_QUERY_PARAMS(String, "project", ZH_WORDS_GETTER("interro1.field.project"),"xxx", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("interro1.field.id"), 1, true);
+		API_DEF_ADD_QUERY_PARAMS(String, "project", ZH_WORDS_GETTER("interro1.field.project"),"xyz", false);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/c6-resultentry/Interro", queryInterro, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {

@@ -13,11 +13,11 @@ class InterroQuery : public PageQuery
 {
 	DTO_INIT(InterroQuery,PageQuery);
 	// 体检人编号
-	DTO_FIELD(Int32, id);
+	DTO_FIELD(String, id);
 	DTO_FIELD_INFO(id) {
 		info->description = ZH_WORDS_GETTER("interro1.field.id");
 	}
-	// 体检项目
+	// 体检项目编号
 	DTO_FIELD(String, project);
 	DTO_FIELD_INFO(project) {
 		info->description = ZH_WORDS_GETTER("interro1.field.project");
