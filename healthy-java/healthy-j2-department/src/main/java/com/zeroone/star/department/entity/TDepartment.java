@@ -2,12 +2,15 @@ package com.zeroone.star.department.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.validation.constraints.NotBlank;
 
 /**
  * <p>
@@ -40,6 +43,7 @@ public class TDepartment implements Serializable {
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
+    @TableLogic//mybatis plus标识逻辑删除的字段
     /**
      * 逻辑删除标识 0 未删除 1 已删除
      */
@@ -73,12 +77,12 @@ public class TDepartment implements Serializable {
     /**
      * 部门名称
      */
+    @NotBlank(message = "部门名称不能为空")
     private String title;
 
     /**
      * 是否父部门
      */
     private Boolean isParent;
-
 
 }
