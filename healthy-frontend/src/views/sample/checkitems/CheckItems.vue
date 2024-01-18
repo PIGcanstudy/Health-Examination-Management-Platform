@@ -6,6 +6,7 @@
 
 <script setup>
 import CheckItems from '@/components/checkitems/CheckItems.vue'
+
 </script>
 
 <style lang="scss" scoped></style>
