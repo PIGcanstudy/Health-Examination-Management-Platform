@@ -25,6 +25,12 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
+class PeopleListJsonVO :public JsonVO<PeopleListDTO::Wrapper>
+{
+	DTO_INIT(PeopleListJsonVO, JsonVO<PeopleListDTO::Wrapper>);
+};
+
+
 /**
  * 定义一个体检人员名称列表分页显示JsonVO对象，用于响应给客户端
  */
