@@ -2,17 +2,20 @@
   <div class="container">
     <!-- 人脸采集 -->
     <div class="shoting">
-      <!-- 激活弹窗 -->
       <div class="pic" style="cursor: pointer; padding: 0 20px 20px 20px">
         <div class="pic-box">
-          <img src="@/assets/medicalinfo/pic-icon.svg" style="display: block; margin: 0 auto; padding-top: 40px" />
-          <span style="height: auto; line-height: 0; margin-top: 30px; color: rgb(41, 136, 243)">人脸采集</span>
+          <img :src="previewImage || '/src/assets/medicalinfo/pic-icon.svg'" :style="previewImage ? previewImageStyle : defaultImageStyle" />
+          <span v-if="!previewImage" style="height: auto; line-height: 0; margin-top: 30px; color: rgb(41, 136, 243)">人脸采集</span>
         </div>
+        <el-upload :before-upload="handleBeforeUpload" list-type="picture-card" style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 0"> > </el-upload>
       </div>
       <!-- temp(当封装好弹窗组件后，调用弹窗组件实现上传头像) -->
-      <el-upload action="">
-        <el-button type="">点此上传</el-button>
+      <!-- <el-upload :before-upload="handleBeforeUpload" list-type="picture-card">
+        <el-button type="primary">选择图片</el-button>
       </el-upload>
+      <div v-if="previewImage">
+        <img :src="previewImage" alt="Preview" style="max-width: 100%" />
+      </div> -->
     </div>
     <!-- 右侧卡片 -->
     <div class="right-card">
@@ -69,40 +72,25 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 // 向子组件传递的数据
 const props = defineProps({
   // 当前流程
   currentProgress: {
     type: Number,
-    required: true,
-    default: 1
+    required: true
   },
   // 共有哪些流程
   progressSteps: {
     type: Array,
-    required: true,
-    default: () => ['登记', '在检', '总检', '已完成']
+    required: true
   },
   // 个人信息
   personInfo: {
     type: Object,
-    required: true,
-    default: () => ({
-      physical_id: '2202401120016',
-      id_card: '510521199304017011',
-      person_name: 'test-rom',
-      sex: '男',
-      age: '30',
-      physical_type: '健康体检',
-      mobile: '18980504604',
-      unit_name: 'test-rom',
-      marry_type: '',
-      type_name: ''
-    })
+    required: true
   }
 })
-
 // 定义个人信息中必需的信息
 const rules = ref({
   id_card: [{ required: true }],
@@ -111,13 +99,37 @@ const rules = ref({
   age: [{ required: true }],
   physical_type: [{ required: true }]
 })
-
 // 根据当前流程判断展示的图片
 function getImagePath(index) {
   if (index === 0) return props.currentProgress > 0 ? '/src/assets/medicalinfo/start_check.png' : '/src/assets/medicalinfo/start_nomal.png'
   if (index === props.progressSteps.length - 1) return props.currentProgress === props.progressSteps.length ? '/src/assets/medicalinfo/end_check.png' : '/src/assets/medicalinfo/end_nomal.png'
   return props.currentProgress > 1 && index < props.currentProgress ? '/src/assets/medicalinfo/mid_check.png' : '/src/assets/medicalinfo/mid_nomal.png'
 }
+/* 上传图片处理 */
+const previewImage = ref('')
+
+const handleBeforeUpload = (file) => {
+  const reader = new FileReader()
+  reader.onload = (e) => {
+    previewImage.value = e.target.result
+  }
+  reader.readAsDataURL(file)
+  // 返回false阻止文件自动上传
+  return false
+}
+// 默认图片样式
+const defaultImageStyle = computed(() => ({
+  display: 'block',
+  margin: '0 auto',
+  paddingTop: '40px'
+}))
+// 当上传图片时展示该样式
+const previewImageStyle = computed(() => ({
+  display: 'block',
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover' // 确保图片不失真
+}))
 </script>
 <!-- 局内样式 -->
 <style scoped>
