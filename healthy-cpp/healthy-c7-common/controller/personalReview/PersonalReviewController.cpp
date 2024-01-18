@@ -4,7 +4,7 @@
 #include "../ApiDeclarativeServicesHelper.h"
 
 // StringJsonVO
-StringJsonVO::Wrapper PersonalReviewController::execPersonalReview(const PersonalReviewDTO::Wrapper& dto)
+StringJsonVO::Wrapper PersonalReviewController::execUpdatePersonalReview(const PersonalReviewDTO::Wrapper& dto)
 {
 	//// 定义返回数据对象
 	auto jvo = StringJsonVO::createShared();

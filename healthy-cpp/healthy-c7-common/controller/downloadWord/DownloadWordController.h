@@ -25,13 +25,13 @@ public:
 		API_DEF_ADD_QUERY_PARAMS(String, "fileUrl", ZH_WORDS_GETTER("wordFile.field.fileUrl"), "file/1.docx", true);
 	}
 	// 定义端点
-	ENDPOINT(API_M_GET, "/downloadWord", downloadFile, QUERY(String, fileUrl)) {
-		return execDownloadFile(fileUrl);
+	ENDPOINT(API_M_GET, "/healthy-c7-common/download-word", downloadFile, QUERY(String, fileUrl)) {
+		return execDownloadWord(fileUrl);
 	}
  private: // 定义接口执行函数
  
 	// 执行文件下载处理
-	std::shared_ptr<OutgoingResponse> execDownloadFile(const String& fileUrl);
+	std::shared_ptr<OutgoingResponse> execDownloadWord(const String& fileUrl);
  
 };
 

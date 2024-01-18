@@ -12,7 +12,7 @@
 
 
 
-std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> DownloadWordController::execDownloadFile(const String& fileUrl)
+std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> DownloadWordController::execDownloadWord(const String& fileUrl)
 {
 	// 构建文件全路径
 	std::string fullPath = "public/static/" + URIUtil::urlDecode(fileUrl.getValue(""));
