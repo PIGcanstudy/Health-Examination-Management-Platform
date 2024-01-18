@@ -81,9 +81,10 @@
     :on-success="handleAvatarSuccess"
     :before-upload="beforeAvatarUpload"
   >
-    <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-    <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+   
   </el-upload>
+  <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+    <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
       <div class="drawer-footer">
         <el-button @click="closeDrawer">取消</el-button>
         <el-button type="primary" @click="saveData">保存</el-button>
