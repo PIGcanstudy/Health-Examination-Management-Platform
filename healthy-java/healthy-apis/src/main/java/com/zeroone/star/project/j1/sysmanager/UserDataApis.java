@@ -18,5 +18,5 @@ public interface UserDataApis {
 	// 修改用户之前查询用户信息
 	JsonVO<ModifyUserDTO> queryUserWhenModifying(String id);
 	// 修改用户信息
-	void modifyUser(ModifyUserDTO user);
+	JsonVO modifyUser(ModifyUserDTO user);
 }
