@@ -1,4 +1,4 @@
-﻿MedExamUnitOrder:
+MedExamUnitOrder:
  get:
   summary: 分页查询团检单位名称列表
  field:
@@ -16,3 +16,33 @@ UnitReport:
   evaluation-basis: 评论依据
  get:
   summary: 获取单位报告 
+unitreport:
+  unit:
+    name: "单位名称"
+    department : "所属部门"
+
+  order:
+    code: "订单编号"  
+    signingTime: "签订时间"
+    summary : "获取单位订单"
+  summaryTable:
+     type : "统计表类型"
+     PhysicalExaminationPersonnel: "体检人员汇总表"
+     ReviewPersonnel : "复查人员汇总表"
+     ReviewResults : "复查结果汇总表"
+     id : "编号"
+     personName : "姓名"
+     mobile : "手机号"
+     sex : "性别"
+     age : "年龄"
+     idCard : "身份证号码"
+     physicalDate : "体检时间"
+     status : "是否正常"
+     physicalType : "体检类别"
+     checkRusult : "体检结果"
+     concludingObservations : "处理意见"
+     reason  : "复查原因"
+     checkProjectName : "复查项目"
+     hazardFactorCode : "危险因素"
+     workTypeText : "工种"
+     ExposureToHarmfulWorkExperience : "接触有害工龄（年）"

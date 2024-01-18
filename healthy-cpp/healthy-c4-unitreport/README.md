@@ -68,3 +68,17 @@ CREATE TABLE `sample` (
   - Query：`xxxQuery`，`xxx`为业务领域相关的名称。
   - VO：`xxxVO`，`xxx` 一般为网页名称。
   - `POJO` 是 `DO/DTO/BO/VO/Query` 的统称，禁止命名成 `xxxPOJO`。
+
+
+取体检单位订单名称列表（条件+分页）
+UnitPhysicalExaminationOrdersQuery.h 这是获取体检单位订单名称列表（条件+分页）的query
+UnitListDTO.h                        这是获取体检单位订单名称列表（条件+分页）的DTO
+UnitListVO.h                         这是获取体检单位订单名称列表（条件+分页）的VO里面有jsonvo和pagejsonvo
+UnitListController.h                 这是获取体检单位订单名称列表（条件+分页）的controller
+
+
+获取报告统计信息
+ReportStatisticsQuery.h              这是获取报告统计信息里面只有一个ReportStatisticsQuery类
+ReportStatisticsDTO.h                这是获取报告统计信息里面有三个类代表不同的查询的数据实体
+ReportStatisticsVO.h                 这是获取报告统计信息里面有三个类代表不同的查询的vo
+ReportStatisticsController.h         这是获取报告统计信息里面有三个类代表不同的查询的controller
