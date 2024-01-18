@@ -34,7 +34,7 @@ class PreviewReportQuery : public PageQuery
 	DTO_INIT(PreviewReportQuery, PageQuery);
 
 	// ÃÂºÏ»À‘±±‡∫≈
-	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("print.field.personId"));
+	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("preview.field.personId"));
 };
 
 #include OATPP_CODEGEN_END(DTO)

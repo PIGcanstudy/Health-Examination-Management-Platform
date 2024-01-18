@@ -31,11 +31,11 @@ class PreviewReportDTO : public oatpp::DTO
 {
 	DTO_INIT(PreviewReportDTO, DTO);
 	// 唯一编号
-	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("print.field.id"));
+	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("preview.field.id"));
 	// 报告编号
-	API_DTO_FIELD_DEFAULT(String, reportNum, ZH_WORDS_GETTER("print.field.reportNum"));
+	API_DTO_FIELD_DEFAULT(String, reportNum, ZH_WORDS_GETTER("preview.field.reportNum"));
 	// PDF地址
-	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("print.field.href"));
+	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("preview.field.href"));
 };
 
 
