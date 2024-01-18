@@ -1,4 +1,4 @@
-Report:
+report:
  field:
   id: 唯一编号
   type: 体检类型
@@ -13,3 +13,13 @@ Report:
   sex: 性别
   age: 年龄
   printState: 是否打印
+ get:
+  summary: 获取列表
+preview:
+ field:
+  id: 唯一编号
+  reportid: 报告编号
+  pdfaddress: pdf下载地址
+  persionid: 人员编号
+ get:
+  summary: 获取wordpdf

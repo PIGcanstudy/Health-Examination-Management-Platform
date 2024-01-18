@@ -4,7 +4,6 @@
 
 #include "../../GlobalInclude.h"
 #include "../../dto/checks/CheckReportListDTO.h"
-#include "../../vo/checks/CheckReportVO.h"
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /*

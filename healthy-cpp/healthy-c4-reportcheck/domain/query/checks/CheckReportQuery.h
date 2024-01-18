@@ -13,31 +13,31 @@ class CheckReportQuery : public PageQuery
 {
 	DTO_INIT(CheckReportQuery, DTO);
 	// 查询类型
-	API_DTO_FIELD_DEFAULT(String, type, ZH_WORDS_GETTER("Report.field.type"));
+	API_DTO_FIELD_DEFAULT(String, type, ZH_WORDS_GETTER("report.field.type"));
 
 	// 姓名
-	API_DTO_FIELD_DEFAULT(String, person_name, ZH_WORDS_GETTER("Report.field.name"));
+	API_DTO_FIELD_DEFAULT(String, person_name, ZH_WORDS_GETTER("report.field.name"));
 
 	// 订单编号
-	API_DTO_FIELD_DEFAULT(String, order_id, ZH_WORDS_GETTER("Report.field.orderId"));
+	API_DTO_FIELD_DEFAULT(String, order_id, ZH_WORDS_GETTER("report.field.orderId"));
 
 	// 体检编号
-	API_DTO_FIELD_DEFAULT(String, test_num, ZH_WORDS_GETTER("Report.field.testNum"));
+	API_DTO_FIELD_DEFAULT(String, test_num, ZH_WORDS_GETTER("report.field.testNum"));
 
 	// 单位名称
-	API_DTO_FIELD_DEFAULT(String, unit_id, ZH_WORDS_GETTER("Report.field.unitId"));
+	API_DTO_FIELD_DEFAULT(String, unit_id, ZH_WORDS_GETTER("report.field.unitId"));
 
 	// 是否过审
-	API_DTO_FIELD_DEFAULT(Boolean, statu, ZH_WORDS_GETTER("Report.field.statu"));
+	API_DTO_FIELD_DEFAULT(Boolean, statu, ZH_WORDS_GETTER("report.field.statu"));
 
 	// 是否复查
-	API_DTO_FIELD_DEFAULT(Boolean, is_recheck, ZH_WORDS_GETTER("Report.field.isRecheck"));
+	API_DTO_FIELD_DEFAULT(Boolean, is_recheck, ZH_WORDS_GETTER("report.field.isRecheck"));
 
 	// 查询开始日期
-	API_DTO_FIELD_DEFAULT(String, stardate, ZH_WORDS_GETTER("Report.field.starDate"));
+	API_DTO_FIELD_DEFAULT(String, stardate, ZH_WORDS_GETTER("report.field.starDate"));
 
 	//查询结束日期
-	API_DTO_FIELD_DEFAULT(String, enddate, ZH_WORDS_GETTER("Report.field.endDate"));
+	API_DTO_FIELD_DEFAULT(String, enddate, ZH_WORDS_GETTER("report.field.endDate"));
 
 }; 
 

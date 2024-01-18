@@ -28,6 +28,7 @@
 #endif
 
 #include "checks/CheckReportController.h"
+#include "previews/PreviewReportController.h"
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -54,6 +55,7 @@ void Router::initRouter()
 
 	//#TIP :系统扩展路由定义，写在这个后面
 	ROUTER_SIMPLE_BIND(CheckReportController);
+	ROUTER_SIMPLE_BIND(PreviewReportController);
 }
 
 #ifdef HTTP_SERVER_DEMO

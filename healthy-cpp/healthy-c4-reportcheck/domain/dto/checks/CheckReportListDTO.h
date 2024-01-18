@@ -3,6 +3,7 @@
 #define _CHECKLISTDTO_H_
 
 #include "../../GlobalInclude.h"
+#include "domain/query/PageQuery.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 /*
@@ -13,25 +14,25 @@ class CheckReportListDTO : public oatpp::DTO
 {
 	DTO_INIT(CheckReportListDTO, DTO);
 	// 唯一编号
-	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("Report.field.id"));
+	API_DTO_FIELD_DEFAULT(String, iid, ZH_WORDS_GETTER("report.field.id"));
 
 	// 姓名
-	API_DTO_FIELD_DEFAULT(String, person_name, ZH_WORDS_GETTER("Report.field.name"));
+	API_DTO_FIELD_DEFAULT(String, person_name, ZH_WORDS_GETTER("report.field.name"));
 
 	// 性别
-	API_DTO_FIELD_DEFAULT(String, sex, ZH_WORDS_GETTER("Report.field.sex"));
+	API_DTO_FIELD_DEFAULT(String, sex, ZH_WORDS_GETTER("report.field.sex"));
 
 	// 年龄
-	API_DTO_FIELD_DEFAULT(String, age, ZH_WORDS_GETTER("Report.field.age"));
+	API_DTO_FIELD_DEFAULT(String, age, ZH_WORDS_GETTER("report.field.age"));
 
 	// 是否过审
-	API_DTO_FIELD_DEFAULT(Boolean, statu, ZH_WORDS_GETTER("Report.field.statu"));
+	API_DTO_FIELD_DEFAULT(Boolean, statu, ZH_WORDS_GETTER("report.field.statu"));
 
 	// 是否打印
-	API_DTO_FIELD_DEFAULT(Boolean, print_state, ZH_WORDS_GETTER("Report.field.printState"));
+	API_DTO_FIELD_DEFAULT(Boolean, print_state, ZH_WORDS_GETTER("report.field.printState"));
 
 	// 是否零星体检
-	API_DTO_FIELD_DEFAULT(Boolean, sporadic_physical, ZH_WORDS_GETTER("Report.field.sporadicPhysical"));
+	API_DTO_FIELD_DEFAULT(Boolean, sporadic_physical, ZH_WORDS_GETTER("report.field.sporadicPhysical"));
 
 };
 /*

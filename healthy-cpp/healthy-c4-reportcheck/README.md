@@ -16,6 +16,26 @@
 > >
 > > `domain`  -- 领域模型实体
 > >
+> > `CheckReportListDTO.h` -- 获取报告列表数据传输对象
+> >
+> > `PreviewReportDTO.h` -- 报告预览数据数据传输对象
+> >
+> > `CheckReportQuery.h` -- 获取报告列表查询参数
+> >
+> > `PreviewReportQuery.h` -- 报告预览查询参数
+> >
+> > `CheckReportVO.h` -- 查询报告列表VO对象
+> > 
+> > `PreviewReportVO.h` -- 报告预览VO对象
+> >
+> > `CheckReportController.h` -- 获取报告列表的controller处理器
+> >
+> > `PreviewReportController.h` -- 预览报告的controller
+> >
+> > `CheckReportController.cpp` -- 获取报告列表的controller处理器逻辑
+> >
+> > `PreviewReportController.cpp` -- 预览报告的controller的逻辑
+> >
 > > `CMakeLists.txt` -- `Cmake`跨平台编译配置文件
 > >
 > > `Macros.h` -- 通用宏定义
