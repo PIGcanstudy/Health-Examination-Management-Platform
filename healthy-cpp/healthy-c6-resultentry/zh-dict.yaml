@@ -1,0 +1,5 @@
+﻿unknownmodule:
+ query:
+  summary: 基本信息查询  
+ field:
+  personId: 人员id   
