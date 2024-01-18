@@ -21,8 +21,6 @@
 #include "../../dao/addpeople/AddPeopleDAO.h"
 
 
-
-
 uint64_t AddPeopleService::saveData(const AddDTO::Wrapper& dto)
 {
 	// 组装DO数据

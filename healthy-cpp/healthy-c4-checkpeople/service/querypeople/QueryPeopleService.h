@@ -1,8 +1,9 @@
+#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/10/25 14:26:52
+ @Date: 2022/10/25 11:08:56
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,20 +17,23 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#include "stdafx.h"
-#include "AddPeopleDAO.h"
-#include "AddPeopleMapper.h"
-#include <sstream>
+#ifndef _QUERYPEOPLE_SERVICE_
+#define _QUERYPEOPLE_SERVICE_
+#include <list>
+#include "domain/vo/checkpeople/UnitVO.h"
+#include "domain/query/checkpeople/UnitQuery.h"
+#include "domain/dto/checkpeople/UnitListDTO.h"
 
-
-
-
-//插入数据
-uint64_t AddPeopleDAO::insert(const AddDO& iObj)
+/**
+ * 示例服务实现，演示基础的示例服务实现
+ */
+class QueryPeopleService
 {
-	string sql = "INSERT INTO `t_group_person` (`person_name`, `sex`, `id_card`,`birth`, `age`, `is_marry`,`mobile`) VALUES (?, ?, ?,?,?,?,?)";
-	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getpersonName(), iObj.getSex(), iObj.getidCard(), iObj.getBirth(), iObj.getAge(),
-		iObj.getAge(), iObj.getisMarry(), iObj.getMobile());
-}
+public:
+	// 查询所有数据
+	UnitListPageDTO::Wrapper listAll(const UnitQuery::Wrapper& query);
+	
+};
 
+#endif // !_QUERYPEOPLE_SERVICE_
 

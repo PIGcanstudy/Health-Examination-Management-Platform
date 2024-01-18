@@ -38,8 +38,7 @@ public:// 定义接口
 private://定义接口执行函数
 	//分页查询数据
 	UnitListPageJsonVO::Wrapper execQueryUnit(const UnitQuery::Wrapper& query);
-	//新增数据
-	//Uint64JsonVO::Wrapper execAddSample(const SampleDTO::Wrapper& dto);
+	
 };
 
 #include OATPP_CODEGEN_END(ApiController)

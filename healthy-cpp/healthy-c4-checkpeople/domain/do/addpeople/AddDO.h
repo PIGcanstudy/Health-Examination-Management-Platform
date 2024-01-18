@@ -41,7 +41,7 @@ public:
 		sex = "";
 		id_card = "";
 		birth = "";
-		age = -1;
+		age = 999;
 		is_marry = "";
 		mobile = "";
 	}

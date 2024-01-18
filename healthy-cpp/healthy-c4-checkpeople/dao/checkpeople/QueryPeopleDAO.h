@@ -1,8 +1,9 @@
+#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/10/25 14:26:52
+ @Date: 2022/10/25 14:23:49
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,20 +17,24 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#include "stdafx.h"
-#include "AddPeopleDAO.h"
-#include "AddPeopleMapper.h"
-#include <sstream>
+#ifndef _QUERYPEOPLE_DAO_
+#define _QUERYPEOPLE_DAO_
+#include "BaseDAO.h"
+#include "../../domain/do/checkpeople/QueryDO.h"
+#include "../../domain/query/checkpeople/UnitQuery.h"
 
-
-
-
-//插入数据
-uint64_t AddPeopleDAO::insert(const AddDO& iObj)
+/**
+ * 示例表数据库操作实现
+ */
+class QueryPeopleDAO : public BaseDAO
 {
-	string sql = "INSERT INTO `t_group_person` (`person_name`, `sex`, `id_card`,`birth`, `age`, `is_marry`,`mobile`) VALUES (?, ?, ?,?,?,?,?)";
-	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getpersonName(), iObj.getSex(), iObj.getidCard(), iObj.getBirth(), iObj.getAge(),
-		iObj.getAge(), iObj.getisMarry(), iObj.getMobile());
-}
+public:
+	// 统计数据条数
+	uint64_t count(const UnitQuery::Wrapper& query);
+	// 分页查询数据
+	list<QueryDO> selectWithPage(const UnitQuery::Wrapper& query);
+	// 通过id_card查询数据
+	list<QueryDO> selectByIdCard(const string& id_card);
 
-
+};
+#endif // !_QUERYPEOPLE_DAO_
