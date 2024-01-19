@@ -30,23 +30,23 @@ class ProfessionalHistoryDTO : public oatpp::DTO
 {
 	DTO_INIT(ProfessionalHistoryDTO, DTO);
 	// 唯一编号
-	API_DTO_FIELD_DEFAULT(String, person_id, ZH_WORDS_GETTER("unknownmodule.field.person_id"));
+	API_DTO_FIELD_DEFAULT(String, person_id, ZH_WORDS_GETTER("unknownmoduleprofessionalhistory.dto.person_id"));
 	// 起始时间
-	API_DTO_FIELD_DEFAULT(String, start_date, ZH_WORDS_GETTER("unknownmodule.field.start_date"));
+	API_DTO_FIELD_DEFAULT(String, start_date, ZH_WORDS_GETTER("unknownmoduleprofessionalhistory.dto.start_date"));
 	// 结束时间
-	API_DTO_FIELD_DEFAULT(String, end_date, ZH_WORDS_GETTER("unknownmodule.field.end_date"));
+	API_DTO_FIELD_DEFAULT(String, end_date, ZH_WORDS_GETTER("unknownmoduleprofessionalhistory.dto.end_date"));
 	// 工作单位
-	API_DTO_FIELD_DEFAULT(String, work_unit, ZH_WORDS_GETTER("unknownmodule.field.work_unit"));
+	API_DTO_FIELD_DEFAULT(String, work_unit, ZH_WORDS_GETTER("unknownmoduleprofessionalhistory.dto.work_unit"));
 	// 车间（部门）
-	API_DTO_FIELD_DEFAULT(String, department, ZH_WORDS_GETTER("unknownmodule.field.department"));
+	API_DTO_FIELD_DEFAULT(String, department, ZH_WORDS_GETTER("unknownmoduleprofessionalhistory.dto.department"));
 	// 工种
-	API_DTO_FIELD_DEFAULT(String, work_type_text, ZH_WORDS_GETTER("unknownmodule.field.work_type_text"));
+	API_DTO_FIELD_DEFAULT(String, work_type_text, ZH_WORDS_GETTER("unknownmoduleprofessionalhistory.dto.work_type_text"));
 	// 危害因素
-	API_DTO_FIELD_DEFAULT(String, hazard_factors_text, ZH_WORDS_GETTER("unknownmodule.field.hazard_factors_text"));
+	API_DTO_FIELD_DEFAULT(String, hazard_factors_text, ZH_WORDS_GETTER("unknownmoduleprofessionalhistory.dto.hazard_factors_text"));
 	// 防护措施
-	API_DTO_FIELD_DEFAULT(String, protective_measures, ZH_WORDS_GETTER("unknownmodule.field.protective_measures"));
+	API_DTO_FIELD_DEFAULT(String, protective_measures, ZH_WORDS_GETTER("unknownmoduleprofessionalhistory.dto.protective_measures"));
 	// 接触时间
-	API_DTO_FIELD_DEFAULT(String, contact_time, ZH_WORDS_GETTER("unknownmodule.field.contact_time"));
+	API_DTO_FIELD_DEFAULT(String, contact_time, ZH_WORDS_GETTER("unknownmoduleprofessionalhistory.dto.contact_time"));
 };
 
 class ProfessionalHistoryPageDTO : public PageDTO<ProfessionalHistoryDTO::Wrapper>

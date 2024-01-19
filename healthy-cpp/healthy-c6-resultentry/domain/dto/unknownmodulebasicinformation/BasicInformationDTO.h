@@ -30,21 +30,21 @@ class BasicInformationDTO : public oatpp::DTO
 {
 	DTO_INIT(BasicInformationDTO, DTO);
 	// 唯一编号
-	API_DTO_FIELD_DEFAULT(String, person_id, ZH_WORDS_GETTER("unknownmodule.field.person_id"));
+	API_DTO_FIELD_DEFAULT(String, person_id, ZH_WORDS_GETTER("unknownmodulebasicinformation.dto.person_id"));
 	// 特殊工种名称
-	API_DTO_FIELD_DEFAULT(String, job, ZH_WORDS_GETTER("unknownmodule.field.job"));
+	API_DTO_FIELD_DEFAULT(String, job, ZH_WORDS_GETTER("unknownmodulebasicinformation.dto.job"));
 	// 工龄年数
-	API_DTO_FIELD_DEFAULT(UInt32, work_year, ZH_WORDS_GETTER("unknownmodule.field.work_year"));
+	API_DTO_FIELD_DEFAULT(UInt32, work_year, ZH_WORDS_GETTER("unknownmodulebasicinformation.dto.work_year"));
 	// 工龄月数
-	API_DTO_FIELD_DEFAULT(UInt32, work_month, ZH_WORDS_GETTER("unknownmodule.field.work_month"));
+	API_DTO_FIELD_DEFAULT(UInt32, work_month, ZH_WORDS_GETTER("unknownmodulebasicinformation.dto.work_month"));
 	// 接害开始时间
-	API_DTO_FIELD_DEFAULT(String, exposure_start_date, ZH_WORDS_GETTER("unknownmodule.field.exposure_start_date"));
+	API_DTO_FIELD_DEFAULT(String, exposure_start_date, ZH_WORDS_GETTER("unknownmodulebasicinformation.dto.exposure_start_date"));
 	// 文化程度
-	API_DTO_FIELD_DEFAULT(String, education, ZH_WORDS_GETTER("unknownmodule.field.education"));
+	API_DTO_FIELD_DEFAULT(String, education, ZH_WORDS_GETTER("unknownmodulebasicinformation.dto.education"));
 	// 家庭住址
-	API_DTO_FIELD_DEFAULT(String, family_address, ZH_WORDS_GETTER("unknownmodule.field.family_address"));
+	API_DTO_FIELD_DEFAULT(String, family_address, ZH_WORDS_GETTER("unknownmodulebasicinformation.dto.family_address"));
 	// 婚姻状况
-	API_DTO_FIELD_DEFAULT(String, marriage_date, ZH_WORDS_GETTER("unknownmodule.field.marriage_date"));
+	API_DTO_FIELD_DEFAULT(String, marriage_date, ZH_WORDS_GETTER("unknownmodulebasicinformation.dto.marriage_date"));
 };
 
 class BasicInformationPageDTO : public PageDTO<BasicInformationDTO::Wrapper>

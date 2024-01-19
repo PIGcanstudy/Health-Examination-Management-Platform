@@ -33,7 +33,7 @@ class BasicInformationQuery : public PageQuery
 	// 定义初始化
 	DTO_INIT(BasicInformationQuery, DTO);
 	// 人员id
-	API_DTO_FIELD_DEFAULT(String, person_id, ZH_WORDS_GETTER("unknownmodule.field.personId"));
+	API_DTO_FIELD_DEFAULT(String, person_id, ZH_WORDS_GETTER("unknownmodulebasicinformation.query.person_id"));
 };
 
 #include OATPP_CODEGEN_END(DTO)

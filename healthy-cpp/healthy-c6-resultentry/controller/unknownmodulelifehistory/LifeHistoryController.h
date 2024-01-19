@@ -39,7 +39,7 @@ public:
 	// 3.1 定义查询接口描述
 	ENDPOINT_INFO(queryLifeHistory) {
 		// 定义接口标题
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("unknownmodule.query.summary"));
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("unknownmodulelifehistory.controller.title"));
 		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
 		API_DEF_ADD_AUTH();
 		// 定义响应参数格式
@@ -47,10 +47,10 @@ public:
 		// 定义分页查询参数描述
 		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
-		API_DEF_ADD_QUERY_PARAMS(String, "person_id", ZH_WORDS_GETTER("unknownmodule.field.personId"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "person_id", ZH_WORDS_GETTER("unknownmodulelifehistory.controller.description"), "", false);
 	}
 
-	ENDPOINT(API_M_GET, "/unknownmodule/queryLifeHistory", queryLifeHistory, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
+	ENDPOINT(API_M_GET, "/unknownmodulelifehistory/queryLifeHistory", queryLifeHistory, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
 		API_HANDLER_QUERY_PARAM(biq, LifeHistoryQuery, params);
 		// 呼叫执行函数响应结果

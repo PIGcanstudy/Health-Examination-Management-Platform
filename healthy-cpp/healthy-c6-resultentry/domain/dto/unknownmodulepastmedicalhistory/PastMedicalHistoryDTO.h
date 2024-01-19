@@ -30,27 +30,27 @@ class PastMedicalHistoryDTO : public oatpp::DTO
 {
 	DTO_INIT(PastMedicalHistoryDTO, DTO);
 	// 唯一编号
-	API_DTO_FIELD_DEFAULT(String, person_id, ZH_WORDS_GETTER("unknownmodule.field.person_id"));
+	API_DTO_FIELD_DEFAULT(String, person_id, ZH_WORDS_GETTER("unknownmodulepastmedicalhistory.dto.person_id"));
 	// 流产
-	API_DTO_FIELD_DEFAULT(UInt32, abortion, ZH_WORDS_GETTER("unknownmodule.field.abortion"));
+	API_DTO_FIELD_DEFAULT(UInt32, abortion, ZH_WORDS_GETTER("unknownmodulepastmedicalhistory.dto.abortion"));
 	// 早产
-	API_DTO_FIELD_DEFAULT(UInt32, premature, ZH_WORDS_GETTER("unknownmodule.field.premature"));
+	API_DTO_FIELD_DEFAULT(UInt32, premature, ZH_WORDS_GETTER("unknownmodulepastmedicalhistory.dto.premature"));
 	// 死亡
-	API_DTO_FIELD_DEFAULT(UInt32, death, ZH_WORDS_GETTER("unknownmodule.field.death"));
+	API_DTO_FIELD_DEFAULT(UInt32, death, ZH_WORDS_GETTER("unknownmodulepastmedicalhistory.dto.death"));
 	// 异常胎
-	API_DTO_FIELD_DEFAULT(UInt32, abnormal_fetus, ZH_WORDS_GETTER("unknownmodule.field.abnormal_fetus"));
+	API_DTO_FIELD_DEFAULT(UInt32, abnormal_fetus, ZH_WORDS_GETTER("unknownmodulepastmedicalhistory.dto.abnormal_fetus"));
 	// 月经史
-	API_DTO_FIELD_DEFAULT(String, menstrual_history, ZH_WORDS_GETTER("unknownmodule.field.menstrual_history"));
+	API_DTO_FIELD_DEFAULT(String, menstrual_history, ZH_WORDS_GETTER("unknownmodulepastmedicalhistory.dto.menstrual_history"));
 	// 月经异常信息
-	API_DTO_FIELD_DEFAULT(String, menstrual_info, ZH_WORDS_GETTER("unknownmodule.field.menstrual_info"));
+	API_DTO_FIELD_DEFAULT(String, menstrual_info, ZH_WORDS_GETTER("unknownmodulepastmedicalhistory.dto.menstrual_info"));
 	// 过敏史
-	API_DTO_FIELD_DEFAULT(String, allergies, ZH_WORDS_GETTER("unknownmodule.field.allergies"));
+	API_DTO_FIELD_DEFAULT(String, allergies, ZH_WORDS_GETTER("unknownmodulepastmedicalhistory.dto.allergies"));
 	// 过敏异常信息
-	API_DTO_FIELD_DEFAULT(String, allergies_info, ZH_WORDS_GETTER("unknownmodule.field.allergies_info"));
+	API_DTO_FIELD_DEFAULT(String, allergies_info, ZH_WORDS_GETTER("unknownmodulepastmedicalhistory.dto.allergies_info"));
 	// 既往病史
-	API_DTO_FIELD_DEFAULT(String, past_medical_history, ZH_WORDS_GETTER("unknownmodule.field.past_medical_history"));
+	API_DTO_FIELD_DEFAULT(String, past_medical_history, ZH_WORDS_GETTER("unknownmodulepastmedicalhistory.dto.past_medical_history"));
 	// 既往病史其他信息
-	API_DTO_FIELD_DEFAULT(String, past_medical_history_other_info, ZH_WORDS_GETTER("unknownmodule.field.past_medical_history_other_info"));
+	API_DTO_FIELD_DEFAULT(String, past_medical_history_other_info, ZH_WORDS_GETTER("unknownmodulepastmedicalhistory.dto.past_medical_history_other_info"));
 };
 
 class PastMedicalHistoryPageDTO : public PageDTO<PastMedicalHistoryDTO::Wrapper>

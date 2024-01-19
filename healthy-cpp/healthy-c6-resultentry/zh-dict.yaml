@@ -1,5 +1,70 @@
-﻿unknownmodule:
+﻿unknownmodulebasicinformation:
+ controller:
+  title: 基本信息查询接口 
+  description: 人员id
  query:
-  summary: 基本信息查询  
- field:
-  personId: 人员id   
+  person_id: 人员id
+ dto:
+  person_id: 唯一编号
+  job: 特殊工种名称
+  work_year: 工龄年数
+  work_month: 工龄月数
+  exposure_start_date: 接害开始时间
+  education: 文化程度
+  family_address: 家庭住址
+  marriage_date: 婚姻状况
+
+unknownmodulelifehistory:
+ controller:
+  title: 生活史查询接口
+  description: 人员id
+ query:
+  person_id: 人员id
+ dto:
+  person_id: 唯一编号
+  existing_children: 现有子女（生育史）
+  allergies: 过敏史
+  smoke_state: 吸烟状态
+  package_every_day: 包每天
+  smoke_year: 吸烟年
+  drink_state: 喝酒状态
+  ml_every_day: ml每天
+  drink_year: 喝酒年
+  birthplace_name: 出生地
+  family_history: 家族史
+
+unknownmodulepastmedicalhistory:
+ controller:
+  title: 既往病史查询接口
+  description: 人员id
+ query:
+  person_id: 人员id
+ dto:
+  person_id: 唯一编号
+  abortion: 流产
+  premature: 早产
+  death: 死亡
+  abnormal_fetus: 异常胎
+  menstrual_history: 月经史
+  menstrual_info: 月经异常信息
+  allergies: 过敏史
+  allergies_info: 过敏异常信息
+  past_medical_history: 既往病史
+  past_medical_history_other_info: 既往病史其他信息
+  
+unknownmoduleprofessionalhistory:
+ controller:
+  tiile: 职业史查询接口
+  description: 人员id
+ query:
+  person_id: 人员id
+ dto:
+  person_id: 唯一编号
+  start_date: 起始时间
+  end_date: 结束时间
+  work_unit: 工作单位
+  department: 车间（部门）
+  work_type_text: 工种
+  hazard_factors_text: 危害因素
+  protective_measures: 防护措施
+  contact_time: 接触时间

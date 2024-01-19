@@ -30,27 +30,27 @@ class LifeHistoryDTO : public oatpp::DTO
 {
 	DTO_INIT(LifeHistoryDTO, DTO);
 	// 唯一编号
-	API_DTO_FIELD_DEFAULT(String, person_id, ZH_WORDS_GETTER("unknownmodule.field.person_id"));
+	API_DTO_FIELD_DEFAULT(String, person_id, ZH_WORDS_GETTER("unknownmodulelifehistory.dto.person_id"));
 	// 现有子女（生育史）
-	API_DTO_FIELD_DEFAULT(UInt32, existing_children, ZH_WORDS_GETTER("unknownmodule.field.existing_children"));
+	API_DTO_FIELD_DEFAULT(UInt32, existing_children, ZH_WORDS_GETTER("unknownmodulelifehistory.dto.existing_children"));
 	// 过敏史
-	API_DTO_FIELD_DEFAULT(String, allergies, ZH_WORDS_GETTER("unknownmodule.field.allergies"));
+	API_DTO_FIELD_DEFAULT(String, allergies, ZH_WORDS_GETTER("unknownmodulelifehistory.dto.allergies"));
 	// 吸烟状态
-	API_DTO_FIELD_DEFAULT(String, smoke_state, ZH_WORDS_GETTER("unknownmodule.field.smoke_state"));
+	API_DTO_FIELD_DEFAULT(String, smoke_state, ZH_WORDS_GETTER("unknownmodulelifehistory.dto.smoke_state"));
 	// 包每天
-	API_DTO_FIELD_DEFAULT(UInt32, package_every_day, ZH_WORDS_GETTER("unknownmodule.field.package_every_day"));
+	API_DTO_FIELD_DEFAULT(UInt32, package_every_day, ZH_WORDS_GETTER("unknownmodulelifehistory.fielddtopackage_every_day"));
 	// 吸烟年
-	API_DTO_FIELD_DEFAULT(UInt32, smoke_year, ZH_WORDS_GETTER("unknownmodule.field.smoke_year"));
+	API_DTO_FIELD_DEFAULT(UInt32, smoke_year, ZH_WORDS_GETTER("unknownmodulelifehistory.dto.smoke_year"));
 	// 喝酒状态
-	API_DTO_FIELD_DEFAULT(String, drink_state, ZH_WORDS_GETTER("unknownmodule.field.drink_state"));
+	API_DTO_FIELD_DEFAULT(String, drink_state, ZH_WORDS_GETTER("unknownmodulelifehistory.dto.drink_state"));
 	// ml每天
-	API_DTO_FIELD_DEFAULT(UInt32, ml_every_day, ZH_WORDS_GETTER("unknownmodule.field.ml_every_day"));
+	API_DTO_FIELD_DEFAULT(UInt32, ml_every_day, ZH_WORDS_GETTER("unknownmodulelifehistory.dto.ml_every_day"));
 	// 喝酒年
-	API_DTO_FIELD_DEFAULT(UInt32, drink_year, ZH_WORDS_GETTER("unknownmodule.field.drink_year"));
+	API_DTO_FIELD_DEFAULT(UInt32, drink_year, ZH_WORDS_GETTER("unknownmodulelifehistory.dto.drink_year"));
 	// 出生地
-	API_DTO_FIELD_DEFAULT(String, birthplace_name, ZH_WORDS_GETTER("unknownmodule.field.birthplace_name"));
+	API_DTO_FIELD_DEFAULT(String, birthplace_name, ZH_WORDS_GETTER("unknownmodulelifehistory.dto.birthplace_name"));
 	// 家族史
-	API_DTO_FIELD_DEFAULT(String, family_history, ZH_WORDS_GETTER("unknownmodule.field.family_history"));
+	API_DTO_FIELD_DEFAULT(String, family_history, ZH_WORDS_GETTER("unknownmodulelifehistory.dto.family_history"));
 };
 
 class LifeHistoryPageDTO : public PageDTO<LifeHistoryDTO::Wrapper>
