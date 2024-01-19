@@ -10,8 +10,8 @@
 /**
  * 示例显示JsonVO，用于响应给客户端的Json对象
  */
-class InterroJsonVO : public JsonVO<InterroDTO::Wrapper> {
-	DTO_INIT(InterroJsonVO, JsonVO<InterroDTO::Wrapper>);
+class InterroJsonVO : public JsonVO<oatpp::List<InterroDTO::Wrapper>> {
+	DTO_INIT(InterroJsonVO, JsonVO<oatpp::List<InterroDTO::Wrapper>>);
 };
 
 #include OATPP_CODEGEN_END(DTO)

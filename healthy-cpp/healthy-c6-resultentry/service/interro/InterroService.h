@@ -12,7 +12,7 @@ class InterroService
 {
 public:
 	// 查询症状问询数据
-	InterroDTO::Wrapper listAll(const InterroQuery::Wrapper& query);
+	oatpp::List<InterroDTO::Wrapper> listAll(const InterroQuery::Wrapper& query);
 
 };
 
