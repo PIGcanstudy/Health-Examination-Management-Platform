@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.sysmanager.mapper.MessageMapper">
+
+<!--List<MessageDetailDTO> queryMessageDetail(MessageDetailDTO detailDTO);
+TODO:这个页面展示的id是谁的id？如果是根据userId去查询：
+要从user表中根据id查去到这个人的名字，再来根据这个名字去临时表中匹配-->
+<select id="queryMessageDetail" resultType="com.zeroone.star.project.dto.j3.message.MessageDetailDTO">
+    SELECT t_user.id, create_by, create_time, update_time
+    FROM t_message
+    join t_user
+    on username = #{createBy}
+
+    where t_message.id = #{id}
+</select>
+</mapper>
