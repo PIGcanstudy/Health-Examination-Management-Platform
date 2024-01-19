@@ -17,29 +17,29 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PRIMCHECKQUERY_H_
-#define _PRIMCHECKQUERY_H_
+#ifndef _RESULTQUERY_H_
+#define _RESULTQUERY_H_
 
 #include "../../GlobalInclude.h"
 #include "domain/query/PageQuery.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
-class PrimCheckQuery : public PageQuery
+class ResultQuery : public PageQuery
 {
-	DTO_INIT(PrimCheckQuery, PageQuery);
+	DTO_INIT(ResultQuery, PageQuery);
 	//人员ID
-	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("primCheck.field.personId"));
+	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("result.field.personId"));
 };
 
-class PrimCheckDetailQuery : public PageQuery
+class ItemResultQuery : public PageQuery
 {
-	DTO_INIT(PrimCheckDetailQuery, PageQuery);
+	DTO_INIT(ItemResultQuery, PageQuery);
 	//人员ID
-	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("primCheck.field.personId"));
+	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("result.field.personId"));
 	//组合项目
-	API_DTO_FIELD_DEFAULT(String, orderGroupItemId, ZH_WORDS_GETTER("primCheck.field.orderGroupItemId"));
+	API_DTO_FIELD_DEFAULT(String, orderGroupItemId, ZH_WORDS_GETTER("result.field.orderGroupItemId"));
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_PRIMCHECKQUERY_H_
+#endif // !_RESULTQUERY_H_

@@ -1,8 +1,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/10/25 0:27:04
+ @Author: smartPiggy
+ @Date: 2024-01-19
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,15 +17,14 @@
  limitations under the License.
 */
 #include"stdafx.h"
-#include"PrimCheckController.h"
+#include"./ResultController.h"
 
-
-PrimCheckListPageJsonVO::Wrapper PrimCheckController::execQueryPrimCheck(const PrimCheckQuery::Wrapper& query)
+ResultPageJsonVO::Wrapper ResultController::execQueryPrimCheck(const ResultQuery::Wrapper& query)
 {
-	return PrimCheckListPageJsonVO::Wrapper();
+	return ResultPageJsonVO::Wrapper();
 }
 
-PrimCheckDetailPageJsonVO::Wrapper PrimCheckController::execQueryPrimCheckDetail(const PrimCheckQuery::Wrapper& query)
+ItemResultPageJsonVO::Wrapper ResultController::execQueryPrimCheckDetail(const ResultQuery::Wrapper& query)
 {
-	return PrimCheckDetailPageJsonVO::Wrapper();
+	return ItemResultPageJsonVO::Wrapper();
 }

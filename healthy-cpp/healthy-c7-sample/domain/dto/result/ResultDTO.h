@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PRIMCHECKLISTDTO_H_
-#define _PRIMCHECKLISTDTO_H_
+#ifndef _RESULTDTO_H_
+#define _RESULTDTO_H_
 
 #include "../../GlobalInclude.h"
 
@@ -28,24 +28,24 @@
  *  获取添加项目结论列表（分页）
  *  负责人：smartPiggy
  */
-class PrimCheckListDTO : public oatpp::DTO
+class ResultDTO : public oatpp::DTO
 {
-	DTO_INIT(PrimCheckListDTO, DTO);
+	DTO_INIT(ResultDTO, DTO);
 	//唯一编号
-	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("primCheck.field.id"));
+	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("result.field.id"));
 	//科室
-	API_DTO_FIELD_DEFAULT(String, officeName, ZH_WORDS_GETTER("primCheck.field.officeName"));
+	API_DTO_FIELD_DEFAULT(String, officeName, ZH_WORDS_GETTER("result.field.officeName"));
 	//组合项目
-	API_DTO_FIELD_DEFAULT(String, groupItemName, ZH_WORDS_GETTER("primCheck.field.groupItemName"));
+	API_DTO_FIELD_DEFAULT(String, groupItemName, ZH_WORDS_GETTER("result.field.groupItemName"));
 	//体检小结
-	API_DTO_FIELD_DEFAULT(String, diagnoseSum, ZH_WORDS_GETTER("primCheck.field.diagnoseSum"));
+	API_DTO_FIELD_DEFAULT(String, diagnoseSum, ZH_WORDS_GETTER("result.field.diagnoseSum"));
 };
 
-class PrimCheckListPageDTO : public PageDTO<PrimCheckListDTO::Wrapper>
+class ResultPageDTO : public PageDTO<ResultDTO::Wrapper>
 {
-	DTO_INIT(PrimCheckListPageDTO, PageDTO<PrimCheckListDTO::Wrapper>);
+	DTO_INIT(ResultPageDTO, PageDTO<ResultDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)
 
-#endif // !_PRIMCHECKLISTDTO_H_
+#endif // !_RESULTDTO_H_
