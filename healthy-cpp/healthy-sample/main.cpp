@@ -30,6 +30,20 @@
 #ifdef LINUX
 #include "NacosClient.h"
 #endif
+#include "ServerInfo.h"
+#include "NacosClient.h"
+#include "FastDfsClient.h"
+#include "ExcelComponent.h"
+#include "uselib/rocketmq/TestRocket.h"
+
+#include "MongoClient.h"
+#include <iostream>
+#include <bsoncxx/json.hpp>
+
+#include "RedisClient.h"
+#include "uselib/sms/TestAliSms.h"
+#include "EmailSender.h"
+#include "uselib/pdf/TestPdf.h"
 
 // 是否是发布Swagger文档包
 #ifndef _RELEASE_DOC_
@@ -48,9 +62,9 @@ bool getStartArg(int argc, char* argv[]) {
 	std::string serverPort = "8090";
 	// 数据库连接信息
 	std::string dbUsername = "root";
-	std::string dbPassword = "root";
-	std::string dbName = "zo_healthy";
-	std::string dbHost = "localhost";
+	std::string dbPassword = "123456";
+	std::string dbName = "test";
+	std::string dbHost = "192.168.220.128";
 	int dbPort = 3306;
 	int dbMax = 5;
 #ifdef LINUX
@@ -132,6 +146,175 @@ bool getStartArg(int argc, char* argv[]) {
 	return isSetDb;
 }
 
+void testDfs(string fileName)
+{
+	// 定义DFS客户端对象和URL前缀
+	ZO_CREATE_DFS_CLIENT_URL(client, urlPrefix);
+	// 开始上传文件
+	std::string fieldName = client.uploadFile(fileName);
+	// 构建下载路径
+	std::string downloadUrl = urlPrefix + fieldName;
+	// 输出下载路径
+	std::cout << "download url: " << downloadUrl << std::endl;
+
+// #ifdef LINUX
+// 	//定义客户端对象
+// 	FastDfsClient client("conf/client.conf");
+// #else
+// 	//定义客户端对象
+// 	FastDfsClient client("192.168.220.128");
+// #endif
+// 
+// 	//测试上传
+// 	std::string fieldName = client.uploadFile(fileName);
+// 	std::cout << "upload fieldname is : " << fieldName << std::endl;
+// 	//测试下载
+// 	if (!fieldName.empty())
+// 	{
+// 		std::string path = "./public/fastdfs";
+// 		fileName = client.downloadFile(fieldName, &path);
+// 		std::cout << "download savepath is : " << fileName << std::endl;
+// 	}
+// 	//测试删除文件
+// 	if (!fieldName.empty())
+// 	{
+// 		std::cout << "delete file result is : " << client.deleteFile(fieldName) << std::endl;
+// 	}
+}
+
+void testExcel()
+{
+	// 创建测试数据
+	std::vector<std::vector<std::string>> data;
+	stringstream ss;
+	for (int i = 1; i <= 10; i++)
+	{
+		std::vector<std::string> row;
+		for (int j = 1; j <= 5; j++)
+		{
+			ss.clear();
+			ss << "pos(" << i << "," << j << ")";
+			row.push_back(ss.str());
+			ss.str("");
+		}
+		data.push_back(row);
+	}
+
+	// 定义保存数据位置和页签名称
+	// 注意：文件件名称和文件路径不能出现中文
+	std::string fileName = "./public/excel/1.xlsx";
+	// 注意：因为xlnt不能存储非utf8编码的字符，所以中文字需要从配置文件中获取
+	std::string sheetName = ZH_WORDS_GETTER("excel.sheet.s1");
+
+	// 保存到文件
+	ExcelComponent excel;
+	excel.writeVectorToFile(fileName, sheetName, data);
+
+	// 从文件中读取
+	auto readData = excel.readIntoVector(fileName, sheetName);
+	for (auto row : readData)
+	{
+		for (auto cellVal : row)
+		{
+			cout << cellVal << ",";
+		}
+		cout << endl;
+	}
+
+	// 测试创建第二个页签
+	sheetName = ZH_WORDS_GETTER("excel.sheet.s2");
+	excel.writeVectorToFile(fileName, sheetName, data);
+
+	// 测试覆盖第一个页签
+	sheetName = ZH_WORDS_GETTER("excel.sheet.s1");
+	data.insert(data.begin(), {
+		ZH_WORDS_GETTER("excel.header.h1") ,
+		ZH_WORDS_GETTER("excel.header.h2") ,
+		ZH_WORDS_GETTER("excel.header.h3") ,
+		ZH_WORDS_GETTER("excel.header.h4") ,
+		ZH_WORDS_GETTER("excel.header.h5") ,
+		});
+	excel.writeVectorToFile(fileName, sheetName, data);
+}
+
+void testUseMongo()
+{
+	//创建连接对象
+	ZO_CREATE_MONGO_CLIENT(mc);
+	//添加单条数据
+	auto docBuilder = bsoncxx::builder::stream::document{};
+	bsoncxx::document::value doc = docBuilder
+		<< "name" << "MongoDB"
+		<< "type" << "database"
+		<< "count" << 1
+		<< "versions" << open_array
+		<< "v3.2" << "v3.0" << "v2.6"
+		<< close_array
+		<< "info" << open_document
+		<< "x" << 203
+		<< "y" << 102
+		<< close_document
+		<< finalize;
+	auto res = mc.addOne("t1", doc.view());
+	if (res.type() != bsoncxx::type::k_null)
+	{
+		std::cout << res.get_oid().value.to_string() << std::endl;
+	}
+
+	//添加多条数据
+	std::vector<bsoncxx::document::value> documents;
+	for (int i = 0; i < 10; i++) {
+		documents.push_back(bsoncxx::builder::stream::document{} << "i" << i << finalize);
+	}
+	int32_t addNum = mc.addMultiple("t2", documents);
+	cout << "add data:" << addNum << endl;
+
+	//执行查询调用
+	mc.execute("t2",
+		[](mongocxx::collection* collection) {
+			auto cursor = collection->find({});
+			for (auto doc : cursor) {
+				cout << bsoncxx::to_json(doc) << endl;
+			}
+		});
+}
+
+void testUseRedis()
+{
+	// 定义Redis客户端对象
+	ZO_CREATE_REDIS_CLIENT(rc);
+	// 添加值
+	bool res = rc.execute<bool>(
+		[](Redis* r) {
+			return r->set("01", "star");
+		});
+	std::cout << res << std::endl;
+	// 获取值
+	string val = rc.execute<string>(
+		[](Redis* r) {
+			return r->get("01").value();
+		});
+	std::cout << val << std::endl;
+}
+
+void testMail()
+{
+	std::string topic = ZH_WORDS_GETTER("mail.topic");
+	std::string body1 = ZH_WORDS_GETTER("mail.body1");
+	std::string body2 = ZH_WORDS_GETTER("mail.body2");
+	// 创建邮件发送对象
+	ZO_CREATE_MAIL_SENDER(emailSender);
+	emailSender.setCharset("utf8");
+	emailSender.addRecvEmailAddr("2069682479@qq.com", "awei");
+	emailSender.addCcEmailAddr("2949543550@qq.com", ZH_WORDS_GETTER("mail.revname"));
+	emailSender.setEmailContent(topic, body1);
+	emailSender.addAttachment("/home/file/1.zip");
+	if (emailSender.send())
+		std::cout << "mail send ok" << std::endl;
+	else
+		std::cout << "mail send fail" << std::endl;
+}
+
 int main(int argc, char* argv[]) {
 #ifdef HTTP_SERVER_DEMO
 	// 测试生成 JWT Token
@@ -140,7 +323,16 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
-
+	//testDfs("E:\\Images\\20141011112404344.jpg.source.jpg");
+	//testExcel();
+	//TestRocket tr;
+	//tr.testRocket();
+	//testUseMongo();
+	//testUseRedis();
+	//TestAliSms::test();
+	//testMail();
+	TestPdf::testText();
+	TestPdf::testTpl();
 #ifdef LINUX
 	// 创建Nacos客户端对象
 	NacosClient nacosClient(
