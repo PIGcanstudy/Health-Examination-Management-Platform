@@ -57,11 +57,11 @@ public://定义接口
 		//结束时间
 		API_DEF_ADD_QUERY_PARAMS(String, "endDate", ZH_WORDS_GETTER("evalue.field.endDate"), "2023-10-12", false);
 		//姓名
-		API_DEF_ADD_QUERY_PARAMS(String, "personName", ZH_WORDS_GETTER("evalue.field.personName"), "kunkun", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "personName", ZH_WORDS_GETTER("evalue.field.personName"), "坤坤", false);
 		//体检编号
 		API_DEF_ADD_QUERY_PARAMS(String, "testNum", ZH_WORDS_GETTER("evalue.field.testNum"), "x12345", false);
 		//单位名称
-		API_DEF_ADD_QUERY_PARAMS(String, "dept", ZH_WORDS_GETTER("evalue.field.dept"), "xxxcompany", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "dept", ZH_WORDS_GETTER("evalue.field.dept"), "xxx有限公司", false);
 	}
 
 	//定义分页查询单位列表接口
