@@ -3,7 +3,7 @@
     <div>
         <el-tabs type="border-card">
             <el-tab-pane label="男">
-                <el-table 
+                <el-table
                     :data="personInfo"
                     border
                     :cell-style="{ textAlign: 'center' }"
