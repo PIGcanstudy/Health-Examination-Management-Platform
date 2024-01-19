@@ -13,9 +13,6 @@ public class ModifyPhoneDTO {
     @ApiModelProperty(value = "用户ID", required = true)
     private Long userId;
 
-    @ApiModelProperty(value = "用户密码", required = true)
-    private String password;
-
     @ApiModelProperty(value = "新手机号", required = true)
     private String newPhone;
 
