@@ -2,7 +2,8 @@
 #include "stdafx.h"
 
 
-DeatilJsonVO::Wrapper DeatilController::execQueryDeatil(const DeatilQuery::Wrapper& query)
+DeatilJsonVO::Wrapper DeatilController::execQueryDeatil
+	(const DeatilQuery::Wrapper& query)
 {
 	return {};
 }

@@ -28,8 +28,6 @@ public:
 		// 定义响应参数格式
 		API_DEF_ADD_RSP_JSON_WRAPPER(DeatilJsonVO);
 		// 定义查询参数描述
-		API_DEF_ADD_PAGE_PARAMS();
-		// 定义查询参数描述
 		API_DEF_ADD_QUERY_PARAMS(UInt32, "id", ZH_WORDS_GETTER("deatil.field.id"), 1, true);
 		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("deatil.field.name"), "xxx", false);
 		API_DEF_ADD_QUERY_PARAMS(String, "namePinYin", ZH_WORDS_GETTER("deatil.field.namePinYin"), "li ming", false);
@@ -47,7 +45,6 @@ public:
 		API_HANDLER_RESP_VO(execQueryDeatil(dq));
 	}
 private:
-	
 	DeatilJsonVO::Wrapper execQueryDeatil(const DeatilQuery::Wrapper& query);
 };
 

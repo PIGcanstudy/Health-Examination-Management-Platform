@@ -17,9 +17,22 @@ sample:
   name: 姓名
   sex: 性别，如：男
 deatil:
- get: 
-  summary:  阳性结果详细查询接口
+ get:
+  summary: 阳性结果详细查询
  field: 
+  id: 编号
+  name: 名称
+  namePinYin: 简拼
+  degree: 严重程度
+  positive: 是否阳性
+  sectionName: 科室名称
+  advise: 职业建议
+  healthKnowledge: 健康建议
+modify:
+ put:
+  summary: 修改阳性结果  
+ field: 
+  id: 编号
   type: 阳性结果
   name: 名称
   namePinYin: 简拼
@@ -28,4 +41,3 @@ deatil:
   sectionName: 科室名称
   advise: 职业建议
   healthKnowledge: 健康建议
- 

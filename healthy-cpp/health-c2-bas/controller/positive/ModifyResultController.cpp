@@ -2,7 +2,8 @@
 
 
 
-ModifyResultJasonVO::Wrapper ModifyResultController::execModifyResult(const ModifyResult::Wrapper& modify)
+ModifyResultJasonVO::Wrapper ModifyResultController::execModifyResult
+	(const ModifyResultDTO::Wrapper& modify)
 {
 	return {};
 }

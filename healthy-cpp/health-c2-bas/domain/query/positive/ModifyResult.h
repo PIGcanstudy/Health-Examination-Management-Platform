@@ -10,8 +10,12 @@
 class ModifyResult : public oatpp::DTO
 {
     DTO_INIT(ModifyResult, DTO);
-	//查询类型
-	API_DTO_FIELD_DEFAULT(UInt32, type, ZH_WORDS_GETTER("deatil.field.type"));
+
+	DTO_FIELD(String, id);
+	DTO_FIELD_INFO(id) {
+		info->description = ZH_WORDS_GETTER("modify.field.id");
+	}
+	
 	// 名称
 	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("deatil.field.name"));
 	// 简拼

@@ -17,7 +17,7 @@
 			info->description = ZH_WORDS_GETTER("deatil.field.name");
 		}
 		// ¼òÆ´
-		DTO_FIELD(Int32, namePinyin);
+		DTO_FIELD(String, namePinyin);
 		DTO_FIELD_INFO(namePinyin) {
 			info->description = ZH_WORDS_GETTER("deatil.field.namePinyin");
 		}

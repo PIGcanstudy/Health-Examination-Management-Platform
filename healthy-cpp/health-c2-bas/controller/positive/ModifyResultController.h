@@ -15,37 +15,26 @@ class ModifyResultController : public oatpp::web::server::api::ApiController // 
     API_ACCESS_DECLARE(ModifyResultController);
     //定义接口
 public:
-	//  定义修改接口描述
+
+	// 定义修改用户信息端点描述
 	ENDPOINT_INFO(modifyResult) {
 		// 定义接口标题
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("deatil.get.summary"));
-		// 定义默认授权参数
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("modify.put.summary"));
+		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
 		API_DEF_ADD_AUTH();
 		// 定义响应参数格式
 		API_DEF_ADD_RSP_JSON_WRAPPER(ModifyResultJasonVO);
-		// 定义查询参数描述
-		API_DEF_ADD_PAGE_PARAMS();
-		// 定义查询参数描述
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "id", ZH_WORDS_GETTER("deatil.field.id"), 1, true);
-		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("deatil.field.name"), "xxx", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "namePinYin", ZH_WORDS_GETTER("deatil.field.namePinYin"), "li ming", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "degree", ZH_WORDS_GETTER("deatil.field.degree"), "li ming", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "positive", ZH_WORDS_GETTER("deatil.field.positive"), "li ming", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "section_name", ZH_WORDS_GETTER("deatil.field.section_name"), "N", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "advise", ZH_WORDS_GETTER("deatil.field.advise"), "N", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "healthKnowledge", ZH_WORDS_GETTER("deatil.field.healthKnowledge"), "N", false);
+		// 定义修改查询参数描述
+		API_DEF_ADD_QUERY_PARAMS(Int32, "id", ZH_WORDS_GETTER("modify.field.id"), 100, false);
 	}
-	//定义修改接口处理
-	ENDPOINT(API_M_PUT, "/positive/modify-resulot", modifyResult, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
-		//解析查询参数 
-		API_HANDLER_QUERY_PARAM(mr, ModifyResult, params);
-		//呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execModifyResult(mr));
-	}
-
 	
+	// 3.2 定义修改接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/positive/modify-result", modifyResult,
+		BODY_DTO(ModifyResultDTO::Wrapper, dto), execModifyResult(dto));
+
 private:
-	ModifyResultJasonVO::Wrapper execModifyResult(const ModifyResult::Wrapper& modify);
+
+	ModifyResultJasonVO::Wrapper execModifyResult(const ModifyResultDTO::Wrapper& modify);
 };
 
     // 0 取消API控制器使用宏
