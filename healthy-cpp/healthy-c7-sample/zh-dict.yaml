@@ -1,0 +1,7 @@
+primCheck:
+ field:
+  id: 编号
+  orderGroupItemProjectName: 基础项目名
+  result: 结果
+  personId: 人员ID
+  orderGroupItemId: 组合项目名
