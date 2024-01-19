@@ -9,3 +9,6 @@ import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 </script>
 
 <style lang="scss" scoped></style>
+
+
+
