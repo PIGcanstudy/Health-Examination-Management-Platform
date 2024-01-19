@@ -29,7 +29,7 @@ public://定义接口
 		API_DEF_ADD_QUERY_PARAMS(UInt32, "type", ZH_WORDS_GETTER("unit.field.type"),1, true);
 		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("unit.field.name"), "z company", false);
 		API_DEF_ADD_QUERY_PARAMS(String, "uscc", ZH_WORDS_GETTER("unit.field.uscc"), "lwwwwe", false);
-		API_DEF_ADD_QUERY_PARAMS(String,"linkMan",ZH_WORDS_GETTER("unit.field.linkMan"),"快乐五香蛋",false);
+		API_DEF_ADD_QUERY_PARAMS(String,"linkMan",ZH_WORDS_GETTER("unit.field.linkMan"),u8"快乐五香蛋",false);
 		API_DEF_ADD_QUERY_PARAMS(String, "linkPhone", ZH_WORDS_GETTER("unit.field.linkPhone"),"189*****",false);
 	}
 

@@ -8,13 +8,13 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 
-//单位列表显示jsonVO实体
+//鍗曚綅鍒楄〃鏄剧ずjsonVO瀹炰綋
 class UnitListJsonVO : public JsonVO <UnitListDTO::Wrapper>
 {
 	DTO_INIT(UnitListJsonVO, JsonVO <UnitListDTO::Wrapper>);
 };
 
-//单位列表表示分页JsonVO实体
+//鍗曚綅鍒楄〃琛ㄧず鍒嗛〉JsonVO瀹炰綋
 class UnitListPageJsonVO :public JsonVO <UnitListPageDTO::Wrapper>
 {
 	DTO_INIT(UnitListPageJsonVO, JsonVO <UnitListPageDTO::Wrapper>);
