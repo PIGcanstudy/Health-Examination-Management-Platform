@@ -1,6 +1,14 @@
 samplebarcodesview:
  file:
   personid: 体检人ID
+  groupitemid: 分组项目ID
+  type: 类型
+  barcode: 条形码内容
+  test_num: 体检编号
+  person_name: 体检人员名字
+  age: 体检人员年龄
+  sex: 体检人员性别
+  group_item_name: 分组项目名称
  get:
   barcode: 样本条码查看
 
