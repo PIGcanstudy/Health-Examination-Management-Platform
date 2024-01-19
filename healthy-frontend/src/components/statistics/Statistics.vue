@@ -11,7 +11,13 @@ import * as echarts from 'echarts'
 import { onMounted } from 'vue'
 
 const props = defineProps({
-    statistics: {
+    // 外围数据
+    outsideData: {
+        type: Array,
+        default: () => []
+    },
+    // 第二层数据
+    insideData: {
         type: Array,
         default: () => []
     }
@@ -51,11 +57,7 @@ onMounted(() => {
                 labelLine: {
                     show: false
                 },
-                data: [
-                    { value: 1548, name: '未登记' },
-                    { value: 775, name: '在体检' },
-                    { value: 679, name: '已总检' }
-                ]
+                data: props.insideData
             },
             {
                 name: '评价完成率',
@@ -67,10 +69,7 @@ onMounted(() => {
                 label: {
                     show: true
                 },
-                data: [
-                    { value: 1048, name: '未评价' },
-                    { value: 335, name: '已评价' },
-                ]
+                data: props.outsideData
             }
         ]
     })
