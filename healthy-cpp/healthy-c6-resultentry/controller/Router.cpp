@@ -19,7 +19,10 @@
 #include "stdafx.h"
 #include "Router.h"
 #include "ApiHelper.h"
-#include "unknownmodule/UnknownModuleController.h"
+#include "unknownmodulebasicinformation/BasicInformationController.h"
+#include "unknownmodulelifehistory/LifeHistoryController.h"
+#include "unknownmodulepastmedicalhistory/PastMedicalHistoryController.h"
+#include "unknownmoduleprofessionalhistory/ProfessionalHistoryController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
@@ -52,11 +55,11 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-	ROUTER_SIMPLE_BIND(UnknownModuleController);
-	// ROUTER_SIMPLE_BIND(BasicInformationController);
-	// ROUTER_SIMPLE_BIND(LifeHistoryContronller);
-	// ROUTER_SIMPLE_BIND(PastMedicalHistoryContronller);
-	// ROUTER_SIMPLE_BIND(ProfessionalHistoryContronller);
+	ROUTER_SIMPLE_BIND(BasicInformationController);
+	ROUTER_SIMPLE_BIND(LifeHistoryController);
+	ROUTER_SIMPLE_BIND(PastMedicalHistoryController);
+	ROUTER_SIMPLE_BIND(ProfessionalHistoryController);
+
 }
 
 #ifdef HTTP_SERVER_DEMO
