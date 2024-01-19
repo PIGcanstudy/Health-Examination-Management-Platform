@@ -33,11 +33,11 @@ class PeopleListDTO : public oatpp::DTO
 	// 唯一编号
 	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("Exalanding.field.id"));
 	// 姓名
-	API_DTO_FIELD_DEFAULT(String, person_name, ZH_WORDS_GETTER("Exalanding.field.name"));
+	API_DTO_FIELD_DEFAULT(String, person_name, ZH_WORDS_GETTER("Exalanding.field.person_name"));
 	// 性别
-	API_DTO_FIELD_DEFAULT(String, sex, ZH_WORDS_GETTER("Exalanding.field.physical"));
+	API_DTO_FIELD_DEFAULT(String, sex, ZH_WORDS_GETTER("Exalanding.field.sex"));
 	// 年龄
-    API_DTO_FIELD_DEFAULT(String, age, ZH_WORDS_GETTER("Exalanding.field.age"));
+    API_DTO_FIELD_DEFAULT(Int32, age, ZH_WORDS_GETTER("Exalanding.field.age"));
 	// 检测类型
 	API_DTO_FIELD_DEFAULT(String, jc_type, ZH_WORDS_GETTER("Exalanding.field.jc_type"));
 	// 是否零星体检

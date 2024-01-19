@@ -31,12 +31,8 @@
 class PeopleListQuery : public PageQuery
 {
 	DTO_INIT(PeopleListQuery, PageQuery);
-	//当前页码
-	API_DTO_FIELD_DEFAULT(UInt32, pageNumber, ZH_WORDS_GETTER("Exalanding.field.pageNumber"));
-	//总页数
-	API_DTO_FIELD_DEFAULT(UInt32, pageSize, ZH_WORDS_GETTER("Exalanding.field.pageSize"));
-	//isPass
-	API_DTO_FIELD_DEFAULT(UInt32, isPass, ZH_WORDS_GETTER("Exalanding.field.isPass"));
+	//人员姓名
+	API_DTO_FIELD_DEFAULT(String, personName, ZH_WORDS_GETTER("Exalanding.field.personName"));
 	//体检类型
 	API_DTO_FIELD_DEFAULT(String, physical, ZH_WORDS_GETTER("Exalanding.field.physical"));
 

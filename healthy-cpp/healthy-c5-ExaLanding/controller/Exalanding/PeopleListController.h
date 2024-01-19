@@ -19,7 +19,7 @@
 */
 #ifndef _PEOPLELISTCONTROLLER_H_
 #define _PEOPLELISTCONTROLLER_H_
-
+#include "oatpp-swagger/Types.hpp"
 #include "domain/vo/BaseJsonVO.h"
 #include "../../domain/vo/Exalanding/PeopleListVO.h"
 #include "../../domain/query/Exalanding/PeopleListQuery.h"
@@ -49,14 +49,10 @@ public:
 		// 定义分页查询参数描述
 		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
-		//当前页码
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "pageNumber", ZH_WORDS_GETTER("Exalanding.field.pageNumber"), 1, true);
-		//总页数
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "pageSize", ZH_WORDS_GETTER("Exalanding.field.pageSize"), 1, true);
-		//isPass
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "isPass", ZH_WORDS_GETTER("Exalanding.field.isPass"), 1, true);
+		//personName
+		API_DEF_ADD_QUERY_PARAMS(String, "personName", ZH_WORDS_GETTER("Exalanding.field.personName"), u8"王五", true);
 		//体检类型
-		API_DEF_ADD_QUERY_PARAMS(String, "physical", ZH_WORDS_GETTER("Exalanding.field.physical"), "li ming", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "physical", ZH_WORDS_GETTER("Exalanding.field.physical"), u8"职工体检", true);
 	}
 	// 3.2 定义分页查询体检人员名称列表接口
 	ENDPOINT(API_M_GET, "/Exalanding/query-peoplelist", queryPeopleList, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME)
