@@ -11,18 +11,11 @@
 class SaveResDTO : public oatpp::DTO
 {
 	DTO_INIT(SaveResDTO, DTO);
-	// 唯一编号
-	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("save.filed.id"));
+
+
+	// 公共部分
 	// 体检人id
 	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("save.filed.personId"));
-	// 分组项目id
-	API_DTO_FIELD_DEFAULT(String, groupItemId, ZH_WORDS_GETTER("save.filed.groupItemId"));
-	// 分组项目名称
-	API_DTO_FIELD_DEFAULT(String, groupItemName, ZH_WORDS_GETTER("save.filed.groupItemName"));
-	// 诊断提醒
-	API_DTO_FIELD_DEFAULT(String, diagnoseTip, ZH_WORDS_GETTER("save.filed.diagnoseTip"));
-	// 诊断小结
-	API_DTO_FIELD_DEFAULT(String, diagnoseSum, ZH_WORDS_GETTER("save.filed.diagnoseSum"));
 	// 科室id
 	API_DTO_FIELD_DEFAULT(String, officeId, ZH_WORDS_GETTER("save.filed.officeId"));
 	// 科室名称
@@ -31,10 +24,46 @@ class SaveResDTO : public oatpp::DTO
 	API_DTO_FIELD_DEFAULT(String, checkDoc, ZH_WORDS_GETTER("save.filed.checkDoc"));
 	// 检查日期
 	API_DTO_FIELD_DEFAULT(String, checkDate, ZH_WORDS_GETTER("save.filed.checkDate"));
-	// 是否检查
-	API_DTO_FIELD_DEFAULT(String, isCheck, ZH_WORDS_GETTER("save.filed.isCheck"));
 	// del flag
-	API_DTO_FIELD_DEFAULT(String, delFlag, ZH_WORDS_GETTER("save.filed.delFlag"));
+	API_DTO_FIELD_DEFAULT(Int32, delFlag, ZH_WORDS_GETTER("save.filed.delFlag"));
+	// 分组项目id
+	API_DTO_FIELD_DEFAULT(String, groupItemId, ZH_WORDS_GETTER("save.filed.groupItemId"));
+	// 分组项目名称
+	API_DTO_FIELD_DEFAULT(String, groupItemName, ZH_WORDS_GETTER("save.filed.groupItemName"));
+	// 诊断小结
+	API_DTO_FIELD_DEFAULT(String, diagnoseSum, ZH_WORDS_GETTER("save.filed.diagnoseSum"));
+	// 是否复查(0否1是）
+	API_DTO_FIELD_DEFAULT(Int32, isCheck, ZH_WORDS_GETTER("save.filed.isCheck"));
+
+
+
+	// depart res 部分
+	// 诊断提醒
+	API_DTO_FIELD_DEFAULT(String, diagnoseTip, ZH_WORDS_GETTER("save.filed.diagnoseTip"));
+	
+	
+
+
+	// item depart res 部分
+
+	// 关联的基础项目id
+	API_DTO_FIELD_DEFAULT(String, orderGroupItemProjectId, ZH_WORDS_GETTER("save.filed.orderGroupItemProjectId"));
+	// 关联的基础项目名称
+	API_DTO_FIELD_DEFAULT(String, orderGroupItemProjectName, ZH_WORDS_GETTER("save.filed.orderGroupItemProjectName"));
+	// 体检结果
+	API_DTO_FIELD_DEFAULT(String, result, ZH_WORDS_GETTER("save.filed.result"));
+	// 计量单位代码
+	API_DTO_FIELD_DEFAULT(String, unitCode, ZH_WORDS_GETTER("save.filed.unitCode"));
+	// 计量单位名称
+	API_DTO_FIELD_DEFAULT(String, unitName, ZH_WORDS_GETTER("save.filed.unitName"));
+	// 是否忽略异常（1-否，2-是）
+	API_DTO_FIELD(Int32, ignoreStatus, ZH_WORDS_GETTER("save.filed.ignoreStatus"), false, 1);
+	// 危急程度
+	API_DTO_FIELD(String, crisisDegree, ZH_WORDS_GETTER("save.filed.crisisDegree"), false, u8"正常");
+	// 阳性
+	API_DTO_FIELD(Int32, postive, ZH_WORDS_GETTER("save.filed.postive"), false, 0);
+
+
 
 };
 
