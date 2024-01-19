@@ -31,7 +31,7 @@
 class ProfessionalHistoryQuery : public PageQuery
 {
 	// 定义初始化
-	DTO_INIT(ProfessionalHistoryQuery, DTO);
+	DTO_INIT(ProfessionalHistoryQuery, PageQuery);
 	// 人员id
 	API_DTO_FIELD_DEFAULT(String, person_id, ZH_WORDS_GETTER("unknownmoduleprofessionalhistory.query.person_id"));
 };

@@ -54,7 +54,7 @@ unknownmodulepastmedicalhistory:
   
 unknownmoduleprofessionalhistory:
  controller:
-  tiile: 职业史查询接口
+  tiile: 职业史查询
   description: 人员id
  query:
   person_id: 人员id

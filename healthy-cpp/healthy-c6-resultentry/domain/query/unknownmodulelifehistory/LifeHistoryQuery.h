@@ -31,7 +31,7 @@
 class LifeHistoryQuery : public PageQuery
 {
 	// 定义初始化
-	DTO_INIT(LifeHistoryQuery, DTO);
+	DTO_INIT(LifeHistoryQuery, PageQuery);
 	// 人员id
 	API_DTO_FIELD_DEFAULT(String, person_id, ZH_WORDS_GETTER("unknownmodulelifehistory.query.person_id"));
 };
