@@ -39,26 +39,32 @@
 
 /**
  * 解析启动参数
+
  * 注意：
+
  * 参数中数据需要满足一定的格式，如：sp=8090、sn=feign-cpp-sample
+
  * 前缀与真实值之间使用=分隔
  */
-bool getStartArg(int argc, char* argv[]) {
+    bool getStartArg(int argc, char* argv[]) {
 	// 服务器端口
 	std::string serverPort = "8091";
 	// 数据库连接信息
 	std::string dbUsername = "root";
+    <<<<<<< HEAD
 	std::string dbPassword = "123456";
 	std::string dbName = "test";
 	std::string dbHost = "127.0.0.1";
-	int dbPort = 3306;
-	int dbMax = 5;
+	
+
+?       int dbPort = 3306;
+int dbMax = 5;
 #ifdef LINUX
-	// Nacos配置参数
-	std::string nacosAddr = "192.168.220.128:8848";
-	std::string nacosNs = "4833404f-4b82-462e-889a-3c508160c6b4";
-	std::string serviceName = "";
-	std::string regIp = "";
+// Nacos配置参数
+std::string nacosAddr = "192.168.220.128:8848";
+std::string nacosNs = "4833404f-4b82-462e-889a-3c508160c6b4";
+std::string serviceName = "";
+std::string regIp = "";
 #endif
 
 	// 开始解析
@@ -74,7 +80,7 @@ bool getStartArg(int argc, char* argv[]) {
 			cout << "arg: " << argv[currIndex] << ", format error." << endl;
 			exit(1);
 		}
-
+	
 		// 根据参数前缀对不同属性赋值
 		std::string prefix = args[0];
 		std::string val = args[1];
