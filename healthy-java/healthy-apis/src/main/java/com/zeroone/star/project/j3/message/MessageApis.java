@@ -23,7 +23,7 @@ public interface MessageApis {
      * @param: [id]
      * @return: com.zeroone.star.project.vo.JsonVO<java.lang.Boolean>
      **/
-    JsonVO<Boolean> deleteByIds(ArrayList<Long> ids);
+    JsonVO<Boolean> deleteByIds(ArrayList<String> ids);
 
     /**
      * @description:获取消息详情页。

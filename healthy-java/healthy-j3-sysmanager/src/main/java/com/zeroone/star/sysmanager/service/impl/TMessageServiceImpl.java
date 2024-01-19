@@ -1,6 +1,7 @@
 package com.zeroone.star.sysmanager.service.impl;
 
 
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.dto.PageDTO;
@@ -44,20 +45,27 @@ public class TMessageServiceImpl extends ServiceImpl<MessageMapper, Message> imp
 
         //从数据库读取数据：
         //判断是否有条件
-        if (detailDTO.getUserId() != null) {
+/*        if (detailDTO.getUserId() != null) {*/
              //有条件，条件查询
             //TODO:我们的消息表中，没有userId这个字段，需要将当前页面组装成一个临时表 ，在临时表里面检索条件
             /*LambdaQueryWrapper<MessageDetailDTO> wrapper = new LambdaQueryWrapper<>();
             wrapper.like(MessageDetailDTO::getUserId,detailDTO.getUserId());*/
-            List<MessageDetailDTO> message = messageMapper.queryMessageDetail(detailDTO);
+        LambdaQueryWrapper<Message> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Message::getId,detailDTO.getId());
+        List<Message> message = messageMapper.selectList(wrapper);
 
             //将查询到的数据进行分页
             PageDTO<MessageDetailDTO> page = PageDTO.create(new Page<>(detailDTO.getPageIndex(), detailDTO.getPageSize()), MessageDetailDTO.class);
-            page.setRows(message);
+        List<MessageDetailDTO> messageDetailDTOS = BeanUtil.copyToList(message, MessageDetailDTO.class);
+        page.setRows(messageDetailDTOS);
+
             return page;
-        }else {
+       /* }else {
+            //没有条件，分页
             PageDTO<MessageDetailDTO> page = PageDTO.create(new Page<>(detailDTO.getPageIndex(), detailDTO.getPageSize()), MessageDetailDTO.class);
+            //根据消息Id查询数据
+
             return page;
-        }
+        }*/
     }
 }
