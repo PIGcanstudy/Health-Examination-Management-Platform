@@ -1,188 +1,114 @@
 <template>
-  <div class="form">
-    <div class="container" style="display: flex; justify-content: space-between" v-if="topIsVisible">
-      <!-- 顶部搜索框 -->
-      <div class="top">
-        <el-form ref="searchFormRef">
-          <div class="form-item" v-for="(item, index) in formItems" :key="index" style="display: inline-block">
-            <label :for="item.id" :style="{ width: '150px', fontWeight: 700 }">{{ item.label }}</label>
-            <el-input v-model="formValues[item.model]" :id="item.id" :placeholder="item.placeholder" :style="{ marginLeft: '10px', width: '150px' }" />
-          </div>
+  <div class="base_data_list">
+    <el-card class="box-card">
+      <template #header>
+        <!-- form表单 -->
+        <el-form v-if="props?.useForm" :model="formData" inline>
+          <slot name="form"></slot>
         </el-form>
+      </template>
+      <div class="main">
+        <!-- table表格 -->
+        <el-table :data="props?.tableData" border>
+          <!-- 多选列 -->
+          <el-table-column type="selection"></el-table-column>
+          <!-- 表格内容 -->
+          <el-table-column v-for="item in props.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label" />
+          <!-- 固定列 -->
+          <el-table-column fixed="right" label="操作" v-if="props.useFixed">
+            <template #default="{ row }">
+              <el-button link type="primary" @click="props.handleEdit(row)">编辑</el-button>
+              <el-button link type="primary" @click="props.handleDelete(row)">删除</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+        <!-- 分页 -->
+        <template v-if="props?.usePagination">
+          <el-pagination
+            v-model:current-page="paginationData.currentPage"
+            v-model:page-size="paginationData.pageSize"
+            :page-sizes="props.pageSizes"
+            layout="prev, pager, next, jumper, ->"
+            :total="props.total"
+            @current-change="handleCurrentChange"
+            style="margin-top: 30px; justify-content: flex-end"
+          />
+        </template>
       </div>
-
-      <!-- 按钮区域 -->
-      <el-row type="flex" justify="end">
-        <el-button type="primary">搜索</el-button>
-        <el-button type="info" @click="resetForm">重置</el-button>
-      </el-row>
-    </div>
-
-    <!-- 功能选项栏 -->
-    <div class="option" style="display: flex">
-      <el-button type="primary">新增</el-button>
-      <!-- <el-button>更多操作</el-button> -->
-      <div class="flex flex-wrap items-center">
-        <el-dropdown>
-          <el-button>更多操作</el-button>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item>刷新</el-dropdown-item>
-              <el-dropdown-item>批量删除</el-dropdown-item>
-              <el-dropdown-item>导出本页数据</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-      </div>
-      <el-button @click="removeTop">关闭搜索</el-button>
-      <el-button @click="removeStyle">关闭提示</el-button>
-    </div>
-
-    <div class="style" v-if="styleIsVisible">
-      <span class="message">
-        已选择
-        <span class="count">0</span>
-        项
-        <a class="clear" @click="clearSelection">清空</a>
-      </span>
-    </div>
-
-    <!-- 表格 -->
-    <div class="table" style="display: flex">
-      <el-table ref="tableRef" :data="tableData" style="width: 100%" border selection-change="handleSelectionChange">
-        <el-table-column type="selection"></el-table-column>
-        <el-table-column v-for="(item, index) in tableTitle" :key="index" :prop="item.prop" :label="item.lable" :width="item.width" :align="item.align"></el-table-column>
-        <el-table-column fixed="right" label="操作" width="120">
-          <template #default>
-            <el-button link type="primary" size="small">查看</el-button>
-            <el-button link type="primary" size="small">更多操作</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-    </div>
+    </el-card>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
-
-const searchFormRef = ref(null)
-// 创建一个响应式对象来存储表单值
-const formValues = reactive({
-  unitName: '',
-  creditCode: '',
-  contactPerson: '',
-  contactPhone: ''
+import { watch, ref, defineEmits } from 'vue'
+const row = ref([])
+const props = defineProps({
+  // 是否使用Form表单
+  useForm: Boolean,
+  // form表单数据
+  formData: {
+    type: Object,
+    require: true
+  },
+  // 表格数据
+  tableData: {
+    type: Array,
+    require: true
+  },
+  // 表格列属性
+  tableColumnAttribute: {
+    type: Array,
+    require: true
+  },
+  // 是否使用固定列
+  useFixed: {
+    type: Boolean,
+    default: true
+  },
+  // 表格每页的数据容量
+  pageSizes: {
+    type: Array,
+    default: () => {
+      return [5, 10, 15, 20]
+    }
+  },
+  // 表格的数据数量
+  total: {
+    type: Number,
+    require: true
+  },
+  // 是否使用分页器
+  usePagination: {
+    type: Boolean,
+    default: true
+  },
+  // 编辑方法
+  handleEdit: Function,
+  handleDelete: Function
 })
-
-// 实现重置功能
-function resetForm() {
-  // 清空表单中的各个字段值
-  for (const key in formValues) {
-    formValues[key] = ''
-  }
-}
-
-// 实现关闭搜索
-const topIsVisible = ref(true)
-function removeTop() {
-  topIsVisible.value = !topIsVisible.value
-}
-// 实现关闭提示
-const styleIsVisible = ref(true)
-function removeStyle() {
-  styleIsVisible.value = !styleIsVisible.value
-}
-
-// 顶部搜索框Title
-const formItems = [
-  { model: 'unitName', id: 'unitName', label: '单位名称', placeholder: '请输入' },
-  { model: 'creditCode', id: 'creditCode', label: '信用代码', placeholder: '请输入' },
-  { model: 'contactPerson', id: 'contactPerson', label: '联系人', placeholder: '请输入' },
-  { model: 'contactPhone', id: 'contactPhone', label: '联系电话', placeholder: '请输入' }
-]
-
-// 表格Title
-const tableTitle = [
-  { prop: 'name', lable: '单位名称', width: '160', align: 'center' },
-  { prop: 'credit', lable: '信用代码', width: '120', align: 'center' },
-  { prop: 'examination', lable: '体检类型', width: '120', align: 'center' },
-  { prop: 'address', lable: '所属地区', width: '120', align: 'center' },
-  { prop: 'category', lable: '行业类别', width: '120', align: 'center' },
-  { prop: 'etype', lable: '经济类型', width: '120', align: 'center' },
-  { prop: 'scale', lable: '企业规模', width: '120', align: 'center' },
-  { prop: 'contact', lable: '联系人', width: '120', align: 'center' },
-  { prop: 'phone', lable: '联系电话', width: '120', align: 'center' }
-]
-
-// 表格数据
-const tableData = [
-  {
-    name: '乐山市峨边盛和矿业',
-    credit: '--',
-    examination: '健康体检',
-    address: '--',
-    category: '铁矿采选*',
-    etype: '国有企业',
-    scale: '--',
-    contact: '--',
-    phone: '--'
+const emits = defineEmits(['updateTableData', 'update:modelValue'])
+// 实现 form表单v-model 逻辑
+watch(
+  () => props.formData,
+  (newVal) => {
+    emits('update:modelValue', newVal)
   },
-  {
-    name: '习水宏旭纸箱有限公司',
-    credit: '--',
-    examination: '健康体检',
-    address: '--',
-    category: '--',
-    etype: '--',
-    scale: '--',
-    contact: '--',
-    phone: '--'
-  },
-  {
-    name: '四川峨边三丰冶金材料',
-    credit: '--',
-    examination: '健康体检',
-    address: '--',
-    category: '--',
-    etype: '国有企业',
-    scale: '--',
-    contact: '--',
-    phone: '--'
-  }
-]
+  { deep: true }
+)
+// 分页
+const paginationData = ref({
+  currentPage: 1,
+  pageSize: props.pageSizes ? props.pageSizes[0] : 5
+})
+const handleCurrentChange = (page) => {
+  console.log('页码变化了' + page)
+  paginationData.value.currentPage = page
+  emits('updateTableData', paginationData.value.pageSize, page)
+}
+defineExpose({
+  // 暴露出被选行
+  row
+})
 </script>
 
-<style lang="scss" scoped>
-.container {
-  display: flex;
-  justify-content: space-between;
-  height: 60px;
-  border-bottom: 2px dashed rgb(224, 224, 238);
-}
-
-.form-item {
-  margin-left: 5px;
-}
-
-.option {
-  margin-top: 20px;
-
-  .flex {
-    margin: 0 10px;
-  }
-}
-
-.style {
-  height: 33px;
-  margin-top: 20px;
-  background-color: rgb(240, 250, 255);
-  line-height: 33px;
-  border: 1px solid rgb(171, 220, 255);
-}
-
-.table {
-  margin-top: 20px;
-  text-align: center;
-}
-</style>
+<style lang="scss" scoped></style>
