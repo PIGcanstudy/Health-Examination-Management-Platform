@@ -29,8 +29,12 @@ public class MessageController implements MessageApis {
 
     @DeleteMapping("/deleteByIds")
     @Override
-    public JsonVO<Boolean> deleteByIds(@RequestParam ArrayList<Long> ids) {
-        return null;
+    public JsonVO<Boolean> deleteByIds(@RequestParam ArrayList<String> ids) {
+        boolean success = messageService.removeByIds(ids);
+        if (success) {
+            return JsonVO.success(success);
+        }
+        return JsonVO.fail(success);
     }
 
     @ApiOperation("获取消息详情页列表")

@@ -27,18 +27,17 @@ public class MessageDetailDTO extends PageQuery {
 请求方法:
 GET*/
     @ApiModelProperty(value = "消息id",required = true)
-    private Long id;
+    private String id;
     @NotBlank(message = "用户id不为空")
-    @ApiModelProperty(value = "用户id",required = true)
+    @ApiModelProperty(value = "用户id")
     private Long userId;
     @NotBlank(message = "发送用户不为空")
-    @ApiModelProperty(value = "发送用户",required = true)
+    @ApiModelProperty(value = "发送用户")
     private String createBy;
     @NotBlank(message = "创建时间不为空")
-    @ApiModelProperty(value = "创建时间",required = true)
+    @ApiModelProperty(value = "创建时间")
     private Date createTime;
-    @NotBlank(message = "更新时间不为空")
-    @ApiModelProperty(value = "更新时间",required = true)
+    @ApiModelProperty(value = "更新时间")
     private Date updateTime;
     @ApiModelProperty(value = "逻辑删除字段（状态）",example = "0",required = true)
     private Integer delFlag;
