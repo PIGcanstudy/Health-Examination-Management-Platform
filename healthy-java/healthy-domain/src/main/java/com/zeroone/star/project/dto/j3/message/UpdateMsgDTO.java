@@ -7,16 +7,9 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
-/**
- * @version 1.0
- * @Author 卢守征
- * @Date 2024/1/19 16:50
- * @注释
- */
-
 @Data
 @ApiModel("修改信息DTO")
-public class UpdateMsgDTO implements Serializable {
+public class EditMessageDTO implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @NotBlank(message = "id不能为空")
@@ -27,10 +20,6 @@ public class UpdateMsgDTO implements Serializable {
     @ApiModelProperty(value = "目前用户id")
     private String userID;
 
-    @NotBlank(message = "消息类型不能为空")
-    @ApiModelProperty(value = "消息类型")
-    private String type;
-
     @NotBlank(message = "标题不能为空")
     @ApiModelProperty(value = "标题")
     private String title;
@@ -39,6 +28,11 @@ public class UpdateMsgDTO implements Serializable {
     @ApiModelProperty(value = "内容")
     private String content;
 
+    @NotBlank(message = "消息类型不能为空")
+    @ApiModelProperty(value = "消息类型")
+    private String type;
+
     @ApiModelProperty(value = "新创建账号也推送")
     private Boolean createSend;
+
 }

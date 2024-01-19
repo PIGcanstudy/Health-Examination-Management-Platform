@@ -13,24 +13,10 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
-/**
- * @version 1.0
- * @Author 卢守征
- * @Date 2024/1/19 16:49
- * @注释
- */
-
 @Data
 @ApiModel("发送信息DTO")
-public class SendMsgDTO implements Serializable {
+public class SendMessageDTO implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "唯一标识", example = "1")
-    private String id;
-
-    @NotBlank(message = "消息类型不能为空")
-    @ApiModelProperty(value = "消息类型")
-    private String type;
 
     @NotBlank(message = "标题不能为空")
     @ApiModelProperty(value = "标题")
@@ -40,11 +26,15 @@ public class SendMsgDTO implements Serializable {
     @ApiModelProperty(value = "内容")
     private String content;
 
+    @NotBlank(message = "消息类型不能为空")
+    @ApiModelProperty(value = "消息类型")
+    private String type;
+
     @ApiModelProperty(value = "新创建账号也推送")
     private Boolean createSend;
 
-    @Min(value = 0, message = "全体用户")
-    @Max(value = 1, message = "指定用户")
+    @Min(value = 0, message = "发送范围为0-1")
+    @Max(value = 1, message = "发送范围为0-1")
     @TableField(exist = false)
     @ApiModelProperty(value = "发送范围")
     private Integer range;
@@ -52,4 +42,13 @@ public class SendMsgDTO implements Serializable {
     @TableField(exist = false)
     @ApiModelProperty(value = "发送指定用户id")
     private String[] userIds;
+
+    @ApiModelProperty(value = "目前用户id")
+    @TableField(exist = false)
+    private Integer userID;
+
+    @Id
+    @TableId(type = IdType.AUTO)
+    @ApiModelProperty(value = "唯一标识")
+    private String id;
 }

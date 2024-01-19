@@ -2,10 +2,8 @@ package com.zeroone.star.sysmanager.controller;
 
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.message.MessageDTO;
-import com.zeroone.star.project.dto.j3.message.MsgListDTO;
 import com.zeroone.star.project.dto.j3.message.SearchMessageDetailDTO;
 import com.zeroone.star.project.j3.message.MessageApis;
-import com.zeroone.star.project.query.j3.message.MsgListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.service.ITMessageService;
 import io.swagger.annotations.Api;
@@ -42,13 +40,6 @@ public class MessageController implements MessageApis {
     public JsonVO<PageDTO<SearchMessageDetailDTO>> queryMessageDetail(PageDTO<MessageDTO> detailDTO) {
         PageDTO<SearchMessageDetailDTO> page = messageService.queryMessageDetail(detailDTO);
         return JsonVO.success(page);
-    }
-
-    @ApiOperation("获取消息列表")
-    @GetMapping("/queryMsgList")
-    @Override
-    public JsonVO<PageDTO<MsgListDTO>> queryMessageList(MsgListQuery msgListQuery) {
-        return null;
     }
 
 }
