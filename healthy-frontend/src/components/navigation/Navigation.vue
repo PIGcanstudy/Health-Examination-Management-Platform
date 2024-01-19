@@ -124,11 +124,12 @@
             <el-text  size="large">数据网报</el-text>
           </div>      
           
-          <div class="line">
-            <img src="../../assets/navigation/row03.png"/>
-          </div> 
+          
           <div class="line01">
             <img src="../../assets/navigation/row01.png"/>
+            <div class="line">
+            <img src="../../assets/navigation/row03.png"/>
+          </div> 
           </div> 
           <div class="row01">
             <img src="../../assets/navigation/row02.png"/>
@@ -144,6 +145,7 @@
 </template>
 
 <script setup>
+  let line01 = 550;
 </script>
 
 <style lang="scss" scoped>
@@ -383,8 +385,9 @@
 }
 //右边直立的直线
 .line{
-  top: -630px;
-  left :-275px ;
+  // position:absolute;
+  top: -522px;
+  left :494px ;
   height:1px;
   width: 40px;
   margin: 0 ;
@@ -393,6 +396,7 @@
 }
 //左边直立的直线
 .line01{
+
   top: -615px;
   left :550px ;
   height:1px;
