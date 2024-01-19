@@ -6,6 +6,9 @@ import com.zeroone.star.project.vo.JsonVO;
 
 import com.zeroone.star.project.dto.PageDTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @description:消息管理Api
  * @author: 坚强少年
@@ -20,7 +23,7 @@ public interface MessageApis {
      * @param: [id]
      * @return: com.zeroone.star.project.vo.JsonVO<java.lang.Boolean>
      **/
-    JsonVO<Boolean> deleteByIds(Long id);
+    JsonVO<Boolean> deleteByIds(ArrayList<Long> ids);
 
     /**
      * @description:获取消息详情页。

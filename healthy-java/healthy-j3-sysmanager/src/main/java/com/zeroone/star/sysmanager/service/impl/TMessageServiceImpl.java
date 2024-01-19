@@ -12,6 +12,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -35,15 +36,28 @@ public class TMessageServiceImpl extends ServiceImpl<MessageMapper, Message> imp
      **/
     @Override
     public PageDTO<MessageDetailDTO> queryMessageDetail(MessageDetailDTO detailDTO) {
-        //分页
-        PageDTO<MessageDetailDTO> page = PageDTO.create(new Page<MessageDetailDTO>(detailDTO.getPageIndex(), detailDTO.getPageSize()));
+        //先去redis缓存中查询
+
+        //查询到直接返回结果(同时校验过期时间)
+
+        //如果过期需要从数据库当中读取数据回写到redis中
+
+        //从数据库读取数据：
         //判断是否有条件
         if (detailDTO.getUserId() != null) {
-            LambdaQueryWrapper<MessageDetailDTO> lambdaQueryWrapper = new LambdaQueryWrapper();
+             //有条件，条件查询
             //TODO:我们的消息表中，没有userId这个字段，需要将当前页面组装成一个临时表 ，在临时表里面检索条件
-            //TODO：我们的用户Id怎么传过来的？根据发送人的姓名去遍历查找用户表得出来的么？
-            lambdaQueryWrapper.like(MessageDetailDTO::getUserId,detailDTO.getUserId());
+            /*LambdaQueryWrapper<MessageDetailDTO> wrapper = new LambdaQueryWrapper<>();
+            wrapper.like(MessageDetailDTO::getUserId,detailDTO.getUserId());*/
+            List<MessageDetailDTO> message = messageMapper.queryMessageDetail(detailDTO);
+
+            //将查询到的数据进行分页
+            PageDTO<MessageDetailDTO> page = PageDTO.create(new Page<>(detailDTO.getPageIndex(), detailDTO.getPageSize()), MessageDetailDTO.class);
+            page.setRows(message);
+            return page;
+        }else {
+            PageDTO<MessageDetailDTO> page = PageDTO.create(new Page<>(detailDTO.getPageIndex(), detailDTO.getPageSize()), MessageDetailDTO.class);
+            return page;
         }
-        return null;
     }
 }
