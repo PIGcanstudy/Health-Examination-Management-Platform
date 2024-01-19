@@ -17,29 +17,29 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _DETAILQUERY_H_
-#define _DETAILQUERY_H_
+#ifndef _USERVO_H_
+#define _USERVO_H_
 
 #include "../../GlobalInclude.h"
-#include "domain/query/PageQuery.h"
+#include "../../dto/evalue/InquiryDetailDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * 获取问诊明细分页查询
+ * 定义一个问诊明细信息显示JsonVO对象
  */
-class InquiryDetailQuery : public PageQuery
+class InquiryDetailJsonVO : public JsonVO<InquiryDetailDTO::Wrapper>
 {
-	// 定义初始化
-	DTO_INIT(InquiryDetailQuery, PageQuery);
-	// 姓名
-	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("inquiry.field.name"));
-	// 体检编号 
-	API_DTO_FIELD_DEFAULT(String, checkId, ZH_WORDS_GETTER("inquiry.field.checkId"));
-	// 单位名称
-	API_DTO_FIELD_DEFAULT(String, unitName, ZH_WORDS_GETTER("inquiry.field.unitName"));
+	DTO_INIT(InquiryDetailJsonVO, JsonVO<InquiryDetailDTO::Wrapper>);
+};
 
+/**
+ * 定义一个问诊明细信息分页显示JsonVO对象
+ */
+class InquiryDetailPageJsonVO : public JsonVO<InquiryDetailPageDTO::Wrapper>
+{
+	DTO_INIT(InquiryDetailPageJsonVO, JsonVO<InquiryDetailPageDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_USERQUERY_H_
+#endif // _USERVO_H_

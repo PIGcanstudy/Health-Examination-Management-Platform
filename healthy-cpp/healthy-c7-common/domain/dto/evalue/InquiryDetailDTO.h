@@ -32,15 +32,15 @@ class InquiryDetailDTO : public oatpp::DTO
 {
 	DTO_INIT(InquiryDetailDTO, DTO);
 	// 工龄年段
-	API_DTO_FIELD_DEFAULT(Int32, workYear, ZH_WORDS_GETTER("inquiry.field.workYear"));
+	API_DTO_FIELD_DEFAULT(UInt32, workYear, ZH_WORDS_GETTER("inquiry.field.workYear"));
 	// 工龄月段
-	API_DTO_FIELD_DEFAULT(Int32, workMonth, ZH_WORDS_GETTER("inquiry.field.workMonth"));
+	API_DTO_FIELD_DEFAULT(UInt32, workMonth, ZH_WORDS_GETTER("inquiry.field.workMonth"));
 	// 结婚状况
 	API_DTO_FIELD_DEFAULT(String, maritalStatus, ZH_WORDS_GETTER("inquiry.field.maritalStatus"));
 	//按需年龄
-	API_DTO_FIELD_DEFAULT(Int32, needYear, ZH_WORDS_GETTER("inquiry.field.needYear"));
+	API_DTO_FIELD_DEFAULT(UInt32, needYear, ZH_WORDS_GETTER("inquiry.field.needYear"));
 	//按需月龄
-	API_DTO_FIELD_DEFAULT(Int32, needmonth, ZH_WORDS_GETTER("inquiry.field.needmonth"));
+	API_DTO_FIELD_DEFAULT(UInt32, needmonth, ZH_WORDS_GETTER("inquiry.field.needMonth"));
 
 	//非必须
 	

@@ -1,21 +1,14 @@
 inquiry:
+ get:
+  summary: è·å–é—®è¯Šæ˜ç»†
  field:
-  name: Ìå¼ìÈËÔ±ĞÕÃû
-  chekcId: Ìå¼ì±àºÅ
-  unitName : µ¥Î»Ãû³Æ
-  workYear: ¹¤ÁäÄê¶Î
-  workMonth: ¹¤ÁäÔÂ¶Î
-  maritalStatus: ½á»é×´¿ö
-  needYear: °´ĞèÄêÁä
-  needmonth: °´ĞèÔÂÁä
-  culture: ÎÄ»¯³Ì¶È
-  homeAddress: ¼ÒÍ¥µØÖ·
-  jobName: ¹¤ÖÖÃû³Æ
-  jobOrderName: ¹¤ÖÖÆäËûÃû³Æ
-  department: ËùÊô²¿ÃÅ
-
-
-
-
-
-
+  workYear: å·¥é¾„å¹´æ®µ
+  workMonth: å·¥é¾„æœˆæ®µ
+  maritalStatus: ç»“å©šçŠ¶å†µ
+  needYear: æŒ‰éœ€å¹´é¾„
+  needMonth: æŒ‰éœ€æœˆé¾„
+  culture: æ–‡åŒ–ç¨‹åº¦
+  homeAddress: å®¶åº­åœ°å€
+  jobName: å·¥ç§åç§°
+  jobOrderName: å·¥ç§å…¶ä»–åç§°
+  department: æ‰€å±éƒ¨é—¨
