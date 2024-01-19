@@ -2,7 +2,7 @@
   <div class="form">
     <el-form :inline="true">
       <el-form-item v-for="(item, index) of formItem" :key="index" :label="item.label">
-        <el-input v-model="item.input" placeholder="请输入" clearable />
+        <el-input v-model="item.input" placeholder="请输入" clearable @change="onSearch"/>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" :icon="Search" @click="onSearch">搜索</el-button>
