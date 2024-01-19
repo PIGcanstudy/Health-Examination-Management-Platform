@@ -7,14 +7,13 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-@ApiModel("分页查询的请求体")
+@ApiModel("消息查询对象")
 public class TypeLibraryQuery implements Serializable {
-    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "类型名称")
     private String typeName;
 
-    @ApiModelProperty(value = "类型编码")
+    @ApiModelProperty(value = "消息编码")
     private String typeCode;
 
     @ApiModelProperty(value = "起始日期")
