@@ -25,6 +25,9 @@
 #include "ServerInfo.h"
 #include "domain/vo/unknownmoduleprofessionalhistory/ProfessionalHistoryVO.h"
 #include "domain/query/unknownmoduleprofessionalhistory/ProfessionalHistoryQuery.h"
+#include "../ApiDeclarativeServicesHelper.h"
+#include "domain/GlobalInclude.h"
+
 
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
@@ -52,12 +55,12 @@ public:
 
 	ENDPOINT(API_M_GET, "/unknownmoduleprofessionalhistory/queryProfessionalHistory", queryProfessionalHistory, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
-		API_HANDLER_QUERY_PARAM(biq, ProfessionalHistoryQuery, params);
+		API_HANDLER_QUERY_PARAM(phq, ProfessionalHistoryQuery, params);
 		// 呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execQueryProfessionalHistory(biq));
+		API_HANDLER_RESP_VO(execQueryProfessionalHistory(phq));
 	}
 private: // 定义接口执行函数
-	ProfessionalHistoryPageJsonVO::Wrapper execQueryProfessionalHistory(const ProfessionalHistoryQuery::Wrapper& query);
+	ProfessionalHistoryPageJsonVO::Wrapper execQueryProfessionalHistory(const ProfessionalHistoryQuery::Wrapper& phq);
 };
 
 #include OATPP_CODEGEN_END(ApiController)

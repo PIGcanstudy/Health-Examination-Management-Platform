@@ -21,11 +21,11 @@
 #include "../../service/unknownmodulepastmedicalhistory/PastMedicalHistoryService.h"
 
 
-PastMedicalHistoryPageJsonVO::Wrapper PastMedicalHistoryController::execQueryPastMedicalHistory(const PastMedicalHistoryQuery::Wrapper& query) {
+PastMedicalHistoryPageJsonVO::Wrapper PastMedicalHistoryController::execQueryPastMedicalHistory(const PastMedicalHistoryQuery::Wrapper& phq) {
 	// 定义一个Service
 	PastMedicalHistoryService service;
 	// 查询数据
-	auto result = service.listAll(query);
+	auto result = service.listAll(phq);
 	// 响应结果
 	auto jvo = PastMedicalHistoryPageJsonVO::createShared();
 	jvo->success(result);

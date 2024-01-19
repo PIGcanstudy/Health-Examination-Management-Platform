@@ -15,7 +15,7 @@ if (query->person_id) { \
 uint64_t ProfessionalHistoryDAO::count(const ProfessionalHistoryQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT COUNT(*) FROM t_interrogation";
+	sql << "SELECT COUNT(*) FROM t_career_history";
 	GROUP_PERSON_TERAM_PARSE(query, sql);
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
@@ -24,7 +24,7 @@ uint64_t ProfessionalHistoryDAO::count(const ProfessionalHistoryQuery::Wrapper& 
 std::list<ProfessionalHistoryDO> ProfessionalHistoryDAO::selectWithPage(const ProfessionalHistoryQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT person_id,job,work_year,work_month,exposure_start_date, education, family_address, marriage_date FROM t_interrogation";
+	sql << "SELECT person_id, start_date, end_date, work_unit, department, work_type_text, hazard_factors_text, protective_measures, contact_time FROM t_career_history";
 	GROUP_PERSON_TERAM_PARSE(query, sql);
 	sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
 	ProfessionalHistoryMapper mapper;

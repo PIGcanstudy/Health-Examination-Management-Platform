@@ -1,6 +1,6 @@
 ﻿unknownmodulebasicinformation:
  controller:
-  title: 基本信息查询接口 
+  title: 基本信息查询
   description: 人员id
  query:
   person_id: 人员id
@@ -16,7 +16,7 @@
 
 unknownmodulelifehistory:
  controller:
-  title: 生活史查询接口
+  title: 生活史查询
   description: 人员id
  query:
   person_id: 人员id
@@ -35,7 +35,7 @@ unknownmodulelifehistory:
 
 unknownmodulepastmedicalhistory:
  controller:
-  title: 既往病史查询接口
+  title: 既往病史查询
   description: 人员id
  query:
   person_id: 人员id

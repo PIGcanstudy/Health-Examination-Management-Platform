@@ -25,6 +25,9 @@
 #include "ServerInfo.h"
 #include "domain/vo/unknownmodulebasicinformation/BasicInformationVO.h"
 #include "domain/query/unknownmodulebasicinformation/BasicInformationQuery.h"
+#include "../ApiDeclarativeServicesHelper.h"
+#include "domain/GlobalInclude.h"
+
 
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
@@ -57,7 +60,7 @@ public:
 		API_HANDLER_RESP_VO(execQueryBasicInformation(biq));
 	}
 private: // 定义接口执行函数
-	BasicInformationPageJsonVO::Wrapper execQueryBasicInformation(const BasicInformationQuery::Wrapper& query);
+	BasicInformationPageJsonVO::Wrapper execQueryBasicInformation(const BasicInformationQuery::Wrapper& biq);
 };
 
 #include OATPP_CODEGEN_END(ApiController)

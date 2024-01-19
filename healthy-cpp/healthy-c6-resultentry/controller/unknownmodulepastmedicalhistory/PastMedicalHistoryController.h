@@ -25,6 +25,9 @@
 #include "ServerInfo.h"
 #include "domain/vo/unknownmodulepastmedicalhistory/PastMedicalHistoryVO.h"
 #include "domain/query/unknownmodulepastmedicalhistory/PastMedicalHistoryQuery.h"
+#include "../ApiDeclarativeServicesHelper.h"
+#include "domain/GlobalInclude.h"
+
 
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
@@ -52,12 +55,12 @@ public:
 
 	ENDPOINT(API_M_GET, "/unknownmodulepastmedicalhistory/queryPastMedicalHistory", queryPastMedicalHistory, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
-		API_HANDLER_QUERY_PARAM(biq, PastMedicalHistoryQuery, params);
+		API_HANDLER_QUERY_PARAM(phq, PastMedicalHistoryQuery, params);
 		// 呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execQueryPastMedicalHistory(biq));
+		API_HANDLER_RESP_VO(execQueryPastMedicalHistory(phq));
 	}
 private: // 定义接口执行函数
-	PastMedicalHistoryPageJsonVO::Wrapper execQueryPastMedicalHistory(const PastMedicalHistoryQuery::Wrapper& query);
+	PastMedicalHistoryPageJsonVO::Wrapper execQueryPastMedicalHistory(const PastMedicalHistoryQuery::Wrapper& phq);
 };
 
 #include OATPP_CODEGEN_END(ApiController)

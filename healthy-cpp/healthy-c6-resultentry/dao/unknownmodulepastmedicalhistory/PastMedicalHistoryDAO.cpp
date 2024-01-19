@@ -24,7 +24,7 @@ uint64_t PastMedicalHistoryDAO::count(const PastMedicalHistoryQuery::Wrapper& qu
 std::list<PastMedicalHistoryDO> PastMedicalHistoryDAO::selectWithPage(const PastMedicalHistoryQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT person_id,job,work_year,work_month,exposure_start_date, education, family_address, marriage_date FROM t_interrogation";
+	sql << "SELECT person_id, abortion, premature, death, abnormal_fetus, menstrual_history, menstrual_info, allergies, allergies_info, past_medical_history, past_medical_history_other_info FROM t_interrogation";
 	GROUP_PERSON_TERAM_PARSE(query, sql);
 	sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
 	PastMedicalHistoryMapper mapper;

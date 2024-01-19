@@ -21,11 +21,11 @@
 #include "../../service/unknownmoduleprofessionalhistory/ProfessionalHistoryService.h"
 
 
-ProfessionalHistoryPageJsonVO::Wrapper ProfessionalHistoryController::execQueryProfessionalHistory(const ProfessionalHistoryQuery::Wrapper& query) {
+ProfessionalHistoryPageJsonVO::Wrapper ProfessionalHistoryController::execQueryProfessionalHistory(const ProfessionalHistoryQuery::Wrapper& phq) {
 	// 定义一个Service
 	ProfessionalHistoryService service;
 	// 查询数据
-	auto result = service.listAll(query);
+	auto result = service.listAll(phq);
 	// 响应结果
 	auto jvo = ProfessionalHistoryPageJsonVO::createShared();
 	jvo->success(result);

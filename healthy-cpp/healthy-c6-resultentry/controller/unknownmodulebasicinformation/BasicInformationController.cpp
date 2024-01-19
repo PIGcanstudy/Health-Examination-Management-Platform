@@ -21,11 +21,11 @@
 #include "../../service/unknownmodulebasicinformation/BasicInformationService.h"
 
 
-BasicInformationPageJsonVO::Wrapper BasicInformationController::execQueryBasicInformation(const BasicInformationQuery::Wrapper& query) {
+BasicInformationPageJsonVO::Wrapper BasicInformationController::execQueryBasicInformation(const BasicInformationQuery::Wrapper& biq) {
 	// 定义一个Service
 	BasicInformationService service;
 	// 查询数据
-	auto result = service.listAll(query);
+	auto result = service.listAll(biq);
 	// 响应结果
 	auto jvo = BasicInformationPageJsonVO::createShared();
 	jvo->success(result);

@@ -24,7 +24,7 @@ uint64_t LifeHistoryDAO::count(const LifeHistoryQuery::Wrapper& query)
 std::list<LifeHistoryDO> LifeHistoryDAO::selectWithPage(const LifeHistoryQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT person_id,job,work_year,work_month,exposure_start_date, education, family_address, marriage_date FROM t_interrogation";
+	sql << "SELECT person_id, existing_children, allergies, smoke_state, package_every_day, smoke_year, drink_state, ml_every_day, drink_year, birthplace_name, family_history FROM t_interrogation";
 	GROUP_PERSON_TERAM_PARSE(query, sql);
 	sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
 	LifeHistoryMapper mapper;

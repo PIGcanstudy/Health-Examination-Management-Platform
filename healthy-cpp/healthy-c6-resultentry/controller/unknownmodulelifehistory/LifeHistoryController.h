@@ -25,6 +25,9 @@
 #include "ServerInfo.h"
 #include "domain/vo/unknownmodulelifehistory/LifeHistoryVO.h"
 #include "domain/query/unknownmodulelifehistory/LifeHistoryQuery.h"
+#include "../ApiDeclarativeServicesHelper.h"
+#include "domain/GlobalInclude.h"
+
 
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
@@ -52,12 +55,12 @@ public:
 
 	ENDPOINT(API_M_GET, "/unknownmodulelifehistory/queryLifeHistory", queryLifeHistory, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
-		API_HANDLER_QUERY_PARAM(biq, LifeHistoryQuery, params);
+		API_HANDLER_QUERY_PARAM(lhq, LifeHistoryQuery, params);
 		// 呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execQueryLifeHistory(biq));
+		API_HANDLER_RESP_VO(execQueryLifeHistory(lhq));
 	}
 private: // 定义接口执行函数
-	LifeHistoryPageJsonVO::Wrapper execQueryLifeHistory(const LifeHistoryQuery::Wrapper& query);
+	LifeHistoryPageJsonVO::Wrapper execQueryLifeHistory(const LifeHistoryQuery::Wrapper& lhq);
 };
 
 #include OATPP_CODEGEN_END(ApiController)

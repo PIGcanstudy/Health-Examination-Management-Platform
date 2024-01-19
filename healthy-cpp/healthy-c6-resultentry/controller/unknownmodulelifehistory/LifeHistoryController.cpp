@@ -21,11 +21,11 @@
 #include "../../service/unknownmodulelifehistory/LifeHistoryService.h"
 
 
-LifeHistoryPageJsonVO::Wrapper LifeHistoryController::execQueryLifeHistory(const LifeHistoryQuery::Wrapper& query) {
+LifeHistoryPageJsonVO::Wrapper LifeHistoryController::execQueryLifeHistory(const LifeHistoryQuery::Wrapper& lhq) {
 	// 定义一个Service
 	LifeHistoryService service;
 	// 查询数据
-	auto result = service.listAll(query);
+	auto result = service.listAll(lhq);
 	// 响应结果
 	auto jvo = LifeHistoryPageJsonVO::createShared();
 	jvo->success(result);
