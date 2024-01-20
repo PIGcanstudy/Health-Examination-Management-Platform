@@ -1,10 +1,12 @@
-package com.zeroone.star.project.j4.vo;
+package com.zeroone.star.project.j4.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
-import java.util.Date;
-
-public class GetdepartmentVo extends PageVo{
+@Data
+@ApiModel(value = "科室管理分页查询请求参数")
+public class GetSectionOfficetDTO extends PageDTO{
     //编码
     @ApiModelProperty(value = "编码",example = "001",required = true)
     private String sectionCode;
@@ -13,7 +15,7 @@ public class GetdepartmentVo extends PageVo{
     private String sectionName;
     //科室简拼
     @ApiModelProperty(value = "科室简拼",example = "XDT",required = true)
-    private String sectionAlphbet;;
+    private String sectionAlphbet;
     //排序
     @ApiModelProperty(value = "排序",example = "1",required = true)
     private String orderNum;

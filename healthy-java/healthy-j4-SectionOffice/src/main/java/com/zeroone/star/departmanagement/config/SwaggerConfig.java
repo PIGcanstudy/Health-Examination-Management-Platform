@@ -15,6 +15,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 public class SwaggerConfig {
     @Bean
     Docket sampleApis(){
-        return SwaggerCore.defaultDocketBuilder("科室管理模块","com.zeroone.star.departmanagement.controller","departmanagement");
+        return SwaggerCore.defaultDocketBuilder("科室管理模块","com.zeroone.star.departmanagement.controller","SectionOffice");
     }
 }

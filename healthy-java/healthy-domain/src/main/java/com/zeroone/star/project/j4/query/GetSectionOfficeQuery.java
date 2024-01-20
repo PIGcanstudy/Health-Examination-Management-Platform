@@ -7,7 +7,7 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 @Data
 @ApiModel("获取科室信息条件")
-public class GetdepartmentQuery {
+public class GetSectionOfficeQuery {
     /**
      * 当科室编码为空时，调用查询全部科室的方法
      */
