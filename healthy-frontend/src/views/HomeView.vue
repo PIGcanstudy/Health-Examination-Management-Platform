@@ -5,26 +5,14 @@
         <!-- 侧边栏菜单 -->
         <div class="menu-wrap">
           <el-scrollbar max-height="100vh">
-            <el-menu
-              default-active="/home"
-              class="el-menu-vertical-demo"
-              active-text-color="#409EFF"
-              text-color="#fff"
-              background-color="#545c64"
-              unique-opened
-              router
-            >
+            <el-menu default-active="/home" class="el-menu-vertical-demo" active-text-color="#409EFF" text-color="#fff" background-color="#545c64" unique-opened router>
               <el-menu-item index="/home">
                 <el-icon>
                   <icon-menu />
                 </el-icon>
                 <span>首页</span>
               </el-menu-item>
-              <el-sub-menu
-                v-for="item in menus"
-                :key="item.id"
-                :index="item.id + ''"
-              >
+              <el-sub-menu v-for="item in menus" :key="item.id" :index="item.id + ''">
                 <template #title>
                   <el-icon>
                     <component :is="item.icon" />
@@ -32,11 +20,7 @@
                   <span>{{ item.text }}</span>
                 </template>
                 <el-menu-item-group>
-                  <el-menu-item
-                    v-for="i in item.children"
-                    :key="i.id"
-                    :index="i.href"
-                  >
+                  <el-menu-item v-for="i in item.children" :key="i.id" :index="i.href">
                     <el-icon>
                       <component :is="i.icon" />
                     </el-icon>
@@ -61,7 +45,17 @@
     </el-container>
   </div>
 </template>
+<script setup>
+import { ref } from 'vue'
+import { userStore } from '../stores/user'
+const store = userStore()
 
+// 用户信息提示
+const userInfo = ref('欢迎用户：' + (store.getUser === null ? '游客' : store.getUser.username))
+
+// 菜单数据
+const menus = store.getMenus
+</script>
 <style lang="scss" scoped>
 .sec-container {
   height: 100vh;
@@ -99,17 +93,3 @@
   }
 }
 </style>
-
-<script setup>
-import { ref } from 'vue'
-import { userStore } from '../stores/user'
-const store = userStore()
-
-// 用户信息提示
-const userInfo = ref(
-  '欢迎用户：' + (store.getUser === null ? '游客' : store.getUser.username)
-)
-
-// 菜单数据
-const menus = store.getMenus
-</script>
