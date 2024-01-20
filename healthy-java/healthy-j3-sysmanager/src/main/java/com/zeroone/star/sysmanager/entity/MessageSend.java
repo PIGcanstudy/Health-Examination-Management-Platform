@@ -10,7 +10,7 @@ import lombok.Setter;
 
 /**
  * <p>
- * 消息发送
+ * 消息发送实体
  * </p>
  *
  * @author 坚强少年

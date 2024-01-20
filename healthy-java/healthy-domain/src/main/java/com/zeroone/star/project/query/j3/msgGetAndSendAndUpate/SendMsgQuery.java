@@ -1,14 +1,17 @@
-package com.zeroone.star.project.dto.j3.message;
+package com.zeroone.star.project.query.j3.msgGetAndSendAndUpate;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * @version 1.0
@@ -18,26 +21,34 @@ import java.io.Serializable;
  */
 
 @Data
-@ApiModel("发送信息DTO")
-public class SendMsgDTO implements Serializable {
+@ApiModel("发送信息Query")
+public class SendMsgQuery implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "唯一标识", example = "1")
+    @NotBlank(message = "消息id不能为空")
+    @ApiModelProperty(value = "消息id不能为空", example = "1")
     private String id;
 
-    @NotBlank(message = "消息类型不能为空")
+    @NotBlank(message = "创建人不能为空")
+    @ApiModelProperty(value = "创建人不能为空", example = "梅西")
+    private String createBy;
+
+    @NotBlank(message = "创建时间不能为空")
+    @ApiModelProperty(value = "创建时间不能为空", example = "2024-01-17 14:36:12")
+    @TableField(fill = FieldFill.INSERT)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime createTime;
+
     @ApiModelProperty(value = "消息类型")
     private String type;
 
-    @NotBlank(message = "标题不能为空")
     @ApiModelProperty(value = "标题")
     private String title;
 
-    @NotBlank(message = "内容不能为空")
     @ApiModelProperty(value = "内容")
     private String content;
 
-    @ApiModelProperty(value = "新创建账号也推送")
+    @ApiModelProperty(value = "是否发送给新人 0 否 1 是")
     private Boolean createSend;
 
     @Min(value = 0, message = "全体用户")
