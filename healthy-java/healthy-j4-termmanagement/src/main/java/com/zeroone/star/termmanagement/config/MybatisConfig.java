@@ -1,4 +1,4 @@
-package com.zeroone.star.departmanagement.config;
+package com.zeroone.star.termmanagement.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

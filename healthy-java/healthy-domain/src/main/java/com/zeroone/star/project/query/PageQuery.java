@@ -26,4 +26,5 @@ public class PageQuery {
     @Min(value = 1, message = "条数最小值为1")
     @ApiModelProperty(value = "查询条数", example = "10")
     private long pageSize;
+
 }

@@ -1,0 +1,5 @@
+server:
+  port: ${sp.termmentmanagement}
+spring:
+  application:
+    name: ${sn.termmentmanagement}
