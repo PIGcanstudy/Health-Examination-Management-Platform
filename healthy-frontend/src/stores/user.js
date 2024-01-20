@@ -157,44 +157,31 @@ export const userStore = defineStore('user', {
     // 加载用户
     async loadUser() {
       // 发送获取当前用户信息请求
-      let data = await Request.requestForm(
-        Request.GET,
-        '/login/current-user',
-        null
-      )
+      let data = await Request.requestForm(Request.GET, '/login/current-user', null)
       this.user = data.data
     },
     // 加载菜单
     async loadMenus() {
       //TODO[TEST_CODE]:此处写测试数据设定
-      //this.menus = testMenus
+      this.menus = testMenus
 
       // 发送获取菜单请求
-      let data = await Request.requestForm(
-        Request.GET,
-        '/login/get-menus',
-        null
-      )
+      let data = await Request.requestForm(Request.GET, '/login/get-menus', null)
       this.menus = data.data
     },
     // 加载刷新凭证
     loadRefreshToken() {
-      if (!this.refreshToken)
-        this.refreshToken = localStorage.getItem('refreshToken')
+      if (!this.refreshToken) this.refreshToken = localStorage.getItem('refreshToken')
     },
     // 刷新token
     async reloadToken() {
       // 先加载刷新凭证
       this.loadRefreshToken()
       // 发送刷新凭证请求
-      let data = await Request.requestForm(
-        Request.POST,
-        '/login/refresh-token',
-        {
-          refreshToken: this.refreshToken,
-          clientId: import.meta.env.VITE_API_URL
-        }
-      )
+      let data = await Request.requestForm(Request.POST, '/login/refresh-token', {
+        refreshToken: this.refreshToken,
+        clientId: import.meta.env.VITE_API_URL
+      })
       //设置Token相关属性
       this.setToken(data.data)
     },
