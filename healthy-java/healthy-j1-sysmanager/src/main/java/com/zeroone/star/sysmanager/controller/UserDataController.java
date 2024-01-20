@@ -30,7 +30,7 @@ public class UserDataController implements UserDataApis {
     }
 
     @Override
-    @GetMapping("/setUserStatus/{status}")
+    @GetMapping("/set-user-status/{status}")
     @ApiImplicitParam(name = "status",required = true)
     @ApiOperation("设置用户状态")
     public JsonVO setUserStatus(@PathVariable Integer status){
@@ -38,7 +38,7 @@ public class UserDataController implements UserDataApis {
     }
 
     @Override
-    @GetMapping("/queryUserData/{id}")
+    @GetMapping("/query-user-data/{id}")
     @ApiImplicitParam(name = "id",required = true)
     @ApiOperation("获取用户信息")
     public JsonVO<UserDataVO> queryUserData(@PathVariable Long id) {
