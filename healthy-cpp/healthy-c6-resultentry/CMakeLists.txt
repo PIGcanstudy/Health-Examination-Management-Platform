@@ -63,7 +63,7 @@ if(WIN32)
 endif()
 
 # 编译可执行文件
-add_executable (${appName} ${SC_FILES})
+add_executable (${appName} ${SC_FILES} "controller/Person/PersonController.cpp" "controller/Person/GroupPersonController.h" "dao/Person/GroupPersonDAO.cpp" "dao/Person/GroupPersonDAO.h" "dao/Person/GroupPersonMapper.h" "domain/GlobalInclude.h" "domain/do/DoInclude.h" "domain/do/Person/GroupPersonDO.h" "domain/dto/Person/GroupPersonDTO.h" "domain/query/Person/GroupPersonQuery.h" "domain/vo/Person/GroupPersonVO.h" "service/Person/GroupPersonService.cpp" "service/Person/GroupPersonService.h")
 
 # 链接库
 target_link_libraries (${appName} "lib-common" "lib-oatpp" "lib-mysql")
