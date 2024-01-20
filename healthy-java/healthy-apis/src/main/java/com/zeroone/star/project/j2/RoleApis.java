@@ -14,8 +14,8 @@ public interface RoleApis {
 
     /**
      * 查看角色菜单权限
-     * @param roleDTO
+     * @param id
      * @return
      */
-    JsonVO<RoleDTO> selectRoleMenu(RoleDTO roleDTO);
+    JsonVO<RoleDTO> queryRoleMenu(long id);
 }
