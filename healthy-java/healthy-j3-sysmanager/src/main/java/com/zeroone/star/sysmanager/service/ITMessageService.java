@@ -3,8 +3,11 @@ package com.zeroone.star.sysmanager.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.dto.PageDTO;
-import com.zeroone.star.project.dto.j3.message.MessageDetailDTO;
+import com.zeroone.star.project.dto.j3.message.MessageResponseDTO;
+import com.zeroone.star.project.dto.j3.message.MessageSendDTO;
 import com.zeroone.star.sysmanager.entity.Message;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +19,5 @@ import com.zeroone.star.sysmanager.entity.Message;
  */
 public interface ITMessageService extends IService<Message> {
 
-    PageDTO<MessageDetailDTO> queryMessageDetail(MessageDetailDTO detailDTO);
+    PageDTO<MessageResponseDTO> selectMessageDetailPage(MessageSendDTO messageSend);
 }

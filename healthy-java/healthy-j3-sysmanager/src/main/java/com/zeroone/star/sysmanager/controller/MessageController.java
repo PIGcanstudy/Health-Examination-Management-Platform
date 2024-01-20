@@ -2,9 +2,7 @@ package com.zeroone.star.sysmanager.controller;
 
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.message.MessageDetailDTO;
-import com.zeroone.star.project.dto.j3.message.MsgListDTO;
 import com.zeroone.star.project.j3.message.MessageApis;
-import com.zeroone.star.project.query.j3.MsgListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.service.ITMessageService;
 import io.swagger.annotations.Api;

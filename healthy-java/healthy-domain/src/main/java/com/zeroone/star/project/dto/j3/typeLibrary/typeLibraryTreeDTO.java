@@ -10,9 +10,9 @@ import java.io.Serializable;
 public class typeLibraryTreeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "类型父节点id")
+    @ApiModelProperty(value = "类型父节点id",example = "0")
     private String parentId;
 
-    @ApiModelProperty(value = "类型名称")
+    @ApiModelProperty(value = "类型名称",example = "内资企业")
     private String typeName;
 }
