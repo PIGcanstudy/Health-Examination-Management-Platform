@@ -46,8 +46,12 @@ const routes = [
         component: () => import('@/views/sample/medicalinfo/MedicalInfo.vue')
       },
       {
-        path: '/sample/details',
+        path: '/sample/details/Details.vue',
         component: () => import('@/views/sample/details/Details.vue')
+      },
+      {
+        path: '/sample/details/NewButtonCG.vue',
+        component: () => import('@/views/sample/details/NewButtonCG.vue')
       },
       {
         path: '/sample/newbutton',
