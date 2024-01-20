@@ -1,6 +1,37 @@
 <!-- 登录页面 -->
 <template>
-  <el-card class="box-card">
+  <!-- 测试样式操作区域 -->
+  <div class="top-bar" style="display: flex; height: 80px">顶部栏</div>
+  <el-row class="login-page">
+    <el-col :span="14" class="bgImg">
+      <div class="left-part" style="align-items: center; justify-content: center">
+        <h1>01健康体检系统</h1>
+      </div>
+    </el-col>
+    <el-col :span="6" :offset="1" class="loginForm">
+      <div class="mask-layer" style="margin: 230px 44px">
+        <el-card class="box-card">
+          <h2 style="padding-left: 16px; margin: 24px 0">登录</h2>
+          <el-form :model="formData" status-icon label-width="60px">
+            <el-form-item label="账号" prop="username">
+              <el-input v-model="formData.username"></el-input>
+            </el-form-item>
+            <el-form-item label="密码" prop="password">
+              <el-input v-model="formData.password" type="password"></el-input>
+            </el-form-item>
+            <el-form-item style="margin-top: 22px">
+              <el-button type="primary" @click="submitForm()">登录</el-button>
+            </el-form-item>
+          </el-form>
+          <!-- TODO[TEST_CODE]: 测试代码后期发布需要删除 -->
+          <router-link to="/sample">进入示例演示页面</router-link>
+        </el-card>
+      </div>
+    </el-col>
+  </el-row>
+
+  <!-- 项目原代码-------------------------------------------------- -->
+  <!-- <el-card class="box-card">
     <el-form :model="formData" status-icon label-width="60px">
       <el-form-item label="账号" prop="username">
         <el-input v-model="formData.username"></el-input>
@@ -11,18 +42,14 @@
       <el-form-item>
         <el-button type="primary" @click="submitForm()">登录</el-button>
       </el-form-item>
-    </el-form>
-    <!-- TODO[TEST_CODE]: 测试代码后期发布需要删除 -->
-    <router-link to="/sample">进入示例演示页面</router-link>
-  </el-card>
+    </el-form> -->
+  <!-- TODO[TEST_CODE]: 测试代码后期发布需要删除 -->
+  <!-- <router-link to="/sample">进入示例演示页面</router-link>
+  </el-card> -->
+
   <!-- 验证码组件 -->
-  <Verify
-    mode="pop"
-    :captchaType="captchaType"
-    :imgSize="{ width: '400px', height: '200px' }"
-    ref="verify"
-    @success="handleSuccess"
-  ></Verify>
+  <Verify ref="verify" mode="pop" :captcha-type="captchaType" :img-size="{ width: '400px', height: '200px' }" @success="handleSuccess"></Verify>
+  <!-- 项目原代码-------------------------------------------------- -->
 </template>
 
 <script setup>
@@ -128,5 +155,7 @@ function handleSuccess(res) {
   width: 480px;
   margin: 50px auto;
   padding: 20px;
+  /* 添加德阳市，暂存，后续改进 */
+  border-radius: 4%;
 }
 </style>
