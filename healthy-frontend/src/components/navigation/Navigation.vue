@@ -119,9 +119,27 @@
         <div class="ic12">
           <router-link to="/sample/medicalinfo">
             <img src="../../assets/navigation/icon12.png" />
-          </router-link>
-          <el-text size="large">数据网报</el-text>
-        </div>
+            </router-link>
+            <el-text  size="large">数据网报</el-text>
+          </div>      
+          
+          
+          <div class="line01">
+            <img src="../../assets/navigation/row01.png"/>
+            <div class="line">
+            <img src="../../assets/navigation/row03.png"/>
+          </div> 
+          </div> 
+          <div class="row01">
+            <img src="../../assets/navigation/row02.png"/>
+          </div> 
+          <div class="row02">
+            <img src="../../assets/navigation/row02.png"/>
+          </div> 
+        </el-main>
+        
+      </el-container>
+  </div>
 
         <div class="line">
           <img src="../../assets/navigation/row03.png" />
@@ -142,6 +160,7 @@
 </template>
 
 <script setup>
+  let line01 = 550;
 </script>
 
 <style lang="scss" scoped>
@@ -378,8 +397,66 @@ body,
   left: 670px;
   height: 1px;
   width: 40px;
-  margin: 0;
-  border: 0;
+  margin: 0 ;
+  border: 0 ;
+  padding: 0;
+}
+.arrow10{
+  top: -250px;
+  left :560px ;
+  height:1px;
+  width: 40px;
+  margin: 0 ;
+  border: 0 ;
+  padding: 0;
+}
+.arrow11{
+  top: -320px;
+  left :1030px ;
+  height:1px;
+  width: 40px;
+  margin: 0 ;
+  border: 0 ;
+  padding: 0;
+}
+//右边直立的直线
+.line{
+  // position:absolute;
+  top: -522px;
+  left :494px ;
+  height:1px;
+  width: 40px;
+  margin: 0 ;
+  border: 0 ;
+  padding: 0;
+}
+//左边直立的直线
+.line01{
+
+  top: -615px;
+  left :550px ;
+  height:1px;
+  width: 40px;
+  margin: 0 ;
+  border: 0 ;
+  padding: 0;
+}
+.row01{
+  top: -630px;
+  left :517px ;
+  height:1px;
+  width: 40px;
+  margin: 0 ;
+  border: 0 ;
+  padding: 0;
+}
+.row02{
+  top: -127px;
+  left :517px ;
+  height:1px;
+  width: 40px;
+  margin: 0 ;
+  border: 0 ;
   padding: 0;
 }
 

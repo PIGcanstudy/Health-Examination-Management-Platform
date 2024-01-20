@@ -1,6 +1,6 @@
 <template>
   <div class="contain">
-    <div class="code">主面板</div>
+    <div class="code">hello 洛翼忆 主面板</div>
     <div class="info">这是主面板</div>
   </div>
 </template>
