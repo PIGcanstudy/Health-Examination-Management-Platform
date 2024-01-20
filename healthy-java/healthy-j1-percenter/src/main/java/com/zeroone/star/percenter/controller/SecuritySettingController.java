@@ -5,14 +5,13 @@ import com.zeroone.star.project.j1.dto.percenter.ModifyEmailDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPasswordDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPhoneDTO;
 import com.zeroone.star.project.j1.percenter.SecuritySettingApis;
-import com.zeroone.star.project.j1.vo.percenter.ModifyEmailVO;
+import com.zeroone.star.project.j1.vo.percenter.ModifyPasswordVO;
+import com.zeroone.star.project.j1.vo.percenter.ModifyPhoneVO;
+import com.zeroone.star.project.j1.vo.sysmanager.ModifyMailVO;
 import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/security-setting")
@@ -40,11 +39,10 @@ public class SecuritySettingController implements SecuritySettingApis {
         return JsonVO.success(null);
     }
 
-//    @ApiOperation(value = "获取短信验证码")
-//    @PostMapping("/get-sms-code")
-//    @Override
-//    public JsonVO<GetSmsCodeDTO> getSmsCode(ModifyPhoneVO modifyPhoneVO) {
-//        GetSmsCodeDTO getSmsCodeDTO = new GetSmsCodeDTO();
-//        return JsonVO.success(getSmsCodeDTO);
-//    }
+    @ApiOperation("修改邮箱")
+    @GetMapping("/change-mail")
+    @Override
+    public JsonVO modifyMail(ModifyMailVO modifyMailVO) {
+        return JsonVO.success(null);
+    }
 }

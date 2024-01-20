@@ -4,7 +4,9 @@ import com.zeroone.star.project.j1.dto.percenter.GetSmsCodeDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyEmailDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPasswordDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPhoneDTO;
-import com.zeroone.star.project.j1.vo.percenter.ModifyEmailVO;
+import com.zeroone.star.project.j1.vo.percenter.ModifyPasswordVO;
+import com.zeroone.star.project.j1.vo.percenter.ModifyPhoneVO;
+import com.zeroone.star.project.j1.vo.sysmanager.ModifyMailVO;
 import com.zeroone.star.project.vo.JsonVO;
 
 /**
@@ -25,19 +27,11 @@ public interface SecuritySettingApis {
      * @param modifyPhoneVO 修改手机号视图对象
      * @return 修改结果
      */
-    JsonVO<String> changePhone(ModifyPhoneDTO modifyPhoneVO);
+    JsonVO<ModifyPhoneDTO> changePhone(ModifyPhoneVO modifyPhoneVO);
 
     /**
-     *  修改邮箱接口
-     * @param modifyEmailVO 修改邮箱视图对象
-     * @return
+     * 系统管理-用户管理，用户邮箱修改相关接口（修改用户邮箱）
+     *
      */
-    JsonVO<ModifyEmailDTO> changeEmail(ModifyEmailVO modifyEmailVO);
-
-    /**
-     * 获取短信验证码
-     * @param modifyPhoneVO
-     * @return
-     */
-//    JsonVO<GetSmsCodeDTO> getSmsCode(ModifyPhoneVO modifyPhoneVO);
+    JsonVO modifyMail(ModifyMailVO modifyMailVO);
 }
