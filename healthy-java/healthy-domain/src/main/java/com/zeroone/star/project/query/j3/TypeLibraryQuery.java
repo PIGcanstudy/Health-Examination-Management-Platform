@@ -11,10 +11,10 @@ import java.io.Serializable;
 public class TypeLibraryQuery implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "类型名称")
+    @ApiModelProperty(value = "类型名称",example = "内资企业")
     private String typeName;
 
-    @ApiModelProperty(value = "类型编码")
+    @ApiModelProperty(value = "类型编码",example = "100")
     private String typeCode;
 
     @ApiModelProperty(value = "起始日期")
