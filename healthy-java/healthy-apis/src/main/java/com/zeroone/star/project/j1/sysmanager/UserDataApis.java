@@ -1,5 +1,6 @@
 package com.zeroone.star.project.j1.sysmanager;
 
+import com.zeroone.star.project.j1.dto.percenter.CreateUserDTO;
 import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
 import com.zeroone.star.project.j1.vo.sysmanager.UserDataVO;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
@@ -19,4 +20,11 @@ public interface UserDataApis {
 	JsonVO<ModifyUserDTO> queryUserWhenModifying(String id);
 	// 修改用户信息
 	JsonVO modifyUser(ModifyUserDTO user);
+	//新增用户
+	JsonVO createUser(CreateUserDTO user);
+	//删除用户
+	JsonVO deleteUser(String username);
+	//批量删除用户
+	JsonVO deleteUserList(String[] username);
+
 }

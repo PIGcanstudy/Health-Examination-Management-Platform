@@ -1,5 +1,6 @@
 package com.zeroone.star.sysmanager.controller;
 
+import com.zeroone.star.project.j1.dto.percenter.CreateUserDTO;
 import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
 import com.zeroone.star.project.j1.sysmanager.UserDataApis;
 import com.zeroone.star.project.j1.vo.sysmanager.UserDataVO;
@@ -56,4 +57,23 @@ public class UserDataController implements UserDataApis {
 	public JsonVO modifyUser(@RequestBody ModifyUserDTO user) {
         return JsonVO.success("修改成功");
 	}
+
+    @Override
+    @PutMapping("/add-user")
+    @ApiOperation("新增用户")
+    public JsonVO createUser(@RequestBody CreateUserDTO user) {
+        return JsonVO.success("新增成功");
+    }
+    @Override
+    @DeleteMapping("/delete-user/{username}")
+    @ApiOperation("删除用户")
+    public JsonVO deleteUser(@PathVariable String username) {
+        return JsonVO.success("删除成功");
+    }
+    @Override
+    @DeleteMapping("/delete-user-list/{username}")
+    @ApiOperation("批量删除用户")
+    public JsonVO deleteUserList(@PathVariable String[] username) {
+        return JsonVO.success("删除成功");
+    }
 }
