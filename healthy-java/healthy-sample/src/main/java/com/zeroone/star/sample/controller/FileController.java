@@ -7,11 +7,11 @@ import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,7 +25,7 @@ import javax.annotation.Resource;
  * @author Triple Gold
  * @version 1.0.0
  */
-@Configuration
+@Controller
 @RequestMapping("file")
 @Api(tags = "file")
 public class FileController {
@@ -33,7 +33,7 @@ public class FileController {
     FastDfsClientComponent dfs;
 
     @Value("${fastdfs.nginx-servers}")
-    private String fileServeUrl;    //
+    private String fileServerUrl;    // 服务器地址
 
     @PostMapping("upload-file")
     @ApiOperation(value = "文件上传")
@@ -47,7 +47,7 @@ public class FileController {
         FastDfsFileInfo result = dfs.uploadFile(file.getBytes(), suffix);
         if (result != null) {
             // 上传成功返回下载地址
-            return JsonVO.success(dfs.fetchUrl(result, fileServeUrl, true));
+            return JsonVO.success(dfs.fetchUrl(result, fileServerUrl, true));
         }
         return JsonVO.fail(null);
     }
