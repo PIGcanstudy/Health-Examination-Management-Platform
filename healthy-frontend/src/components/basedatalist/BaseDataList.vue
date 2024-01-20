@@ -8,6 +8,10 @@
         </el-form>
       </template>
       <div class="main">
+        <!-- 功能栏 -->
+        <slot name="tools"></slot>
+        <!-- 多选删除栏 -->
+        <slot name="delete"></slot>
         <!-- table表格 -->
         <el-table :data="props?.tableData" border>
           <!-- 多选列 -->
