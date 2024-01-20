@@ -21,7 +21,7 @@ public: // 定义接口
 		// 定义接口标题
 		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("group_person.get.summary"));
 		// 定义响应参数格式
-		API_DEF_ADD_RSP_JSON_WRAPPER(StringJsonVO);
+		API_DEF_ADD_RSP_JSON_WRAPPER(GroupPersonPageJsonVO);
 		// 定义分页查询参数描述
 		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
