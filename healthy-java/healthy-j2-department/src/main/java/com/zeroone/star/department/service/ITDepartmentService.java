@@ -2,6 +2,9 @@ package com.zeroone.star.department.service;
 
 import com.zeroone.star.department.entity.TDepartment;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.vo.department.DepartmentMenuVO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ITDepartmentService extends IService<TDepartment> {
 
+    List<DepartmentMenuVO> selectById(int parentId);
 }
