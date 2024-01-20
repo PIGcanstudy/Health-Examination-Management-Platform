@@ -29,7 +29,7 @@ public class ModifyUserDTO {
 	private String userType;
 	@ApiModelProperty(value = "头像", example = "/photos/photo1.jpg")
 	private String profilePhoto;
-	@ApiModelProperty(value = "角色分配", example = "[检验科,眼科,电测听,内科,皮肤科,DR室,心电图]")
+	@ApiModelProperty(value = "角色分配", example = "检验科,眼科,电测听,内科,皮肤科,DR室,心电图")
 	private List<String> roles;
 	@ApiModelProperty(value = "所在地区", example = "北京市,市辖区,东城区")
 	private String area;
