@@ -17,37 +17,33 @@
  limitations under the License.
 */
 #include "stdafx.h"
-#include "SampleService.h"
-#include "../../dao/sample/SampleDAO.h"
+#include "GroupApproveService.h"
+#include "../../dao/groupapprove/GroupApproveDAO.h"
 
-uint64_t SampleService::saveData(const SampleDTO::Wrapper& dto)
+uint64_t GroupApproveService::saveData(const GroupApproveDTO::Wrapper& dto)
 {
 	// 组装DO数据
-	SampleDO data;
+	GroupApproveDO data;
 	// 	data.setName(dto->name.getValue(""));
 	// 	data.setSex(dto->sex.getValue(""));
 	// 	data.setAge(dto->age.getValue(1));
-	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Name, name, Sex, sex, Age, age)
+	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Level, level, Is_info_table, is_info_table, Is_assessment_report, is_assessment_report, Is_business_license, is_business_license, Is_person_info, is_person_info, Is_entrust_report, is_entrust_report, Is_keep_record, is_keep_record, Is_equipment_true, is_equipment_true, Is_standard, is_standard, Is_understand_needs, is_understand_needs, Is_subcontract, is_subcontract, Is_special_requirements, is_special_requirements, Is_inform, is_inform, Is_take_from_oneself, is_take_from_oneself, Is_can_service, is_can_service, Reason, reason, Conclusion_person_in_charge, conclusion_person_in_charge)
 		// 执行数据添加
-		SampleDAO dao;
+		GroupApproveDAO dao;
 	return dao.insert(data);
 }
 
-bool SampleService::updateData(const SampleDTO::Wrapper& dto)
+bool GroupApproveService::updateData(const GroupApproveDTO::Wrapper& dto)
 {
 	// 组装DO数据
-	SampleDO data;
+	GroupApproveDO data;
 	// 	data.setId(dto->id.getValue(0));
 	// 	data.setName(dto->name.getValue(""));
 	// 	data.setSex(dto->sex.getValue(""));
 	// 	data.setAge(dto->age.getValue(1));
-	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Name, name, Sex, sex, Age, age, Id, id)
+	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Level, level, Is_info_table, is_info_table, Is_assessment_report, is_assessment_report, Is_business_license, is_business_license, Is_person_info, is_person_info, Is_entrust_report, is_entrust_report, Is_keep_record, is_keep_record, Is_equipment_true, is_equipment_true, Is_standard, is_standard, Is_understand_needs, is_understand_needs, Is_subcontract, is_subcontract, Is_special_requirements, is_special_requirements, Is_inform, is_inform, Is_take_from_oneself, is_take_from_oneself, Is_can_service, is_can_service, Reason, reason, Conclusion_person_in_charge, conclusion_person_in_charge)
 		// 执行数据修改
-		SampleDAO dao;
+		GroupApproveDAO dao;
 	return dao.update(data) == 1;
 }
 
-{
-	SampleDAO dao;
-	return dao.deleteById(id) == 1;
-}

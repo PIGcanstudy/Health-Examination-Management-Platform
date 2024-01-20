@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_DO_
-#define _SAMPLE_DO_
+#ifndef _GROUPAPPROVE_DO_
+#define _GROUPAPPROVE_DO_
 #include "../DoInclude.h"
 
 /**
@@ -53,11 +53,11 @@ class GroupApproveDO
 	// 委托方对体检时间、期限有无特别要求
 	CC_SYNTHESIZE(string, is_special_requirements, Is_special_requirements);
 	// 是否告知委托方体检方案及体检注意事项
-	CC_SYNTHESIZE(string, is_inform, is_inform);
+	CC_SYNTHESIZE(string, is_inform, Is_inform);
 	// 是否委托方自取
 	CC_SYNTHESIZE(string, is_take_from_oneself, Is_take_from_oneself);
 	// 是否可以为委托单位提供职业健康检查服务
-	CC_SYNTHESIZE(string, is_can_service, is_can_service);
+	CC_SYNTHESIZE(string, is_can_service, Is_can_service);
 	// 不能为委托单位提供职业健康检查服务，原因
 	CC_SYNTHESIZE(string, reason, Reason);
 	// 质控科负责人或体检中心负责人
@@ -86,4 +86,4 @@ public:
 	}
 };
 
-#endif // !_GroupApprove_DO_
+#endif // !_GROUPAPPROVE_DO_

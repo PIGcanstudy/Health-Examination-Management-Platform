@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/10/25 11:08:56
+ @Date: 2022/10/25 14:23:49
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,24 +17,22 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _GROUPAPPROVE_SERVICE_
-#define _GROUPAPPROVE_SERVICE_
-#include <list>
-#include "domain/vo/groupapprove/GroupApproveVO.h"
-#include "domain/query/groupapprove/GroupApproveQuery.h"
-#include "domain/dto/groupapprove/GroupApproveDTO.h"
+#ifndef _GROUPAPPROVE_DAO_
+#define _GROUPAPPROVE_DAO_
+#include "BaseDAO.h"
+#include "../../domain/do/groupapprove/GroupApproveDO.h"
+#include "../../domain/query/groupapprove/GroupApproveQuery.h"
 
 /**
- * 示例服务实现，演示基础的示例服务实现
+ * 示例表数据库操作实现
  */
-class GroupApproveService
+class GroupApproveDAO : public BaseDAO
 {
 public:
-	// 保存数据
-	uint64_t saveData(const GroupApproveDTO::Wrapper& dto);
+	// 插入数据
+	uint64_t insert(const GroupApproveDO& iObj);
 	// 修改数据
-	bool updateData(const GroupApproveDTO::Wrapper& dto);
+	int update(const GroupApproveDO& uObj);
 };
-
-#endif // !_GROUPAPPROVE_SERVICE_
+#endif // !_GROUPAPPROVE_DAO_
 

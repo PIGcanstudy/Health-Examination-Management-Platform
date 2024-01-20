@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_QUERY_
-#define _SAMPLE_QUERY_
+#ifndef _GROUPAPPROVE_QUERY_
+#define _GROUPAPPROVE_QUERY_
 
 #include "../../GlobalInclude.h"
 #include "domain/query/PageQuery.h"
@@ -77,7 +77,7 @@ class GroupApproveQuery : public PageQuery
 		info->description = ZH_WORDS_GETTER("groupapprove.field.is_equipment_true");
 	}
 	// 委托单位要求是否符合国家有关法律、政策和标准规范的要求
-	DTO_FIELD(String, nis_standardame);
+	DTO_FIELD(String, is_standard);
 	DTO_FIELD_INFO(is_standard) {
 		info->description = ZH_WORDS_GETTER("groupapprove.field.is_standard");
 	}
@@ -127,4 +127,4 @@ class GroupApproveQuery : public PageQuery
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_GTOUPAPPROVE_QUERY_
+#endif // !_GROUPAPPROVE_QUERY_

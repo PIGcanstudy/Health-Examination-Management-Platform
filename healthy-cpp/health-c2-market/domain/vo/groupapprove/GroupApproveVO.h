@@ -17,11 +17,11 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_VO_
-#define _SAMPLE_VO_
+#ifndef _GROUPAPPROVE_VO_
+#define _GROUPAPPROVE_VO_
 
 #include "../../GlobalInclude.h"
-#include "../../dto/sample/SampleDTO.h"
+#include "../../dto/groupapprove/GroupApproveDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 

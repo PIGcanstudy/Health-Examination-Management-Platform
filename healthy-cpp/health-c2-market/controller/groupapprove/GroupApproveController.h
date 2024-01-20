@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_CONTROLLER_
-#define _SAMPLE_CONTROLLER_
+#ifndef _GROUPAPPROVE_CONTROLLER_
+#define _GROUPAPPROVE_CONTROLLER_
 
 #include "domain/vo/BaseJsonVO.h"
 #include "domain/query/groupapprove/GroupApproveQuery.h"
@@ -68,4 +68,4 @@ private:
 
 // 0 取消API控制器使用宏
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen
-#endif // _SAMPLE_CONTROLLER_
+#endif // _GROUPAPPROVE_CONTROLLER_

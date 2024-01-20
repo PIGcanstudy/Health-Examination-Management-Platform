@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_DTO_
-#define _SAMPLE_DTO_
+#ifndef _GROUPAPPROVE_DTO_
+#define _GROUPAPPROVE_DTO_
 #include "../../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
@@ -75,7 +75,7 @@ class GroupApproveDTO : public oatpp::DTO
 		info->description = ZH_WORDS_GETTER("groupapprove.field.is_equipment_true");
 	}
 	// 委托单位要求是否符合国家有关法律、政策和标准规范的要求
-	DTO_FIELD(String, nis_standardame);
+	DTO_FIELD(String, is_standard);
 	DTO_FIELD_INFO(is_standard) {
 		info->description = ZH_WORDS_GETTER("groupapprove.field.is_standard");
 	}
@@ -128,4 +128,4 @@ class GroupApproveDTO : public oatpp::DTO
 
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_GroupApprove_DTO_
+#endif // !_GROUPAPPROVE_DTO_
