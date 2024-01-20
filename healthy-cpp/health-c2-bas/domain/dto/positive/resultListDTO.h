@@ -7,45 +7,50 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * 阳性结果列表传输数据对象实体
+ * 阳性结果规则列表传输数据对象实体
  */
 class resultListDTO : public oatpp::DTO
 {
 	DTO_INIT(resultListDTO, DTO);
-	// id
+	// 编号
 	DTO_FIELD(String, id);
 	DTO_FIELD_INFO(id) {
 		info->description = ZH_WORDS_GETTER("positive.result.field.id");
 	}
-	// 名称
-	DTO_FIELD(String, name);
-	DTO_FIELD_INFO(name) {
-		info->description = ZH_WORDS_GETTER("positive.results.field.name");
+	// 条件
+	DTO_FIELD(String, condition);
+	DTO_FIELD_INFO(condition) {
+		info->description = ZH_WORDS_GETTER("positive.result.field.condition");
 	}
-	// 是否重度
-	DTO_FIELD(String, degree);
-	DTO_FIELD_INFO(degree) {
-		info->description = ZH_WORDS_GETTER("positive.results.field.degree");
+	// 适合性别
+	DTO_FIELD(String, genderAppropriate);
+	DTO_FIELD_INFO(genderAppropriate) {
+		info->description = ZH_WORDS_GETTER("positive.result.field.genderAppropriate");
 	}
-	// 是否阳性
-	DTO_FIELD(String, positive);
-	DTO_FIELD_INFO(positive) {
-		info->description = ZH_WORDS_GETTER("positive.results.field.positive");
+	// 阳性id
+	DTO_FIELD(String, positiveId);
+	DTO_FIELD_INFO(positiveId) {
+		info->description = ZH_WORDS_GETTER("positive.result.field.positiveId");
 	}
-	// 科室id
-	DTO_FIELD(String, deptld);
-	DTO_FIELD_INFO(deptld) {
-		info->description = ZH_WORDS_GETTER("positive.results.field.deptld");
+	// 规则
+	DTO_FIELD(String, projectName);
+	DTO_FIELD_INFO(projectName) {
+		info->description = ZH_WORDS_GETTER("positive.result.field.projectName");
 	}
-	// 职业建议
-	DTO_FIELD(String, advice);
-	DTO_FIELD_INFO(advice) {
-		info->description = ZH_WORDS_GETTER("positive.results.field.advice");
+	// 判断条件
+	DTO_FIELD(String, judgmentCondition);
+	DTO_FIELD_INFO(judgmentCondition) {
+		info->description = ZH_WORDS_GETTER("positive.result.field.judgmentCondition");
 	}
-	// 健康建议
-	DTO_FIELD(String, healthadvice);
-	DTO_FIELD_INFO(healthadvice) {
-		info->description = ZH_WORDS_GETTER("positive.results.field.healthadvice");
+	// 排除阳性结果
+	DTO_FIELD(String, excludePositive);
+	DTO_FIELD_INFO(excludePositive) {
+		info->description = ZH_WORDS_GETTER("positive.result.field.excludePositive");
+	}
+	// 类型
+	DTO_FIELD(String, type);
+	DTO_FIELD_INFO(type) {
+		info->description = ZH_WORDS_GETTER("positive.result.field.type");
 	}
 };
 

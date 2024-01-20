@@ -9,28 +9,30 @@ class resultListDO
 {
 	// 编号
 	CC_SYNTHESIZE(string, id, Id);
-	// 名称
-	CC_SYNTHESIZE(string, name, Name);
-	// 是否重度
-	CC_SYNTHESIZE(string, degree, Degree);
-	// 是否阳性
-	CC_SYNTHESIZE(string, positive, Positive);
-	// 科室编号
-	CC_SYNTHESIZE(string, deptld, Deptld);
-	// 职业建议
-	CC_SYNTHESIZE(string, advise, Advise);
-	// 健康建议
-	CC_SYNTHESIZE(string, healthAdvice, HealthAdvice);
-private:
-	resultListDO() {
+	// 条件
+	CC_SYNTHESIZE(string, condition, Conditon);
+	// 适合性别
+	CC_SYNTHESIZE(string, genderAppropriate, GenderAppropriate);
+	// 阳性id
+	CC_SYNTHESIZE(string, positiveId, PositiveId);
+	// 规则
+	CC_SYNTHESIZE(string, projectName, ProjectName);
+	// 判断条件
+	CC_SYNTHESIZE(string, judgmentCondition, JudgmentCondition);
+	// 排除阳性结果
+	CC_SYNTHESIZE(string, excludePositive, ExcludePositive);
+	// 类型
+	CC_SYNTHESIZE(string, type, Type);
+public:
+	resRuleListDO() {
 		id = "0";
-		name = "";
-		degree = "";
-		positive = "";
-		deptld = "";
-		advise = "";
-		healthAdvice = "";
-	}
+		condition = "";
+		genderAppropriate = "";
+		positiveId = "";
+		projectName = "";
+		judgmentCondition = "";
+		excludePositive = "";
+		type = "";
 };
 
 #endif // !_RESULTLISTDO_H_

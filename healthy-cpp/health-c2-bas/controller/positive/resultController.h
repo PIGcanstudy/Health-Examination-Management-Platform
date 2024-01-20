@@ -14,10 +14,10 @@ class resultController : public oatpp::web::server::api::ApiController
 	API_ACCESS_DECLARE(resultController);
 public: // 定义接口
 
-	// 3.1 定义查询接口描述
+	// 定义查询接口描述
 	ENDPOINT_INFO(queryResultList) {
 		// 定义接口标题
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("positive.result.query.summary"));
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("positive.result.summary"));
 		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
 		API_DEF_ADD_AUTH();
 		// 定义响应参数格式
@@ -25,13 +25,14 @@ public: // 定义接口
 		// 定义分页查询参数描述
 		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
-		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("positive.result.field.id"), 1, true);
-		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("positive.result.field.name"),"xxx",false);
-		API_DEF_ADD_QUERY_PARAMS(String, "degree", ZH_WORDS_GETTER("positive.result.field.degree"), "xxx", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "positive", ZH_WORDS_GETTER("positive.result.field.positive"), "xxx", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "deptld", ZH_WORDS_GETTER("positive.result.field.deptld"), "xxx", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "advise", ZH_WORDS_GETTER("positive.result.field.advise"), "xxx", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "healthAdvice", ZH_WORDS_GETTER("positive.result.field.healthAdvice"), "xxx", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("positive.result.field.id"), "1", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "condition", ZH_WORDS_GETTER("positive.result.field.condition"), "xxx", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "genderAppropriate", ZH_WORDS_GETTER("positive.result.field.genderAppropriate"), "xxx", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "positiveId", ZH_WORDS_GETTER("positive.result.field.positiveId"), "xxx", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "judgmentCondition", ZH_WORDS_GETTER("positive.result.field.judgmentCondition"), "xxx", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "excludePositive", ZH_WORDS_GETTER("positive.result.field.excludePositive"), "xxx", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "type", ZH_WORDS_GETTER("positive.result.field.type"), "xxx", false);
+		
 	}
 	// 定义查询接口处理
 	ENDPOINT(API_M_GET, "/positive/query-resultList", queryResultList, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
@@ -41,14 +42,14 @@ public: // 定义接口
 		API_HANDLER_RESP_VO(execQueryResult(resQuery,authObject->getPayload()));
 	}
 
-	// 3.1 定义删除接口描述
+	// 定义删除接口描述
 	ENDPOINT_INFO(removeSample) {
 		// 定义标题和返回类型以及授权支持
 		API_DEF_ADD_COMMON_AUTH(ZH_WORDS_GETTER("positive.remove.summary"), Uint64JsonVO::Wrapper);
 		// 定义其他路径参数说明
 		API_DEF_ADD_PATH_PARAMS(UInt64, "id", ZH_WORDS_GETTER("positive.remove.field.id"), 1, true);
 	}
-	// 3.2 定义删除接口处理
+	// 定义删除接口处理
 	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/positive/{id}", removeSample, PATH(UInt64, id), execRemoveResult(id));
 
 

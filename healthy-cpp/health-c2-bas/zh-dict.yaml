@@ -22,11 +22,13 @@ positive:
   field:
    id: 编号
  result:
+  summary: 获取阳性结果列表
   field:
    id: 编号
-   name: 名称
-   degree: 是否重度
-   positive: 是否阳性
-   deptld: 科室编号
-   advise: 职业建议
-   healthadvice: 健康建议
+   condition: 条件
+   genderAppropriate: 适合性别
+   positiveId: 阳性id
+   projectName: 规则
+   judgmentCondition: 判断条件
+   excludePositive: 排除阳性结果
+   type: 类型
