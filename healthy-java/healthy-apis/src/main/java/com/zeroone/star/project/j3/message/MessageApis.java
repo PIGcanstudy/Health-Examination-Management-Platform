@@ -1,6 +1,7 @@
 package com.zeroone.star.project.j3.message;
 
-import com.zeroone.star.project.dto.j3.message.MessageDetailDTO;
+import com.zeroone.star.project.dto.j3.message.MessageResponseDTO;
+import com.zeroone.star.project.dto.j3.message.MessageSendDTO;
 import com.zeroone.star.project.vo.JsonVO;
 
 
@@ -32,5 +33,5 @@ public interface MessageApis {
      * @param: [id]
      * @return: com.zeroone.star.project.vo.JsonVO<com.zeroone.star.project.j3.dto.MessageDTO>
      **/
-    JsonVO<PageDTO<MessageDetailDTO>> queryMessageDetail(MessageDetailDTO detailDTO);
+    JsonVO<PageDTO<MessageResponseDTO>> selectMessageDetailPage(MessageSendDTO messageSend);
 }
