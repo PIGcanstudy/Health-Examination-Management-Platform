@@ -28,3 +28,26 @@ save:
 
 
 
+group_person:
+ get:
+  summary: 查询体检人员列表
+ field:
+  succ: 查询成功
+  fail: 查询失败
+ data:
+  name: 姓名
+  test_num: 体检编号
+  dept: 体检人员工作部门
+  physical_type: 体检类型
+  is_check: 是否检查
+  is_recheck: 是否复查
+  start_regist_date: 开始登记时间
+  finish_regist_date: 结束登记时间
+ example:
+  name: 张三
+  test_num: 0001
+  dept: 宣传部
+  physical_type: 健康体检
+  start_regist_date: 2023-12-12
+  finish_regist_date: 2024-01-01
+     
