@@ -2,6 +2,9 @@ package com.zeroone.star.departmanagement.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.departmanagement.entity.SectionOffice;
+import com.zeroone.star.project.dto.PageDTO;
+import com.zeroone.star.project.j4.query.GetSectionOfficeQuery;
+import com.zeroone.star.project.j4.vo.GetSectionOfficeVO;
 
 
 /**
@@ -12,7 +15,14 @@ import com.zeroone.star.departmanagement.entity.SectionOffice;
  */
 public interface SectionOfficeService extends IService<SectionOffice> {
 
-    Object update(SectionOffice sectionOffice);
 
-    Object deleteById(String id);
+    /**
+     * 分页查询符合条件数据
+     * @param getSectionOfficeQuery
+     * @return
+     */
+     PageDTO<GetSectionOfficeVO> listAllSectionOffice(GetSectionOfficeQuery getSectionOfficeQuery);
+
+
+
 }

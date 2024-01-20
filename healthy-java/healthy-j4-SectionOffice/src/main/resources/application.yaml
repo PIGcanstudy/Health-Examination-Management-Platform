@@ -1,5 +1,5 @@
 server:
-  port: ${sp.SectionOffice}
+  port: ${sp.sectionoffice}
 spring:
   application:
-    name: ${sn.SectionOffice}
+    name: ${sn.sectionoffice}

@@ -16,10 +16,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class DepartmanagementApplication {
+public class SectionOfficeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DepartmanagementApplication.class, args);
+        SpringApplication.run(SectionOfficeApplication.class, args);
     }
 
 }
