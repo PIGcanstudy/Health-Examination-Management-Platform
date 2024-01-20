@@ -5,13 +5,11 @@ import com.zeroone.star.project.j1.dto.percenter.ModifyPhoneDTO;
 import com.zeroone.star.project.j1.percenter.SecuritySettingApis;
 import com.zeroone.star.project.j1.vo.percenter.ModifyPasswordVO;
 import com.zeroone.star.project.j1.vo.percenter.ModifyPhoneVO;
+import com.zeroone.star.project.j1.vo.sysmanager.ModifyMailVO;
 import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/security-setting")
@@ -29,6 +27,13 @@ public class SecuritySettingController implements SecuritySettingApis {
     @Override
     public JsonVO<ModifyPhoneDTO> changePhone(@RequestBody ModifyPhoneVO modifyPhoneVO) {
         System.out.println("修改手机号");
+        return JsonVO.success(null);
+    }
+
+    @ApiOperation("修改邮箱")
+    @GetMapping("/change-mail")
+    @Override
+    public JsonVO modifyMail(ModifyMailVO modifyMailVO) {
         return JsonVO.success(null);
     }
 }

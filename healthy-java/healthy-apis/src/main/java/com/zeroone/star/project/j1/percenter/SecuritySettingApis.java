@@ -4,6 +4,7 @@ import com.zeroone.star.project.j1.dto.percenter.ModifyPasswordDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPhoneDTO;
 import com.zeroone.star.project.j1.vo.percenter.ModifyPasswordVO;
 import com.zeroone.star.project.j1.vo.percenter.ModifyPhoneVO;
+import com.zeroone.star.project.j1.vo.sysmanager.ModifyMailVO;
 import com.zeroone.star.project.vo.JsonVO;
 
 /**
@@ -25,4 +26,10 @@ public interface SecuritySettingApis {
      * @return 修改结果
      */
     JsonVO<ModifyPhoneDTO> changePhone(ModifyPhoneVO modifyPhoneVO);
+
+    /**
+     * 系统管理-用户管理，用户邮箱修改相关接口（修改用户邮箱）
+     *
+     */
+    JsonVO modifyMail(ModifyMailVO modifyMailVO);
 }
