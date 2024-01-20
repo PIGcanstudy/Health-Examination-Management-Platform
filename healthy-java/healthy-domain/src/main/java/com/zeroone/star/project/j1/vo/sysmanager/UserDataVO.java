@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Data
@@ -22,7 +23,7 @@ public class UserDataVO {
     @ApiModelProperty(value = "性别")
     private String sex;
     @ApiModelProperty(value = "生日")
-    private DateTime birth;
+    private Timestamp birth;
     @ApiModelProperty(value = "区域")
     private String address;
     @ApiModelProperty(value = "街道")
