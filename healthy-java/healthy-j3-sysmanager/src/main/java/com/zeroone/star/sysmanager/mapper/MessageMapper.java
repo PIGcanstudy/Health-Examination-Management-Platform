@@ -2,12 +2,9 @@ package com.zeroone.star.sysmanager.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zeroone.star.project.dto.PageDTO;
-import com.zeroone.star.project.dto.j3.message.MessageDetailDTO;
 import com.zeroone.star.sysmanager.entity.Message;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
 
 /**
  * <p>
@@ -19,6 +16,4 @@ import java.util.List;
  */
 @Mapper
 public interface MessageMapper extends BaseMapper<Message> {
-
-    List<MessageDetailDTO> queryMessageDetail(MessageDetailDTO detailDTO);
 }
