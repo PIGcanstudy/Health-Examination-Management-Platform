@@ -29,6 +29,8 @@
 #endif
 #include "saveRes/saveResController.h"
 
+#include "result-entry/ClAbanProjController.h"
+
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
 // 简化绑定控制器宏定义
@@ -56,6 +58,9 @@ void Router::initRouter()
 	//ROUTER_SIMPLE_BIND(SaveResController);
 	ROUTER_SIMPLE_BIND(SaveResController);
 	ROUTER_SIMPLE_BIND(GroupPersonController);
+	ROUTER_SIMPLE_BIND(ClAbanProjController);
+
+
 }
 
 #ifdef HTTP_SERVER_DEMO
