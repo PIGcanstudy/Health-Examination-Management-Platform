@@ -23,6 +23,8 @@
 #include "positive/DeatilController.h" //圈圈
 #include "positive/ModifyResultController.h" //圈圈
 #include "positive/resultController.h" //elysia
+#include "base/SampleController.h" //快乐五香蛋
+
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
@@ -62,6 +64,9 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(ModifyResultController);
 	// -elysia
 	ROUTER_SIMPLE_BIND(resultController);
+	//修改样本-快乐五香蛋
+	ROUTER_SIMPLE_BIND(SampleController);
+
 }
 
 #ifdef HTTP_SERVER_DEMO
