@@ -38,7 +38,7 @@ positive:
    type: 类型
  rules:
   query:
-   summary: 查询阳性规则
+   summary: 查询阳性规则-puck
   field:
    id: 编号
    projectName: 项目名称
@@ -63,7 +63,7 @@ positive:
 
 deatil:
  get:
-  summary: 阳性结果详细查询
+  summary: 阳性结果详细查询-圈圈
  field: 
   id: 编号
   name: 名称
@@ -75,7 +75,7 @@ deatil:
   healthKnowledge: 健康建议
 modify:
  put:
-  summary: 修改阳性结果  
+  summary: 修改阳性结果-圈圈
  field: 
   id: 编号
   type: 阳性结果
