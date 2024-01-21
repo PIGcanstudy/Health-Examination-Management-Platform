@@ -1,9 +1,9 @@
 unit:
- field:
-  phyUnit: 体检单位
-  begDate: 开始时间
-  endDate: 结束时间
-  code: 报告编号
-  phyDate: 体检时间
-  title: 查询报告
-  menusub: 子菜单 
+ phyUnit: 体检单位
+ begDate: 开始时间
+ endDate: 结束时间
+ code: 报告编号
+ phyDate: 体检日期
+ title: 查询报告
+ id: 唯一编号
+ 
