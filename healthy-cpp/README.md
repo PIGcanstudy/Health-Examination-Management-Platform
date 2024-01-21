@@ -1,10 +1,11 @@
-# 工程介绍
+# cpp架构介绍
 
 构建一个带路由功能的HTTP微服务架构，支持`JSON`序列化，支持`MySQL`关系型数据库，支持`JWT`安全认证，支持`Nacos`服务注册与配置管理，支持消息中间件`RocketMQ`，支持`FastDFS`分布式文件存储，支持`Redis`缓存数据库，支持`Excel`报表导入导出。
 
 ## 1 目录说明
 
 - `arch-demo`：架构演示模块
+- `healthy-c7-sample`：个人新增模块
 - `lib-dy`：动态库存放目录
 - `lib-common`：公用组件静态库模块
 - `lib-oatpp`：web服务组件静态库模块
@@ -261,7 +262,7 @@ add_subdirectory ("你的模块对应的文件夹名")
 
 在`main.cpp`中可以使用下列代码来启动服务器。
 
-```c++
+```
 #include "stdafx.h"
 #include "HttpServer.h"
 #include "DbInit.h"
@@ -302,7 +303,7 @@ std::shared_ptr<oatpp::web::server::interceptor::ResponseInterceptor::OutgoingRe
 }
 // 凭证检测拦截器构造初始化一些内容
 CheckRequestInterceptor::CheckRequestInterceptor(const std::shared_ptr<oatpp::data::mapping::ObjectMapper>& objectMapper)
-{
+{ 
 }
 // 实现凭证检测拦截处理逻辑
 std::shared_ptr<oatpp::web::server::interceptor::RequestInterceptor::OutgoingResponse> CheckRequestInterceptor::intercept(const std::shared_ptr<IncomingRequest>& request)

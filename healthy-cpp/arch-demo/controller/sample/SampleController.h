@@ -21,6 +21,7 @@
 #define _SAMPLE_CONTROLLER_
 
 #include "domain/vo/BaseJsonVO.h"
+
 #include "domain/query/sample/SampleQuery.h"
 #include "domain/dto/sample/SampleDTO.h"
 #include "domain/vo/sample/SampleVO.h"
@@ -108,7 +109,7 @@ public:
 		// 定义其他查询参数描述
 		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("sample.field.name"), "li ming", false);
 	}
-	// 3.2 定义测试声明式服务调用的接口1处理
+	// 3.2 定义测试声明式服务调用的接口2处理
 	API_HANDLER_ENDPOINT_QUERY_AUTH(API_M_GET, "/sample/query-all", queryAll, SampleQuery, execQueryAll(query, authObject->getPayload()));
 private:
 	// 3.3 演示分页查询数据
