@@ -21,12 +21,14 @@
 #include "Router.h"
 #include "ApiHelper.h"
 
+#include "positive/positiveController.h"
 #include "review/ReviewController.h"
 #include "addNewItems/AddNewItemsController.h"
 #include "id/IdController.h"
 #include "personalReview/PersonalReviewController.h"
 #include "downloadWord/DownloadWordController.h"
 #include "groupItemIgno/GroupItemIgnoController.h"
+#include "itemResult/ItemResultController.h"
 #include "evalue/UnitController.h"
 
 #ifdef HTTP_SERVER_DEMO
@@ -34,12 +36,9 @@
 #include "sample/SampleController.h"
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
+
 #endif
-#include "itemResult/ItemResultController.h"
-
-#include "../controller/evalue/InquiryDetailController.h"
-
-// 如果定义了关闭Swagger文档宏
+#include "../controller/evalue/InquiryDetailController.h"// 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
 // 简化绑定控制器宏定义
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
@@ -63,6 +62,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	ROUTER_SIMPLE_BIND(PositiveConrtoller);
 	ROUTER_SIMPLE_BIND(ItemResultController);
 	ROUTER_SIMPLE_BIND(InquiryDetailController);
 	ROUTER_SIMPLE_BIND(ReviewController);
@@ -71,8 +71,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(PersonalReviewController);
 	ROUTER_SIMPLE_BIND(DownloadWordController);
 	ROUTER_SIMPLE_BIND(GroupItemIgnoController);
-	ROUTER_SIMPLE_BIND(UnitController);
-}
+	ROUTER_SIMPLE_BIND(UnitController);}
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
