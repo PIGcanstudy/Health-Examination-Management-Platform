@@ -1,0 +1,24 @@
+﻿
+unit:
+ filed:
+  type: 体检类型
+  name: 单位名称
+  uscc: 信用代码
+  LinkMan: 联系人
+  LinkPhone: 联系电话
+positive:
+ filed:
+  summary: 示例
+  personname: 姓名
+  est_num: 体检编号
+  officename: 体检科室
+  order_group_item_project_name: 体检科室
+  result: 结果
+  unit_name: 单位名称
+  scope: 参考范围
+
+  crisis_degree: 危机程度
+  checkdate: 体检日期
+  isNormal: 结果状态
+  positive_name: 体检项目
+  heavy: 结果 

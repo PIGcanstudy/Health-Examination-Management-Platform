@@ -3,8 +3,6 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-
-
 # 设置文件名称
 set (appName healthy-c7-common)
 
