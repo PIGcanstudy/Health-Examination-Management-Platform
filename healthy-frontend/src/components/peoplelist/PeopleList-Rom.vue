@@ -320,8 +320,12 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
-.left-side-bar {
-  width: 24%;
+.box-card {
+  max-width: 250px;
+  height: 95%;
+  background-color: white;
+  padding: 10px;
+  overflow: hidden;
 
   .box-card {
     .card-header {

@@ -1,7 +1,7 @@
 <!-- 团检订单 -->
 <template>
   <el-container style="height: 100%">
-    <el-aside width="250px" style="background-color: aquamarine">
+    <el-aside width="250px">
       <PeopleList style="height: 100%; width: 100%" />
     </el-aside>
     <el-main style="">
@@ -72,7 +72,7 @@
       <div class="alter" title="success alert">
         <span>体检人员</span>
       </div>
-      <Details :details="tableData" />
+      <Details :details="tableData"></Details>
     </el-main>
   </el-container>
 </template>
