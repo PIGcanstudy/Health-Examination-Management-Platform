@@ -29,8 +29,12 @@ public:
 	API_DTO_FIELD_DEFAULT(Int32, need_take_blood, ZH_WORDS_GETTER("sample.field.need_take_blood"));
 	//排序
 	API_DTO_FIELD_DEFAULT(Float32, order_num, ZH_WORDS_GETTER("sample.field.order_num"));
-	//关联码
+	//关联码//是否需要采血//是否需要采血
 	API_DTO_FIELD_DEFAULT(String, liscode, ZH_WORDS_GETTER("sample.field.liscode"));
+	//关联码
+	//关联码
+	//关联码
+
 };
 
 
