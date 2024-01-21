@@ -35,6 +35,7 @@
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
 #endif
+#include "itemResult/ItemResultController.h"
 
 #include "../controller/evalue/InquiryDetailController.h"
 
@@ -62,6 +63,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	ROUTER_SIMPLE_BIND(ItemResultController);
 	ROUTER_SIMPLE_BIND(InquiryDetailController);
 	ROUTER_SIMPLE_BIND(ReviewController);
 	ROUTER_SIMPLE_BIND(AddNewItemsController);
@@ -69,7 +71,8 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(PersonalReviewController);
 	ROUTER_SIMPLE_BIND(DownloadWordController);
 	ROUTER_SIMPLE_BIND(GroupItemIgnoController);
-	ROUTER_SIMPLE_BIND(UnitController);}
+	ROUTER_SIMPLE_BIND(UnitController);
+}
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()

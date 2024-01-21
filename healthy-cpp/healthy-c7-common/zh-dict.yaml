@@ -1,3 +1,18 @@
+﻿itemResult:
+ get:
+  summary: 获取体检项目结果明细
+ field:
+  itemId: 体检项目ID
+  personId: 人员ID
+  name: 体检项目名称
+  defaultValue: 结果
+  unitName: 单位
+  scope: 参考范围
+  succ: 查询成功
+  fail: 查询失败
+
+
+
 inquiry:
  get:
   summary: 获取问诊明细
