@@ -45,6 +45,21 @@ positive:
    type: 类型
    regularValue: 规则值
    positiveResultsId: 阳性规则Id
+ remove:
+  summary: 删除阳性结果-elysia
+  field:
+   id: 编号
+ result:
+  summary: 获取阳性结果列表-elysia
+  field:
+   id: 编号
+   condition: 条件
+   genderAppropriate: 适合性别
+   positiveId: 阳性id
+   projectName: 规则
+   judgmentCondition: 判断条件
+   excludePositive: 排除阳性结果
+   type: 类型
 
 deatil:
  get:
