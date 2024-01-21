@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zeroone.star.sysmanager.entity.Message;
 import org.apache.ibatis.annotations.Mapper;
 
+
 /**
  * <p>
  * 消息 Mapper 接口
@@ -15,5 +16,4 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface MessageMapper extends BaseMapper<Message> {
-
 }

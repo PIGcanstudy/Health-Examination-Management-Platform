@@ -1,10 +1,15 @@
 package com.zeroone.star.sysmanager.controller;
 
-import com.zeroone.star.project.j3.direct.DirectApis;
 import com.zeroone.star.project.j3.direct.DirectSourceApis;
+import com.zeroone.star.project.query.j3.WordTypeListQuery;
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.sysmanager.service.ITDictDataService;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 字典数据controller
@@ -16,4 +21,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/j3-directSource")
 @Api("字典数据")
 public class DirectSourceController implements DirectSourceApis {
+
+    @Resource
+    ITDictDataService itDictDataService;
+
+    @ApiOperation("根据id批量删除数据字典")
+    @PostMapping("/deleteByIds")
+    @Override
+    public JsonVO<Boolean> deleteByIds(@RequestParam String[] ids) {
+        return null;
+    }
+
+    @ApiOperation("获取工种名称列表")
+    @GetMapping("/queryByWordType")
+    @Override
+    public JsonVO<List<WordTypeListQuery>> queryByWordType(WordTypeListQuery wordTypeListQuery) {
+        return null;
+    }
 }

@@ -1,7 +1,6 @@
 package com.zeroone.star.project.j3.stopword;
 
 import com.zeroone.star.project.dto.PageDTO;
-import com.zeroone.star.project.dto.j3.message.MessageDTO;
 import com.zeroone.star.project.dto.j3.stopword.StopWordDTO;
 import com.zeroone.star.project.vo.JsonVO;
 
