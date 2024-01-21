@@ -37,9 +37,9 @@ class GroupApproveQuery : public PageQuery
 		info->description = ZH_WORDS_GETTER("groupapprove.field.id");
 	}
 	// 评审级别
-	DTO_FIELD(UInt64, level);
-	DTO_FIELD_INFO(level) {
-		info->description = ZH_WORDS_GETTER("groupapprove.field.level");
+	DTO_FIELD(UInt64, audit_level);
+	DTO_FIELD_INFO(audit_level) {
+		info->description = ZH_WORDS_GETTER("groupapprove.field.audit_level");
 	}
 	// 用人单位基本情况信息表是否存在
 	DTO_FIELD(String, is_info_table);

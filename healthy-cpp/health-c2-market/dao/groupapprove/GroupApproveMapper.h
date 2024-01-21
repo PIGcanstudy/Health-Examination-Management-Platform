@@ -33,7 +33,7 @@ public:
 	{
 		GroupApproveDO data;
 		data.setId(resultSet->getUInt64(1));
-		data.setLevel(resultSet->getUInt64(2));
+		data.setAudit_level(resultSet->getUInt64(2));
 		data.setIs_info_table(resultSet->getString(3));
 		data.setIs_assessment_report(resultSet->getString(4));
 		data.setIs_business_license(resultSet->getString(5));

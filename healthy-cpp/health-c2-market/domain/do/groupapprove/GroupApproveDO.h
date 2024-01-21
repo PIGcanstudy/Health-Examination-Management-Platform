@@ -29,7 +29,7 @@ class GroupApproveDO
 	// 编号
 	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 评审级别
-	CC_SYNTHESIZE(uint64_t, level, Level);
+	CC_SYNTHESIZE(uint64_t, audit_level, Audit_level);
 	// 用人单位基本情况信息表是否存在
 	CC_SYNTHESIZE(string, is_info_table, Is_info_table);
 	// 近期职业病危害因素检测报告或评价报告是否存在
@@ -66,7 +66,7 @@ class GroupApproveDO
 public:
 	GroupApproveDO() {
 		id = 0;
-		level = 0;
+		audit_level = 0;
 		is_info_table = "";
 		is_assessment_report = "";
 		is_business_license = "";

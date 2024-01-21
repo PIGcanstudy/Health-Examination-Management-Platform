@@ -28,7 +28,7 @@ Uint64JsonVO::Wrapper GroupApproveController::execAddGroupApprove(const GroupApp
 	auto jvo = Uint64JsonVO::createShared();
 	// 参数校验
 	// 非空校验
-	if (!dto->level || !dto->is_info_table || dto->is_assessment_report || dto->is_business_license || dto->is_person_info ||
+	if (!dto->audit_level || !dto->is_info_table || dto->is_assessment_report || dto->is_business_license || dto->is_person_info ||
 		dto->is_entrust_report || dto->is_keep_record || dto->is_equipment_true || dto->is_standard || dto->is_understand_needs ||
 		dto->is_subcontract || dto->is_special_requirements || dto->is_inform || dto->is_take_from_oneself || dto->is_can_service ||
 		dto->reason || dto->conclusion_person_in_charge
@@ -38,7 +38,7 @@ Uint64JsonVO::Wrapper GroupApproveController::execAddGroupApprove(const GroupApp
 		return jvo;
 	}
 	// 有效值校验
-	if (dto->level<0 || dto->is_info_table->empty() || dto->is_assessment_report->empty() || dto->is_business_license->empty() ||
+	if (dto->audit_level <0 || dto->is_info_table->empty() || dto->is_assessment_report->empty() || dto->is_business_license->empty() ||
 		dto->is_person_info->empty() || dto->is_entrust_report->empty() || dto->is_keep_record->empty() || dto->is_equipment_true->empty() ||
 		dto->is_standard->empty() || dto->is_understand_needs->empty() || dto->is_subcontract->empty() || dto->is_special_requirements->empty() ||
 		dto->is_inform->empty() || dto->is_take_from_oneself->empty() || dto->is_can_service->empty() || dto->reason->empty() ||

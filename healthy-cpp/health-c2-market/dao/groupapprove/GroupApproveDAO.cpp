@@ -29,9 +29,9 @@ if (query->id) { \
 	sql << " AND `id`=?"; \
 	SQLPARAMS_PUSH(params, "i", int, query->id.getValue(0)); \
 } \
-if (query->level) { \
-	sql << " AND level=?"; \
-	SQLPARAMS_PUSH(params, "i", int, query->level.getValue(0)); \
+if (query->audit_level) { \
+	sql << " AND audit_level=?"; \
+	SQLPARAMS_PUSH(params, "i", int, query->audit_level.getValue(0)); \
 } \
 if (query->is_info_table) { \
 	sql << " AND is_info_table=?"; \
@@ -102,8 +102,8 @@ if (query->conclusion_person_in_charge) { \
 
 uint64_t GroupApproveDAO::insert(const GroupApproveDO& iObj)
 {
-	string sql = "INSERT INTO `t_review_content` (`id`, `level`, `is_info_table`, `is_assessment_report`, `is_business_license`, `is_person_info`, `is_entrust_report`, `is_keep_record`, `is_equipment_true`, `is_standard`, `is_understand_needs`, `is_subcontract`, `is_special_requirements`, `is_inform`, `is_take_from_oneself`, `is_can_service`, `reason`, `conclusion_person_in_charge`) VALUES(? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
-	return sqlSession->executeInsert(sql, "%i%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s",  iObj.getLevel(), iObj.getIs_info_table(), iObj.getIs_assessment_report(), iObj.getIs_business_license(), iObj.getIs_person_info(),
+	string sql = "INSERT INTO `t_review_content` (`id`, `audit_level`, `is_info_table`, `is_assessment_report`, `is_business_license`, `is_person_info`, `is_entrust_report`, `is_keep_record`, `is_equipment_true`, `is_standard`, `is_understand_needs`, `is_subcontract`, `is_special_requirements`, `is_inform`, `is_take_from_oneself`, `is_can_service`, `reason`, `conclusion_person_in_charge`) VALUES(? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
+	return sqlSession->executeInsert(sql, "%i%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s",  iObj.getAudit_level(), iObj.getIs_info_table(), iObj.getIs_assessment_report(), iObj.getIs_business_license(), iObj.getIs_person_info(),
 		iObj.getIs_entrust_report(), iObj.getIs_keep_record(), iObj.getIs_equipment_true(), iObj.getIs_standard(), iObj.getIs_understand_needs(),
 		iObj.getIs_subcontract(), iObj.getIs_special_requirements(), iObj.getIs_inform(), iObj.getIs_take_from_oneself(), iObj.getIs_can_service(),
 		iObj.getReason(), iObj.getConclusion_person_in_charge());
@@ -111,8 +111,8 @@ uint64_t GroupApproveDAO::insert(const GroupApproveDO& iObj)
 
 int GroupApproveDAO::update(const GroupApproveDO& uObj)
 {
-	string sql = "UPDATE `t_review_content` SET `level`=?, `is_info_table`=?, `is_assessment_report`=?, `is_business_license`=?, `is_person_info`=?, `is_entrust_report`=?, `is_keep_record`=?, `is_equipment_true`=?, `is_standard`=?, `is_understand_needs`=?, `is_subcontract`=?, `is_special_requirements`=?, `is_inform`=?, `is_take_from_oneself`=?, `is_can_service`=?, `reason`=?, `conclusion_person_in_charge`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%ull%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%ull", uObj.getLevel(), uObj.getIs_info_table(), uObj.getIs_assessment_report(), uObj.getIs_business_license(), uObj.getIs_person_info(),
+	string sql = "UPDATE `t_review_content` SET `audit_level`=?, `is_info_table`=?, `is_assessment_report`=?, `is_business_license`=?, `is_person_info`=?, `is_entrust_report`=?, `is_keep_record`=?, `is_equipment_true`=?, `is_standard`=?, `is_understand_needs`=?, `is_subcontract`=?, `is_special_requirements`=?, `is_inform`=?, `is_take_from_oneself`=?, `is_can_service`=?, `reason`=?, `conclusion_person_in_charge`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%ull%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%ull", uObj.getAudit_level(), uObj.getIs_info_table(), uObj.getIs_assessment_report(), uObj.getIs_business_license(), uObj.getIs_person_info(),
 		uObj.getIs_entrust_report(), uObj.getIs_keep_record(), uObj.getIs_equipment_true(), uObj.getIs_standard(), uObj.getIs_understand_needs(),
 		uObj.getIs_subcontract(), uObj.getIs_special_requirements(), uObj.getIs_inform(), uObj.getIs_take_from_oneself(), uObj.getIs_can_service(),
 		uObj.getReason(), uObj.getConclusion_person_in_charge() ,uObj.getId());
