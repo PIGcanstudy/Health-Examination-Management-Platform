@@ -1,48 +1,73 @@
 sample:
  get:
-  summary: åˆ†é¡µæŸ¥è¯¢ç¤ºä¾‹æ•°æ®
+  summary: ·ÖÒ³²éÑ¯Ê¾ÀıÊı¾İ
  post:
-  summary: æ–°å¢ä¸€æ¡ç¤ºä¾‹æ•°æ®
+  summary: ĞÂÔöÒ»ÌõÊ¾ÀıÊı¾İ
  put:
-  summary: ä¿®æ”¹ä¸€æ¡ç¤ºä¾‹æ•°æ®
+  summary: ĞŞ¸ÄÒ»ÌõÊ¾ÀıÊı¾İ
  delete:
-  summary: åˆ é™¤ä¸€æ¡ç¤ºä¾‹æ•°æ®
+  summary: É¾³ıÒ»ÌõÊ¾ÀıÊı¾İ
  query-one:
-  summary: ä½¿ç”¨å£°æ˜å¼æœåŠ¡æŸ¥è¯¢ä¸€æ¡æ•°æ®
+  summary: Ê¹ÓÃÉùÃ÷Ê½·şÎñ²éÑ¯Ò»ÌõÊı¾İ
  query-all:
-  summary: ä½¿ç”¨å£°æ˜å¼æœåŠ¡æŸ¥è¯¢å¤šæ¡æ•°æ®
+  summary: Ê¹ÓÃÉùÃ÷Ê½·şÎñ²éÑ¯¶àÌõÊı¾İ
  field:
-  id: ç¼–å·
-  age: å¹´é¾„
-  name: å§“å
-  sex: æ€§åˆ«ï¼Œå¦‚ï¼šç”·
+  id: ±àºÅ
+  age: ÄêÁä
+  name: ĞÕÃû
+  sex: ĞÔ±ğ£¬Èç£ºÄĞ
+
 positive:
  resRules:
   query:
-   summary: æŸ¥è¯¢é˜³æ€§ç»“æœè§„åˆ™-puck
+   summary: ²éÑ¯ÑôĞÔ½á¹û¹æÔò-puck
   add:
-   summary: æ–°å¢é˜³æ€§ç»“æœè§„åˆ™-puck
+   summary: ĞÂÔöÑôĞÔ½á¹û¹æÔò-puck
   remove:
-   summary: åˆ é™¤é˜³æ€§ç»“æœè§„åˆ™-puck
+   summary: É¾³ıÑôĞÔ½á¹û¹æÔò-puck
   modify:
-   summary: ä¿®æ”¹é˜³æ€§ç»“æœè§„åˆ™-puck
+   summary: ĞŞ¸ÄÑôĞÔ½á¹û¹æÔò-puck
   field:
-   id: ç¼–å·
-   condition: æ¡ä»¶
-   genderAppropriate: é€‚åˆæ€§åˆ«
-   positiveId: é˜³æ€§Id
-   projectName: è§„åˆ™
-   judgmentCondition: åˆ¤æ–­æ¡ä»¶
-   excludePositive: æ’é™¤é˜³æ€§ç»“æœ
-   type: ç±»å‹
+   id: ±àºÅ
+   condition: Ìõ¼ş
+   genderAppropriate: ÊÊºÏĞÔ±ğ
+   positiveId: ÑôĞÔId
+   projectName: ¹æÔò
+   judgmentCondition: ÅĞ¶ÏÌõ¼ş
+   excludePositive: ÅÅ³ıÑôĞÔ½á¹û
+   type: ÀàĞÍ
  rules:
   query:
-   summary: æŸ¥è¯¢é˜³æ€§è§„åˆ™
+   summary: ²éÑ¯ÑôĞÔ¹æÔò
   field:
-   id: ç¼–å·
-   projectName: é¡¹ç›®åç§°
-   type: ç±»å‹
-   regularValue: è§„åˆ™å€¼
-   positiveResultsId: é˜³æ€§è§„åˆ™Id
-  
-  
+   id: ±àºÅ
+   projectName: ÏîÄ¿Ãû³Æ
+   type: ÀàĞÍ
+   regularValue: ¹æÔòÖµ
+   positiveResultsId: ÑôĞÔ¹æÔòId
+
+deatil:
+ get:
+  summary: ÑôĞÔ½á¹ûÏêÏ¸²éÑ¯
+ field: 
+  id: ±àºÅ
+  name: Ãû³Æ
+  namePinYin: ¼òÆ´
+  degree: ÑÏÖØ³Ì¶È
+  positive: ÊÇ·ñÑôĞÔ
+  sectionName: ¿ÆÊÒÃû³Æ
+  advise: Ö°Òµ½¨Òé
+  healthKnowledge: ½¡¿µ½¨Òé
+modify:
+ put:
+  summary: ĞŞ¸ÄÑôĞÔ½á¹û  
+ field: 
+  id: ±àºÅ
+  type: ÑôĞÔ½á¹û
+  name: Ãû³Æ
+  namePinYin: ¼òÆ´
+  degree: ÑÏÖØ³Ì¶È
+  positive: ÊÇ·ñÑôĞÔ
+  sectionName: ¿ÆÊÒÃû³Æ
+  advise: Ö°Òµ½¨Òé
+  healthKnowledge: ½¡¿µ½¨Òé

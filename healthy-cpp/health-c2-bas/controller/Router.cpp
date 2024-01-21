@@ -19,8 +19,9 @@
 #include "stdafx.h"
 #include "Router.h"
 #include "ApiHelper.h"
-#include "positive/resRuleController.h"
-
+#include "positive/resRuleController.h" //puck
+#include "positive/DeatilController.h" //圈圈
+#include "positive/ModifyResultController.h" //圈圈
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
@@ -52,9 +53,12 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	// -puck
 	ROUTER_SIMPLE_BIND(resRuleController);
-
-
+	//绑定阳性结果详细控制器-圈圈
+	ROUTER_SIMPLE_BIND(DeatilController);
+	//绑定修改阳性结果控制器-圈圈
+	ROUTER_SIMPLE_BIND(ModifyResultController);
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -70,4 +74,4 @@ void Router::createSampleRouter()
 	// 绑定WebSocket控制器
 	router->addController(WSContorller::createShared());
 }
-#endif
+#endif // !_ROUTER_
