@@ -12,7 +12,7 @@ sample:
  query-all:
   summary: 使用声明式服务查询多条数据
  field:
-  id: 
+  id: 主键
   name: 名称
   spec: 规格
   code: 标本代码

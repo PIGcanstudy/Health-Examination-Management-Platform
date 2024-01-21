@@ -63,9 +63,9 @@ if(WIN32)
 endif()
 
 # 编译可执行文件
-add_executable (${appName} ${SC_FILES} "domain/query/sales/UnitQuery.h")
+add_executable (${appName} ${SC_FILES} "domain/dto/base/SampleDTO.h")
 
-# 链接库
+# 链接库/
 target_link_libraries (${appName} "lib-common" "lib-oatpp" "lib-mysql")
 
 # 链接其他库依赖库，如：你要链接libpthread直接写成pthread
