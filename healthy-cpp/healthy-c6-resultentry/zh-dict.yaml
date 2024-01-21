@@ -23,11 +23,6 @@
   crisisDegree: 危急程度
   postive: 阳性
 
-
-
-
-
-
 group_person:
  get:
   summary: 查询体检人员列表
@@ -50,7 +45,7 @@ group_person:
   physical_type: 健康体检
   start_regist_date: 2023-12-12
   finish_regist_date: 2024-01-01
-     result-entry:
+result-entry:
  cl-aban-proj:
   put:
    summary: 取消弃检
