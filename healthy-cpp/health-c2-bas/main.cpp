@@ -48,9 +48,9 @@ bool getStartArg(int argc, char* argv[]) {
 	std::string serverPort = "8090";
 	// 数据库连接信息
 	std::string dbUsername = "root";
-	std::string dbPassword = "password";
-	std::string dbName = "zo_healthy";
-	std::string dbHost = "127.0.0.1";
+	std::string dbPassword = "123456";
+	std::string dbName = "test";
+	std::string dbHost = "192.168.220.128";
 	int dbPort = 3306;
 	int dbMax = 5;
 #ifdef LINUX
