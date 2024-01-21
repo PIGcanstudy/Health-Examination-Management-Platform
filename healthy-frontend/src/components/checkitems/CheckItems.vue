@@ -143,6 +143,8 @@ const handleCurrentChange = (val: number) => {
   ssks: ''
 })
 
+
+
 //从业套餐-表格字段
 interface cytcTableFiled {
   tcmc: string
@@ -190,14 +192,15 @@ created:{
 const emit = defineEmits(['submit', 'cancel'])
 
 //抽屉的打开与关闭
-const open = () => drawer.value = true
-const close = () => drawer.value = false
+const open = () => drawer2.value = true
+const close = () => drawer2.value = false
 
 
 // 抽屉的确认与取消按钮
 const submit = () => {
   //获取当前选中行的数据
-  console.log("value: " + multipleTableRef.value)
+  console.log("value: " + rowData)
+  close()
 }
 const cancel = () => emit('cancel')
 
@@ -248,6 +251,7 @@ const multipleTableRef =  ref()
 const multipleSelectionForCy = ref([])
 const multipleSelectionForTc = ref([])
 
+
 const handleSelectionChangeForCy = (val) => {
   console.log("从业套餐selectChangge: " + val);
   multipleSelectionForCy.value = val
@@ -271,6 +275,7 @@ const select = (selection, row) => {
 
 
 const multipleTableRefForTc =  ref()
+const rowData1 = ref();
 
 // 套餐项目-表格绑定事件selectTc
 const selectTc = (selection, row) => {
@@ -280,6 +285,7 @@ const selectTc = (selection, row) => {
   // 主要用于将当前勾选的表格状态清除
   if (selection.length == 0) return
   multipleTableRefForTc.value.toggleRowSelection(row, true)
+  rowData1.value = row
 }
 
 
