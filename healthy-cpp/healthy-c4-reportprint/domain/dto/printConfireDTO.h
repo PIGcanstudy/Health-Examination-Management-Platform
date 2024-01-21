@@ -17,27 +17,35 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _downloadSettingDTO_H_
-#define _downloadSettingDTO_H_
+#ifndef _printConfireDTO_H_
+#define _printConfireDTO_H_
 #include "../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
-* 鎵归噺涓嬭浇PDF鎶ュ憡
-* 璐熻矗浜猴細鏅氶
+* 批量下载PDF报告
+* 负责人：晚风
  */
-class downloadSettingDTO : public oatpp::DTO
+class printConfireDTO : public oatpp::DTO
 {
-	DTO_INIT(downloadSettingDTO, DTO);
-	//
-	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("downloadSetting.field.id"));
+	DTO_INIT(printConfireDTO, DTO);
 	// 
-	API_DTO_FIELD_DEFAULT(UInt64, reportNum, ZH_WORDS_GETTER("downloadSetting.field.reportNum"));
+	API_DTO_FIELD_DEFAULT(UInt64, reportNum, ZH_WORDS_GETTER("confire.field.reportNum"));
 	// 
-	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("downloadSetting.field.href"));
+	API_DTO_FIELD_DEFAULT(String, reportName, ZH_WORDS_GETTER("confire.field.reportName"));
+	// 
+	API_DTO_FIELD_DEFAULT(Boolean, status, ZH_WORDS_GETTER("confire.field.status"));
+
 };
 
+/**
+ *
+ */
+class printConfirePageDTO : public PageDTO<printConfireDTO::Wrapper>
+{
+	DTO_INIT(printConfirePageDTO, PageDTO<printConfireDTO::Wrapper>);
+};
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_downloadSettingDTO_H_
+#endif // !_printConfireDTO_H_

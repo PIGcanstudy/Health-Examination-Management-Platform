@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 10:59:38
+ @Date: 2024/01/16 11:34:14
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,27 +17,31 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _downloadSettingDTO_H_
-#define _downloadSettingDTO_H_
+#ifndef _printConfire_VO_
+#define _printConfire_VO_
+
 #include "../GlobalInclude.h"
+#include "../dto/printConfireDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
-* 鎵归噺涓嬭浇PDF鎶ュ憡
-* 璐熻矗浜猴細鏅氶
+* 批量下载PDF报告
+* 负责人：晚风
  */
-class downloadSettingDTO : public oatpp::DTO
-{
-	DTO_INIT(downloadSettingDTO, DTO);
-	//
-	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("downloadSetting.field.id"));
-	// 
-	API_DTO_FIELD_DEFAULT(UInt64, reportNum, ZH_WORDS_GETTER("downloadSetting.field.reportNum"));
-	// 
-	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("downloadSetting.field.href"));
+class printConfireJsonVO : public JsonVO<printConfireDTO::Wrapper> {
+	DTO_INIT(printConfireJsonVO, JsonVO<printConfireDTO::Wrapper>);
 };
 
+/**
+* 批量下载PDF报告
+* 负责人：晚风
+ */
+
+class printConfirePageJsonVO : public JsonVO<printConfirePageDTO::Wrapper> {
+	DTO_INIT(printConfirePageJsonVO, JsonVO<printConfirePageDTO::Wrapper>);
+};
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_downloadSettingDTO_H_
+
+#endif // !_printConfire_VO_

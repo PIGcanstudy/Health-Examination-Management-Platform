@@ -17,7 +17,6 @@ downloadSetting:
   personId: 体检人员编号
   id: 编号
   reportNum: 报告编号
-  href: 文件地址
   downloadpath: 下载路径
  get:
   view: 下载设置
@@ -27,11 +26,11 @@ confire:
   reportName: 打印报告名称
   status: 打印状态
  get:
-  view: 批量打印确认
+  summary: 批量打印确认
 printSetting:
  field:
   papersize: 打印用纸尺寸
   pagerange: 打印页面范围
-  Double-sidedOrNot: 是否双面
+  DoubleSidedOrNot: 是否双面
  get:
   printview: 打印设置

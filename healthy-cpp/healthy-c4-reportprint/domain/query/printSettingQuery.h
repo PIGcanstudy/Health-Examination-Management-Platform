@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 10:59:38
+ @Date: 2024/01/16 11:36:29
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,27 +17,25 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _downloadSettingDTO_H_
-#define _downloadSettingDTO_H_
+#ifndef _printSetting_H_
+#define _printSetting_H_
+
 #include "../GlobalInclude.h"
+#include "domain/query/PageQuery.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
-* 鎵归噺涓嬭浇PDF鎶ュ憡
-* 璐熻矗浜猴細鏅氶
+* 批量下载PDF报告
+* 负责人：晚风
  */
-class downloadSettingDTO : public oatpp::DTO
+class printSettingQuery : public PageQuery
 {
-	DTO_INIT(downloadSettingDTO, DTO);
-	//
-	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("downloadSetting.field.id"));
+	DTO_INIT(printSettingQuery, PageQuery);
+
 	// 
-	API_DTO_FIELD_DEFAULT(UInt64, reportNum, ZH_WORDS_GETTER("downloadSetting.field.reportNum"));
-	// 
-	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("downloadSetting.field.href"));
+	API_DTO_FIELD_DEFAULT(String, downloadpath, ZH_WORDS_GETTER("printSetting.field.downloadpath"));
 };
 
-
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_downloadSettingDTO_H_
+#endif // !_printSetting_H_

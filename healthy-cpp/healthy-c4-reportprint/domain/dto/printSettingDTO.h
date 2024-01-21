@@ -17,27 +17,27 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _downloadSettingDTO_H_
-#define _downloadSettingDTO_H_
+#ifndef _printSettingDTO_H_
+#define _printSettingDTO_H_
 #include "../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
-* 鎵归噺涓嬭浇PDF鎶ュ憡
-* 璐熻矗浜猴細鏅氶
+* 批量打印确认
+* 负责人：晚风
  */
-class downloadSettingDTO : public oatpp::DTO
+class printSettingDTO : public oatpp::DTO
 {
-	DTO_INIT(downloadSettingDTO, DTO);
+	DTO_INIT(printSettingDTO, DTO);
 	//
-	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("downloadSetting.field.id"));
+	API_DTO_FIELD_DEFAULT(String, papersize, ZH_WORDS_GETTER("printSetting.field.papersize"));
 	// 
-	API_DTO_FIELD_DEFAULT(UInt64, reportNum, ZH_WORDS_GETTER("downloadSetting.field.reportNum"));
+	API_DTO_FIELD_DEFAULT(String, pagerange, ZH_WORDS_GETTER("printSetting.field.pagerange"));
 	// 
-	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("downloadSetting.field.href"));
+	API_DTO_FIELD_DEFAULT(Boolean, DoubleSidedOrNot, ZH_WORDS_GETTER("printSetting.field.DoubleSidedOrNot"));
 };
 
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_downloadSettingDTO_H_
+#endif // !_printSettingDTO_H_

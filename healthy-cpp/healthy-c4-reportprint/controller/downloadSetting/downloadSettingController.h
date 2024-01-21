@@ -25,7 +25,7 @@
 #include "domain/dto/downloadSettingDTO.h"
 #include "domain/vo/downloadSettingVO.h"
 
-// 0 
+// 
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
@@ -47,9 +47,10 @@ public:
 		// 
 		API_DEF_ADD_RSP_JSON_WRAPPER(downloadSettingJsonVO);
 		// 
-		API_DEF_ADD_PAGE_PARAMS();
-		// 
-		// 
+		API_DEF_ADD_QUERY_PARAMS(UInt64, "personId", ZH_WORDS_GETTER("downloadSetting.field.personId"),123456, true);
+		//
+		API_DEF_ADD_QUERY_PARAMS(UInt64, "reportNum", ZH_WORDS_GETTER("downloadSetting.field.reportNum"), 12, true);
+		//
 		API_DEF_ADD_QUERY_PARAMS(String, "downloadpath", ZH_WORDS_GETTER("downloadSetting.field.downloadpath"), "/usr", true);
 	}
 	// 3.2 

@@ -29,6 +29,8 @@
 #endif
 #include "selectreport/selectReportController.h"
 #include "downloadSetting/downloadSettingController.h"
+#include "printConfire/printConfireController.h"
+#include "printSetting/printSettingController.h"
 
 // 
 #ifdef CLOSE_SWAGGER_DOC
@@ -56,6 +58,8 @@ void Router::initRouter()
 	//
 	ROUTER_SIMPLE_BIND(selectReportController);
 	ROUTER_SIMPLE_BIND(downloadSettingController);
+	ROUTER_SIMPLE_BIND(printConfireController);
+	ROUTER_SIMPLE_BIND(printSettingController);
 }
 
 #ifdef HTTP_SERVER_DEMO

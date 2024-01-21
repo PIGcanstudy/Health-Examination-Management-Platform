@@ -1,9 +1,8 @@
-#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 11:36:29
+ @Date: 2024/01/16 13:00:32
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,25 +16,13 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _downloadSetting_H_
-#define _downloadSetting_H_
+#include "stdafx.h"
+#include "printSettingController.h"
 
-#include "../GlobalInclude.h"
-#include "domain/query/PageQuery.h"
-
-#include OATPP_CODEGEN_BEGIN(DTO)
-
-/**
-* 批量下载PDF报告
-* 负责人：晚风
- */
-class downloadSettingQuery : public PageQuery
+printSettingJsonVO::Wrapper printSettingController::execQueryprintSetting(const printSettingQuery::Wrapper& query)
 {
-	DTO_INIT(downloadSettingQuery, PageQuery);
-
-	// 
-	API_DTO_FIELD_DEFAULT(String, papersize, ZH_WORDS_GETTER("downloadSetting.field.papersize"));
-};
-
-#include OATPP_CODEGEN_END(DTO)
-#endif // !_downloadSetting_H_
+	printSettingJsonVO::Wrapper vo = printSettingJsonVO::Wrapper::createShared();
+	auto dto = printSettingDTO::createShared();
+	vo->success(dto);
+	return vo;
+}
