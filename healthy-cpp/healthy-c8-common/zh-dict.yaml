@@ -1,4 +1,5 @@
-﻿common:
- summary: 公用服务接口
+﻿query-packageslist:
+ get:
+  summary: 公用服务接口
  filed: 
   keywords: 关键字

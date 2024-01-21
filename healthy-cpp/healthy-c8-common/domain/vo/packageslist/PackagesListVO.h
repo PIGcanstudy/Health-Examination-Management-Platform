@@ -4,7 +4,7 @@
 #define _COMMON_VO_
 
 #include "../../GlobalInclude.h"
-#include "../../dto/common/CommonDTO.h"
+#include "../../dto/packageslist/PackagesListDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 

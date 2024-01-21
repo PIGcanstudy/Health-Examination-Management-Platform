@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "CommonController.h"
-#include "../../service/common/PackagesListApiClient.h"
+#include "PackagesListController.h"
+#include "../../service/packageslist/PackagesListApiClient.h"
 #include "../ApiDeclarativeServicesHelper.h"
 
 
-PackagesListPageJsonVO::Wrapper CommonController::execQueryPackagesList(const String& keywords, const PayloadDTO& payload)
+PackagesListPageJsonVO::Wrapper PackagesListController::execQueryPackagesList(const String& keywords, const PayloadDTO& payload)
 {
 	// 创建客户端对象
 	API_CLIENT_CREATE(ac, om, PackagesListApiClient, "packageslist-api");
