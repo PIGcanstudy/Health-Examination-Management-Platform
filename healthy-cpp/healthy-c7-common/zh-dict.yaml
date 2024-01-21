@@ -1,3 +1,12 @@
+groupItemIgno:
+ update: 
+  summary: 忽略基础项目
+ field:
+  personId: 体检人员id
+  updateId: 更新人id
+  orderGroupItemProjectId: 选中的基础项目id
+
+
 evalue:
  field:
   ispass: 体检类型
