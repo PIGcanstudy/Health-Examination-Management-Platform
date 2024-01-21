@@ -5,7 +5,7 @@
     <!-- 侧边栏 -->
     <el-aside :style="{maxWidth: isCollapsed ? '64px' : '300px'}">
       <!-- 伸缩按钮 -->
-      <img src="@/assets/img-rom/slider.svg" style="cursor: pointer; width: 20px;" @click="isCollapsed = !isCollapsed">
+      <el-icon style="cursor: pointer; width: 20px;" @click="isCollapsed = !isCollapsed"><ArrowRightBold /></el-icon>
       <PeopleList
         :style="isCollapsed ? 'display: none;' : 'min-width: 300px;'"
         :title="title"
@@ -30,6 +30,7 @@
 import { ref } from 'vue'
 import PeopleList from '@/components/peoplelist/PeopleList-Rom.vue'
 import MedicalInfo from '@/components/medicalinfo/MedicalInfo.vue'
+import { ArrowRightBold } from '@element-plus/icons-vue'
 // PeopleList的变量
 const title = ref('人员查询')
 const checkboxItem = ref(['未登记', '已登记'])
