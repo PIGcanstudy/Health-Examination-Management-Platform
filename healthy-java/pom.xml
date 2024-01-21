@@ -40,6 +40,7 @@
         <module>healthy-oauth2</module>
         <module>healthy-gateway</module>
         <module>healthy-login</module>
+        <module>healthy-j4-templatemanagerment</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
