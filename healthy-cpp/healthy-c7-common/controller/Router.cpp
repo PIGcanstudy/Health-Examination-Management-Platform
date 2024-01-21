@@ -19,11 +19,13 @@
 #include "stdafx.h"
 #include "Router.h"
 #include "ApiHelper.h"
+#include "review/ReviewController.h"
+#include "addNewItems/AddNewItemsController.h"
+#include "id/IdController.h"
 #include "personalReview/PersonalReviewController.h"
 #include "downloadWord/DownloadWordController.h"
 #include "groupItemIgno/GroupItemIgnoController.h"
 #include "evalue/UnitController.h"
-
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
@@ -56,12 +58,13 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	ROUTER_SIMPLE_BIND(ReviewController);
+	ROUTER_SIMPLE_BIND(AddNewItemsController);
+	ROUTER_SIMPLE_BIND(IdController);
 	ROUTER_SIMPLE_BIND(PersonalReviewController);
 	ROUTER_SIMPLE_BIND(DownloadWordController);
 	ROUTER_SIMPLE_BIND(GroupItemIgnoController);
-	ROUTER_SIMPLE_BIND(UnitController);
-
-}
+	ROUTER_SIMPLE_BIND(UnitController);}
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {

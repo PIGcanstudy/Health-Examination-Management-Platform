@@ -1,3 +1,21 @@
+review:
+ field:
+  id: 唯一编号
+  personName: 姓名
+  personId: 体检人员id
+  checkProjectId: 复查项目id
+  checkProjectName: 复查项目名称
+  reviewExplain: 复查说明
+  reviewTime: 操作日期
+  createTime: 登记日期
+  state: 登记状态
+  hazardFactorCode: 危害因素
+addNewItems:
+ field:
+ projectsToBeSelected: 待选项目
+ selectedProjects: 已选项目
+ reason: 复查原因
+
 personalReview:
  update:
   summary: 审查
