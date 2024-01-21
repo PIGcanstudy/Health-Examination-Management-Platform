@@ -19,13 +19,13 @@ sample:
 positive:
  resRules:
   query:
-   summary: 查询阳性结果规则
+   summary: 查询阳性结果规则-puck
   add:
-   summary: 新增阳性结果规则
+   summary: 新增阳性结果规则-puck
   remove:
-   summary: 删除阳性结果规则
+   summary: 删除阳性结果规则-puck
   modify:
-   summary: 修改阳性结果规则
+   summary: 修改阳性结果规则-puck
   field:
    id: 编号
    condition: 条件
