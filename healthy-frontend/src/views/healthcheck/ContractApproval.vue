@@ -1,6 +1,6 @@
 <!-- 合同审批 -->
 <template>
-  <div></div>
+  <div>合同审批</div>
 </template>
 
 <script setup></script>
