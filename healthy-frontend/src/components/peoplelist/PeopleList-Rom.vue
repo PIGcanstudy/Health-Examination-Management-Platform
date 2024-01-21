@@ -320,7 +320,7 @@ defineExpose({
 
 <style lang="scss" scoped>
 .box-card {
-  position: relative;
+  max-width: 250px;
   height: 95%;
   background-color: white;
   padding: 10px;
