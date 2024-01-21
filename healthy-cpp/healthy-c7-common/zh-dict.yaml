@@ -18,3 +18,17 @@ groupItemIgno:
   personId: 体检人员id
   updateId: 更新人id
   orderGroupItemProjectId: 选中的基础项目id
+
+
+
+unit:
+ field:
+  project: 人员详情
+  physicalExamNumber: 体检编号
+  identityCardNumber: 身份证号
+  name: 姓名
+  gender: 性别
+  age: 年龄
+  phoneNumber: 电话号码
+  organizationName: 单位名称
+  registrationTime: 登记时间
