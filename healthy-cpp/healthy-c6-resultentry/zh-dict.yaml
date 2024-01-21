@@ -1,27 +1,17 @@
 checkitem:
- combo:
-  id: 唯一编号
-  name: 关键字
-  eg_name: A套餐
- comboitem:
-  id: 唯一编号
-  name: 关键字
-  eg_name: 血常规
-  unit: 所属科室
-  eg_unit: 眼科
-  project_type: 项目类型
-  discount: 折扣
-  discount_price: 折扣价
- portfolio_project:
-  id: 唯一编号
-  sale_price: 销售价
- checkproject:
-  id: 唯一编号
-  combo_name: 套餐项目名称
-  eg_cn: 套餐A
-  comboitem_name: 选检项目名称
-  eg_cin: 血常规
- query:
-  combosummary: 套餐选择
-  itemsummary: 选检项目
-  projectsummary: 所选体检项目
+ portfolio:
+  name: 组合项目名称
+  eg_name: 耳鼻喉口腔常规
+ base:
+  id: 项目编号
+  code: 项目代码
+  name: 体检项目
+  unit_name: 单位
+  default_value: 参考值
+  result_type: 提示
+ person:
+  id: 人员编号
+  name: 姓名
+ filed:
+  project_summary: 查询组合项目的基础项目体检结果数据
+  person_summary: 查询人员的体检组合项目
