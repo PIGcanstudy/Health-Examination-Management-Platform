@@ -9,7 +9,7 @@
       </template>
 
       <!-- 主体部分 -->
-      <div class="main">
+      <div class="main" style=";height: 100%;">
         <!-- 表单区域 -->
         <div class="form-area">
           <!-- 需要inline属性管理第一行的样式(待解决) -->
@@ -97,17 +97,19 @@
 
         <!-- 分页区域 -->
         <template v-if="props?.usePagination">
-          <el-pagination
-            v-model:current-page="paginationData.currentPage"
-            v-model:page-size="paginationData.pageSize"
-            :page-sizes="props.pageSizes"
-            layout="prev, jumper, pager, next, "
-            :total="props.total"
-            :small="small"
-            style="margin-top: 30px"
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-          />
+          <!-- <div style=""> -->
+            <el-pagination
+              v-model:current-page="paginationData.currentPage"
+              v-model:page-size="paginationData.pageSize"
+              :page-sizes="props.pageSizes"
+              layout="prev, jumper, pager, next, "
+              :total="props.total"
+              :small="small"
+              style="position: absolute;bottom: 0;"
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+            />
+          <!-- </div> -->
         </template>
       </div>
     </el-card>
@@ -320,6 +322,7 @@ defineExpose({
   width: 24%;
 
   .box-card {
+    height: 100%;
     .card-header {
       justify-content: center;
       text-align: center;
