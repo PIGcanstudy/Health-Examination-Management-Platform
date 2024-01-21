@@ -17,11 +17,10 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_CONTROLLER_
-#define _SAMPLE_CONTROLLER_
+#ifndef _DELETESAMPLE_CONTROLLER_
+#define _DELETESAMPLE_CONTROLLER_
 
 #include "domain/vo/BaseJsonVO.h"
-#include "domain/query/sample/DeleteSampleQuery.h"
 #include "domain/dto/sample/DeleteSampleDTO.h"
 #include "domain/vo/sample/DeleteSampleVO.h"
 
@@ -41,9 +40,17 @@ public:
 	// 3.1 定义删除接口描述
 	ENDPOINT_INFO(removeSample) {
 		// 定义标题和返回类型以及授权支持
-		API_DEF_ADD_COMMON_AUTH(ZH_WORDS_GETTER("sample.delete.summary"), Uint64JsonVO::Wrapper);
+		API_DEF_ADD_COMMON_AUTH(ZH_WORDS_GETTER("DeleteSample.delete.summary"), Uint64JsonVO::Wrapper);
 		// 定义其他路径参数说明
-		API_DEF_ADD_PATH_PARAMS(UInt64, "id", ZH_WORDS_GETTER("sample.field.id"), 1, true);
+		API_DEF_ADD_PATH_PARAMS(UInt64, "del_flag", ZH_WORDS_GETTER("DeleteSample.field.del_flag"), , true);
+		API_DEF_ADD_PATH_PARAMS(UInt64, "create_id", ZH_WORDS_GETTER("DeleteSample.field.create_id"), , true);
+		API_DEF_ADD_PATH_PARAMS(String, "create_time", ZH_WORDS_GETTER("DeleteSample.field.create_time"), , true);
+		API_DEF_ADD_PATH_PARAMS(UInt64, "update_id", ZH_WORDS_GETTER("DeleteSample.field.update_id"), , true);
+		API_DEF_ADD_PATH_PARAMS(String, "update_time", ZH_WORDS_GETTER("DeleteSample.field.update_time"), , true);
+		API_DEF_ADD_PATH_PARAMS(UInt64, "delete_id", ZH_WORDS_GETTER("DeleteSample.field.delete_id"), , true);
+		API_DEF_ADD_PATH_PARAMS(String, "delete_time", ZH_WORDS_GETTER("DeleteSample.field.delete_time"), , true);
+		API_DEF_ADD_PATH_PARAMS(UInt64, "department_id", ZH_WORDS_GETTER("DeleteSample.field.department_id"), , true);
+
 	}
 	// 3.2 定义删除接口处理
 	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/sample/{id}", removeSample, PATH(UInt64, id), execRemoveSample(id));

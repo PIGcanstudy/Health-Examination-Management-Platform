@@ -49,8 +49,15 @@ public:
 		// 定义分页查询参数描述
 		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
-		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("sampleDetails.field.name"), u8"shubuzhao", false);
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "barcode_num", ZH_WORDS_GETTER("sampleDetails.field.barcode_num"), 888, false);
+		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("sampleDetails.field.name"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "barcode_num", ZH_WORDS_GETTER("sampleDetails.field.barcode_num"), 10, false);
+		API_DEF_ADD_QUERY_PARAMS(String, "spec", ZH_WORDS_GETTER("sampleDetails.field.spec"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "need_take_blood", ZH_WORDS_GETTER("sampleDetails.field.need_take_blood"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "code", ZH_WORDS_GETTER("sampleDetails.field.code"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "order_num", ZH_WORDS_GETTER("sampleDetails.field.order_num"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "is_print", ZH_WORDS_GETTER("sampleDetails.field.is_print"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "liscode", ZH_WORDS_GETTER("sampleDetails.field.liscode"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "capacity", ZH_WORDS_GETTER("sampleDetails.field.capacity"), "", false);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/sample", querySample, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {

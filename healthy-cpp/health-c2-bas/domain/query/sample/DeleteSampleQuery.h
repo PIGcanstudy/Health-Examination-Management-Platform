@@ -34,42 +34,42 @@ class DeleteSampleQuery : public PageQuery
 	//是否删除(0-未删除，1-已删除)del_flag
 	DTO_FIELD(UInt32, del_flag);
 	DTO_FIELD_INFO(del_flag) {
-		info->description = ZH_WORDS_GETTER("sample.field.del_flag");
+		info->description = ZH_WORDS_GETTER("DeleteSample.field.del_flag");
 	}
 	// 创建人create_id
-	DTO_FIELD(String, create_id);
+	DTO_FIELD(UInt32, create_id);
 	DTO_FIELD_INFO(create_id) {
-		info->description = ZH_WORDS_GETTER("sample.field.create_id");
+		info->description = ZH_WORDS_GETTER("DeleteSample.field.create_id");
 	}
 	// 创建时间create_time
 	DTO_FIELD(String, create_time);
 	DTO_FIELD_INFO(create_time) {
-		info->description = ZH_WORDS_GETTER("sample.field.create_time");
+		info->description = ZH_WORDS_GETTER("DeleteSample.field.create_time");
 	}
 	// 修改人update_id
 	DTO_FIELD(UInt32, update_id);
 	DTO_FIELD_INFO(update_id) {
-		info->description = ZH_WORDS_GETTER("sample.field.update_id");
+		info->description = ZH_WORDS_GETTER("DeleteSample.field.update_id");
 	}
 	// 修改时间update_time
 	DTO_FIELD(String, update_time);
 	DTO_FIELD_INFO(update_time) {
-		info->description = ZH_WORDS_GETTER("sample.field.update_time");
+		info->description = ZH_WORDS_GETTER("DeleteSample.field.update_time");
 	}
 	// 删除人delete_id
 	DTO_FIELD(UInt32, delete_id);
 	DTO_FIELD_INFO(delete_id) {
-		info->description = ZH_WORDS_GETTER("sample.field.delete_id");
+		info->description = ZH_WORDS_GETTER("DeleteSample.field.delete_id");
 	}
 	// 删除时间delete_time
 	DTO_FIELD(String, delete_time);
 	DTO_FIELD_INFO(delete_time) {
-		info->description = ZH_WORDS_GETTER("sample.field.delete_time");
+		info->description = ZH_WORDS_GETTER("DeleteSample.field.delete_time");
 	}
 	// 所属部门department_id
 	DTO_FIELD(UInt32, department_id);
 	DTO_FIELD_INFO(department_id) {
-		info->description = ZH_WORDS_GETTER("sample.field.department_id");
+		info->description = ZH_WORDS_GETTER("DeleteSample.field.department_id");
 	}
 	
 };
