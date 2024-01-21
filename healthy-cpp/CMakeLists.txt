@@ -142,6 +142,7 @@ if(UNIX)
 	add_subdirectory ("nacos-register")
 endif()
 #后期可以不用
-add_subdirectory ("arch-demo")
+# add_subdirectory ("arch-demo")
 # 在后面添加你的模块
-add_subdirectory ("c2-klwxd-sample")
+add_subdirectory ("health-c2-base")
+add_subdirectory ("health-c2-market")
