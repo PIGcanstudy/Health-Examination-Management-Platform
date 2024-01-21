@@ -18,7 +18,7 @@ import lombok.Data;
 @Data
 @ApiModel("角色条件查询对象")
 public class RoleQuery  extends PageQuery {
-    @ApiModelProperty(value = "条件查询关键字",example = "管理")
-    private String key;
+    @ApiModelProperty(value = "条件查询关键字,对应角色名称",example = "管理")
+    private String name;
 
 }

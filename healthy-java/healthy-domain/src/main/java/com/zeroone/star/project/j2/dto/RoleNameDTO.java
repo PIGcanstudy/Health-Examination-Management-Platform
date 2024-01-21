@@ -1,6 +1,7 @@
 package com.zeroone.star.project.j2.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @author 今天也是新的一天啊
  * @version 1.0.0
  */
+@Data
 public class RoleNameDTO {
     private static final long serialVersionUID = 1L;
     @ApiModelProperty(value = "角色名称列表",example = "['超级管理员','问诊科']")
