@@ -1,17 +1,29 @@
 <!-- 登录页面 -->
 <template>
   <!-- 测试样式操作区域 -->
-  <div class="top-bar" style="display: flex; height: 80px">顶部栏</div>
-  <el-row class="login-page">
-    <el-col :span="14" class="bgImg">
-      <div class="left-part" style="align-items: center; justify-content: center">
-        <h1>01健康体检系统</h1>
-      </div>
-    </el-col>
-    <el-col :span="6" :offset="1" class="loginForm">
-      <div class="mask-layer" style="margin: 230px 44px">
+  <div class="container">
+    <div class="top-bar">
+      <!-- <img src="@\assets\login\logo.webp" alt="" /> -->
+      <div class="logo">logo</div>
+      <!-- <div class="navigation">
+      <a href="#">关于</a>
+      <a href="#">联系我们</a>
+    </div> -->
+    </div>
+
+    <div class="color">
+      <div class="c1"></div>
+      <div class="c2"></div>
+      <div class="c3"></div>
+    </div>
+
+    <el-row class="main">
+      <el-col :span="12">
+        <div class="left">零壹健康体检管理系统</div>
+      </el-col>
+      <el-col :span="8" :offset="1">
         <el-card class="box-card">
-          <h2 style="padding-left: 16px; margin: 24px 0">登录</h2>
+          <h2>登录</h2>
           <el-form :model="formData" status-icon label-width="60px">
             <el-form-item label="账号" prop="username">
               <el-input v-model="formData.username"></el-input>
@@ -26,9 +38,9 @@
           <!-- TODO[TEST_CODE]: 测试代码后期发布需要删除 -->
           <router-link to="/sample">进入示例演示页面</router-link>
         </el-card>
-      </div>
-    </el-col>
-  </el-row>
+      </el-col>
+    </el-row>
+  </div>
 
   <!-- 项目原代码-------------------------------------------------- -->
   <!-- <el-card class="box-card">
@@ -59,6 +71,7 @@ import { ref, reactive } from 'vue'
 import { login } from '@/apis/login'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
+import TestTable from '@/components/search/TestTable.vue'
 
 // 获取router对象
 const $router = useRouter()
@@ -150,12 +163,122 @@ function handleSuccess(res) {
 }
 </script>
 
-<style>
-.box-card {
+<style lang="scss" scoped>
+/* 原代码 */
+/* .box-card {
   width: 480px;
   margin: 50px auto;
   padding: 20px;
-  /* 添加德阳市，暂存，后续改进 */
+} */
+
+/* 以下是修改后的样式 */
+.box-card {
+  width: 440px;
+  margin: 50px auto;
+  padding: 20px;
   border-radius: 4%;
+  opacity: 1;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  z-index: 99;
+  opacity: 3;
+}
+
+.logo {
+  font-size: 2em;
+  color: #fff;
+  user-select: none;
+}
+
+.navigation a {
+  position: relative;
+  font-size: 1.1em;
+  color: rgb(100, 97, 97);
+  text-decoration: none;
+  padding: 10px;
+  margin: 24px;
+}
+
+.navigation a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 3px;
+  color: rgb(100, 97, 97);
+  border-radius: 5px;
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+
+.navigation a:hover::after {
+  transform: scaleX(1);
+  transform-origin: center;
+}
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+}
+
+.color {
+  position: absolute;
+  filter: blur(150px);
+}
+.c1 {
+  top: -50px;
+  right: 100px;
+  width: 300px;
+  height: 300px;
+  background: #b8f0b6;
+}
+.c2 {
+  top: -150px;
+  left: 150px;
+  width: 400px;
+  height: 350px;
+  background: #efaacd;
+}
+.c3 {
+  top: 50px;
+  right: 100px;
+  width: 300px;
+  height: 300px;
+  background: #00d2ff;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('@/assets/login/bg-img.png') no-repeat;
+  min-height: 100vh;
+  background-position: 600px;
+  background-size: 550px;
+}
+
+.left {
+  position: relative;
+  top: -260px;
+  left: 80px;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.box-card {
+  h2 {
+    font-size: 1.6em;
+    color: #636a71;
+    margin: 14px;
+  }
 }
 </style>
