@@ -122,7 +122,8 @@ unknownmoduleprofessionalhistory:
   work_type_text: 工种
   hazard_factors_text: 危害因素
   protective_measures: 防护措施
-  contact_time: 接触时间interro:
+  contact_time: 接触时间
+interro:
  get:
   summary: 症状询问
 interro1:
