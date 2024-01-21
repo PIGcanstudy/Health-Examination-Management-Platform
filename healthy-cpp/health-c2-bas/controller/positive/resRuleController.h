@@ -43,6 +43,10 @@ public: // 定义接口
 		// 呼叫执行函数响应结果
 		API_HANDLER_RESP_VO(execQueryResRule(resQuery));
 	}
+	// 定义查询结果规则对应的阳性规则列表接口描述
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("positive.rules.query.summary"), queryRuleList, Uint64JsonVO::Wrapper);
+	// 定义接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_GET, "positive/query-ruleList", queryRuleList, BODY_STRING(String, id), execQueryRule(id));
 
 	// 定义删除接口描述
 	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("positive.resRules.remove.summary"), removeResRuleList, Uint64JsonVO::Wrapper);
@@ -56,6 +60,7 @@ public: // 定义接口
 	
 private: // 定义接口执行函数
 	resRuleListJsonVO::Wrapper execQueryResRule(const resRuleListQuery::Wrapper& query); 
+	resRuleListJsonVO::Wrapper execQueryRule(const String& id);
 	Uint64JsonVO::Wrapper execRemoveResRule(const String& id);
 	Uint64JsonVO::Wrapper execModifyResRule(const rulePageDTO::Wrapper& dto);
 };

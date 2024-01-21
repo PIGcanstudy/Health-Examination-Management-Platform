@@ -36,6 +36,8 @@ positive:
    excludePositive: 排除阳性结果
    type: 类型
  rules:
+  query:
+   summary: 查询阳性规则
   field:
    id: 编号
    projectName: 项目名称
