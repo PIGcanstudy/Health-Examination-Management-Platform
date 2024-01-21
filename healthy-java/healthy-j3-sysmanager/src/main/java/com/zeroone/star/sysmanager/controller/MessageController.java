@@ -1,9 +1,5 @@
 package com.zeroone.star.sysmanager.controller;
 
-import ch.qos.logback.core.util.TimeUtil;
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONUtil;
-import com.alibaba.nacos.shaded.io.grpc.internal.JsonUtil;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.message.MessageResponseDTO;
 import com.zeroone.star.project.dto.j3.message.MessageSendDTO;
@@ -12,14 +8,11 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.service.ITMessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -35,8 +28,6 @@ public class MessageController implements MessageApis {
 
     @Resource
     private ITMessageService messageService;
-    @Resource
-    private StringRedisTemplate stringRedisTemplate;
 
     @DeleteMapping("/deleteByIds")
     @Override
