@@ -1,9 +1,9 @@
 <template>
   <div class="layout-container">
     <el-container class="sec-container">
-      <el-aside width="221px">
+      <el-aside :style="{ maxWidth: isCollapsed ? '0' : '221px' }">
         <!-- 侧边栏菜单 -->
-        <div class="menu-wrap">
+        <div class="menu-wrap" :style="isCollapsed ? 'display: none;' : ''">
           <el-scrollbar max-height="100vh">
             <el-menu default-active="/home" class="el-menu-vertical-demo" active-text-color="#409EFF" text-color="#fff" background-color="#545c64" unique-opened router>
               <el-menu-item index="/home">
@@ -32,6 +32,9 @@
           </el-scrollbar>
         </div>
       </el-aside>
+      <!-- 伸缩按钮 -->
+      <el-icon style="cursor: pointer; width: 20px" @click="isCollapsed = !isCollapsed"><Fold /></el-icon>
+
       <el-container>
         <!-- 导航栏 -->
         <el-header>
@@ -48,6 +51,10 @@
 <script setup>
 import { ref } from 'vue'
 import { userStore } from '../stores/user'
+import { Fold } from '@element-plus/icons-vue'
+// 本界面变量及函数
+const isCollapsed = ref(false)
+
 const store = userStore()
 
 // 用户信息提示
