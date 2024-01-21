@@ -33,6 +33,7 @@
 #endif
 #include "saveRes/saveResController.h"
 
+#include "controller/interro/InterroController.h"
 #include "result-entry/ClAbanProjController.h"
 
 // 如果定义了关闭Swagger文档宏
@@ -68,6 +69,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(PastMedicalHistoryController);
 	ROUTER_SIMPLE_BIND(ProfessionalHistoryController);
 
+	ROUTER_SIMPLE_BIND(InterroController);
 
 }
 
