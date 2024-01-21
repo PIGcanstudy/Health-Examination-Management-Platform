@@ -38,5 +38,4 @@ public class DirectSourceController implements DirectSourceApis {
     public JsonVO<List<WordTypeListQuery>> queryByWordType(WordTypeListQuery wordTypeListQuery) {
         return null;
     }
-
 }

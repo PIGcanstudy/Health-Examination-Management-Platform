@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.message.MessageResponseDTO;
 import com.zeroone.star.project.dto.j3.message.MessageSendDTO;
+import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.entity.Message;
 
 import java.util.List;
@@ -20,4 +21,6 @@ import java.util.List;
 public interface ITMessageService extends IService<Message> {
 
     PageDTO<MessageResponseDTO> selectMessageDetailPage(MessageSendDTO messageSend);
+
+    JsonVO<PageDTO<MessageResponseDTO>> getJsonVO(MessageSendDTO messageSend);
 }
