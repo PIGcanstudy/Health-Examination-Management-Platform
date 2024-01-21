@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _settingREPORT_H_
-#define _settingREPORT_H_
+#ifndef _downloadSetting_H_
+#define _downloadSetting_H_
 
 #include "../GlobalInclude.h"
 #include "domain/query/PageQuery.h"
@@ -26,16 +26,16 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * ��������PDF����
- * �����ˣ�����
+* 批量下载PDF报告
+* 负责人：晚风
  */
-class settingReportQuery : public PageQuery
+class downloadSettingQuery : public PageQuery
 {
-	DTO_INIT(settingReportQuery, PageQuery);
+	DTO_INIT(downloadSettingQuery, PageQuery);
 
-	// �����Ա���
-	API_DTO_FIELD_DEFAULT(String, downloadpath, ZH_WORDS_GETTER("setting.field.downloadpath"));
+	// 
+	API_DTO_FIELD_DEFAULT(String, downloadpath, ZH_WORDS_GETTER("downloadSetting.field.downloadpath"));
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_settingREPORT_H_
+#endif // !_downloadSetting_H_

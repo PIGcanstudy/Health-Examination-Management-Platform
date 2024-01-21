@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 10:59:38
+ @Date: 2024/01/16 11:34:14
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,27 +17,22 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _settingREPORTDTO_H_
-#define _settingREPORTDTO_H_
+#ifndef _downloadSetting_VO_
+#define _downloadSetting_VO_
+
 #include "../GlobalInclude.h"
+#include "../dto/downloadSettingDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * ��������PDF����
- * �����ˣ�����
+* 批量下载PDF报告
+* 负责人：晚风
  */
-class settingReportDTO : public oatpp::DTO
-{
-	DTO_INIT(settingReportDTO, DTO);
-	// Ψһ���
-	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("setting.field.id"));
-	// ������
-	API_DTO_FIELD_DEFAULT(String, reportNum, ZH_WORDS_GETTER("setting.field.reportNum"));
-	// PDF��ַ
-	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("setting.field.href"));
+class downloadSettingJsonVO : public JsonVO<downloadSettingDTO::Wrapper> {
+	DTO_INIT(downloadSettingJsonVO, JsonVO<downloadSettingDTO::Wrapper>);
 };
 
-
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_settingREPORTDTO_H_
+
+#endif // !_downloadSetting_VO_

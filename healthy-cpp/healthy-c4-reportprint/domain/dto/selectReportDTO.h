@@ -24,29 +24,29 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * ��������PDF����
- * �����ˣ�����
+* 批量下载PDF报告
+* 负责人：晚风
  */
 class selectReportDTO : public oatpp::DTO
 {
 	DTO_INIT(selectReportDTO, DTO);
-	// Ψһ���
+	// 
 	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("select.field.id"));
-	// ����
+	// 
 	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("select.field.name"));
-	// ����
+	// 
 	API_DTO_FIELD_DEFAULT(UInt32, age, ZH_WORDS_GETTER("select.field.age"));
-	// �Ա�
+	// 
 	API_DTO_FIELD_DEFAULT(String, sex, ZH_WORDS_GETTER("select.field.sex"));
-	// ���
+	// 
 	API_DTO_FIELD_DEFAULT(Boolean, statu, ZH_WORDS_GETTER("select.field.statu"));
-	// ��ӡ
+	// 
 	API_DTO_FIELD_DEFAULT(Boolean, downloadState, ZH_WORDS_GETTER("select.field.downloadState"));
 
 };
 
 /**
- * ʾ����ҳ�������
+ *
  */
 class selectReportPageDTO : public PageDTO<selectReportDTO::Wrapper>
 {

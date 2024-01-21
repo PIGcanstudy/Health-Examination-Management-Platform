@@ -12,7 +12,7 @@ select:
   checkDate: 体检日期
  get:
   summary: 选择要下载的报告
-setting:
+downloadSetting:
  field:
   personId: 体检人员编号
   id: 编号
@@ -21,3 +21,17 @@ setting:
   downloadpath: 下载路径
  get:
   view: 下载设置
+confire:
+ field:
+  reportNum: 打印报告编号
+  reportName: 打印报告名称
+  status: 打印状态
+ get:
+  view: 批量打印确认
+printSetting:
+ field:
+  papersize: 打印用纸尺寸
+  pagerange: 打印页面范围
+  Double-sidedOrNot: 是否双面
+ get:
+  printview: 打印设置

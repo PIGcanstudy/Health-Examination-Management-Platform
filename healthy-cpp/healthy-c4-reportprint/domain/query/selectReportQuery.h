@@ -26,23 +26,23 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * ��������PDF����
- * �����ˣ�����
+* 批量下载PDF报告
+* 负责人：晚风
  */
 class selectReportQuery : public PageQuery
 {
 	DTO_INIT(selectReportQuery, PageQuery);
-	// ��ѯ����
+	// 
 	API_DTO_FIELD_DEFAULT(String, type, ZH_WORDS_GETTER("select.field.type"));
-	// ����
+	// 
 	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("select.field.name"));
-	// �������
-	API_DTO_FIELD_DEFAULT(String, downloadpath, ZH_WORDS_GETTER("select.field.downloadpath"));
-	// �����
+	// 
+	API_DTO_FIELD_DEFAULT(String, downloadpath, ZH_WORDS_GETTER("downloadSetting.field.downloadpath"));
+	// 
 	API_DTO_FIELD_DEFAULT(String, testNum, ZH_WORDS_GETTER("select.field.testNum"));
-	// ��λ����
+	// 
 	API_DTO_FIELD_DEFAULT(String, dept, ZH_WORDS_GETTER("select.field.dept"));
-	// �������
+	// 
 	API_DTO_FIELD_DEFAULT(String, checkDate, ZH_WORDS_GETTER("select.field.checkDate"));
 };
 

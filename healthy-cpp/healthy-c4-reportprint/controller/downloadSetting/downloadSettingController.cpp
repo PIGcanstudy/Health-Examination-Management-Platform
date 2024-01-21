@@ -17,12 +17,12 @@
  limitations under the License.
 */
 #include "stdafx.h"
-#include "settingReportController.h"
+#include "downloadSettingController.h"
 
-settingReportJsonVO::Wrapper settingReportController::execQuerysettingReport(const settingReportQuery::Wrapper& query)
+downloadSettingJsonVO::Wrapper downloadSettingController::execQuerydownloadSetting(const downloadSettingQuery::Wrapper& query)
 {
-	settingReportJsonVO::Wrapper vo = settingReportJsonVO::Wrapper::createShared();
-	auto dto = settingReportDTO::createShared();
+	downloadSettingJsonVO::Wrapper vo = downloadSettingJsonVO::Wrapper::createShared();
+	auto dto = downloadSettingDTO::createShared();
 	vo->success(dto);
 	return vo;
 }

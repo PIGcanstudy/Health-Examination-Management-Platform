@@ -26,16 +26,16 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * ��������PDF����
- * �����ˣ�����
+* 批量下载PDF报告
+* 负责人：晚风
  */
 class selectReportJsonVO : public JsonVO<selectReportDTO::Wrapper> {
 	DTO_INIT(selectReportJsonVO, JsonVO<selectReportDTO::Wrapper>);
 };
 
 /**
- * ��������PDF����
- * �����ˣ�����
+* 批量下载PDF报告
+* 负责人：晚风
  */
 
 class selectReportPageJsonVO : public JsonVO<selectReportPageDTO::Wrapper> {

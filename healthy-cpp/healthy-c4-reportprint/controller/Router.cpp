@@ -28,15 +28,15 @@
 #include "uselib/ws/WSController.h"
 #endif
 #include "selectreport/selectReportController.h"
-#include "settingreport/settingReportController.h"
+#include "downloadSetting/downloadSettingController.h"
 
-// ��������˹ر�Swagger�ĵ���
+// 
 #ifdef CLOSE_SWAGGER_DOC
-// �򻯰󶨿������궨��
+// 
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 router->addController(__CLASS__::createShared())
 #else
-// �򻯰󶨿������궨��
+// 
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 BIND_CONTROLLER(docEndpoints, router, __CLASS__)
 #endif
@@ -53,22 +53,22 @@ void Router::initRouter()
 	createSampleRouter();
 #endif
 
-	//#TIP :ϵͳ��չ·�ɶ��壬д���������
+	//
 	ROUTER_SIMPLE_BIND(selectReportController);
-	ROUTER_SIMPLE_BIND(settingReportController);
+	ROUTER_SIMPLE_BIND(downloadSettingController);
 }
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
-	// ��ʾ��������
+	// 
 	ROUTER_SIMPLE_BIND(SampleController);
-	// ���û�������
+	// 
 	ROUTER_SIMPLE_BIND(UserController);
-	// ���ļ�������
+	// 
 	ROUTER_SIMPLE_BIND(FileController);
 	
-	// ��WebSocket������
+	// WebSocket
 	router->addController(WSContorller::createShared());
 }
 #endif
