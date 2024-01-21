@@ -1,6 +1,6 @@
 <!-- 医生总检 -->
 <template>
-  <div></div>
+  <div>医生总检</div>
 </template>
 
 <script setup></script>
