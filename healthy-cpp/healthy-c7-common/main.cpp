@@ -57,6 +57,11 @@
 	int dbPort = 3306;
 	int dbMax = 5;
 #ifdef LINUX
+	// Nacos配置参数
+	std::string nacosAddr = "192.168.220.128:8848";
+	std::string nacosNs = "4833404f-4b82-462e-889a-3c508160c6b4";
+	std::string serviceName = "";
+	std::string regIp = "";
 // Nacos配置参数
 std::string nacosAddr = "192.168.220.128:8848";
 std::string nacosNs = "4833404f-4b82-462e-889a-3c508160c6b4";
@@ -77,6 +82,7 @@ std::string regIp = "";
 			cout << "arg: " << argv[currIndex] << ", format error." << endl;
 			exit(1);
 		}
+
 	
 		// 根据参数前缀对不同属性赋值
 		std::string prefix = args[0];

@@ -23,7 +23,8 @@
 #include "domain/vo/BaseJsonVO.h"
 #include "ApiHelper.h"
 #include "ServerInfo.h"
-#include "domain/vo/file/FileVO.h"
+#include "../arch-demo/domain/vo/file/FileVO.h"
+//#include "domain/vo/file/FileVO.h"  无法打开源文件
 
 #include OATPP_CODEGEN_BEGIN(ApiController)
 

@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/12/03 14:58:34
+ @Author: lenyan~
+ @Date: 2024/01/19
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -36,6 +36,8 @@
 #include "uselib/ws/WSController.h"
 #endif
 
+#include "../controller/evalue/InquiryDetailController.h"
+
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
 // 简化绑定控制器宏定义
@@ -60,6 +62,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	ROUTER_SIMPLE_BIND(InquiryDetailController);
 	ROUTER_SIMPLE_BIND(ReviewController);
 	ROUTER_SIMPLE_BIND(AddNewItemsController);
 	ROUTER_SIMPLE_BIND(IdController);
@@ -67,6 +70,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(DownloadWordController);
 	ROUTER_SIMPLE_BIND(GroupItemIgnoController);
 	ROUTER_SIMPLE_BIND(UnitController);}
+
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {

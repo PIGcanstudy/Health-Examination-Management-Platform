@@ -17,10 +17,6 @@ healthy-c7-common
 > >
 > > `domain`  -- 领域模型实体
 > >
-> > `public` -- 测试访问网页案例
-> >
-> > `uselib` -- 静态库使用案例
-> >
 > > `CMakeLists.txt` -- `Cmake`跨平台编译配置文件
 > >
 > > `Macros.h` -- 通用宏定义

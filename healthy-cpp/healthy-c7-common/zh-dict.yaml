@@ -1,3 +1,19 @@
+inquiry:
+ get:
+  summary: 获取问诊明细
+ field:
+  workYear: 工龄年段
+  workMonth: 工龄月段
+  maritalStatus: 结婚状况
+  needYear: 按需年龄
+  needMonth: 按需月龄
+  culture: 文化程度
+  homeAddress: 家庭地址
+  jobName: 工种名称
+  jobOrderName: 工种其他名称
+  department: 所属部门
+
+
 result:
  field:
   id: 编号
