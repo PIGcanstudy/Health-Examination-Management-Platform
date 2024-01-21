@@ -1,8 +1,100 @@
 <!-- 团检订单 -->
 <template>
-  <div>团检订单</div>
+  <el-container style="height: 100%;">
+    <el-aside width="250px" style="background-color: aquamarine;">
+      <PeopleList style="height: 100%;width: 100%;" />
+    </el-aside>
+    <el-main style="">
+      <!-- 按钮 -->
+      <el-row style="margin-bottom: 15px;">
+        <el-button type="primary">
+          <el-icon><Edit /></el-icon>
+          Primary
+        </el-button>
+        <el-button type="primary">
+          <el-icon><Edit /></el-icon>
+          Primary
+        </el-button>
+        <el-button type="primary">
+          <el-icon><Edit /></el-icon>
+          Primary
+        </el-button>
+        <el-button type="primary">
+          <el-icon><Edit /></el-icon>
+          Primary
+        </el-button>
+        <el-button type="primary">
+          <el-icon><Edit /></el-icon>
+          Primary
+        </el-button>
+      </el-row>
+
+      <!-- 表单 -->
+      <el-form :inline="true" :model="formInline" class="demo-form-inline" style="padding: 0 25px;">
+        <el-form-item label="Approved by">
+          <el-input placeholder="Approved by" clearable />
+        </el-form-item>
+        <el-form-item label="Approved by">
+          <el-input placeholder="Approved by" clearable />
+        </el-form-item>
+        <el-form-item label="Approved by">
+          <el-input placeholder="Approved by" clearable />
+        </el-form-item>
+        <el-form-item label="Approved by">
+          <el-input placeholder="Approved by" clearable />
+        </el-form-item>
+        <el-form-item label="Approved by">
+          <el-input placeholder="Approved by" clearable />
+        </el-form-item>
+        <el-form-item label="Approved by">
+          <el-input placeholder="Approved by" clearable />
+        </el-form-item>
+        <el-form-item label="Approved by">
+          <el-input placeholder="Approved by" clearable />
+        </el-form-item>
+      </el-form>
+
+      <!-- 体检项目 -->
+      <div class="alter" style="display: flex;padding-bottom: 5px;">
+        <span>体检项目</span>
+        <el-button type="primary" size="small">
+          <el-icon><Edit /></el-icon>
+          Primary
+        </el-button>
+        <el-button type="primary" size="small">
+          <el-icon><Edit /></el-icon>
+          Primary
+        </el-button>
+      </div>
+      <PersonInfo :personInfo="tableData" style="margin-bottom: 15px;" />
+
+      <!-- 体检人员 -->
+      <div class="alter" title="success alert">
+        <span>体检人员</span>
+      </div>
+      <Details :details="tableData" />
+    </el-main>
+  </el-container>
 </template>
 
-<script setup></script>
+<script setup>
+import Details from '@/components/details/Details.vue'
+import PersonInfo from '@/components/personinfo/PersonInfo.vue'
+import PeopleList from '@/components/peoplelist/PeopleList.vue'
+</script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.alter {
+  background-color: #F0FAFF;
+  border: 1px solid #B7E0FF;
+  padding: 6px;
+  border-radius: 5px;
+  
+  span {
+    color: #000;
+    font-weight: 600;
+    font-size: small;
+    margin-right: 15px;
+  }
+}
+</style>
