@@ -1,6 +1,6 @@
 <!-- 体检诊台 -->
 <template>
-  <div></div>
+  <div>体检诊台</div>
 </template>
 
 <script setup></script>

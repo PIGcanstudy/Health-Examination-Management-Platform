@@ -1,6 +1,6 @@
 <!-- 单位报告 -->
 <template>
-  <div></div>
+  <div>单位报告</div>
 </template>
 
 <script setup></script>

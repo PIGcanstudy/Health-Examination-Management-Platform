@@ -1,8 +1,14 @@
 const routes = [
   {
     path: '/healthcheck',
-    redirect: '/healthcheck/InspectionCompany.vue',
+    redirect: '/healthcheck/NavigationShow.vue',
     children: [
+      {
+        // 流程展示
+        path: '/healthcheck/NavigationShow.vue',
+        name: 'navigation',
+        component: () => import('@/views/healthcheck/NavigationShow.vue')
+      },
       {
         // 团检单位
         path: '/healthcheck/InspectionCompany.vue',

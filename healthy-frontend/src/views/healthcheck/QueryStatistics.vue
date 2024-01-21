@@ -1,6 +1,6 @@
 <!-- 查询统计 -->
 <template>
-  <div></div>
+  <div>查询统计</div>
 </template>
 
 <script setup></script>
