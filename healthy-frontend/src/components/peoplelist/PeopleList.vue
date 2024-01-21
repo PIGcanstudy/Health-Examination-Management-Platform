@@ -1,15 +1,15 @@
 <template>
   <div class="left-side-bar">
-    <div class="box-card">
+    <el-card class="box-card">
       <!-- 列表名称区域 -->
-      <template v-if="props?.useHeader">
+      <template v-if="props?.useHeader" #header>
         <div class="card-header">
           <span>{{ props.title }}</span>
         </div>
       </template>
 
       <!-- 主体部分 -->
-      <div class="main" style="height: 90%;">
+      <div class="main">
         <!-- 表单区域 -->
         <div class="form-area">
           <!-- 需要inline属性管理第一行的样式(待解决) -->
@@ -65,50 +65,52 @@
         </div>
 
         <!-- 表格区域 -->
-        <el-table ref="tableRef" v-loading="openLoading" :data="props?.tableData" table-layout="auto" @selection-change="handleSelectionChange">
-          <!-- 第一列：多选 -->
-          <el-table-column v-if="props?.useSelectColumn" type="selection" width="55" />
-          <el-table-column prop="name" label="姓名"></el-table-column>
-          <el-table-column prop="gender" label="性别"></el-table-column>
-          <el-table-column prop="age" label="年龄"></el-table-column>
-          <!-- <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.lable" class-name="class-name"> -->
-          <!-- 表格的列内容如果使用tag -->
-          <!-- <template v-if="item.useTag" #default="{ row }"> -->
-          <!-- <el-tag :type="row[item.prop].tagType">{{ row[item.prop].value }}</el-tag> -->
-          <!-- </template> -->
-          <!-- </el-table-column> -->
-          <!-- 第五列：标签（占位用） -->
-          <el-table-column prop="tag" label="标签">
-            <template #default>
-              <el-tag :type="info" style="margin-right: 6px">1</el-tag>
-              <el-tag :type="info">1</el-tag>
+        <div class="table">
+          <el-table ref="tableRef" v-loading="openLoading" style="height=300; width: 100%;" :data="props?.tableData" table-layout="auto" @selection-change="handleSelectionChange">
+            <!-- 第一列：多选 -->
+            <el-table-column v-if="props?.useSelectColumn" type="selection" width="55" />
+            <el-table-column prop="name" label="姓名"></el-table-column>
+            <el-table-column prop="gender" label="性别"></el-table-column>
+            <el-table-column prop="age" label="年龄"></el-table-column>
+            <!-- <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.lable" class-name="class-name"> -->
+            <!-- 表格的列内容如果使用tag -->
+            <!-- <template v-if="item.useTag" #default="{ row }"> -->
+            <!-- <el-tag :type="row[item.prop].tagType">{{ row[item.prop].value }}</el-tag> -->
+            <!-- </template> -->
+            <!-- </el-table-column> -->
+            <!-- 第五列：标签（占位用） -->
+            <el-table-column prop="tag" label="标签">
+              <template #default>
+                <el-tag :type="info" style="margin-right: 6px">1</el-tag>
+                <el-tag :type="info">1</el-tag>
+              </template>
+            </el-table-column>
+
+            <!-- ------------------------------------------- -->
+
+            <!-- 表格没有数据的样式 -->
+            <template #empty>
+              <el-empty class="emptyTable" description="没有数据"></el-empty>
             </template>
-          </el-table-column>
+          </el-table>
+        </div>
 
-          <!-- ------------------------------------------- -->
-
-          <!-- 表格没有数据的样式 -->
-          <template #empty>
-            <el-empty class="emptyTable" description="没有数据"></el-empty>
-          </template>
-        </el-table>
+        <!-- 分页区域 -->
+        <template v-if="props?.usePagination">
+          <el-pagination
+            v-model:current-page="paginationData.currentPage"
+            v-model:page-size="paginationData.pageSize"
+            :page-sizes="props.pageSizes"
+            layout="prev, jumper, pager, next, "
+            :total="props.total"
+            :small="small"
+            style="margin-top: 30px"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+          />
+        </template>
       </div>
-
-      <!-- 分页区域 -->
-      <template v-if="props?.usePagination">
-        <el-pagination
-          v-model:current-page="paginationData.currentPage"
-          v-model:page-size="paginationData.pageSize"
-          :page-sizes="props.pageSizes"
-          layout="prev, jumper, next, "
-          :total="props.total"
-          :small="small"
-          style="position: absolute;bottom: 0;"
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-        />
-      </template>
-    </div>
+    </el-card>
   </div>
 </template>
 
@@ -318,12 +320,7 @@ defineExpose({
   width: 24%;
 
   .box-card {
-    height: 100%;
-    background-color: white;
-    padding: 10px;
-    overflow: hidden;
     .card-header {
-      padding: 5px;
       justify-content: center;
       text-align: center;
       background-color: rgb(240, 250, 255);
