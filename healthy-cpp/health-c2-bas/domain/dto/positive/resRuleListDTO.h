@@ -31,9 +31,9 @@ class resRuleListDTO : public oatpp::DTO
 /**
  * 分页传输对象
  */
-class resRuleListDTO : public PageDTO<resRuleListDTO::Wrapper>
+class resRulePageDTO : public PageDTO<resRuleListDTO::Wrapper>
 {
-	DTO_INIT(resRuleListDTO, PageDTO<resRuleListDTO::Wrapper>);
+	DTO_INIT(resRulePageDTO, PageDTO<resRuleListDTO::Wrapper>);
 };
 #include OATPP_CODEGEN_END(DTO)
 

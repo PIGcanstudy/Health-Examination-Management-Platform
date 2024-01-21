@@ -25,9 +25,9 @@ class ruleListDTO : public oatpp::DTO
 /**
  * 分页传输对象
  */
-class ruleListDTO : public PageDTO<ruleListDTO::Wrapper>
+class rulePageDTO : public PageDTO<ruleListDTO::Wrapper>
 {
-	DTO_INIT(ruleListDTO, PageDTO<ruleListDTO::Wrapper>);
+	DTO_INIT(rulePageDTO, PageDTO<ruleListDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)

@@ -52,12 +52,12 @@ public: // 定义接口
 	// 定义修改接口描述
 	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("positive.resRules.modify.summary"), modifyResRuleList, Uint64JsonVO::Wrapper);
 	// 定义修改接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "positive/modify-resRuleList", modifyResRuleList, BODY_DTO(ruleListDTO::Wrapper, dto), execModifyResRule(dto));
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "positive/modify-resRuleList", modifyResRuleList, BODY_DTO(rulePageDTO::Wrapper, dto), execModifyResRule(dto));
 	
 private: // 定义接口执行函数
 	resRuleListJsonVO::Wrapper execQueryResRule(const resRuleListQuery::Wrapper& query); 
 	Uint64JsonVO::Wrapper execRemoveResRule(const String& id);
-	Uint64JsonVO::Wrapper execModifyResRule(const ruleListDTO::Wrapper& dto);
+	Uint64JsonVO::Wrapper execModifyResRule(const rulePageDTO::Wrapper& dto);
 };
 
 #include OATPP_CODEGEN_END(ApiController)
