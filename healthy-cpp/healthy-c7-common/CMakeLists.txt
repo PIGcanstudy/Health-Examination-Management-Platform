@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.8)
 
 # 设置文件名称
-set (appName healthy-c7-sample)
+set (appName healthy-c7-common)
 
 # 包含库目录
 include_directories ("./")
