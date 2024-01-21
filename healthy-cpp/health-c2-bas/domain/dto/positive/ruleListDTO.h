@@ -22,6 +22,14 @@ class ruleListDTO : public oatpp::DTO
 	API_DTO_FIELD_DEFAULT(String, positiveResultsId, ZH_WORDS_GETTER("positive.rules.field.positiveResultsId"));
 };
 
+/**
+ * 分页传输对象
+ */
+class ruleListDTO : public PageDTO<ruleListDTO::Wrapper>
+{
+	DTO_INIT(ruleListDTO, PageDTO<ruleListDTO::Wrapper>);
+};
+
 #include OATPP_CODEGEN_END(DTO)
 
 #endif // !_RULELIST_DTO_

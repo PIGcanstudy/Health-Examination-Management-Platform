@@ -28,6 +28,13 @@ class resRuleListDTO : public oatpp::DTO
 	API_DTO_FIELD_DEFAULT(String, type, ZH_WORDS_GETTER("positive.resRules.field.type"));
 };
 
+/**
+ * 分页传输对象
+ */
+class resRuleListDTO : public PageDTO<resRuleListDTO::Wrapper>
+{
+	DTO_INIT(resRuleListDTO, PageDTO<resRuleListDTO::Wrapper>);
+};
 #include OATPP_CODEGEN_END(DTO)
 
 #endif // !_RESRULELIST_DTO_

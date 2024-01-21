@@ -10,7 +10,7 @@ class resRuleListDO
 	// 唯一编号
 	CC_SYNTHESIZE(string, id, Id);
 	// 条件
-	CC_SYNTHESIZE(string, condition, Conditon);
+	CC_SYNTHESIZE(string, condition, Condition);
 	// 适合性别
 	CC_SYNTHESIZE(string, genderAppropriate, GenderAppropriate);
 	// 阳性Id
