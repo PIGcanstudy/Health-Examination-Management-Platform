@@ -1,6 +1,9 @@
 package com.zeroone.star.sysmanager.controller;
 
+import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j3.direct.DirectSourceApis;
+import com.zeroone.star.project.dto.j3.dictdata.AddDictDataDTO;
+import com.zeroone.star.project.dto.j3.dictdata.UpdateDictDataDTO;
 import com.zeroone.star.project.query.j3.WordTypeListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.service.ITDictDataService;
@@ -24,7 +27,19 @@ public class DirectSourceController implements DirectSourceApis {
 
     @Resource
     ITDictDataService itDictDataService;
+    @ApiOperation("新增字典数据")
+    @PostMapping("/addDictData")
+    @Override
+    public JsonVO<PageDTO<UpdateDictDataDTO>> UpdateDictData() {
+        return null;
+    }
 
+    @ApiOperation("修改字典数据")
+    @PostMapping ("/updateDictData")
+    @Override
+    public JsonVO<PageDTO<AddDictDataDTO>> AddDictData() {
+        return null;
+    }
     @ApiOperation("根据id批量删除数据字典")
     @PostMapping("/deleteByIds")
     @Override
