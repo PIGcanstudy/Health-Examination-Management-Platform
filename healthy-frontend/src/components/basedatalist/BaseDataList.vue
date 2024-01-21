@@ -9,17 +9,17 @@
       </template>
       <div class="main">
         <!-- 功能栏 -->
-        <slot name="tools"></slot>
-        <!-- 多选删除栏 -->
-        <slot name="delete"></slot>
+        <slot name="operation"></slot>
+        <!-- 多选清除栏 -->
+        <slot name="hint"></slot>
         <!-- table表格 -->
         <el-table :data="props?.tableData" border>
           <!-- 多选列 -->
           <el-table-column type="selection"></el-table-column>
           <!-- 表格内容 -->
-          <el-table-column v-for="item in props.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label" />
+          <el-table-column v-for="item in props.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label" :width="item.width" :align="item.align" />
           <!-- 固定列 -->
-          <el-table-column fixed="right" label="操作" v-if="props.useFixed">
+          <el-table-column v-if="props.useFixed" fixed="right" label="操作" width="160">
             <template #default="{ row }">
               <el-button link type="primary" @click="props.handleEdit(row)">编辑</el-button>
               <el-button link type="primary" @click="props.handleDelete(row)">删除</el-button>
@@ -27,15 +27,15 @@
           </el-table-column>
         </el-table>
         <!-- 分页 -->
-        <template v-if="props?.usePagination">
+        <template v-if="props.usePagination">
           <el-pagination
             v-model:current-page="paginationData.currentPage"
             v-model:page-size="paginationData.pageSize"
             :page-sizes="props.pageSizes"
             layout="prev, pager, next, jumper, ->"
             :total="props.total"
-            @current-change="handleCurrentChange"
             style="margin-top: 30px; justify-content: flex-end"
+            @current-change="handleCurrentChange"
           />
         </template>
       </div>
@@ -45,7 +45,7 @@
 
 <script setup>
 import { watch, ref, defineEmits } from 'vue'
-const row = ref([])
+const rows = ref()
 const props = defineProps({
   // 是否使用Form表单
   useForm: Boolean,
@@ -111,7 +111,7 @@ const handleCurrentChange = (page) => {
 }
 defineExpose({
   // 暴露出被选行
-  row
+  rows
 })
 </script>
 
