@@ -19,7 +19,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @TableName("t_role")
-public class TRole implements Serializable {
+public class
+TRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
