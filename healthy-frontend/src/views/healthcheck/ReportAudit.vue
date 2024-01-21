@@ -1,6 +1,6 @@
 <!-- 报告审核 -->
 <template>
-  <div></div>
+  <div>报告审核</div>
 </template>
 
 <script setup></script>

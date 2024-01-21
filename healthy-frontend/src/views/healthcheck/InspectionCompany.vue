@@ -1,6 +1,6 @@
 <!-- 团检单位 -->
 <template>
-  <div></div>
+  <div>团检单位</div>
 </template>
 
 <script setup></script>

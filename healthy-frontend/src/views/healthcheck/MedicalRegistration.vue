@@ -1,6 +1,6 @@
 <!-- 体检登记 -->
 <template>
-  <div></div>
+  <div>体检登记</div>
 </template>
 
 <script setup></script>
