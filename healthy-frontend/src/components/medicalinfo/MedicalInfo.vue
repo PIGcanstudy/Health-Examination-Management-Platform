@@ -93,17 +93,31 @@ const props = defineProps({
   // 当前流程
   currentProgress: {
     type: Number,
-    required: true
+    required: true,
+    default: 1
   },
   // 共有哪些流程
   progressSteps: {
     type: Array,
-    required: true
+    required: true,
+    default: () => ['登记', '在检', '总检', '已完成']
   },
   // 个人信息
   personInfo: {
     type: Object,
-    required: true
+    required: true,
+    default: () => ({
+      physical_id: '2202401120016',
+      id_card: '510521199304017011',
+      person_name: 'test-rom',
+      sex: '男',
+      age: '30',
+      physical_type: '健康体检',
+      mobile: '18980504604',
+      unit_name: 'test-rom',
+      marry_type: '',
+      type_name: ''
+    })
   }
 })
 /* 个人信息处理 */
