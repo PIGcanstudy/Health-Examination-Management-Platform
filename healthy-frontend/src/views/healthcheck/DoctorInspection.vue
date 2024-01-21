@@ -1,8 +1,14 @@
 <!-- 医生总检 -->
 <template>
-  <div>医生总检</div>
+  <div>
+    <PeopleList></PeopleList>
+    <!-- <MedicalInfo></MedicalInfo> -->
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import PeopleList from '@/components/peoplelist/PeopleList.vue'
+import MedicalInfo from '@/components/medicalinfo/MedicalInfo.vue'
+</script>
 
 <style lang="scss" scoped></style>
