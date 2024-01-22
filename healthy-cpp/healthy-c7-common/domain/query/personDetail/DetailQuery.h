@@ -12,13 +12,12 @@
 class DetailQuery : public PageQuery
 {
 	DTO_INIT(DetailQuery, PageQuery);
-	DTO_FIELD(UInt64, pageSize) = 1;
 	// 用户姓名
-	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("unit.field.name"));
+	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("detail.field.name"));
 	// 用户年龄
-	API_DTO_FIELD_DEFAULT(Int32, age, ZH_WORDS_GETTER("unit.field.age"));
+	API_DTO_FIELD_DEFAULT(Int32, age, ZH_WORDS_GETTER("detail.field.age"));
 	// 用户性别
-	API_DTO_FIELD_DEFAULT(String, gender, ZH_WORDS_GETTER("unit.field.gender"));
+	API_DTO_FIELD_DEFAULT(String, gender, ZH_WORDS_GETTER("detail.field.gender"));
 };
 
 #include OATPP_CODEGEN_END(DTO)

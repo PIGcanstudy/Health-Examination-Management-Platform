@@ -16,30 +16,26 @@ public: // 定义接口
     // 定义分页查询单位列表接口描述
     ENDPOINT_INFO(queryDetail) {
         // 定义接口标题
-        API_DEF_ADD_TITLE(ZH_WORDS_GETTER("unit.field.project"));
+        API_DEF_ADD_TITLE(ZH_WORDS_GETTER("detail.field.project"));
         // 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
         API_DEF_ADD_AUTH();
         // 定义响应参数格式
         API_DEF_ADD_RSP_JSON_WRAPPER(DetailJsonVO);
         // 定义分页查询参数描述
-        //API_DEF_ADD_PAGE_PARAMS();
+        // API_DEF_ADD_PAGE_PARAMS();
+
         // 定义其他查询参数描述
-        //API_DEF_ADD_QUERY_PARAMS(String, "physicalExamNumber", ZH_WORDS_GETTER("unit.field.physicalExamNumber"), "13", true);
-        //API_DEF_ADD_QUERY_PARAMS(String, "identityCardNumber", ZH_WORDS_GETTER("unit.field.identityCardNumber"), "18", false);
-        API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("unit.field.name"), "xxx", false);
-        API_DEF_ADD_QUERY_PARAMS(String, "gender", ZH_WORDS_GETTER("unit.field.gender"), "man", false);
-        API_DEF_ADD_QUERY_PARAMS(UInt32, "age", ZH_WORDS_GETTER("unit.field.age"), 1, false);
-        //API_DEF_ADD_QUERY_PARAMS(String, "phoneNumber", ZH_WORDS_GETTER("unit.field.phoneNumber"), "123456789", false);
-        //API_DEF_ADD_QUERY_PARAMS(String, "organizationName", ZH_WORDS_GETTER("unit.field.organizationName"), "xxx", false);
-        //API_DEF_ADD_QUERY_PARAMS(String, "registrationTime", ZH_WORDS_GETTER("unit.field.registrationTime"), "xx xx xx", false);
-        
+        API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("detail.field.name"), "xxx", false);
+        API_DEF_ADD_QUERY_PARAMS(String, "gender", ZH_WORDS_GETTER("detail.field.gender"), "man", false);
+        API_DEF_ADD_QUERY_PARAMS(UInt32, "age", ZH_WORDS_GETTER("detail.field.age"), 1, false);
+
     }
     // 定义分页查询单位列表接口
     ENDPOINT(API_M_GET, "/personDetail/query-detail", queryDetail, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
         // 解析查询参数为Query领域模型
-        API_HANDLER_QUERY_PARAM(uq, DetailQuery, params);
+        API_HANDLER_QUERY_PARAM(dq, DetailQuery, params);
         // 呼叫执行函数响应结果
-        API_HANDLER_RESP_VO(execQueryUnit(uq));
+        API_HANDLER_RESP_VO(execQueryUnit(dq));
     }
 private: // 定义接口执行函数
     DetailJsonVO::Wrapper execQueryUnit(const DetailQuery::Wrapper& query);

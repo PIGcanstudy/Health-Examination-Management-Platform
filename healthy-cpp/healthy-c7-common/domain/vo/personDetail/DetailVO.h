@@ -15,12 +15,6 @@ class DetailJsonVO : public JsonVO<DetailDTO::Wrapper>
 	DTO_INIT(DetailJsonVO, JsonVO<DetailDTO::Wrapper>);
 };
 
-/**
- * 单位列表显示分页JsonVO实体
- */
-class DetailPageJsonVO : public JsonVO<DetailPageDTO::Wrapper> {
-	DTO_INIT(DetailPageJsonVO, JsonVO<DetailPageDTO::Wrapper>);
-};
 
 #include OATPP_CODEGEN_END(DTO)
 
