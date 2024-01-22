@@ -36,9 +36,12 @@
     @selection-change="handleSelectionChangeForCy"
   > 
     <el-table-column  type="selection" label="选择" width="180" />
-    <el-table-column prop="tcmc" label="套餐名称" width="180" />
+    <el-table-column v-for="item in props.tableLie" :key="item" :prop="item.prop" width="180" />
     <el-table-column prop="tcjp" label="套餐简拼" />
   </el-table>
+
+  <el-button @click="cancelForCy">关闭 </el-button>
+  <el-button type="primary" @click="submitForCy">确定</el-button>
   </el-drawer>
 </div>
 
@@ -107,8 +110,8 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     />
-  <el-button @handleClose="close">关闭 </el-button>
-  <el-button type="primary" @click="submit">确定</el-button>
+  <el-button @click="cancelTc">关闭 </el-button>
+  <el-button type="primary" @click="submitTc">确定</el-button>
   </el-drawer>
 </div>
 </template>
@@ -176,6 +179,10 @@ const props = defineProps({
     selectDown:{
         type: Array,
         default: () =>[]
+    },
+    tableLie: {
+         type: Array,
+         default: () =>{}
     }
 })
 
@@ -189,20 +196,38 @@ created:{
 
 
 //定义触发事件,就是底部2个按钮
-const emit = defineEmits(['submit', 'cancel'])
+const emits = defineEmits(['submit', 'cancel'])
 
-//抽屉的打开与关闭
+//套餐抽屉的打开与关闭
 const open = () => drawer2.value = true
 const close = () => drawer2.value = false
 
+//从业抽屉的打开与关闭
+const openCy = () => drawer.value = true
+const closeCy = () => drawer.value = false
 
-// 抽屉的确认与取消按钮
-const submit = () => {
+
+// 套餐抽屉的确认与取消按钮
+const submitTc = () => {
   //获取当前选中行的数据
-  console.log("value: " + rowData)
+  console.log("value: " + rowData.value)
+  emits('sumbit',rowData.value);
   close()
 }
-const cancel = () => emit('cancel')
+const cancelTc = () => {
+  close()
+}
+
+// 从业抽屉的确认与取消按钮
+const submitForCy = () => {
+  //获取当前选中行的数据
+  console.log("value: " + rowDataForCy.value)
+  // emits('sumbit',rowDataForCy.value)
+  closeCy()
+}
+const cancelForCy = () => {
+  closeCy()
+}
 
 let loading = ref(false)
 
@@ -210,7 +235,7 @@ const showloading = () => loading.value = true
 const hideloading = () => loading.value = false
 // 暴露出去
 defineExpose({
-  open, close, submit, cancel, showloading, hideloading
+  open, close,openCy,cancelForCy,submitTc, cancelTc, showloading, hideloading
 })
 
 
@@ -250,7 +275,7 @@ const handleCzTc = () => {
 const multipleTableRef =  ref()
 const multipleSelectionForCy = ref([])
 const multipleSelectionForTc = ref([])
-
+const rowDataForCy = ref();
 
 const handleSelectionChangeForCy = (val) => {
   console.log("从业套餐selectChangge: " + val);
@@ -271,11 +296,12 @@ const select = (selection, row) => {
   // 主要用于将当前勾选的表格状态清除
   if (selection.length == 0) return
   multipleTableRef.value.toggleRowSelection(row, true)
+    rowDataForCy.value = row
 }
 
 
 const multipleTableRefForTc =  ref()
-const rowData1 = ref();
+const rowData = ref();
 
 // 套餐项目-表格绑定事件selectTc
 const selectTc = (selection, row) => {
@@ -285,7 +311,7 @@ const selectTc = (selection, row) => {
   // 主要用于将当前勾选的表格状态清除
   if (selection.length == 0) return
   multipleTableRefForTc.value.toggleRowSelection(row, true)
-  rowData1.value = row
+  rowData.value = row
 }
 
 
