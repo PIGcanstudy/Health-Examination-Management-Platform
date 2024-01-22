@@ -2,7 +2,7 @@
 <template>
   <div>
     <el-container>
-      <el-aside width="200px">
+      <el-aside>
         <PeoplleList title="报告查询"></PeoplleList>
       </el-aside>
       <el-main>
