@@ -4,7 +4,7 @@
         <el-container class="mater" >
           <el-main >
             <div class="ic01" >
-              <router-link to="/sample/file" >
+              <router-link to="/healthcheck/InspectionCompany.vue" >
               <img src="../../assets/navigation/icon01.png" />
               </router-link>
               <el-text  size="large" >团检单位</el-text>
@@ -15,7 +15,7 @@
             
   
             <div class="ic02">
-              <router-link to="/sample/excel">
+              <router-link to="/healthcheck/GroupOrder.vue">
               <img src="../../assets/navigation/icon02.png" />
             </router-link>
               <el-text  size="large">团检订单</el-text>
@@ -25,7 +25,7 @@
             </div> 
   
             <div class="ic03">
-              <router-link to="/sample/print">
+              <router-link to="/healthcheck/MedicalExaminer.vue">
               <img src="../../assets/navigation/icon03.png" />
               </router-link>
               <el-text  size="large">团检人员</el-text>
@@ -37,7 +37,7 @@
   
   
             <div class="ic04">
-              <router-link to="/sample/print">
+              <router-link to="/healthcheck/ContractApproval.vue">
               <img src="../../assets/navigation/icon04.png" />
               </router-link>
               <el-text  size="large">合同详情</el-text>
@@ -48,7 +48,7 @@
   
   
             <div class="ic05">
-              <router-link to="/sample/print">
+              <router-link to="/healthcheck/CompanyReport.vue">
               <img src="../../assets/navigation/icon05.png" />
               </router-link>
               <el-text  size="large">单位报告</el-text>
@@ -59,7 +59,7 @@
             </div>  -->
   
             <div class="ic06">
-              <router-link to="/sample/print">
+              <router-link to="/healthcheck/MedicalExamination.vue">
               <img src="../../assets/navigation/icon06.png" />
               </router-link>
               <el-text  size="large">体检诊台</el-text>
@@ -69,7 +69,7 @@
             </div> 
   
             <div class="ic07">
-              <router-link to="/sample/pdfobject">
+              <router-link to="/healthcheck/DoctorInspection.vue">
               <img src="../../assets/navigation/icon07.png" />
               </router-link>
               <el-text  size="large">医生总检</el-text>
@@ -79,7 +79,7 @@
             </div> 
   
             <div class="ic08">
-              <router-link to="/sample/basedatalist">
+              <router-link to="/healthcheck/ReportAudit.vue">
               <img src="../../assets/navigation/icon08.png" />
               </router-link>
               <el-text  size="large">报告审核</el-text>
@@ -89,7 +89,7 @@
             </div> 
   
             <div class="ic09">
-              <router-link to="/sample/basedatalisttest">
+              <router-link to="/healthcheck/MedicalReport.vue">
               <img src="../../assets/navigation/icon09.png" />
               </router-link>
               <el-text  size="large">体检报告</el-text>
@@ -110,7 +110,7 @@
             
   
             <div class="ic11">
-              <router-link to="/sample/search">
+              <router-link to="/healthcheck/MedicalRegistration.vue">
               <img src="../../assets/navigation/icon11.png" />
               </router-link>
               <el-text  size="large">体检登记</el-text>
@@ -119,7 +119,7 @@
               <img src="../../assets/navigation/arrow03.png"/>
             </div> 
             <div class="ic12">
-              <router-link to="/sample/medicalinfo">
+              <router-link to="/healthcheck/QueryStatistics.vue">
               <img src="../../assets/navigation/icon10.png" />
               </router-link>
               <el-text  size="large">数据网报</el-text>
