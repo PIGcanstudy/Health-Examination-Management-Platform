@@ -8,6 +8,10 @@
 #define SAMPLE_TERAM_PARSE(query, sql) \
 SqlParams params; \
 sql<<" WHERE 1=1"; \
+if (query->id) { \
+	sql << " AND `id`=?"; \
+	SQLPARAMS_PUSH(params, "i", int, query->id.getValue(0)); \
+} \
 if (query->personId) { \
 	sql << " AND `person_id`=?"; \
 	SQLPARAMS_PUSH(params, "i", int, query->personId.getValue(0)); \
@@ -44,7 +48,7 @@ uint64_t InfoListDAO::count(const InfoQuery::Wrapper& query)
 list<InfoListDO> InfoListDAO::selectWithPage(const InfoQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT person_id,inspection_doctor,inspection_date,medical_advice,handle_opinion FROM t_inspection_record";
+	sql << "SELECT id,person_id,inspection_doctor,inspection_date,medical_advice,handle_opinion FROM t_inspection_record";
 	SAMPLE_TERAM_PARSE(query, sql);
 	sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
 	InfoListMapper mapper;
@@ -59,8 +63,8 @@ list<InfoListDO> InfoListDAO::selectByName(const string& name)
 
 uint64_t InfoListDAO::insert(const InfoListDO& iObj)
 {
-	string sql = "INSERT INTO `t_inspection_record` (`person_id`, `inspection_doctor`, `inspection_date`, `medical_advice`, `handle_opinion`) VALUES (?, ?, ?, ?, ?)";
-	return sqlSession->executeInsert(sql, "%i%s%s%s%s", iObj.getPersonId(), iObj.getInspectionDoctor(), iObj.getInspectionDate(), iObj.getMedicalAdvice(), iObj.getHandleOpinion());
+	string sql = "INSERT INTO `t_inspection_record` (`id`, `person_id`, `inspection_doctor`, `inspection_date`, `medical_advice`, `handle_opinion`) VALUES (?, ?, ?, ?, ?, ?)";
+	return sqlSession->executeInsert(sql, "%i%i%s%s%s%s",iObj.getId(), iObj.getPersonId(), iObj.getInspectionDoctor(), iObj.getInspectionDate(), iObj.getMedicalAdvice(), iObj.getHandleOpinion());
 }
 
 int InfoListDAO::update(const InfoListDO& uObj)

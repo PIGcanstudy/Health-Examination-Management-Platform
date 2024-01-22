@@ -32,11 +32,12 @@ public:
 	InfoListDO mapper(ResultSet* resultSet) const override
 	{
 		InfoListDO data;
-		data.setPersonId(resultSet->getUInt64(1));
-		data.setInspectionDoctor(resultSet->getString(2));
-		data.setInspectionDate(resultSet->getString(3));
-		data.setMedicalAdvice(resultSet->getString(4));
-		data.setHandleOpinion(resultSet->getString(5));
+		data.setId(resultSet->getUInt64(1));
+		data.setPersonId(resultSet->getUInt64(2));
+		data.setInspectionDoctor(resultSet->getString(3));
+		data.setInspectionDate(resultSet->getString(4));
+		data.setMedicalAdvice(resultSet->getString(5));
+		data.setHandleOpinion(resultSet->getString(6));
 		return data;
 	}
 };

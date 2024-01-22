@@ -26,6 +26,7 @@
  */
 class InfoListDO
 {
+	CC_SYNTHESIZE(int, id, Id);
 	//体检人员
 	CC_SYNTHESIZE(int, personId, PersonId);
 	//总检医生

@@ -47,6 +47,8 @@ public:
 		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
 
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "id", ZH_WORDS_GETTER("Info.field.id"), 1, true);
+
 		//体检人员
 		API_DEF_ADD_QUERY_PARAMS(UInt32, "personId", ZH_WORDS_GETTER("Info.field.personId"), 1, true);
 

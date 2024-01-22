@@ -27,6 +27,18 @@ InfoListPageJsonVO::Wrapper InfoController::execQueryInfo(const InfoQuery::Wrapp
 {
 	// 定义一个Service
 	InfoListService service;
+
+	InfoListDTO::Wrapper dto = InfoListDTO::createShared();
+
+	dto->id = query->id;
+ 	dto->personId = query->personId;
+ 	dto->inspectionDoctor = query->inspectionDoctor;
+ 	dto->inspectionDate = query->inspectionDate;
+ 	dto->medicalAdvice = query->medicalAdvice;
+	dto->handleOpinion = query->handleOpinion;
+
+	service.saveData(dto);
+
 	// 查询数据
 	auto result = service.listAll(query);
 	// 响应结果
@@ -34,3 +46,5 @@ InfoListPageJsonVO::Wrapper InfoController::execQueryInfo(const InfoQuery::Wrapp
 	jvo->success(result);
 	return jvo;
 }
+
+

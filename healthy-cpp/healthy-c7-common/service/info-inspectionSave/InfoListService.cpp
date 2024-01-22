@@ -28,7 +28,7 @@ InfoListPageDTO::Wrapper InfoListService::listAll(const InfoQuery::Wrapper& quer
 		// 		dto->name = sub.getName();
 		// 		dto->sex = sub.getSex();
 		// 		dto->age = sub.getAge();
-		ZO_STAR_DOMAIN_DO_TO_DTO(dto, sub, personId, PersonId, inspectionDoctor, InspectionDoctor, inspectionDate, InspectionDate
+		ZO_STAR_DOMAIN_DO_TO_DTO(dto, sub,id, Id, personId, PersonId, inspectionDoctor, InspectionDoctor, inspectionDate, InspectionDate
 			, medicalAdvice, MedicalAdvice, handleOpinion, HandleOpinion);
 			pages->addData(dto);
 
@@ -43,7 +43,7 @@ uint64_t InfoListService::saveData(const InfoListDTO::Wrapper& dto)
 	// 	data.setName(dto->name.getValue(""));
 	// 	data.setSex(dto->sex.getValue(""));
 	// 	data.setAge(dto->age.getValue(1));
-	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, PersonId, personId, InspectionDoctor, inspectionDoctor, InspectionDate, inspectionDate
+	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Id, id, PersonId, personId, InspectionDoctor, inspectionDoctor, InspectionDate, inspectionDate
 		, MedicalAdvice, medicalAdvice, HandleOpinion, handleOpinion)
 		// 执行数据添加
 		InfoListDAO dao;

@@ -34,6 +34,8 @@ class InfoListDTO : public oatpp::DTO
 	// 定义初始化
 	DTO_INIT(InfoListDTO, DTO);
 
+	API_DTO_FIELD_DEFAULT(UInt32, id, ZH_WORDS_GETTER("Info.field.id"));
+
 	//体检人员
 	API_DTO_FIELD_DEFAULT(UInt32, personId, ZH_WORDS_GETTER("Info.field.personId"));
 

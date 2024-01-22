@@ -33,8 +33,7 @@ class InfoQuery : public PageQuery
 {
 	DTO_INIT(InfoQuery, PageQuery);
 	
-	//保存总检信息 若为1则确定保存，0则取消
-	//API_DTO_FIELD_DEFAULT(UInt32, inspectSave, ZH_WORDS_GETTER("Info.field.inspectSave"));
+	API_DTO_FIELD_DEFAULT(UInt32, id, ZH_WORDS_GETTER("Info.field.id"));
 
 	//体检人员
 	API_DTO_FIELD_DEFAULT(UInt32, personId, ZH_WORDS_GETTER("Info.field.personId"));
