@@ -1,6 +1,6 @@
 <!-- 体检人员 -->
 <template>
-  <div></div>
+  <div>体检人员</div>
 </template>
 
 <script setup></script>

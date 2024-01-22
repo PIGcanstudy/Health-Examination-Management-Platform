@@ -25,37 +25,6 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-.el-header {
-  background-color: #5d6672;
-  height: 5vh;
-  display: flex;
-  justify-content: space-between;
-  padding: 0;
-  .header-nav {
-    line-height: 5vh;
-    width: 100%;
-    color: #f8f8f8;
-    text-align: center;
-  }
-}
-.el-aside {
-  background-color: #545c64;
-  height: 95vh;
-  width: 221px;
-  .menu-wrap {
-    width: 220px;
-  }
-}
-.el-menu {
-  border: 0;
-}
-.el-main {
-  padding: 20px;
-  background-color: #edecec;
-}
-</style>
-
 <script setup>
 import { reactive } from 'vue'
 // 演示菜单数据，添加新的演示在这里不从数据即可 path代表路由地址 text代表提示文本
@@ -122,3 +91,34 @@ const menus = reactive([
   }
 ])
 </script>
+
+<style lang="scss" scoped>
+.el-header {
+  background-color: #5d6672;
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  .header-nav {
+    line-height: 5vh;
+    width: 100%;
+    color: #f8f8f8;
+    text-align: center;
+  }
+}
+.el-aside {
+  background-color: #545c64;
+  height: 95vh;
+  width: 221px;
+  .menu-wrap {
+    width: 220px;
+  }
+}
+.el-menu {
+  border: 0;
+}
+.el-main {
+  padding: 20px;
+  background-color: #edecec;
+}
+</style>
