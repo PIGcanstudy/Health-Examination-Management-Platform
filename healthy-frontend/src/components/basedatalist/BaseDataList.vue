@@ -1,9 +1,9 @@
 <template>
   <div class="base_data_list">
     <el-card class="box-card">
-      <template #header>
+      <template v-if="props?.useForm" #header>
         <!-- form表单 -->
-        <el-form v-if="props?.useForm" :model="formData" inline>
+        <el-form :model="formData" inline>
           <slot name="form"></slot>
         </el-form>
       </template>
@@ -13,7 +13,7 @@
         <!-- 多选清除栏 -->
         <slot name="hint"></slot>
         <!-- table表格 -->
-        <el-table :data="props?.tableData" border>
+        <el-table :data="props?.tableData" border @selection-change="handleSelectionChange">
           <!-- 多选列 -->
           <el-table-column type="selection"></el-table-column>
           <!-- 表格内容 -->
@@ -29,10 +29,9 @@
         <!-- 分页 -->
         <template v-if="props.usePagination">
           <el-pagination
-            v-model:current-page="paginationData.currentPage"
-            v-model:page-size="paginationData.pageSize"
-            :page-sizes="props.pageSizes"
-            layout="prev, pager, next, jumper, ->"
+            v-model:current-page="props.paginationData.currentPage"
+            v-model:page-size="props.paginationData.pageSize"
+            layout="total,prev, pager, next, jumper, ->"
             :total="props.total"
             style="margin-top: 30px; justify-content: flex-end"
             @current-change="handleCurrentChange"
@@ -45,10 +44,12 @@
 
 <script setup>
 import { watch, ref, defineEmits } from 'vue'
-const rows = ref()
 const props = defineProps({
   // 是否使用Form表单
-  useForm: Boolean,
+  useForm: {
+    type: Boolean,
+    default: false
+  },
   // form表单数据
   formData: {
     type: Object,
@@ -69,11 +70,11 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
-  // 表格每页的数据容量
-  pageSizes: {
-    type: Array,
+  // 分页参数
+  paginationData: {
+    type: Object,
     default: () => {
-      return [5, 10, 15, 20]
+      return 5
     }
   },
   // 表格的数据数量
@@ -90,7 +91,7 @@ const props = defineProps({
   handleEdit: Function,
   handleDelete: Function
 })
-const emits = defineEmits(['updateTableData', 'update:modelValue'])
+const emits = defineEmits(['updateTableData', 'update:modelValue', 'update-table-data', 'update-selected-rows'])
 // 实现 form表单v-model 逻辑
 watch(
   () => props.formData,
@@ -99,20 +100,19 @@ watch(
   },
   { deep: true }
 )
-// 分页
-const paginationData = ref({
-  currentPage: 1,
-  pageSize: props.pageSizes ? props.pageSizes[0] : 5
-})
-const handleCurrentChange = (page) => {
-  console.log('页码变化了' + page)
-  paginationData.value.currentPage = page
-  emits('updateTableData', paginationData.value.pageSize, page)
+const rows = ref()
+const handleSelectionChange = (selectRows) => {
+  rows.value = selectRows
+  emits('update-selected-rows', selectRows)
 }
 defineExpose({
-  // 暴露出被选行
   rows
 })
+const handleCurrentChange = (currentPage) => {
+  // console.log(currentPage)
+  console.log(props.paginationData.pageSize)
+  emits('update-table-data', props.paginationData.pageSize, currentPage)
+}
 </script>
 
 <style lang="scss" scoped></style>
