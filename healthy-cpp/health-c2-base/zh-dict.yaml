@@ -4,7 +4,7 @@ sample:
  post:
   summary: 新增一条示例数据
  put:
-  summary: 修改一条示例数据
+  summary: 修改样本库中的一条数据--快乐五香蛋
  delete:
   summary: 删除一条示例数据
  query-one:
