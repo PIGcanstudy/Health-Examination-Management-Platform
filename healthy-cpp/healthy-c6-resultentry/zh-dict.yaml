@@ -133,3 +133,15 @@ interro1:
   project1: 体检项目
   degree: 危及程度
   time:	病程时间
+
+file:
+ upload: 
+  summary: 影像文件上传
+
+ field:
+  filename: 文件名
+  img-url: 图片src
+  img-alt: 图片文字描述
+  img-href: 图片链接地址
+
+ 
