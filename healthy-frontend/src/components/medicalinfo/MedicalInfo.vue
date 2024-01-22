@@ -86,7 +86,7 @@
   </div>
 </template>
 <script setup>
-import { ref, computed, defineProps } from 'vue'
+import { ref, computed } from 'vue'
 import { ElDialog, ElUpload, ElButton, ElMessageBox, ElMessage } from 'element-plus'
 /* 向父组件传递的数据 */
 const props = defineProps({

@@ -8,6 +8,8 @@ import { UploadFilled } from '@element-plus/icons-vue'
 import { Edit } from '@element-plus/icons-vue'
 import { Delete } from '@element-plus/icons-vue'
 import { View } from '@element-plus/icons-vue'
+import { Refresh } from '@element-plus/icons-vue'
+import { Bottom } from '@element-plus/icons-vue'
 
 export default (app) => {
   app.component('IconMenu', Menu)
@@ -18,4 +20,6 @@ export default (app) => {
   app.component('IconEdit', Edit)
   app.component('IconDelete', Delete)
   app.component('IconView', View)
+  app.component('IconRefresh', Refresh)
+  app.component('IconBottom', Bottom)
 }
