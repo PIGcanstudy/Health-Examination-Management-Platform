@@ -24,7 +24,7 @@
 
 #include "groupItemIgno/GroupItemIgnoController.h"
 
-
+#include "personDetail/DetailController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
