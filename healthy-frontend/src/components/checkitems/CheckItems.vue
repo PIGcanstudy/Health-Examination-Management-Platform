@@ -107,7 +107,7 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     />
-  <el-button @handleClose="close">关闭 </el-button>
+  <el-button @handleClose="cancel">关闭 </el-button>
   <el-button type="primary" @click="submit">确定</el-button>
   </el-drawer>
 </div>
@@ -199,10 +199,12 @@ const close = () => drawer2.value = false
 // 抽屉的确认与取消按钮
 const submit = () => {
   //获取当前选中行的数据
-  console.log("value: " + rowData)
+  console.log("value: " + rowData.value)
   close()
 }
-const cancel = () => emit('cancel')
+const cancel = () => {
+  close();
+}
 
 let loading = ref(false)
 
@@ -275,7 +277,7 @@ const select = (selection, row) => {
 
 
 const multipleTableRefForTc =  ref()
-const rowData1 = ref();
+const rowData = ref();
 
 // 套餐项目-表格绑定事件selectTc
 const selectTc = (selection, row) => {
@@ -285,7 +287,7 @@ const selectTc = (selection, row) => {
   // 主要用于将当前勾选的表格状态清除
   if (selection.length == 0) return
   multipleTableRefForTc.value.toggleRowSelection(row, true)
-  rowData1.value = row
+  rowData.value = row
 }
 
 
