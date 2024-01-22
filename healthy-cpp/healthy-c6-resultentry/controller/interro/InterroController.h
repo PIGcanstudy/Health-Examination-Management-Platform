@@ -14,7 +14,7 @@
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 class InterroController : public oatpp::web::server::api::ApiController
 {
-	API_ACCESS_DECLARE(InterroController);
+	API_ACCESS_DECLARE(InterroController); //无参构造
 public:
 	// 保存症状问询 负责人：矢量
 	// 定义新增接口描述
