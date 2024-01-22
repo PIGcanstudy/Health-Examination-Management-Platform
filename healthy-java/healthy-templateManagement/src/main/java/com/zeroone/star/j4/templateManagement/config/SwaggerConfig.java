@@ -1,4 +1,4 @@
-package com.zeroone.star.templateManagement.config;
+package com.zeroone.star.j4.templateManagement.config;
 
 import com.zeroone.star.project.config.swagger.SwaggerCore;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +20,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 public class SwaggerConfig {
     @Bean
     Docket templateMApis(){
-        return SwaggerCore.defaultDocketBuilder("模板管理模块","com.zeroone.star.templateManagement.controller","templateM");
+        return SwaggerCore.defaultDocketBuilder("模板管理模块","com.zeroone.star.j4.templateManagement.controller","templateM");
     }
 }

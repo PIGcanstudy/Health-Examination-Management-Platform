@@ -1,4 +1,4 @@
-package com.zeroone.star.templateManagement;
+package com.zeroone.star.j4.templateManagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

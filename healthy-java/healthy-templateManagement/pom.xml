@@ -68,7 +68,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.zeroone.star.templateManagement.TemplateMApplication</mainClass>
+                    <mainClass>com.zeroone.star.j4.templateManagement.templateManagement.TemplateMApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

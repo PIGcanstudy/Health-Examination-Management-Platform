@@ -1,6 +1,6 @@
-package com.zeroone.star.templateManagement.service;
+package com.zeroone.star.j4.templateManagement.service;
 
-import com.zeroone.star.templateManagement.entity.TTemplate;
+import com.zeroone.star.j4.templateManagement.entity.TTemplate;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
