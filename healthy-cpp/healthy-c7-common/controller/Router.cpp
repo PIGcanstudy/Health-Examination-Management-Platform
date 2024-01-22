@@ -59,6 +59,7 @@ void Router::initRouter()
 	//#TIP :系统扩展路由定义，写在这个后面
 	ROUTER_SIMPLE_BIND(UnitController);
 	ROUTER_SIMPLE_BIND(GroupItemIgnoController);
+	ROUTER_SIMPLE_BIND(DetailController);
 	}
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
