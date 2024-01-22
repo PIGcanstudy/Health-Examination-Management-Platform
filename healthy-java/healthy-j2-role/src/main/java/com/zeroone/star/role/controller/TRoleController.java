@@ -37,6 +37,7 @@ public class TRoleController implements RoleApis {
     @ApiOperation(value = "获取角色名称列表")
     @Override
     public JsonVO<RoleNameDTO> queryAllNames() {
+        
         return JsonVO.success(roleService.getRoleNames());
     }
     @GetMapping("/query-by-condition")
