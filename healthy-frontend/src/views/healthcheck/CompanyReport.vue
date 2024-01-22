@@ -6,10 +6,10 @@
         <PeoplleList title="报告查询"></PeoplleList>
       </el-aside>
       <el-main>
-        <h2>报告信息</h2>
+        <h3 class="head">报告信息</h3>
         <div>
           <el-form :inline="true">
-            <el-form-item label="报告编号">
+            <el-form-item v-model="formData.num" label="报告编号">
               <el-input placeholder="请输入" clearable class="input" />
             </el-form-item>
             <el-form-item label="体检类型">
@@ -45,10 +45,21 @@
 
 <script setup>
 import PeoplleList from '@/components/peoplelist/PeopleList.vue'
+import { ref } from 'vue';
+
+const formData = ref(
+  {
+    
+  }
+)
 </script>
 
 <style lang="scss" scoped>
+.head {
+  font-weight: bold;
+}
+
 .input {
-  --el-input-width: 150px;
+  --el-input-width: 400px;
 }
 </style>

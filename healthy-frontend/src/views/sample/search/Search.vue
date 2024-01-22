@@ -21,22 +21,22 @@ const toSearch = [
   {
     prop: 'name',
     label: '单位名称',
-    input: ''
+    input: '',
   },
   {
     prop: 'credit',
     label: '信用代码',
-    input: ''
+    input: '',
   },
   {
     prop: 'contact',
     label: '联系人',
-    input: ''
+    input: '',
   },
   {
     prop: 'phone',
     label: '联系电话',
-    input: ''
+    input: '',
   }
 ]
 
@@ -45,48 +45,39 @@ const toSearch = [
 const dataOneColumn = [
   {
     prop: 'name',
-    label: '单位名称',
-    sortable: false
+    label: '单位名称'
   },
   {
     prop: 'credit',
-    label: '信用代码',
-    sortable: false
+    label: '信用代码'
   },
   {
     prop: 'examination',
-    label: '体检类型',
-    sortable: false
+    label: '体检类型'
   },
   {
     prop: 'address',
-    label: '所属地区',
-    sortable: false
+    label: '所属地区'
   },
   {
     prop: 'category',
-    label: '行业类别',
-    sortable: false
+    label: '行业类别'
   },
   {
     prop: 'etype',
-    label: '经济类型',
-    sortable: false
+    label: '经济类型'
   },
   {
     prop: 'scale',
-    label: '企业规模',
-    sortable: false
+    label: '企业规模'
   },
   {
     prop: 'contact',
-    label: '联系人',
-    sortable: false
+    label: '联系人'
   },
   {
     prop: 'phone',
-    label: '联系电话',
-    sortable: false
+    label: '联系电话'
   }
 ]
 // 每行的数据
