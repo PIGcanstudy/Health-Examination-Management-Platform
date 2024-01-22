@@ -38,6 +38,7 @@
       <el-container>
         <!-- 导航栏 -->
         <el-header>
+         
           <div class="header-nav">{{ userInfo }}</div>
         </el-header>
         <el-main>
