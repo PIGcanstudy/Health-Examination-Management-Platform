@@ -42,11 +42,13 @@ class MedExamPrintReportQuery : public PageQuery
 	API_DTO_FIELD_DEFAULT(String, testNum, ZH_WORDS_GETTER("print.field.testNum"));
 	// 单位名称
 	API_DTO_FIELD_DEFAULT(String, dept, ZH_WORDS_GETTER("print.field.dept"));
-	// 体检日期
-	API_DTO_FIELD_DEFAULT(String, checkDate, ZH_WORDS_GETTER("print.field.checkDate"));
+	// 开始日期
+	API_DTO_FIELD_DEFAULT(String, startDate, ZH_WORDS_GETTER("print.field.startDate"));
+	// 结束日期
+	API_DTO_FIELD_DEFAULT(String, endDate, ZH_WORDS_GETTER("print.field.endDate"));
 	// 是否复查
 	API_DTO_FIELD_DEFAULT(Boolean, isRecheck, ZH_WORDS_GETTER("print.field.isRecheck"));
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_MEDEXAMPRINTREPORT_H_
+#endif // !_MEDEXAMPRINTR      EPORT_H_

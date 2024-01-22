@@ -51,17 +51,19 @@ public:
 		// 定义其他查询参数描述
 
 		// 姓名
-		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("print.field.name"), "li ming", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("print.field.name"), "na", false);
 		// 订单编号
-		API_DEF_ADD_QUERY_PARAMS(String, "orderId", ZH_WORDS_GETTER("print.field.orderId"), "12", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "orderId", ZH_WORDS_GETTER("print.field.orderId"), "", false);
 		// 体检编号
-		API_DEF_ADD_QUERY_PARAMS(String, "testNum", ZH_WORDS_GETTER("print.field.testNum"), "11", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "testNum", ZH_WORDS_GETTER("print.field.testNum"), "", false);
 		// 单位名称
-		API_DEF_ADD_QUERY_PARAMS(String, "dept", ZH_WORDS_GETTER("print.field.dept"), "wuih", false);
-		// 体检日期
-		API_DEF_ADD_QUERY_PARAMS(String, "checkDate", ZH_WORDS_GETTER("print.field.checkDate"), "20231209", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "dept", ZH_WORDS_GETTER("print.field.dept"), "", false);
+		// 开始日期
+		API_DEF_ADD_QUERY_PARAMS(String, "startDate", ZH_WORDS_GETTER("print.field.startDate"), "", false);
+		// 结束日期
+		API_DEF_ADD_QUERY_PARAMS(String, "endDate", ZH_WORDS_GETTER("print.field.endDate"), "", false);
 		// 是否复查
-		API_DEF_ADD_QUERY_PARAMS(Boolean, "isRecheck", ZH_WORDS_GETTER("print.field.isRecheck"), "1", false);
+		API_DEF_ADD_QUERY_PARAMS(Boolean, "isRecheck", ZH_WORDS_GETTER("print.field.isRecheck"), "0", false);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/medexamprint", queryMedExamPrintReport, QUERIES(QueryParams, params),API_HANDLER_AUTH_PARAME) {

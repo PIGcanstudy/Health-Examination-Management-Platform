@@ -9,7 +9,8 @@ print:
   orderId: 订单编号
   testNum: 体检编号
   dept: 单位名称
-  checkDate: 体检日期
+  startDate: 开始日期
+  endDate: 结束日期
   isRecheck: 复查
   sporadicPhysical: 零星检查
  get:

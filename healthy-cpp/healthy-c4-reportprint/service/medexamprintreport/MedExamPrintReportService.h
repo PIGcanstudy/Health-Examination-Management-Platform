@@ -1,8 +1,9 @@
+#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 13:00:32
+ @Date: 2022/10/25 11:08:56
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,20 +17,22 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#include "stdafx.h"
-#include "MedExamPrintReportController.h"
-#include "../../service/medexamprintreport/MedExamPrintReportService.h"
-#include "../ApiDeclarativeServicesHelper.h"
+#ifndef _MEDEXAMPRINTREPORT_SERVICE_
+#define _MEDEXAMPRINTREPORT_SERVICE_
+#include <list>
+#include "domain/vo/MedExamPrintReportVO.h"
+#include "domain/query/MedExamPrintReportQuery.h"
+#include "domain/dto/MedExamPrintReportDTO.h"
 
-MedExamPrintReportPageJsonVO::Wrapper MedExamPrintReportController::execQueryMedExamPrintReport(const MedExamPrintReportQuery::Wrapper& query)
+/**
+ * 示例服务实现，演示基础的示例服务实现
+ */
+class MedExamPrintReportService
 {
+public:
+	// 分页查询所有数据
+	MedExamPrintReportPageDTO::Wrapper listAll(const MedExamPrintReportQuery::Wrapper& query);
+};
 
-	// 定义一个Service
-	MedExamPrintReportService service;
-	// 查询数据
-	auto result = service.listAll(query);
-	// 响应结果
-	auto jvo = MedExamPrintReportPageJsonVO::createShared();
-	jvo->success(result);
-	return jvo;
-}
+#endif // !_MEDEXAMPRINTREPORT_SERVICE_
+
