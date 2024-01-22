@@ -21,7 +21,7 @@ groupItemIgno:
 
 
 
-unit:
+detail:
  field:
   project: 人员详情
   physicalExamNumber: 体检编号
