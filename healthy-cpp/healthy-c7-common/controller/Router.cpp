@@ -23,6 +23,7 @@
 #include "Router.h"
 #include "ApiHelper.h"
 
+#include "info-inspectionSave/InfoController.h"
 #include "Term/TermController.h"
 #include "getUserName/UnitController.h"
 #include "personDetail/DetailController.h"
@@ -34,7 +35,7 @@
 #include "downloadWord/DownloadWordController.h"
 #include "groupItemIgno/GroupItemIgnoController.h"
 #include "itemResult/ItemResultController.h"
-#include "evalue/InquiryDetailController.h"// 如果定义了关闭Swagger文档宏
+#include "evalue/InquiryDetailController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
@@ -43,6 +44,7 @@
 #include "uselib/ws/WSController.h"
 
 #endif
+
 
 #ifdef CLOSE_SWAGGER_DOC
 // 简化绑定控制器宏定义
@@ -67,6 +69,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	ROUTER_SIMPLE_BIND(InfoController);
 	ROUTER_SIMPLE_BIND(TermController);
 	ROUTER_SIMPLE_BIND(PositiveConrtoller);
 	ROUTER_SIMPLE_BIND(ItemResultController);
@@ -78,8 +81,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(DownloadWordController);
 	ROUTER_SIMPLE_BIND(GroupItemIgnoController);
 	ROUTER_SIMPLE_BIND(DetailController);
-	ROUTER_SIMPLE_BIND(UnitController);
-}
+	ROUTER_SIMPLE_BIND(UnitController);}
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
