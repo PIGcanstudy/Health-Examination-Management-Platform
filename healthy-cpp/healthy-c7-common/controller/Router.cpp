@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "ApiHelper.h"
 
+#include "getUserName/UnitController.h"
 #include "personDetail/DetailController.h"
 #include "positive/positiveController.h"
 #include "review/ReviewController.h"
@@ -72,6 +73,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(DownloadWordController);
 	ROUTER_SIMPLE_BIND(GroupItemIgnoController);
 	ROUTER_SIMPLE_BIND(DetailController);
+	ROUTER_SIMPLE_BIND(UnitController);
 }
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()

@@ -2,8 +2,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: lenya~
- @Date: 2024/1/18
+ @Author: awei
+ @Date: 2022/10/25 11:34:14
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,29 +17,28 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _USERVO_H_
-#define _USERVO_H_
+#ifndef _UnitVO_H_
+#define _UnitVO_H_
 
 #include "../../GlobalInclude.h"
-#include "../../dto/evalue/InquiryDetailDTO.h"
+#include "../../dto/getUserName/UnitListDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * 定义一个问诊明细信息显示JsonVO对象
+ * 单位列表显示JsonVO实体
  */
-class InquiryDetailJsonVO : public JsonVO<InquiryDetailDTO::Wrapper>
-{
-	DTO_INIT(InquiryDetailJsonVO, JsonVO<InquiryDetailDTO::Wrapper>);
+class UnitListJsonVO : public JsonVO<UnitListDTO::Wrapper> {
+	DTO_INIT(UnitListJsonVO, JsonVO<UnitListDTO::Wrapper>);
 };
 
 /**
- * 定义一个问诊明细信息分页显示JsonVO对象
+ * 示例分页显示JsonVO，用于响应给客户端的Json对象
  */
-class InquiryDetailPageJsonVO : public JsonVO<InquiryDetailPageDTO::Wrapper>
-{
-	DTO_INIT(InquiryDetailPageJsonVO, JsonVO<InquiryDetailPageDTO::Wrapper>);
+class UnitListPageJsonVO : public JsonVO<UnitListPageDTO::Wrapper> {
+	DTO_INIT(UnitListPageJsonVO, JsonVO<UnitListPageDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // _USERVO_H_
+
+#endif // !_SAMPLE_VO_

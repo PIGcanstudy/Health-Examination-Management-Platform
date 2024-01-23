@@ -22,6 +22,7 @@
 
 #include "../../GlobalInclude.h"
 #include "domain/query/PageQuery.h"
+#include "../../dto/getUserName/UnitListDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
