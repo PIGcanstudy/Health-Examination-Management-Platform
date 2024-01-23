@@ -48,6 +48,9 @@
         </div>
 
         <div class="tables">
+          <Head name="报告信息">
+            <el-button type="primary">导出选中表格</el-button>
+          </Head>
           <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="体检人员汇总表" name="first">
               <BaseDataList></BaseDataList>
@@ -62,7 +65,7 @@
         </div>
 
         <div class="btns">
-          <el-button type="primary">导出</el-button>
+
         </div>
       </el-main>
     </el-container>
