@@ -22,7 +22,6 @@
 
 #include "../../GlobalInclude.h"
 #include"../../dto/result/ResultDTO.h"
-#include"../../dto/result/ItemResultDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
@@ -38,17 +37,17 @@ class ResultPageJsonVO : public JsonVO<ResultPageDTO::Wrapper>
 	DTO_INIT(ResultPageJsonVO, JsonVO<ResultPageDTO::Wrapper>);
 };
 
-/*
-* 项目结论详情JsonVO
-*/
-class ItemResultJsonVO : public JsonVO<ItemResultDTO::Wrapper>
-{
-	DTO_INIT(ItemResultJsonVO, JsonVO<ItemResultDTO::Wrapper>);
-};
-class ItemResultPageJsonVO : public JsonVO<ItemResultPageDTO::Wrapper>
-{
-	DTO_INIT(ItemResultPageJsonVO, JsonVO<ItemResultPageDTO::Wrapper>)
-};
+///*
+//* 项目结论详情JsonVO
+//*/
+//class ItemResultJsonVO : public JsonVO<ItemResultDTO::Wrapper>
+//{
+//	DTO_INIT(ItemResultJsonVO, JsonVO<ItemResultDTO::Wrapper>);
+//};
+//class ItemResultPageJsonVO : public JsonVO<ItemResultPageDTO::Wrapper>
+//{
+//	DTO_INIT(ItemResultPageJsonVO, JsonVO<ItemResultPageDTO::Wrapper>)
+//};
 
 
 #include OATPP_CODEGEN_END(DTO)

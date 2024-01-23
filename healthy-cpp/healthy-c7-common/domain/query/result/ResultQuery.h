@@ -32,14 +32,14 @@ class ResultQuery : public PageQuery
 	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("result.field.personId"));
 };
 
-class ItemResultQuery : public PageQuery
-{
-	DTO_INIT(ItemResultQuery, PageQuery);
-	//人员ID
-	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("result.field.personId"));
-	//组合项目
-	API_DTO_FIELD_DEFAULT(String, orderGroupItemId, ZH_WORDS_GETTER("result.field.orderGroupItemId"));
-};
+//class ItemResultQuery : public PageQuery
+//{
+//	DTO_INIT(ItemResultQuery, PageQuery);
+//	//人员ID
+//	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("result.field.personId"));
+//	//组合项目
+//	API_DTO_FIELD_DEFAULT(String, orderGroupItemId, ZH_WORDS_GETTER("result.field.orderGroupItemId"));
+//};
 
 #include OATPP_CODEGEN_END(DTO)
 #endif // !_RESULTQUERY_H_

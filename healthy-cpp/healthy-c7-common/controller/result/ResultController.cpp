@@ -24,7 +24,7 @@ ResultPageJsonVO::Wrapper ResultController::execQueryPrimCheck(const ResultQuery
 	return ResultPageJsonVO::Wrapper();
 }
 
-ItemResultPageJsonVO::Wrapper ResultController::execQueryPrimCheckDetail(const ResultQuery::Wrapper& query)
-{
-	return ItemResultPageJsonVO::Wrapper();
-}
+//ItemResultPageJsonVO::Wrapper ResultController::execQueryPrimCheckDetail(const ResultQuery::Wrapper& query)
+//{
+//	return ItemResultPageJsonVO::Wrapper();
+//}
