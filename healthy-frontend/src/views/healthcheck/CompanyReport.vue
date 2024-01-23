@@ -7,6 +7,7 @@
       </el-aside>
       <el-main>
         <div class="form">
+
           <Head name="报告信息">
             <el-button type="primary">修改</el-button>
           </Head>
@@ -48,18 +49,19 @@
         </div>
 
         <div class="tables">
-          <Head name="报告信息">
+
+          <Head name="汇总表">
             <el-button type="primary">导出选中表格</el-button>
           </Head>
-          <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
             <el-tab-pane label="体检人员汇总表" name="first">
-              <BaseDataList></BaseDataList>
+              <BaseDataList :useFixed="false"></BaseDataList>
             </el-tab-pane>
             <el-tab-pane label="复查人员汇总表" name="second">
-              <BaseDataList></BaseDataList>
+              <BaseDataList :useFixed="false"></BaseDataList>
             </el-tab-pane>
             <el-tab-pane label="复查结果汇总表" name="third">
-              <BaseDataList></BaseDataList>
+              <BaseDataList :useFixed="false"></BaseDataList>
             </el-tab-pane>
           </el-tabs>
         </div>
