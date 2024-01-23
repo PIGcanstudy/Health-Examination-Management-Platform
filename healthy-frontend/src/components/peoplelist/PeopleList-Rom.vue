@@ -320,15 +320,15 @@ defineExpose({
 
 <style lang="scss" scoped>
 .box-card {
-  max-width: 250px;
-  height: 95%;
+  position: relative;
+  height: 97%;
   background-color: white;
   padding: 10px;
   overflow: hidden;
 
   .card-header {
     padding: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     justify-content: center;
     text-align: center;
     background-color: rgb(240, 250, 255);
