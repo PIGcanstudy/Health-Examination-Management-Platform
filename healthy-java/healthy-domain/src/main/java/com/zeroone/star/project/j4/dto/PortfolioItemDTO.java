@@ -16,106 +16,105 @@ import java.time.LocalDateTime;
 @ApiModel("项目详情DTO")
 public class PortfolioItemDTO {
 
-    @ApiModelProperty("主键")
+    @ApiModelProperty(value = "主键", example = "1")
     private String id;
 
-    @ApiModelProperty("名称")
+    @ApiModelProperty(value = "名称", example = "Project A")
     private String name;
 
-    @ApiModelProperty("简称")
+    @ApiModelProperty(value = "简称", example = "PA")
     private String shortName;
 
-    @ApiModelProperty("排序")
+    @ApiModelProperty(value = "排序", example = "1.0")
     private float orderNum;
 
-    @ApiModelProperty("父节点ID")
+    @ApiModelProperty(value = "父节点ID", example = "parent1")
     private String parentId;
 
-    @ApiModelProperty("科室名称")
+    @ApiModelProperty(value = "科室名称", example = "Department A")
     private String officeName;
 
-    @ApiModelProperty("科室ID")
+    @ApiModelProperty(value = "科室ID", example = "office123")
     private String officeId;
 
-    @ApiModelProperty("原价（元）")
+    @ApiModelProperty(value = "原价（元）", example = "100")
     private Integer marketPrice;
 
-    @ApiModelProperty("销售价（元）")
+    @ApiModelProperty(value = "销售价（元）", example = "80")
     private Integer salePrice;
 
-    @ApiModelProperty("成本价（元）")
+    @ApiModelProperty(value = "成本价（元）", example = "60")
     private Integer costPrice;
 
-    @ApiModelProperty("适合人群")
+    @ApiModelProperty(value = "适合人群", example = "Adults")
     private String suitableRange;
 
-    @ApiModelProperty("项目介绍")
+    @ApiModelProperty(value = "项目介绍", example = "This is a project description.")
     private String introduce;
 
-    @ApiModelProperty("检查地址")
+    @ApiModelProperty(value = "检查地址", example = "123 Main St")
     private String address;
 
-    @ApiModelProperty("备注")
+    @ApiModelProperty(value = "备注", example = "Additional notes")
     private String remark;
 
-    @ApiModelProperty("是否删除(0-未删除，1-已删除)")
+    @ApiModelProperty(value = "是否删除(0-未删除，1-已删除)", example = "0")
     private int delFlag;
 
-    @ApiModelProperty("创建人")
+    @ApiModelProperty(value = "创建人", example = "John Doe")
     private String createId;
 
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty(value = "创建时间", example = "2024-01-20T11:36:00")
     private LocalDateTime createTime;
 
-    @ApiModelProperty("修改人")
+    @ApiModelProperty(value = "修改人", example = "Jane Doe")
     private String updateId;
 
-    @ApiModelProperty("修改时间")
+    @ApiModelProperty(value = "修改时间", example = "2024-01-20T12:00:00")
     private LocalDateTime updateTime;
 
-    @ApiModelProperty("删除人")
+    @ApiModelProperty(value = "删除人", example = "Admin")
     private String deleteId;
 
-    @ApiModelProperty("删除时间")
+    @ApiModelProperty(value = "删除时间", example = "2024-01-21T09:45:00")
     private LocalDateTime deleteTime;
 
-    @ApiModelProperty("所属部门")
+    @ApiModelProperty(value = "所属部门", example = "Department XYZ")
     private String departmentId;
 
-    @ApiModelProperty("诊断模板")
+    @ApiModelProperty(value = "诊断模板", example = "Template ABC")
     private String template;
 
-    @ApiModelProperty("服务类型")
+    @ApiModelProperty(value = "服务类型", example = "Type X")
     private String serviceType;
 
-    @ApiModelProperty("标本")
+    @ApiModelProperty(value = "标本", example = "Sample XYZ")
     private String specimen;
 
-    @ApiModelProperty("诊台是否显示")
+    @ApiModelProperty(value = "诊台是否显示", example = "true")
     private String diagnostic;
 
-    @ApiModelProperty("是否为附件")
+    @ApiModelProperty(value = "是否为附件", example = "false")
     private String isFile;
 
-    @ApiModelProperty("获取影像结果的标识")
+    @ApiModelProperty(value = "获取影像结果的标识", example = "image123")
     private String url;
 
-    @ApiModelProperty("lis标本")
+    @ApiModelProperty(value = "lis标本", example = "LIS Sample ABC")
     private String lisSpecimen;
 
-    @ApiModelProperty("lis标本名字")
+    @ApiModelProperty(value = "lis标本名字", example = "LIS Sample Name XYZ")
     private String lisSpecimenName;
 
-    @ApiModelProperty("lis系统对应Id")
+    @ApiModelProperty(value = "lis系统对应Id", example = "lisId123")
     private String lisId;
 
-    @ApiModelProperty("lis系统对应编码")
+    @ApiModelProperty(value = "lis系统对应编码", example = "lisCode456")
     private String lisCode;
 
-    @ApiModelProperty("部位名称")
+    @ApiModelProperty(value = "部位名称", example = "Body Part ABC")
     private String deptName;
 
-    @ApiModelProperty("危险因素编码")
+    @ApiModelProperty(value = "危险因素编码", example = "HFC001")
     private String hazardFactorCode;
-
 }

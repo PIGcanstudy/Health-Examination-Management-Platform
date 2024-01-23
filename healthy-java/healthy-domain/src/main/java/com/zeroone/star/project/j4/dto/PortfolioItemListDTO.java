@@ -13,9 +13,9 @@ import lombok.Data;
 @Data
 @ApiModel("获取项目列表 (条件+分页")
 public class PortfolioItemListDTO {
-    @ApiModelProperty("主键")
+    @ApiModelProperty(value = "主键", example = "1")
     private String id;
 
-    @ApiModelProperty("名称")
+    @ApiModelProperty(value = "名称", example = "项目1")
     private String name;
 }
