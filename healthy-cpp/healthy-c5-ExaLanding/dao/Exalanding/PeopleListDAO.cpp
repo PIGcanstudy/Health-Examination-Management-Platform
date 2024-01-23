@@ -27,7 +27,7 @@ uint64_t PeopleListDAO::count(const PeopleListQuery::Wrapper& query)
 std::list<PeopleListDO> PeopleListDAO::selectWithPage(const PeopleListQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT person_name,physical_type FROM t_group_person";
+	sql << "SELECT id,person_name,sex,age,jc_type,sporadic_physical FROM t_group_person";
 	SAMPLE_TERAM_PARSE(query, sql);
 	sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
 	PeopleListMapper mapper;
@@ -37,7 +37,7 @@ std::list<PeopleListDO> PeopleListDAO::selectWithPage(const PeopleListQuery::Wra
 
 std::list<PeopleListDO> PeopleListDAO::selectByName(const string& name)
 {
-	string sql = "SELECT person_name,physical_type FROM t_group_person WHERE `person_name` LIKE CONCAT('%',?,'%')";
+	string sql = "SELECT id,person_name,sex,age,jc_type,sporadic_physical FROM t_group_person WHERE `person_name` LIKE CONCAT('%',?,'%')";
 	PeopleListMapper mapper;
 	return sqlSession->executeQuery<PeopleListDO, PeopleListMapper>(sql, mapper, "%s", name);
 }
