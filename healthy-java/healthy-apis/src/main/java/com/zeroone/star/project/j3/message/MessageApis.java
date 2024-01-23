@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @date: 2024/1/15 20:36
  **/
 public interface MessageApis {
-    /* @description:批量删除/撤回接口
+    /**@description:批量删除/撤回接口
      * @author: 坚强少年
      * @date: 2024/1/15 21:51
      * @param: [id]
