@@ -1,0 +1,9 @@
+evalue:
+ field:
+  ispass: 体检类型
+  isRecheck: 复查状态
+  startDate: 开始时间
+  endDate: 结束时间
+  personName: 姓名
+  testNum: 体检编号
+  dept: 单位名称
