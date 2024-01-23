@@ -17,6 +17,7 @@
           <el-button size="default">委托协议预览</el-button>
           <el-button size="default" @click="Open">查询基本信息</el-button>
         </div>
+        
         <!-- 体检项目 -->
         <div>
           <div><el-text>体检项目</el-text></div>
