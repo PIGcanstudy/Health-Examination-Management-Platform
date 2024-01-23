@@ -21,8 +21,4 @@ import PdfObject from '@/components/pdfobject/PdfObject.vue'
 import Head from '@/components/head/Head.vue'
 </script>
 
-<style lang="scss" scoped>
-.head {
-  font-weight: bold;
-}
-</style>
+<style lang="scss" scoped></style>
