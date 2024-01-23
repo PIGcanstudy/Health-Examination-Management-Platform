@@ -5,6 +5,7 @@ import com.zeroone.star.project.query.PageQuery;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
 import java.util.Date;
 
 /**
@@ -13,8 +14,12 @@ import java.util.Date;
  * 功能：
  */
 @Data
-@ApiModel(value = "术语查询参数")
-public class TermQuery extends PageQuery {
+@ApiModel(value = "术语名称查询参数")
+public class TermNameQuery extends PageQuery {
+
+    @TableField(value = "office_id")
+    @ApiModelProperty(value = "科室名称",example = "肺功能")
+    private String officeName;
 
     @TableField(value = "inspect_type")
     @ApiModelProperty(value = "体检类型", example = "健康体检")
@@ -37,7 +42,4 @@ public class TermQuery extends PageQuery {
 
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
-
-
-
 }

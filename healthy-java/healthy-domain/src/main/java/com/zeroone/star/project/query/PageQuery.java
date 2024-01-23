@@ -27,4 +27,6 @@ public class PageQuery {
     @ApiModelProperty(value = "查询条数", example = "10")
     private long pageSize;
 
+
+
 }
