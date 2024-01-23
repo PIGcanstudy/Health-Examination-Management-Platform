@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _downloadSetting_H_
-#define _downloadSetting_H_
+#ifndef _DOWNLOADSETTING_H_
+#define _DOWNLOADSETTING_H_
 
 #include "../GlobalInclude.h"
 #include "domain/query/PageQuery.h"
@@ -46,4 +46,4 @@ class downloadSettingQuery : public PageQuery
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_downloadSetting_H_
+#endif // !_DOWNLOADSETTING_H_

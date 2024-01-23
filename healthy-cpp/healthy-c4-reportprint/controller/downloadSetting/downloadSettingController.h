@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _downloadSetting_CONTROLLER_H_
-#define _downloadSetting_CONTROLLER_H_
+#ifndef _DOWNLOADSETTING_CONTROLLER_H_
+#define _DOWNLOADSETTING_CONTROLLER_H_
 
 #include "domain/vo/BaseJsonVO.h"
 #include "domain/query/downloadSettingQuery.h"
@@ -69,4 +69,4 @@ private:
 
 // 0 取消API控制器使用宏
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen
-#endif // _downloadSetting_CONTROLLER_H_
+#endif // _DOWNLOADSETTIN_CONTROLLER_H_

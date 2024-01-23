@@ -14,7 +14,7 @@ downloadSetting:
   downloadpath: 下载路径
  get:
   view: 下载设置
-confire:
+confirm:
  field:
   printReportId: 待打印报告编号
   printReportName: 待打印报告名称

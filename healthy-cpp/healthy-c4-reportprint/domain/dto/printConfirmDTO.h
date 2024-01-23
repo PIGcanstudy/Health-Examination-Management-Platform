@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 11:36:29
+ @Date: 2024/01/16 10:59:38
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,11 +17,9 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _printConfire_H_
-#define _printConfire_H_
-
+#ifndef _PRINTCONFIRMDTO_H_
+#define _PRINTCONFIRMDTO_H_
 #include "../GlobalInclude.h"
-#include "domain/query/PageQuery.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
@@ -29,9 +27,9 @@
 * 批量打印确认
 * 负责人：晚风
  */
-class printConfireQuery : public PageQuery
+class printConfirmDTO : public oatpp::DTO
 {
-	DTO_INIT(printConfireQuery, PageQuery);
+	DTO_INIT(printConfirmDTO, DTO);
 	// 打印报告编号
 	DTO_FIELD(UInt64, printReportId);
 	DTO_FIELD_INFO(printReportId) {
@@ -54,5 +52,14 @@ class printConfireQuery : public PageQuery
 	}
 };
 
+/*
+* 批量打印确认
+* 负责人：晚风
+ */
+class printConfirmPageDTO : public PageDTO<printConfirmDTO::Wrapper>
+{
+	DTO_INIT(printConfirmPageDTO, PageDTO<printConfirmDTO::Wrapper>);
+};
+
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_printConfire_H_
+#endif // !_PRINTCONFIRMDTO_H_

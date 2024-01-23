@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _printSetting_VO_
-#define _printSetting_VO_
+#ifndef _PRINTSETTING_VO_
+#define _PRINTSETTING_VO_
 
 #include "../GlobalInclude.h"
 #include "../dto/printSettingDTO.h"
@@ -35,4 +35,4 @@ class printSettingJsonVO : public JsonVO<printSettingDTO::Wrapper> {
 
 #include OATPP_CODEGEN_END(DTO)
 
-#endif // !_printSetting_VO_
+#endif // !_PRINTSETTING_VO_

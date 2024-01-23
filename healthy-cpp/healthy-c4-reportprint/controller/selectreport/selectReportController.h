@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _selectREPORT_CONTROLLER_H_
-#define _selectREPORT_CONTROLLER_H_
+#ifndef _SELECTREPORT_CONTROLLER_H_
+#define _SELECTREPORT_CONTROLLER_H_
 
 #include "domain/vo/BaseJsonVO.h"
 #include "domain/query/selectReportQuery.h"
@@ -79,4 +79,4 @@ private:
 
 // 0 取消API控制器使用宏
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen
-#endif // _selectREPORT_CONTROLLER_H_
+#endif // _SELECTREPORT_CONTROLLER_H_

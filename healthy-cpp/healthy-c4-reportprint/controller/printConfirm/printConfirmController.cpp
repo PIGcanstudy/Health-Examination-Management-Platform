@@ -17,12 +17,12 @@
  limitations under the License.
 */
 #include "stdafx.h"
-#include "printConfireController.h"
-printConfirePageJsonVO::Wrapper printConfireController::execQueryprintConfire(const printConfireQuery::Wrapper& query)
+#include "printConfirmController.h"
+printConfirmPageJsonVO::Wrapper printConfirmController::execQueryprintConfirm(const printConfirmQuery::Wrapper& query)
 {
 
-	printConfirePageJsonVO::Wrapper vo = printConfirePageJsonVO::createShared();
-	auto dto = printConfirePageDTO::createShared();
+	printConfirmPageJsonVO::Wrapper vo = printConfirmPageJsonVO::createShared();
+	auto dto = printConfirmPageDTO::createShared();
 	if (query->pageIndex == 1)
 	{
 		vo->success(dto);

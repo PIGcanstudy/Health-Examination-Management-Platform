@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _selectREPORT_H_
-#define _selectREPORT_H_
+#ifndef _SELECTREPORT_H_
+#define _SELECTREPORT_H_
 
 #include "../GlobalInclude.h"
 #include "domain/query/PageQuery.h"
@@ -65,4 +65,4 @@ class selectReportQuery : public PageQuery
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_selectREPORT_H_
+#endif // !_SELECTREPORT_H_

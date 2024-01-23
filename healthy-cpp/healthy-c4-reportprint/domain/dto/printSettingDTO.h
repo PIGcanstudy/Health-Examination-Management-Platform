@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _printSettingDTO_H_
-#define _printSettingDTO_H_
+#ifndef _PRINTSETTINGDTO_H_
+#define _PRINTSETTINGDTO_H_
 #include "../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
@@ -54,4 +54,4 @@ class printSettingDTO : public oatpp::DTO
 
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_printSettingDTO_H_
+#endif // !_PRINTSETTINGDTO_H_

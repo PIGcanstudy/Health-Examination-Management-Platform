@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _downloadSetting_VO_
-#define _downloadSetting_VO_
+#ifndef _DOWNLOADSETTING_VO_
+#define _DOWNLOADSETTING_VO_
 
 #include "../GlobalInclude.h"
 #include "../dto/downloadSettingDTO.h"
@@ -35,4 +35,4 @@ class downloadSettingJsonVO : public JsonVO<downloadSettingDTO::Wrapper> {
 
 #include OATPP_CODEGEN_END(DTO)
 
-#endif // !_downloadSetting_VO_
+#endif // !_DOWNLOADSETTING_VO_

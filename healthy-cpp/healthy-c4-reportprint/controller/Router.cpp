@@ -29,7 +29,7 @@
 #endif
 #include "selectreport/selectReportController.h"
 #include "downloadSetting/downloadSettingController.h"
-#include "printConfire/printConfireController.h"
+#include "printConfirm/printConfirmController.h"
 #include "printSetting/printSettingController.h"
 
 // 如果定义了关闭Swagger文档宏
@@ -58,7 +58,7 @@ void Router::initRouter()
 	//#TIP :系统扩展路由定义，写在这个后面
 	ROUTER_SIMPLE_BIND(selectReportController);
 	ROUTER_SIMPLE_BIND(downloadSettingController);
-	ROUTER_SIMPLE_BIND(printConfireController);
+	ROUTER_SIMPLE_BIND(printConfirmController);
 	ROUTER_SIMPLE_BIND(printSettingController);
 }
 

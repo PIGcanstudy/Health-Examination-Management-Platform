@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _printSetting_CONTROLLER_H_
-#define _printSetting_CONTROLLER_H_
+#ifndef _PRINTSETTING_CONTROLLER_H_
+#define _PRINTSETTING_CONTROLLER_H_
 
 #include "domain/vo/BaseJsonVO.h"
 #include "domain/query/printSettingQuery.h"
@@ -72,4 +72,4 @@ private:
 
 // 0 取消API控制器使用宏
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen
-#endif // _printSetting_CONTROLLER_H_
+#endif // _PRINTSETTING_CONTROLLER_H_

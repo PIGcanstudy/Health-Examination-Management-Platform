@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _selectREPORT_VO_
-#define _selectREPORT_VO_
+#ifndef _SELECTREPORT_VO_
+#define _SELECTREPORT_VO_
 
 #include "../GlobalInclude.h"
 #include "../dto/selectReportDTO.h"
@@ -44,4 +44,4 @@ class selectReportPageJsonVO : public JsonVO<selectReportPageDTO::Wrapper> {
 
 #include OATPP_CODEGEN_END(DTO)
 
-#endif // !_selectREPORT_VO_
+#endif // !_SELECTREPORT_VO_

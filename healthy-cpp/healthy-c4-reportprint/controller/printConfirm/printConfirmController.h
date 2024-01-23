@@ -17,13 +17,13 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _printConfire_CONTROLLER_H_
-#define _printConfire_CONTROLLER_H_
+#ifndef _PRINTCONFIRM_CONTROLLER_H_
+#define _PRINTCONFIRM_CONTROLLER_H_
 
 #include "domain/vo/BaseJsonVO.h"
-#include "domain/query/printConfireQuery.h"
-#include "domain/dto/printConfireDTO.h"
-#include "domain/vo/printConfireVO.h"
+#include "domain/query/printConfirmQuery.h"
+#include "domain/dto/printConfirmDTO.h"
+#include "domain/vo/printConfirmVO.h"
 
 // 
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
@@ -32,21 +32,21 @@
  * 批量下载PDF报告，报告的选择部分
  * 负责人：晚风
  */
-class printConfireController : public oatpp::web::server::api::ApiController // 1 
+class printConfirmController : public oatpp::web::server::api::ApiController // 1 
 {
 	// 2 定义控制器访问入口
-	API_ACCESS_DECLARE(printConfireController);
+	API_ACCESS_DECLARE(printConfirmController);
 
 	// 3 定义接口
 public:
 	// 3.1 定义查询接口描述
-	ENDPOINT_INFO(queryprintConfire) {
+	ENDPOINT_INFO(queryprintConfirm) {
 		// 定义接口标题
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("confire.get.summary"));
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("confirm.get.summary"));
 		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
 		API_DEF_ADD_AUTH();
 		// 定义响应参数格式
-		API_DEF_ADD_RSP_JSON_WRAPPER(printConfireJsonVO);
+		API_DEF_ADD_RSP_JSON_WRAPPER(printConfirmJsonVO);
 		// 定义分页查询参数描述
 		API_DEF_ADD_PAGE_PARAMS();
 
@@ -61,18 +61,18 @@ public:
 		API_DEF_ADD_QUERY_PARAMS(String, "status", ZH_WORDS_GETTER("confirm.field.status"), "finished", true);
 	}
 	// 3.2 定义查询接口处理
-	ENDPOINT(API_M_GET, "/confire", queryprintConfire, QUERIES(QueryParams, params),API_HANDLER_AUTH_PARAME) {
+	ENDPOINT(API_M_GET, "/confirm", queryprintConfirm, QUERIES(QueryParams, params),API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
-		API_HANDLER_QUERY_PARAM(uq, printConfireQuery, params);
+		API_HANDLER_QUERY_PARAM(uq, printConfirmQuery, params);
 		// 呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execQueryprintConfire(uq));
+		API_HANDLER_RESP_VO(execQueryprintConfirm(uq));
 	}
 
 private:
 	
-	printConfirePageJsonVO::Wrapper execQueryprintConfire(const printConfireQuery::Wrapper& query);
+	printConfirmPageJsonVO::Wrapper execQueryprintConfirm(const printConfirmQuery::Wrapper& query);
 };
 
 // 0 取消API控制器使用宏
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen
-#endif // _printConfire_CONTROLLER_H_
+#endif // _PRINTCONFIRM_CONTROLLER_H_

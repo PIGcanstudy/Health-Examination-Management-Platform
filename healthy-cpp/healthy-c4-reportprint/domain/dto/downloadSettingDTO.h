@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _downloadSettingDTO_H_
-#define _downloadSettingDTO_H_
+#ifndef _DOWNLOADSETTINGDTO_H_
+#define _DOWNLOADSETTINGDTO_H_
 #include "../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
@@ -44,4 +44,4 @@ class downloadSettingDTO : public oatpp::DTO
 
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_downloadSettingDTO_H_
+#endif // !_DOWNLOADSETTINGDTO_H_

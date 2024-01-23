@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _printSetting_H_
-#define _printSetting_H_
+#ifndef _PRINTSETTING_H_
+#define _PRINTSETTING_H_
 
 #include "../GlobalInclude.h"
 #include "domain/query/PageQuery.h"
@@ -55,4 +55,4 @@ class printSettingQuery : public PageQuery
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_printSetting_H_
+#endif // !_PRINTSETTING_H_

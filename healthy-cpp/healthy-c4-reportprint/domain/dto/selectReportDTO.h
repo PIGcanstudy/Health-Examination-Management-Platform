@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _selectREPORTDTO_H_
-#define _selectREPORTDTO_H_
+#ifndef _SELECTREPORTDTO_H_
+#define _SELECTREPORTDTO_H_
 #include "../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
@@ -72,4 +72,4 @@ class selectReportPageDTO : public PageDTO<selectReportDTO::Wrapper>
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_selectREPORTDTO_H_
+#endif // !_SELECTREPORTDTO_H_

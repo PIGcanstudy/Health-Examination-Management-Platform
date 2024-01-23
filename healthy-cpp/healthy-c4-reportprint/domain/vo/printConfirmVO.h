@@ -17,11 +17,11 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _printConfire_VO_
-#define _printConfire_VO_
+#ifndef _PRINTCONFIRM_VO_
+#define _PRINTCONFIRM_VO_
 
 #include "../GlobalInclude.h"
-#include "../dto/printConfireDTO.h"
+#include "../dto/printConfirmDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
@@ -29,8 +29,8 @@
 * 批量下载PDF报告
 * 负责人：晚风
  */
-class printConfireJsonVO : public JsonVO<printConfireDTO::Wrapper> {
-	DTO_INIT(printConfireJsonVO, JsonVO<printConfireDTO::Wrapper>);
+class printConfirmJsonVO : public JsonVO<printConfirmDTO::Wrapper> {
+	DTO_INIT(printConfirmJsonVO, JsonVO<printConfirmDTO::Wrapper>);
 };
 
 /**
@@ -38,10 +38,10 @@ class printConfireJsonVO : public JsonVO<printConfireDTO::Wrapper> {
 * 负责人：晚风
  */
 
-class printConfirePageJsonVO : public JsonVO<printConfirePageDTO::Wrapper> {
-	DTO_INIT(printConfirePageJsonVO, JsonVO<printConfirePageDTO::Wrapper>);
+class printConfirmPageJsonVO : public JsonVO<printConfirmPageDTO::Wrapper> {
+	DTO_INIT(printConfirmPageJsonVO, JsonVO<printConfirmPageDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)
 
-#endif // !_printConfire_VO_
+#endif // !_PRINTCONFIRM_VO_
