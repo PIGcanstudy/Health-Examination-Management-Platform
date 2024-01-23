@@ -31,9 +31,9 @@ class downloadSettingDTO : public oatpp::DTO
 {
 	DTO_INIT(downloadSettingDTO, DTO);
 	// 待下载报告编号
-	DTO_FIELD(UInt64, reportId);
-	DTO_FIELD_INFO(reportId) {
-		info->description = ZH_WORDS_GETTER("downloadSetting.field.reportId");
+	DTO_FIELD(UInt64, downloadReportId);
+	DTO_FIELD_INFO(downloadReportId) {
+		info->description = ZH_WORDS_GETTER("downloadSetting.field.downloadRportId");
 	}
 	// 下载路径
 	DTO_FIELD(String, downloadpath);

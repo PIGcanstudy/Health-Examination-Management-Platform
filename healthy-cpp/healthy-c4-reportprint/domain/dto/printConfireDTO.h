@@ -31,14 +31,14 @@ class printConfireDTO : public oatpp::DTO
 {
 	DTO_INIT(printConfireDTO, DTO);
 	// 打印报告编号
-	DTO_FIELD(UInt64, reportId);
-	DTO_FIELD_INFO(reportId) {
-		info->description = ZH_WORDS_GETTER("confire.field.reportId");
+	DTO_FIELD(UInt64, printReportId);
+	DTO_FIELD_INFO(printReportId) {
+		info->description = ZH_WORDS_GETTER("confire.field.printReportId");
 	}
 	// 打印报告名称
-	DTO_FIELD(String, reportName);
-	DTO_FIELD_INFO(reportName) {
-		info->description = ZH_WORDS_GETTER("confire.field.reportName");
+	DTO_FIELD(String, printReportName);
+	DTO_FIELD_INFO(printReportName) {
+		info->description = ZH_WORDS_GETTER("confire.field.printReportName");
 	}
 	// 是否打印
 	DTO_FIELD(Boolean, isPrint);

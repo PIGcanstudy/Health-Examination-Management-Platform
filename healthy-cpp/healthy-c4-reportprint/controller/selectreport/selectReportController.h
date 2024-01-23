@@ -52,13 +52,13 @@ public:
 
 		// 定义其他查询参数描述
 		// 姓名
-		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("select.field.name"), "li ming", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("select.field.name"), "Li Ming", false);
 		// 体检人员编号
-		API_DEF_ADD_QUERY_PARAMS(UInt64, "personId", ZH_WORDS_GETTER("select.field.personId"), 123456, true);
+		API_DEF_ADD_QUERY_PARAMS(UInt64, "personId", ZH_WORDS_GETTER("select.field.personId"), 123456, false);
 		// 报告编号
-		API_DEF_ADD_QUERY_PARAMS(UInt64, "reportId", ZH_WORDS_GETTER("select.field.reportId"), 12345678, true);
+		API_DEF_ADD_QUERY_PARAMS(UInt64, "printReportId", ZH_WORDS_GETTER("select.field.printReportId"), 12345678, true);
 		// 报告名称
-		API_DEF_ADD_QUERY_PARAMS(String, "reportName", ZH_WORDS_GETTER("select.field.reportName"), "01 Star Cheak Reoprt", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "reportName", ZH_WORDS_GETTER("select.field.reportName"), "01 Star Cheak Reoprt", false);
 		// 工作单位名称
 		API_DEF_ADD_QUERY_PARAMS(String, "dept", ZH_WORDS_GETTER("select.field.dept"), "01Star", false);
 		// 体检日期

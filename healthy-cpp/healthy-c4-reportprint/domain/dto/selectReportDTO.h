@@ -68,6 +68,7 @@ class selectReportDTO : public oatpp::DTO
 class selectReportPageDTO : public PageDTO<selectReportDTO::Wrapper>
 {
 	DTO_INIT(selectReportPageDTO, PageDTO<selectReportDTO::Wrapper>);
+
 };
 
 #include OATPP_CODEGEN_END(DTO)

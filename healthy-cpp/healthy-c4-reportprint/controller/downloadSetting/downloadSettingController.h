@@ -50,9 +50,9 @@ public:
 
 		// 定义查询参数描述
 		// 待下载报告编号
-		API_DEF_ADD_QUERY_PARAMS(UInt64, "reportId", ZH_WORDS_GETTER("downloadSetting.field.reportId"),12345678, true);
+		API_DEF_ADD_QUERY_PARAMS(UInt64, "downloadReportId", ZH_WORDS_GETTER("downloadSetting.field.downloadRportId"),12345678, true);
 		// 下载路径
-		API_DEF_ADD_QUERY_PARAMS(String, "downloadpath", ZH_WORDS_GETTER("downloadSetting.field.downloadpath"), "C:/user", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "downloadpath", ZH_WORDS_GETTER("downloadSetting.field.downloadpath"), "C:/user", false);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/downloadSetting", querydownloadSetting, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {

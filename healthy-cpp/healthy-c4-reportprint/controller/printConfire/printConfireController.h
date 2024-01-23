@@ -52,13 +52,13 @@ public:
 
 		// 定义其他查询参数描述
 		// 打印报告编号
-		API_DEF_ADD_QUERY_PARAMS(UInt64, "reportId", ZH_WORDS_GETTER("confire.field.reportId"), 12345678, true);
+		API_DEF_ADD_QUERY_PARAMS(UInt64, "printReportId", ZH_WORDS_GETTER("confirm.field.printReportId"), 12345678, true);
 		// 打印报告名称
-		API_DEF_ADD_QUERY_PARAMS(String, "reportName", ZH_WORDS_GETTER("confire.field.reportName"), "01 Star Cheak Reoprt", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "printReportName", ZH_WORDS_GETTER("confirm.field.printReportName"), "01 Star Cheak Reoprt", false);
 		// 是否打印
-		API_DEF_ADD_QUERY_PARAMS(Boolean, "isPrint", ZH_WORDS_GETTER("printSetting.field.isPrint"), true, true);
+		API_DEF_ADD_QUERY_PARAMS(Boolean, "isPrint", ZH_WORDS_GETTER("confirm.field.isPrint"), true, true);
 		// 打印完成状态
-		API_DEF_ADD_QUERY_PARAMS(String, "status", ZH_WORDS_GETTER("printSetting.field.status"), "finished", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "status", ZH_WORDS_GETTER("confirm.field.status"), "finished", true);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/confire", queryprintConfire, QUERIES(QueryParams, params),API_HANDLER_AUTH_PARAME) {

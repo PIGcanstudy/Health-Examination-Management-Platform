@@ -10,14 +10,14 @@ select:
   summary: 选择要下载的报告
 downloadSetting:
  field:
-  reportId: 待下载报告编号
+  downloadRportId: 待下载报告编号
   downloadpath: 下载路径
  get:
   view: 下载设置
 confire:
  field:
-  reportId: 待打印报告编号
-  reportName: 待打印报告名称
+  printReportId: 待打印报告编号
+  printReportName: 待打印报告名称
   isPrint: 是否打印
   status: 打印完成状态
  get:

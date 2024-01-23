@@ -55,7 +55,7 @@ public:
 		// 是否双面
 		API_DEF_ADD_QUERY_PARAMS(Boolean, "isDoubleSid", ZH_WORDS_GETTER("printSetting.field.isDoubleSid"), true, true);
 		// 打印份数
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "pagerange", ZH_WORDS_GETTER("printSetting.field.pagerange"), 1, false);
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "copiesNum", ZH_WORDS_GETTER("printSetting.field.copiesNum"), 1, false);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/printSetting", queryprintSetting, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
