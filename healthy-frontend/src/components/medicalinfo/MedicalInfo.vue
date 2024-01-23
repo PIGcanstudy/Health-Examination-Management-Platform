@@ -43,50 +43,28 @@
         </ul>
       </div>
       <!-- 个人信息 -->
-      <el-form ref="personInfo" :model="personInfo" label-width="80px" :rules="rules" class="flex-form">
-        <el-form-item label="体检编号" prop="physical_id">
-          <el-input v-model="$props.personInfo.physical_id" autocomplete="off" disabled />
-        </el-form-item>
-        <el-form-item label="身份证号" prop="id_card">
-          <el-input v-model="$props.personInfo.id_card" autocomplete="off" readonly />
-        </el-form-item>
-        <el-form-item label="姓名" prop="person_name">
-          <el-input v-model="$props.personInfo.person_name" autocomplete="off" readonly />
-        </el-form-item>
-        <el-form-item label="性别" prop="sex">
-          <el-input v-model="$props.personInfo.sex" autocomplete="off" readonly />
-        </el-form-item>
-        <el-form-item label="年龄" prop="age">
-          <el-input v-model="$props.personInfo.age" autocomplete="off" readonly />
-        </el-form-item>
-        <el-form-item label="体检类型" prop="physical_type">
-          <el-input v-model="$props.personInfo.physical_type" autocomplete="off" readonly />
-        </el-form-item>
-        <el-form-item label="联系电话" prop="mobile">
-          <el-input v-model="$props.personInfo.mobile" autocomplete="off" readonly />
-        </el-form-item>
-        <el-form-item label="单位名称" prop="unit_name">
-          <el-input v-model="$props.personInfo.unit_name" autocomplete="off" readonly />
-        </el-form-item>
-        <el-form-item label="婚姻状态" prop="marry_type">
-          <el-select v-model="$props.personInfo.marry_type" placeholder="请选择">
-            <el-option label="未婚" value="未婚" />
-            <el-option label="已婚" value="已婚" />
-            <el-option label="离异" value="离异" />
-          </el-select>
-        </el-form-item>
-        <el-form-item label="分组名称" prop="type_name">
-          <el-select v-model="$props.personInfo.type_name" placeholder="请选择">
-            <el-option label="男" value="男" />
-            <el-option label="女" value="女" />
-          </el-select>
-        </el-form-item>
-      </el-form>
+        <el-form ref="personInfo" :model="personInfo" label-width="80px" :rules="rules" class="flex-form">
+          <div v-for="field in props.fieldConfig">
+            <el-form-item :label="field.label" :prop="field.prop" v-if="field.type === 'input'">
+              <el-input
+                v-model="personInfo[field.prop]"
+                :placeholder="field.placeholder"
+                @click.native="field.methodBound ? onInputClick() : null"
+                :readonly="field.readonly"
+                :disabled="field.disabled" />
+            </el-form-item>
+            <el-form-item :label="field.label" :prop="field.prop" v-if="field.type === 'select'">
+              <el-select v-model="personInfo[field.prop]" :placeholder="field.placeholder" :readonly="field.readonly" :disabled="field.disabled">
+                <el-option v-for="option in field.options" :label="option.label" :value="option.value" />
+              </el-select>
+            </el-form-item>
+          </div>
+        </el-form>
     </div>
   </div>
 </template>
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch, toRefs } from 'vue'
 import { ElDialog, ElUpload, ElButton, ElMessageBox, ElMessage } from 'element-plus'
 /* 向父组件传递的数据 */
 const props = defineProps({
@@ -105,7 +83,7 @@ const props = defineProps({
   // 个人信息
   personInfo: {
     type: Object,
-    required: true,
+    required: false,
     default: () => ({
       physical_id: '2202401120016',
       id_card: '510521199304017011',
@@ -118,23 +96,59 @@ const props = defineProps({
       marry_type: '',
       type_name: ''
     })
-  }
+  },
+  // 字段配置数组
+  fieldConfig: {
+    type: Array,
+    required: false,
+    default: () => [
+      { prop: 'physical_id', label: '体检编号', type: 'input', placeholder: '提交后系统自动生成',disabled: true },
+      { prop: 'id_card', label: '身份证号', type: 'input', readonly: true },
+      { prop: 'person_name', label: '姓名', type: 'input', readonly: true },
+      { prop: 'sex', label: '性别', type: 'input', readonly: true },
+      { prop: 'age', label: '年龄', type: 'input', readonly: true },
+      { prop: 'physical_type', label: '体检类型', type: 'input', readonly: true },
+      { prop: 'mobile', label: '联系电话', type: 'input', readonly: true },
+      { prop: 'unit_name', label: '单位名称', type: 'input', readonly: true },
+      { prop: 'marry_type', label: '婚姻状态', type: 'select', options: [
+        { label: '未婚', value: '未婚' },
+        { label: '已婚', value: '已婚' },
+        { label: '离异', value: '离异' },
+      ]},
+      { prop: 'type_name', label: '分组名称', type: 'select', options: [
+        { label: '男', value: '男' },
+        { label: '女', value: '女' }
+      ]}
+    ]
+  },
+  // 输入框中必填的信息(须与prop值一致)
+  requiredFields: {
+    type: Array,
+    required: false,
+    default: () => ['id_card']
+  },
+  onInputClick: Function,
 })
-/* 个人信息处理 */
+
 // 根据当前流程判断展示的图片
 function getImagePath(index) {
   if (index === 0) return props.currentProgress > 0 ? '/src/assets/medicalinfo/start_check.png' : '/src/assets/medicalinfo/start_nomal.png'
   if (index === props.progressSteps.length - 1) return props.currentProgress === props.progressSteps.length ? '/src/assets/medicalinfo/end_check.png' : '/src/assets/medicalinfo/end_nomal.png'
   return props.currentProgress > 1 && index < props.currentProgress ? '/src/assets/medicalinfo/mid_check.png' : '/src/assets/medicalinfo/mid_nomal.png'
 }
-// 定义个人信息中必需的信息
-const rules = ref({
-  id_card: [{ required: true }],
-  person_name: [{ required: true }],
-  sex: [{ required: true }],
-  age: [{ required: true }],
-  physical_type: [{ required: true }]
-})
+// 动态创建验证规则
+const rules = ref({})
+watch(
+  () => props.requiredFields,
+  (newFields) => {
+    const newRules = {}
+    newFields.forEach((field) => {
+      newRules[field] = [{ required: true, message: '', trigger: 'blur' }]
+    })
+    rules.value = newRules
+  },
+  { immediate: true }
+)
 
 /* 弹窗展示 */
 // 用来控制弹窗的显示
@@ -294,7 +308,7 @@ const cropperImageStyle = computed(() => ({
   align-items: flex-start; /* 对齐表单项 */
 }
 .flex-form .el-form-item {
-  flex: 1 1 200px; /* 每个表单项的基础大小和增长因子 */
+  flex: 1 1 25%; /* 每个表单项的基础大小和增长因子 */
 }
 </style>
 <style>
@@ -308,4 +322,13 @@ const cropperImageStyle = computed(() => ({
 .el-select {
   width: 180px;
 }
+.el-form-item__label {
+  font-weight: 700;
+  margin-left: 20px;
+}
+.el-form-item__label::before {
+  font-family: SimSun;
+  font-weight: 700;
+}
+
 </style>
