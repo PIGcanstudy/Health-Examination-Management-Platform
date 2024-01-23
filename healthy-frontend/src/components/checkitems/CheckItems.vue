@@ -124,9 +124,13 @@ const props = defineProps({
   //包含数据 列 是否显示确定取消按钮
     tcObject:{
       type: Object,
-      default: () =>({bottonTitle:'按钮名字',tableTitle:'抽屉表头'
+      default: () =>({bottonTitle:'按钮名字',tableTitle:'抽屉表头',
       //是否显示确定取消按钮
-      ,isShowButtonForTc:true,
+      isShowButtonForTc:true,
+      //控制触发按钮是否显示
+      hideButton:false,
+      //控制抽屉是否打开
+      openDrawer:false,
       tableLieForTc:[{
         prop:'bind',
         label:'列的显示名称'
@@ -142,7 +146,7 @@ const props = defineProps({
       selectDown:[{
         value:'字段属性值-绑定用',
         label:'下拉显示的数据'
-      }]
+      }],
     })
     }
 })
