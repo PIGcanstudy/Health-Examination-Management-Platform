@@ -40,6 +40,7 @@
         <module>healthy-sample</module>
         <module>healthy-sample-captcha</module>
         <module>healthy-sample-cpp</module>
+        <module>healthy-sample-ws</module>
         <module>healthy-templateManagement</module>
     </modules>
     <properties>
