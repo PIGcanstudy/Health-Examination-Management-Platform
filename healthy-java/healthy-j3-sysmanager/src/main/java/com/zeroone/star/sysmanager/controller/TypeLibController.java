@@ -1,7 +1,9 @@
 package com.zeroone.star.sysmanager.controller;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeAddDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeLibraryTreeDTO;
+import com.zeroone.star.project.dto.j3.typeLibrary.typeUpdateDTO;
 import com.zeroone.star.project.j3.sysconfig.SysConfigApis;
 import com.zeroone.star.project.j3.typelib.TypeLibApis;
 import com.zeroone.star.project.query.j3.TypeLibraryQuery;
@@ -9,10 +11,14 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.j3.typeLibrary.TProTypeVO;
 import com.zeroone.star.project.vo.j3.typeLibrary.typeAddVO;
 import com.zeroone.star.project.vo.j3.typeLibrary.typeUpdateVO;
+import com.zeroone.star.sysmanager.service.ITProTypeService;
 import io.swagger.annotations.Api;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -25,9 +31,12 @@ import java.util.List;
 @RequestMapping("/j3-typeLib")
 @Api("类型库")
 public class TypeLibController implements TypeLibApis {
+    @Resource
+    ITProTypeService typeService;
 
     /**
      * 获取类型树
+     *
      * @param typeLibraryTreedto
      * @return
      */
@@ -38,6 +47,7 @@ public class TypeLibController implements TypeLibApis {
 
     /**
      * 搜索类型列表
+     *
      * @param typeLibraryQuery
      * @return
      */
@@ -47,12 +57,20 @@ public class TypeLibController implements TypeLibApis {
     }
 
     @Override
-    public JsonVO<typeAddVO> addType(typeAddDTO typeadddto) {
-        return null;
+    @PostMapping("/addType")
+    public JsonVO<typeAddVO> addType(@RequestBody typeAddDTO typeadddto) {
+        return JsonVO.success(typeService.addType(typeadddto));
     }
 
     @Override
-    public JsonVO<typeUpdateVO> updateType(typeUpdateVO typeupdatevo) {
-        return null;
+    @PostMapping("/updateType")
+    public JsonVO<Object> updateType(@RequestBody typeUpdateDTO typeupdatedto) {
+        typeUpdateVO typeUpdateVO = typeService.updateType(typeupdatedto);
+        if(ObjectUtil.isNotNull(typeUpdateVO)){
+            return JsonVO.success(typeUpdateVO);
+        }
+        else{
+            return JsonVO.fail("修改失败");
+        }
     }
 }
