@@ -1,5 +1,5 @@
 <template>
-  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true" v-if="hideButton">{{props.tcObject.bottonTitle}}</el-button>
+  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true" >{{props.tcObject.bottonTitle}}</el-button>
 
 
  <!-- 选检项目-抽屉 -->
@@ -115,7 +115,6 @@ interface tcxmTableFiled {
 
 //标签设置区域
 const value = ref('')
-// const drawer = ref(false)
 const drawer2 = ref(false)
 
 
@@ -127,7 +126,7 @@ const props = defineProps({
       default: () =>({bottonTitle:'按钮名字',tableTitle:'抽屉表头',
       //是否显示确定取消按钮
       isShowButtonForTc:true,
-      //控制触发按钮是否显示
+      //控制触发按钮是否隐藏
       hideButton:false,
       //控制抽屉是否打开
       openDrawer:false,
@@ -150,7 +149,7 @@ const props = defineProps({
     })
     }
 })
-const hideButton=ref(true)
+const hideButton=ref(false)
 //初始化方法
 created:{
   // console.log("selectDown:" + props.tcObject.selectDown.forEach(prop=>{
@@ -251,7 +250,7 @@ const selectTc = (selection, row) => {
   // 主要用于将当前勾选的表格状态清除
   if (selection.length == 0) return
   multipleTableRefForTc.value.toggleRowSelection(row, true)
-  // rowData.value = row
+
 }
 
 
