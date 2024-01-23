@@ -1,5 +1,5 @@
 <template>
-  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true">{{props.tcObject.bottonTitle}}</el-button>
+  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true" v-if="hideButton">{{props.tcObject.bottonTitle}}</el-button>
 
 
  <!-- 选检项目-抽屉 -->
@@ -26,7 +26,7 @@
     size="large"
     style="width: 240px"
   >
-  
+
     <el-option
       v-for="item in props.tcObject.selectDown "
       :key="item.value"
@@ -150,7 +150,7 @@ const props = defineProps({
     })
     }
 })
-
+const hideButton=ref(true)
 //初始化方法
 created:{
   // console.log("selectDown:" + props.tcObject.selectDown.forEach(prop=>{
@@ -161,7 +161,11 @@ created:{
     showSubmitForTc.value = false
     showCloseForTc.value = false
   }
+  hideButton.value=props.tcObject.hideButton
+  drawer2.value=props.tcObject.openDrawer
+
 }
+
 
 
 const emits = defineEmits(['submitTc','cancelTc','rowDataForTcMd'])

@@ -30,19 +30,33 @@
         :current-progress="currentProgress"
         :progress-steps="progressSteps"
         :person-info="personInfo"
+        :field-config="fieldConfig"
+        :required-fields="requiredFields"
+        :on-input-click="checkJob"
       />
+      <CheckItems v-if="isCheckItemsVisible" :hide-button="false" :open-drawer="true"/>
       <!-- 按钮区域 -->
       <div style="margin-bottom: 10px;">
-        <el-button type="primary" ><el-icon style="margin-right: 2px;"><Edit /></el-icon>修改信息</el-button>
-        <el-button type="primary" ><el-icon style="margin-right: 2px;"><Plus /></el-icon>零星新增</el-button>
-        <el-button type="primary" ><el-icon style="margin-right: 2px;"><Plus /></el-icon>团检新增</el-button>
-        <el-button type="primary" ><el-icon style="margin-right: 2px;"><Delete /></el-icon>删除</el-button>
-        <el-button type="primary" ><el-icon style="margin-right: 2px;"><Plus /></el-icon>读取二代身份证</el-button>
-        <el-button type="primary" ><el-icon style="margin-right: 2px;"><Printer /></el-icon>打印导检单</el-button>
+        <el-button type="primary" v-if="!isShow" style=" background-color: #ffad33; border-color: #ffad33;" disabled><el-icon style="margin-right: 2px;"><Edit /></el-icon>修改信息</el-button>
+        <el-button type="primary" v-if="!isShow" @click="handleSingleAdd">
+          <el-icon style="margin-right: 2px;"><Plus /></el-icon>零星新增
+        </el-button>
+        <el-button type="primary" v-if="!isShow" @click="handleTeamAdd">
+          <el-icon style="margin-right: 2px;"><Plus /></el-icon>团检新增
+        </el-button>
+        <el-button type="primary" v-if="!isShow" style=" background-color: #f16643; border-color: #f16643;" disabled><el-icon style="margin-right: 2px;"><Delete /></el-icon>删除</el-button>
+        <el-button type="primary" v-if="isShow" @click="readIdCard">
+          <el-icon style="margin-right: 2px;"><Loading v-if="isLoading" class="icon-loading" /><Plus v-else /></el-icon>读取二代身份证
+        </el-button>
+        <el-button type="primary" v-if="!isShow" @click="printSheet">
+          <el-icon style="margin-right: 2px;"><Printer /></el-icon>打印导检单
+        </el-button>
+        <el-button type="primary" v-if="isShow" @click="savePersonInfo" ><el-icon style="margin-right: 2px;"><CaretRight /></el-icon>保存信息</el-button>
       </div>
       <!-- 体检项目 -->
       <div class="card-header">
           <span>体检项目</span>
+          <CheckItems />
       </div>
       <BaseDataList
         ref="baseDataListRef"
@@ -69,10 +83,12 @@
 
 <script setup>
 import { ref } from 'vue'
+import { ElMessage } from 'element-plus'
 import PeopleList from '@/components/peoplelist/PeopleList-Rom.vue'
 import MedicalInfo from '@/components/medicalinfo/MedicalInfo.vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
-import { ArrowRightBold, ArrowLeftBold, Edit, Plus, Delete, Printer } from '@element-plus/icons-vue'
+import CheckItems from '@/components/checkitems/CheckItems.vue'
+import { ArrowRightBold, ArrowLeftBold, Edit, Plus, Delete, Printer, CaretRight, Loading } from '@element-plus/icons-vue'
 /* PeopleList的变量 */
 const title = ref('人员查询')
 const checkboxItem = ref(['未登记', '已登记'])
@@ -96,21 +112,51 @@ const formConfig = ref({
     }
   ]
 })
+
 /* MedicalInfo的变量 */
 const currentProgress = ref(1)
 const progressSteps = ref(['登记', '在检', '总检', '已完成'])
+const fieldConfig = ref([
+      { prop: 'physical_id', label: '体检编号', type: 'input', placeholder: '提交后系统自动生成', disabled: true },
+      { prop: 'id_card', label: '身份证号', type: 'input', placeholder: '请输入身份证号', readonly: true },
+      { prop: 'person_name', label: '姓名', type: 'input', placeholder: '请输入姓名', readonly: true },
+      { prop: 'sex', label: '性别', type: 'input', placeholder: '性别', readonly: true },
+      { prop: 'age', label: '年龄', type: 'input', placeholder: '年龄', readonly: true },
+      { prop: 'physical_type', label: '体检类型', type: 'input', placeholder: '体检类型', readonly: true },
+      { prop: 'mobile', label: '联系电话', type: 'input', placeholder: '联系电话', readonly: true },
+      { prop: 'unit_name', label: '单位名称', type: 'input', placeholder: '单位名称', readonly: true },
+      { prop: 'hazardous_factors', label: '危害因素', type: 'input', placeholder: '选择套餐后自动生成', disabled: true },
+      { prop: 'job_name', label: '工种名称', type: 'input', placeholder: '工种名称', readonly: true, methodBound: true },
+      { prop: 'check_type', label: '检查种类', type: 'input', placeholder: '选择套餐后自动生成', disabled: true },
+      { prop: 'type_name', label: '分组名称', type: 'select', placeholder: '选择套餐后自动生成', disabled: true, options: [
+        { label: '男', value: '男' },
+        { label: '女', value: '女' }
+      ]},
+      { prop: 'marry_type', label: '婚姻状态', type: 'select', placeholder: '请选择', options: [
+        { label: '未婚', value: '未婚' },
+        { label: '已婚', value: '已婚' },
+        { label: '离异', value: '离异' },
+        { label: '丧偶', value: '丧偶' },
+        { label: '其他', value: '其他' },
+      ]}
+])
+const requiredFields = ref(['id_card','person_name','sex','age','physical_type','mobile','unit_name','job_name'])
 const personInfo = ref({
-  physical_id: '2202401120016',
-  id_card: '510521199304017011',
-  person_name: 'test-rom',
-  sex: '男',
-  age: '30',
-  physical_type: '健康体检',
-  mobile: '18980504604',
-  unit_name: 'test-rom',
-  marry_type: '',
-  type_name: ''
+  physical_id: '',
+  id_card: '',
+  person_name: '',
+  sex: '',
+  age: '',
+  physical_type: '',
+  mobile: '',
+  unit_name: '',
+  hazardous_factors: '',
+  job_name: '',
+  check_type: '',
+  type_name: '',
+  marry_type: ''
 })
+
 /* BaseDataList的变量 */
 const tableColumnAttribute = ref([
   { prop: 'id', label: '#', width: 150, align: 'center' },
@@ -154,7 +200,56 @@ const handleEdit = () => {
   }
 }
 /* 本界面变量及函数 */
-const isCollapsed = ref(false)
+const isCollapsed = ref(false) // 是否收缩侧边栏
+const isShow = ref(false) // 是否展示按钮
+const isCheckItemsVisible = ref(false) // 是否展示抽屉
+const isLoading = ref(false) // 读取身份证图标显示
+// 工种名称
+const checkJob = () => {
+  isCheckItemsVisible.value=!isCheckItemsVisible.value
+}
+// 零星新增
+const handleSingleAdd = () => {
+  isShow.value = true
+  fieldConfig.value.forEach(field => {
+    if (field.readonly) {
+      field.readonly = false
+    }
+  })
+}
+// 团检新增
+const handleTeamAdd = () => {
+  isShow.value = true
+  fieldConfig.value.forEach(field => {
+    if (field.readonly) {
+      field.readonly = false
+    }
+  })
+}
+// 读取身份证
+const readIdCard = () => {
+  // 设置 isLoading 为 true
+  isLoading.value = true;
+  // 3秒后重置 isLoading 状态
+  setTimeout(() => {
+    isLoading.value = false;
+    ElMessage.error("请安装身份证读卡器服务！")
+  }, 3000);
+}
+// 打印导检单
+const printSheet = () => {
+  ElMessage.warning("正在打印导检单...")
+}
+// 保存信息
+const savePersonInfo = () => {
+  isShow.value = false
+  fieldConfig.value.forEach(field => {
+    if (!field.readonly) {
+      field.readonly = true
+    }
+  })
+}
+
 </script>
 <style scoped>
 .shrink-button {
@@ -163,9 +258,10 @@ const isCollapsed = ref(false)
   height: 100%;
 }
 .card-header {
+  padding-left: 10px;
   margin-bottom: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   text-align: center;
   background-color: rgb(240, 250, 255);
@@ -188,5 +284,13 @@ const isCollapsed = ref(false)
     color: rgb(81, 90, 110);
     font-weight: 550;
   }
+}
+.icon-loading{
+  animation: rotating 2s infinite linear;
+}
+@keyframes rotating {
+    to {
+        transform: rotate(1turn);
+    }
 }
 </style>
