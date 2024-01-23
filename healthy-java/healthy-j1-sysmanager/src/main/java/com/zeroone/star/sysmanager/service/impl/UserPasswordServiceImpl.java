@@ -2,6 +2,8 @@ package com.zeroone.star.sysmanager.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.zeroone.star.project.components.user.UserDTO;
+import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.j1.dto.sysmanager.ModifyPasswordDTO;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
@@ -9,6 +11,7 @@ import com.zeroone.star.sysmanager.entity.TUserDO;
 import com.zeroone.star.sysmanager.mapper.UserPasswordMapper;
 import com.zeroone.star.sysmanager.service.UserPasswordService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,11 +33,23 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
      * @param modifyPasswordDTO 修改密码DTO
      * @return
      */
+
+
+    @Autowired
+    UserHolder userHolder;
+
     @Override
     public JsonVO updatePasswordToChange(ModifyPasswordDTO modifyPasswordDTO) {
         // 判断当前登录的用户是否为管理员账号(type字段是否为1)
         // 假设当前登录的用户为admin用户 TODO 获取当前登录的用户id，这里进行了模拟
-        String currentUserId = "682265633886208";
+        // String currentUserId = "682265633886208";
+        String currentUserId;
+        try {
+            UserDTO currentUser = userHolder.getCurrentUser();
+            currentUserId = currentUser.getId().toString();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         TUserDO currentUserDO = getBaseMapper().selectById(currentUserId);
         // 被修改密码的用户
         TUserDO changeUser = getBaseMapper().selectById(modifyPasswordDTO.getId());
@@ -50,7 +65,8 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
         if(modifyPasswordDTO.getPassword().equals(modifyPasswordDTO.getNew_password())){
             return JsonVO.create(null,9991,"新密码不能与现在的密码相同");
         }
-        // 验证被修改用户的旧密码是否正确 TODO 问题：应该是要调用别人的密码验证服务来实现,因为这里没有BCryptPasswordEncoder这个Bean,这里进行了模拟的实现
+        // 验证被修改用户的旧密码是否正确
+        // TODO 问题：应该是要调用别人的密码验证服务来实现,因为这里没有BCryptPasswordEncoder这个Bean,这里进行使用new进行了模拟的实现
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         boolean matches = bCryptPasswordEncoder.matches(modifyPasswordDTO.getPassword(),changeUser.getPassword());
         if(!matches){

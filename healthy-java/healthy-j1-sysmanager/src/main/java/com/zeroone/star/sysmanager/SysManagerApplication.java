@@ -1,8 +1,11 @@
 package com.zeroone.star.sysmanager;
 
+import com.zeroone.star.project.components.jwt.JwtComponent;
+import com.zeroone.star.project.components.user.UserHolder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.annotation.Bean;
 
 /**
  * <p>
@@ -21,4 +24,13 @@ public class SysManagerApplication {
         SpringApplication.run(SysManagerApplication.class, args);
     }
 
+    @Bean
+    public UserHolder userHolder(){
+        return new UserHolder();
+    }
+
+    @Bean
+    public JwtComponent jwtComponent(){
+        return  new JwtComponent();
+    }
 }
