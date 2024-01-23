@@ -33,12 +33,3 @@ threelevcheck:
   createTime: 创建时间
   updateId: 修改人
   updateTime: 修改时间
-
-countcheck:
- query-all:
-  summary: 获取审批统计信息
- field:  
-  audit_level: 评审级别 
-  already: 已审核数量(already)和未审核数量(yet)(下面默认值4在数据库中表示该合同审批已完成，这里已审核和未审核一起返回)
-  yet: 未审核数量
-  already1: 已审核数量
