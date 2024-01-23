@@ -23,6 +23,7 @@
 #include "Router.h"
 #include "ApiHelper.h"
 
+#include "Dangerous/DepartController.h"
 #include "result/ResultController.h"
 #include "info-inspectionSave/InfoController.h"
 #include "Term/TermController.h"
@@ -70,6 +71,7 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	ROUTER_SIMPLE_BIND(DepartController);
 	ROUTER_SIMPLE_BIND(ResultController);
 	ROUTER_SIMPLE_BIND(InfoController);
 	ROUTER_SIMPLE_BIND(TermController);
