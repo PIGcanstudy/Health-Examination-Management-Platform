@@ -4,7 +4,7 @@
     <el-form-item >
             <el-select v-model="formData.checkupType" placeholder="更多操作" style="width: 200px;">
               <el-option label="刷新" value="type1" @click="refreshData"></el-option>
-              <el-option label="批量删除" value="type2" @click="deletaDa"></el-option>
+              <el-option label="批量删除" value="type2" @click="deleData"></el-option>
               <el-option label="导出本页数据" value="type3" @click="exportData"></el-option>
             </el-select>
           </el-form-item>
@@ -82,8 +82,8 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script  setup>
+import { ref } from 'vue'
 
 const drawerVisible = ref(false);
 

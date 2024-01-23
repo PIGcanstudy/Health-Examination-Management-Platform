@@ -1,7 +1,18 @@
 <!-- 团检单位 -->
 <template>
   <div class="contain">
-    <BaseDataList :use-form="useForm" :form-data="formData" :table-data="tableData" :table-column-attribute="tableColumnAttribute">
+    <BaseDataList
+      :use-form="useForm"
+      :form-data="formData"
+      :table-data="tableData"
+      :table-column-attribute="tableColumnAttribute"
+      :total="total"
+      :use-pagination="usePagination"
+      :pagination-data="paginationData"
+      :handle-edit="handleEdit"
+      @update-table-data="handlePageChange"
+      @update-selected-rows="selectRows"
+    >
       <!-- form表单区域 -->
       <template #form>
         <el-form-item label="单位名称">
@@ -37,7 +48,7 @@
       <!-- 多选清除栏 -->
       <template #hint>
         <div v-if="useHint" class="hint">
-          <span> (!) 已选择0项</span>
+          <span> (!) 已选择{{ selectedTotal }}项</span>
           <el-button type="primary" link style="margin-bottom: 3px">清空</el-button>
         </div>
       </template>
@@ -49,9 +60,9 @@
 import { ref, reactive } from 'vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 const selectValue = ref('')
-const useHint = ref(true)
-const useForm = ref(true)
-const usePagination = ref(true)
+const useHint = ref('true')
+const useForm = ref('true')
+const usePagination = ref('true')
 // table列
 const tableColumnAttribute = ref([
   { prop: 'name', label: '单位名称', width: '240', align: 'center' },
@@ -76,6 +87,72 @@ const tableData = ref([
     scale: '--',
     contact: '--',
     phone: '--'
+  },
+  {
+    name: '---',
+    credit: '--',
+    examination: '健康体检',
+    address: '--',
+    category: '铁矿采选*',
+    etype: '国有企业',
+    scale: '--',
+    contact: '--',
+    phone: '--'
+  },
+  {
+    name: '乐山市峨边盛和矿业',
+    credit: '--',
+    examination: '健康体检',
+    address: '--',
+    category: '铁矿采选*',
+    etype: '国有企业',
+    scale: '--',
+    contact: '--',
+    phone: '--'
+  },
+  {
+    name: '乐山市峨边盛和矿业',
+    credit: '--',
+    examination: '健康体检',
+    address: '--',
+    category: '铁矿采选*',
+    etype: '国有企业',
+    scale: '--',
+    contact: '--',
+    phone: '--'
+  },
+  {
+    name: '乐山市峨边盛和矿业',
+    credit: '--',
+    examination: '健康体检',
+    address: '--',
+    category: '铁矿采选*',
+    etype: '国有企业',
+    scale: '--',
+    contact: '--',
+    phone: '--'
+  },
+  {
+    name: '乐山市峨边盛和矿业',
+    credit: '--',
+    examination: '健康体检',
+    address: '--',
+    category: '铁矿采选*',
+    etype: '国有企业',
+    scale: '--',
+    contact: '--',
+    phone: '--'
+  },
+  {
+    name: '乐山市峨边盛和矿业',
+    credit: '--',
+    examination: '健康体检',
+    address: '--',
+    category: '铁矿采选*',
+    etype: '国有企业',
+    scale: '--',
+    contact: '--',
+    phone: '--'
   }
 ])
 const formData = reactive({
@@ -89,6 +166,41 @@ const closeForm = () => {
 }
 const closeHint = () => {
   useHint.value = !useHint.value
+}
+// 编辑功能
+const handleEdit = (row) => {
+  console.log(row)
+}
+// 显示选中几项
+const selectedTotal = ref()
+// 选中的row
+const selectRows = (selectRows) => {
+  selectedTotal.value = selectRows.length
+  console.log(selectRows)
+}
+const total = tableData.value.length
+// 分页参数
+const paginationData = ref({
+  currentPage: 1,
+  pageSize: 5
+})
+const currentTableData = ref()
+// 根据分页参数计算当前显示的数据
+function getPagedData(pageSize, currentPage) {
+  const start = (currentPage - 1) * pageSize
+  const end = start + pageSize
+  const tables = []
+  for (let i = start; i < end; i++) {
+    if (tableData.value[i]) tables.push(tableData.value[i])
+  }
+
+  return (currentTableData.value = tables)
+}
+// 更新分页数据
+function handlePageChange(pageSize, currentPage) {
+  paginationData.value.pageSize = pageSize
+  paginationData.value.currentPage = currentPage
+  tableData.value = getPagedData(pageSize, currentPage)
 }
 </script>
 
