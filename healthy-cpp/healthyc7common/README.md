@@ -1,15 +1,13 @@
-
-
 # 示例模块
 
 ## 简介
-架构演示示例项目。
+架构使用示例项目。
 
 ## 目录结构说明
-healthy-c7-common
-
+> `arch-demo`
+>
 > > `conf` -- Windows平台需要的配置文件
->>
+> >
 > > `controller` -- `MVC`中Controller实现，用于接收用户请求
 > >
 > > `service` -- 业务逻辑服务层
@@ -17,6 +15,10 @@ healthy-c7-common
 > > `dao` -- 数据库访问层
 > >
 > > `domain`  -- 领域模型实体
+> >
+> > `public` -- 测试访问网页案例
+> >
+> > `uselib` -- 静态库使用案例
 > >
 > > `CMakeLists.txt` -- `Cmake`跨平台编译配置文件
 > >
@@ -31,6 +33,21 @@ healthy-c7-common
 > > `public.pem` -- `RSA`公钥
 > >
 > > `zh-dict.yaml` -- 中文词典配置
+
+## 测试数据库表
+
+在数据库中创建一张sample表用于测试。
+
+```sql
+DROP TABLE IF EXISTS `sample`;
+CREATE TABLE `sample` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `sex` char(1) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
 
 ## 各层命名规范
 

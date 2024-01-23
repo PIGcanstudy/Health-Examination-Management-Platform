@@ -1,0 +1,7 @@
+term:
+ field:
+  officeId: ID名称
+  hazardFactorsText: 危害因素
+  inspectType: 体检类型
+  content: 内容
+  workStateText: 在岗状态

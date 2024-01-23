@@ -1,11 +1,8 @@
-
-
-
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: lenyan~
- @Date: 2024/01/19
+ @Author: awei
+ @Date: 2022/12/03 14:58:34
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -23,27 +20,16 @@
 #include "Router.h"
 #include "ApiHelper.h"
 
-#include "Term/TermController.h"
-#include "getUserName/UnitController.h"
-#include "personDetail/DetailController.h"
-#include "positive/positiveController.h"
-#include "review/ReviewController.h"
-#include "addNewItems/AddNewItemsController.h"
-#include "id/IdController.h"
-#include "personalReview/PersonalReviewController.h"
-#include "downloadWord/DownloadWordController.h"
-#include "groupItemIgno/GroupItemIgnoController.h"
-#include "itemResult/ItemResultController.h"
-#include "evalue/InquiryDetailController.h"// 如果定义了关闭Swagger文档宏
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
-
 #endif
 
+#include "Term/TermController.h"
+// 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
 // 简化绑定控制器宏定义
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
@@ -68,18 +54,8 @@ void Router::initRouter()
 
 	//#TIP :系统扩展路由定义，写在这个后面
 	ROUTER_SIMPLE_BIND(TermController);
-	ROUTER_SIMPLE_BIND(PositiveConrtoller);
-	ROUTER_SIMPLE_BIND(ItemResultController);
-	ROUTER_SIMPLE_BIND(InquiryDetailController);
-	ROUTER_SIMPLE_BIND(ReviewController);
-	ROUTER_SIMPLE_BIND(AddNewItemsController);
-	ROUTER_SIMPLE_BIND(IdController);
-	ROUTER_SIMPLE_BIND(PersonalReviewController);
-	ROUTER_SIMPLE_BIND(DownloadWordController);
-	ROUTER_SIMPLE_BIND(GroupItemIgnoController);
-	ROUTER_SIMPLE_BIND(DetailController);
-	ROUTER_SIMPLE_BIND(UnitController);
 }
+
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
