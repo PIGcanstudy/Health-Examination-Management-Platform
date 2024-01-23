@@ -1,4 +1,3 @@
-
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -21,6 +20,7 @@
 #include "Router.h"
 #include "ApiHelper.h"
 
+#include "personDetail/DetailController.h"
 #include "positive/positiveController.h"
 #include "review/ReviewController.h"
 #include "addNewItems/AddNewItemsController.h"
@@ -30,6 +30,7 @@
 #include "groupItemIgno/GroupItemIgnoController.h"
 #include "itemResult/ItemResultController.h"
 #include "evalue/UnitController.h"
+
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
@@ -71,7 +72,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(PersonalReviewController);
 	ROUTER_SIMPLE_BIND(DownloadWordController);
 	ROUTER_SIMPLE_BIND(GroupItemIgnoController);
-	ROUTER_SIMPLE_BIND(UnitController);}
+	ROUTER_SIMPLE_BIND(DetailController);
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()

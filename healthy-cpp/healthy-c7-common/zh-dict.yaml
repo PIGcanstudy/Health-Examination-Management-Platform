@@ -1,4 +1,4 @@
-﻿unit:
+unit:
  filed:
   type: 体检类型
   name: 单位名称
@@ -101,3 +101,4 @@ evalue:
   endDate: 结束时间
   personName: 姓名
   testNum: 体检编号
+  dept: 单位名称
