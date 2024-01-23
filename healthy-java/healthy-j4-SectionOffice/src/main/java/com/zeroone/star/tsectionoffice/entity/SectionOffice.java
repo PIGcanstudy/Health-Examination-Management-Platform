@@ -1,4 +1,4 @@
-package com.zeroone.star.departmanagement.entity;
+package com.zeroone.star.tsectionoffice.entity;
 
 import java.util.Date;
 import java.io.Serializable;

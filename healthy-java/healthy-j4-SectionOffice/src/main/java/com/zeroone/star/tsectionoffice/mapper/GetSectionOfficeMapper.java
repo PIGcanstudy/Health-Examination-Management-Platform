@@ -1,4 +1,4 @@
-package com.zeroone.star.departmanagement.mapper;
+package com.zeroone.star.tsectionoffice.mapper;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.j4.query.GetSectionOfficeQuery;

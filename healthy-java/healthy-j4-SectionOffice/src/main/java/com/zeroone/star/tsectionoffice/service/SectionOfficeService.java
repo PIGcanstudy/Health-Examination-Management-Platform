@@ -1,7 +1,7 @@
-package com.zeroone.star.departmanagement.service;
+package com.zeroone.star.tsectionoffice.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zeroone.star.departmanagement.entity.SectionOffice;
+import com.zeroone.star.tsectionoffice.entity.SectionOffice;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.query.GetSectionOfficeQuery;
 import com.zeroone.star.project.j4.vo.GetSectionOfficeVO;

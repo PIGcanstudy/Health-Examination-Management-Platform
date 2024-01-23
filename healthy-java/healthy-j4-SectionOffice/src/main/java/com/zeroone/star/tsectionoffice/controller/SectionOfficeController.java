@@ -1,6 +1,5 @@
-package com.zeroone.star.departmanagement.controller;
+package com.zeroone.star.tsectionoffice.controller;
 
-import com.zeroone.star.departmanagement.service.SectionOfficeService;
 import com.zeroone.star.project.j4.SectionOffice.SectionOfficeApi;
 import com.zeroone.star.project.j4.dto.PageDTO;
 import com.zeroone.star.project.j4.query.GetSectionOfficeQuery;
