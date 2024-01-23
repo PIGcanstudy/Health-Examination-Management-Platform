@@ -128,6 +128,7 @@ void HttpServer::initServer(string port, string host, function<void(Endpoints*, 
 
 void HttpServer::startServer(string port, function<void(Endpoints*, HttpRouter*)> bindRouterFun, function<void(std::shared_ptr<AbstractComponentReg>*)> otherComponentRegCall /*= nullptr*/, string host /*= "0.0.0.0"*/)
 {
+	//初始化端口参数、中文词典
 	oatpp::base::Environment::init();
 
 	initServer(port, host, bindRouterFun, otherComponentRegCall);
