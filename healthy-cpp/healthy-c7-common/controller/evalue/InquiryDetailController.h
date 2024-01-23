@@ -21,10 +21,11 @@
 #define _INQUIRYDETAIL_CONTROLLER_
 
 
+
 #include "domain/vo/BaseJsonVO.h"
-#include "../healthy-c7-common/domain/query/evalue/InquiryDetailQuery.h"
-#include "../healthy-c7-common/domain/dto/evalue/InquiryDetailDTO.h"
-#include "../healthy-c7-common/domain/vo/evalue/InquiryDetailVO.h"
+#include "domain/query/evalue/InquiryDetailQuery.h"
+#include "domain/dto/evalue/InquiryDetailDTO.h"
+#include "domain/vo/evalue/InquiryDetailVO.h"
 #include "../../../arch-demo/controller/file/FileController.h"
 
 

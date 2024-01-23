@@ -29,8 +29,7 @@
 #include "downloadWord/DownloadWordController.h"
 #include "groupItemIgno/GroupItemIgnoController.h"
 #include "itemResult/ItemResultController.h"
-#include "evalue/UnitController.h"
-
+#include "evalue/InquiryDetailController.h"// 如果定义了关闭Swagger文档宏
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
@@ -39,7 +38,7 @@
 #include "uselib/ws/WSController.h"
 
 #endif
-#include "../controller/evalue/InquiryDetailController.h"// 如果定义了关闭Swagger文档宏
+
 #ifdef CLOSE_SWAGGER_DOC
 // 简化绑定控制器宏定义
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
@@ -73,7 +72,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(DownloadWordController);
 	ROUTER_SIMPLE_BIND(GroupItemIgnoController);
 	ROUTER_SIMPLE_BIND(DetailController);
-
+}
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {

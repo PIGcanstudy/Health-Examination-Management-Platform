@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _DETAILQUERY_H_
-#define _DETAILQUERY_H_
+#ifndef  _DETAILQUERY_
+#define  _DETAILQUERY_
 
 #include "../../GlobalInclude.h"
 #include "domain/query/PageQuery.h"
