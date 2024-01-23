@@ -1,12 +1,12 @@
 <template>
-  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true">选检项目</el-button>
+  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true">{{props.tcObject.bottonTitle}}</el-button>
 
 
  <!-- 选检项目-抽屉 -->
 <div id = 'xjxm' class="darwer-box">
   <el-drawer v-model="drawer2" title="I am the title" :with-header="false" >
-    <span>套餐项目</span>
-    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+    <span>{{ tcObject.tableTitle }}</span>
+    <el-form :inline="true" :model="formInlineTc" class="demo-form-inline">
     <el-form-item label="关键字:" class="bold-label">
       <!-- 关键字输入框 -->
       <el-input
@@ -28,7 +28,7 @@
   >
   
     <el-option
-      v-for="item in props.selectDown "
+      v-for="item in props.tcObject.selectDown "
       :key="item.value"
       :label="item.label"
       :value="item.label"
@@ -45,7 +45,7 @@
   <!-- 套餐项目-表格数据table -->
   <el-table
     ref="multipleTableRefForTc"
-    :data="tcProject.slice((currentPage4 - 1) * pageSize4,currentPage4 * pageSize4)"
+    :data="tcObject.tableDataForTc.slice((currentPage4 - 1) * pageSize4,currentPage4 * pageSize4)"
     style="width: 100%"
     :row-class-name="tableDataFtableRowClassNameForTc"
     @select="selectTc"
@@ -53,7 +53,7 @@
   >
     <!-- 单选框 -->
     <el-table-column type = "selection" label="单选框选择" width="180" />
-    <el-table-column v-for="item in props.tableLieForTc" :key="item" :prop="item.prop" :label="item.label" :width="item.width" :align="item.align" />
+    <el-table-column v-for="item in props.tcObject.tableLieForTc" :key="item" :prop="item.prop" :label="item.label" :width="item.width" :align="item.align" />
   </el-table>
   <el-pagination
       v-model:current-page="currentPage4"
@@ -62,7 +62,7 @@
       :small="small"
       :disabled="disabled"
       layout="total, sizes, prev, pager, next, jumper"
-      :total= props.tcProject.length
+      :total= props.tcObject.tableDataForTc.length
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     />
@@ -121,31 +121,28 @@ const drawer2 = ref(false)
 
 // 定义抽屉预设
 const props = defineProps({
-    tcProject: {
-        type: Array,
-        default: () => []
+  //包含数据 列 是否显示确定取消按钮
+    tcObject:{
+      type: Object,
+      default: () =>{}
     },
-    selectDown:{
-        type: Array,
-        default: () =>[]
+    bottonTitle: {
+         type: String,
+         default:() =>'套餐项目'
     },
-    tableLieForTc: {
-         type: Array,
-         requeired:true
-    },
-    isShowButtonForTc: {
-         type: Boolean,
-         default:true
+    tableTitle: {
+      type: String,
+         default:() =>'套餐项目'
     }
 })
 
 //初始化方法
 created:{
-  console.log("selectDown:" + props.selectDown.forEach(prop=>{
+  console.log("selectDown:" + props.tcObject.selectDown.forEach(prop=>{
     console.log("prop:" + prop.value)
   }))
   console.log(currentPage4,pageSize4)
-  if(!props.isShowButtonForTc){
+  if(!props.tcObject.isShowButtonForTc){
     showSubmitForTc.value = false
     showCloseForTc.value = false
   }
