@@ -25,9 +25,13 @@ const tcObject = reactive({
   //是否显示确定取消按钮-套餐
   isShowButtonForTc : true,
   //抽屉按钮名字
-  buttonTitle:'按钮开关',
+  bottonTitle:'按钮开关',
   // 抽屉表头
   tableTitle:'编辑分组',
+  //是否隐藏触发抽屉按钮
+  hideButton:false,
+  //是否打开抽屉
+  openDrawer:false,
   //套餐项目表格列
   tableLieForTc : [
   {
