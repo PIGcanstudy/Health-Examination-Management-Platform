@@ -2,13 +2,13 @@
   <div class="box-card">
     <!-- 列表名称区域 -->
     <template v-if="props?.useHeader">
-      <div class="card-header">
+      <el-card class="card-header">
         <span>{{ props.title }}</span>
-      </div>
+      </el-card>
     </template>
 
     <!-- 主体部分 -->
-    <div class="main">
+    <el-card class="main">
       <!-- 表单区域 -->
       <div class="form-area">
         <!-- 需要inline属性管理第一行的样式(待解决) -->
@@ -33,18 +33,16 @@
             </el-form-item>
 
             <!-- 查询内容区域 -->
-            <el-form>
-              <!-- 姓名输入项，固定显示 -->
-              <el-form-item prop="name">
-                <el-input v-model="form.name" placeholder="请输入姓名" clearable />
+            <!-- 姓名输入项，固定显示 -->
+            <el-form-item prop="name">
+              <el-input v-model="form.name" placeholder="请输入姓名" clearable />
+            </el-form-item>
+            <!-- 从父组件传入的其他表单项 -->
+            <div v-if="isShowInput">
+              <el-form-item v-for="(item, index) of externalFormItems" :key="index">
+                <el-input v-model="item.name" :placeholder="item.placeholder" clearable />
               </el-form-item>
-              <!-- 从父组件传入的其他表单项 -->
-              <div v-if="isShowInput">
-                <el-form-item v-for="(item, index) of externalFormItems" :key="index">
-                  <el-input v-model="item.name" :placeholder="item.placeholder" clearable />
-                </el-form-item>
-              </div>
-            </el-form>
+            </div>
 
             <!-- 按钮区域 -->
             <el-form-item>
@@ -62,7 +60,7 @@
 
       <!-- 表格区域 -->
       <div class="table">
-        <el-table ref="tableRef" v-loading="openLoading" style="height=300; width: 100%;" :data="props?.tableData" table-layout="auto" @selection-change="handleSelectionChange">
+        <el-table ref="tableRef" v-loading="openLoading" style="height=350; width: 100%;" :data="props?.tableData" table-layout="auto" @selection-change="handleSelectionChange">
           <!-- 第一列：多选 -->
           <el-table-column v-if="props?.useSelectColumn" type="selection" width="55" />
           <el-table-column prop="name" label="姓名"></el-table-column>
@@ -90,17 +88,17 @@
           </template>
         </el-table>
       </div>
-    </div>
+    </el-card>
 
     <!-- 分页区域 -->
     <template v-if="props?.usePagination">
       <el-pagination
         v-model:current-page="paginationData.currentPage"
         v-model:page-size="paginationData.pageSize"
+        class="pagination"
         :page-sizes="props.pageSizes"
-        layout="prev, jumper, next"
+        layout=" ->, prev, jumper, next"
         :total="props.total"
-        style="margin-top: 30px;position: absolute;bottom: 0;"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       />
@@ -320,24 +318,32 @@ defineExpose({
 
 <style lang="scss" scoped>
 .box-card {
-  max-width: 250px;
-  height: 95%;
-  background-color: white;
-  padding: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
   overflow: hidden;
+  position: relative;
 
   .card-header {
-    padding: 5px;
-    margin-bottom: 15px;
+    height: 7%;
     justify-content: center;
-    text-align: center;
-    background-color: rgb(240, 250, 255);
+    background-color: #f0faff;
+    border: 1px solid #abdcff;
 
     span {
-      color: rgb(81, 90, 110);
       font-weight: 550;
     }
   }
+}
+.main {
+  height: 93%;
+}
+
+.pagination {
+  margin-top: 24px;
+  position: absolute;
+  bottom: 15px;
+  align-items: center;
 }
 
 .emptyTable {

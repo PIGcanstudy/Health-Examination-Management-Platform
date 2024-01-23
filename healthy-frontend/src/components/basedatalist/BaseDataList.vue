@@ -3,7 +3,7 @@
     <el-card class="box-card">
       <template v-if="props?.useForm" #header>
         <!-- form表单 -->
-        <el-form :model="formData" inline>
+        <el-form ref="formRef" :model="formData" inline>
           <slot name="form"></slot>
         </el-form>
       </template>
@@ -13,7 +13,7 @@
         <!-- 多选清除栏 -->
         <slot name="hint"></slot>
         <!-- table表格 -->
-        <el-table :data="props?.tableData" border @selection-change="handleSelectionChange">
+        <el-table ref="tableRef" :data="props?.tableData" border @selection-change="handleSelectionChange">
           <!-- 多选列 -->
           <el-table-column type="selection"></el-table-column>
           <!-- 表格内容 -->
@@ -101,12 +101,33 @@ watch(
   { deep: true }
 )
 const rows = ref()
+// 获取table实例
+const tableRef = ref()
+// 清除选中行
+function clearSelectedRows() {
+  if (tableRef.value) {
+    tableRef.value.clearSelection()
+  }
+}
+// 重置form表单
+const formRef = ref()
+function clearForm() {
+  if (formRef.value) {
+    console.log(formRef)
+    formRef.value.resetFields()
+  }
+}
 const handleSelectionChange = (selectRows) => {
   rows.value = selectRows
   emits('update-selected-rows', selectRows)
 }
 defineExpose({
-  rows
+  // 暴露选中的row
+  rows,
+  // 暴露清除选中项方法
+  clearSelectedRows,
+  // 暴露重置表单方法
+  clearForm
 })
 const handleCurrentChange = (currentPage) => {
   // console.log(currentPage)
