@@ -22,6 +22,8 @@ alert(tcRowData.value)
 
 //测试对象传参
 const tcObject = reactive({
+  //是否显示确定取消按钮-套餐
+  isShowButtonForTc : true,
   //抽屉按钮名字
   buttonTitle:'按钮开关',
   // 抽屉表头
@@ -135,9 +137,7 @@ selectDown :[
     {value: 'Option11',
     label: '蔡徐坤11',
   }
-],
-//是否显示确定取消按钮-套餐
-isShowButtonForTc : true
+]
 })
 
 
