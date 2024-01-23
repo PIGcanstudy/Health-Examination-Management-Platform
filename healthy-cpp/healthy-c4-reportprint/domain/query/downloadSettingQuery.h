@@ -26,15 +26,23 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
-* 批量下载PDF报告
+* 下载设置
 * 负责人：晚风
  */
 class downloadSettingQuery : public PageQuery
 {
 	DTO_INIT(downloadSettingQuery, PageQuery);
 
-	// 
-	API_DTO_FIELD_DEFAULT(String, papersize, ZH_WORDS_GETTER("downloadSetting.field.papersize"));
+	// 待下载报告编号
+	DTO_FIELD(UInt64, reportId);
+	DTO_FIELD_INFO(reportId) {
+		info->description = ZH_WORDS_GETTER("downloadSetting.field.reportId");
+	}
+	// 下载路径
+	DTO_FIELD(String, downloadpath);
+	DTO_FIELD_INFO(downloadpath) {
+		info->description = ZH_WORDS_GETTER("downloadSetting.field.downloadpath");
+	}
 };
 
 #include OATPP_CODEGEN_END(DTO)

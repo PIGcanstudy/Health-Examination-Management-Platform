@@ -16,16 +16,17 @@ downloadSetting:
   view: 下载设置
 confire:
  field:
-  reportNum: 打印报告编号
-  reportName: 打印报告名称
-  status: 打印状态
+  reportId: 待打印报告编号
+  reportName: 待打印报告名称
+  isPrint: 是否打印
+  status: 打印完成状态
  get:
-  summary: 批量打印确认
+  summary: 打印确认
 printSetting:
  field:
   papersize: 打印用纸尺寸
   pagerange: 打印页面范围
-  DoubleSidedOrNot: 是否双面
+  isDoubleSid: 是否双面
   copiesNum: 打印份数
  get:
   printview: 打印设置

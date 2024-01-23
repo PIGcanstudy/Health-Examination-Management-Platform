@@ -25,7 +25,7 @@
 #include "domain/dto/downloadSettingDTO.h"
 #include "domain/vo/downloadSettingVO.h"
 
-// 
+// 0 定义API控制器使用宏
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
@@ -50,9 +50,9 @@ public:
 
 		// 定义查询参数描述
 		// 待下载报告编号
-		API_DEF_ADD_QUERY_PARAMS(UInt64, "reportId", ZH_WORDS_GETTER("downloadSetting.downloadSetting.reportId"),12345678, true);
+		API_DEF_ADD_QUERY_PARAMS(UInt64, "reportId", ZH_WORDS_GETTER("downloadSetting.field.reportId"),12345678, true);
 		// 下载路径
-		API_DEF_ADD_QUERY_PARAMS(String, "downloadpath", ZH_WORDS_GETTER("downloadSetting.downloadSetting.downloadpath"), "/usr", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "downloadpath", ZH_WORDS_GETTER("downloadSetting.field.downloadpath"), "C:/user", true);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/downloadSetting", querydownloadSetting, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
@@ -67,6 +67,6 @@ private:
 	downloadSettingJsonVO::Wrapper execQuerydownloadSetting(const downloadSettingQuery::Wrapper& query);
 };
 
-// 
+// 0 取消API控制器使用宏
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen
 #endif // _downloadSetting_CONTROLLER_H_

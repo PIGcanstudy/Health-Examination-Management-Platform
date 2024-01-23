@@ -30,12 +30,26 @@
 class printSettingDTO : public oatpp::DTO
 {
 	DTO_INIT(printSettingDTO, DTO);
-	//
-	API_DTO_FIELD_DEFAULT(String, papersize, ZH_WORDS_GETTER("printSetting.field.papersize"));
-	// 
-	API_DTO_FIELD_DEFAULT(String, pagerange, ZH_WORDS_GETTER("printSetting.field.pagerange"));
-	// 
-	API_DTO_FIELD_DEFAULT(Boolean, DoubleSidedOrNot, ZH_WORDS_GETTER("printSetting.field.DoubleSidedOrNot"));
+	// 打印用纸尺寸
+	DTO_FIELD(String, papersize);
+	DTO_FIELD_INFO(papersize) {
+		info->description = ZH_WORDS_GETTER("printSetting.field.papersize");
+	}
+	// 打印页面范围
+	DTO_FIELD(String, pagerange);
+	DTO_FIELD_INFO(pagerange) {
+		info->description = ZH_WORDS_GETTER("printSetting.field.pagerange");
+	}
+	// 是否双面
+	DTO_FIELD(Boolean, isDoubleSid);
+	DTO_FIELD_INFO(isDoubleSid) {
+		info->description = ZH_WORDS_GETTER("printSetting.field.isDoubleSid");
+	}
+	// 打印份数
+	DTO_FIELD(UInt32, copiesNum);
+	DTO_FIELD_INFO(copiesNum) {
+		info->description = ZH_WORDS_GETTER("printSetting.field.copiesNum");
+	}
 };
 
 

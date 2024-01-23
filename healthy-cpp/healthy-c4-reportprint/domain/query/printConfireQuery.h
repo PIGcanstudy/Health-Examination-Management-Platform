@@ -26,18 +26,32 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
-* 批量下载PDF报告
+* 批量打印确认
 * 负责人：晚风
  */
 class printConfireQuery : public PageQuery
 {
 	DTO_INIT(printConfireQuery, PageQuery);
-	// 
-	API_DTO_FIELD_DEFAULT(UInt64, reportNum, ZH_WORDS_GETTER("confirm.field.reportNum"));
-	// 
-	API_DTO_FIELD_DEFAULT(String, reportName, ZH_WORDS_GETTER("confirm.field.reportName"));
-	// 
-	API_DTO_FIELD_DEFAULT(Boolean, status, ZH_WORDS_GETTER("confirm.field.status"));
+	// 打印报告编号
+	DTO_FIELD(UInt64, reportId);
+	DTO_FIELD_INFO(reportId) {
+		info->description = ZH_WORDS_GETTER("confire.field.reportId");
+	}
+	// 打印报告名称
+	DTO_FIELD(String, reportName);
+	DTO_FIELD_INFO(reportName) {
+		info->description = ZH_WORDS_GETTER("confire.field.reportName");
+	}
+	// 是否打印
+	DTO_FIELD(Boolean, isPrint);
+	DTO_FIELD_INFO(isPrint) {
+		info->description = ZH_WORDS_GETTER("confire.field.isPrint");
+	}
+	// 打印完成状态
+	DTO_FIELD(String, status);
+	DTO_FIELD_INFO(status) {
+		info->description = ZH_WORDS_GETTER("confire.field.status");
+	}
 };
 
 #include OATPP_CODEGEN_END(DTO)
