@@ -124,24 +124,35 @@ const props = defineProps({
   //包含数据 列 是否显示确定取消按钮
     tcObject:{
       type: Object,
-      default: () =>{}
-    },
-    bottonTitle: {
-         type: String,
-         default:() =>'套餐项目'
-    },
-    tableTitle: {
-      type: String,
-         default:() =>'套餐项目'
+      default: () =>({bottonTitle:'按钮名字',tableTitle:'抽屉表头'
+      //是否显示确定取消按钮
+      ,isShowButtonForTc:true,
+      tableLieForTc:[{
+        prop:'bind',
+        label:'列的显示名称'
+      },
+      {
+        prop:'bind2',
+        label:'列的显示名称'
+      }],
+      tableDataForTc:[{
+        bind:'列的显示字段名',
+        bind2:'列的显示字段名'
+      }],
+      selectDown:[{
+        value:'字段属性值-绑定用',
+        label:'下拉显示的数据'
+      }]
+    })
     }
 })
 
 //初始化方法
 created:{
-  console.log("selectDown:" + props.tcObject.selectDown.forEach(prop=>{
-    console.log("prop:" + prop.value)
-  }))
-  console.log(currentPage4,pageSize4)
+  // console.log("selectDown:" + props.tcObject.selectDown.forEach(prop=>{
+  //   console.log("prop:" + prop.value)
+  // }))
+  // console.log(currentPage4,pageSize4)
   if(!props.tcObject.isShowButtonForTc){
     showSubmitForTc.value = false
     showCloseForTc.value = false
