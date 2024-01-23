@@ -7,13 +7,19 @@
 #include "domain/dto/review/ReviewListDTO.h"
 #include "domain/vo/review/ReviewVO.h"
 
+// 0 定义API控制器使用宏
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
-class ReviewController : public oatpp::web::server::api::ApiController {
-	//定义控制器访问入口
+/**
+ * 复查记录控制器，基础接口的使用
+ */
+class ReviewController : public oatpp::web::server::api::ApiController // 1 继承控制器
+{
+	// 2 定义控制器访问入口
 	API_ACCESS_DECLARE(ReviewController);
-public: //定义接口
-	// 1 复查记录列表 定义分页查询复查记录接口描述
+	// 3 定义接口
+public:
+	// 3.1 定义分页查询复查记录接口描述
 	ENDPOINT_INFO(queryReview) {
 		// 定义接口标题
 		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("review.query.summary"));
@@ -39,19 +45,19 @@ public: //定义接口
 		API_DEF_ADD_QUERY_PARAMS(UInt64, "state", ZH_WORDS_GETTER("review.field.state"), 1, false);
 		//危害因素hazard_factor_code varchar(255)
 		API_DEF_ADD_QUERY_PARAMS(String, "hazardFactorCode", ZH_WORDS_GETTER("review.field.hazardFactorCode"), "virus", false);
-
+		//操作
 		
 	}
-	// 1 复查记录列表 定义分页查询复查记录接口
-	ENDPOINT(API_M_GET, "/review/query-review", queryReview, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
+	// 3.2 定义查询接口处理
+	ENDPOINT(API_M_GET, "/review/query-review", queryReview, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
-		API_HANDLER_QUERY_PARAM(rq, ReviewQuery, params);
+		API_HANDLER_QUERY_PARAM(userQuery, ReviewQuery, queryParams);
 		// 呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execQueryReview(rq));
+		API_HANDLER_RESP_VO(execQueryReview(userQuery, authObject->getPayload()));
 	}
 	
 private: //定义接口执行函数
-	ReviewListPageJsonVO::Wrapper execQueryReview(const ReviewQuery::Wrapper& query);
+	ReviewListPageJsonVO::Wrapper execQueryReview(const ReviewQuery::Wrapper& query, const PayloadDTO& payload);
 };
 
 #include OATPP_CODEGEN_END(ApiController)

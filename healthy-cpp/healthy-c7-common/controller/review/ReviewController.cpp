@@ -1,7 +1,16 @@
 #include "stdafx.h"
 #include "ReviewController.h"
+#include "../../service/review/ReviewService.h"
+#include "../ApiDeclarativeServicesHelper.h"
 
-ReviewListPageJsonVO::Wrapper ReviewController::execQueryReview(const ReviewQuery::Wrapper& query) {
-	//TODO  写一些默认测试数据，不需要查询数据库，然后修改返回值
-	return {};
+ReviewListPageJsonVO::Wrapper ReviewController::execQueryReview(const ReviewQuery::Wrapper& query, const PayloadDTO& payload)
+{
+	// 定义一个Service
+	ReviewService service;
+	// 查询数据
+	auto result = service.listAll(query);
+	// 响应结果
+	auto jvo = ReviewListPageJsonVO::createShared();
+	jvo->success(result);
+	return jvo;
 }
