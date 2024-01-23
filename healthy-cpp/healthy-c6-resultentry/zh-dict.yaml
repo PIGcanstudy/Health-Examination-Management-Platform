@@ -1,10 +1,11 @@
 interro:
  get:
-  summary: Ö¢×´Ñ¯ÎÊ
-  post: ±£´æÖ¢×´Ñ¯ÎÊ
+  summary: ç—‡çŠ¶è¯¢é—®
+ post:
+  summary: ä¿å­˜ç—‡çŠ¶è¯¢é—®
 interro2:
  field:
-  id: Ìå¼ìÈË±àºÅ
-  project: Ìå¼ìÏîÄ¿
-  degree: Î£¼°³Ì¶È
-  time:	²¡³ÌÊ±¼ä
+  id: ä½“æ£€äººç¼–å·
+  project: ä½“æ£€é¡¹ç›®
+  degree: å±åŠç¨‹åº¦
+  time:	ç—…ç¨‹æ—¶é—´

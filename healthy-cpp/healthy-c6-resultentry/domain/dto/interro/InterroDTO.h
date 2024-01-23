@@ -11,22 +11,22 @@ class InterroDTO : public oatpp::DTO {
 	DTO_INIT(InterroDTO, DTO);
 	DTO_FIELD(String, id);
 	DTO_FIELD_INFO(id) {
-		info->description = ZH_WORDS_GETTER("interro1.field.id");
+		info->description = ZH_WORDS_GETTER("interro2.field.id");
 	}
 	// 体检项目
 	DTO_FIELD(String, project);
 	DTO_FIELD_INFO(project) {
-		info->description = ZH_WORDS_GETTER("interro1.field.project1");
+		info->description = ZH_WORDS_GETTER("interro2.field.project");
 	}
 	// 危急程度
 	DTO_FIELD(String, degree);
 	DTO_FIELD_INFO(degree) {
-		info->description = ZH_WORDS_GETTER("interro1.field.degree");
+		info->description = ZH_WORDS_GETTER("interro2.field.degree");
 	}
 	// 病程时间
 	DTO_FIELD(String, time);
 	DTO_FIELD_INFO(time) {
-		info->description = ZH_WORDS_GETTER("interro1.field.time");
+		info->description = ZH_WORDS_GETTER("interro2.field.time");
 	}
 };
 
