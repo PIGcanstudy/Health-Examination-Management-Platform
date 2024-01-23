@@ -4,33 +4,31 @@
 #include "../../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
-
-/**
- * ç—‡çŠ¶è¯¢é—®ä¼ è¾“å¯¹è±¡
- */
-class InterroDTO : public oatpp::DTO
-{
+/*
+* Ö¢×´Ñ¯ÎÊ´«Êä¶ÔÏó
+*/
+class InterroDTO : public oatpp::DTO {
 	DTO_INIT(InterroDTO, DTO);
-	// ä½“æ£€äººç¼–å·
 	DTO_FIELD(String, id);
 	DTO_FIELD_INFO(id) {
-		info->description = ZH_WORDS_GETTER("interro1.field.id");
+		info->description = ZH_WORDS_GETTER("interro2.field.id");
 	}
-	// ä½“æ£€é¡¹ç›®
+	// Ìå¼ìÏîÄ¿
 	DTO_FIELD(String, project);
 	DTO_FIELD_INFO(project) {
-		info->description = ZH_WORDS_GETTER("interro1.field.project1");
+		info->description = ZH_WORDS_GETTER("interro2.field.project");
 	}
-	// å±æ€¥ç¨‹åº¦
+	// Î£¼±³Ì¶È
 	DTO_FIELD(String, degree);
 	DTO_FIELD_INFO(degree) {
-		info->description = ZH_WORDS_GETTER("interro1.field.degree");
+		info->description = ZH_WORDS_GETTER("interro2.field.degree");
 	}
-	// ç—…ç¨‹æ—¶é—´
+	// ²¡³ÌÊ±¼ä
 	DTO_FIELD(String, time);
 	DTO_FIELD_INFO(time) {
-		info->description = ZH_WORDS_GETTER("interro1.field.time");
+		info->description = ZH_WORDS_GETTER("interro2.field.time");
 	}
 };
+
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_INTERRO_DTO_
+#endif // _INTERRO_DTO_

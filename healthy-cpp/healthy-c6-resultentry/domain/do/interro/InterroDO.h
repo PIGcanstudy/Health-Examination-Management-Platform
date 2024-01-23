@@ -1,12 +1,11 @@
 #pragma once
 #ifndef _INTERRO_DO_
 #define _INTERRO_DO_
-#include "../DoInclude.h"
-
+#include"../DoInclude.h"
 
 /**
- * 症状问询数据库实体类
- */
+* 数据库实体类
+*/
 class InterroDO
 {
 	// 体检人编号
@@ -26,4 +25,4 @@ public:
 	}
 };
 
-#endif // !_INTERRO_DO_
+#endif //_INTERRO_DO_

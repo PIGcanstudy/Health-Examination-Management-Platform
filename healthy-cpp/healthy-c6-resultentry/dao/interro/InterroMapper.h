@@ -1,18 +1,15 @@
 #pragma once
-#ifndef _SAMPLE_MAPPER_
-#define _SAMPLE_MAPPER_
-
-#include "Mapper.h"
+#ifndef _INTERRO_MAPPER_
+#define _INTERRO_MAPPER_
+#include"Mapper.h"
 #include"../../domain/do/interro/InterroDO.h"
 
 /**
- * Ê¾Àý±í×Ö¶ÎÆ¥ÅäÓ³Éä
- */
-class InterroMapper : public Mapper<InterroDO>
-{
+* ×Ö¶ÎÆ¥Åä
+*/
+class InterroMapper : public Mapper<InterroDO> {
 public:
-	InterroDO mapper(ResultSet* resultSet) const override
-	{
+	InterroDO mapper(ResultSet* resultSet) const override {
 		InterroDO data;
 		data.setId(resultSet->getString(1));
 		data.setProject(resultSet->getString(2));
@@ -22,4 +19,5 @@ public:
 	}
 };
 
-#endif // !_SAMPLE_MAPPER_
+
+#endif // !_INTERRO_MAPPER_

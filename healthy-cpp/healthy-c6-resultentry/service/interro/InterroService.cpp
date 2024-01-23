@@ -1,22 +1,15 @@
-#include "stdafx.h"
-#include "InterroService.h"
+#include"InterroService.h"
+#include"stdafx.h"
 #include"../../dao/interro/InterroDAO.h"
-#include"../../domain/do/interro/InterroDO.h"
 
-oatpp::List<InterroDTO::Wrapper> InterroService::listAll(const InterroQuery::Wrapper& query)
-{
-	auto dto = InterroDTO::createShared();
-	auto lsdto = oatpp::List<InterroDTO::Wrapper>::createShared();
+uint64_t InterroService::saveData(const InterroDTO::Wrapper& dto) {
+	//组装DO数据
+	InterroDO data;
+	// data.setName(dto->name.getValue(""));
+	// data.setSex(dto->sex.getValue(""));
+	// data.setAge(dto->age.getValue(1));
+	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Id, id, Project, project, Degree, degree, Time, time);
+	//执行数据添加
 	InterroDAO dao;
-	list<InterroDO> result = dao.selectWith(query);
-	if (result.empty()) {
-		return lsdto;
-	}
-	for (InterroDO sub : result)
-	{
-		auto dto = InterroDTO::createShared();
-		ZO_STAR_DOMAIN_DO_TO_DTO(dto, sub, id, Id, project, Project, degree, Degree, time, Time)
-			lsdto->push_back(dto);
-	}
-		return lsdto;
+	return dao.insert(data);
 }

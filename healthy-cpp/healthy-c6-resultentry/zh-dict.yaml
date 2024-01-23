@@ -152,3 +152,14 @@ reportpreview:
   personid: 体检人ID
  get:
   report: 报告预览
+interro:
+ get:
+  summary: 症状询问
+ post:
+  summary: 保存症状询问
+interro2:
+ field:
+  id: 体检人编号
+  project: 体检项目
+  degree: 危及程度
+  time:	病程时间

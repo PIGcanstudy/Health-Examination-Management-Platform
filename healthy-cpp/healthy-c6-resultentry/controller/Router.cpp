@@ -33,6 +33,7 @@
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
 #endif
+#include "controller/interro/InterroController.h"
 #include "saveRes/saveResController.h"
 
 #include "controller/interro/InterroController.h"
@@ -40,13 +41,13 @@
 
 #include "file/FileController.h"
 
-// 如果定义了关闭Swagger文档宏
+// 如果定义了关闭Swagger文档�?
 #ifdef CLOSE_SWAGGER_DOC
-// 简化绑定控制器宏定义
+// 简化绑定控制器宏定�?
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 router->addController(__CLASS__::createShared())
 #else
-// 简化绑定控制器宏定义
+// 简化绑定控制器宏定�?
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 BIND_CONTROLLER(docEndpoints, router, __CLASS__)
 #endif
@@ -63,7 +64,7 @@ void Router::initRouter()
 	createSampleRouter();
 #endif
 
-	//#TIP :系统扩展路由定义，写在这个后面
+	//#TIP :系统扩展路由定义，写在这个后�?
 	//ROUTER_SIMPLE_BIND(SaveResController);
 	ROUTER_SIMPLE_BIND(SaveResController);
 	ROUTER_SIMPLE_BIND(GroupPersonController);
@@ -72,7 +73,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(LifeHistoryController);
 	ROUTER_SIMPLE_BIND(PastMedicalHistoryController);
 	ROUTER_SIMPLE_BIND(ProfessionalHistoryController);
-
+	ROUTER_SIMPLE_BIND(InterroController);
 	ROUTER_SIMPLE_BIND(SampleBarcodesViewController);//�����
 	ROUTER_SIMPLE_BIND(ReportPreviewController);//�����
 	ROUTER_SIMPLE_BIND(InterroController);
@@ -84,14 +85,14 @@ void Router::initRouter()
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
-	// 绑定示例控制器
+	// 绑定示例控制�?
 	ROUTER_SIMPLE_BIND(SampleController);
-	// 绑定用户控制器
+	// 绑定用户控制�?
 	ROUTER_SIMPLE_BIND(UserController);
-	// 绑定文件控制器
+	// 绑定文件控制�?
 	ROUTER_SIMPLE_BIND(FileController);
-	
-	// 绑定WebSocket控制器
+
+	// 绑定WebSocket控制�?
 	router->addController(WSContorller::createShared());
 }
 #endif

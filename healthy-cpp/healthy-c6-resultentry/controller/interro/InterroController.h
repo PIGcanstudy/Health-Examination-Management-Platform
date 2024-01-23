@@ -7,39 +7,37 @@
 #include "domain/dto/interro/InterroDTO.h"
 #include "domain/vo/interro/InterroVO.h"
 /*
-* Interroæ§åˆ¶å™¨ï¼šè·å–ç—‡çŠ¶é—®è¯¢
+* Interro¿ØÖÆÆ÷£º»ñÈ¡Ö¢×´ÎÊÑ¯
 */
 
-// 0 å®šä¹‰APIæ§åˆ¶å™¨ä½¿ç”¨å®
+// 0 ¶¨ÒåAPI¿ØÖÆÆ÷Ê¹ÓÃºê
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 class InterroController : public oatpp::web::server::api::ApiController
 {
-	API_ACCESS_DECLARE(InterroController);
+	API_ACCESS_DECLARE(InterroController); //ÎŞ²Î¹¹Ôì
 public:
-	// è·å–ç—‡çŠ¶é—®è¯¢ è´Ÿè´£äººï¼šå°å½¬
-	ENDPOINT_INFO(queryInterro) {
-		// å®šä¹‰æ¥å£æ ‡é¢˜
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("interro.get.summary"));
-		// å®šä¹‰é»˜è®¤æˆæƒå‚æ•°ï¼ˆå¯é€‰å®šä¹‰ï¼Œå¦‚æœå®šä¹‰äº†ï¼Œä¸‹é¢ENDPOINTé‡Œé¢éœ€è¦åŠ å…¥API_HANDLER_AUTH_PARAMEï¼‰
+	// ±£´æÖ¢×´ÎÊÑ¯ ¸ºÔğÈË£ºÊ¸Á¿
+	// ¶¨ÒåĞÂÔö½Ó¿ÚÃèÊö
+	ENDPOINT_INFO(addInterro) {
+		//¶¨Òå½Ó¿Ú±êÌâ
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("interro.post.summary"));
+		//¶¨ÒåÄ¬ÈÏÊÚÈ¨²ÎÊı
 		API_DEF_ADD_AUTH();
-		// å®šä¹‰å“åº”å‚æ•°æ ¼å¼
-		API_DEF_ADD_RSP_JSON_WRAPPER(InterroJsonVO);
-		// å®šä¹‰å…¶ä»–æŸ¥è¯¢å‚æ•°æè¿°
-		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("interro1.field.id"), 1, true);
-		API_DEF_ADD_QUERY_PARAMS(String, "project", ZH_WORDS_GETTER("interro1.field.project"),"xyz", false);
+		//¶¨ÒåÏìÓ¦²ÎÊı¸ñÊ½
+		API_DEF_ADD_RSP_JSON_WRAPPER(Uint64JsonVO);
+		
 	}
-	// 3.2 å®šä¹‰æŸ¥è¯¢æ¥å£å¤„ç†
-	ENDPOINT(API_M_GET, "/c6-resultentry/Interro", queryInterro, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
-		// è§£ææŸ¥è¯¢å‚æ•°ä¸ºQueryé¢†åŸŸæ¨¡å‹
-		API_HANDLER_QUERY_PARAM(userQuery, InterroQuery, queryParams);
-		// å‘¼å«æ‰§è¡Œå‡½æ•°å“åº”ç»“æœ
-		API_HANDLER_RESP_VO(execQueryInterro(userQuery, authObject->getPayload()));
+
+	// ¶¨ÒåĞÂÔö½Ó¿ÚÃèÊö
+	ENDPOINT(API_M_POST, "/c6-resultentry/Interro", addInterro, BODY_DTO(InterroDTO::Wrapper, dto), API_HANDLER_AUTH_PARAME) {
+		// ºô½ĞÖ´ĞĞº¯ÊıÏìÓ¦½á¹û
+		API_HANDLER_RESP_VO(execAddInterro(dto));
 	}
 private:
-	InterroJsonVO::Wrapper execQueryInterro(const InterroQuery::Wrapper& query, const PayloadDTO& payload); // è·å–ç—‡çŠ¶é—®è¯¢ è´Ÿè´£äººï¼šå°å½¬
+	Uint64JsonVO::Wrapper execAddInterro(const InterroDTO::Wrapper& dto);
 };
 
 
-// 0 å–æ¶ˆAPIæ§åˆ¶å™¨ä½¿ç”¨å®
+// 0 È¡ÏûAPI¿ØÖÆÆ÷Ê¹ÓÃºê
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen
 #endif // _INTERRO_CONTROLLER_
