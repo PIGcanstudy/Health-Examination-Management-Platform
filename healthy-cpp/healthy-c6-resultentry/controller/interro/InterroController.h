@@ -20,9 +20,9 @@ public:
 	// 定义新增接口描述
 	ENDPOINT_INFO(addInterro) {
 		//定义接口标题
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("interro.get.post"));
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("interro.post.summary"));
 		//定义默认授权参数
-		//API_DEF_ADD_AUTH();
+		API_DEF_ADD_AUTH();
 		//定义响应参数格式
 		API_DEF_ADD_RSP_JSON_WRAPPER(Uint64JsonVO);
 		
