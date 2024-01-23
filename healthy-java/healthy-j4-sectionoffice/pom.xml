@@ -66,11 +66,8 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-<<<<<<<< HEAD:healthy-java/healthy-j4-SectionOffice/pom.xml
                     <mainClass>com.zeroone.star.SectionOffice.DepartmanagementApplication</mainClass>
-========
-                    <mainClass>com.zeroone.star.tsectionoffice.DepartmanagementApplication</mainClass>
->>>>>>>> j4-departmentmangement-AYuan:healthy-java/healthy-j4-sectionoffice/pom.xml
+
                 </configuration>
             </plugin>
         </plugins>
