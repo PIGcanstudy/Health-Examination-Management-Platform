@@ -1,6 +1,6 @@
 package com.zeroone.star.project.j3.typelib;
 
-import com.zeroone.star.project.dto.j3.typeLibrary.TypeLibDTO;
+import com.zeroone.star.project.dto.j3.typeLibrary.TypeLibDeleteDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeLibraryTreeDTO;
 import com.zeroone.star.project.query.j3.TypeLibraryQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -36,5 +36,5 @@ public interface TypeLibApis {
      *@Author: Mr.Lin
      *@Date: 2024/1/17 13:07
      */
-    JsonVO<Integer> removeTypeLib(TypeLibDTO typeLibDTO);
+    JsonVO<Integer> removeTypeLib(TypeLibDeleteDTO typeLibDeleteDTO);
 }
