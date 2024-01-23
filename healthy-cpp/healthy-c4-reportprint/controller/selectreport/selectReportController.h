@@ -25,47 +25,50 @@
 #include "domain/dto/selectReportDTO.h"
 #include "domain/vo/selectReportVO.h"
 
-// 
+// 0 定义API控制器使用宏
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /*
- * 批量下载PDF报告，报告的选择部分
+ * 选择要下载的报告
  * 负责人：晚风
  */
 class selectReportController : public oatpp::web::server::api::ApiController // 1 
 {
-	// 2 
+	// 2 定义控制器访问入口
 	API_ACCESS_DECLARE(selectReportController);
-	// 3 
-public:
-	// 3.1 
-	ENDPOINT_INFO(queryselectReport) {
-		// 
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("select.get.summary"));
-		// 
-		API_DEF_ADD_AUTH();
-		// 
-		API_DEF_ADD_RSP_JSON_WRAPPER(selectReportJsonVO);
-		// 
-		API_DEF_ADD_PAGE_PARAMS();
-		// 
 
-		// 
+	// 3 定义接口
+public:
+	// 3.1 定义查询接口描述
+	ENDPOINT_INFO(queryselectReport) {
+		// 定义接口标题
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("select.get.summary"));
+		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
+		API_DEF_ADD_AUTH();
+		// 定义响应参数格式
+		API_DEF_ADD_RSP_JSON_WRAPPER(selectReportJsonVO);
+		// 定义分页查询参数描述
+		API_DEF_ADD_PAGE_PARAMS();
+
+		// 定义其他查询参数描述
+		// 姓名
 		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("select.field.name"), "li ming", true);
-		// 
-		API_DEF_ADD_QUERY_PARAMS(String, "downloadpath", ZH_WORDS_GETTER("setting.field.downloadpath"), "12", false);
-		// 
-		API_DEF_ADD_QUERY_PARAMS(String, "testNum", ZH_WORDS_GETTER("select.field.testNum"), "11", false);
-		// 
-		API_DEF_ADD_QUERY_PARAMS(String, "dept", ZH_WORDS_GETTER("select.field.dept"), "wuih", false);
-		// 
+		// 体检人员编号
+		API_DEF_ADD_QUERY_PARAMS(UInt64, "personId", ZH_WORDS_GETTER("select.field.personId"), 123456, true);
+		// 报告编号
+		API_DEF_ADD_QUERY_PARAMS(UInt64, "reportId", ZH_WORDS_GETTER("select.field.reportId"), 12345678, true);
+		// 报告名称
+		API_DEF_ADD_QUERY_PARAMS(String, "reportName", ZH_WORDS_GETTER("select.field.reportName"), "01 Star Cheak Reoprt", true);
+		// 工作单位名称
+		API_DEF_ADD_QUERY_PARAMS(String, "dept", ZH_WORDS_GETTER("select.field.dept"), "01Star", false);
+		// 体检日期
 		API_DEF_ADD_QUERY_PARAMS(String, "checkDate", ZH_WORDS_GETTER("select.field.checkDate"), "20231209", false);
 	}
-	// 3.2 
+	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/select", queryselectReport, QUERIES(QueryParams, params),API_HANDLER_AUTH_PARAME) {
-		// 
+		// 解析查询参数为Query领域模型
 		API_HANDLER_QUERY_PARAM(uq, selectReportQuery, params);
-		// 
+		// 呼叫执行函数响应结果
 		API_HANDLER_RESP_VO(execQueryselectReport(uq));
 	}
 
@@ -74,6 +77,6 @@ private:
 	selectReportPageJsonVO::Wrapper execQueryselectReport(const selectReportQuery::Wrapper& query);
 };
 
-// 
+// 0 取消API控制器使用宏
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen
 #endif // _selectREPORT_CONTROLLER_H_

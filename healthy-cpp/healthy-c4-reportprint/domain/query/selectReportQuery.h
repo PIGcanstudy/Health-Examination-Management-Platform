@@ -32,18 +32,36 @@
 class selectReportQuery : public PageQuery
 {
 	DTO_INIT(selectReportQuery, PageQuery);
-	// 
-	API_DTO_FIELD_DEFAULT(String, type, ZH_WORDS_GETTER("select.field.type"));
-	// 
-	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("select.field.name"));
-	// 
-	API_DTO_FIELD_DEFAULT(String, downloadpath, ZH_WORDS_GETTER("downloadSetting.field.downloadpath"));
-	// 
-	API_DTO_FIELD_DEFAULT(String, testNum, ZH_WORDS_GETTER("select.field.testNum"));
-	// 
-	API_DTO_FIELD_DEFAULT(String, dept, ZH_WORDS_GETTER("select.field.dept"));
-	// 
-	API_DTO_FIELD_DEFAULT(String, checkDate, ZH_WORDS_GETTER("select.field.checkDate"));
+	// 姓名
+	DTO_FIELD(String, name);
+	DTO_FIELD_INFO(name) {
+		info->description = ZH_WORDS_GETTER("select.field.name");
+	}
+	// 体检人员编号
+	DTO_FIELD(UInt64, personId);
+	DTO_FIELD_INFO(personId) {
+		info->description = ZH_WORDS_GETTER("select.field.personId");
+	}
+	// 报告编号
+	DTO_FIELD(UInt64, reportId);
+	DTO_FIELD_INFO(reportId) {
+		info->description = ZH_WORDS_GETTER("select.field.reportId");
+	}
+	// 报告名称
+	DTO_FIELD(String, reportName);
+	DTO_FIELD_INFO(reportName) {
+		info->description = ZH_WORDS_GETTER("select.field.reportName");
+	}
+	// 工作单位名称
+	DTO_FIELD(String, dept);
+	DTO_FIELD_INFO(dept) {
+		info->description = ZH_WORDS_GETTER("select.field.dept");
+	}
+	// 体检日期
+	DTO_FIELD(String, checkDate);
+	DTO_FIELD_INFO(checkDate) {
+		info->description = ZH_WORDS_GETTER("select.field.checkDate");
+	}
 };
 
 #include OATPP_CODEGEN_END(DTO)

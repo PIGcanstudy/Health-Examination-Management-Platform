@@ -1,22 +1,16 @@
 select:
  field:
-  id: 编号
   name: 姓名
-  age: 年龄
-  sex: 性别
-  statu: 审核
-  downloadState: 打印
-  orderId: 报告编号
-  testNum: 报告名称
-  dept: 单位名称
+  personId: 体检人员编号
+  reportId: 报告编号
+  reportName: 报告名称
+  dept: 工作单位名称
   checkDate: 体检日期
  get:
   summary: 选择要下载的报告
 downloadSetting:
  field:
-  personId: 体检人员编号
-  id: 编号
-  reportNum: 报告编号
+  reportId: 待下载报告编号
   downloadpath: 下载路径
  get:
   view: 下载设置
@@ -32,5 +26,6 @@ printSetting:
   papersize: 打印用纸尺寸
   pagerange: 打印页面范围
   DoubleSidedOrNot: 是否双面
+  copiesNum: 打印份数
  get:
   printview: 打印设置
