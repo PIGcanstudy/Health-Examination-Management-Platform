@@ -23,6 +23,8 @@
 #include "positive/DeatilController.h" //»¶»¶
 #include "positive/ModifyResultController.h" //»¶»¶
 #include "positive/resultController.h" //elysia
+#include "bas/SampleController.h"
+
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
@@ -62,6 +64,8 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(ModifyResultController);
 	// -elysia
 	ROUTER_SIMPLE_BIND(resultController);
+	//øÏ¿÷ŒÂœ„µ∞
+	ROUTER_SIMPLE_BIND(SampleController);
 }
 
 #ifdef HTTP_SERVER_DEMO
