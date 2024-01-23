@@ -124,9 +124,9 @@ const props = defineProps({
   //包含数据 列 是否显示确定取消按钮
     tcObject:{
       type: Object,
-      default: () =>({bottonTitle:'按钮名字',tableTitle:'抽屉表头'
+      default: () =>({bottonTitle:'按钮名字',tableTitle:'抽屉表头',
       //是否显示确定取消按钮
-      ,isShowButtonForTc:true,
+      isShowButtonForTc:true,
       tableLieForTc:[{
         prop:'bind',
         label:'列的显示名称'
