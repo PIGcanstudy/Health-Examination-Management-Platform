@@ -3,7 +3,7 @@
 #define _SampleJsonVO_H_
 
 #include "../../GlobalInclude.h"
-#include "../../dto/base/SampleDTO.h"
+#include "../../dto/bas/SampleDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
