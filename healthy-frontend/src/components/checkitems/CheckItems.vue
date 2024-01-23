@@ -127,6 +127,10 @@ const props = defineProps({
       default: () =>({bottonTitle:'按钮名字',tableTitle:'抽屉表头',
       //是否显示确定取消按钮
       isShowButtonForTc:true,
+      //控制触发按钮是否显示
+      hideButton:false,
+      //控制抽屉是否打开
+      openDrawer:false,
       tableLieForTc:[{
         prop:'bind',
         label:'列的显示名称'
@@ -144,9 +148,7 @@ const props = defineProps({
         label:'下拉显示的数据'
       }],
     })
-    },
-    hideButton: Boolean,
-    openDrawer: Boolean
+    }
 })
 const hideButton=ref(true)
 //初始化方法
@@ -159,8 +161,8 @@ created:{
     showSubmitForTc.value = false
     showCloseForTc.value = false
   }
-  hideButton.value=props.hideButton
-  drawer2.value=props.openDrawer
+  hideButton.value=props.tcObject.hideButton
+  drawer2.value=props.tcObject.openDrawer
 
 }
 
