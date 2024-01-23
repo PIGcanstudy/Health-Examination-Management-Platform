@@ -2,16 +2,14 @@
 <template>
   <div>
     <el-container>
-      <el-aside>
+      <el-aside width="200px">
         <PeoplleList title="报告查询"></PeoplleList>
       </el-aside>
       <el-main>
         <div class="form">
-          <Head name="报告信息">
-            <el-button type="primary">修改</el-button>
-          </Head>
+          <h3 class="head">报告信息</h3>
           <div>
-            <el-form disabled :model="formData" :inline="true">
+            <el-form :model="formData" :inline="true">
               <el-form-item v-model="formData.num" label="报告编号">
                 <el-input placeholder="请输入" clearable class="input" />
               </el-form-item>
@@ -65,6 +63,8 @@
         </div>
 
         <div class="btns">
+          <el-button type="primary">修改</el-button>
+          <el-button type="primary">导出</el-button>
         </div>
       </el-main>
     </el-container>
@@ -75,7 +75,6 @@
 import PeoplleList from '@/components/peoplelist/PeopleList.vue'
 import { ref } from 'vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
-import Head from '@/components/head/Head.vue'
 
 
 const formData = ref(
