@@ -63,7 +63,7 @@ if(WIN32)
 endif()
 
 # 编译可执行文件
-add_executable (${appName} ${SC_FILES} "domain/do/interro/InterroDO.h" "dao/interro/InterroMapper.h" "dao/interro/InterroDAO.h" "dao/interro/InterroDAO.cpp" "service/interro/InterroService.h" "service/interro/InterroService.cpp")
+add_executable (${appName} ${SC_FILES}
 
 # 链接库
 target_link_libraries (${appName} "lib-common" "lib-oatpp" "lib-mysql")

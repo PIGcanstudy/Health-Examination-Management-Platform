@@ -25,6 +25,8 @@
 #include "unknownmoduleprofessionalhistory/ProfessionalHistoryController.h"
 #include "GroupPerson/GroupPersonController.h"
 
+#include"samplebarcodesview/SampleBarcodesBiewController.h"
+#include"reportpreview/ReportPreviewController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
@@ -69,6 +71,8 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(PastMedicalHistoryController);
 	ROUTER_SIMPLE_BIND(ProfessionalHistoryController);
 
+	ROUTER_SIMPLE_BIND(SampleBarcodesViewController);//µÿ¡ÈµÓ
+	ROUTER_SIMPLE_BIND(ReportPreviewController);//µÿ¡ÈµÓ
 	ROUTER_SIMPLE_BIND(InterroController);
 
 }
