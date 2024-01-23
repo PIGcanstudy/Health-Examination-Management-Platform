@@ -38,8 +38,10 @@
       <el-container>
         <!-- 导航栏 -->
         <el-header>
-         
-          <div class="header-nav">{{ userInfo }}</div>
+          <el-button style="font-size: 25px;color: white;background: none" text>
+            <el-icon><icon-fold /></el-icon>
+          </el-button>
+          <div>{{ userInfo }}</div>
         </el-header>
         <el-main>
           <!-- 布局路由 -->
@@ -88,16 +90,11 @@ const menus = store.getMenus
   padding: 20px;
 }
 .el-header {
-  background-color: #fff;
+  background-color: #6c777f;
+  color: #f8f8f8;
   display: flex;
   justify-content: space-between;
-  padding: 0;
-  .header-nav {
-    padding: 20px;
-    background-color: #6c777f;
-    width: 100%;
-    color: #f8f8f8;
-    text-align: right;
-  }
+  align-items: center;
+  padding: 0 10px;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
-  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true">选检项目</el-button>
+  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true" >{{props.tcObject.bottonTitle}}</el-button>
 
 
  <!-- 选检项目-抽屉 -->
 <div id = 'xjxm' class="darwer-box">
   <el-drawer v-model="drawer2" title="I am the title" :with-header="false" >
-    <span>套餐项目</span>
-    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+    <span>{{ tcObject.tableTitle }}</span>
+    <el-form :inline="true" :model="formInlineTc" class="demo-form-inline">
     <el-form-item label="关键字:" class="bold-label">
       <!-- 关键字输入框 -->
       <el-input
@@ -26,9 +26,9 @@
     size="large"
     style="width: 240px"
   >
-  
+
     <el-option
-      v-for="item in props.selectDown "
+      v-for="item in props.tcObject.selectDown "
       :key="item.value"
       :label="item.label"
       :value="item.label"
@@ -45,7 +45,7 @@
   <!-- 套餐项目-表格数据table -->
   <el-table
     ref="multipleTableRefForTc"
-    :data="tcProject.slice((currentPage4 - 1) * pageSize4,currentPage4 * pageSize4)"
+    :data="tcObject.tableDataForTc.slice((currentPage4 - 1) * pageSize4,currentPage4 * pageSize4)"
     style="width: 100%"
     :row-class-name="tableDataFtableRowClassNameForTc"
     @select="selectTc"
@@ -53,7 +53,7 @@
   >
     <!-- 单选框 -->
     <el-table-column type = "selection" label="单选框选择" width="180" />
-    <el-table-column v-for="item in props.tableLieForTc" :key="item" :prop="item.prop" :label="item.label" :width="item.width" :align="item.align" />
+    <el-table-column v-for="item in props.tcObject.tableLieForTc" :key="item" :prop="item.prop" :label="item.label" :width="item.width" :align="item.align" />
   </el-table>
   <el-pagination
       v-model:current-page="currentPage4"
@@ -62,7 +62,7 @@
       :small="small"
       :disabled="disabled"
       layout="total, sizes, prev, pager, next, jumper"
-      :total= props.tcProject.length
+      :total= props.tcObject.tableDataForTc.length
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     />
@@ -115,41 +115,56 @@ interface tcxmTableFiled {
 
 //标签设置区域
 const value = ref('')
-// const drawer = ref(false)
 const drawer2 = ref(false)
 
 
 // 定义抽屉预设
 const props = defineProps({
-    tcProject: {
-        type: Array,
-        default: () => []
-    },
-    selectDown:{
-        type: Array,
-        default: () =>[]
-    },
-    tableLieForTc: {
-         type: Array,
-         requeired:true
-    },
-    isShowButtonForTc: {
-         type: Boolean,
-         default:true
+  //包含数据 列 是否显示确定取消按钮
+    tcObject:{
+      type: Object,
+      default: () =>({bottonTitle:'按钮名字',tableTitle:'抽屉表头',
+      //是否显示确定取消按钮
+      isShowButtonForTc:true,
+      //控制触发按钮是否隐藏
+      hideButton:false,
+      //控制抽屉是否打开
+      openDrawer:false,
+      tableLieForTc:[{
+        prop:'bind',
+        label:'列的显示名称'
+      },
+      {
+        prop:'bind2',
+        label:'列的显示名称'
+      }],
+      tableDataForTc:[{
+        bind:'列的显示字段名',
+        bind2:'列的显示字段名'
+      }],
+      selectDown:[{
+        value:'字段属性值-绑定用',
+        label:'下拉显示的数据'
+      }],
+    })
     }
 })
-
+const hideButton=ref(false)
 //初始化方法
 created:{
-  console.log("selectDown:" + props.selectDown.forEach(prop=>{
-    console.log("prop:" + prop.value)
-  }))
-  console.log(currentPage4,pageSize4)
-  if(!props.isShowButtonForTc){
+  // console.log("selectDown:" + props.tcObject.selectDown.forEach(prop=>{
+  //   console.log("prop:" + prop.value)
+  // }))
+  // console.log(currentPage4,pageSize4)
+  if(!props.tcObject.isShowButtonForTc){
     showSubmitForTc.value = false
     showCloseForTc.value = false
   }
+  hideButton.value=props.tcObject.hideButton
+  drawer2.value=props.tcObject.openDrawer
+
 }
+
 
 
 const emits = defineEmits(['submitTc','cancelTc','rowDataForTcMd'])
@@ -235,7 +250,7 @@ const selectTc = (selection, row) => {
   // 主要用于将当前勾选的表格状态清除
   if (selection.length == 0) return
   multipleTableRefForTc.value.toggleRowSelection(row, true)
-  // rowData.value = row
+
 }
 
 

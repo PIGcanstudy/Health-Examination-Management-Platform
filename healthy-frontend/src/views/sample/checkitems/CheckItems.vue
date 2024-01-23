@@ -1,17 +1,15 @@
 <template>
   <div>
     <!-- <CheckItems @submitTc="submitTc" @submitCy="submitCy" :isShowButtonForTc="isShowButtonForTc" :isShowButtonForCy="isShowButtonForCy" :tableLieForTc="tableLieForTc" :tableLieForCy="tableLieForCy" :tcProject="tableDataForTc" :cytaocan="tableDataForCy" :selectDown="selectDown" /> -->
-    <CheckItems @submitTc="submitTc"  :isShowButtonForTc="isShowButtonForTc"  :tableLieForTc="tableLieForTc"  :tcProject="tableDataForTc"  :selectDown="selectDown" />
+    <CheckItems :tcObject="tcObject"  @submitTc="submitTc"  />
   </div>
 </template>
 
 <script setup>
 import CheckItems from '@/components/checkitems/CheckItems.vue'
-import { ref } from 'vue'
+import { ref,reactive } from 'vue'
 
-// const cyRowData = ref([])
 const tcRowData = ref([])
-
 
 //获取套餐表格行数据
 const submitTc = (value) => {
@@ -22,12 +20,20 @@ alert(tcRowData.value)
 
 }
 
-
-//是否显示确定取消按钮-套餐
-const isShowButtonForTc = true
-
-//套餐项目表格列
-const tableLieForTc = [
+//测试对象传参
+const tcObject = reactive({
+  //是否显示确定取消按钮-套餐
+  isShowButtonForTc : true,
+  //抽屉按钮名字
+  bottonTitle:'按钮开关',
+  // 抽屉表头
+  tableTitle:'编辑分组',
+  //是否隐藏触发抽屉按钮
+  hideButton:false,
+  //是否打开抽屉
+  openDrawer:false,
+  //套餐项目表格列
+  tableLieForTc : [
   {
     prop: 'mc',
     label: '名称'
@@ -36,10 +42,9 @@ const tableLieForTc = [
     prop: 'xsj',
     label: '销售价(元)'
   }
-]
-
-//套餐项目-表格数据
-const tableDataForTc = [
+],
+  //套餐项目-表格数据
+  tableDataForTc:[
   {
     mc: '项目1',
     xsj: '10'
@@ -91,11 +96,9 @@ const tableDataForTc = [
     mc: '项目12',
     xsj: '120'
   }
-]
-
-
-  // 下拉菜单存放数据区域
-const selectDown = [
+],
+// 下拉菜单存放数据区域
+selectDown :[
   {
     value: 'Option',
     label: '蔡徐坤'},
@@ -139,6 +142,12 @@ const selectDown = [
     label: '蔡徐坤11',
   }
 ]
+})
+
+
+
+
+
 
 
 
