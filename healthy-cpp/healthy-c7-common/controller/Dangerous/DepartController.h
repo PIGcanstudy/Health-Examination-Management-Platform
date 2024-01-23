@@ -1,9 +1,14 @@
 #pragma once
-#ifdef _DEPARTCONTROLLER_H_
+#ifndef _DEPARTCONTROLLER_H_
 #define _DEPARTCONTROLLER_H_
 
 #include "domain/vo/BaseJsonVO.h"
-#include OATPP_CODEGEN_BEGIN(ApiController)
+#include "domain/query/Dangerous/DepartQuery.h"
+#include "domain/dto/Dangerous/DepartListDTO.h"
+#include "domain/vo/Dangerous/DepartVO.h"
+
+// 0 定义API控制器使用宏
+#include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 class DepartController : public oatpp::web::server::api::ApiController {
 	API_ACCESS_DECLARE(DepartController);
@@ -24,11 +29,12 @@ public:
 
 	}
 
-	ENDPOINT(API_M_GET, "/Dangerous/query-depart", queryDepart, QUERIES(QueryParams), API_HANDLER_AUTH_PARAME);
+	ENDPOINT(API_M_GET, "/Dangerous/query-depart", queryDepart, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
 	// 解析查询参数为Query领域模型
-	API_HANDLER_QUERY_PARAM(qd, queryDepart, queryParams);
+	API_HANDLER_QUERY_PARAM(qd, DepartQuery, params);
 	// 呼叫执行函数响应结果
 	API_HANDLER_RESP_VO(execQueryDepart(qd));
+	}
 private:
 	DepartListPageJsonVO::Wrapper execQueryDepart(const DepartQuery::Wrapper& query);
 };
