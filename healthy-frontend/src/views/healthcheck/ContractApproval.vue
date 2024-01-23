@@ -12,12 +12,12 @@
       </el-aside>
       <el-main width="600px">
         <div display:flex size="large">
-          <el-button size="default">合同二级审核</el-button>
+          <el-button size="default"  text @click="OpenCard = true">合同二级审核</el-button>
           <el-button size="default">评审报告预览</el-button>
           <el-button size="default">委托协议预览</el-button>
           <el-button size="default" @click="Open">查询基本信息</el-button>
         </div>
-        
+
         <!-- 体检项目 -->
         <div>
           <div><el-text>体检项目</el-text></div>
@@ -69,8 +69,19 @@
             <div>销售负责人:</div>
             <div>签订时间:</div>
             <div>交付时间:</div></span>
+            <el-button @click="Close">关闭</el-button>
       </el-drawer>
+      <el-dialog v-model="value">
+     <el-card class="box-card" >
+    <template #header>
+      <div>
+        <span>合同二级审核</span>
+      </div>
+    </template>
 
+    <template #footer><el-button @click="CloseCard">取消</el-button><el-button>提交</el-button></template>
+  </el-card>
+  </el-dialog>
 </template>
 
 <script setup>
@@ -94,9 +105,24 @@ const num = ref(1);
 const handleChange = (value) => {
   console.log(value);
 };
+
 const drawer = ref(false)
+// 打开抽屉
 const Open = () => {
   drawer.value=true;
+}
+// 关闭抽屉
+const Close = () =>{
+  drawer.value=false;
+}
+// 打开卡片
+const card=ref(false)
+const OpenCard = () =>{
+  card.value=true;
+}
+// 关闭卡片
+const CloseCard = () =>{
+  card.value=false;
 }
 </script>
 
