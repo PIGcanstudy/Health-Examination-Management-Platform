@@ -34,7 +34,7 @@
         :required-fields="requiredFields"
         :on-input-click="checkJob"
       />
-      <CheckItems v-if="isCheckItemsVisible" />
+      <CheckItems v-if="isCheckItemsVisible" :hide-button="false" :open-drawer="true"/>
       <!-- 按钮区域 -->
       <div style="margin-bottom: 10px;">
         <el-button type="primary" v-if="!isShow" style=" background-color: #ffad33; border-color: #ffad33;" disabled><el-icon style="margin-right: 2px;"><Edit /></el-icon>修改信息</el-button>
