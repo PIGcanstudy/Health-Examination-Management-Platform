@@ -25,7 +25,6 @@
             <span style="--i: 1"></span>
             <span style="--i: 2"></span>
           </div> -->
-          <!--  -->
 
           <div class="square" style="--i: 0"></div>
           <div class="square" style="--i: 1"></div>
