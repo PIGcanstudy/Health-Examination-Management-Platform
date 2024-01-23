@@ -63,10 +63,6 @@
             </el-tab-pane>
           </el-tabs>
         </div>
-
-        <div class="btns">
-
-        </div>
       </el-main>
     </el-container>
   </div>
