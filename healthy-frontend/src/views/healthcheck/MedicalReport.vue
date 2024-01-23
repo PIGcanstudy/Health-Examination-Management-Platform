@@ -6,7 +6,7 @@
         <PeoplleList title="人员查询"></PeoplleList>
       </el-aside>
       <el-main>
-        <h3 class="head">报告预览</h3>
+        <Head name="报告预览"></Head>
         <div class="pdf">
           <PdfObject></PdfObject>
         </div>
@@ -18,6 +18,7 @@
 <script setup>
 import PeoplleList from '@/components/peoplelist/PeopleList.vue'
 import PdfObject from '@/components/pdfobject/PdfObject.vue'
+import Head from '@/components/head/Head.vue'
 </script>
 
 <style lang="scss" scoped>

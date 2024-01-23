@@ -48,21 +48,23 @@
         </div>
 
         <div class="tables">
-          <el-tabs v-model="activeName" @tab-click="handleClick">
+          <Head name="汇总表">
+            <el-button type="primary">导出选中表格</el-button>
+          </Head>
+          <el-tabs type="border-card">
             <el-tab-pane label="体检人员汇总表" name="first">
-              <BaseDataList></BaseDataList>
+              <BaseDataList :useFixed="false"></BaseDataList>
             </el-tab-pane>
             <el-tab-pane label="复查人员汇总表" name="second">
-              <BaseDataList></BaseDataList>
+              <BaseDataList :useFixed="false"></BaseDataList>
             </el-tab-pane>
             <el-tab-pane label="复查结果汇总表" name="third">
-              <BaseDataList></BaseDataList>
+              <BaseDataList :useFixed="false"></BaseDataList>
             </el-tab-pane>
           </el-tabs>
         </div>
 
         <div class="btns">
-          <el-button type="primary">导出</el-button>
         </div>
       </el-main>
     </el-container>
