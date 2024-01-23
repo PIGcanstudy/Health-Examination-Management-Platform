@@ -67,7 +67,6 @@ import { ref, reactive, toRefs } from 'vue'
 import { login } from '@/apis/login'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import TestTable from '@/components/search/TestTable.vue'
 
 // 获取router对象
 const $router = useRouter()
