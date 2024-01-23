@@ -6,14 +6,35 @@
         <BaseDataList :tableColumnAttribute="tableColumnAttribute" :tableData="tableData"></BaseDataList>
       </template>
     </Search>
+
+    <!-- 插槽必须为 span -->
+    <Head :middle="true">
+      <span>
+        <el-button type="primary">搜索</el-button>
+        <el-button type="primary">搜索</el-button>
+        <el-button type="primary">搜索</el-button>
+      </span>
+    </Head>
+
+    <Head>
+      <span>
+        <el-button type="primary">搜索</el-button>
+        <el-button type="primary">搜索</el-button>
+        <el-button type="primary">搜索</el-button>
+      </span>
+    </Head>
+
+    <Head :middle="true"></Head>
+
+    <Head name="自定义标题"></Head>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import Search from '@/components/search/Search.vue'
-import TestTable from '@/components/search/TestTable.vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
+import Head from '@/components/head/Head.vue'
 
 // 需要搜索的数据传入
 // const toSearch = ['单位名称', '信用代码', '联系人', '联系电话']
@@ -21,22 +42,22 @@ const toSearch = [
   {
     prop: 'name',
     label: '单位名称',
-    input: '',
+    input: ''
   },
   {
     prop: 'credit',
     label: '信用代码',
-    input: '',
+    input: ''
   },
   {
     prop: 'contact',
     label: '联系人',
-    input: '',
+    input: ''
   },
   {
     prop: 'phone',
     label: '联系电话',
-    input: '',
+    input: ''
   }
 ]
 

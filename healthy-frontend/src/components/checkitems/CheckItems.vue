@@ -1,49 +1,6 @@
 <template>
-  <el-button type="primary" style="margin-left: 16px" @click="drawer = true">套餐类型</el-button>
   <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true">选检项目</el-button>
 
-  
-  <!-- 套餐类型抽屉 -->
-  <div id = 'tclx'>
-  <el-drawer v-model="drawer" title="I am the title" :with-header="false">
-    <span>从业套餐选择</span>
-    <el-form :inline="true" :model="formInline" class="demo-form-inline">
-    <el-form-item label="关键字" class="bold-label">
-          <!-- 从业套餐选择-关键字输入框 -->
-      <el-input
-        v-model="formInline.gjz"
-        class="suibian"
-        width="50px"
-        placeholder="请输入关键字"
-        :suffix-icon="Search"
-      />
-    </el-form-item>
-
-    <!-- from表单按钮 -->
-    <el-form-item>
-      <el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
-      <el-button plain @click="handleCz">重置</el-button>
-    </el-form-item>
-  </el-form>
-
-  <!-- 从业套餐选择-表格数据部分 -->
-  <el-table
-    ref="multipleTableRef"
-    :data="cytaocan"
-    style="width: 100%"
-    :row-class-name="tableRowClassNameForCy"
-    @select="select"
-    @selection-change="handleSelectionChangeForCy"
-  > 
-    <el-table-column  type="selection" label="选择" width="180" />
-    <el-table-column v-for="item in props.tableLie" :key="item" :prop="item.prop" width="180" />
-    <el-table-column prop="tcjp" label="套餐简拼" />
-  </el-table>
-
-  <el-button @click="cancelForCy">关闭 </el-button>
-  <el-button type="primary" @click="submitForCy">确定</el-button>
-  </el-drawer>
-</div>
 
  <!-- 选检项目-抽屉 -->
 <div id = 'xjxm' class="darwer-box">
@@ -96,8 +53,7 @@
   >
     <!-- 单选框 -->
     <el-table-column type = "selection" label="单选框选择" width="180" />
-    <el-table-column  prop="name" label="名称" width="180" />
-    <el-table-column  prop="salePrice" label="销售价(元)" />
+    <el-table-column v-for="item in props.tableLieForTc" :key="item" :prop="item.prop" :label="item.label" :width="item.width" :align="item.align" />
   </el-table>
   <el-pagination
       v-model:current-page="currentPage4"
@@ -110,8 +66,8 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     />
-  <el-button @click="cancelTc">关闭 </el-button>
-  <el-button type="primary" @click="submitTc">确定</el-button>
+  <el-button @click="cancelTc" v-show="showCloseForTc">关闭 </el-button>
+  <el-button type="primary" @click="submitTc" v-show = "showSubmitForTc">确定</el-button>
   </el-drawer>
 </div>
 </template>
@@ -127,18 +83,20 @@ const pageSize4 = ref(10)
 const small = ref(false)
 const disabled = ref(false)
 
+//按钮开关
+//套餐
+const showCloseForTc = ref(true);
+const showSubmitForTc = ref(true);
+
+
 //分页方法-套餐
 const handleSizeChange = (val: number) => {
   console.log(`${val} items per page`)
 }
 const handleCurrentChange = (val: number) => {
-  // props.tcProject.
+
 }
 
-   // 搜索框的字段存放区域-从业套餐
-   const formInline = reactive({
-  gjz: '',
-})
 
   // 搜索框的字段存放区域-套餐项目
   const formInlineTc = reactive({
@@ -148,11 +106,6 @@ const handleCurrentChange = (val: number) => {
 
 
 
-//从业套餐-表格字段
-interface cytcTableFiled {
-  tcmc: string
-  tcjp: string
-}
 
 // 套餐项目-表格字段
 interface tcxmTableFiled {
@@ -162,7 +115,7 @@ interface tcxmTableFiled {
 
 //标签设置区域
 const value = ref('')
-const drawer = ref(false)
+// const drawer = ref(false)
 const drawer2 = ref(false)
 
 
@@ -172,17 +125,17 @@ const props = defineProps({
         type: Array,
         default: () => []
     },
-    cytaocan: {
-        type: Array,
-        default: () => []
-    },
     selectDown:{
         type: Array,
         default: () =>[]
     },
-    tableLie: {
+    tableLieForTc: {
          type: Array,
-         default: () =>{}
+         requeired:true
+    },
+    isShowButtonForTc: {
+         type: Boolean,
+         default:true
     }
 })
 
@@ -192,69 +145,58 @@ created:{
     console.log("prop:" + prop.value)
   }))
   console.log(currentPage4,pageSize4)
+  if(!props.isShowButtonForTc){
+    showSubmitForTc.value = false
+    showCloseForTc.value = false
+  }
 }
 
 
-//定义触发事件,就是底部2个按钮
-const emits = defineEmits(['submit', 'cancel'])
+const emits = defineEmits(['submitTc','cancelTc','rowDataForTcMd'])
 
 //套餐抽屉的打开与关闭
-const open = () => drawer2.value = true
-const close = () => drawer2.value = false
+const openTc = () => drawer2.value = true
+const closeTc = () => drawer2.value = false
 
-//从业抽屉的打开与关闭
-const openCy = () => drawer.value = true
-const closeCy = () => drawer.value = false
 
+
+
+const multipleTableRefForTc =  ref()
+const multipleSelectionForTc = ref([])
+const rowDataForTc = ref([]);
 
 // 套餐抽屉的确认与取消按钮
 const submitTc = () => {
   //获取当前选中行的数据
-  console.log("value: " + rowData.value)
-  emits('sumbit',rowData.value);
-  close()
+  emits('submitTc',rowDataForTc.value);
+  cancelTc()
 }
 const cancelTc = () => {
-  close()
+  // 清除 所有勾选项
+  multipleTableRefForTc.value.clearSelection()
+  closeTc()
 }
 
-// 从业抽屉的确认与取消按钮
-const submitForCy = () => {
-  //获取当前选中行的数据
-  console.log("value: " + rowDataForCy.value)
-  // emits('sumbit',rowDataForCy.value)
-  closeCy()
-}
-const cancelForCy = () => {
-  closeCy()
+
+const rowDataForTcMd = () => {
+  emits('rowDataForTcMd',rowDataForTc.value);
 }
 
+// const rowDataForCyMd = () => {
+//   emits('rowDataForCyMd',rowDataForTc.value);
+// }
 let loading = ref(false)
 
 const showloading = () => loading.value = true
 const hideloading = () => loading.value = false
+
 // 暴露出去
 defineExpose({
-  open, close,openCy,cancelForCy,submitTc, cancelTc, showloading, hideloading
+  openTc, closeTc, cancelTc,submitTc, showloading, hideloading,rowDataForTcMd
 })
-
-
 
 // 点击事件区域
 
-//处理搜索-从业套餐
-const handleSearch = () => {
-  alert('search')
-}
-
-//处理重置-从业套餐
-const handleCz = () => {
-  console.log('Cz')
-   // 将表单中的输入框清空
-   for (const key in formInline) {
-    formInline[key] = ''
-  }
-}
 
 //处理搜索-套餐项目
 const handleSearchTc = () => {
@@ -272,36 +214,18 @@ const handleCzTc = () => {
 }
 
 
-const multipleTableRef =  ref()
-const multipleSelectionForCy = ref([])
-const multipleSelectionForTc = ref([])
-const rowDataForCy = ref();
 
-const handleSelectionChangeForCy = (val) => {
-  console.log("从业套餐selectChangge: " + val);
-  multipleSelectionForCy.value = val
-}
 
+
+//搜索变化
 const handleSelectionChangeForTc = (val) => {
   multipleSelectionForTc.value = val
-}
-
-// 从业套餐选择-表格绑定事件select
-const select = (selection, row) => {
-  console.log("从业套餐select: " + selection)
-  console.log("从业套餐select: " + row)
-  // 清除 所有勾选项
-  multipleTableRef.value.clearSelection()
-  // 当表格数据都没有被勾选的时候 就返回
-  // 主要用于将当前勾选的表格状态清除
-  if (selection.length == 0) return
-  multipleTableRef.value.toggleRowSelection(row, true)
-    rowDataForCy.value = row
+  rowDataForTc.value =val
 }
 
 
-const multipleTableRefForTc =  ref()
-const rowData = ref();
+
+
 
 // 套餐项目-表格绑定事件selectTc
 const selectTc = (selection, row) => {
@@ -311,26 +235,12 @@ const selectTc = (selection, row) => {
   // 主要用于将当前勾选的表格状态清除
   if (selection.length == 0) return
   multipleTableRefForTc.value.toggleRowSelection(row, true)
-  rowData.value = row
+  // rowData.value = row
 }
 
 
 
-//从业套餐-表格的class样式
-const tableRowClassNameForCy = ({
-  row,
-  rowIndex,
-}: {
-  row: cytcTableFiled
-  rowIndex: number
-}) => {
-  if (rowIndex === 1) {
-    return 'warning-row'
-  } else if (rowIndex === 3) {
-    return 'success-row'
-  }
-  return ''
-}
+
 
 //套餐项目-表格的class样式
 const tableDataFtableRowClassNameForTc = ({
