@@ -122,7 +122,7 @@
               <router-link to="/healthcheck/QueryStatistics.vue">
               <img src="../../assets/navigation/icon10.png" />
               </router-link>
-              <el-text  size="large">数据网报</el-text>
+              <el-text  size="large">查询统计</el-text>
             </div>      
             
             
