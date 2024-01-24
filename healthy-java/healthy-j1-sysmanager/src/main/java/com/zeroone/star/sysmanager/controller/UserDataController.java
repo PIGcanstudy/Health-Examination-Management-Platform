@@ -14,6 +14,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +39,7 @@ public class UserDataController implements UserDataApis {
     @Override
     @GetMapping("/query-username-list")
     @ApiOperation("获取用户名称列表（用于输入表单下拉列表框）")
+    @Cacheable(cacheNames = "UserNameListVOCache", key = "")
     public JsonVO<List<UserNameListVO>> queryUserNameList() {
         List<UserNameListVO> list = userService.listUsernameList();
         return JsonVO.success(list);
