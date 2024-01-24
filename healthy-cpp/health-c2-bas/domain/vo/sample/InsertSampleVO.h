@@ -21,22 +21,22 @@
 #define _SAMPLE_VO_
 
 #include "../../GlobalInclude.h"
-#include "../../dto/sample/SampleDTO.h"
+#include "../../dto/sample/InsertSampleDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * 显示JsonVO，用于响应给客户端的Json对象
+ * 示例显示JsonVO，用于响应给客户端的Json对象
  */
-class SampleJsonVO : public JsonVO<SampleDTO::Wrapper> {
-	DTO_INIT(SampleJsonVO, JsonVO<SampleDTO::Wrapper>);
+class InsertSampleJsonVO : public JsonVO<InsertSampleDTO::Wrapper> {
+	DTO_INIT(InsertSampleJsonVO, JsonVO<InsertSampleDTO::Wrapper>);
 };
 
 /**
- * 分页显示JsonVO，用于响应给客户端的Json对象
+ * 示例分页显示JsonVO，用于响应给客户端的Json对象
  */
-class SamplePageJsonVO : public JsonVO<SamplePageDTO::Wrapper> {
-	DTO_INIT(SamplePageJsonVO, JsonVO<SamplePageDTO::Wrapper>);
+class InsertSamplePageJsonVO : public JsonVO<InsertSamplePageDTO::Wrapper> {
+	DTO_INIT(InsertSamplePageJsonVO, JsonVO<InsertSamplePageDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)
