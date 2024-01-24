@@ -107,7 +107,7 @@ public class LoginController implements LoginApis {
     @GetMapping("get-menus")
     @Override
     public JsonVO<List<MenuTreeVO>> getMenus() throws Exception {
-        //TODO:未实现根据实际数据库设计业务逻辑，下面逻辑属于示例逻辑
+        // TODO:未实现根据实际数据库设计业务逻辑，下面逻辑属于示例逻辑
         //1 获取当前用户
         UserDTO currentUser = userHolder.getCurrentUser();
         //2 获取当前用户拥有的菜单
