@@ -1,1 +1,36 @@
-﻿
+results:
+ field:
+  name: 姓名
+  sex: 性别，如：男
+  checkId: 体检编号
+  age: 年龄
+  idCard: 身份证号
+  checkState: 体检状态
+  dutyState: 在岗状态
+  dangerFactors: 危害因素
+  checkDate: 体检日期
+  checkResults: 体检结论
+  unfinishedProject: 未完成项目
+  state: 状态
+  type: 查询类型
+  checkType: 检查种类
+ query:
+  summary: 获取体检结果列表
+ordername:
+ field:
+  name: 姓名
+  sex: 性别，如：男
+  checkId: 体检编号
+  age: 年龄
+  idCard: 身份证号
+  checkState: 体检状态
+  dangerFactors: 危害因素
+  checkDate: 体检日期
+  checkResults: 体检结论
+  unfinishedProject: 未完成项目
+  state: 审核状态
+  type: 查询类型
+  checkType: 检查种类
+  unitName: 体检单位订单名称
+ query:
+  summary: 获取体检单位订单名称列表

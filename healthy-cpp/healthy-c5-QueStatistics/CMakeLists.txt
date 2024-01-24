@@ -63,7 +63,7 @@ if(WIN32)
 endif()
 
 # 编译可执行文件
-add_executable (${appName} ${SC_FILES})
+add_executable (${appName} ${SC_FILES} "controller/resultslist/ResultsListController.cpp" "controller/resultslist/ResultsListController.h" "domain/dto/resultslist/ResultsListDTO.h" "domain/query/resultslist/ResultsListQuery.h" "domain/vo/ordername/ordernameVO.h" "domain/query/ordername/OrderNameQuery.h" "domain/dto/ordername/OrderNameDTO.h" "domain/vo/ordername/OrderNameVO.h" "controller/ordername/OrderNameController.h" "controller/ordername/OrderNameController.cpp")
 
 # 链接库
 target_link_libraries (${appName} "lib-common" "lib-oatpp" "lib-mysql")
