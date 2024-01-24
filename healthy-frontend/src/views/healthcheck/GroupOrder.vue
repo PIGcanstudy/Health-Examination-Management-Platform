@@ -67,7 +67,7 @@
         </el-button>
       </div>
       <!-- 分页标签 -->
-      <el-tabs type="border-card" style="margin-bottom: 15px;">
+      <el-tabs type="border-card" style="margin-bottom: 15px">
         <el-tab-pane label="男">
           <ActionTable :tableData="tableData1" />
         </el-tab-pane>
@@ -94,7 +94,6 @@
 
 <script setup>
 import ActionTable from '@/components/details/ActionTable.vue'
-import PersonInfo from '@/components/personinfo/PersonInfo.vue'
 import PeopleList from '@/components/peoplelist/PeopleList.vue'
 
 const tableData1 = [

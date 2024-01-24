@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button type="primary" @click="dialogFormVisible = true" style="margin-right: 10px">
+    <el-button type="primary" style="margin-right: 10px" @click="dialogFormVisible = true">
       <el-icon style="margin-right: 5px"><Plus /></el-icon>
       新增
     </el-button>
