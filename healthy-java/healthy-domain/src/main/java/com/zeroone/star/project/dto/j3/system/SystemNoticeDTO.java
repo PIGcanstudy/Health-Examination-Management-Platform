@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 @ApiModel("获取系统公告的dto")
 public class SystemNoticeDTO implements Serializable {
-    @ApiModelProperty(value = "id",required = true,example = "100")
+    @ApiModelProperty(value = "id", required = true, example = "100")
     private String id;
     @ApiModelProperty(value = "创建人")
     private String createBy;
