@@ -1,5 +1,6 @@
 package com.zeroone.star.percenter.controller;
 
+import com.zeroone.star.percenter.service.SecuritySettingService;
 import com.zeroone.star.project.j1.dto.percenter.EmailDTO;
 import com.zeroone.star.project.j1.dto.percenter.GetSmsCodeDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPasswordDTO;
@@ -11,6 +12,7 @@ import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,20 +35,48 @@ public class SecuritySettingController implements SecuritySettingApis {
         return JsonVO.success("验证成功");
     }
 
+
+    private final SecuritySettingService securitySettingService;
+
+    @Autowired
+    public SecuritySettingController(SecuritySettingService securitySettingService) {
+        this.securitySettingService = securitySettingService;
+    }
+
+    /**
+     * 用户修改自己的密码
+     *
+     * @param modifyPasswordDTO 修改密码视图对象
+     * @return
+     */
     @ApiOperation(value = "修改密码", notes = "用户修改自己的密码")
     @PostMapping("/change-password")
     @Override
     public JsonVO<String> changePassword(@RequestBody @Validated ModifyPasswordDTO modifyPasswordDTO) {
-        System.out.println("修改密码");
-        return JsonVO.success("修改成功");
+        try {
+            securitySettingService.changePassword(modifyPasswordDTO);
+            return JsonVO.success("密码修改成功");
+        } catch (Exception e) {
+            return JsonVO.fail(e.getMessage());
+        }
     }
 
+    /**
+     * 用户修改自己的手机号码
+     *
+     * @param modifyPhoneDTO 修改手机号视图对象
+     * @return
+     */
     @ApiOperation(value = "修改手机号", notes = "用户修改自己的手机号码")
     @PostMapping("/change-phone")
     @Override
     public JsonVO<String> changePhone(@RequestBody @Validated ModifyPhoneDTO modifyPhoneDTO) {
-        System.out.println("修改手机号");
-        return JsonVO.success("修改成功");
+        try {
+            securitySettingService.changePhone(modifyPhoneDTO);
+            return JsonVO.success("手机号修改成功");
+        } catch (Exception e) {
+            return JsonVO.fail(e.getMessage());
+        }
     }
 
     /**
