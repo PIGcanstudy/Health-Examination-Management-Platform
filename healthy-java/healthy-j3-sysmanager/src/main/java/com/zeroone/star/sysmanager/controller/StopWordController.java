@@ -5,11 +5,9 @@ import com.zeroone.star.project.dto.j3.stopword.StopWordDTO;
 import com.zeroone.star.project.j3.stopword.StopWordApis;
 import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -23,11 +21,16 @@ import java.util.ArrayList;
 @RequestMapping("/j3-stopWord")
 @Api("禁用词管理")
 public class StopWordController implements StopWordApis {
+
+    @ApiOperation("分页查找禁用词")
+    @GetMapping("/queryStopWord")
     @Override
     public JsonVO<PageDTO<StopWordDTO>> queryStopWord(PageDTO<StopWordDTO> query) {
         return null;
     }
 
+    @ApiOperation("添加禁用词")
+    @PostMapping("/addStopWord")
     @Override
     public JsonVO<String> addStopWord(String title) {
         return null;
