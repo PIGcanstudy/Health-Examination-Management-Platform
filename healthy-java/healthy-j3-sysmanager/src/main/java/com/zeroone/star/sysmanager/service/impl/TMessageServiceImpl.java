@@ -7,6 +7,7 @@ import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zeroone.star.project.constant.RedisConstant;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.message.MessageResponseDTO;
 import com.zeroone.star.project.dto.j3.message.MessageSendDTO;
@@ -150,7 +151,7 @@ public class TMessageServiceImpl extends ServiceImpl<MessageMapper, Message> imp
         return JsonVO.fail(success);
     }
     public JsonVO getJsonVO(MessageSendDTO messageSend) {
-        String key = "message:detail:" + messageSend.getMessageId();
+        String key = RedisConstant.MESSAGE_DETAIL + ":" + messageSend.getMessageId();
         //1.从redis当中查询缓存
         String mesJson = stringRedisTemplate.opsForValue().get(key);
         //2.判断是否命中
