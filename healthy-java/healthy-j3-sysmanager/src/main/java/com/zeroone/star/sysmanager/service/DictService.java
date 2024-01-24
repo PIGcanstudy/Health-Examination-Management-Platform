@@ -1,6 +1,12 @@
-package com.zeroone.star.sysmanager.sysmanager.service;
+package com.zeroone.star.sysmanager.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.dto.PageDTO;
+import com.zeroone.star.project.dto.j3.message.MsgListDTO;
+import com.zeroone.star.project.query.j3.Dict.DictQuery;
+import com.zeroone.star.sysmanager.entity.Dict;
+
+import java.util.List;
 
 /**
  * <p>
@@ -10,6 +16,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author Anemon
  * @since 2024-01-16
  */
-public interface DictService extends IService<DictDTO> {
+public interface DictService extends IService<com.zeroone.star.project.dto.j3.dictory.DictDTO> {
 
+    PageDTO<com.zeroone.star.project.dto.j3.dictory.DictDTO> findAllOrderBySortOrder(DictQuery query);
+
+    com.zeroone.star.project.dto.j3.dictory.DictDTO findByType(String type);
 }

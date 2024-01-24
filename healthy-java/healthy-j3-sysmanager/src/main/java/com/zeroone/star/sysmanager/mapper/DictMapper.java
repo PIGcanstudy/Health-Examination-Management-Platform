@@ -18,7 +18,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2024-01-16
  */
 @Mapper
-public interface DictMapper extends BaseMapper<Dict> {
-
-
+public interface DictMapper extends BaseMapper<com.zeroone.star.project.dto.j3.dictory.DictDTO> {
 }
