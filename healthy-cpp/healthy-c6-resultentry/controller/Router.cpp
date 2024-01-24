@@ -35,6 +35,8 @@
 #endif
 #include "controller/interro/InterroController.h"
 #include "saveRes/saveResController.h"
+#include "checkitem/BaseProjectController.h"
+#include "checkitem/PersonController.h"
 
 #include "controller/interro/InterroController.h"
 #include "result-entry/ClAbanProjController.h"
@@ -77,7 +79,8 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(SampleBarcodesViewController);//µÿ¡ÈµÓ
 	ROUTER_SIMPLE_BIND(ReportPreviewController);//µÿ¡ÈµÓ
 	ROUTER_SIMPLE_BIND(InterroController);
-
+	ROUTER_SIMPLE_BIND(BaseProjectController);
+	ROUTER_SIMPLE_BIND(PersonController);
 	ROUTER_SIMPLE_BIND(FileController);
 
 }

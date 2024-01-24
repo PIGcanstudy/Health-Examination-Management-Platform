@@ -163,3 +163,20 @@ interro2:
   project: 体检项目
   degree: 危及程度
   time:	病程时间
+checkitem:
+ portfolio:
+  name: 组合项目名称
+  eg_name: 耳鼻喉口腔常规
+ base:
+  id: 项目编号
+  code: 项目代码
+  name: 体检项目
+  unit_name: 单位
+  default_value: 参考值
+  result_type: 提示
+ person:
+  id: 人员编号
+  name: 姓名
+ filed:
+  project_summary: 查询组合项目的基础项目体检结果数据
+  person_summary: 查询人员的体检组合项目
