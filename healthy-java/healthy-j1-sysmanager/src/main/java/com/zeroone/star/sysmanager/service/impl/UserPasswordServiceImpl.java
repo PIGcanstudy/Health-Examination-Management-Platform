@@ -28,36 +28,35 @@ import java.util.Objects;
  */
 @Service("userPasswordService")
 public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUserDO> implements UserPasswordService {
-    /**
-     * 修改密码
-     * @param modifyPasswordDTO 修改密码DTO
-     * @return
-     */
 
 
     @Autowired
     UserHolder userHolder;
 
+    /**
+     * 修改密码
+     * @param modifyPasswordDTO 修改密码DTO
+     * @return
+     */
     @Override
     public JsonVO updatePasswordToChange(ModifyPasswordDTO modifyPasswordDTO) {
         // 判断当前登录的用户是否为管理员账号(type字段是否为1)
-        // 假设当前登录的用户为admin用户 TODO 获取当前登录的用户id，这里进行了模拟
-        // String currentUserId = "682265633886208";
+        // 获取当前登录的用户id
         String currentUserId;
         try {
             UserDTO currentUser = userHolder.getCurrentUser();
             currentUserId = currentUser.getId().toString();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            return JsonVO.create(null,ResultStatus.UNAUTHORIZED);
         }
         TUserDO currentUserDO = getBaseMapper().selectById(currentUserId);
-        // 被修改密码的用户
+        // 获取被修改密码的用户
         TUserDO changeUser = getBaseMapper().selectById(modifyPasswordDTO.getId());
         // 判断被修改密码的用户是否存在
         if(Objects.isNull(changeUser)){
             return JsonVO.create(null,8000,"用户id非法");
         }
-        // 不是管理员则提示没有权限
+        // 当前登录的用户不是管理员则提示没有权限
         if(currentUserDO.getType() != 1){
             return JsonVO.create(null, ResultStatus.FORBIDDEN);
         }
@@ -66,7 +65,6 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
             return JsonVO.create(null,9991,"新密码不能与现在的密码相同");
         }
         // 验证被修改用户的旧密码是否正确
-        // TODO 问题：应该是要调用别人的密码验证服务来实现,因为这里没有BCryptPasswordEncoder这个Bean,这里进行使用new进行了模拟的实现
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         boolean matches = bCryptPasswordEncoder.matches(modifyPasswordDTO.getPassword(),changeUser.getPassword());
         if(!matches){
@@ -84,7 +82,7 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
     }
 
     /**
-     * 重置密码
+     * 重置选中用户的密码为123456
      * @param ids 被重置密码的用户id
      * @return
      */
@@ -94,10 +92,16 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
         if(ids == null || ids.size() == 0){
             return JsonVO.create(null,8001,"请选择需要被重置密码的用户");
         }
-        // 判断当前用户是否为管理员身份 TODO 获取当前登录的用户id，这里进行了模拟
-        String currentUserId = "682265633886208";
+        // 获取当前登录的用户id
+        String currentUserId;
+        try {
+            UserDTO currentUser = userHolder.getCurrentUser();
+            currentUserId = currentUser.getId().toString();
+        } catch (Exception e) {
+            return JsonVO.create(null,ResultStatus.UNAUTHORIZED);
+        }
         TUserDO currentUserDO = getBaseMapper().selectById(currentUserId);
-        // 不是管理员则提示权限不足
+        // 当前登录的用户不是管理员则提示权限不足
         if(currentUserDO.getType() != 1){
             return JsonVO.create(null, ResultStatus.FORBIDDEN);
         }
