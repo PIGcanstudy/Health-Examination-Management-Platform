@@ -1,8 +1,7 @@
 <template>
-  <!-- ！！！已弃用！！！ -->
   <!-- 体检结果详情 -->
   <div>
-    <el-table :data="details" height="250" border :cell-style="{ textAlign: 'center' }" :header-cell-style="{ 'text-align': 'center' }" style="width: 100%">
+    <el-table :data="testResult" height="250" border :cell-style="{ textAlign: 'center' }" :header-cell-style="{ 'text-align': 'center' }" style="width: 100%">
       <el-table-column prop="id" label="#" width="60" />
       <el-table-column prop="name" label="体检项目" />
       <el-table-column prop="result" label="明细结果">
@@ -26,7 +25,7 @@
 import { defineProps } from 'vue'
 
 const props = defineProps({
-  details: {
+  testResult: {
     type: Array,
     default: () => []
   }

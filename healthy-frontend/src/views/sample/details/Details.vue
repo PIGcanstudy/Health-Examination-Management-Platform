@@ -1,5 +1,5 @@
 <template>
-  <Details :details="tableData" />
+  <TestResult :testResult="tableData" />
 
   <Statistics :outsideData="outside" :insideData="inside" />
 
@@ -9,20 +9,20 @@
 </template>
 
 <script setup>
-import Details from '@/components/details/Details.vue'
+import TestResult from '@/components/details/TestResult.vue'
 import SortTable from '@/components/details/SortTable.vue'
 import Statistics from '@/components/statistics/Statistics.vue'
 import PersonInfo from '@/components/personinfo/PersonInfo.vue'
 
 const outside = [
-    { value: 1048, name: '未评价' },
-    { value: 335, name: '已评价' }
+  { value: 1048, name: '未评价' },
+  { value: 335, name: '已评价' }
 ]
 
 const inside = [
-    { value: 1548, name: '未登记' },
-    { value: 775, name: '在体检' },
-    { value: 679, name: '已总检' }
+  { value: 1548, name: '未登记' },
+  { value: 775, name: '在体检' },
+  { value: 679, name: '已总检' }
 ]
 
 const tableData = [
@@ -33,7 +33,7 @@ const tableData = [
     unit: '-',
     reference: '114514',
     prompt: '-',
-    abnormal: false,
+    abnormal: false
   },
   {
     id: '2',
@@ -42,7 +42,7 @@ const tableData = [
     unit: '-',
     reference: '114514',
     prompt: '-',
-    abnormal: true,
+    abnormal: true
   },
   {
     id: '3',
@@ -51,7 +51,7 @@ const tableData = [
     unit: '-',
     reference: '114514',
     prompt: '-',
-    abnormal: false,
+    abnormal: false
   },
   {
     id: '4',
@@ -60,7 +60,7 @@ const tableData = [
     unit: '-',
     reference: '114514',
     prompt: '-',
-    abnormal: false,
+    abnormal: false
   },
   {
     id: '5',
@@ -69,7 +69,7 @@ const tableData = [
     unit: '-',
     reference: '114514',
     prompt: '-',
-    abnormal: false,
+    abnormal: false
   },
   {
     id: '6',
@@ -78,8 +78,8 @@ const tableData = [
     unit: '-',
     reference: '114514',
     prompt: '-',
-    abnormal: true,
-  },
+    abnormal: true
+  }
 ]
 </script>
 
