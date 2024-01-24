@@ -11,9 +11,39 @@
       :use-pagination="usePagination"
       :pagination-data="paginationData"
       :handle-edit="handleEdit"
+      :use-fixed="useFixed"
       @update-table-data="handlePageChange"
       @update-selected-rows="selectRows"
     >
+      <!-- fixed固定列 -->
+      <template #fixed="">
+        <el-button type="primary" style="margin-right: 5px">
+          <el-icon><View></View></el-icon>
+          查看
+        </el-button>
+        <el-dropdown>
+          <el-button>
+            更多操作
+            <el-icon class="el-icon--right">
+              <arrow-down />
+            </el-icon>
+          </el-button>
+
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>
+                <el-icon><Edit></Edit></el-icon>
+                修改
+              </el-dropdown-item>
+              <el-dropdown-item>
+                <el-icon><DeleteFilled></DeleteFilled></el-icon>
+                删除
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </template>
+
       <!-- form表单区域 -->
       <template #form>
         <el-form-item label="单位名称">
@@ -26,10 +56,13 @@
           <el-input v-model="formData.contactPerson"></el-input>
         </el-form-item>
         <el-form-item label="联系电话">
-          <el-input v-model="formData.contactPhone"></el-input>
+          <el-input v-model="formData.contactPhone" :style="{ width: '140px' }"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary">搜索</el-button>
+          <el-button type="primary">
+            <el-icon><Search></Search></el-icon>
+            搜索
+          </el-button>
         </el-form-item>
         <el-form-item>
           <el-button @click="resetForm">重置</el-button>
@@ -39,8 +72,10 @@
       <!-- operation功能区域 -->
       <template #operation>
         <div class="operation">
-          <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true">新增</el-button>
-          <!-- <el-select v-model="selectValue" placeholder="更多操作" style="width: 100px; margin-right: 10px"></el-select> -->
+          <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true">
+            <el-icon><Plus></Plus></el-icon>
+            新增
+          </el-button>
           <el-dialog v-model="dialogVisible" title="新增" width="30%" :before-close="handleClose">
             <el-row>
               <el-col :span="18">
@@ -86,22 +121,29 @@
             <template #footer>
               <span class="dialog-footer">
                 <el-button @click="dialogVisible = false">取消</el-button>
-                <el-button type="primary" @click="dialogVisible = false"> 提交 </el-button>
+                <el-button type="primary" @click="dialogVisible = false">提交</el-button>
               </span>
             </template>
           </el-dialog>
           <el-dropdown>
-            <span class="el-dropdown-link">
+            <el-button style="margin-right: 8px">
               更多操作
-              <el-icon class="el-icon--right">
-                <arrow-down />
-              </el-icon>
-            </span>
+              <el-icon class="el-icon--right"> <arrow-down /> </el-icon
+            ></el-button>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item>刷新</el-dropdown-item>
-                <el-dropdown-item>批量删除</el-dropdown-item>
-                <el-dropdown-item>导出本页数据</el-dropdown-item>
+                <el-dropdown-item>
+                  <el-icon><Refresh></Refresh></el-icon>
+                  刷新
+                </el-dropdown-item>
+                <el-dropdown-item>
+                  <el-icon><DeleteFilled></DeleteFilled></el-icon>
+                  批量删除
+                </el-dropdown-item>
+                <el-dropdown-item>
+                  <el-icon><Bottom></Bottom></el-icon>
+                  导出本页数据
+                </el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -113,7 +155,10 @@
       <!-- 多选清除栏 -->
       <template #hint>
         <div v-if="useHint" class="hint">
-          <span> (!) 已选择{{ selectedTotal }}项</span>
+          <span>
+            <el-icon style="color: blue"><InfoFilled></InfoFilled></el-icon>
+            已选择{{ selectedTotal }}项
+          </span>
           <el-button type="primary" link style="margin-bottom: 3px" @click="clearRows">清空</el-button>
         </div>
       </template>
@@ -123,7 +168,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
-import { ArrowDown } from '@element-plus/icons-vue'
+import { ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit } from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 const selectValue = ref('')
 const useHint = ref(true)
@@ -131,6 +176,7 @@ const useForm = ref(true)
 const usePagination = ref(true)
 const BaseDataRef = ref()
 const dialogVisible = ref(false)
+const useFixed = ref(true)
 // table列
 const tableColumnAttribute = ref([
   { prop: 'name', label: '单位名称', width: '240', align: 'center' },
