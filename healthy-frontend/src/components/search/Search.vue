@@ -21,7 +21,7 @@ const props = defineProps({
   // 哪些需要搜索的标签
   toSearchLabel: {
     type: Array,
-    require: true
+    require: true,
   },
   // 列属性
   dataColumn: {

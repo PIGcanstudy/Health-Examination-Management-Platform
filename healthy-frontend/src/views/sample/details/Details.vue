@@ -4,10 +4,13 @@
   <Statistics :outsideData="outside" :insideData="inside" />
 
   <PersonInfo :personInfo="tableData" />
+
+  <SortTable :tableData="tableData" />
 </template>
 
 <script setup>
 import Details from '@/components/details/Details.vue'
+import SortTable from '@/components/details/SortTable.vue'
 import Statistics from '@/components/statistics/Statistics.vue'
 import PersonInfo from '@/components/personinfo/PersonInfo.vue'
 

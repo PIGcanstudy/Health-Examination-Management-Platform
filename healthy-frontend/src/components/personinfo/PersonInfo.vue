@@ -1,29 +1,28 @@
-
 <template>
   <!-- 人员信息 -->
   <div>
-    <el-tabs type="border-card">
-      <el-tab-pane label="男">
-        <el-table :data="personInfo" border style="width: 100%; margin-top: 10px">
-          <el-table-column prop="id" label="体检编号" />
-          <el-table-column prop="name" label="姓名" />
-          <el-table-column prop="result" label="性别" />
-          <el-table-column prop="reference" label="证件号码" />
-          <el-table-column prop="unit" label="年龄" />
-          <el-table-column prop="prompt" label="操作" />
-        </el-table>
-      </el-tab-pane>
-      <el-tab-pane label="女">
-        <el-table :data="personInfo" border style="width: 100%; margin-top: 10px">
-          <el-table-column prop="id" label="体检编号" />
-          <el-table-column prop="name" label="姓名" />
-          <el-table-column prop="result" label="性别" />
-          <el-table-column prop="reference" label="证件号码" />
-          <el-table-column prop="unit" label="年龄" />
-          <el-table-column prop="prompt" label="操作" />
-        </el-table>
-      </el-tab-pane>
-    </el-tabs>
+    <el-table :data="personInfo" border :cell-style="{ textAlign: 'center' }" :header-cell-style="{ 'text-align': 'center' }" style="width: 100%; margin-top: 10px">
+      <el-table-column type="selection" width="60" />
+      <el-table-column prop="name" label="姓名" />
+      <el-table-column prop="result" label="性别" />
+      <el-table-column prop="reference" label="证件号码" />
+      <el-table-column prop="unit" label="年龄" />
+      <el-table-column prop="prompt" label="操作">
+        <template #default="scope">
+          <el-button-group>
+            <el-button size="small" @click="handleEdit(scope.$index, scope.row)">
+              <el-icon><icon-view /></el-icon>
+            </el-button>
+            <el-button size="small" @click="handleEdit(scope.$index, scope.row)">
+              <el-icon><icon-edit /></el-icon>
+            </el-button>
+            <el-button type="danger" size="small" @click="handleDelete(scope.$index, scope.row)">
+              <el-icon><icon-delete /></el-icon>
+            </el-button>
+          </el-button-group>
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -41,6 +40,14 @@ const props = defineProps({
     default: () => []
   }
 })
+
+// 表格操作相关
+const handleEdit = function(index, row) {
+  console.log(index, row);
+}
+const handleDelete = function(index, row) {
+  console.log(index, row);
+}
 </script>
 
 <style lang="scss" scoped></style>

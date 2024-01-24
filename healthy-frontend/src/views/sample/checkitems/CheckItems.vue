@@ -1,90 +1,104 @@
 <template>
   <div>
-    <CheckItems :tcProject="tableDataForTc" :cytaocan="tableDataForCy" :selectDown="selectDown" />
+    <!-- <CheckItems @submitTc="submitTc" @submitCy="submitCy" :isShowButtonForTc="isShowButtonForTc" :isShowButtonForCy="isShowButtonForCy" :tableLieForTc="tableLieForTc" :tableLieForCy="tableLieForCy" :tcProject="tableDataForTc" :cytaocan="tableDataForCy" :selectDown="selectDown" /> -->
+    <CheckItems :tcObject="tcObject"  @submitTc="submitTc"  />
   </div>
 </template>
 
 <script setup>
 import CheckItems from '@/components/checkitems/CheckItems.vue'
+import { ref,reactive } from 'vue'
 
+const tcRowData = ref([])
 
-//套餐项目-表格数据
-const tableDataForTc = [
+//获取套餐表格行数据
+const submitTc = (value) => {
+
+tcRowData.value = value;
+
+alert(tcRowData.value)
+
+}
+
+//测试对象传参
+const tcObject = reactive({
+  //是否显示确定取消按钮-套餐
+  isShowButtonForTc : true,
+  //抽屉按钮名字
+  bottonTitle:'按钮开关',
+  // 抽屉表头
+  tableTitle:'编辑分组',
+  //是否隐藏触发抽屉按钮
+  hideButton:false,
+  //是否打开抽屉
+  openDrawer:false,
+  //套餐项目表格列
+  tableLieForTc : [
   {
-    name: '项目1',
-    salePrice: '10',
+    prop: 'mc',
+    label: '名称'
   },
   {
-    name: '项目2',
-    salePrice: '20',
+    prop: 'xsj',
+    label: '销售价(元)'
+  }
+],
+  //套餐项目-表格数据
+  tableDataForTc:[
+  {
+    mc: '项目1',
+    xsj: '10'
   },
   {
-    name: '项目3',
-    salePrice: '30',
+    mc: '项目2',
+    xsj: '20'
+  },
+  {
+    mc: '项目3',
+    xsj: '30'
   },
   {
     
-    name: '项目4',
-    salePrice: '40',
+    mc: '项目4',
+    xsj: '40'
   },
   {
-    name: '项目5',
-    salePrice: '50',
+    mc: '项目5',
+    xsj: '50'
   },
   {
-    name: '项目6',
-    salePrice: '60',
+    mc: '项目6',
+    xsj: '60'
   },
   {
-    name: '项目7',
-    salePrice: '70',
-  },
-  {
-    
-    name: '项目8',
-    salePrice: '80',
-  },
-  {
-    name: '项目9',
-    salePrice: '90',
-  },
-  {
-    name: '项目10',
-    salePrice: '100',
-  },
-  {
-    name: '项目11',
-    salePrice: '110',
+    mc: '项目7',
+    xsj: '70'
   },
   {
     
-    name: '项目12',
-    salePrice: '120',
-  },
-]
-
-  //从业套餐-表格数据
-const tableDataForCy = [
-  {
-    tcmc: '优惠套餐1',
-    tcjp: 'YHTC',
+    mc: '项目8',
+    xsj: '80'
   },
   {
-    tcmc: '健康套餐1',
-    tcjp: 'CYTJ',
+    mc: '项目9',
+    xsj: '90'
   },
   {
-    tcmc: '优惠套餐2',
-    tcjp: 'JC3',
+    mc: '项目10',
+    xsj: '100'
   },
   {
-    tcmc: '健康套餐2',
-    tcjp: 'JC4',
+    mc: '项目11',
+    xsj: '110'
   },
-]
-
-  // 下拉菜单存放数据区域
-const selectDown = [
+  {
+    
+    mc: '项目12',
+    xsj: '120'
+  }
+],
+// 下拉菜单存放数据区域
+selectDown :[
   {
     value: 'Option',
     label: '蔡徐坤'},
@@ -128,6 +142,16 @@ const selectDown = [
     label: '蔡徐坤11',
   }
 ]
+})
+
+
+
+
+
+
+
+
+
 </script>
 
 <style lang="scss" scoped></style>

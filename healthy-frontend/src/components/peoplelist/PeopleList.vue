@@ -1,116 +1,108 @@
 <template>
-  <div class="left-side-bar">
-    <el-card class="box-card">
-      <!-- 列表名称区域 -->
-      <template v-if="props?.useHeader" #header>
-        <div class="card-header">
-          <span>{{ props.title }}</span>
-        </div>
-      </template>
+  <div class="box-card">
+    <!-- 列表名称区域 -->
+    <template v-if="props?.useHeader">
+      <el-card class="card-header">
+        <span>{{ props.title }}</span>
+      </el-card>
+    </template>
 
-      <!-- 主体部分 -->
-      <div class="main">
-        <!-- 表单区域 -->
-        <div class="form-area">
-          <!-- 需要inline属性管理第一行的样式(待解决) -->
-          <el-form ref="formRef" :model="form">
-            <template #default>
-              <el-form-item prop="checkbox" style="display: flex">
-                <el-radio-group v-model="form.checkbox" style="margin-right: auto">
-                  <el-radio label="已检" />
-                  <el-radio label="未检" />
-                </el-radio-group>
-                <el-switch v-model="form.slider" inline-prompt active-text="复查" inactive-text="非复"></el-switch>
+    <!-- 主体部分 -->
+    <el-card class="main">
+      <!-- 表单区域 -->
+      <div class="form-area">
+        <!-- 需要inline属性管理第一行的样式(待解决) -->
+        <el-form ref="formRef" :model="form">
+          <!-- 内容查询区域 -->
+          <template #default>
+            <el-form-item prop="checkbox" style="display: flex">
+              <!-- 添加props：checkboxItem -->
+              <el-radio-group v-model="form.checkbox" style="margin-right: auto">
+                <el-radio v-for="item in checkboxItem" :key="item" :label="item" />
+              </el-radio-group>
+              <el-switch v-model="form.slider" inline-prompt active-text="复查" inactive-text="非复"></el-switch>
+            </el-form-item>
+
+            <!-- 日期组件 -->
+            <el-form-item v-if="props.isDateVisible" prop="date">
+              <el-row clearable>
+                <el-date-picker v-model="form.startDate" style="width: 49%" type="date" placeholder="开始时间" />
+                <span style="width: 2%">~</span>
+                <el-date-picker v-model="form.endDate" style="width: 49%" type="date" placeholder="结束时间" />
+              </el-row>
+            </el-form-item>
+
+            <!-- 查询内容区域 -->
+            <!-- 姓名输入项，固定显示 -->
+            <el-form-item prop="name">
+              <el-input v-model="form.name" placeholder="请输入姓名" clearable />
+            </el-form-item>
+            <!-- 从父组件传入的其他表单项 -->
+            <div v-if="isShowInput">
+              <el-form-item v-for="(item, index) of externalFormItems" :key="index">
+                <el-input v-model="item.name" :placeholder="item.placeholder" clearable />
               </el-form-item>
+            </div>
 
-              <el-form-item prop="date">
-                <el-row clearable>
-                  <el-date-picker v-model="form.startDate" style="width: 49%" type="date" placeholder="开始时间" />
-                  <span style="width: 2%">~</span>
-                  <el-date-picker v-model="form.endDate" style="width: 49%" type="date" placeholder="结束时间" />
-                </el-row>
-              </el-form-item>
-
-              <template v-for="item in formConfig.formItems" :key="item.name">
-                <el-form-item prop="name">
-                  <el-input v-model="form.name" :placeholder="item.placeholder" clearable />
-                </el-form-item>
-                <!-- 点击按钮折叠区域 -->
-                <template v-if="isShowInput">
-                  <el-form-item prop="serialNumber">
-                    <el-input v-model="form.serialNumber" placeholder="请输入体检编号" clearable />
-                  </el-form-item>
-                  <el-form-item prop="workplace">
-                    <el-input v-model="form.workplace" placeholder="请输入单位名称" clearable></el-input>
-                  </el-form-item>
-                </template>
-              </template>
-
-              <!-- 暂时不能注释，有问题 -->
-              <el-form-item>
-                <el-button type="primary" @click="onSubmit">查询</el-button>
-                <el-button plain @click="resetForm">重置</el-button>
-                <el-button type="text" style="margin-left: 14px" @click="toggleCollapse"
-                  >{{ isShowInput ? '收起' : '展开' }}
-                  <el-icon v-show="isShowInput === true"><ArrowUp /></el-icon>
-                  <el-icon v-show="isShowInput === false"><ArrowDown /></el-icon>
-                </el-button>
-              </el-form-item>
-            </template>
-            <template #footer>
-              <el-button>重置</el-button>
+            <!-- 按钮区域 -->
+            <el-form-item>
               <el-button type="primary" @click="onSubmit">查询</el-button>
+              <el-button plain @click="resetForm">重置</el-button>
+              <el-button type="text" style="margin-left: 14px" @click="toggleCollapse"
+                >{{ isShowInput ? '收起' : '展开' }}
+                <el-icon v-show="isShowInput === true"><ArrowUp /></el-icon>
+                <el-icon v-show="isShowInput === false"><ArrowDown /></el-icon>
+              </el-button>
+            </el-form-item>
+          </template>
+        </el-form>
+      </div>
+
+      <!-- 表格区域 -->
+      <div class="table">
+        <el-table ref="tableRef" v-loading="openLoading" style="height=350; width: 100%;" :data="props?.tableData" table-layout="auto" @selection-change="handleSelectionChange">
+          <!-- 第一列：多选 -->
+          <el-table-column v-if="props?.useSelectColumn" type="selection" width="55" />
+          <el-table-column prop="name" label="姓名"></el-table-column>
+          <el-table-column prop="gender" label="性别"></el-table-column>
+          <el-table-column prop="age" label="年龄"></el-table-column>
+          <!-- <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.lable" class-name="class-name"> -->
+          <!-- 表格的列内容如果使用tag -->
+          <!-- <template v-if="item.useTag" #default="{ row }"> -->
+          <!-- <el-tag :type="row[item.prop].tagType">{{ row[item.prop].value }}</el-tag> -->
+          <!-- </template> -->
+          <!-- </el-table-column> -->
+          <!-- 第五列：标签（占位用） -->
+          <!-- <el-table-column prop="tag" label="标签">
+            <template #default>
+              <el-tag :type="info" style="margin-right: 6px">1</el-tag>
+              <el-tag :type="info">1</el-tag>
             </template>
-          </el-form>
-        </div>
+          </el-table-column> -->
 
-        <!-- 表格区域 -->
-        <div class="table">
-          <el-table ref="tableRef" v-loading="openLoading" style="height=300; width: 100%;" :data="props?.tableData" table-layout="auto" @selection-change="handleSelectionChange">
-            <!-- 第一列：多选 -->
-            <el-table-column v-if="props?.useSelectColumn" type="selection" width="55" />
-            <el-table-column prop="name" label="姓名"></el-table-column>
-            <el-table-column prop="gender" label="性别"></el-table-column>
-            <el-table-column prop="age" label="年龄"></el-table-column>
-            <!-- <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.lable" class-name="class-name"> -->
-            <!-- 表格的列内容如果使用tag -->
-            <!-- <template v-if="item.useTag" #default="{ row }"> -->
-            <!-- <el-tag :type="row[item.prop].tagType">{{ row[item.prop].value }}</el-tag> -->
-            <!-- </template> -->
-            <!-- </el-table-column> -->
-            <!-- 第五列：标签（占位用） -->
-            <el-table-column prop="tag" label="标签">
-              <template #default>
-                <el-tag :type="info" style="margin-right: 6px">1</el-tag>
-                <el-tag :type="info">1</el-tag>
-              </template>
-            </el-table-column>
+          <!-- ------------------------------------------- -->
 
-            <!-- ------------------------------------------- -->
-
-            <!-- 表格没有数据的样式 -->
-            <template #empty>
-              <el-empty class="emptyTable" description="没有数据"></el-empty>
-            </template>
-          </el-table>
-        </div>
-
-        <!-- 分页区域 -->
-        <template v-if="props?.usePagination">
-          <el-pagination
-            v-model:current-page="paginationData.currentPage"
-            v-model:page-size="paginationData.pageSize"
-            :page-sizes="props.pageSizes"
-            layout="prev, jumper, pager, next, "
-            :total="props.total"
-            :small="small"
-            style="margin-top: 30px"
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-          />
-        </template>
+          <!-- 表格没有数据的样式 -->
+          <template #empty>
+            <el-empty class="emptyTable" description="没有数据"></el-empty>
+          </template>
+        </el-table>
       </div>
     </el-card>
+
+    <!-- 分页区域 -->
+    <template v-if="props?.usePagination">
+      <el-pagination
+        v-model:current-page="paginationData.currentPage"
+        v-model:page-size="paginationData.pageSize"
+        class="pagination"
+        :page-sizes="props.pageSizes"
+        layout=" ->, prev, jumper, next"
+        :total="props.total"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
+    </template>
   </div>
 </template>
 
@@ -163,33 +155,39 @@ const props = defineProps({
   usePagination: {
     type: Boolean,
     default: true
+  },
+  // 当前状态
+  checkboxItem: {
+    type: Array,
+    require: true,
+    default: function () {
+      return ['未登记', '已登记']
+    }
+  },
+  // 是否显示日期组件
+  isDateVisible: {
+    type: Boolean,
+    default: true
+  },
+  // 查询表单内容配置
+  externalFormItems: {
+    type: Array,
+    default: () => []
   }
 })
 
 // 表单部分的处理(未完)
 // 表单验证逻辑
 const form = ref({
-  checkbox: '',
-  slider: '',
-  date: '',
-  serialNumber: '',
-  workplace: '',
+  // 设置默认选择哪个状态
+  checkbox: props.checkboxItem[0],
+  // 开关默认为关闭状态
+  slider: false,
   name: '',
+  date: '',
   startDate: '',
   endDate: ''
 })
-// 封装表单: 表单配置项
-const formConfig = {
-  formItems: [
-    {
-      type: 'input',
-      name: 'user',
-      placeholder: '请输入姓名'
-    }
-  ]
-}
-
-// const formRef = ref(null)
 
 // 提交表单查询逻辑
 const onSubmit = () => {
@@ -197,7 +195,12 @@ const onSubmit = () => {
 }
 // 重置表单逻辑
 const resetForm = () => {
-  console.log('reset')
+  // 重置固定的表单项
+  form.value.name = ''
+  // 遍历所有动态添加的表单项，并将它们重置
+  props.externalFormItems.forEach((item) => {
+    item.name = ''
+  })
 }
 // 点击展开按钮按钮的折叠逻辑
 const isShowInput = ref(false)
@@ -209,8 +212,6 @@ const toggleCollapse = () => {
 const rows = ref([])
 // 表格的loading
 const openLoading = ref(false)
-// 滑块开关逻辑(放入整个表单提交查询逻辑)
-const slider = ref(true)
 
 // 表格数据存放区域
 const defaultTableData = [
@@ -316,21 +317,33 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
-.left-side-bar {
-  width: 24%;
+.box-card {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  position: relative;
 
-  .box-card {
-    .card-header {
-      justify-content: center;
-      text-align: center;
-      background-color: rgb(240, 250, 255);
+  .card-header {
+    height: 7%;
+    justify-content: center;
+    background-color: #f0faff;
+    border: 1px solid #abdcff;
 
-      span {
-        color: rgb(81, 90, 110);
-        font-weight: 550;
-      }
+    span {
+      font-weight: 550;
     }
   }
+}
+.main {
+  height: 93%;
+}
+
+.pagination {
+  margin-top: 24px;
+  position: absolute;
+  bottom: 15px;
+  align-items: center;
 }
 
 .emptyTable {

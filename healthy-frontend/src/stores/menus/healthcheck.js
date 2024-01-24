@@ -1,7 +1,7 @@
 // 测试菜单数据
 let testMenus = {
   id: 1,
-  text: '健康管理系统',
+  text: '健康体检系统',
   icon: 'IconUser',
   children: [
     {
