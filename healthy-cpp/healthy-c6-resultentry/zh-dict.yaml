@@ -123,9 +123,6 @@ unknownmoduleprofessionalhistory:
   hazard_factors_text: 危害因素
   protective_measures: 防护措施
   contact_time: 接触时间
-interro:
- get:
-  summary: 症状询问
 interro1:
  field:
   id: 体检人编号
