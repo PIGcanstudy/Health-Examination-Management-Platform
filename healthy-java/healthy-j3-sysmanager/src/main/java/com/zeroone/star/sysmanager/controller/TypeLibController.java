@@ -1,11 +1,14 @@
 package com.zeroone.star.sysmanager.controller;
 
 import com.zeroone.star.project.dto.j3.typeLibrary.TypeLibDeleteDTO;
+import com.zeroone.star.project.dto.j3.typeLibrary.typeAddDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeLibraryTreeDTO;
 import com.zeroone.star.project.j3.typelib.TypeLibApis;
 import com.zeroone.star.project.query.j3.TypeLibraryQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.j3.typeLibrary.TProTypeVO;
+import com.zeroone.star.project.vo.j3.typeLibrary.typeAddVO;
+import com.zeroone.star.project.vo.j3.typeLibrary.typeUpdateVO;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,6 +48,16 @@ public class TypeLibController implements TypeLibApis {
 
     @Override
     public JsonVO<Integer> removeTypeLib(TypeLibDeleteDTO typeLibDeleteDTO) {
+        return null;
+    }
+
+    @Override
+    public JsonVO<typeAddVO> addType(typeAddDTO typeadddto) {
+        return null;
+    }
+
+    @Override
+    public JsonVO<typeUpdateVO> updateType(typeUpdateVO typeupdatevo) {
         return null;
     }
 }
