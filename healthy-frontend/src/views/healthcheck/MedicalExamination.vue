@@ -12,6 +12,8 @@
         :checkbox-item="checkboxItem"
         :is-date-visible="isDateVisible"
         :external-form-items="formConfig.formItems"
+        :tableColumnAttribute = "tableColumnAttributeForPeople"
+        :tableData="defaultTableData"
       />
     </el-aside>
 
@@ -78,6 +80,89 @@ const formConfig = ref({
     }
   ]
 })
+//表格字段
+const tableColumnAttributeForPeople = [
+  {
+    prop:"name",
+    label:"名字"
+  },
+  {
+    prop:"gender",
+    label:"性别"
+  },
+  {
+    prop:"age",
+    label:"年龄"
+  },
+  {
+    prop:"tag",
+    label:"标签"
+  }
+]
+
+// 表格数据存放区域
+const defaultTableData = [
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '健'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  }
+]
 // MedicalInfo的变量
 const currentProgress = ref(1)
 const progressSteps = ref(['登记', '在检', '总检', '已完成'])
