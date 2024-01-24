@@ -9,6 +9,8 @@ import com.zeroone.star.sysmanager.service.ITUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.Mapper;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -46,6 +48,9 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
      */
     @Resource
     private TUserMapper userMapper;
+
+    @Resource
+    private RedisTemplate redisTemplate;
 
     /**
      * 获取用户名称列表（用于输入表单下拉列表框）

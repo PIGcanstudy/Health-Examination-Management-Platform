@@ -4,6 +4,7 @@ import com.zeroone.star.project.components.jwt.JwtComponent;
 import com.zeroone.star.project.components.user.UserHolder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 
@@ -18,6 +19,7 @@ import org.springframework.context.annotation.Bean;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableCaching //开启缓存注解功能
 public class SysManagerApplication {
 
     public static void main(String[] args) {
