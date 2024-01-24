@@ -52,6 +52,8 @@ public:
 
 		// 姓名
 		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("print.field.name"), "na", false);
+		// 体检类型
+		API_DEF_ADD_QUERY_PARAMS(String, "type", ZH_WORDS_GETTER("print.field.type"), "", true);
 		// 订单编号
 		API_DEF_ADD_QUERY_PARAMS(String, "orderId", ZH_WORDS_GETTER("print.field.orderId"), "", false);
 		// 体检编号
@@ -63,7 +65,7 @@ public:
 		// 结束日期
 		API_DEF_ADD_QUERY_PARAMS(String, "endDate", ZH_WORDS_GETTER("print.field.endDate"), "", false);
 		// 是否复查
-		API_DEF_ADD_QUERY_PARAMS(Boolean, "isRecheck", ZH_WORDS_GETTER("print.field.isRecheck"), "0", false);
+		API_DEF_ADD_QUERY_PARAMS(Boolean, "isRecheck", ZH_WORDS_GETTER("print.field.isRecheck"), "1", false);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/medexamprint", queryMedExamPrintReport, QUERIES(QueryParams, params),API_HANDLER_AUTH_PARAME) {

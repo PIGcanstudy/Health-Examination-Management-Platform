@@ -43,11 +43,11 @@ if (query->dept) { \
 	SQLPARAMS_PUSH(params, "s", std::string, query->dept.getValue("")); \
 } \
 if (query->startDate) { \
-	sql << " AND `check_date`>=?"; \
+	sql << " AND `check_date`>= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s')"; \
 	SQLPARAMS_PUSH(params, "s", std::string, query->startDate.getValue("")); \
 } \
 if (query->endDate) { \
-	sql << " AND `check_date`<=?"; \
+	sql << " AND `check_date`<= STR_TO_DATE(?,'%Y-%m-%d %H:%i:%s')"; \
 	SQLPARAMS_PUSH(params, "s", std::string, query->endDate.getValue("")); \
 } \
 if (query->isRecheck) { \

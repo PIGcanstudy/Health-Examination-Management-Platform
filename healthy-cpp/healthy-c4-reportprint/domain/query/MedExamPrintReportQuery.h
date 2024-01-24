@@ -32,7 +32,7 @@
 class MedExamPrintReportQuery : public PageQuery
 {
 	DTO_INIT(MedExamPrintReportQuery, PageQuery);
-	// 查询类型
+	// 体检类型
 	API_DTO_FIELD_DEFAULT(String, type, ZH_WORDS_GETTER("print.field.type"));
 	// 姓名
 	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("print.field.name"));
