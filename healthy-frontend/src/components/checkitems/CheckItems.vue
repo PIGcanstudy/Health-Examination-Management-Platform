@@ -1,11 +1,10 @@
 <template>
-  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true" >{{props.tcObject.bottonTitle}}</el-button>
+  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true" >{{ props.tcObject.bottonTitle }}</el-button>
 
 
  <!-- 选检项目-抽屉 -->
 <div id = 'xjxm' class="darwer-box">
-  <el-drawer v-model="drawer2" title="I am the title" :with-header="false" >
-    <span>{{ tcObject.tableTitle }}</span>
+  <el-drawer v-model="drawer2" :title= "tcObject.tableTitle"  :with-header="true" size="50%" direction="rtl" >
     <el-form :inline="true" :model="formInlineTc" class="demo-form-inline">
     <el-form-item label="关键字:" class="bold-label">
       <!-- 关键字输入框 -->
@@ -29,7 +28,7 @@
 
     <el-option
       v-for="item in props.tcObject.selectDown "
-      :key="item.value"
+      :key="item"
       :label="item.label"
       :value="item.label"
     />
@@ -47,7 +46,7 @@
     ref="multipleTableRefForTc"
     :data="tcObject.tableDataForTc.slice((currentPage4 - 1) * pageSize4,currentPage4 * pageSize4)"
     style="width: 100%"
-    :row-class-name="tableDataFtableRowClassNameForTc"
+    :row-class-name="tableRowClassName"
     @select="selectTc"
     @selection-change="handleSelectionChangeForTc"
   >
@@ -66,8 +65,22 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     />
-  <el-button @click="cancelTc" v-show="showCloseForTc">关闭 </el-button>
-  <el-button type="primary" @click="submitTc" v-show = "showSubmitForTc">确定</el-button>
+
+      <!-- 底栏 -->
+      <template #footer>
+        <!-- <span class="dialog-footer"> -->
+          <el-button
+            @click="cancelTc"
+            >关闭</el-button
+          >
+          <el-button
+            type="primary"
+            @click="submitTc"
+          >
+          确定
+          </el-button>
+        <!-- </span> -->
+      </template>
   </el-drawer>
 </div>
 </template>
@@ -75,7 +88,6 @@
 <script lang="ts" setup>
 import { reactive,ref,defineProps,watch,defineEmits} from 'vue'
 import { Search } from '@element-plus/icons-vue'
-import { ArrowDown } from '@element-plus/icons-vue'
 
 // 分页属性
 const currentPage4 = ref(1)
@@ -107,12 +119,6 @@ const handleCurrentChange = (val: number) => {
 
 
 
-// 套餐项目-表格字段
-interface tcxmTableFiled {
-  mc: string
-  xsj: string
-}
-
 //标签设置区域
 const value = ref('')
 const drawer2 = ref(false)
@@ -130,6 +136,7 @@ const props = defineProps({
       hideButton:false,
       //控制抽屉是否打开
       openDrawer:false,
+      //表格列属性
       tableLieForTc:[{
         prop:'bind',
         label:'列的显示名称'
@@ -138,30 +145,32 @@ const props = defineProps({
         prop:'bind2',
         label:'列的显示名称'
       }],
+      //表格字段
       tableDataForTc:[{
         bind:'列的显示字段名',
         bind2:'列的显示字段名'
       }],
+      //下拉框
       selectDown:[{
         value:'字段属性值-绑定用',
         label:'下拉显示的数据'
       }],
+      required:true
     })
     }
 })
+
 const hideButton=ref(false)
+const title = ref()
 //初始化方法
 created:{
-  // console.log("selectDown:" + props.tcObject.selectDown.forEach(prop=>{
-  //   console.log("prop:" + prop.value)
-  // }))
-  // console.log(currentPage4,pageSize4)
   if(!props.tcObject.isShowButtonForTc){
     showSubmitForTc.value = false
     showCloseForTc.value = false
   }
   hideButton.value=props.tcObject.hideButton
   drawer2.value=props.tcObject.openDrawer
+  title.value = props.tcObject.tableTitle
 
 }
 
@@ -197,9 +206,6 @@ const rowDataForTcMd = () => {
   emits('rowDataForTcMd',rowDataForTc.value);
 }
 
-// const rowDataForCyMd = () => {
-//   emits('rowDataForCyMd',rowDataForTc.value);
-// }
 let loading = ref(false)
 
 const showloading = () => loading.value = true
@@ -255,28 +261,25 @@ const selectTc = (selection, row) => {
 
 
 
-
-
 //套餐项目-表格的class样式
-const tableDataFtableRowClassNameForTc = ({
+const tableRowClassName = ({
   row,
   rowIndex,
 }: {
-  row: tcxmTableFiled
+  row: Array<String>
   rowIndex: number
 }) => {
-  if (rowIndex === 1) {
+  if (rowIndex % 2 === 0) {
     return 'warning-row'
-  } else if (rowIndex === 3) {
+  } else if (rowIndex % 2  === 1) {
     return 'success-row'
   }
   return ''
 }
 
-
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss"  >
 .el-table .warning-row {
   --el-table-tr-bg-color: var(--el-color-warning-light-9);
 }

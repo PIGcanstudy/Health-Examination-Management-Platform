@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <CheckItems @submitTc="submitTc" @submitCy="submitCy" :isShowButtonForTc="isShowButtonForTc" :isShowButtonForCy="isShowButtonForCy" :tableLieForTc="tableLieForTc" :tableLieForCy="tableLieForCy" :tcProject="tableDataForTc" :cytaocan="tableDataForCy" :selectDown="selectDown" /> -->
     <CheckItems :tcObject="tcObject"  @submitTc="submitTc"  />
   </div>
 </template>
@@ -30,7 +29,7 @@ const tcObject = reactive({
   tableTitle:'编辑分组',
   //是否隐藏触发抽屉按钮
   hideButton:false,
-  //是否打开抽屉
+  //默认是否打开抽屉
   openDrawer:false,
   //套餐项目表格列
   tableLieForTc : [
@@ -154,4 +153,4 @@ selectDown :[
 
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" ></style>
