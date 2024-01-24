@@ -1,5 +1,6 @@
 package com.zeroone.star.project.j3.typelib;
 
+import com.zeroone.star.project.dto.j3.typeLibrary.TypeLibDeleteDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeAddDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeLibraryTreeDTO;
 import com.zeroone.star.project.query.j3.TypeLibraryQuery;
@@ -29,6 +30,16 @@ public interface TypeLibApis {
      * @return
      */
     JsonVO<List<TProTypeVO>> queryTProTypeListByPage(TypeLibraryQuery typeLibraryQuery);
+
+
+    /**
+     *@Description: 批量删除类型库
+     *@Param: [typeLibDTO]
+     *@return:com.zeroone.star.project.vo.JsonVO<java.lang.Integer>
+     *@Author: Mr.Lin
+     *@Date: 2024/1/17 13:07
+     */
+    JsonVO<Integer> removeTypeLib(TypeLibDeleteDTO typeLibDeleteDTO);
     /**
     * @Description: 新增类型
     * @Param:
@@ -39,13 +50,13 @@ public interface TypeLibApis {
     */
     JsonVO<typeAddVO> addType(typeAddDTO typeadddto);
     /**
-    * @Description: 
+    * @Description:
     * @Param: [typeupdatevo]
     * @return: com.zeroone.star.project.vo.JsonVO<com.zeroone.star.project.vo.j3.typeLibrary.typeUpdateVO>
     * @Author: usagi
-    * @Date: 2024/1/21 
+    * @Date: 2024/1/21
     * @Time:17:18
     */
-    
+
     JsonVO<typeUpdateVO> updateType(typeUpdateVO typeupdatevo);
 }
