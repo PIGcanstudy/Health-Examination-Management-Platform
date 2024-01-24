@@ -1,21 +1,23 @@
-<template>
-  <el-table :data="rows" stripe>
-    <el-table-column prop="Index" label="编号" min-width="30%" />
-    <el-table-column prop="Name" label="名称" min-width="70%" />
-  </el-table>
+<template style="margin-top: 0px">
   <el-button type="primary" @click="exportFile">导出</el-button>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import { read, utils, writeFileXLSX } from 'xlsx'
+
+const props = defineProps({
+  url: String,
+  excelName: String
+})
+
 const rows = ref([])
 /**
  * 挂载的时候加载数据
  */
 onMounted(async () => {
   /* Download from https://sheetjs.com/pres.numbers */
-  const f = await fetch('https://sheetjs.com/pres.numbers')
+  const f = await fetch(props.url)
   const ab = await f.arrayBuffer()
   /* parse workbook */
   const wb = read(ab)
@@ -28,15 +30,10 @@ function exportFile() {
   const ws = utils.json_to_sheet(rows.value)
   const wb = utils.book_new()
   utils.book_append_sheet(wb, ws, 'Data')
-  writeFileXLSX(wb, 'SheetJSVueAoO.xlsx')
+  writeFileXLSX(wb, props.excelName + '.xlsx')
 }
 </script>
 
 <style scoped>
-.el-table {
-  width: 100%;
-}
-.el-button {
-  margin-top: 5px;
-}
+
 </style>

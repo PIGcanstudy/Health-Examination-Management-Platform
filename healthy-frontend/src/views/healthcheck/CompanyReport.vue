@@ -52,11 +52,13 @@
         <div class="tables">
 
           <Head name="汇总表">
-            <el-button type="primary">导出</el-button>
+            <Excel excelName="test" url="https://sheetjs.com/pres.numbers"></Excel>
+
           </Head>
           <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
             <el-tab-pane label="体检人员汇总表" name="first">
-              <BaseDataList :useFixed="false" :tableData="dataOneRow" :tableColumnAttribute="dataOneColumn"></BaseDataList>
+              <BaseDataList :useFixed="false" :tableData="dataOneRow" :tableColumnAttribute="dataOneColumn">
+              </BaseDataList>
             </el-tab-pane>
             <el-tab-pane label="复查人员汇总表" name="second">
               <BaseDataList :useFixed="false"></BaseDataList>
@@ -76,6 +78,8 @@ import PeoplleList from '@/components/peoplelist/PeopleList.vue'
 import { ref } from 'vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import Head from '@/components/head/Head.vue'
+import Excel from '@/components/excel/Excel.vue'
+
 
 const isDisabled = ref(true)
 const showChangeBtn = ref(true)

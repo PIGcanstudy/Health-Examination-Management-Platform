@@ -3,7 +3,6 @@
   <div>
     <Search :toSearchLabel="toSearch" :dataColumn="dataOneColumn" :dataRow="dataOneRow">
       <template v-slot="{ tableColumnAttribute, tableData }">
-        <Excel :tableColumnAttribute="tableColumnAttribute" :tableData="tableData"></Excel>
         <BaseDataList :tableColumnAttribute="tableColumnAttribute" :tableData="tableData"></BaseDataList>
       </template>
     </Search>
@@ -36,7 +35,6 @@ import { ref } from 'vue'
 import Search from '@/components/search/Search.vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import Head from '@/components/head/Head.vue'
-import Excel from '@/components/excel/Excel.vue'
 
 // 需要搜索的数据传入
 // const toSearch = ['单位名称', '信用代码', '联系人', '联系电话']

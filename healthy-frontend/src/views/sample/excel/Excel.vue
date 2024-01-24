@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Excel></Excel>
+    <div>示例为：'https://sheetjs.com/pres.numbers'</div>
+    <Excel excelName="test" url="https://sheetjs.com/pres.numbers"></Excel>
   </div>
 </template>
 
