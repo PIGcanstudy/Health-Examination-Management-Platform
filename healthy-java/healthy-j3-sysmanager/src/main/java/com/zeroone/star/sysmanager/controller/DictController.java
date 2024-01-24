@@ -7,6 +7,7 @@ import com.zeroone.star.project.j3.dictory.DictApis;
 import com.zeroone.star.project.query.j3.Dict.DictQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.entity.Dict;
+import com.zeroone.star.sysmanager.service.DictService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ import java.util.List;
 @Api("字典控制")
 public class DictController implements DictApis {
     @Autowired
-    com.zeroone.star.sysmanager.sysmanager.service.DictService dictService;
+    DictService dictService;
 
     @GetMapping(value = "/getAllDict")
     @ApiOperation(value = "分页获取全部字典")
