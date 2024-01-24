@@ -1,23 +1,24 @@
 package com.zeroone.star.sysmanager.controller;
 
 import com.zeroone.star.project.dto.PageDTO;
-import com.zeroone.star.project.dto.j3.message.MessageDTO;
-import com.zeroone.star.project.dto.j3.message.EditMessageDTO;
-import com.zeroone.star.project.dto.j3.message.SendMessageDTO;
+import com.zeroone.star.project.dto.j3.message.MessageResponseDTO;
+import com.zeroone.star.project.dto.j3.message.MessageSendDTO;
+import com.zeroone.star.project.dto.j3.message.MsgListDTO;
 import com.zeroone.star.project.j3.message.MessageApis;
+import com.zeroone.star.project.query.j3.msgGetAndSendAndUpate.MsgListQuery;
+import com.zeroone.star.project.query.j3.msgGetAndSendAndUpate.SendMsgQuery;
+import com.zeroone.star.project.query.j3.msgGetAndSendAndUpate.UpdateMsgQuery;
 import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.sysmanager.service.MessageService;
+import com.zeroone.star.sysmanager.service.ITMessageSendService;
+import com.zeroone.star.sysmanager.service.ITMessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.web.bind.annotation.*;
+import com.zeroone.star.sysmanager.entity.Message;
 import javax.annotation.Resource;
+import java.util.ArrayList;
 
-import javax.validation.Valid;
 
 /**
  * 消息管理Controller
@@ -29,20 +30,50 @@ import javax.validation.Valid;
 @RequestMapping("/j3-message")
 @Api("消息控制")
 public class MessageController implements MessageApis {
-
     @Resource
-    private MessageService messageService;
+    private ITMessageService messageService;
+
+    @DeleteMapping("/deleteByIds")
     @Override
-    public JsonVO<Boolean> deleteByIds(Long id) {
-        return null;
+    public JsonVO<Boolean> deleteByIds(@RequestParam ArrayList<String> ids) {
+        boolean success = messageService.removeByIds(ids);
+        if (success) {
+            return JsonVO.success(success);
+        }
+        return JsonVO.fail(success);
     }
 
     @ApiOperation("获取消息详情页列表")
     @GetMapping("/queryMessageDetail")
     @Override
-    public JsonVO<PageDTO<MessageDTO>> queryMessageDetail(PageDTO<MessageDTO> detailDTO) {
-        PageDTO<MessageDTO> page = messageService.queryMessageDetail(detailDTO);
-        return JsonVO.success(page);
+    public JsonVO<PageDTO<MessageResponseDTO>> selectMessageDetailPage(MessageSendDTO messageSend) {
+        return messageService.getJsonVO(messageSend);
+    }
+
+    @ApiOperation("获取消息列表")
+    @GetMapping("/queryMsgList")
+    @Override
+    public JsonVO<PageDTO<MsgListDTO>> queryMessageList(MsgListQuery msgListQuery) {
+        PageDTO<MsgListDTO> data = messageService.queryMessageList(msgListQuery);
+        return JsonVO.success(data);
+    }
+
+    @ApiOperation("发送消息")
+    @PostMapping("/sendMessage")
+    @Override
+    public JsonVO<Boolean> querySendMessage(SendMsgQuery sendMsgQuery) {
+        JsonVO<Boolean> booleanJsonVO = messageService.sendMsg(sendMsgQuery);
+
+        return booleanJsonVO;
+    }
+
+    @ApiOperation("更新消息")
+    @PutMapping("/updateMessage")
+    @Override
+    public JsonVO<Boolean> updateMessage(UpdateMsgQuery updateMsgQuery) {
+        JsonVO<Boolean> booleanJsonVO = messageService.updateMsg(updateMsgQuery);
+
+        return booleanJsonVO;
     }
 
 }

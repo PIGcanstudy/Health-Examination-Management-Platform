@@ -1,24 +1,19 @@
 package com.zeroone.star.sysmanager.mapper;
 
 
-
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zeroone.star.sysmanager.entity.Dict;
-
+import com.zeroone.star.sysmanager.entity.MessageSend;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
- * 字典 Mapper 接口
+ * 消息发送 Mapper 接口
  * </p>
  *
-
-
  * @author 坚强少年
  * @since 2024-01-16
  */
 @Mapper
-public interface DictMapper extends BaseMapper<Dict> {
-
+public interface MessageSendMapper extends BaseMapper<MessageSend> {
 
 }
