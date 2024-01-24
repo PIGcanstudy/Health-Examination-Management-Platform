@@ -7,7 +7,6 @@ import com.zeroone.star.project.j3.stopword.StopWordApis;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.service.ITStopWordService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,10 +24,10 @@ import java.util.ArrayList;
 @Api("禁用词管理")
 public class StopWordController implements StopWordApis {
 
-    @ApiOperation("分页查找禁用词")
-    @GetMapping("/queryStopWord")
     @Resource
     private ITStopWordService stopWordService;
+    @ApiOperation("分页查找禁用词")
+    @GetMapping("/queryStopWord")
     @Override
     public JsonVO<PageDTO<StopWordDTO>> queryStopWord(PageDTO<StopWordDTO> query) {
         return null;
