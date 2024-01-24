@@ -1,7 +1,7 @@
 <!-- 单位报告 -->
 <template>
   <div>
-    <el-container>
+    <el-container style="height: 600px;">
       <el-aside>
         <PeoplleList title="报告查询"></PeoplleList>
       </el-aside>
@@ -13,37 +13,37 @@
             <el-button v-if="showSaveBtn" type="primary" @click="save">保存</el-button>
           </Head>
           <div>
-            <el-form id="myForm" :disabled="isDisabled" :model="formData" :inline="true">
-              <el-form-item v-model="formData.num" label="报告编号">
-                <el-input placeholder="请输入" clearable class="input" />
+            <el-form :disabled="isDisabled" :model="formData" :inline="true" class="myForm">
+              <el-form-item label="报告编号">
+                <el-input v-model="formData.code" placeholder="请输入" clearable class="input" />
               </el-form-item>
               <el-form-item label="体检类型">
-                <el-select v-model="formData.checkupType" placeholder="更多操作">
+                <el-select v-model="formData.type" placeholder="请选择">
                   <el-option label="健康体检" value="type1"></el-option>
                   <el-option label="职业体检" value="type2"></el-option>
                   <el-option label="" value="type3"></el-option>
                 </el-select>
               </el-form-item>
               <el-form-item label="体检单位">
-                <el-input placeholder="请输入" clearable class="input" />
+                <el-input v-model="formData.checkUnit" placeholder="请输入" clearable />
               </el-form-item>
               <el-form-item label="委托单位">
-                <el-input placeholder="请输入" clearable class="input" />
+                <el-input v-model="formData.commissionedUnit" placeholder="请输入" clearable />
               </el-form-item>
               <el-form-item label="报告日期">
-                <el-input placeholder="请输入" clearable class="input" />
+                <el-input v-model="formData.date" placeholder="请输入" clearable />
               </el-form-item>
               <el-form-item label="体检人数">
-                <el-input placeholder="请输入" clearable class="input" />
+                <el-input v-model="formData.num" placeholder="请输入" clearable />
               </el-form-item>
               <el-form-item label="体检项目">
-                <el-input placeholder="请输入" clearable type="textarea" />
+                <el-input v-model="formData.project" placeholder="请输入" clearable type="textarea" />
               </el-form-item>
               <el-form-item label="评论依据">
-                <el-input placeholder="请输入" clearable type="textarea" />
+                <el-input v-model="formData.reason" placeholder="请输入" clearable type="textarea" />
               </el-form-item>
               <el-form-item label="体检结论与处理意见">
-                <el-input placeholder="请输入" clearable type="textarea" />
+                <el-input v-model="formData.result" placeholder="请输入" clearable type="textarea" />
               </el-form-item>
             </el-form>
           </div>
@@ -75,7 +75,7 @@
 
 <script setup>
 import PeoplleList from '@/components/peoplelist/PeopleList.vue'
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import Head from '@/components/head/Head.vue'
 import Excel from '@/components/excel/Excel.vue'
@@ -94,12 +94,21 @@ function save() {
   isDisabled.value = true
   showChangeBtn.value = true
   showSaveBtn.value = false
+  console.log(formData)
 }
 
 
-const formData = ref(
+const formData = reactive(
   {
-
+    code: '',
+    type: '',
+    checkUnit: '',
+    commissionedUnit: '',
+    date: '',
+    num: '',
+    project: '',
+    reason: '',
+    result: ''
   }
 )
 
@@ -183,6 +192,10 @@ const dataOneRow = [
 .head {
   font-weight: bold;
 }
+
+// .myForm {
+
+// }
 
 // .input {
 //   --el-input-width: 400px;
