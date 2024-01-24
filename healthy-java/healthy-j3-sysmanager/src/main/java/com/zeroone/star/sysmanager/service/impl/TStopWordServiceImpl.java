@@ -37,8 +37,8 @@ public class TStopWordServiceImpl extends ServiceImpl<StopWordMapper, StopWord> 
         StopWord stopWord = new StopWord();
         stopWord.setId(updateWord.getId());
         stopWord.setTitle(updateWord.getTitle());
-        stopWord.setUpdateBy();
-        stopWordMapper.updateById()
+/*        stopWord.setUpdateBy();
+        stopWordMapper.updateById()*/
         return null;
     }
 }
