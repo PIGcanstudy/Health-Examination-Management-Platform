@@ -35,7 +35,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, com.zeroone.star.pr
 //        wrapper.like("name", query.getName());
         // 执行查询
 //        Page<DictDTO> result = baseMapper.selectPage(page, wrapper);
-//        return PageDTO.create(result);
+        return null;
     }
 
     @Override

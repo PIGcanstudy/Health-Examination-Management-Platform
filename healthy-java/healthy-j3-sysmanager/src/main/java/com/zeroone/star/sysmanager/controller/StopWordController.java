@@ -2,13 +2,16 @@ package com.zeroone.star.sysmanager.controller;
 
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.stopword.StopWordDTO;
+import com.zeroone.star.project.dto.j3.stopword.UpdateWordDTO;
 import com.zeroone.star.project.j3.stopword.StopWordApis;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.sysmanager.service.ITStopWordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 
 /**
@@ -24,6 +27,8 @@ public class StopWordController implements StopWordApis {
 
     @ApiOperation("分页查找禁用词")
     @GetMapping("/queryStopWord")
+    @Resource
+    private ITStopWordService stopWordService;
     @Override
     public JsonVO<PageDTO<StopWordDTO>> queryStopWord(PageDTO<StopWordDTO> query) {
         return null;
@@ -39,15 +44,19 @@ public class StopWordController implements StopWordApis {
     @PutMapping("/updateWord")
     @ApiOperation("修改禁用词")
     @Override
-    public JsonVO<StopWordDTO> updateWord(String title) {
-
-        return null;
+    public JsonVO<StopWordDTO> updateWord(UpdateWordDTO updateWord) {
+        StopWordDTO stopWord = stopWordService.updateWord(updateWord);
+        return JsonVO.success(stopWord);
     }
 
     @DeleteMapping("/deleteWordsByIds")
     @ApiOperation("批量删除禁用词")
     @Override
     public JsonVO<Boolean> deleteWordsByIds(ArrayList<String> ids) {
-        return null;
+        boolean success = stopWordService.removeByIds(ids);
+        if (success) {
+            return JsonVO.success(success);
+        }
+        return JsonVO.fail(success);
     }
 }
