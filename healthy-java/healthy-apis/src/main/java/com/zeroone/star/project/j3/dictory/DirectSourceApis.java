@@ -1,3 +1,5 @@
+
+
 package com.zeroone.star.project.j3.direct;
 
 import com.zeroone.star.project.query.j3.WordTypeListQuery;

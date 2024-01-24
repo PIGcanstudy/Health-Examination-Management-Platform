@@ -13,7 +13,6 @@ import com.zeroone.star.sysmanager.service.ITMessageSendService;
 import com.zeroone.star.sysmanager.service.ITMessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import com.zeroone.star.sysmanager.entity.Message;
 import javax.annotation.Resource;

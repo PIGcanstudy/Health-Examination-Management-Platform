@@ -1,8 +1,8 @@
 package com.zeroone.star.sysmanager.controller;
 
+import com.zeroone.star.project.dto.j3.typeLibrary.TypeLibDeleteDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeAddDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeLibraryTreeDTO;
-import com.zeroone.star.project.j3.sysconfig.SysConfigApis;
 import com.zeroone.star.project.j3.typelib.TypeLibApis;
 import com.zeroone.star.project.query.j3.TypeLibraryQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -43,6 +43,11 @@ public class TypeLibController implements TypeLibApis {
      */
     @Override
     public JsonVO<List<TProTypeVO>> queryTProTypeListByPage(TypeLibraryQuery typeLibraryQuery) {
+        return null;
+    }
+
+    @Override
+    public JsonVO<Integer> removeTypeLib(TypeLibDeleteDTO typeLibDeleteDTO) {
         return null;
     }
 
