@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_QUERY_
-#define _SAMPLE_QUERY_
+#ifndef _ObtainSampleList_QUERY_
+#define _ObtainSampleList_QUERY_
 
 #include "../../GlobalInclude.h"
 #include "domain/query/PageQuery.h"

@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_CONTROLLER_
-#define _SAMPLE_CONTROLLER_
+#ifndef _ObtainSampleList_CONTROLLER_
+#define _ObtainSampleList_CONTROLLER_
 
 #include "domain/vo/BaseJsonVO.h"
 #include "domain/query/sample/ObtainSampleListQuery.h"

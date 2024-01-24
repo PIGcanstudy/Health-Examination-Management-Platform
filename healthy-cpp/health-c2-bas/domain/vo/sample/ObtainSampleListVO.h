@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_VO_
-#define _SAMPLE_VO_
+#ifndef _ObtainSampleList_VO_
+#define _ObtainSampleList_VO_
 
 #include "../../GlobalInclude.h"
 #include "../../dto/sample/ObtainSampleListDTO.h"
