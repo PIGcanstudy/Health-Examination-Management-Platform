@@ -17,7 +17,7 @@ public interface PortfolioProjectApi {
      * @param:
      * @return:
      **/
-    JsonVO<PortfolioItemDTO> getProtfolioItem(Integer id) throws Exception;
+    JsonVO<PortfolioItemDTO> getPortfolioItem(String id) throws Exception;
 
     /**
      * @description: 获取项目列表 (条件+分页）
