@@ -42,7 +42,13 @@ uint64_t SampleDAO::count(const SampleQuery::Wrapper & query)
 {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM sample";
-	SAMPLE_TERAM_PARSE(query, sql);
+	SqlParams params; sql << " WHERE 1=1"; if (query->name) {
+		sql << " AND `name`=?"; params.emplace_back(SqlParam("s", std::make_shared<std::string>(query->name.getValue(""))));
+	} if (query->sex) {
+		sql << " AND sex=?"; params.emplace_back(SqlParam("s", std::make_shared<std::string>(query->sex.getValue(""))));
+	} if (query->age) {
+		sql << " AND age=?"; params.emplace_back(SqlParam("i", std::make_shared<int>(query->age.getValue(0))));
+	};
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }

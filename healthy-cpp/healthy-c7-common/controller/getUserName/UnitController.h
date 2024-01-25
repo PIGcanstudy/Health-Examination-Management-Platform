@@ -49,19 +49,28 @@ public://定义接口
 		// 定义其他查询参数描述
 
 		//是否通过检查
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "ispass", ZH_WORDS_GETTER("evalue.field.ispass"),2,true);
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "ispass", ZH_WORDS_GETTER("getUserName.field.ispass"),2,true);
 		// 复查状态  复查人员在复检人员信息表中查询
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "isRecheck", ZH_WORDS_GETTER("evalue.field.reviewStatu"),1,true);
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "isRecheck", ZH_WORDS_GETTER("getUserName.field.isRecheck"),1,true);
 		//开始时间
-		API_DEF_ADD_QUERY_PARAMS(String, "startDate", ZH_WORDS_GETTER("evalue.field.startDate"), "2020-10-12", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "startDate", ZH_WORDS_GETTER("getUserName.field.startDate"), "2020-10-12", false);
 		//结束时间
-		API_DEF_ADD_QUERY_PARAMS(String, "endDate", ZH_WORDS_GETTER("evalue.field.endDate"), "2023-10-12", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "endDate", ZH_WORDS_GETTER("getUserName.field.endDate"), "2023-10-12", false);
 		//姓名
-		API_DEF_ADD_QUERY_PARAMS(String, "personName", ZH_WORDS_GETTER("evalue.field.personName"), "坤坤", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "personName", ZH_WORDS_GETTER("getUserName.field.personName"), "坤坤", false);
 		//体检编号
-		API_DEF_ADD_QUERY_PARAMS(String, "testNum", ZH_WORDS_GETTER("evalue.field.testNum"), "x12345", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "testNum", ZH_WORDS_GETTER("getUserName.field.testNum"), "x12345", false);
 		//单位名称
-		API_DEF_ADD_QUERY_PARAMS(String, "dept", ZH_WORDS_GETTER("evalue.field.dept"), "xxx有限公司", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "dept", ZH_WORDS_GETTER("getUserName.field.dept"), "xxx有限公司", false);
+
+		//性别
+		API_DEF_ADD_QUERY_PARAMS(String, "sex", ZH_WORDS_GETTER("getUserName.field.sex"), "男", false);
+		//年龄
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "age", ZH_WORDS_GETTER("getUserName.field.age"), 18, false);
+		//体检类型 physicalType
+		API_DEF_ADD_QUERY_PARAMS(String, "physicalType", ZH_WORDS_GETTER("getUserName.field.physicalType"), "职业体检", false);
+		//是否零星体检(0-否，1-是)
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "sporadicPhysical", ZH_WORDS_GETTER("getUserName.field.sporadicPhysical"), 1, false);
 	}
 
 	//定义分页查询单位列表接口

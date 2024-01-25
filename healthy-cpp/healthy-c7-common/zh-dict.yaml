@@ -1,4 +1,4 @@
-evalue:
+getUserName:
  field:
   ispass: 体检类型
   isRecheck: 复查状态
@@ -7,3 +7,7 @@ evalue:
   personName: 姓名
   testNum: 体检编号
   dept: 单位名称
+  sex: 性别
+  age: 年龄
+  physicalType: 体检类型
+  sporadicPhysical: 是否零星体检(0-否，1-是)
