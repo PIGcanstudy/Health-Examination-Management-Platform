@@ -2,7 +2,7 @@
  * @Author: setti5 2283356040@qq.com
  * @Date: 2024-01-22 18:16:25
  * @LastEditors: setti5 2283356040@qq.com
- * @LastEditTime: 2024-01-23 22:58:54
+ * @LastEditTime: 2024-01-25 20:26:55
  * @FilePath: \zero-one-healthy-check\healthy-frontend\src\views\healthcheck\MedivalExaminer.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -10,11 +10,11 @@
 <template>
   <el-container style="height: 100%" class="container">
     <el-aside style="width: 20%">
-      <!-- 还没改名字：团检订单 -->
-      <PeopleList />
+      <PeopleList title="团检订单" :table-column-attribute="tableColumnAttribute" />
     </el-aside>
 
-    <div class="collapse" style="height: 100%; line-height: 100vh; margin: 4px">
+    <!-- 点击折叠侧边栏事件，未定义方法 -->
+    <div class="collapse" style="height: 100%; line-height: 100vh; margin: 4px" @collapse-aside="collapseAside">
       <el-icon><ArrowLeft /></el-icon>
     </div>
 
@@ -23,7 +23,7 @@
       <div class="center-part">
         <el-card class="title-operation">
           <el-row>
-            <div class="title" style="margin-right: 15px; font-weight: 550">团检人员</div>
+            <span style="margin-right: 15px; font-weight: 550; display: flex; align-items: center">团检人员</span>
             <el-button type="primary">
               <el-icon><Upload /></el-icon>
               导入
@@ -202,15 +202,18 @@ import { Upload, CirclePlus, Download, ArrowLeft } from '@element-plus/icons-vue
 }
 .title-operation {
   height: 7%;
+  font-size: 14px;
   display: flex;
+  justify-content: center;
+  text-align: center;
   align-items: center;
   background-color: #f0faff;
   border: 1px solid #abdcff;
 }
 .title-bar {
   height: 7%;
-  font-weight: 900;
-
+  font-size: 14px;
+  font-weight: 550;
   display: flex;
   justify-content: center;
   align-items: center;

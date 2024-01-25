@@ -1,14 +1,28 @@
 <template>
-  <div class="container">
-    <!-- 列表名称区域 -->
+  <div class="box-card">
+    <!-- 顶部标题区域 -->
     <template v-if="props?.useHeader">
       <el-card class="card-header">
         <span>{{ props.title }}</span>
       </el-card>
     </template>
+    <!-- 是否使用el-tabs-插槽 -->
+    <div class="change-pages">
+      <slot></slot>
+    </div>
 
-    <!-- 主体部分 -->
+    <!-- 主体部分的内容 -->
     <el-card class="card-main" shadow="hover">
+      <!-- 使用多个按钮组(插槽) -->
+      <div class="button-group">
+        <slot></slot>
+      </div>
+
+      <!-- 使用搜索框(插槽) -->
+      <div class="serach-bar">
+        <slot></slot>
+      </div>
+
       <!-- 表单区域 -->
       <el-form ref="formRef" :model="form">
         <template #default>
@@ -19,7 +33,8 @@
               </el-radio-group>
             </el-form-item>
 
-            <el-form-item prop="switch">
+            <!-- 使用v-if、v-show组件会消失，暂时搁置 ----------------------------------------------------------------------------------------->
+            <el-form-item v-if="props.isShowSwitch" prop="switch">
               <el-switch v-model="form.switch" inline-prompt active-text="复查" inactive-text="非复"></el-switch>
             </el-form-item>
           </el-row>
@@ -38,6 +53,10 @@
             <el-input v-model="form.name" placeholder="请输入姓名" clearable />
           </el-form-item>
           <template v-if="isShowInput">
+            <!-- 是否使用身份证号搜索输入框 -->
+            <div class="add-input">
+              <slot></slot>
+            </div>
             <el-form-item prop="serialNumber">
               <el-input v-model="form.serialNumber" placeholder="请输入体检编号" clearable />
             </el-form-item>
@@ -46,7 +65,7 @@
             </el-form-item>
           </template>
 
-          <!-- 按钮区域 -->
+          <!-- 表单按钮区域 -->
           <el-form-item>
             <el-button type="primary" @click="onSubmit">查询</el-button>
             <el-button plain @click="resetForm">重置</el-button>
@@ -60,41 +79,53 @@
       </el-form>
 
       <!-- 表格区域 -->
+      <!-- 需要替换表格测试(插槽) -->
       <div class="table-area">
-        <el-table v-loading="openLoading" style="font-size: 12px" :data="props?.tableData" @selection-change="handleSelectionChange">
-          <!-- 第一列：多选 -->
-          <el-table-column v-if="props?.useSelectColumn" type="selection" width="25" />
-          <el-table-column prop="name" label="姓名" width="55"></el-table-column>
-          <el-table-column prop="gender" label="性别" width="55"></el-table-column>
-          <el-table-column prop="age" label="年龄" width="55"></el-table-column>
-          <!-- 第五列：标签 -->
-          <el-table-column prop="tag" label="标签" width="55" style="display: flex">
-            <el-tag :type="info" style="margin-right: 6px">1</el-tag>
-            <el-tag :type="info">1</el-tag>
-          </el-table-column>
-
-          <!-- 表格没有数据的样式 -->
-          <template #empty>
-            <el-empty class="emptyTable" description="没有数据"></el-empty>
-          </template>
-        </el-table>
+        <slot></slot>
       </div>
+
+      <!-- 原表格，可以注释掉以测试列表样式 -->
+      <el-table v-loading="openLoading" style="font-size: 12px; width: 100%" table-layout="auto" :data="props?.tableData" @selection-change="handleSelectionChange">
+        <!-- 第一列：多选 -->
+        <el-table-column v-if="props?.useSelectColumn" type="selection" width="55" />
+        <!-- <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label" class-name="class-name"> -->
+        <!-- 表格的列内容如果使用tag -->
+        <!-- <template v-if="item.useTag" #default="{ row }">
+            <el-tag :type="row[item.prop].tagType">
+              {{ row[item.prop].value }}
+            </el-tag>
+          </template>
+        </el-table-column> -->
+        <el-table-column prop="name" label="姓名"></el-table-column>
+        <el-table-column prop="gender" label="性别"></el-table-column>
+        <el-table-column prop="age" label="年龄"></el-table-column>
+        <!-- 第五列：标签 -->
+        <el-table-column prop="tag" label="标签" style="display: flex">
+          <template #default>
+            <el-tag :type="info">好</el-tag>
+            <el-tag :type="info">坏</el-tag>
+          </template>
+        </el-table-column>
+
+        <!-- 表格没有数据的样式 -->
+        <template #empty>
+          <el-empty class="emptyTable" description="没有数据"></el-empty>
+        </template>
+      </el-table>
     </el-card>
 
-    <!-- 分页区域 -->
-    <div v-if="props?.usePagination">
+    <!-- 分页器 -->
+    <template v-if="props?.usePagination">
       <el-pagination
         v-model:current-page="paginationData.currentPage"
         v-model:page-size="paginationData.pageSize"
         :page-sizes="props.pageSizes"
-        pager-count="5"
-        layout="->, prev, pager, next"
+        layout=" prev, jumper, next"
         :total="props.total"
-        style="position: absolute; display: flex; justify-content: center; align-items: center; text-align: center; bottom: 16px; left: 16px"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       />
-    </div>
+    </template>
   </div>
 </template>
 
@@ -119,10 +150,18 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
+  // 当前checkbox状态(Rom)
+  checkboxItem: {
+    type: Array,
+    require: true,
+    default: () => {
+      return ['已检', '未检']
+    }
+  },
   // 是否使用滑块开关
   isShowSwitch: {
     type: Boolean,
-    defaul: true
+    default: true
   },
   // 是否显示日期组件
   isDateVisible: {
@@ -138,7 +177,7 @@ const props = defineProps({
   // 表格数据
   tableData: {
     type: Array,
-    default: (defaultTableData) => [defaultTableData]
+    default: () => []
   },
   // 是否使用使用多选列
   useSelectColumn: {
@@ -156,20 +195,12 @@ const props = defineProps({
   total: {
     type: Number,
     require: true,
-    default: 80
+    default: 50
   },
   // 是否使用分页器
   usePagination: {
     type: Boolean,
     default: true
-  },
-  // 当前checkbox状态(移动位置会导致表格没有数据，？？？)
-  checkboxItem: {
-    type: Array,
-    require: true,
-    default: () => {
-      return ['已檢', '未檢']
-    }
   },
 
   // 查询表单内容配置(Rom)
@@ -179,7 +210,6 @@ const props = defineProps({
   }
 })
 
-// 表单部分的处理(未完)
 // 表单验证逻辑
 const form = ref({
   // 设置默认选择哪个状态
@@ -304,7 +334,7 @@ const handleCurrentChange = (currentPage) => {
   emits('updateTableData', paginationData.value.pageSize, currentPage)
 }
 
-// 表单的相关属性方法还未解决
+// 表单的相关属性方法还未解决完
 defineExpose({
   // 表单部分
   // form,
@@ -319,7 +349,7 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
-.container {
+.box-card {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -336,25 +366,37 @@ defineExpose({
   border: 1px solid #abdcff;
 
   span {
+    font-size: 14px;
     font-weight: 550;
     text-align: center;
   }
 }
 
 .card-main {
-  height: 93%;
+  min-height: 93%;
   width: 100%;
-}
-
-.deno-pagination-block + .deep-pagination-block {
-  margin-top: 10px;
-}
-.demo-pagination-block .demonstration {
-  margin-bottom: 16px;
+  height: 83vh;
 }
 
 .emptyTable {
   min-width: auto;
   min-height: auto;
+}
+
+.el-pagination {
+  position: absolute;
+  justify-content: center;
+  bottom: 0;
+  margin: 0;
+  left: 30px;
+}
+::v-deep .el-pagination .btn-prev,
+::v-deep .el-pagination .btn-next {
+  margin: 0;
+  padding: 0;
+}
+::v-deep .el-pagination .el-pager li.number {
+  margin: 0;
+  padding: 0;
 }
 </style>
