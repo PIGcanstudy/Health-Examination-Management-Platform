@@ -16,8 +16,8 @@
       @update-selected-rows="selectRows"
     >
       <!-- fixed固定列 -->
-      <template #fixed="">
-        <el-button type="primary" style="margin-right: 5px">
+      <template #fixed="{ row }">
+        <el-button type="primary" style="margin-right: 5px" @click="handelLook(row)">
           <el-icon><View></View></el-icon>
           查看
         </el-button>
@@ -76,48 +76,53 @@
             <el-icon><Plus></Plus></el-icon>
             新增
           </el-button>
-          <el-dialog v-model="dialogVisible" title="新增" width="30%" :before-close="handleClose">
+          <!-- 新增对话框区域 -->
+          <el-dialog v-model="dialogVisible" title="新增" width="60%" :before-close="handleClose">
             <el-row>
-              <el-col :span="18">
+              <el-col :span="20">
                 <el-form :model="basicForm" inline>
-                  <el-form-item label="单位名称">
-                    <el-input v-model="basicForm.unitName" placeholder="请输入单位名称"></el-input>
+                  <el-form-item label="单位名称" :label-width="labelWidth">
+                    <el-input v-model="basicForm.unitName" placeholder="请输入单位名称" style="width: 232px"></el-input>
                   </el-form-item>
-                  <el-form-item label="体检类型">
-                    <el-select v-model="basicForm.examinationType"></el-select>
+                  <el-form-item label="体检类型" :label-width="labelWidth">
+                    <el-select v-model="basicForm.examinationType" style="width: 232px"></el-select>
                   </el-form-item>
-                  <el-form-item label="统一社会信用代码">
-                    <el-input v-model="basicForm.creditCode" placeholder="请输入统一社会信用代码"></el-input>
+                  <el-form-item label="统一社会信用代码" :label-width="labelWidth">
+                    <el-input v-model="basicForm.creditCode" placeholder="请输入统一社会信用代码" style="width: 232px"></el-input>
                   </el-form-item>
-                  <el-form-item label="行业类型">
-                    <el-select v-model="basicForm.workType"></el-select>
+                  <el-form-item label="行业类型" :label-width="labelWidth">
+                    <el-select v-model="basicForm.workType" style="width: 232px"></el-select>
                   </el-form-item>
-                  <el-form-item label="所属地区">
-                    <el-select v-model="basicForm.region"></el-select>
+                  <el-form-item label="所属地区" :label-width="labelWidth">
+                    <el-select v-model="basicForm.region" style="width: 232px"></el-select>
                   </el-form-item>
-                  <el-form-item label="经济类型">
-                    <el-select v-model="basicForm.ecoType"></el-select>
+                  <el-form-item label="经济类型" :label-width="labelWidth">
+                    <el-select v-model="basicForm.ecoType" style="width: 232px"></el-select>
                   </el-form-item>
-                  <el-form-item label="单位注册地址">
-                    <el-input v-model="basicForm.location"></el-input>
+                  <el-form-item label="单位注册地址" :label-width="labelWidth">
+                    <el-input v-model="basicForm.location" style="width: 232px"></el-input>
                   </el-form-item>
-                  <el-form-item label="企业规模">
-                    <el-select v-model="basicForm.scale"></el-select>
+                  <el-form-item label="企业规模" :label-width="labelWidth">
+                    <el-select v-model="basicForm.scale" style="width: 232px"></el-select>
                   </el-form-item>
-                  <el-form-item label="职工人数">
-                    <el-input v-model="basicForm.number"></el-input>
+                  <el-form-item label="职工人数" :label-width="labelWidth">
+                    <el-input v-model="basicForm.number" style="width: 232px"></el-input>
                   </el-form-item>
-                  <el-form-item label="接触职业病危害因素人数">
-                    <el-input v-model="basicForm.dangerousNum"></el-input>
+                  <el-form-item label="接触职业病危害因素人数" :label-width="labelWidth">
+                    <el-input v-model="basicForm.dangerousNum" style="width: 232px"></el-input>
                   </el-form-item>
-                  <el-form-item label="体检联系人姓名">
-                    <el-input v-model="basicForm.contactName"></el-input>
-                  </el-form-item>
-                  <el-form-item label="体检联系人电话">
-                    <el-input v-model="basicForm.contactPhone"></el-input>
-                  </el-form-item> </el-form
-              ></el-col>
+                </el-form>
+              </el-col>
+              <el-col :span="4"> 上传图片 </el-col>
             </el-row>
+            <el-form :model="contactForm" inline>
+              <el-form-item label="体检联系人姓名" :label-width="130">
+                <el-input v-model="contactForm.people" style="width: 260px"></el-input>
+              </el-form-item>
+              <el-form-item label="体检联系人电话" :label-width="130">
+                <el-input v-model="contactForm.phone" style="width: 260px"></el-input>
+              </el-form-item>
+            </el-form>
             <template #footer>
               <span class="dialog-footer">
                 <el-button @click="dialogVisible = false">取消</el-button>
@@ -177,6 +182,7 @@ const usePagination = ref(true)
 const BaseDataRef = ref()
 const dialogVisible = ref(false)
 const useFixed = ref(true)
+const labelWidth = '125px'
 // table列
 const tableColumnAttribute = ref([
   { prop: 'name', label: '单位名称', width: '240', align: 'center' },
@@ -269,6 +275,9 @@ const tableData = ref([
     phone: '--'
   }
 ])
+function handelLook(row) {
+  console.log(row)
+}
 const formData = reactive({
   unitName: '',
   creditCode: '',
@@ -285,9 +294,12 @@ const basicForm = reactive({
   location: '',
   scale: '',
   number: '',
-  dangerousNum: '',
-  contactName: '',
-  contactPhone: ''
+  dangerousNum: ''
+})
+// 联系人表单
+const contactForm = reactive({
+  people: '',
+  phone: ''
 })
 const closeForm = () => {
   useForm.value = !useForm.value
