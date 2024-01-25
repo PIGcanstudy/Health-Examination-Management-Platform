@@ -1,6 +1,6 @@
 <template>
   <el-radio class="radio">
-    <span class="main">
+    <div class="main">
       <div class="top">
         <el-row justify="space-between">
           <el-col span="12">
@@ -28,13 +28,12 @@
           </el-col>
         </el-row>
       </div>
-    </span>
+    </div>
   </el-radio>
 </template>
 
 <style lang="scss" scoped>
 .radio {
-  // display: inline;  // flex
   justify-content: space-between;
   width: 100%;
   margin-bottom: 10px;
@@ -45,16 +44,19 @@
 .main {
   color: black;
   margin: 10px;
+  width: 100%;
 }
 
 
 
 .top {
   margin: 10px;
+  width: 100%;
 }
 
 .bottom {
   margin: 10px;
+  width: 100%;
 }
 
 .not,

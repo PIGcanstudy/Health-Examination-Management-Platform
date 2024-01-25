@@ -7,7 +7,6 @@
     <Radio label="5"></Radio>
     <Radio label="6"></Radio>
     <Radio label="7"></Radio>
-
   </el-radio-group>
 </template>
 
