@@ -1,8 +1,10 @@
 <!-- 流程展示 -->
 <template>
-  <div>流程展示</div>
-</template>
-
-<script setup></script>
-
-<style lang="scss" scoped></style>
+    <Navigation></Navigation>
+  </template>
+  
+<script setup>
+  import Navigation from '../../components/navigation/Navigation.vue'
+</script>
+  
+  <style lang="scss" scoped></style>

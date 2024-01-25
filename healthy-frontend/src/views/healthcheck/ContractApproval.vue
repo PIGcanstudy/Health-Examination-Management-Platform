@@ -9,6 +9,7 @@
     <div  class="right">
   <el-container>
       <el-aside width="200px">
+        <PeopleList01></PeopleList01>
       </el-aside>
       <el-main width="600px">
         <div display:flex size="large">
@@ -126,6 +127,7 @@
 </template>
 <script setup>
 import { ref } from 'vue';
+import PeopleList from '@/components/newButton/PeopleList01.vue'
 const value = ref('')
 const options = [
   {
