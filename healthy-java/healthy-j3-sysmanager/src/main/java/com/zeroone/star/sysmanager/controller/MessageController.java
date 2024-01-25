@@ -3,16 +3,20 @@ package com.zeroone.star.sysmanager.controller;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.message.MessageResponseDTO;
 import com.zeroone.star.project.dto.j3.message.MessageSendDTO;
+import com.zeroone.star.project.dto.j3.message.MsgListDTO;
 import com.zeroone.star.project.j3.message.MessageApis;
+import com.zeroone.star.project.query.j3.msgGetAndSendAndUpate.MsgListQuery;
+import com.zeroone.star.project.query.j3.msgGetAndSendAndUpate.SendMsgQuery;
+import com.zeroone.star.project.query.j3.msgGetAndSendAndUpate.UpdateMsgQuery;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.sysmanager.service.ITMessageSendService;
 import com.zeroone.star.sysmanager.service.ITMessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
-
+import com.zeroone.star.sysmanager.entity.Message;
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -25,7 +29,6 @@ import java.util.List;
 @RequestMapping("/j3-message")
 @Api("消息控制")
 public class MessageController implements MessageApis {
-
     @Resource
     private ITMessageService messageService;
 
@@ -43,9 +46,33 @@ public class MessageController implements MessageApis {
     @GetMapping("/queryMessageDetail")
     @Override
     public JsonVO<PageDTO<MessageResponseDTO>> selectMessageDetailPage(MessageSendDTO messageSend) {
-        PageDTO<MessageResponseDTO> data = messageService.selectMessageDetailPage(messageSend);
+        return messageService.getJsonVO(messageSend);
+    }
+
+    @ApiOperation("获取消息列表")
+    @GetMapping("/queryMsgList")
+    @Override
+    public JsonVO<PageDTO<MsgListDTO>> queryMessageList(MsgListQuery msgListQuery) {
+        PageDTO<MsgListDTO> data = messageService.queryMessageList(msgListQuery);
         return JsonVO.success(data);
     }
 
+    @ApiOperation("发送消息")
+    @PostMapping("/sendMessage")
+    @Override
+    public JsonVO<Boolean> querySendMessage(SendMsgQuery sendMsgQuery) {
+        JsonVO<Boolean> booleanJsonVO = messageService.sendMsg(sendMsgQuery);
+
+        return booleanJsonVO;
+    }
+
+    @ApiOperation("更新消息")
+    @PutMapping("/updateMessage")
+    @Override
+    public JsonVO<Boolean> updateMessage(UpdateMsgQuery updateMsgQuery) {
+        JsonVO<Boolean> booleanJsonVO = messageService.updateMsg(updateMsgQuery);
+
+        return booleanJsonVO;
+    }
 
 }

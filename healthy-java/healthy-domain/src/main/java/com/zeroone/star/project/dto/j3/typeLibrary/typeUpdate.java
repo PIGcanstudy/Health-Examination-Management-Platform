@@ -31,7 +31,7 @@ public class typeUpdate {
     @ApiModelProperty(value = "上级类型",example = "行业类型")
     private String fatherType;
     @ApiModelProperty(value = "排序",example = "2")
-    private Integer order;
+    private Integer orderNum;
     @ApiModelProperty(value = "备注",example = "这里是备注")
-    private String notes;
+    private String remark;
 }

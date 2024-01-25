@@ -15,5 +15,6 @@
             <groupId>com.zeroone.star</groupId>
             <artifactId>healthy-domain</artifactId>
         </dependency>
+
     </dependencies>
 </project>

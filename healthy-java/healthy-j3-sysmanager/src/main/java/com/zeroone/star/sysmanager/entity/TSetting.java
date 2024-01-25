@@ -7,20 +7,19 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
- * 消息实体
+ * 系统配置（系统公告、其他自定义配置）
  * </p>
  *
- * @author 坚强少年
- * @since 2024-01-16
+ * @author car
+ * @since 2024-01-24
  */
 @Getter
 @Setter
-@TableName("t_message")
-public class Message implements Serializable {
+@TableName("t_setting")
+public class TSetting implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -38,8 +37,12 @@ public class Message implements Serializable {
      * 创建时间
      */
     @TableField(fill = FieldFill.INSERT)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
+
+    /**
+     * 删除标识 0不删除 1已删除
+     */
+    private Boolean delFlag;
 
     /**
      * 修改人
@@ -52,29 +55,9 @@ public class Message implements Serializable {
     private LocalDateTime updateTime;
 
     /**
-     * 删除标记 0 不删除 1 已删除
+     * 设置值，多个值存储json字符串
      */
-    private Integer delFlag;
-
-    /**
-     * 标题
-     */
-    private String title;
-
-    /**
-     * 内容
-     */
-    private String content;
-
-    /**
-     * 是否发送给新人 0 否 1 是
-     */
-    private Boolean createSend;
-
-    /**
-     * 消息类型
-     */
-    private String type;
+    private String value;
 
 
 }
