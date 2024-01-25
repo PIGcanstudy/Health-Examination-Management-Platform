@@ -26,6 +26,9 @@
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
 #endif
+#include "get-unit-list/QueryUnitListController.h"
+#include "update-unit/ModifyUnitController.h"
+#include "get-unit-name/QueryUnitNameController.h"
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -51,6 +54,20 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	/*------  获取单位名称列表（用于输入表单下拉列表框）    负责人：Tutu糊涂涂  ------*/
+	ROUTER_SIMPLE_BIND(QueryUnitNameController);
+
+	/*------  获取单位列表（条件 + 分页）    负责人：Tutu糊涂涂  ------*/
+	ROUTER_SIMPLE_BIND(QueryUnitListController);
+
+	/*------  获取单位详情    负责人：duxlong  ------*/
+
+	/*------  新增单位    负责人：duxlong  ------*/
+
+	/*------  修改单位    负责人：kzz  ------*/
+	ROUTER_SIMPLE_BIND(ModifyUnitController);
+
+	/*------  删除单位（支持批量删除）    负责人：罗浩巍  ------*/
 
 }
 

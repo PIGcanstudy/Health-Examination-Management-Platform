@@ -1,1 +1,35 @@
-﻿
+﻿# 营销管理-团检订单
+order:
+ # 订单部分
+ get-list:
+  summary: 获取订单名称列表（条件+分页）
+ get-detail:
+  summary: 获取订单详情
+ get-item:
+  summary: 获取订单体检项目信息
+ get-person:
+  summary: 获取订单体检人员信息
+ post:
+  summary: 新增订单
+ put:
+  summary: 修改订单
+ delete:
+  summary: 删除订单
+ confirm:
+  summary: 订单确认
+ approval:
+  summary: 查看审批信息
+ # 人员部分
+ download-person:
+  summary: 生成导入模板
+ import-person:
+  summary: 保存导入信息
+ export-person:
+  summary: 导出人员信息
+ # 合同（委托）部分
+ download-entrust:
+  summary: 下载模板
+ upload-entrust:
+  summary: 保存附件
+ preview-entrust:
+  summary: 附件预览 
