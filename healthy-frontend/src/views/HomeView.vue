@@ -32,14 +32,13 @@
           </el-scrollbar>
         </div>
       </el-aside>
-      <!-- 伸缩按钮 -->
-      <el-icon style="cursor: pointer; width: 20px" @click="isCollapsed = !isCollapsed"><Fold /></el-icon>
 
       <el-container>
         <!-- 导航栏 -->
         <el-header>
-          <el-button style="font-size: 25px;color: white;background: none" text>
-            <el-icon><icon-fold /></el-icon>
+          <el-button style="font-size: 25px;color: white;background: none" text @click="isCollapsed = !isCollapsed">
+            <el-icon v-if="!isCollapsed" ><icon-fold /></el-icon>
+            <el-icon v-else ><Expand /></el-icon>
           </el-button>
           <div>{{ userInfo }}</div>
         </el-header>
@@ -54,7 +53,7 @@
 <script setup>
 import { ref } from 'vue'
 import { userStore } from '../stores/user'
-import { Fold } from '@element-plus/icons-vue'
+import { Expand } from '@element-plus/icons-vue'
 // 本界面变量及函数
 const isCollapsed = ref(false)
 
