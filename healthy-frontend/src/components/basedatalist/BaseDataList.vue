@@ -15,14 +15,13 @@
         <!-- table表格 -->
         <el-table ref="tableRef" :data="props?.tableData" border @selection-change="handleSelectionChange">
           <!-- 多选列 -->
-          <el-table-column type="selection"></el-table-column>
+          <el-table-column v-if="useSelection" type="selection"></el-table-column>
           <!-- 表格内容 -->
           <el-table-column v-for="item in props.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label" :width="item.width" :align="item.align" />
           <!-- 固定列 -->
-          <el-table-column v-if="props.useFixed" fixed="right" label="操作" width="160">
+          <el-table-column v-if="props.useFixed" fixed="right" label="操作" width="220">
             <template #default="{ row }">
-              <el-button link type="primary" @click="props.handleEdit(row)">编辑</el-button>
-              <el-button link type="primary" @click="props.handleDelete(row)">删除</el-button>
+              <slot name="fixed" :row="row"></slot>
             </template>
           </el-table-column>
         </el-table>
@@ -50,6 +49,11 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
+  // 是否使用多选
+  useSelection: {
+    type: Boolean,
+    default: true
+  },
   // form表单数据
   formData: {
     type: Object,
@@ -68,7 +72,7 @@ const props = defineProps({
   // 是否使用固定列
   useFixed: {
     type: Boolean,
-    default: true
+    default: false
   },
   // 分页参数
   paginationData: {

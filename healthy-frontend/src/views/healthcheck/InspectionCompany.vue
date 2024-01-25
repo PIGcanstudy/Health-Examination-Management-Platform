@@ -11,9 +11,39 @@
       :use-pagination="usePagination"
       :pagination-data="paginationData"
       :handle-edit="handleEdit"
+      :use-fixed="useFixed"
       @update-table-data="handlePageChange"
       @update-selected-rows="selectRows"
     >
+      <!-- fixed固定列 -->
+      <template #fixed="{ row }">
+        <el-button type="primary" style="margin-right: 5px" @click="handelLook(row)">
+          <el-icon><View></View></el-icon>
+          查看
+        </el-button>
+        <el-dropdown>
+          <el-button>
+            更多操作
+            <el-icon class="el-icon--right">
+              <arrow-down />
+            </el-icon>
+          </el-button>
+
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>
+                <el-icon><Edit></Edit></el-icon>
+                修改
+              </el-dropdown-item>
+              <el-dropdown-item>
+                <el-icon><DeleteFilled></DeleteFilled></el-icon>
+                删除
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </template>
+
       <!-- form表单区域 -->
       <template #form>
         <el-form-item label="单位名称">
@@ -26,10 +56,13 @@
           <el-input v-model="formData.contactPerson"></el-input>
         </el-form-item>
         <el-form-item label="联系电话">
-          <el-input v-model="formData.contactPhone"></el-input>
+          <el-input v-model="formData.contactPhone" :style="{ width: '140px' }"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary">搜索</el-button>
+          <el-button type="primary">
+            <el-icon><Search></Search></el-icon>
+            搜索
+          </el-button>
         </el-form-item>
         <el-form-item>
           <el-button @click="resetForm">重置</el-button>
@@ -39,69 +72,83 @@
       <!-- operation功能区域 -->
       <template #operation>
         <div class="operation">
-          <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true">新增</el-button>
-          <!-- <el-select v-model="selectValue" placeholder="更多操作" style="width: 100px; margin-right: 10px"></el-select> -->
-          <el-dialog v-model="dialogVisible" title="新增" width="30%" :before-close="handleClose">
+          <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true">
+            <el-icon><Plus></Plus></el-icon>
+            新增
+          </el-button>
+          <!-- 新增对话框区域 -->
+          <el-dialog v-model="dialogVisible" title="新增" width="60%" :before-close="handleClose">
             <el-row>
-              <el-col :span="18">
+              <el-col :span="20">
                 <el-form :model="basicForm" inline>
-                  <el-form-item label="单位名称">
-                    <el-input v-model="basicForm.unitName" placeholder="请输入单位名称"></el-input>
+                  <el-form-item label="单位名称" :label-width="labelWidth">
+                    <el-input v-model="basicForm.unitName" placeholder="请输入单位名称" style="width: 232px"></el-input>
                   </el-form-item>
-                  <el-form-item label="体检类型">
-                    <el-select v-model="basicForm.examinationType"></el-select>
+                  <el-form-item label="体检类型" :label-width="labelWidth">
+                    <el-select v-model="basicForm.examinationType" style="width: 232px"></el-select>
                   </el-form-item>
-                  <el-form-item label="统一社会信用代码">
-                    <el-input v-model="basicForm.creditCode" placeholder="请输入统一社会信用代码"></el-input>
+                  <el-form-item label="统一社会信用代码" :label-width="labelWidth">
+                    <el-input v-model="basicForm.creditCode" placeholder="请输入统一社会信用代码" style="width: 232px"></el-input>
                   </el-form-item>
-                  <el-form-item label="行业类型">
-                    <el-select v-model="basicForm.workType"></el-select>
+                  <el-form-item label="行业类型" :label-width="labelWidth">
+                    <el-select v-model="basicForm.workType" style="width: 232px"></el-select>
                   </el-form-item>
-                  <el-form-item label="所属地区">
-                    <el-select v-model="basicForm.region"></el-select>
+                  <el-form-item label="所属地区" :label-width="labelWidth">
+                    <el-select v-model="basicForm.region" style="width: 232px"></el-select>
                   </el-form-item>
-                  <el-form-item label="经济类型">
-                    <el-select v-model="basicForm.ecoType"></el-select>
+                  <el-form-item label="经济类型" :label-width="labelWidth">
+                    <el-select v-model="basicForm.ecoType" style="width: 232px"></el-select>
                   </el-form-item>
-                  <el-form-item label="单位注册地址">
-                    <el-input v-model="basicForm.location"></el-input>
+                  <el-form-item label="单位注册地址" :label-width="labelWidth">
+                    <el-input v-model="basicForm.location" style="width: 232px"></el-input>
                   </el-form-item>
-                  <el-form-item label="企业规模">
-                    <el-select v-model="basicForm.scale"></el-select>
+                  <el-form-item label="企业规模" :label-width="labelWidth">
+                    <el-select v-model="basicForm.scale" style="width: 232px"></el-select>
                   </el-form-item>
-                  <el-form-item label="职工人数">
-                    <el-input v-model="basicForm.number"></el-input>
+                  <el-form-item label="职工人数" :label-width="labelWidth">
+                    <el-input v-model="basicForm.number" style="width: 232px"></el-input>
                   </el-form-item>
-                  <el-form-item label="接触职业病危害因素人数">
-                    <el-input v-model="basicForm.dangerousNum"></el-input>
+                  <el-form-item label="接触职业病危害因素人数" :label-width="labelWidth">
+                    <el-input v-model="basicForm.dangerousNum" style="width: 232px"></el-input>
                   </el-form-item>
-                  <el-form-item label="体检联系人姓名">
-                    <el-input v-model="basicForm.contactName"></el-input>
-                  </el-form-item>
-                  <el-form-item label="体检联系人电话">
-                    <el-input v-model="basicForm.contactPhone"></el-input>
-                  </el-form-item> </el-form
-              ></el-col>
+                </el-form>
+              </el-col>
+              <el-col :span="4"> 上传图片 </el-col>
             </el-row>
+            <el-form :model="contactForm" inline>
+              <el-form-item label="体检联系人姓名" :label-width="130">
+                <el-input v-model="contactForm.people" style="width: 260px"></el-input>
+              </el-form-item>
+              <el-form-item label="体检联系人电话" :label-width="130">
+                <el-input v-model="contactForm.phone" style="width: 260px"></el-input>
+              </el-form-item>
+            </el-form>
             <template #footer>
               <span class="dialog-footer">
                 <el-button @click="dialogVisible = false">取消</el-button>
-                <el-button type="primary" @click="dialogVisible = false"> 提交 </el-button>
+                <el-button type="primary" @click="dialogVisible = false">提交</el-button>
               </span>
             </template>
           </el-dialog>
           <el-dropdown>
-            <span class="el-dropdown-link">
+            <el-button style="margin-right: 8px">
               更多操作
-              <el-icon class="el-icon--right">
-                <arrow-down />
-              </el-icon>
-            </span>
+              <el-icon class="el-icon--right"> <arrow-down /> </el-icon
+            ></el-button>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item>刷新</el-dropdown-item>
-                <el-dropdown-item>批量删除</el-dropdown-item>
-                <el-dropdown-item>导出本页数据</el-dropdown-item>
+                <el-dropdown-item>
+                  <el-icon><Refresh></Refresh></el-icon>
+                  刷新
+                </el-dropdown-item>
+                <el-dropdown-item>
+                  <el-icon><DeleteFilled></DeleteFilled></el-icon>
+                  批量删除
+                </el-dropdown-item>
+                <el-dropdown-item>
+                  <el-icon><Bottom></Bottom></el-icon>
+                  导出本页数据
+                </el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -113,7 +160,10 @@
       <!-- 多选清除栏 -->
       <template #hint>
         <div v-if="useHint" class="hint">
-          <span> (!) 已选择{{ selectedTotal }}项</span>
+          <span>
+            <el-icon style="color: blue"><InfoFilled></InfoFilled></el-icon>
+            已选择{{ selectedTotal }}项
+          </span>
           <el-button type="primary" link style="margin-bottom: 3px" @click="clearRows">清空</el-button>
         </div>
       </template>
@@ -123,7 +173,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
-import { ArrowDown } from '@element-plus/icons-vue'
+import { ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit } from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 const selectValue = ref('')
 const useHint = ref(true)
@@ -131,6 +181,8 @@ const useForm = ref(true)
 const usePagination = ref(true)
 const BaseDataRef = ref()
 const dialogVisible = ref(false)
+const useFixed = ref(true)
+const labelWidth = '125px'
 // table列
 const tableColumnAttribute = ref([
   { prop: 'name', label: '单位名称', width: '240', align: 'center' },
@@ -223,6 +275,9 @@ const tableData = ref([
     phone: '--'
   }
 ])
+function handelLook(row) {
+  console.log(row)
+}
 const formData = reactive({
   unitName: '',
   creditCode: '',
@@ -239,9 +294,12 @@ const basicForm = reactive({
   location: '',
   scale: '',
   number: '',
-  dangerousNum: '',
-  contactName: '',
-  contactPhone: ''
+  dangerousNum: ''
+})
+// 联系人表单
+const contactForm = reactive({
+  people: '',
+  phone: ''
 })
 const closeForm = () => {
   useForm.value = !useForm.value
