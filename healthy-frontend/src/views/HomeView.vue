@@ -32,14 +32,13 @@
           </el-scrollbar>
         </div>
       </el-aside>
-      <!-- 伸缩按钮 -->
-      <el-icon style="cursor: pointer; width: 20px" @click="isCollapsed = !isCollapsed"><Fold /></el-icon>
 
       <el-container>
         <!-- 导航栏 -->
         <el-header>
-          <el-button style="font-size: 25px;color: white;background: none" text>
-            <el-icon><icon-fold /></el-icon>
+          <el-button class="collBtn" @click="isCollapsed = !isCollapsed">
+            <el-icon v-if="!isCollapsed"><icon-arrow-left-bold /></el-icon>
+            <el-icon v-if="isCollapsed"><icon-arrow-right-bold /></el-icon>
           </el-button>
           <div>{{ userInfo }}</div>
         </el-header>
@@ -96,5 +95,15 @@ const menus = store.getMenus
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
+  .collBtn {
+    width: 32px;
+    font-size: 22px;
+    color: var(--el-bg-color);
+    background: none;
+    border: none;
+  }
+  .collBtn:hover {
+    background-color: #545C64;
+  }
 }
 </style>
