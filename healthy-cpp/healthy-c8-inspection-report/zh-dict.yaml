@@ -1,6 +1,6 @@
-﻿inspection:
+﻿reportlist:
  get:
-  summry: 获取体检报告列表
+  summary: 获取体检报告列表
  field:
   test_num: 体检编号
   physical_unit: 体检单位
@@ -11,3 +11,11 @@
   person_name: 姓名
   sex: 性别
   age: 年龄
+reportdetail:
+ download-reportdetail:
+  summary: 获取体检报告详情
+ field: 
+  pdfname: 体检报告pdf路径
+reportreview:
+ put:
+  summary: 体检报告审核（支持批量审核）   

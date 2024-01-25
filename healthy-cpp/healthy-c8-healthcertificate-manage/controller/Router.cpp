@@ -27,6 +27,13 @@
 #include "uselib/ws/WSController.h"
 #endif
 
+#include "controller/helthcertidetail/HealthCertiDetailController.h"
+#include "controller/herlthcertilist/HealthCertiListController.h"
+#include "controller/printconfirm/PrintConfirmController.h"
+#include "controller/printmore/PrintMoreController.h"
+#include "controller/uploadmore/UploadMoreController.h"
+#include "controller/viewexception/ViewExceptionController.h"
+
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
 // 简化绑定控制器宏定义
@@ -51,7 +58,12 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	ROUTER_SIMPLE_BIND(HealthCertiDetailController);
+	ROUTER_SIMPLE_BIND(HealthCertiListController);
+	ROUTER_SIMPLE_BIND(PrintConfirmController);
+	ROUTER_SIMPLE_BIND(PrintMoreController);
+	ROUTER_SIMPLE_BIND(UploadMoreController);
+	ROUTER_SIMPLE_BIND(ViewExceptionController);
 }
 
 #ifdef HTTP_SERVER_DEMO

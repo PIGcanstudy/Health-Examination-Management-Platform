@@ -1,1 +1,28 @@
-﻿
+﻿helthcertidetail:
+ download-helthcertidetail:
+  summary: 获取健康证详情
+ field:
+  pdfname: pdf文件路径
+herlthcertilist:
+ get:
+  summary: 获取健康证列表（条件+分页）
+ field:
+  id: 编号
+  name: 姓名
+  sex: 性别
+  age: 年龄
+  print_statu: 打印状态
+  register_date: 登记时间
+  upload_statu: 上传状态
+printconfirm:
+ put:
+  summary: 打印确认（支持批量）
+printmore:
+ put:
+  summary: 批量打印（支持批量）
+uploadmore:
+ upload-more:
+  summary: 批量上传
+viewexception:
+ get:
+  summary: 查看异常

@@ -1,11 +1,11 @@
 #pragma once
 
 
-#ifndef _INSPECTION_VO_
-#define _INSPECTION_VO_
+#ifndef _ReportList_VO_
+#define _ReportList_VO_
 
 #include "../../GlobalInclude.h"
-#include "../../dto/inspection/InspectionDTO.h"
+#include "../../dto/reportlist/ReportListDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
