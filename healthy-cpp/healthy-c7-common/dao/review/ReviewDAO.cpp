@@ -41,18 +41,18 @@ if (query->state) { \
 } \
 if (query->personName) { \
 	sql << " AND person_name=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, query->personName.getValue(0)); \
+	SQLPARAMS_PUSH(params, "s", std::string, query->personName.getValue("")); \
 } \
 if (query->hazardFactorCode) { \
 	sql << " AND hazard_factor_code=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, query->hazardFactorCode.getValue(0)); \
+	SQLPARAMS_PUSH(params, "s", std::string, query->hazardFactorCode.getValue("")); \
 }
 
 // 统计数据条数
 uint64_t ReviewDAO::count(const ReviewQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT COUNT(*) FROM t_review_record";
+	sql << "SELECT COUNT(*) FROM (SELECT b.person_name,a.check_project_name,a.review_explain,a.review_time,a.create_time,a.state,b.hazard_factor_code FROM t_review_record AS a JOIN t_review_person AS b ON a.person_id = b.id) AS result_set";
 	REVIEW_TERAM_PARSE(query, sql);
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
@@ -61,7 +61,7 @@ uint64_t ReviewDAO::count(const ReviewQuery::Wrapper& query)
 list<ReviewDO> ReviewDAO::selectWithPage(const ReviewQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT b.person_name,a.check_project_name,a.review_explain,a.review_time,a.create_time,a.state,b.hazard_factor_code FROM t_review_record AS a JOIN t_review_person AS b ON a.id = b.id;";
+	sql << "SELECT b.person_name,a.check_project_name,a.review_explain,a.review_time,a.create_time,a.state,b.hazard_factor_code FROM t_review_record AS a JOIN t_review_person AS b ON a.person_id = b.id";
 	REVIEW_TERAM_PARSE(query, sql);
 	sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
 	ReviewMapper mapper;
@@ -71,7 +71,8 @@ list<ReviewDO> ReviewDAO::selectWithPage(const ReviewQuery::Wrapper& query)
 // 通过姓名查询数据  暂时无法运行？？？？
 //list<ReviewDO> ReviewDAO::selectByName(const string& name)
 //{
-//	string sql = "SELECT b.person_name,a.check_project_name,a.review_explain,a.review_time,a.create_time,a.state,b.hazard_factor_code FROM t_review_record AS a JOIN t_review_person AS b ON a.id = b.id WHERE b.person_name LIKE CONCAT('%', ? ,'%');";
+//	string sql = "SELECT b.person_name,a.check_project_name,a.review_explain,a.review_time,a.create_time,a.state,b.hazard_factor_code FROM t_review_record AS a JOIN t_review_person AS b ON a.id = b.id WHERE b.person_name LIKE CONCAT('%',?,'%')"; 
+//	//string sql = "SELECT DISTINCT person_name,check_project_name,review_explain,a.review_time,create_time,state,hazard_factor_code FROM 0125 WHERE person_name=123";
 //	//string sql = "SELECT id,person_id,check_project_id,check_project_name,review_explain,review_time,create_time,state FROM t_review_record WHERE `name` LIKE CONCAT('%',?,'%')";
 //	ReviewMapper mapper;
 //	return sqlSession->executeQuery<ReviewDO, ReviewMapper>(sql, mapper, "%s", name);

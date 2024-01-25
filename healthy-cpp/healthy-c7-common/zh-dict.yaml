@@ -12,6 +12,8 @@ review:
   hazardFactorCode: 危害因素
 addNewItems:
  field:
- projectsToBeSelected: 待选项目
- selectedProjects: 已选项目
- reason: 复查原因
+  checkProjectId: 复查项目id
+  checkProjectName: 复查项目名称
+  portfolioProjectId: 组合项目id
+  portfolioProjectName: 组合项目名称
+  reason: 复查原因

@@ -8,15 +8,21 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
-*  新增复查项目实体
+*  新增复查记录实体
 */
 class AddNewItemsQuery : public PageQuery {
 	DTO_INIT(AddNewItemsQuery, PageQuery);
-	//待选项目
-	API_DTO_FIELD_DEFAULT(String, projectsToBeSelected, ZH_WORDS_GETTER("addNewItems.field.projectsToBeSelected"));
-	//已选项目
-	API_DTO_FIELD_DEFAULT(String, selectedProjects, ZH_WORDS_GETTER("addNewItems.field.selectedProjects"));
-	//复查原因
+	//表t_review_record
+	//复查项目id check_project_id varchar(50)
+	API_DTO_FIELD_DEFAULT(String, checkProjectId, ZH_WORDS_GETTER("addNewItems.field.checkProjectId"));
+	//复查项目名称 check_project_name varchar(255)
+	API_DTO_FIELD_DEFAULT(String, checkProjectName, ZH_WORDS_GETTER("addNewItems.field.checkProjectName"));
+	//表t_review_project
+	//组合项目id portfolio_project_id varchar(50)
+	API_DTO_FIELD_DEFAULT(String, portfolioProjectId, ZH_WORDS_GETTER("addNewItems.field.portfolioProjectId"));
+	//组合项目名称 portfolio_project_name varchar(50)
+	API_DTO_FIELD_DEFAULT(String, portfolioProjectName, ZH_WORDS_GETTER("addNewItems.field.portfolioProjectName"));
+	//复查原因 reason varchar(500)
 	API_DTO_FIELD_DEFAULT(String, reason, ZH_WORDS_GETTER("addNewItems.field.reason"));
 };
 

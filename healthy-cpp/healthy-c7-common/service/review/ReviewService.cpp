@@ -28,13 +28,22 @@ ReviewListPageDTO::Wrapper ReviewService::listAll(const ReviewQuery::Wrapper& qu
 		auto dto = ReviewListDTO::createShared();
 		// dto->name = sub.getName();
 		ZO_STAR_DOMAIN_DO_TO_DTO(dto, sub, personName, PersonName, checkProjectName, CheckProjectName, reviewExplain, ReviewExplain, reviewTime, ReviewTime, createTime, CreateTime, state, State, hazardFactorCode, HazardFactorCode)
-			pages->addData(dto);
+		pages->addData(dto);
 	}
 	return pages;
 }
 //下面可删除？？？？？？？
 uint64_t ReviewService::saveData(const ReviewListDTO::Wrapper& dto)
 {
+	// 组装DO数据
+	//ReviewDO data;
+	// 	data.setName(dto->name.getValue(""));
+	// 	data.setSex(dto->sex.getValue(""));
+	// 	data.setAge(dto->age.getValue(1));
+	//ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, CheckProjectId, checkProjectId, CheckProjectName, checkProjectName, ReviewExplain, reviewExplain)
+		// 执行数据添加
+		//ReviewDAO dao;
+	//return dao.insert(data);
 	return 0;
 }
 

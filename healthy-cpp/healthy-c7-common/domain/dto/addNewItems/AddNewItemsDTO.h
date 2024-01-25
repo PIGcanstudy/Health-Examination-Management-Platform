@@ -11,10 +11,15 @@
 class AddNewItemsDTO : public oatpp::DTO
 {
 	DTO_INIT(AddNewItemsDTO, DTO);
-	//待选项目
-	API_DTO_FIELD_DEFAULT(String, projectsToBeSelected, ZH_WORDS_GETTER("addNewItems.field.projectsToBeSelected"));
-	//已选项目
-	API_DTO_FIELD_DEFAULT(String, selectedProjects, ZH_WORDS_GETTER("addNewItems.field.selectedProjects"));
+	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("addNewItems.field.id"));
+	//复查项目id
+	API_DTO_FIELD_DEFAULT(String, checkProjectId, ZH_WORDS_GETTER("addNewItems.field.checkProjectId"));
+	//复查项目名称
+	API_DTO_FIELD_DEFAULT(String, checkProjectName, ZH_WORDS_GETTER("addNewItems.field.checkProjectName"));
+	//组合项目id
+	API_DTO_FIELD_DEFAULT(String, portfolioProjectId, ZH_WORDS_GETTER("addNewItems.field.portfolioProjectId"));
+	//组合项目名称
+	API_DTO_FIELD_DEFAULT(String, portfolioProjectName, ZH_WORDS_GETTER("addNewItems.field.portfolioProjectName"));
 	//复查原因
 	API_DTO_FIELD_DEFAULT(String, reason, ZH_WORDS_GETTER("addNewItems.field.reason"));
 };

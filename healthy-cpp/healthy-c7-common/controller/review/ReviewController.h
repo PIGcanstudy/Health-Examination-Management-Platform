@@ -53,11 +53,29 @@ public:
 		// 解析查询参数为Query领域模型
 		API_HANDLER_QUERY_PARAM(userQuery, ReviewQuery, queryParams);
 		// 呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execQueryReview(userQuery, authObject->getPayload()));
+		API_HANDLER_RESP_VO(execQueryReview(userQuery));
 	}
+
+	// 3.1 定义新增接口描述
+	//ENDPOINT_INFO(addReview) {
+		// 定义接口标题
+		//API_DEF_ADD_TITLE(ZH_WORDS_GETTER("review.post.summary"));
+		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
+		//API_DEF_ADD_AUTH();
+		// 定义响应参数格式
+		//API_DEF_ADD_RSP_JSON_WRAPPER(Uint64JsonVO);
+	//}
+	// 3.2 定义新增接口处理
+	//ENDPOINT(API_M_POST, "/review/post-addNewItems", addReview, BODY_DTO(ReviewListDTO::Wrapper, dto), API_HANDLER_AUTH_PARAME) {
+		// 呼叫执行函数响应结果
+		//API_HANDLER_RESP_VO(execAddReview(dto));
+	//}
 	
 private: //定义接口执行函数
-	ReviewListPageJsonVO::Wrapper execQueryReview(const ReviewQuery::Wrapper& query, const PayloadDTO& payload);
+	// 3.3 分页查询数据
+	ReviewListPageJsonVO::Wrapper execQueryReview(const ReviewQuery::Wrapper& query);
+	// 3.3 新增数据
+	Uint64JsonVO::Wrapper execAddReview(const ReviewListDTO::Wrapper& dto);
 };
 
 #include OATPP_CODEGEN_END(ApiController)
