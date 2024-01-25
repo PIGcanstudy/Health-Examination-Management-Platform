@@ -41,9 +41,9 @@ const props = defineProps({
 
 .border {
   position: relative;
-  height: 50px;
+  height: 48px;
   padding: 10px;
-  border: 1px solid RGB(45, 140, 240);
+  border: 1px solid RGB(171, 220, 255);
   border-radius: 5px;
   margin: 10px 0px;
   background-color: RGB(240, 250, 255);
