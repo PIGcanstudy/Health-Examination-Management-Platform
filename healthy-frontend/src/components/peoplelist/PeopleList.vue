@@ -19,7 +19,7 @@
       </div>
 
       <!-- 使用搜索框(插槽) -->
-      <div class="serach-bar">
+      <div class="search-bar">
         <slot></slot>
       </div>
 
