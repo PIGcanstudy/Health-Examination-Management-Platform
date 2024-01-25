@@ -28,7 +28,7 @@ public://定义接口
 		//订单编号
 		API_DEF_ADD_QUERY_PARAMS(String, "code", ZH_WORDS_GETTER("unitreport.order.code"), "", false);
 		//统计表类型用数字来表示1："体检人员汇总表" 2："复查人员汇总表" 3："复查结果汇总表"
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "PhysicalExaminationPersonnel", ZH_WORDS_GETTER("unitreport.summaryTable.PhysicalExaminationPersonnel"), 1, true);
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "type", ZH_WORDS_GETTER("unitreport.summaryTable.type"), 1, true);
 		//// 定义其他查询参数描述
 		//API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("sample.field.name"), "li ming", false);
 		//API_DEF_ADD_QUERY_PARAMS(String, "sex", ZH_WORDS_GETTER("sample.field.sex"), "N", false);
@@ -42,7 +42,6 @@ public://定义接口
 		// 呼叫执行函数响应结果
 		API_HANDLER_RESP_VO(execQueryPhysicalExaminationPersonnel(uq));
 	}
-
 
 private://定义接口执行函数
 	PhysicalExaminationPersonnelJsonVO::Wrapper execQueryPhysicalExaminationPersonnel(const ReportStatisticsQuery::Wrapper& query);
@@ -68,7 +67,7 @@ public://定义接口
 		//订单编号
 		API_DEF_ADD_QUERY_PARAMS(String, "code", ZH_WORDS_GETTER("unitreport.order.code"), "", false);
 		//统计表类型用数字来表示1："体检人员汇总表" 2："复查人员汇总表" 3："复查结果汇总表"
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "ReviewPersonnel", ZH_WORDS_GETTER("unitreport.summaryTable.ReviewPersonnel"), 2, true);
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "type", ZH_WORDS_GETTER("unitreport.summaryTable.type"), 2, true);
 		//// 定义其他查询参数描述
 		//API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("sample.field.name"), "li ming", false);
 		//API_DEF_ADD_QUERY_PARAMS(String, "sex", ZH_WORDS_GETTER("sample.field.sex"), "N", false);
@@ -107,7 +106,7 @@ public://定义接口
 		//订单编号
 		API_DEF_ADD_QUERY_PARAMS(String, "code", ZH_WORDS_GETTER("unitreport.order.code"), "", false);
 		//统计表类型用数字来表示1："体检人员汇总表" 2："复查人员汇总表" 3："复查结果汇总表"
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "ReviewResults", ZH_WORDS_GETTER("unitreport.summaryTable.ReviewResults"), 3, true);
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "type", ZH_WORDS_GETTER("unitreport.summaryTable.type"), 3, true);
 		//// 定义其他查询参数描述
 		//API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("sample.field.name"), "li ming", false);
 		//API_DEF_ADD_QUERY_PARAMS(String, "sex", ZH_WORDS_GETTER("sample.field.sex"), "N", false);

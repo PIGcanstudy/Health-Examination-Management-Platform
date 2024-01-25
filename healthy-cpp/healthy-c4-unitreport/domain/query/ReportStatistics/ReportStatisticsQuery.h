@@ -1,16 +1,22 @@
 #pragma once
 
-#ifndef _REPORTSTATISTICSQUERY_
-#define _REPORTSTATISTICSQUERY_
+#ifndef _REPORTSTATISTICSQUERY_H_
+#define _REPORTSTATISTICSQUERY_H_
 
 #include "../../GlobalInclude.h"
 #include "domain/query/PageQuery.h"
 
+/*
+* 统计表数据实体
+*/
 #include OATPP_CODEGEN_BEGIN(DTO)
 
+/**
+ * 定义一个查询用户信息的数据传输模型
+ */
 class ReportStatisticsQuery : public PageQuery
 {
-	//定义初始化
+	// 定义初始化
 	DTO_INIT(ReportStatisticsQuery, PageQuery);
 	//订单编号
 	API_DTO_FIELD_DEFAULT(String, code, ZH_WORDS_GETTER("unitreport.order.code"));
@@ -21,5 +27,4 @@ class ReportStatisticsQuery : public PageQuery
 #include OATPP_CODEGEN_END(DTO)
 
 #endif
-
 

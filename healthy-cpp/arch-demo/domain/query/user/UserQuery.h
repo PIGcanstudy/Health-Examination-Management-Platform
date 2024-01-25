@@ -33,7 +33,7 @@ class UserQuery : public PageQuery
 	// 定义初始化
 	DTO_INIT(UserQuery, PageQuery);
 	// 昵称
-	API_DTO_FIELD_DEFAULT(String, nickname, ZH_WORDS_GETTER("use.field.nickname"));
+	API_DTO_FIELD_DEFAULT(String, nickname, ZH_WORDS_GETTER("use.field.nickname"));z
 };
 
 #include OATPP_CODEGEN_END(DTO)
