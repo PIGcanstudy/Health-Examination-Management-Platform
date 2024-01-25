@@ -1,1 +1,48 @@
-﻿
+﻿dictnamelist:
+ query-dictnamelist:
+  summary: 获取字典数据名称列表（用于输入表单下拉列表）
+ field:
+  keyword: 字典数据关键字
+jobnamelist:
+ query-jobnamelist:
+  summary: 获取工种名称列表（分页+条件）
+ field:
+  keyword: 工种名称
+packageprolist:
+ query-packageprolist:
+  summary: 获取组合项目列表（条件+分页）
+ field:
+  keyword: 组合项目名称
+  section: 所属科室
+packagepronamelist:
+ query-packagepronamelist:
+  summary: 获取组合项目名称列表（用于输入表单下拉列表）
+plannamelist:
+ query-plannamelist:
+  summary: 获取套餐名称列表（条件+分页）
+ field:
+  keyword: 套餐名称关键字
+planprolist:
+ query-planprolist:
+  summary: 获取套餐组合项目列表
+sectionnamelist:
+ query-sectionnamelist:
+  summary: 科室名称列表
+ field:
+  keyword: 科室关键字
+termnamelist:
+ query-termnamelist:
+  summary: 获取术语名称列表（条件+分页）
+ field:
+  type_inspection: 体检类型
+  type_term: 术语类型
+  factor_danger: 危害因素
+  statu_on: 在岗状态
+  content_term: 术语内容
+  create_date: 创建时间
+typetree:
+ query-typetree:
+  summary: 获取类型树
+uesrnamelist:
+ query-uesrnamelist:
+  summary: 获取用户名称列表（用于输入表单下拉列表框）

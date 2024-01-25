@@ -27,6 +27,18 @@
 #include "uselib/ws/WSController.h"
 #endif
 
+#include "controller/dictnamelist/DictNameListController.h"
+#include "controller/jobnamelist/JobNameListController.h"
+#include "controller/packageprolist/PackageProListController.h"
+#include "controller/packagepronamelist/PackageProNameListController.h"
+#include "controller/plannamelist/PlanNameListController.h"
+#include "controller/planprolist/PlanProListController.h"
+#include "controller/sectionnamelist/SectionNameListController.h"
+#include "controller/termnamelist/TermNameListController.h"
+#include "controller/typetree/TypeTreeController.h"
+#include "controller/uesrnamelist/UesrNameListController.h"
+
+
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
 // 简化绑定控制器宏定义
@@ -51,7 +63,16 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	ROUTER_SIMPLE_BIND(DictNameListController);
+	ROUTER_SIMPLE_BIND(JobNameListController);
+	ROUTER_SIMPLE_BIND(PackageProListController);
+	ROUTER_SIMPLE_BIND(PackageProNameListController);
+	ROUTER_SIMPLE_BIND(PlanNameListController);
+	ROUTER_SIMPLE_BIND(PlanProListController);
+	ROUTER_SIMPLE_BIND(SectionNameListController);
+	ROUTER_SIMPLE_BIND(TermNameListController);
+	ROUTER_SIMPLE_BIND(TypeTreeController);
+	ROUTER_SIMPLE_BIND(UesrNameListController);
 }
 
 #ifdef HTTP_SERVER_DEMO
