@@ -22,8 +22,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     @Override
     public List<Menu> listAllLinkUrl() {
         QueryWrapper<Menu> wrapper = new QueryWrapper<>();
-        wrapper.select("link_url");
-        wrapper.isNotNull("link_url");
+        wrapper.select("url");
+        wrapper.isNotNull("url");
         return baseMapper.selectList(wrapper);
     }
 }

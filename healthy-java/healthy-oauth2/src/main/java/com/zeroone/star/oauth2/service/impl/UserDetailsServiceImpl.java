@@ -55,7 +55,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             List<Role> roles = roleService.listRoleByUserId(user.getId());
             //3 将数据库角色转换成Security权限对象
             List<GrantedAuthority> authorities = new ArrayList<>();
-            roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getKeyword())));
+            roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getName())));
             //4 构建权限角色对象
             return new SecurityUser(user, authorities);
         } else if (AuthConstant.CLIENT_APP.equals(clientId)) {

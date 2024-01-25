@@ -2,7 +2,9 @@ package com.zeroone.star.login.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.login.entity.Menu;
+import com.zeroone.star.login.entity.TPermission;
 import com.zeroone.star.login.mapper.MenuMapper;
+import com.zeroone.star.login.mapper.TPermissionMapper;
 import com.zeroone.star.login.service.IMenuService;
 import com.zeroone.star.project.utils.tree.TreeNode;
 import com.zeroone.star.project.utils.tree.TreeNodeMapper;
@@ -10,6 +12,7 @@ import com.zeroone.star.project.utils.tree.TreeUtils;
 import com.zeroone.star.project.vo.login.MenuTreeVO;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,19 +55,49 @@ class MenuTreeNodMapper implements TreeNodeMapper<Menu> {
 @Service
 public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IMenuService {
 
+    @Resource
+    private TPermissionMapper permissionMapper;
+
     @Override
     public List<MenuTreeVO> listMenuByRoleName(List<String> roleNames) {
         //1 定义一个存储数据库查询菜单数据的容器
-        List<Menu> menus = new ArrayList<>();
+//        List<Menu> menus = new ArrayList<>();
+        List<TPermission> permissions = new ArrayList<>();
         //2 遍历获取角色获取所有的菜单列表
         roleNames.forEach(roleName -> {
             //通过角色名获取菜单列表
-            List<Menu> tMenus = baseMapper.selectByRoleName(roleName);
-            if (tMenus != null && !tMenus.isEmpty()) {
-                menus.addAll(tMenus);
+            List<TPermission> tPermissions = permissionMapper.selectByRoleName(roleName);
+//            List<Menu> tMenus = baseMapper.selectByRoleName(roleName);
+//            if (tMenus != null && !tMenus.isEmpty()) {
+//                menus.addAll(tMenus);
+//            }
+            if (tPermissions != null && !tPermissions.isEmpty()) {
+                permissions.addAll(tPermissions);
             }
         });
         //3 转换树形结构并返回
-        return TreeUtils.listToTree(menus, new MenuTreeNodMapper());
+//        return TreeUtils.listToTree(menus, new MenuTreeNodMapper());
+        return TreeUtils.listToTree(permissions, new PermissionTreeNodMapper());
+    }
+}
+
+class PermissionTreeNodMapper implements TreeNodeMapper<TPermission> {
+    @Override
+    public TreeNode objectMapper(TPermission permission) {
+        MenuTreeVO treeNode = new MenuTreeVO();
+        // 首先设置TreeNode计算层数使用属性
+        treeNode.setTnId(permission.getId().toString());
+        if (permission.getParentId() == null) {
+            treeNode.setTnPid(null);
+        } else {
+            treeNode.setTnPid(permission.getParentId().toString());
+        }
+        // 设置扩展属性
+        treeNode.setId(permission.getId().intValue());
+        treeNode.setIcon(permission.getIcon());
+        treeNode.setText(permission.getName());
+        treeNode.setHref(permission.getPath());
+        treeNode.setPid(permission.getParentId().intValue());
+        return treeNode;
     }
 }
