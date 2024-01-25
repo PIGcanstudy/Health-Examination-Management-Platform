@@ -1,6 +1,11 @@
 package com.zeroone.star.login.controller;
 
+import cn.hutool.captcha.CaptchaUtil;
+import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.codec.Base64;
+import cn.hutool.core.io.FastByteArrayOutputStream;
+import cn.hutool.core.util.IdUtil;
 import com.zeroone.star.login.service.IMenuService;
 import com.zeroone.star.login.service.OauthService;
 import com.zeroone.star.project.components.user.UserDTO;
@@ -15,15 +20,19 @@ import com.zeroone.star.project.vo.login.LoginVO;
 import com.zeroone.star.project.vo.login.MenuTreeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * <p>
@@ -42,6 +51,8 @@ public class LoginController implements LoginApis {
     OauthService oAuthService;
     @Resource
     UserHolder userHolder;
+    @Resource
+    RedisTemplate redisTemplate;
 
     @ApiOperation(value = "授权登录")
     @PostMapping("auth-login")
@@ -55,8 +66,43 @@ public class LoginController implements LoginApis {
         params.put("client_secret", AuthConstant.CLIENT_PASSWORD);
         params.put("username", loginDTO.getUsername());
         params.put("password", loginDTO.getPassword());
+        //获取验证码
+        String code = loginDTO.getCode();
+        if (!Objects.equals(redisTemplate.opsForValue().get(loginDTO.getClientId()), code)) {
+            //错误则返回前端并提示
+            return oAuthService.postDenyToken(params);
+        }
+        //验证成功则清除redis内的验证码缓存
+        redisTemplate.delete(loginDTO.getClientId());
+
         return oAuthService.postAccessToken(params);
         //TODO:未实现认证成功后如何实现注销凭证（如记录凭证到内存数据库）
+    }
+    
+    @ApiOperation(value = "获取验证码")
+    @GetMapping("getCode")
+    @Override
+    public JsonVO<LoginDTO> getCode() {
+        LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(200, 100);
+        String verify = IdUtil.simpleUUID();
+        //图形验证码写出到文件流
+        FastByteArrayOutputStream os = new FastByteArrayOutputStream();
+        lineCaptcha.write(os);
+        String code = lineCaptcha.getCode();
+        //缓存一分钟的验证码
+        redisTemplate.opsForValue().set(verify, code, Duration.ofMinutes(1));
+
+
+        ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>(5);
+        //验证码对应的redis上的uuid
+        map.put("uuid", verify);
+        //图片上的验证码
+        map.put("code", code);
+        //将图片转换成输出流传到前端上
+        map.put("img", Base64.encode(os.toByteArray()));
+        LoginDTO dto = new LoginDTO();
+        BeanUtil.copyProperties(code, dto);
+        return JsonVO.success(dto);
     }
 
     @ApiOperation(value = "刷新登录")
