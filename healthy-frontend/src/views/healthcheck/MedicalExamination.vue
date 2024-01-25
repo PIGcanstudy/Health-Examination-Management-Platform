@@ -12,6 +12,8 @@
         :checkbox-item="checkboxItem"
         :is-date-visible="isDateVisible"
         :external-form-items="formConfig.formItems"
+        :tableColumnAttribute = "tableColumnAttributeForPeople"
+        :tableData="defaultTableData"
       />
     </el-aside>
 
@@ -45,6 +47,7 @@
         </el-form-item>
         </template>
       </BaseDataList>
+      <TestArea></TestArea>
     </el-main>
   </el-container>
 </template>
@@ -54,6 +57,7 @@ import { ref, reactive } from 'vue'
 import PeopleList from '@/components/peoplelist/PeopleList-Rom.vue'
 import MedicalInfo from '@/components/medicalinfo/MedicalInfo.vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
+import TestArea from '@/components/checkitems/TestArea.vue'
 
 // PeopleList的变量
 const title = ref('人员查询')
@@ -78,6 +82,89 @@ const formConfig = ref({
     }
   ]
 })
+//表格字段
+const tableColumnAttributeForPeople = [
+  {
+    prop:"name",
+    label:"名字"
+  },
+  {
+    prop:"gender",
+    label:"性别"
+  },
+  {
+    prop:"age",
+    label:"年龄"
+  },
+  {
+    prop:"tag",
+    label:"标签"
+  }
+]
+
+// 表格数据存放区域
+const defaultTableData = [
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '健'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  },
+  {
+    name: '张楠楠',
+    gender: '女',
+    age: '30',
+    tag: '零'
+  }
+]
 // MedicalInfo的变量
 const currentProgress = ref(1)
 const progressSteps = ref(['登记', '在检', '总检', '已完成'])
@@ -106,6 +193,30 @@ const tableColumnAttribute = ref([
 ])
 // table数据
 const tableData = ref([
+  {
+    tjxm: '乐山市峨边盛和矿业',
+    mxjg: '--',
+    unitName: '健康体检',
+    ckValue: '--',
+    ts: '铁矿采选*',
+    yc: '国有企业'
+  },
+  {
+    tjxm: '乐山市峨边盛和矿业',
+    mxjg: '--',
+    unitName: '健康体检',
+    ckValue: '--',
+    ts: '铁矿采选*',
+    yc: '国有企业'
+  },
+  {
+    tjxm: '乐山市峨边盛和矿业',
+    mxjg: '--',
+    unitName: '健康体检',
+    ckValue: '--',
+    ts: '铁矿采选*',
+    yc: '国有企业'
+  },
   {
     tjxm: '乐山市峨边盛和矿业',
     mxjg: '--',
