@@ -1,5 +1,6 @@
 package com.zeroone.star.sysmanager.service;
 
+import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.sysmanager.entity.TUser;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -21,4 +22,10 @@ public interface ITUserService extends IService<TUser> {
      * @return
      */
     List<UserNameListVO> listUsernameList();
+
+	/**
+	 * 修改用户
+	 * @return
+	 */
+	void modifyUser(ModifyUserDTO user);
 }

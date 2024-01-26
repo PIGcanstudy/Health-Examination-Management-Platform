@@ -2,6 +2,7 @@ package com.zeroone.star.sysmanager.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.sysmanager.entity.TUser;
 import com.zeroone.star.sysmanager.mapper.TUserMapper;
@@ -69,4 +70,25 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
         }
         return list;
     }
+
+	@Override
+	public void modifyUser(ModifyUserDTO user) {
+		TUser tUser = new TUser();
+		tUser.setId(user.getId());
+		tUser.setUsername(user.getUsername());
+		tUser.setNickname(user.getNickName());
+		tUser.setEmail(user.getEmail());
+		tUser.setMobile(user.getMobile());
+		tUser.setSex(user.getSex());
+		tUser.setDepartmentId(user.getDepartmentId());
+		tUser.setType(user.getType());
+		tUser.setAvatar(user.getAvatar());
+		tUser.setAddress(user.getAddress());
+		tUser.setStreet(user.getStreet());
+		tUser.setAutograph(user.getAutograph());
+		tUser.setBirth(user.getBirth());
+		tUser.setDescription(user.getDescription());
+		tUser.setDelFlag(false);
+		userMapper.updateById(tUser);
+	}
 }
