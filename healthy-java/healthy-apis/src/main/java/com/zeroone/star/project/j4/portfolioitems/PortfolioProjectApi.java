@@ -14,20 +14,20 @@ import com.zeroone.star.project.vo.JsonVO;
  */
 public interface PortfolioProjectApi {
     /**
-     * @description: 组合项目的详情信息
+     * @description: 获取组合项目的详情信息
      * @author: Laputa
      * @date: 2024-01-24  16:57
      * @param:
      * @return:
      **/
-    JsonVO<PortfolioItemDTO> getPortfolioItem(String id) throws Exception;
+    JsonVO<PortfolioItemDTO> queryPortfolioItem(String id) throws Exception;
 
     /**
-     * @description: 获取项目列表 (条件+分页）
+     * @description: 获取组合项目列表 (条件+分页）
      * @author: Laputa
      * @date:  2023-01-24  17:17
      * @param:
      * @return:
      **/
-    JsonVO<PageDTO<PortfolioItemListDTO>> listPortfolioItems(PortfolioItemListQuery query) throws Exception;
+    JsonVO<PageDTO<PortfolioItemListDTO>> queryPortfolioItemList(PortfolioItemListQuery query) throws Exception;
 }

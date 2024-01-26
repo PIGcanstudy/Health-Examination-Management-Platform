@@ -7,8 +7,16 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.dto.PortfolioItemDTO;
 import com.zeroone.star.project.j4.dto.PortfolioItemListDTO;
+import org.mapstruct.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+
+@Mapper(componentModel = "spring")
+interface MsTPortfolioProjectStruct {
+    PortfolioItemDTO pDoToTDto(TPortfolioProject tPortfolioProject)
+}
 
 /**
  * <p>
@@ -20,12 +28,15 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TPortfolioProjectServiceImpl extends ServiceImpl<TPortfolioProjectMapper, TPortfolioProject> implements ITPortfolioProjectService {
-    @Autowired
-    private TPortfolioProjectMapper  tPortfolioProjectMapper;
-
+    @Resource
+    private MsTPortfolioProjectStruct msTPortfolioProjectStruct;
 
     @Override
     public PortfolioItemDTO getPortfolioItemById(String id) throws Exception {
+        TPortfolioProject tPortfolioProject = baseMapper.selectById(id);
+        if (tPortfolioProject != null) {
+            msTPortfolioProjectStruct.pDoToTDto(tPortfolioProject);
+        }
         return null;
     }
 

@@ -31,7 +31,7 @@ public class TPortfolioProjectController implements PortfolioProjectApi {
     @ApiOperation(value = "组合项目的详情信息")
     @GetMapping("/{id}")
     @Override
-    public JsonVO<PortfolioItemDTO> getPortfolioItem(@PathVariable String id) throws Exception {
+    public JsonVO<PortfolioItemDTO> queryPortfolioItem(@PathVariable String id) throws Exception {
         if (id == null) {
             throw new RuntimeException("id不能为空");
         }
@@ -42,7 +42,7 @@ public class TPortfolioProjectController implements PortfolioProjectApi {
     @ApiOperation(value = "获取项目列表 (条件+分页）")
     @GetMapping("/query-lists")
     @Override
-    public JsonVO<PageDTO<PortfolioItemListDTO>> listPortfolioItems(@Validated PortfolioItemListQuery query) throws Exception {
+    public JsonVO<PageDTO<PortfolioItemListDTO>> queryPortfolioItemList(@Validated PortfolioItemListQuery query) throws Exception {
         return null;
     }
 
