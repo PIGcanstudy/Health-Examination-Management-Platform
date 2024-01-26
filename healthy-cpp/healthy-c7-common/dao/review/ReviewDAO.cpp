@@ -84,7 +84,7 @@ list<ReviewDO> ReviewDAO::selectWithPage(const ReviewQuery::Wrapper& query)
 //	string sql = "INSERT INTO `t_review_record` (`name`, `sex`, `age`) VALUES (?, ?, ?)";
 //	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getName(), iObj.getSex(), iObj.getAge());
 //}
-// 修改数据
+// 修改数据  下面代码不能同时修改多个表中的数据
 int ReviewDAO::update(const ReviewDO& uObj)
 {
 	//person_name  hazard_factor_code不在该表中，无法修改  swagger上显示的这两个字段，可以直接无视

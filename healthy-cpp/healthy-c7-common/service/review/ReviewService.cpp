@@ -47,7 +47,7 @@ ReviewListPageDTO::Wrapper ReviewService::listAll(const ReviewQuery::Wrapper& qu
 	//return dao.insert(data);
 	//return 0;
 //}
-// 修改数据
+// 修改数据  下面代码不能同时修改多个表中的数据
 bool ReviewService::updateData(const ReviewListDTO::Wrapper& dto)
 {
 	// 组装DO数据
