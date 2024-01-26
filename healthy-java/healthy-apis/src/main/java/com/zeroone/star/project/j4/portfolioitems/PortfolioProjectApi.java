@@ -1,6 +1,9 @@
 package com.zeroone.star.project.j4.portfolioitems;
 
+import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.dto.PortfolioItemDTO;
+import com.zeroone.star.project.j4.dto.PortfolioItemListDTO;
+import com.zeroone.star.project.j4.query.PortfolioItemListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 
 /**
@@ -26,4 +29,5 @@ public interface PortfolioProjectApi {
      * @param:
      * @return:
      **/
+    JsonVO<PageDTO<PortfolioItemListDTO>> listPortfolioItems(PortfolioItemListQuery query) throws Exception;
 }

@@ -17,5 +17,5 @@ import com.zeroone.star.project.j4.dto.PortfolioItemListDTO;
 public interface ITPortfolioProjectService extends IService<TPortfolioProject> {
     PortfolioItemDTO getPortfolioItemById(String id) throws Exception;
 
-//    PageDTO<PortfolioItemListDTO> listPortfolioItems()
+    PageDTO<PortfolioItemListDTO> listPortfolioItems(PortfolioItemListDTO dto) throws Exception;
 }

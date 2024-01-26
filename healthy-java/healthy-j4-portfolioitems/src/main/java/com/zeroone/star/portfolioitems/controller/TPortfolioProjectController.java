@@ -2,11 +2,15 @@ package com.zeroone.star.portfolioitems.controller;
 
 
 import com.zeroone.star.portfolioitems.service.ITPortfolioProjectService;
+import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.dto.PortfolioItemDTO;
+import com.zeroone.star.project.j4.dto.PortfolioItemListDTO;
 import com.zeroone.star.project.j4.portfolioitems.PortfolioProjectApi;
+import com.zeroone.star.project.j4.query.PortfolioItemListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -33,6 +37,13 @@ public class TPortfolioProjectController implements PortfolioProjectApi {
         }
         PortfolioItemDTO portfolioItemDTO =  itPortfolioProjectService.getPortfolioItemById(id);
         return JsonVO.success(portfolioItemDTO);
+    }
+
+    @ApiOperation(value = "获取项目列表 (条件+分页）")
+    @GetMapping("/query-lists")
+    @Override
+    public JsonVO<PageDTO<PortfolioItemListDTO>> listPortfolioItems(@Validated PortfolioItemListQuery query) throws Exception {
+        return null;
     }
 
 
