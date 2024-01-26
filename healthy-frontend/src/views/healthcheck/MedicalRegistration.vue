@@ -10,7 +10,9 @@
         :checkbox-item="checkboxItem"
         :is-date-visible="isDateVisible"
         :external-form-items="formConfig.formItems"
-      />
+      >
+
+      </PeopleList>
     </el-aside>
     <!-- 伸缩按钮 -->
     <div class="shrink-button">
@@ -31,12 +33,11 @@
         :required-fields="requiredFields"
         :on-input-click="checkJob"
       />
-      <CheckItems v-if="isCheckItemsVisible" :tcObject="settingObj" />
       <!-- 按钮区域 -->
       <div style="margin-bottom: 10px">
-        <el-button type="primary" v-if="!isShow" style="background-color: #ffad33; border-color: #ffad33" disabled
-          ><el-icon style="margin-right: 2px"><Edit /></el-icon>修改信息</el-button
-        >
+        <el-button type="primary" v-if="!isShow" style="background-color: #ffad33; border-color: #ffad33" disabled>
+          <el-icon style="margin-right: 2px"><Edit /></el-icon>修改信息
+        </el-button>
         <el-button type="primary" v-if="!isShow" @click="handleSingleAdd">
           <el-icon style="margin-right: 2px"><Plus /></el-icon>零星新增
         </el-button>
@@ -56,12 +57,31 @@
           ><el-icon style="margin-right: 2px"><CaretRight /></el-icon>保存信息</el-button
         >
       </div>
-      <!-- 体检项目 -->
+      <!-- 体检项目选择 -->
       <div class="card-header">
         <span>体检项目</span>
-        <CheckItems />
+        <CheckItems :tcObject="checkCombo">
+          <el-icon style="margin-right: 2px"><Plus /></el-icon>
+        </CheckItems>
+        <CheckItems :tcObject="checkProject">
+          <el-icon style="margin-right: 2px"><Plus /></el-icon>
+        </CheckItems>
       </div>
-      <BaseDataList ref="baseDataListRef" :use-form="true" :form-data="formData" :table-column-attribute="tableColumnAttribute" :table-data="tableData" :handle-edit="handleEdit" />
+      <!-- 数据列表显示 -->
+      <BaseDataList
+        ref="baseDataListRef"
+        :use-form="false"
+        :form-data="formData"
+        :table-column-attribute="tableColumnAttribute"
+        :table-data="tableData"
+        :handle-edit="handleEdit"
+        :use-fixed="true"
+      >
+        <slot name="fixed">
+          <span>编辑</span>
+        </slot>
+
+      </BaseDataList>
       <!-- 操作提示 -->
       <div class="card-content">
         <span>操作说明</span>
@@ -73,15 +93,34 @@
         <p>第六步：打印导检单（体检人员可以根据导检单进行体检）</p>
         <p>或执行第四、五、六步</p>
       </div>
+      <!-- 默认隐藏的组件 -->
+      <CheckItems v-if="isCheckItemsVisible" :tcObject="settingObj" />
+      <el-dialog v-model="isPdfObjectVisible" title="打印导检单" style="width: 80%">
+        <div class="dialog-content">
+          <!-- 头部容器 -->
+          <div class="header-container">
+            <Head name="体检导检单" style="width: 70%; font-size: 15px;" />
+            <Head name="样本条码" style="width: 25%; font-size: 15px;">
+              <el-button type="primary" @click="printBarcode" style="height: 30px;margin-left: 100px;">
+                <el-icon style="margin-right: 2px"><Printer /></el-icon>打印样本条码
+              </el-button>
+            </Head>
+          </div>
+          <!-- PDF容器 -->
+          <PdfObject />
+        </div>
+      </el-dialog>
     </el-main>
   </el-container>
 </template>
 
 <script setup>
-import PeopleList from '@/components/peoplelist/PeopleList-Rom.vue'
+import PeopleList from '@/components/peoplelist/PeopleList.vue'
 import MedicalInfo from '@/components/medicalinfo/MedicalInfo.vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import CheckItems from '@/components/checkitems/CheckItems.vue'
+import PdfObject from '@/components/pdfobject/PdfObject.vue'
+import Head from '@/components/head/Head.vue'
 import { ref, nextTick } from 'vue'
 import { ElMessage } from 'element-plus'
 import { ArrowRightBold, ArrowLeftBold, Edit, Plus, Delete, Printer, CaretRight, Loading } from '@element-plus/icons-vue'
@@ -183,19 +222,15 @@ const settingObj = ref({
   //表格列属性
   tableLieForTc: [
     {
-      prop: 'bind',
-      label: '列的显示名称'
-    },
-    {
-      prop: 'bind2',
-      label: '列的显示名称'
+      prop: 'job_name',
+      label: '工种名称'
     }
   ],
   //表格字段
   tableDataForTc: [
     {
-      bind: '列的显示字段名',
-      bind2: '列的显示字段名'
+      job_name: '护士',
+      job_name: '护士'
     }
   ],
   //下拉框
@@ -204,8 +239,78 @@ const settingObj = ref({
       value: '字段属性值-绑定用',
       label: '下拉显示的数据'
     }
+  ]
+})
+const checkCombo = ref({
+  bottonTitle: '套餐选择',
+  tableTitle: '套餐选择',
+  isShowButtonForTc: true,
+  hideButton: false,
+  openDrawer: false,
+  tableLieForTc: [
+  {
+      prop: 'id',
+      label: '#'
+    },
+    {
+      prop: 'combo_name',
+      label: '套餐名称'
+    }
   ],
-  required: true
+  //表格字段
+  tableDataForTc: [
+    {
+      id: '1',
+      combo_name: '1,2-二氯乙烷-上岗前'
+    },
+    {
+      id: '2',
+      combo_name: '1,2-二氯乙烷-上岗前'
+    }
+  ],
+  //下拉框
+  selectDown: [
+    {
+      value: '字段属性值-绑定用',
+      label: '下拉显示的数据'
+    }
+  ]
+})
+const checkProject = ref({
+  bottonTitle: '套餐项目',
+  tableTitle: '选检项目',
+  isShowButtonForTc: true,
+  hideButton: false,
+  openDrawer: false,
+  tableLieForTc: [
+  {
+      prop: 'id',
+      label: '#'
+    },
+    {
+      prop: 'project_name',
+      label: '名称'
+    },
+    {
+      prop: 'price',
+      label: '销售价'
+    }
+  ],
+  //表格字段
+  tableDataForTc: [
+    {
+      id: '1',
+      project_name: 'test',
+      price: 554
+    }
+  ],
+  //下拉框
+  selectDown: [
+    {
+      value: '字段属性值-绑定用',
+      label: '下拉显示的数据'
+    }
+  ]
 })
 /* BaseDataList的变量 */
 const tableColumnAttribute = ref([
@@ -245,15 +350,13 @@ const baseDataListRef = ref(null)
 // 编辑及删除函数
 const handleEdit = () => {
   console.log(baseDataListRef.value)
-  if (baseDataListRef.value) {
-    console.log(baseDataListRef.value.rows) // 访问子组件暴露的 row
-  }
 }
 /* 本界面变量及函数 */
 const isCollapsed = ref(false) // 是否收缩侧边栏
 const isShow = ref(false) // 是否展示按钮
 const isCheckItemsVisible = ref(false) // 是否展示抽屉
 const isLoading = ref(false) // 读取身份证图标显示
+const isPdfObjectVisible = ref(false)
 // 选择工种名称
 const checkJob = () => {
   isCheckItemsVisible.value = false // 首先设置为 false
@@ -292,7 +395,10 @@ const readIdCard = () => {
 }
 // 打印导检单
 const printSheet = () => {
-  ElMessage.warning('正在打印导检单...')
+  isPdfObjectVisible.value = false
+  nextTick(() => {
+    isPdfObjectVisible.value = true
+  })
 }
 // 保存信息
 const savePersonInfo = () => {
@@ -302,6 +408,10 @@ const savePersonInfo = () => {
       field.readonly = true
     }
   })
+}
+// 打印样本条码
+const printBarcode = () => {
+  ElMessage.warning("正在打印条码...")
 }
 </script>
 <style scoped>
@@ -345,5 +455,15 @@ const savePersonInfo = () => {
   to {
     transform: rotate(1turn);
   }
+}
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 </style>

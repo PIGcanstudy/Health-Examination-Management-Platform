@@ -1,10 +1,13 @@
 <template>
-  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true" v-if="!hideButton">{{ props.tcObject.bottonTitle }}</el-button>
+  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true" v-if="!hideButton">
+    <slot></slot>
+    {{ props.tcObject.bottonTitle }}
+  </el-button>
 
 
  <!-- 选检项目-抽屉 -->
 <div id = 'xjxm' class="darwer-box">
-  <el-drawer v-model="drawer2" :title= "tcObject.tableTitle"  :with-header="true" size="50%" direction="rtl" >
+  <el-drawer v-model="drawer2" :title= "tcObject.tableTitle"  :with-header="true" size="30%" direction="rtl" >
     <el-form :inline="true" :model="formInlineTc" class="demo-form-inline">
     <el-form-item label="关键字:" class="bold-label">
       <!-- 关键字输入框 -->
