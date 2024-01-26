@@ -147,6 +147,46 @@ samplebarcodesview:
 reportpreview:
  file:
   personid: 体检人ID
+  person_name: 人员姓名
+  sex: 性别
+  id_card: 证件号码
+  birth: 出生日期
+  age: 年龄
+  home_address: 家庭住址
+  mobile: 手机号码
+  test_num: 体检编号
+  department: 所属部门
+  dept: 单位名称
+  check_date: 体检日期
+  other_hazard_factors: 危害因素名称
+  work_type_text: 工种名称
+  work_year: 总工龄年数
+  exposure_work_year: 接害工龄年数
+  education: 文化程度
+  marriage_date: 婚姻史-结婚日期
+  period: 经期
+  cycle: 周期
+  menarche: 初潮
+  last_menstruation: 末次月经
+  existing_children: 现有子女
+  abortion: 流产
+  premature: 早产
+  death: 死亡
+  abnormal_fetus: 异常胎
+  allergies: 过敏史
+  package_every_day: 包每天
+  smoke_year: 吸烟年
+  ml_every_day: ml每天
+  drink_year: 喝酒年
+  birthplace_name: 出生地名称
+  family_history: 家族史
+  past_medical_history: 既往病史其他信息
+  disease_name: 病名
+  degree: 程度
+  course_time: 时间
+  project_name: 项目名称
+  code: 项目编码
+
  get:
   report: 报告预览
 interro:

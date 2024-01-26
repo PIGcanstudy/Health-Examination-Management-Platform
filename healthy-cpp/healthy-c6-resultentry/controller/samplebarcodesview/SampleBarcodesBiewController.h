@@ -4,7 +4,6 @@
 #include "domain/vo/BaseJsonVO.h"
 #include"ApiHelper.h"
 #include"domain/query/samplebarcodesview/SampleBarcodesViewQuery.h"
-#include"domain/vo/samplebarcodesview/SampleBarcodesViewVO.h"
 // 0 定义API控制器使用宏
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
@@ -24,10 +23,10 @@ public:
 		// 定义默认授权参数
 		API_DEF_ADD_AUTH();
 		// 定义响应参数格式	
-		API_DEF_ADD_RSP_JSON_WRAPPER(SampleBarcodesViewJsonVO);
+		API_DEF_ADD_RSP_JSON_WRAPPER(StringJsonVO);
 	}
 private:
-	SampleBarcodesViewJsonVO::Wrapper execQuerySampleBarcodesView(const SampleBarcodesViewQuery::Wrapper& qdto, const PayloadDTO& payload);
+	StringJsonVO::Wrapper execQuerySampleBarcodesView(const SampleBarcodesViewQuery::Wrapper& qdto, const PayloadDTO& payload);
 };
 
 #endif // !_SAMPLEBARCODESVIEW_CONTROLLER_
