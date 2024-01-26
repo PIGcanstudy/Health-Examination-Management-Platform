@@ -7,8 +7,8 @@ field:
    idCard:证件号码
    personName:姓名 
    sex:性别
-   idCard:证件号码
    birth:出生日期
    age:年龄
    isMarry:是否结婚
    mobile:手机号码
+   orderId:订单id
