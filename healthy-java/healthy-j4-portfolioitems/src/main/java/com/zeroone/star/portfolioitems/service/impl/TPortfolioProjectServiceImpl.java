@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 
 @Mapper(componentModel = "spring")
 interface MsTPortfolioProjectStruct {
-    PortfolioItemDTO pDoToTDto(TPortfolioProject tPortfolioProject)
+    PortfolioItemDTO pDoToTDto(TPortfolioProject tPortfolioProject);
 }
 
 /**
