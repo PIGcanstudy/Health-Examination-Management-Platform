@@ -38,6 +38,7 @@
     <el-form-item>
       <el-button type="primary" :icon="Search" @click="handleSearchTc">搜索</el-button>
       <el-button plain @click="handleCzTc">重置</el-button>
+      
     </el-form-item>
   </el-form>
 
@@ -53,6 +54,19 @@
     <!-- 单选框 -->
     <el-table-column type = "selection" label="单选框选择" width="180" />
     <el-table-column v-for="lieColumn in props.tableLieForTc" :key="lieColumn" :prop="lieColumn.prop" :label="lieColumn.label" :width="lieColumn.width" :align="lieColumn.align" />
+    <el-table-column prop="cz" label="操作" v-if="EditDButtonShow">
+      <template #default="scope" >
+        <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
+          >编辑</el-button
+        >
+        <el-button
+          size="small"
+          type="danger"
+          @click="handleDelete(scope.$index, scope.row)"
+          >删除</el-button
+        >
+      </template>
+    </el-table-column>
   </el-table>
   <el-pagination
       v-model:current-page="currentPage4"
@@ -67,7 +81,7 @@
     />
 
       <!-- 底栏 -->
-      <template #footer>
+      <template #footer v-if="isShowButtonForTc">
         <!-- <span class="dialog-footer"> -->
           <el-button
             @click="cancelTc"
@@ -88,12 +102,47 @@
 <script lang="ts" setup>
 import { reactive,ref,defineProps,watch,defineEmits} from 'vue'
 import { Search } from '@element-plus/icons-vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 // 分页属性
 const currentPage4 = ref(1)
 const pageSize4 = ref(10)
 const small = ref(false)
 const disabled = ref(false)
+
+//编辑
+const handleEdit = (index: number, row: Array<String>) => {
+  alert(index)
+  alert(row)
+}
+
+//删除
+const handleDelete = (index: number, row: Array<String>) => {
+  ElMessageBox.confirm(
+    'proxy will permanently delete the data. Continue?',
+    'Warning',
+    {
+      confirmButtonText: 'OK',
+      cancelButtonText: 'Cancel',
+      type: 'warning',
+    }
+  )
+    .then(() => {
+      //发请求给后端
+      ElMessage({
+        type: 'success',
+        message: 'Delete completed',
+      })
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: 'Delete canceled',
+      })
+    })
+  alert(index)
+  alert(row)
+}
 
 //按钮开关
 //套餐
@@ -116,16 +165,19 @@ const handleCurrentChange = (val: number) => {
   ssks: ''
 })
 
-const lieColumn = ref()
 
 
 //标签设置区域
-const value = ref('')
 const drawer2 = ref(false)
 
 
 // 定义抽屉预设
 const props = defineProps({
+  //是否显示编辑删除按钮
+  EditDButtonShow:{
+    typr: Boolean,
+    default: false
+  },
   //触发的按钮名字
   bottonTitle:{
     type: String,
@@ -188,9 +240,10 @@ const props = defineProps({
         value:'字段属性值-绑定用',
         label:'下拉显示的数据'
       }]
-    },
+    }
 })
 
+const EditDButtonShow = ref(true)
 const hideButton=ref(false)
 //是否显示下拉框
 const isShowSelectDown=ref(true)
@@ -201,6 +254,7 @@ created:{
     showSubmitForTc.value = false
     showCloseForTc.value = false
   }
+  EditDButtonShow.value = props.EditDButtonShow
   hideButton.value=props.hideButton
   isShowSelectDown.value = props.isShowSelectDown
   drawer2.value=props.openDrawer
