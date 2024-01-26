@@ -11,12 +11,13 @@
 class AddNewItemsDAO : public BaseDAO
 {
 public:
+	//查询在Review中进行，此处应删除
 	// 统计数据条数
-	uint64_t count(const AddNewItemsQuery::Wrapper& query);
+	//uint64_t count(const AddNewItemsQuery::Wrapper& query);
 	// 分页查询数据
-	list<AddNewItemsDO> selectWithPage(const AddNewItemsQuery::Wrapper& query);
+	//list<AddNewItemsDO> selectWithPage(const AddNewItemsQuery::Wrapper& query);
 	// 通过姓名查询数据
-	list<AddNewItemsDO> selectByName(const string& name);
+	//list<AddNewItemsDO> selectByName(const string& name);
 	// 插入数据
 	uint64_t insert(const AddNewItemsDO& iObj);
 	// 修改数据

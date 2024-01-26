@@ -55,7 +55,7 @@ public:
 		// 呼叫执行函数响应结果
 		API_HANDLER_RESP_VO(execQueryReview(userQuery));
 	}
-
+	//在AddNewItems中实现 增加功能，此处应删除
 	// 3.1 定义新增接口描述
 	//ENDPOINT_INFO(addReview) {
 		// 定义接口标题
@@ -74,8 +74,8 @@ public:
 private: //定义接口执行函数
 	// 3.3 分页查询数据
 	ReviewListPageJsonVO::Wrapper execQueryReview(const ReviewQuery::Wrapper& query);
-	// 3.3 新增数据
-	Uint64JsonVO::Wrapper execAddReview(const ReviewListDTO::Wrapper& dto);
+	// 3.3 新增数据  在AddNewItems中实现 增加功能，此处应删除
+	//Uint64JsonVO::Wrapper execAddReview(const ReviewListDTO::Wrapper& dto);
 };
 
 #include OATPP_CODEGEN_END(ApiController)

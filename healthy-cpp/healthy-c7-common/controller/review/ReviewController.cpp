@@ -2,6 +2,7 @@
 #include "ReviewController.h"
 #include "../../service/review/ReviewService.h"
 #include "../ApiDeclarativeServicesHelper.h"
+
 ReviewListPageJsonVO::Wrapper ReviewController::execQueryReview(const ReviewQuery::Wrapper& query)
 {
 	// 定义一个Service
@@ -13,18 +14,7 @@ ReviewListPageJsonVO::Wrapper ReviewController::execQueryReview(const ReviewQuer
 	jvo->success(result);
 	return jvo;
 }
-//ReviewListPageJsonVO::Wrapper ReviewController::execQueryReview(const ReviewQuery::Wrapper& query, const PayloadDTO& payload)
-//{
-//	// 定义一个Service
-//	ReviewService service;
-//	// 查询数据
-//	auto result = service.listAll(query);
-//	// 响应结果
-//	auto jvo = ReviewListPageJsonVO::createShared();
-//	jvo->success(result);
-//	return jvo;
-//}
-
+//在AddNewItems中实现 增加功能，此处应删除
 //Uint64JsonVO::Wrapper ReviewController::execAddReview(const ReviewListDTO::Wrapper& dto)
 //{
 //	// 定义返回数据对象

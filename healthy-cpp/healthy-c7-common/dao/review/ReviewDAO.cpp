@@ -57,7 +57,7 @@ uint64_t ReviewDAO::count(const ReviewQuery::Wrapper& query)
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
-// 分页查询数据
+// 分页查询数据  现在可以通过姓名查询数据，但不能进行模糊查询
 list<ReviewDO> ReviewDAO::selectWithPage(const ReviewQuery::Wrapper& query)
 {
 	stringstream sql;
@@ -68,7 +68,7 @@ list<ReviewDO> ReviewDAO::selectWithPage(const ReviewQuery::Wrapper& query)
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<ReviewDO, ReviewMapper>(sqlStr, mapper, params);
 }
-// 通过姓名查询数据  暂时无法运行？？？？
+// 通过姓名查询数据
 //list<ReviewDO> ReviewDAO::selectByName(const string& name)
 //{
 //	string sql = "SELECT b.person_name,a.check_project_name,a.review_explain,a.review_time,a.create_time,a.state,b.hazard_factor_code FROM t_review_record AS a JOIN t_review_person AS b ON a.id = b.id WHERE b.person_name LIKE CONCAT('%',?,'%')"; 
@@ -78,7 +78,7 @@ list<ReviewDO> ReviewDAO::selectWithPage(const ReviewQuery::Wrapper& query)
 //	return sqlSession->executeQuery<ReviewDO, ReviewMapper>(sql, mapper, "%s", name);
 //}
 //此处不需要下面的东西吧？？？？？？？？？？？？
-//// 插入数据
+//// 插入数据       在AddNewItems中实现 增加功能，此处应删除
 //uint64_t ReviewDAO::insert(const ReviewDO& iObj)
 //{
 //	string sql = "INSERT INTO `t_review_record` (`name`, `sex`, `age`) VALUES (?, ?, ?)";

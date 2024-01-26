@@ -33,8 +33,9 @@ ReviewListPageDTO::Wrapper ReviewService::listAll(const ReviewQuery::Wrapper& qu
 	return pages;
 }
 //下面可删除？？？？？？？
-uint64_t ReviewService::saveData(const ReviewListDTO::Wrapper& dto)
-{
+//在AddNewItems中实现 增加功能，此处应删除
+//uint64_t ReviewService::saveData(const ReviewListDTO::Wrapper& dto)
+//{
 	// 组装DO数据
 	//ReviewDO data;
 	// 	data.setName(dto->name.getValue(""));
@@ -44,15 +45,15 @@ uint64_t ReviewService::saveData(const ReviewListDTO::Wrapper& dto)
 		// 执行数据添加
 		//ReviewDAO dao;
 	//return dao.insert(data);
-	return 0;
-}
-
-bool ReviewService::updateData(const ReviewListDTO::Wrapper& dto)
-{
-	return false;
-}
-
-bool ReviewService::removeData(uint64_t id)
-{
-	return false;
-}
+	//return 0;
+//}
+//
+//bool ReviewService::updateData(const ReviewListDTO::Wrapper& dto)
+//{
+//	return false;
+//}
+//
+//bool ReviewService::removeData(uint64_t id)
+//{
+//	return false;
+//}

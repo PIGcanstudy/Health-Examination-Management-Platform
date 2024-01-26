@@ -2,18 +2,18 @@
 #include "AddNewItemsController.h"
 #include "../../service/addNewItems/AddNewItemsService.h"
 #include "../ApiDeclarativeServicesHelper.h"
-
-AddNewItemsPageJsonVO::Wrapper AddNewItemsController::execQueryAddNewItems(const AddNewItemsQuery::Wrapper& query, const PayloadDTO& payload)
-{
-	// 定义一个Service
-	AddNewItemsService service;
-	// 查询数据
-	auto result = service.listAll(query);
-	// 响应结果
-	auto jvo = AddNewItemsPageJsonVO::createShared();
-	jvo->success(result);
-	return jvo;
-}
+//查询在Review中进行，此处应删除
+//AddNewItemsPageJsonVO::Wrapper AddNewItemsController::execQueryAddNewItems(const AddNewItemsQuery::Wrapper& query, const PayloadDTO& payload)
+//{
+//	// 定义一个Service
+//	AddNewItemsService service;
+//	// 查询数据
+//	auto result = service.listAll(query);
+//	// 响应结果
+//	auto jvo = AddNewItemsPageJsonVO::createShared();
+//	jvo->success(result);
+//	return jvo;
+//}
 
 Uint64JsonVO::Wrapper AddNewItemsController::execAddAddNewItems(const AddNewItemsDTO::Wrapper& dto)
 {
