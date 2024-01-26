@@ -150,5 +150,5 @@ add_subdirectory ("arch-demo")
 add_subdirectory ("healthy-c3-sales-unit")
 add_subdirectory ("healthy-c3-sales-order")
 
-add_subdirectory ("healthy-c3-sales")
+#add_subdirectory ("healthy-c3-sales")
 
