@@ -11,7 +11,6 @@
         :is-date-visible="isDateVisible"
         :external-form-items="formConfig.formItems"
       >
-
       </PeopleList>
     </el-aside>
     <!-- 伸缩按钮 -->
@@ -45,8 +44,8 @@
           <el-icon style="margin-right: 2px"><Plus /></el-icon>团检新增
         </el-button>
         <el-button type="primary" v-if="!isShow" style="background-color: #f16643; border-color: #f16643" disabled
-          ><el-icon style="margin-right: 2px"><Delete /></el-icon>删除</el-button
-        >
+          ><el-icon style="margin-right: 2px"><Delete /></el-icon>删除
+        </el-button>
         <el-button type="primary" v-if="isShow" @click="readIdCard">
           <el-icon style="margin-right: 2px"><Loading v-if="isLoading" class="icon-loading" /><Plus v-else /></el-icon>读取二代身份证
         </el-button>
@@ -60,28 +59,35 @@
       <!-- 体检项目选择 -->
       <div class="card-header">
         <span>体检项目</span>
-        <CheckItems :tcObject="checkCombo">
+        <CheckItems bottonTitle="套餐选择" tableTitle="套餐选择" :isShowSelectDown="false" :tableLieForTc="tableLieForTc" :tableDataForTc="tableDataForTc">
           <el-icon style="margin-right: 2px"><Plus /></el-icon>
         </CheckItems>
-        <CheckItems :tcObject="checkProject">
+        <CheckItems bottonTitle="选检项目" tableTitle="套餐项目" :tableLieForTc="tableLieForTc2" :tableDataForTc="tableDataForTc2" :selectDown="selectDown">
           <el-icon style="margin-right: 2px"><Plus /></el-icon>
         </CheckItems>
       </div>
       <!-- 数据列表显示 -->
-      <BaseDataList
-        ref="baseDataListRef"
-        :use-form="false"
-        :form-data="formData"
-        :table-column-attribute="tableColumnAttribute"
-        :table-data="tableData"
-        :handle-edit="handleEdit"
-        :use-fixed="true"
-      >
-      <template #fixed="{ row }">
-          <el-button type="" @click="clickButton(row)">编辑</el-button>
-      </template>
-
+      <BaseDataList ref="baseDataListRef" :use-form="false" :form-data="formData" :table-column-attribute="tableColumnAttribute" :table-data="tableData" :use-fixed="true">
+        <template #fixed="{ row }">
+          <el-button type="primary" @click="deleteProject(row)" style="background-color: #f16643; border-color: #f16643">
+            <el-icon style="margin-right: 2px"><Delete /></el-icon>删除
+          </el-button>
+        </template>
       </BaseDataList>
+      <!-- 折扣选择 -->
+      <!-- 使用 style 来应用 Flexbox 布局 -->
+      <div style="display: flex; margin-top: 20px;">
+        <el-form-item label="必检项折扣：">
+          <el-input placeholder=""></el-input>
+        </el-form-item>
+        <el-form-item label="选检项折扣：">
+          <el-input placeholder=""></el-input>
+        </el-form-item>
+        <el-form-item label="优惠价：">
+          <el-input placeholder=""></el-input>
+        </el-form-item>
+      </div>
+
       <!-- 操作提示 -->
       <div class="card-content">
         <span>操作说明</span>
@@ -94,14 +100,14 @@
         <p>或执行第四、五、六步</p>
       </div>
       <!-- 默认隐藏的组件 -->
-      <CheckItems v-if="isCheckItemsVisible" :tcObject="settingObj" />
+      <CheckItems v-if="isCheckItemsVisible" tableTitle="工种名称" :hideButton="true" :openDrawer="true" :isShowSelectDown="false" />
       <el-dialog v-model="isPdfObjectVisible" title="打印导检单" style="width: 80%">
         <div class="dialog-content">
           <!-- 头部容器 -->
           <div class="header-container">
-            <Head name="体检导检单" style="width: 70%; font-size: 15px;" />
-            <Head name="样本条码" style="width: 25%; font-size: 15px;">
-              <el-button type="primary" @click="printBarcode" style="height: 30px;margin-left: 100px;">
+            <Head name="体检导检单" style="width: 70%; font-size: 15px" />
+            <Head name="样本条码" style="width: 25%; font-size: 15px">
+              <el-button type="primary" @click="printBarcode" style="height: 30px; margin-left: 100px">
                 <el-icon style="margin-right: 2px"><Printer /></el-icon>打印样本条码
               </el-button>
             </Head>
@@ -129,9 +135,7 @@ import { usePublicStore } from '@/stores/Public/index.js'
 /* Stores中的方法 */
 const MedicalRegistrationStore = useMedicalRegistrationStore()
 const PublicStore = usePublicStore()
-const clickButton = (row) => {
-  console.log(row)
-}
+
 /* PeopleList的变量 */
 const title = ref('人员查询')
 const checkboxItem = ref(['未登记', '已登记'])
@@ -212,108 +216,60 @@ const personInfo = ref({
   marry_type: ''
 })
 /* CheckItems的变量 */
-const settingObj = ref({
-  bottonTitle: '按钮名字',
-  tableTitle: '工种选择',
-  //是否显示确定取消按钮
-  isShowButtonForTc: true,
-  //控制触发按钮是否隐藏
-  hideButton: true,
-  //控制抽屉是否打开
-  openDrawer: true,
-  //表格列属性
-  tableLieForTc: [
-    {
-      prop: 'job_name',
-      label: '工种名称'
-    }
-  ],
-  //表格字段
-  tableDataForTc: [
-    {
-      job_name: '护士',
-      job_name: '护士'
-    }
-  ],
-  //下拉框
-  selectDown: [
-    {
-      value: '字段属性值-绑定用',
-      label: '下拉显示的数据'
-    }
-  ]
-})
-const checkCombo = ref({
-  bottonTitle: '套餐选择',
-  tableTitle: '套餐选择',
-  isShowButtonForTc: true,
-  hideButton: false,
-  openDrawer: false,
-  tableLieForTc: [
+// 套餐选择
+const tableLieForTc = ref([
   {
-      prop: 'id',
-      label: '#'
-    },
-    {
-      prop: 'combo_name',
-      label: '套餐名称'
-    }
-  ],
-  //表格字段
-  tableDataForTc: [
-    {
-      id: '1',
-      combo_name: '1,2-二氯乙烷-上岗前'
-    },
-    {
-      id: '2',
-      combo_name: '1,2-二氯乙烷-上岗前'
-    }
-  ],
-  //下拉框
-  selectDown: [
-    {
-      value: '字段属性值-绑定用',
-      label: '下拉显示的数据'
-    }
-  ]
-})
-const checkProject = ref({
-  bottonTitle: '套餐项目',
-  tableTitle: '选检项目',
-  isShowButtonForTc: true,
-  hideButton: false,
-  openDrawer: false,
-  tableLieForTc: [
+    prop: 'id',
+    label: '#'
+  },
   {
-      prop: 'id',
-      label: '#'
-    },
-    {
-      prop: 'project_name',
-      label: '名称'
-    },
-    {
-      prop: 'price',
-      label: '销售价'
-    }
-  ],
-  //表格字段
-  tableDataForTc: [
-    {
-      id: '1',
-      project_name: 'test',
-      price: 554
-    }
-  ],
-  //下拉框
-  selectDown: [
-    {
-      value: '字段属性值-绑定用',
-      label: '下拉显示的数据'
-    }
-  ]
-})
+    prop: 'combo_name',
+    label: '套餐名称'
+  }
+])
+const tableDataForTc = ref([
+  {
+    id: '1',
+    combo_name: '1,2-二氯乙烷-上岗前'
+  },
+  {
+    id: '2',
+    combo_name: '1,2-二氯乙烷-上岗前'
+  }
+])
+// 选检项目
+const tableLieForTc2 = ref([
+  {
+    prop: 'id',
+    label: '#'
+  },
+  {
+    prop: 'project_name',
+    label: '名称'
+  },
+  {
+    prop: 'price',
+    label: '销售价'
+  }
+])
+const tableDataForTc2 = ref([
+  {
+    id: '1',
+    project_name: 'test',
+    price: 554
+  }
+])
+const selectDown = ref([
+  {
+    value: 'inquiry',
+    label: '问诊科'
+  },
+  {
+    value: 'facial_features',
+    label: '五官科'
+  }
+])
+
 /* BaseDataList的变量 */
 const tableColumnAttribute = ref([
   { prop: 'id', label: '#', width: 150, align: 'center' },
@@ -350,8 +306,8 @@ const formData = ref({
 })
 const baseDataListRef = ref(null)
 // 编辑及删除函数
-const handleEdit = () => {
-  console.log(baseDataListRef.value)
+const deleteProject = (row) => {
+  console.log(row)
 }
 /* 本界面变量及函数 */
 const isCollapsed = ref(false) // 是否收缩侧边栏
@@ -413,7 +369,7 @@ const savePersonInfo = () => {
 }
 // 打印样本条码
 const printBarcode = () => {
-  ElMessage.warning("正在打印条码...")
+  ElMessage.warning('正在打印条码...')
 }
 </script>
 <style scoped>
