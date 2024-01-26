@@ -27,6 +27,8 @@
     <Head :middle="true"></Head>
 
     <Head name="自定义标题"></Head>
+
+    <RadioList></RadioList>
   </div>
 </template>
 
@@ -35,6 +37,7 @@ import { ref } from 'vue'
 import Search from '@/components/search/Search.vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import Head from '@/components/head/Head.vue'
+import RadioList from '@/components/radio/RadioList.vue'
 
 // 需要搜索的数据传入
 // const toSearch = ['单位名称', '信用代码', '联系人', '联系电话']
