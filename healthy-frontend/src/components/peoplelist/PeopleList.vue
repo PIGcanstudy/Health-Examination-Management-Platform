@@ -34,15 +34,7 @@
             </el-form-item>
 
             <el-form-item v-if="props.isShowSwitch" prop="switch">
-              <el-switch
-                v-model="form.switch"
-                :model-value="row[item.prop] ? true : false"
-                :loading="openSwitchLoading"
-                inline-prompt
-                active-text="复查"
-                inactive-text="非复"
-                @change="(state) => emits('updateSwitchState', state, row)"
-              ></el-switch>
+              <el-switch v-model="form.switch" inline-prompt active-text="复查" inactive-text="非复" @change="(state) => emits('updateSwitchState', state, row)"></el-switch>
             </el-form-item>
           </el-row>
 
@@ -61,11 +53,11 @@
           </el-form-item>
 
           <!-- 从父组件传入的其他表单项 -->
-          <div v-if="isShowInput">
+          <template v-if="isShowInput">
             <el-form-item v-for="(item, index) of externalFormItems" :key="index">
               <el-input v-model="item.name" :placeholder="item.placeholder" clearable />
             </el-form-item>
-          </div>
+          </template>
 
           <!-- 源代码备份 -->
           <!-- <template v-if="isShowInput"> -->
@@ -172,6 +164,14 @@ const props = defineProps({
     require: true,
     default: () => {
       return ['已检', '未检']
+    }
+  },
+  // 当前switch状态
+  checkSwitchItem: {
+    type: Array,
+    require: true,
+    default: () => {
+      return ['复查', '非复']
     }
   },
   // 是否使用滑块开关
