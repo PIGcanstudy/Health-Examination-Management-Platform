@@ -21,8 +21,8 @@ public:
 	// 插入数据    在AddNewItems中实现 增加功能，此处应删除
 	//uint64_t insert(const ReviewDO& iObj);
 	// 修改数据
-	//int update(const ReviewDO& uObj);
+	int update(const ReviewDO& uObj);
 	// 通过ID删除数据
-	//int deleteById(uint64_t id);//id是string类型??????????????????????
+	int deleteById(string id);
 };
 #endif // !_REVIEW_DAO_

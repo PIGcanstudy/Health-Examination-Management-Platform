@@ -84,15 +84,15 @@ list<ReviewDO> ReviewDAO::selectWithPage(const ReviewQuery::Wrapper& query)
 //	string sql = "INSERT INTO `t_review_record` (`name`, `sex`, `age`) VALUES (?, ?, ?)";
 //	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getName(), iObj.getSex(), iObj.getAge());
 //}
-//// 修改数据
-//int ReviewDAO::update(const ReviewDO& uObj)
-//{
-//	string sql = "UPDATE `t_review_record` SET `name`=?, `sex`=?, `age`=? WHERE `id`=?";
-//	return sqlSession->executeUpdate(sql, "%s%s%i%ull", uObj.getName(), uObj.getSex(), uObj.getAge(), uObj.getId());
-//}
-//// 通过ID删除数据
-//int ReviewDAO::deleteById(uint64_t id)
-//{
-//	string sql = "DELETE FROM `t_review_record` WHERE `id`=?";
-//	return sqlSession->executeUpdate(sql, "%ull", id);
-//}
+// 修改数据
+int ReviewDAO::update(const ReviewDO& uObj)
+{
+	string sql = "UPDATE `t_review_record` SET `person_name`=?, `check_project_id`=?, `check_project_name`=?, `review_explain`=?, `review_time`=?, `create_time`=?, `state`=?, `hazard_factor_code`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%ull%s%s", uObj.getPersonName(), uObj.getCheckProjectId(), uObj.getCheckProjectName(), uObj.getReviewExplain(), uObj.getReviewTime(), uObj.getCreateTime(), uObj.getState(), uObj.getHazardFactorCode(), uObj.getId());
+}
+// 通过ID删除数据
+int ReviewDAO::deleteById(string id)
+{
+	string sql = "DELETE FROM `t_review_record` WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s", id);
+}

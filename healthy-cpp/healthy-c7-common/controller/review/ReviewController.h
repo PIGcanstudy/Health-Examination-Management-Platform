@@ -71,11 +71,30 @@ public:
 		//API_HANDLER_RESP_VO(execAddReview(dto));
 	//}
 	
+	// 3.1 定义修改接口描述
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("review.put.summary"), modifyReview, Uint64JsonVO::Wrapper);
+	// 3.2 定义修改接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/review", modifyReview, BODY_DTO(ReviewListDTO::Wrapper, dto), execModifyReview(dto));
+
+	// 3.1 定义删除接口描述
+	ENDPOINT_INFO(removeReview) {
+		// 定义标题和返回类型以及授权支持
+		API_DEF_ADD_COMMON_AUTH(ZH_WORDS_GETTER("review.delete.summary"), StringJsonVO::Wrapper);
+		// 定义其他路径参数说明
+		API_DEF_ADD_PATH_PARAMS(String, "id", ZH_WORDS_GETTER("review.field.id"), 1, true);
+	}
+	// 3.2 定义删除接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/review/{id}", removeReview, PATH(String, id), execRemoveReview(id));
+	
 private: //定义接口执行函数
 	// 3.3 分页查询数据
 	ReviewListPageJsonVO::Wrapper execQueryReview(const ReviewQuery::Wrapper& query);
 	// 3.3 新增数据  在AddNewItems中实现 增加功能，此处应删除
 	//Uint64JsonVO::Wrapper execAddReview(const ReviewListDTO::Wrapper& dto);
+	// 3.3 修改数据
+	StringJsonVO::Wrapper execModifyReview(const ReviewListDTO::Wrapper& dto);
+	// 3.3 删除数据
+	StringJsonVO::Wrapper execRemoveReview(const String& id);
 };
 
 #include OATPP_CODEGEN_END(ApiController)

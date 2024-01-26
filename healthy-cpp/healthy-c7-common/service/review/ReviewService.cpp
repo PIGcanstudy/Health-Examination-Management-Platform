@@ -47,13 +47,19 @@ ReviewListPageDTO::Wrapper ReviewService::listAll(const ReviewQuery::Wrapper& qu
 	//return dao.insert(data);
 	//return 0;
 //}
-//
-//bool ReviewService::updateData(const ReviewListDTO::Wrapper& dto)
-//{
-//	return false;
-//}
-//
-//bool ReviewService::removeData(uint64_t id)
-//{
-//	return false;
-//}
+// 修改数据
+bool ReviewService::updateData(const ReviewListDTO::Wrapper& dto)
+{
+	// 组装DO数据
+	ReviewDO data;
+	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, PersonName, personName, CheckProjectId, checkProjectId, CheckProjectName, checkProjectName, ReviewExplain, reviewExplain, ReviewTime, reviewTime, CreateTime, createTime, State, state, HazardFactorCode, hazardFactorCode, Id, id)
+	// 执行数据修改
+	ReviewDAO dao;
+	return dao.update(data) == 1;
+}
+// 通过ID删除数据
+bool ReviewService::removeData(string id)
+{
+	ReviewDAO dao;
+	return dao.deleteById(id) == 1;
+}
