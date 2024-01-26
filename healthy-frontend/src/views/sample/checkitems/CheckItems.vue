@@ -4,7 +4,8 @@
     :bottonTitle="bottonTitle"  :drawerTitle="drawerTitle"
     :hideButton="hideButton"  :openDrawer="openDrawer"
     :tableLieForTc="tableLieForTc"  :tableDataForTc="tableDataForTc"
-    :selectDown="selectDown" :isShowSelectDown="isShowSelectDown"  
+    :selectDown="selectDown" :isShowSelectDown="isShowSelectDown" 
+    :EditDButtonShow="EditDButtonShow" 
      @submitTc="submitTc"  />
   </div>
 </template>
@@ -24,6 +25,8 @@ alert(tcRowData.value)
 
 }
 
+//是否显示编辑删除按钮
+const EditDButtonShow = ref(true)
 //是否显示确定取消按钮-套餐
 const isShowButtonForTc = ref(true)
 //抽屉按钮名字
