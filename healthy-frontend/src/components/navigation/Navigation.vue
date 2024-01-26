@@ -3,7 +3,7 @@
     <el-container class="mater">
       <el-main>
         <div class="ic01">
-          <router-link to="/sample/file">
+          <router-link to="/careercheck/InspectionCompany.vue">
             <img src="../../assets/navigation/icon01.png" />
           </router-link>
           <el-text size="large">团检单位</el-text>
@@ -14,7 +14,7 @@
 
 
         <div class="ic02">
-          <router-link to="/sample/excel">
+          <router-link to="/careercheck/GroupOrder.vue">
             <img src="../../assets/navigation/icon02.png" />
           </router-link>
           <el-text size="large">团检订单</el-text>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="ic03">
-          <router-link to="/sample/print">
+          <router-link to="/careercheck/MedicalExaminer.vue">
             <img src="../../assets/navigation/icon03.png" />
           </router-link>
           <el-text size="large">团检人员</el-text>
@@ -36,10 +36,10 @@
 
 
         <div class="ic04">
-          <router-link to="/sample/print">
+          <router-link to="/careercheck/ContractApproval.vue">
             <img src="../../assets/navigation/icon04.png" />
           </router-link>
-          <el-text size="large">合同详情</el-text>
+          <el-text size="large">合同审批</el-text>
         </div>
         <div class="arrow04">
           <img src="../../assets/navigation/arrow03.png" />
@@ -47,7 +47,7 @@
 
 
         <div class="ic05">
-          <router-link to="/sample/print">
+          <router-link to="/careercheck/CompanyReport.vue">
             <img src="../../assets/navigation/icon05.png" />
           </router-link>
           <el-text size="large">单位报告</el-text>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="ic06">
-          <router-link to="/sample/print">
+          <router-link to="/careercheck/MedicalExamination.vue">
             <img src="../../assets/navigation/icon06.png" />
           </router-link>
           <el-text size="large">体检诊台</el-text>
@@ -67,7 +67,7 @@
         </div>
 
         <div class="ic07">
-          <router-link to="/sample/pdfobject">
+          <router-link to="/careercheck/DoctorInspection.vue">
             <img src="../../assets/navigation/icon07.png" />
           </router-link>
           <el-text size="large">医生总检</el-text>
@@ -77,7 +77,7 @@
         </div>
 
         <div class="ic08">
-          <router-link to="/sample/basedatalist">
+          <router-link to="/careercheck/ReportAudit.vue">
             <img src="../../assets/navigation/icon08.png" />
           </router-link>
           <el-text size="large">报告审核</el-text>
@@ -87,7 +87,7 @@
         </div>
 
         <div class="ic09">
-          <router-link to="/sample/basedatalisttest">
+          <router-link to="/careercheck/MedicalReport.vue">
             <img src="../../assets/navigation/icon09.png" />
           </router-link>
           <el-text size="large">体检报告</el-text>
@@ -97,7 +97,7 @@
         </div>
 
         <div class="ic10">
-          <router-link to="/sample/checkitems">
+          <router-link to="/careercheck/QueryStatistics.vue">
             <img src="../../assets/navigation/icon10.png" />
           </router-link>
           <el-text size="large">查询统计</el-text>
@@ -108,7 +108,7 @@
 
 
         <div class="ic11">
-          <router-link to="/sample/search">
+          <router-link to="/careercheck/MedicalRegistration.vue">
             <img src="../../assets/navigation/icon11.png" />
           </router-link>
           <el-text size="large">体检登记</el-text>
@@ -117,7 +117,7 @@
           <img src="../../assets/navigation/arrow03.png" />
         </div>
         <div class="ic12">
-          <router-link to="/sample/medicalinfo">
+          <router-link to="/careercheck/DatanetworkReport.vue">
             <img src="../../assets/navigation/icon12.png" />
             </router-link>
             <el-text  size="large">数据网报</el-text>
@@ -141,7 +141,7 @@
       </el-container>
   </div>
 
-        <div class="line">
+        <!-- <div class="line">
           <img src="../../assets/navigation/row03.png" />
         </div>
         <div class="line01">
@@ -156,11 +156,14 @@
       </el-main>
 
     </el-container>
-  </div>
+  </div> -->
 </template>
 
 <script setup>
   let line01 = 550;
+  function iconlight(){
+    
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -482,8 +485,8 @@ body,
 
 //右边直立的直线
 .line {
-  top: -630px;
-  left: -275px;
+  top: -520px;
+  left: 496px;
   height: 1px;
   width: 40px;
   margin: 0;

@@ -2,7 +2,7 @@
  * @Author: setti5 2283356040@qq.com
  * @Date: 2024-01-22 18:16:25
  * @LastEditors: setti5 2283356040@qq.com
- * @LastEditTime: 2024-01-23 20:57:17
+ * @LastEditTime: 2024-01-25 20:26:55
  * @FilePath: \zero-one-healthy-check\healthy-frontend\src\views\healthcheck\MedivalExaminer.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -10,20 +10,20 @@
 <template>
   <el-container style="height: 100%" class="container">
     <el-aside style="width: 20%">
-      <!-- 还没改名字：团检订单 -->
-      <PeopleList />
+      <PeopleList title="团检订单" :table-column-attribute="tableColumnAttribute" />
     </el-aside>
 
-    <div class="collapse" style="height: 100%; line-height: 100vh">
-      <el-icon><DArrowLeft /></el-icon>
+    <!-- 点击折叠侧边栏事件，未定义方法 -->
+    <div class="collapse" style="height: 100%; line-height: 100vh; margin: 4px" @collapse-aside="collapseAside">
+      <el-icon><ArrowLeft /></el-icon>
     </div>
 
     <el-main class="main">
       <!-- 中间部分：团检人员 -->
       <div class="center-part">
-        <el-card class="title-bar">
+        <el-card class="title-operation">
           <el-row>
-            <div class="title" style="margin-right: 15px; font-weight: 550">团检人员</div>
+            <span style="margin-right: 15px; font-weight: 550; display: flex; align-items: center">团检人员</span>
             <el-button type="primary">
               <el-icon><Upload /></el-icon>
               导入
@@ -43,7 +43,7 @@
           </el-row>
         </el-card>
         <div class="test-code" style="height: 93%">
-          <el-card style="height: 100%">
+          <el-card style="height: 100%" shadow="hover">
             <el-tabs type="border-card">
               <el-tab-pane label="男">
                 <el-table :data="personInfo" border style="width: 100%; margin-top: 10px">
@@ -84,9 +84,9 @@
       </div>
 
       <!-- 右边部分：订单信息 -->
-      <div class="right-part" style="position: absolute; top: 0; right: 0; width: 40%; text-align: center">
-        <el-card class="title-bar2">订单信息</el-card>
-        <el-card>
+      <div class="right-part" style="position: absolute; top: 0; right: 0; width: 40%; height: 100%">
+        <el-card class="title-bar" body-style="font-weight: 700">订单信息</el-card>
+        <el-card style="height: 30%" shadow="hover">
           <el-form :inline="true" :model="formInline" label-width="70px" style="font-size: 12px" disabled="true">
             <el-form-item label="体检单位" style="width: 155px">
               <el-input />
@@ -114,31 +114,29 @@
             </el-form-item>
           </el-form>
         </el-card>
-        <div class="bottom-card" style="margin-top: 4px">
-          <el-card class="title-bar">团体项目</el-card>
-          <div class="test-code" style="height: 90%">
-            <el-card style="height: 100%">
-              <el-table :data="personInfo" border style="width: 100%">
-                <el-table-column prop="project" label="体检项目" />
-                <el-table-column prop="originalPrice" label="原价(元)" />
-                <el-table-column prop="discount" label="折扣(100%)" />
-                <el-table-column prop="discountPrice" label="折扣价(元)" />
-              </el-table>
+        <el-card class="title-bar" body-style="font-weight: 700" style="margin-top: 6px">团体项目</el-card>
+        <div style="height: 55%">
+          <el-card style="height: 100%" shadow="hover">
+            <el-table :data="personInfo" border style="width: 100%">
+              <el-table-column prop="project" label="体检项目" />
+              <el-table-column prop="originalPrice" label="原价(元)" />
+              <el-table-column prop="discount" label="折扣(100%)" />
+              <el-table-column prop="discountPrice" label="折扣价(元)" />
+            </el-table>
 
-              <!-- 分页器 -->
-              <el-pagination
-                v-model:current-page="currentPage4"
-                v-model:page-size="pageSize4"
-                style="margin-top: 14px"
-                :page-sizes="[10, 20, 50]"
-                small="small"
-                layout="->, total, prev, pager, next"
-                :total="0"
-                @size-change="handleSizeChange"
-                @current-change="handleCurrentChange"
-              />
-            </el-card>
-          </div>
+            <!-- 分页器 -->
+            <el-pagination
+              v-model:current-page="currentPage4"
+              v-model:page-size="pageSize4"
+              style="margin-top: 14px"
+              :page-sizes="[10, 20, 50]"
+              small="small"
+              layout="->, total, prev, pager, next"
+              :total="0"
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+            />
+          </el-card>
         </div>
       </div>
     </el-main>
@@ -147,7 +145,7 @@
 
 <script setup>
 import PeopleList from '@/components/peoplelist/PeopleList.vue'
-import { Upload, CirclePlus, Download, DArrowLeft } from '@element-plus/icons-vue'
+import { Upload, CirclePlus, Download, ArrowLeft } from '@element-plus/icons-vue'
 // import { ref } from 'vue'
 // import { defineProps, defineEmits } from 'vue'
 
@@ -199,15 +197,26 @@ import { Upload, CirclePlus, Download, DArrowLeft } from '@element-plus/icons-vu
   left: 0;
   width: 59%;
   align-items: center;
-  flex: 1;
+  justify-content: center;
+  align-items: center;
 }
-.title-bar {
+.title-operation {
   height: 7%;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
   background-color: #f0faff;
   border: 1px solid #abdcff;
 }
-.title-bar2 {
+.title-bar {
   height: 7%;
+  font-size: 14px;
+  font-weight: 550;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #f0faff;
   border: 1px solid #abdcff;
 }

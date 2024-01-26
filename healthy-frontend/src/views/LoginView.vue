@@ -1,9 +1,12 @@
 <!-- 登录页面 -->
 <template>
-  <!-- 测试样式操作区域 -->
   <div class="container">
     <div class="top-bar">
       <div class="logo">logo</div>
+      <ul>
+        <a href="#">关于</a>
+        <a href="#">联系我们</a>
+      </ul>
     </div>
 
     <div class="color">
@@ -15,17 +18,13 @@
     <el-row class="main">
       <el-col :span="12">
         <div class="text-content">
-          <h1>01健康体检管理系统</h1>
+          <h1>零壹<br /><span>健康体检</span><br /><span>管理系统</span></h1>
+          <p>zero one healthy check manegement system</p>
+          <a href="#">01星球</a>
         </div>
       </el-col>
       <el-col :span="8" :offset="1">
         <div class="box-card">
-          <!-- <div class="square">
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-          </div> -->
-
           <div class="square" style="--i: 0"></div>
           <div class="square" style="--i: 1"></div>
           <div class="square" style="--i: 2"></div>
@@ -159,28 +158,44 @@ function handleSuccess(res) {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+}
+
 .top-bar {
-  position: fixed;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 25px 45px rgba(188, 186, 186, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
   top: 0;
   left: 0;
   width: 100%;
-  padding: 24px 100px;
+  padding: 8px 100px;
   display: flex;
   justify-content: space-between;
-  align-content: center;
-  z-index: 9;
+  align-items: center;
+  z-index: 3;
+
+  a {
+    color: #606266;
+    font-weight: 400;
+    margin-left: 40px;
+    text-decoration: none;
+  }
 }
 
 .logo {
+  position: relative;
+  max-width: 80px;
   font-size: 2em;
   color: #fff;
   user-select: none;
-}
-
-.container {
-  max-height: 100%;
-  overflow: hidden;
-  background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
 }
 
 .color {
@@ -221,21 +236,41 @@ function handleSuccess(res) {
 }
 
 .text-content {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+  max-width: 600px;
+  top: -200px;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-}
+  border-left: 2px solid rgba(121, 112, 112, 0.1);
+  padding: 14px;
 
-h1 {
-  top: -80px;
-  left: -180px;
-  font-size: 30px;
-  font-weight: 700;
-  width: min-content;
-  color: #4d4c4c;
+  h1 {
+    color: #606266;
+    font-size: 3em;
+    line-height: 1.5em;
+    font-weight: 900;
+
+    span {
+      font-size: 1.3em;
+    }
+  }
+
+  p {
+    color: #606266;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 20px;
+    background-color: #fff;
+    color: #111;
+    border-radius: 40px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+  }
 }
 
 .box-card {
@@ -260,10 +295,10 @@ h1 {
 @keyframes animate {
   0%,
   100% {
-    transform: translateY(-50px);
+    transform: translateY(-45px);
   }
   50% {
-    transform: translateY(50px);
+    transform: translateY(45px);
   }
 }
 
@@ -274,7 +309,6 @@ h1 {
   height: 100px;
   z-index: 2;
 }
-
 .square:nth-child(2) {
   top: 150px;
   right: 390px;

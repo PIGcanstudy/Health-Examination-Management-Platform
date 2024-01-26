@@ -3,7 +3,7 @@ import healthcheck from './menus/healthcheck'
 import careercheck from './menus/careercheck'
 import Request from '@/apis/request'
 // 测试菜单数据
-let testMenus = [healthcheck,careercheck]
+let testMenus = [healthcheck, careercheck]
 //职业体验菜单数据
 // let careerMenus = [careercheck]
 
@@ -41,7 +41,6 @@ export const userStore = defineStore('user', {
     async loadMenus() {
       //TODO[TEST_CODE]:此处写测试数据设定
       this.menus = testMenus
-      
 
       // 发送获取菜单请求
       let data = await Request.requestForm(Request.GET, '/login/get-menus', null)
