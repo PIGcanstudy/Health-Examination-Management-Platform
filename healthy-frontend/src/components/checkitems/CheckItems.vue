@@ -1,5 +1,5 @@
 <template>
-  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true" >{{ props.bottonTitle }}</el-button>
+  <el-button type="primary" style="margin-left: 16px" @click="drawer2 = true" v-if="!hideButton">{{ props.bottonTitle }}</el-button>
 
 
  <!-- 选检项目-抽屉 -->
