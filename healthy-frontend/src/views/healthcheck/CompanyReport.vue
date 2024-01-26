@@ -3,7 +3,7 @@
   <div>
     <el-container style="height: 600px;">
       <el-aside>
-        <PeoplleList :isShowCheckbox="false" :isShowSwitch="false" title="报告查询"></PeoplleList>
+        <PeoplleList :isShowCheckbox="false" :isShowSwitch="false" title="报告查询"> </PeoplleList>
       </el-aside>
       <el-main>
         <div class="form">
