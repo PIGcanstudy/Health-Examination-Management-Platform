@@ -42,7 +42,7 @@
           </el-button>
           <div>{{ userInfo }}</div>
         </el-header>
-        <el-main>
+        <el-main style="padding: 0">
           <!-- 布局路由 -->
           <router-view />
         </el-main>
@@ -53,7 +53,8 @@
 <script setup>
 import { ref } from 'vue'
 import { userStore } from '../stores/user'
-import { Expand } from '@element-plus/icons-vue'
+// import { Expand } from '@element-plus/icons-vue'
+
 // 本界面变量及函数
 const isCollapsed = ref(false)
 
@@ -103,7 +104,7 @@ const menus = store.getMenus
     border: none;
   }
   .collBtn:hover {
-    background-color: #545C64;
+    background-color: #545c64;
   }
 }
 </style>

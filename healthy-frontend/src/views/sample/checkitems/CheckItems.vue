@@ -1,6 +1,12 @@
 <template>
   <div>
-    <CheckItems :tcObject="tcObject"  @submitTc="submitTc"  />
+    <CheckItems :isShowButtonForTc="isShowButtonForTc" 
+    :bottonTitle="bottonTitle"  :drawerTitle="drawerTitle"
+    :hideButton="hideButton"  :openDrawer="openDrawer"
+    :tableLieForTc="tableLieForTc"  :tableDataForTc="tableDataForTc"
+    :selectDown="selectDown" :isShowSelectDown="isShowSelectDown" 
+    :EditDButtonShow="EditDButtonShow" 
+     @submitTc="submitTc"  />
   </div>
 </template>
 
@@ -19,20 +25,22 @@ alert(tcRowData.value)
 
 }
 
-//测试对象传参
-const tcObject = reactive({
-  //是否显示确定取消按钮-套餐
-  isShowButtonForTc : true,
-  //抽屉按钮名字
-  bottonTitle:'按钮开关',
-  // 抽屉表头
-  tableTitle:'编辑分组',
-  //是否隐藏触发抽屉按钮
-  hideButton:false,
+//是否显示编辑删除按钮
+const EditDButtonShow = ref(true)
+//是否显示确定取消按钮-套餐
+const isShowButtonForTc = ref(true)
+//抽屉按钮名字
+const bottonTitle = ref('按钮开关')
+// 抽屉标题
+const drawerTitle = ref('编辑分组')
+//是否显示下拉框
+const isShowSelectDown = ref(false)
+ //是否隐藏触发抽屉按钮
+const hideButton = ref(false)
   //默认是否打开抽屉
-  openDrawer:false,
-  //套餐项目表格列
-  tableLieForTc : [
+const openDrawer = ref(false)
+//套餐项目表格列
+const tableLieForTc = [
   {
     prop: 'mc',
     label: '名称'
@@ -41,9 +49,9 @@ const tcObject = reactive({
     prop: 'xsj',
     label: '销售价(元)'
   }
-],
-  //套餐项目-表格数据
-  tableDataForTc:[
+]
+ //套餐项目表格数据
+ const tableDataForTc = [
   {
     mc: '项目1',
     xsj: '10'
@@ -95,9 +103,9 @@ const tcObject = reactive({
     mc: '项目12',
     xsj: '120'
   }
-],
-// 下拉菜单存放数据区域
-selectDown :[
+]
+
+const selectDown =[
   {
     value: 'Option',
     label: '蔡徐坤'},
@@ -141,7 +149,8 @@ selectDown :[
     label: '蔡徐坤11',
   }
 ]
-})
+
+
 
 
 

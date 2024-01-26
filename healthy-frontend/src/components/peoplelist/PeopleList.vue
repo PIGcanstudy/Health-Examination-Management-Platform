@@ -7,20 +7,20 @@
       </el-card>
     </template>
     <!-- 是否使用el-tabs-插槽 -->
-    <div class="change-pages">
-      <slot></slot>
+    <div class="change-page">
+      <slot name="change-page"></slot>
     </div>
 
     <!-- 主体部分的内容 -->
     <el-card class="card-main" shadow="hover">
       <!-- 使用多个按钮组(插槽) -->
       <div class="button-group">
-        <slot></slot>
+        <slot name="button-group"></slot>
       </div>
 
       <!-- 使用搜索框(插槽) -->
-      <div class="serach-bar">
-        <slot></slot>
+      <div class="search-bar">
+        <slot name="search-bar"></slot>
       </div>
 
       <!-- 表单区域 -->
@@ -33,9 +33,8 @@
               </el-radio-group>
             </el-form-item>
 
-            <!-- 使用v-if、v-show组件会消失，暂时搁置 ----------------------------------------------------------------------------------------->
             <el-form-item v-if="props.isShowSwitch" prop="switch">
-              <el-switch v-model="form.switch" inline-prompt active-text="复查" inactive-text="非复"></el-switch>
+              <el-switch v-model="form.switch" inline-prompt active-text="复查" inactive-text="非复" @change="(state) => emits('updateSwitchState', state, row)"></el-switch>
             </el-form-item>
           </el-row>
 
@@ -48,22 +47,30 @@
             </el-row>
           </el-form-item>
 
-          <!-- 輸入框区域 -->
-          <el-form-item prop="name">
+          <!-- 查询输入框区域 -->
+          <!-- 姓名输入项，固定显示 -->
+          <el-form-item v-if="props.isShowNameInput" prop="name">
             <el-input v-model="form.name" placeholder="请输入姓名" clearable />
           </el-form-item>
-          <template v-if="isShowInput">
-            <!-- 是否使用身份证号搜索输入框 -->
-            <div class="add-input">
-              <slot></slot>
-            </div>
-            <el-form-item prop="serialNumber">
-              <el-input v-model="form.serialNumber" placeholder="请输入体检编号" clearable />
+          <!-- 从父组件传入的其他表单项 -->
+          <div v-if="isShowInput">
+            <el-form-item v-for="(item, index) of externalFormItems" :key="index">
+              <el-input v-model="item.name" :placeholder="item.placeholder" clearable />
             </el-form-item>
-            <el-form-item prop="workplace">
-              <el-input v-model="form.workplace" placeholder="请输入单位名称" clearable></el-input>
-            </el-form-item>
-          </template>
+          </div>
+
+          <!-- 从父组件传入的其他表单项(插槽方式，暂时保留) -->
+          <!-- 以下是示例代码，在没有接口数据传入之前，没有死数据填充会导致被折叠的输入框不展开 -->
+          <!-- <div v-if="isShowInput"> -->
+          <!-- 身份证搜索框(插槽) -->
+          <!-- <slot name="id-input"></slot>
+              <el-form-item prop="serialNumber">
+                <el-input v-model="form.serialNumber" placeholder="请输入体检编号" clearable />
+              </el-form-item>
+              <el-form-item prop="workplace">
+                <el-input v-model="form.workplace" placeholder="请输入单位名称" clearable></el-input>
+              </el-form-item>
+          </div> -->
 
           <!-- 表单按钮区域 -->
           <el-form-item>
@@ -81,51 +88,51 @@
       <!-- 表格区域 -->
       <!-- 需要替换表格测试(插槽) -->
       <div class="table-area">
-        <slot></slot>
+        <slot name="table-area"></slot>
       </div>
 
       <!-- 原表格，可以注释掉以测试列表样式 -->
-      <el-table v-loading="openLoading" style="font-size: 12px; width: 100%" table-layout="auto" :data="props?.tableData" @selection-change="handleSelectionChange">
+      <el-table v-loading="openLoading" style="font-size: 12px; width: 100%; height: 350" table-layout="auto" :data="props?.tableData" @selection-change="handleSelectionChange">
         <!-- 第一列：多选 -->
-        <el-table-column v-if="props?.useSelectColumn" type="selection" width="55" />
-        <!-- <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label" class-name="class-name"> -->
-        <!-- 表格的列内容如果使用tag -->
-        <!-- <template v-if="item.useTag" #default="{ row }">
+        <el-table-column v-if="props?.useSelectColumn" type="selection" width="55"></el-table-column>
+        <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label">
+          <!-- 表格的列内容如果使用tag -->
+          <template v-if="item.useTag" #default="{ row }">
             <el-tag :type="row[item.prop].tagType">
               {{ row[item.prop].value }}
             </el-tag>
           </template>
-        </el-table-column> -->
-        <el-table-column prop="name" label="姓名"></el-table-column>
+        </el-table-column>
+
+        <!-- <el-table-column prop="name" label="姓名"></el-table-column>
         <el-table-column prop="gender" label="性别"></el-table-column>
-        <el-table-column prop="age" label="年龄"></el-table-column>
-        <!-- 第五列：标签 -->
-        <el-table-column prop="tag" label="标签" style="display: flex">
+        <el-table-column prop="age" label="年龄"></el-table-column> -->
+        <!-- <el-table-column prop="tag" label="标签" style="display: flex">
           <template #default>
             <el-tag :type="info">好</el-tag>
             <el-tag :type="info">坏</el-tag>
           </template>
-        </el-table-column>
+        </el-table-column> -->
 
         <!-- 表格没有数据的样式 -->
         <template #empty>
           <el-empty class="emptyTable" description="没有数据"></el-empty>
         </template>
       </el-table>
-    </el-card>
 
-    <!-- 分页器 -->
-    <template v-if="props?.usePagination">
-      <el-pagination
-        v-model:current-page="paginationData.currentPage"
-        v-model:page-size="paginationData.pageSize"
-        :page-sizes="props.pageSizes"
-        layout=" prev, jumper, next"
-        :total="props.total"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-      />
-    </template>
+      <!-- 分页器 -->
+      <template v-if="props?.usePagination" #footer>
+        <el-pagination
+          v-model:current-page="paginationData.currentPage"
+          v-model:page-size="paginationData.pageSize"
+          :page-sizes="props.pageSizes"
+          layout=" prev, jumper, next"
+          :total="props.total"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+        />
+      </template>
+    </el-card>
   </div>
 </template>
 
@@ -145,17 +152,25 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
-  // 是否使用Checkbox
+  // 是否使用checkbox
   isShowCheckbox: {
     type: Boolean,
     default: true
   },
-  // 当前checkbox状态(Rom)
+  // 当前checkbox状态
   checkboxItem: {
     type: Array,
     require: true,
     default: () => {
       return ['已检', '未检']
+    }
+  },
+  // 当前switch状态
+  checkSwitchItem: {
+    type: Array,
+    require: true,
+    default: () => {
+      return ['复查', '非复']
     }
   },
   // 是否使用滑块开关
@@ -168,6 +183,16 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
+  // 是否显示姓名搜索框
+  isShowNameInput: {
+    type: Boolean,
+    default: true
+  },
+  // 是否显示身份证号搜索框
+  // isShowIdInput: {
+  //   type: Boolean,
+  //   default: false
+  // },
   // 表格的列属性
   tableColumnAttribute: {
     type: Array,
@@ -203,7 +228,7 @@ const props = defineProps({
     default: true
   },
 
-  // 查询表单内容配置(Rom)
+  // 查询表单内容配置
   externalFormItems: {
     type: Array,
     default: () => []
@@ -216,10 +241,23 @@ const form = ref({
   checkbox: props.checkboxItem[0],
   switch: false,
   name: '',
+  id: '',
   date: '',
   startDate: '',
   endDate: ''
 })
+
+// 滑块开关的loading
+const openSwitchLoading = ref(true)
+// 调用父组件数据修改滑块开关的函数：updateSwitchState
+
+// 调用父组件更新表格的数据
+const emits = defineEmits(['updateSwitchState', 'updateTableData', 'selectTableChange'])
+const handleSelectionChange = (newRows) => {
+  rows.value = newRows
+  // 通过emit向父组件传递数据
+  emits('selectTableChange', newRows)
+}
 
 // 提交表单查询逻辑
 const onSubmit = () => {
@@ -308,13 +346,6 @@ const defaultTableData = [
     tag: '零'
   }
 ]
-// 调用父组件更新表格的数据
-const emits = defineEmits(['updateTableData', 'selectTableChange'])
-const handleSelectionChange = (newRows) => {
-  rows.value = newRows
-  // 通过emit向父组件传递数据
-  emits('selectTableChange', newRows)
-}
 
 // 分页数据的处理逻辑
 const paginationData = ref({
@@ -339,6 +370,8 @@ defineExpose({
   // 表单部分
   // form,
   // formRef,
+  // 开关的loading
+  openSwitchLoading,
   // 暴露出被选中的row
   rows,
   // 暴露出表格的加载
@@ -384,19 +417,7 @@ defineExpose({
 }
 
 .el-pagination {
-  position: absolute;
   justify-content: center;
-  bottom: 0;
-  margin: 0;
-  left: 30px;
-}
-::v-deep .el-pagination .btn-prev,
-::v-deep .el-pagination .btn-next {
-  margin: 0;
-  padding: 0;
-}
-::v-deep .el-pagination .el-pager li.number {
-  margin: 0;
-  padding: 0;
+  margin-top: 75px;
 }
 </style>

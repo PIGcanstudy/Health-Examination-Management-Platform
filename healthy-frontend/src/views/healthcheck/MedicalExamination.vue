@@ -5,7 +5,7 @@
     <!-- 侧边栏 -->
     <el-aside :style="{maxWidth: isCollapsed ? '64px' : '300px'}">
       <!-- 伸缩按钮 -->
-      <img src="@/assets/img-rom/slider.svg" style="cursor: pointer; width: 20px;" @click="isCollapsed = !isCollapsed">
+      <!-- <img src="@/assets/img-rom/slider.svg" style="cursor: pointer; width: 20px;" @click="isCollapsed = !isCollapsed">npm  -->
       <PeopleList
         :style="isCollapsed ? 'display: none;' : 'min-width: 300px;'"
         :title="title"

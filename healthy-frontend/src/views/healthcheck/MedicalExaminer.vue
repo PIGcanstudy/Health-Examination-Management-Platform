@@ -2,7 +2,7 @@
  * @Author: setti5 2283356040@qq.com
  * @Date: 2024-01-22 18:16:25
  * @LastEditors: setti5 2283356040@qq.com
- * @LastEditTime: 2024-01-25 20:26:55
+ * @LastEditTime: 2024-01-26 21:24:58
  * @FilePath: \zero-one-healthy-check\healthy-frontend\src\views\healthcheck\MedivalExaminer.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -10,7 +10,19 @@
 <template>
   <el-container style="height: 100%" class="container">
     <el-aside style="width: 20%">
-      <PeopleList title="团检订单" :table-column-attribute="tableColumnAttribute" />
+      <!-- 子组件属性：:table-data="MedicalExaminer.tableData" （未定义会导致页面崩溃） -->
+      <PeopleList
+        title="团检订单"
+        :table-column-attribute="tableColumnAttribute"
+        @update-table-data="
+          (pageSize, pageIndex) => {
+            getTableData({
+              pageSize,
+              pageIndex
+            })
+          }
+        "
+      />
     </el-aside>
 
     <!-- 点击折叠侧边栏事件，未定义方法 -->
@@ -23,15 +35,95 @@
       <div class="center-part">
         <el-card class="title-operation">
           <el-row>
-            <span style="margin-right: 15px; font-weight: 550; display: flex; align-items: center">团检人员</span>
-            <el-button type="primary">
+            <span>团检人员</span>
+            <el-button type="primary" style="margin-right: 12px" @click="dialogVisible = true">
               <el-icon><Upload /></el-icon>
               导入
             </el-button>
-            <el-button type="primary">
+            <!-- 导入按钮的对话框 -->
+            <el-dialog v-model="dialogVisible" title="人员批量导入" width="50%" style="justify-content: left">
+              <div class="model-body">
+                <el-upload>
+                  <div class="upload-area" style="border: 1px solid #dfdfdf; width: 800px; height: 150px; display: flex; justify-content: center; align-items: center">
+                    <el-icon style="width: 30px; height: 50px"><Upload /></el-icon>
+                    请选择需要上传的文件
+                  </div>
+                </el-upload>
+                <p>提示；</p>
+                <p>1.请按模板填写数据，模板格式禁止调整</p>
+                <p>2.导入会覆盖之前数据（请慎重操作）</p>
+                <p>3.上传文件类型只能为"xls", "xlsx", "xlsm"</p>
+              </div>
+              <template #footer>
+                <span class="dialog-footer">
+                  <el-upload>
+                    <el-button style="background-color: #2db7f5; border-color: #2db7f5; color: #fff; margin-right: 12px"> 模板下载</el-button>
+                  </el-upload>
+                  <el-button type="primary" style="margin-bottom: 10px" @click="dialogVisible = false"> 关闭 </el-button>
+                </span>
+              </template>
+            </el-dialog>
+
+            <el-button type="primary" style="margin-right: 12px" @click="dialogFormVisible = true">
               <el-icon><CirclePlus /></el-icon>
               新增
             </el-button>
+            <!-- 新增按钮的对话框 -->
+            <el-dialog v-model="dialogFormVisible" title="新增">
+              <div class="tabs" style="display: flex; justify-content: space-between">
+                <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+                  <el-tab-pane label="基本信息" name="first"> </el-tab-pane>
+                </el-tabs>
+                <el-button type="primary"
+                  ><el-icon style="margin-right: 10px"><Plus /></el-icon>读取二代身份证</el-button
+                >
+              </div>
+
+              <el-form :model="form" :inline="true" :label-width="formLabelWidth" style="padding: 16px 26px">
+                <el-form-item label="人员姓名" required>
+                  <el-input v-model="form.name" />
+                </el-form-item>
+                <el-form-item label="证件号码">
+                  <el-input v-model="form.name" />
+                </el-form-item>
+                <el-form-item label="性别" required>
+                  <el-radio-group style="width: 200px">
+                    <el-radio label="男" />
+                    <el-radio label="女" />
+                  </el-radio-group>
+                </el-form-item>
+
+                <el-form-item label="出生日期" required>
+                  <el-form-item>
+                    <el-date-picker v-model="form.name" type="date" placeholder="请选择" p style="width: 200px" />
+                  </el-form-item>
+                </el-form-item>
+                <el-form-item label="年龄" required>
+                  <el-input v-model="form.name" />
+                </el-form-item>
+                <el-form-item label="手机号码" required>
+                  <el-input v-model="form.name" />
+                </el-form-item>
+
+                <el-form-item label="婚姻状况">
+                  <el-select v-model="form.region" placeholder="请选择" style="width: 200px">
+                    <el-option label="未婚" value="未婚" />
+                    <el-option label="已婚" value="已婚" />
+                    <el-option label="离异" value="离异" />
+                    <el-option label="丧偶" value="丧偶" />
+                    <el-option label="其他" value="其他" />
+                  </el-select>
+                </el-form-item>
+              </el-form>
+
+              <template #footer>
+                <span class="dialog-footer" style="justify-content: right">
+                  <el-button @click="dialogFormVisible = false">取消</el-button>
+                  <el-button type="primary" @click="dialogFormVisible = false"> 提交 </el-button>
+                </span>
+              </template>
+            </el-dialog>
+
             <el-button type="primary">
               <el-icon><Download /></el-icon>
               导出
@@ -145,39 +237,53 @@
 
 <script setup>
 import PeopleList from '@/components/peoplelist/PeopleList.vue'
-import { Upload, CirclePlus, Download, ArrowLeft } from '@element-plus/icons-vue'
-// import { ref } from 'vue'
-// import { defineProps, defineEmits } from 'vue'
+import { Upload, CirclePlus, Download, ArrowLeft, Plus } from '@element-plus/icons-vue'
+import { ref } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
-// const props = defineProps({
-//   usePagination: {
-//     type: Boolean,
-//     default: true
-//   }
-// })
-// const emits = defineEmits(['updateTableData'])
+const dialogVisible = ref(false) // 导入按钮的弹出框
+const dialogFormVisible = ref(false) //导出按钮的弹出框
+const formLabelWidth = '120px'
+const form = ref({
+  name: '',
+  region: '',
+  date1: '',
+  date2: '',
+  delivery: false,
+  type: [],
+  resource: '',
+  desc: ''
+})
 
-// // 分页数据的处理逻辑
-// const paginationData = ref({
-//   currentPage: 1,
-//   pageSize: props.pageSizes ? props.pageSizes[0] : 10
-// })
+const props = defineProps({
+  usePagination: {
+    type: Boolean,
+    default: true
+  }
+})
+const emits = defineEmits(['updateTableData'])
 
-// const handleSizeChange = (pageSize) => {
-//   // 当前页的数据容量改变，重置页码为1(因页面大小限制，每页条数固定值为10)
-//   paginationData.value.currentPage = 1
-//   // 传入当期那页面的容量大小和当前页面
-//   emits('updateTableData', pageSize, paginationData.value.currentPage)
-// }
-// const handleCurrentChange = (currentPage) => {
-//   paginationData.value.currentPage = currentPage
-//   // 传入当前页码容量(默认值10)和当前页码
-//   emits('updateTableData', paginationData.value.pageSize, currentPage)
-// }
+// 分页数据的处理逻辑
+const paginationData = ref({
+  currentPage: 1,
+  pageSize: props.pageSizes ? props.pageSizes[0] : 10
+})
 
-// defineExpose({
-//   paginationData
-// })
+const handleSizeChange = (pageSize) => {
+  // 当前页的数据容量改变，重置页码为1(因页面大小限制，每页条数固定值为10)
+  paginationData.value.currentPage = 1
+  // 传入当期那页面的容量大小和当前页面
+  emits('updateTableData', pageSize, paginationData.value.currentPage)
+}
+const handleCurrentChange = (currentPage) => {
+  paginationData.value.currentPage = currentPage
+  // 传入当前页码容量(默认值10)和当前页码
+  emits('updateTableData', paginationData.value.pageSize, currentPage)
+}
+
+defineExpose({
+  paginationData
+})
 </script>
 
 <style lang="scss" scoped>
@@ -204,12 +310,25 @@ import { Upload, CirclePlus, Download, ArrowLeft } from '@element-plus/icons-vue
   height: 7%;
   font-size: 14px;
   display: flex;
-  justify-content: center;
-  text-align: center;
   align-items: center;
   background-color: #f0faff;
   border: 1px solid #abdcff;
+
+  span {
+    margin-right: 15px;
+    font-weight: 550;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
 }
+p {
+  color: red;
+  font-weight: bold;
+  font-size: 14px;
+}
+
 .title-bar {
   height: 7%;
   font-size: 14px;
