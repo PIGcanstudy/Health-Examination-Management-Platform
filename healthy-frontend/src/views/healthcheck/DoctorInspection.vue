@@ -67,6 +67,7 @@ const closeDrawer = (drawerNumber) => {
 <style lang="scss" scoped>
 .main_top {
   margin-top: 0%;
+  margin-bottom: 5%;
 }
 .drawer {
   width: 500px;
