@@ -55,19 +55,33 @@ public class TRoleController implements RoleApis{
         return JsonVO.success(roleService.getByCondition(roleCriteriaQuery));
     }
 
-    @PostMapping("add-role")
+    @PostMapping("/add-role")
     @ApiOperation(value = "新增角色")
     @Override
-    public JsonVO<RoleAddDTO> addRoleDTO(RoleAddDTO roleAddDTO) {
+    public JsonVO<Long> addRole(RoleAddDTO roleAddDTO) {
         return null;
     }
 
 
-    @PostMapping("RolePermission")
+    @PostMapping("/RolePermission")
     @ApiOperation(value = "设置角色权限")
     @Override
     public JsonVO<RolePerSetDTO> RolePerSetDTO(RolePerSetQuery rolePerSetQuery
     ) {
+        return null;
+    }
+
+    @PostMapping("/modify-role")
+    @ApiOperation(value = "修改角色")
+    @Override
+    public JsonVO<Long> modifyRole(RoleUpdateDTO roleUpdateDTO) {
+        return null;
+    }
+
+    @PostMapping("/delete-role")
+    @ApiOperation(value = "删除")
+    @Override
+    public JsonVO<Long> removeRole(RoleDTO roleDTO) {
         return null;
     }
 
