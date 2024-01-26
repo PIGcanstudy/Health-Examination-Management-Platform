@@ -1,6 +1,7 @@
 package com.zeroone.star.project.j2;
 
 import com.zeroone.star.project.dto.PageDTO;
+<<<<<<< HEAD
 import com.zeroone.star.project.j2.dto.RoleAddDTO;
 import com.zeroone.star.project.j2.dto.RoleNameDTO;
 import com.zeroone.star.project.j2.query.RoleCriteriaQuery;
@@ -35,4 +36,21 @@ public interface RoleApis {
 
     JsonVO<PageDTO<RoleDTO>> queryByCondition(RoleCriteriaQuery roleCriteriaQuery);
 
+=======
+import com.zeroone.star.project.j2.dto.MessageDTO;
+import com.zeroone.star.project.j2.dto.RoleDTO;
+import com.zeroone.star.project.j2.query.MessageQuery;
+import com.zeroone.star.project.vo.JsonVO;
+
+/**
+ * @Author：宵夜
+ * @Description:
+ * @Date：2024/1/17 9:45
+ */
+public interface RoleApis {
+
+    JsonVO<MessageDTO> roleDTO(RoleDTO roleDTO);
+
+
+>>>>>>> origin/j2-role-xiaoye
 }
