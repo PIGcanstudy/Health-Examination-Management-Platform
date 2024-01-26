@@ -11,7 +11,7 @@
 const props = defineProps({
   name: {
     type: String,
-    require: true,
+    required: true,
     default: '标题'
   },
   middle: {
