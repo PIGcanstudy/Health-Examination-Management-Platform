@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 /**
@@ -43,9 +44,12 @@ public class StopWordController implements StopWordApis {
     @PutMapping("/updateWord")
     @ApiOperation("修改禁用词")
     @Override
-    public JsonVO<StopWordDTO> updateWord(UpdateWordDTO updateWord) {
-        StopWordDTO stopWord = stopWordService.updateWord(updateWord);
-        return JsonVO.success(stopWord);
+    public JsonVO<Boolean> updateWord(UpdateWordDTO updateWord) {
+        int count = stopWordService.updateWord(updateWord);
+        if (count > 0) {
+            return JsonVO.success(true);
+        }
+        return JsonVO.fail(false);
     }
 
     @DeleteMapping("/deleteWordsByIds")

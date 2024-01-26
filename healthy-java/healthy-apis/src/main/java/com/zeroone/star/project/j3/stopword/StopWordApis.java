@@ -35,7 +35,7 @@ public interface StopWordApis {
      * @param: [title]
      * @return: com.zeroone.star.project.vo.JsonVO<com.zeroone.star.project.dto.j3.stopword.StopWordDTO>
      **/
-    JsonVO<StopWordDTO> updateWord(UpdateWordDTO word);
+    JsonVO<Boolean> updateWord(UpdateWordDTO word);
 
     /**
      * @description:批量删除禁用词
