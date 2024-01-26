@@ -77,9 +77,9 @@
         :handle-edit="handleEdit"
         :use-fixed="true"
       >
-        <slot name="fixed">
-          <span>编辑</span>
-        </slot>
+      <template #fixed="{ row }">
+          <el-button type="" @click="clickButton(row)">编辑</el-button>
+      </template>
 
       </BaseDataList>
       <!-- 操作提示 -->
@@ -129,7 +129,9 @@ import { usePublicStore } from '@/stores/Public/index.js'
 /* Stores中的方法 */
 const MedicalRegistrationStore = useMedicalRegistrationStore()
 const PublicStore = usePublicStore()
-
+const clickButton = (row) => {
+  console.log(row)
+}
 /* PeopleList的变量 */
 const title = ref('人员查询')
 const checkboxItem = ref(['未登记', '已登记'])
@@ -323,7 +325,7 @@ const tableColumnAttribute = ref([
 ])
 const tableData = ref([
   { id: '1', projectName: '肝炎筛查', originalPrice: 188, discount: 0.8, discountPrice: 150.4, projectType: '一号套餐' },
-  { id: '1', projectName: '肝炎筛查', originalPrice: 188, discount: 0.8, discountPrice: 150.4, projectType: '一号套餐' },
+  { id: '2', projectName: '肝炎筛查', originalPrice: 188, discount: 0.8, discountPrice: 150.4, projectType: '一号套餐' },
   { id: '1', projectName: '肝炎筛查', originalPrice: 188, discount: 0.8, discountPrice: 150.4, projectType: '一号套餐' },
   { id: '1', projectName: '肝炎筛查', originalPrice: 188, discount: 0.8, discountPrice: 150.4, projectType: '一号套餐' }
 ])
