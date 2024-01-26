@@ -3,10 +3,9 @@ package com.zeroone.star.role.controller;
 
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j2.RoleApis;
-import com.zeroone.star.project.j2.dto.RoleAddDTO;
-import com.zeroone.star.project.j2.dto.RoleDTO;
-import com.zeroone.star.project.j2.dto.RoleNameDTO;
+import com.zeroone.star.project.j2.dto.*;
 import com.zeroone.star.project.j2.query.RoleCriteriaQuery;
+import com.zeroone.star.project.j2.query.RolePerSetQuery;
 import com.zeroone.star.project.j2.query.RoleQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.role.service.ITRoleService;
@@ -60,6 +59,15 @@ public class TRoleController implements RoleApis{
     @ApiOperation(value = "新增角色")
     @Override
     public JsonVO<RoleAddDTO> addRoleDTO(RoleAddDTO roleAddDTO) {
+        return null;
+    }
+
+
+    @PostMapping("RolePermission")
+    @ApiOperation(value = "设置角色权限")
+    @Override
+    public JsonVO<RolePerSetDTO> RolePerSetDTO(RolePerSetQuery rolePerSetQuery
+    ) {
         return null;
     }
 
