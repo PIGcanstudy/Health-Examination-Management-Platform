@@ -113,7 +113,19 @@
                   </el-form-item>
                 </el-form>
               </el-col>
-              <el-col :span="4"> 上传图片 </el-col>
+              <el-col :span="4">
+                <!-- 上传图片 -->
+                <el-upload
+                  class="avatar-uploader"
+                  action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+                  :show-file-list="false"
+                  :on-success="handleAvatarSuccess"
+                  :before-upload="beforeAvatarUpload"
+                >
+                  <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+                  <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+                </el-upload>
+              </el-col>
             </el-row>
             <el-form :model="contactForm" inline>
               <el-form-item label="体检联系人姓名" :label-width="130">
@@ -172,9 +184,27 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
+import { ElMessage } from 'element-plus'
 import { ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit } from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
+// 上传图片
+const imageUrl = ref('')
+
+const handleAvatarSuccess = (response, uploadFile) => {
+  imageUrl.value = URL.createObjectURL(uploadFile.raw)
+}
+
+const beforeAvatarUpload = (rawFile) => {
+  if (rawFile.type !== 'image/jpeg') {
+    ElMessage.error('Avatar picture must be JPG format!')
+    return false
+  } else if (rawFile.size / 1024 / 1024 > 2) {
+    ElMessage.error('Avatar picture size can not exceed 2MB!')
+    return false
+  }
+  return true
+}
 const selectValue = ref('')
 const useHint = ref(true)
 const useForm = ref(true)
@@ -352,6 +382,9 @@ function handlePageChange(pageSize, currentPage) {
   paginationData.value.currentPage = currentPage
   tableData.value = getPagedData(pageSize, currentPage)
 }
+onMounted(() => {
+  handlePageChange(paginationData.value.pageSize, paginationData.value.currentPage)
+})
 </script>
 
 <style lang="scss" scoped>
@@ -366,11 +399,29 @@ function handlePageChange(pageSize, currentPage) {
   border-radius: 5px;
   margin-bottom: 10px;
 }
-// 这个样式没用上
-.example-showcase .el-dropdown-link {
+.avatar-uploader .avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}
+.avatar-uploader .el-upload {
+  border: 1px dashed var(--el-border-color);
+  border-radius: 6px;
   cursor: pointer;
-  color: var(--el-color-primary);
-  display: flex;
-  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: var(--el-transition-duration-fast);
+}
+
+.avatar-uploader .el-upload:hover {
+  border-color: var(--el-color-primary);
+}
+
+.el-icon.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  text-align: center;
 }
 </style>
