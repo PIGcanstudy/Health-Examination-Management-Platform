@@ -43,7 +43,11 @@ public class TPortfolioProjectController implements PortfolioProjectApi {
     @GetMapping("/query-lists")
     @Override
     public JsonVO<PageDTO<PortfolioItemListDTO>> queryPortfolioItemList(@Validated PortfolioItemListQuery query) throws Exception {
-        return null;
+        if (query== null) {
+            throw new RuntimeException("query不能为空");
+        }
+        PageDTO<PortfolioItemListDTO> pageDTO = itPortfolioProjectService.listPortfolioItems(query);
+        return JsonVO.success(pageDTO);
     }
 
 

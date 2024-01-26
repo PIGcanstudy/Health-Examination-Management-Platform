@@ -1,5 +1,7 @@
 package com.zeroone.star.portfolioitems.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.portfolioitems.entity.TPortfolioProject;
 import com.zeroone.star.portfolioitems.mapper.TPortfolioProjectMapper;
 import com.zeroone.star.portfolioitems.service.ITPortfolioProjectService;
@@ -7,8 +9,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.dto.PortfolioItemDTO;
 import com.zeroone.star.project.j4.dto.PortfolioItemListDTO;
+import com.zeroone.star.project.j4.query.PortfolioItemListQuery;
+import com.zeroone.star.project.j4.query.Query;
 import org.mapstruct.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,6 +19,8 @@ import javax.annotation.Resource;
 @Mapper(componentModel = "spring")
 interface MsTPortfolioProjectStruct {
     PortfolioItemDTO pDoToTDto(TPortfolioProject tPortfolioProject);
+
+    PortfolioItemListDTO pDosToTDtos(TPortfolioProject tPortfolioProject);
 }
 
 /**
@@ -35,13 +40,17 @@ public class TPortfolioProjectServiceImpl extends ServiceImpl<TPortfolioProjectM
     public PortfolioItemDTO getPortfolioItemById(String id) throws Exception {
         TPortfolioProject tPortfolioProject = baseMapper.selectById(id);
         if (tPortfolioProject != null) {
-            msTPortfolioProjectStruct.pDoToTDto(tPortfolioProject);
+            return msTPortfolioProjectStruct.pDoToTDto(tPortfolioProject);
         }
         return null;
     }
 
     @Override
-    public PageDTO<PortfolioItemListDTO> listPortfolioItems(PortfolioItemListDTO dto) throws Exception {
-        return null;
+    public PageDTO<PortfolioItemListDTO> listPortfolioItems(PortfolioItemListQuery query) throws Exception {
+        Page<TPortfolioProject> tPortfolioProjectPage = new Page<>(query.getPageIndex(), query.getPageSize());
+        QueryWrapper<TPortfolioProject> wrapper = new QueryWrapper<>();
+        wrapper.like("name", query.getName());
+        Page<TPortfolioProject> result = baseMapper.selectPage(tPortfolioProjectPage, wrapper);
+        return PageDTO.create(result, src -> msTPortfolioProjectStruct.pDosToTDtos(src));
     }
 }

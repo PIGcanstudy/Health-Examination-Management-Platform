@@ -1,8 +1,7 @@
 package com.zeroone.star.portfolioitems.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -27,6 +26,7 @@ public class TPortfolioProject implements Serializable {
     /**
      * 主键
      */
+    @TableId(type = IdType.AUTO)
     private String id;
 
     /**
