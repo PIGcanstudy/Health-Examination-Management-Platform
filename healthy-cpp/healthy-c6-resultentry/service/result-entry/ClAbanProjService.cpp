@@ -2,7 +2,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/10/25 10:58:42
+ @Date: 2022/10/25 11:13:11
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,32 +17,19 @@
  limitations under the License.
 */
 #include "stdafx.h"
-#include "ClAbanProjController.h"
-#include "../../service/result-entry/ClAbanProjService.h"
-#include "../ApiDeclarativeServicesHelper.h"
+#include "ClAbanProjService.h"
+#include "../../dao/result-entry/ClAbanProjDAO.h"
 
-
-
-Uint64JsonVO::Wrapper ClAbanProjController::execModifyProjState(const ClAbanProjDTO::Wrapper& dto)
+bool ClAbanProjService::updateData(const ClAbanProjDTO::Wrapper& dto)
 {
-	// 定义返回数据对象
-	auto jvo = Uint64JsonVO::createShared();
-	// 参数校验
-	if (!dto->personId || !dto->officeId || !dto->orderGroupItemId)
-	{
-		jvo->init(UInt64(-1), RS_PARAMS_INVALID);
-		return jvo;
-	}
-	// 定义一个Service
-	ClAbanProjService service;
+	// 组装DO数据
+	ClAbanProjDO data;
+// 	data.setId(dto->id.getValue(0));
+// 	data.setName(dto->name.getValue(""));
+// 	data.setSex(dto->sex.getValue(""));
+// 	data.setAge(dto->age.getValue(1));
+	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, PersonId, personId, OfficeId, officeId, OrderGroupItemId, orderGroupItemId)
 	// 执行数据修改
-	if (service.updateData(dto)) {
-		jvo->success(1);
-	}
-	else
-	{
-		jvo->fail(2);
-	}
-	// 响应结果
-	return jvo;
+	ClAbanProjDAO dao;
+	return dao.update(data) == 1;
 }
