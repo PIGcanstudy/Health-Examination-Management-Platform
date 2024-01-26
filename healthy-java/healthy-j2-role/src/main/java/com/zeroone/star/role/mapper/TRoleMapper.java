@@ -1,6 +1,6 @@
 package com.zeroone.star.role.mapper;
 
-import com.zeroone.star.role.entity.TRole;
+import com.zeroone.star.role.config.entity.TRole;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

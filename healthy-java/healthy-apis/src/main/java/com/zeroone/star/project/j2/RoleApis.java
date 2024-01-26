@@ -1,7 +1,9 @@
 package com.zeroone.star.project.j2;
 
 import com.zeroone.star.project.dto.PageDTO;
+import com.zeroone.star.project.j2.dto.RoleAddDTO;
 import com.zeroone.star.project.j2.dto.RoleNameDTO;
+import com.zeroone.star.project.j2.query.RoleCriteriaQuery;
 import com.zeroone.star.project.j2.query.RoleQuery;
 import com.zeroone.star.project.j2.dto.RoleDTO;
 import com.zeroone.star.project.vo.JsonVO;
@@ -10,19 +12,12 @@ public interface RoleApis {
 
     /**
      * 新增角色
-     *
      * @param roleDTO
      * @return
      */
-    JsonVO<RoleDTO> addRoleDTO(RoleDTO roleDTO);
+    JsonVO<RoleAddDTO> addRoleDTO(RoleAddDTO roleAddDTO);
 
-    /**
-     * 查看角色菜单权限
-     *
-     * @param id
-     * @return
-     */
-    JsonVO<RoleDTO> queryRoleMenu(long id);
+
 
     /**
      * 获取角色名称列表
@@ -34,10 +29,10 @@ public interface RoleApis {
     /**
      * 获取分页+条件角色列表
      *
-     * @param roleQuery 查询条件和分页信息
+     * @param roleCriteriaQuery 查询条件和分页信息
      * @return 符合条件的角色列表
      */
 
-    JsonVO<PageDTO<RoleDTO>> queryByCondition(RoleQuery roleQuery);
+    JsonVO<PageDTO<RoleDTO>> queryByCondition(RoleCriteriaQuery roleCriteriaQuery);
 
 }

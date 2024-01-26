@@ -1,6 +1,6 @@
 package com.zeroone.star.role.service;
 
-import com.zeroone.star.role.entity.TRolePermission;
+import com.zeroone.star.role.config.entity.TRolePermission;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

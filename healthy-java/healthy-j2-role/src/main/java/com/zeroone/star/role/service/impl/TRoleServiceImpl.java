@@ -6,8 +6,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j2.dto.RoleDTO;
 import com.zeroone.star.project.j2.dto.RoleNameDTO;
-import com.zeroone.star.project.j2.query.RoleQuery;
-import com.zeroone.star.role.entity.TRole;
+import com.zeroone.star.project.j2.query.RoleCriteriaQuery;
+import com.zeroone.star.role.config.entity.TRole;
 import com.zeroone.star.role.mapper.TRoleMapper;
 import com.zeroone.star.role.service.ITRoleService;
 import org.mapstruct.Mapper;
@@ -64,12 +64,12 @@ public class TRoleServiceImpl extends ServiceImpl<TRoleMapper, TRole> implements
     }
     //根据分页和条件查询角色列表
     @Override
-    public PageDTO<RoleDTO> getByCondition(RoleQuery roleQuery) {
+    public PageDTO<RoleDTO> getByCondition(RoleCriteriaQuery roleCriteriaQuery) {
         //获取分页条件对象
-        long pageSize = roleQuery.getPageSize();
-        long pageIndex = roleQuery.getPageIndex();
+        long pageSize = roleCriteriaQuery.getPageSize();
+        long pageIndex = roleCriteriaQuery.getPageIndex();
         //获取查询条件
-        String name = roleQuery.getName();
+        String name = roleCriteriaQuery.getName();
         //构造分页查询对象
         Page<TRole> page = new Page<>(pageIndex,pageSize);
         //构造条件查询对象

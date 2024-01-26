@@ -1,6 +1,6 @@
 package com.zeroone.star.role.service;
 
-import com.zeroone.star.role.entity.TRoleDepartment;
+import com.zeroone.star.role.config.entity.TRoleDepartment;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

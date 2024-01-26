@@ -1,4 +1,4 @@
-package com.zeroone.star.role.entity;
+package com.zeroone.star.role.config.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
