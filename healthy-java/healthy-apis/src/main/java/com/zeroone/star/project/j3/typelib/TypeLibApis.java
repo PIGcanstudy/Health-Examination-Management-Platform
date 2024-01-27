@@ -3,6 +3,7 @@ package com.zeroone.star.project.j3.typelib;
 import com.zeroone.star.project.dto.j3.typeLibrary.TypeLibDeleteDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeAddDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeLibraryTreeDTO;
+import com.zeroone.star.project.dto.j3.typeLibrary.typeUpdateDTO;
 import com.zeroone.star.project.query.j3.TypeLibraryQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.j3.typeLibrary.TProTypeVO;
@@ -56,7 +57,11 @@ public interface TypeLibApis {
     * @Author: usagi
     * @Date: 2024/1/21
     * @Time:17:18
+    * @Date: 2024/1/22
+    * @Time:15:14
     */
 
     JsonVO<typeUpdateVO> updateType(typeUpdateVO typeupdatevo);
+
+    JsonVO<Object> updateType(typeUpdateDTO typeupdatedto);
 }
