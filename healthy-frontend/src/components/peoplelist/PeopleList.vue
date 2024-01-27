@@ -47,31 +47,30 @@
             </el-row>
           </el-form-item>
 
-          <!-- 輸入框区域 -->
+          <!-- 查询输入框区域 -->
+          <!-- 姓名输入项，固定显示 -->
           <el-form-item v-if="props.isShowNameInput" prop="name">
             <el-input v-model="form.name" placeholder="请输入姓名" clearable />
           </el-form-item>
-
           <!-- 从父组件传入的其他表单项 -->
-          <template v-if="isShowInput">
+          <div v-if="isShowInput">
             <el-form-item v-for="(item, index) of externalFormItems" :key="index">
               <el-input v-model="item.name" :placeholder="item.placeholder" clearable />
             </el-form-item>
-          </template>
+          </div>
 
-          <!-- 源代码备份 -->
-          <!-- <template v-if="isShowInput"> -->
-          <!-- 是否使用身份证号搜索输入框 -->
-          <!-- <div class="add-input">
-              <slot name="add-input"> </slot>
-            </div>
-            <el-form-item prop="serialNumber">
-              <el-input v-model="form.serialNumber" placeholder="请输入体检编号" clearable />
-            </el-form-item>
-            <el-form-item prop="workplace">
-              <el-input v-model="form.workplace" placeholder="请输入单位名称" clearable></el-input>
-            </el-form-item>
-          </template> -->
+          <!-- 从父组件传入的其他表单项(插槽方式，暂时保留) -->
+          <!-- 以下是示例代码，在没有接口数据传入之前，没有死数据填充会导致被折叠的输入框不展开 -->
+          <!-- <div v-if="isShowInput"> -->
+          <!-- 身份证搜索框(插槽) -->
+          <!-- <slot name="id-input"></slot>
+              <el-form-item prop="serialNumber">
+                <el-input v-model="form.serialNumber" placeholder="请输入体检编号" clearable />
+              </el-form-item>
+              <el-form-item prop="workplace">
+                <el-input v-model="form.workplace" placeholder="请输入单位名称" clearable></el-input>
+              </el-form-item>
+          </div> -->
 
           <!-- 表单按钮区域 -->
           <el-form-item>
@@ -96,14 +95,14 @@
       <el-table v-loading="openLoading" style="font-size: 12px; width: 100%; height: 350" table-layout="auto" :data="props?.tableData" @selection-change="handleSelectionChange">
         <!-- 第一列：多选 -->
         <el-table-column v-if="props?.useSelectColumn" type="selection" width="55"></el-table-column>
-        <!-- <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label"> -->
-        <!-- 表格的列内容如果使用tag -->
-        <!-- <template v-if="item.useTag" #default="{ row }">
+        <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label">
+          <!-- 表格的列内容如果使用tag -->
+          <template v-if="item.useTag" #default="{ row }">
             <el-tag :type="row[item.prop].tagType">
               {{ row[item.prop].value }}
             </el-tag>
           </template>
-        </el-table-column> -->
+        </el-table-column>
 
         <!-- <el-table-column prop="name" label="姓名"></el-table-column>
         <el-table-column prop="gender" label="性别"></el-table-column>
@@ -189,8 +188,11 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
-  // 表单查询按钮的回调函数(?暂时没有思路：父组件定义还是子组件定义?)
-
+  // 是否显示身份证号搜索框
+  // isShowIdInput: {
+  //   type: Boolean,
+  //   default: false
+  // },
   // 表格的列属性
   tableColumnAttribute: {
     type: Array,
@@ -239,6 +241,7 @@ const form = ref({
   checkbox: props.checkboxItem[0],
   switch: false,
   name: '',
+  id: '',
   date: '',
   startDate: '',
   endDate: ''

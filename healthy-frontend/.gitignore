@@ -26,6 +26,7 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+*.emmx
 
 # Compile
 auto-imports.d.ts

@@ -71,9 +71,9 @@ const routes = [
       },
       {
         // 数据网报
-        path: '/careercheck/DatanetworkReport.vue',
-        name: 'careerdatanetworkreport.vue',
-        component: () => import('@/views/careercheck/DatanetworkReport.vue')
+        path: '/careercheck/NetworkRecords.vue',
+        name: 'careerdatanetworkreport',
+        component: () => import('@/views/careercheck/NetworkRecords.vue')
       },
       {
         // 查询统计
