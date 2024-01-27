@@ -35,17 +35,21 @@ public class DictController implements DictApis {
 
     @GetMapping(value = "/getAllDict")
     @ApiOperation(value = "分页获取全部字典")
-    public JsonVO<PageDTO<com.zeroone.star.project.dto.j3.dictory.DictDTO>> getAll(DictQuery query) {
+    public JsonVO<List<DictDTO>> getAll() {
 
-        PageDTO<DictDTO> pageDTO = dictService.findAllOrderBySortOrder(query);
-        return JsonVO.success(pageDTO);
+        List<DictDTO> list = dictService.findAllOrderBySortOrder();
+        if (list == null) {
+            return JsonVO.fail(null);
+        }
+        return JsonVO.success(list);
     }
 
     @PostMapping(value = "/addDict")
     @ApiOperation(value = "添加字典")
     public JsonVO<Boolean> add(com.zeroone.star.project.dto.j3.dictory.DictDTO dict) {
 
-        if (dictService.findByType(dict.getType()) != null) {
+        if (dict == null || dict.getType() == null ||
+                dictService.findByType(dict.getType()) != null) {
             return JsonVO.fail(Boolean.FALSE);
         }
         dictService.save(dict);

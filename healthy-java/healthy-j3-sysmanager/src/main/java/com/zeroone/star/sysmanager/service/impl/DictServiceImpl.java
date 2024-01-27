@@ -9,8 +9,11 @@ import com.zeroone.star.project.query.j3.Dict.DictQuery;
 import com.zeroone.star.sysmanager.mapper.DictMapper;
 import com.zeroone.star.sysmanager.service.DictService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -26,16 +29,11 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, com.zeroone.star.pr
     @Autowired
     private DictMapper dictMapper;
     @Override
-    public PageDTO<DictDTO> findAllOrderBySortOrder(DictQuery query) {
-        // TODO
-        // 构建分页条件对象
-//        Page<DictDTO> page = new Page<>(query.getPageIndex(), query.getPageSize());
-        // 构建查询条件
-        QueryWrapper<DictDTO> wrapper = new QueryWrapper<>();
-//        wrapper.like("name", query.getName());
-        // 执行查询
-//        Page<DictDTO> result = baseMapper.selectPage(page, wrapper);
-        return null;
+    public List<DictDTO> findAllOrderBySortOrder() {
+        LambdaQueryWrapper<DictDTO> wrapper = new LambdaQueryWrapper<>();
+        wrapper.orderByAsc(DictDTO::getSortOrder);
+
+        return dictMapper.selectList(wrapper);
     }
 
     @Override
