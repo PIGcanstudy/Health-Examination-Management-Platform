@@ -2,7 +2,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 13:00:32
+ @Date: 2023/05/17 11:37:57
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,16 +17,36 @@
  limitations under the License.
 */
 #include "stdafx.h"
+#include <iostream>
 #include "downloadReportController.h"
 
-/**
- * 批量下载PDF报告
- * 负责人：晚风
- */
-downloadReportJsonVO::Wrapper downloadReportController::execQuerydownloadReport(const downloadReportQuery::Wrapper& query)
+// FastDFS需要导入的头
+#include "ServerInfo.h"
+#include "NacosClient.h"
+#include "FastDfsClient.h"
+#include "SimpleDateTimeFormat.h"
+
+std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> downloadReportController::execDownloadFile(const String& reportNum)
 {
-	downloadReportJsonVO::Wrapper vo = downloadReportJsonVO::Wrapper::createShared();
-	auto dto = downloadReportDTO::createShared();
-	vo->success(dto);
-	return vo;
+	// 构建文件全路径
+	std::string fullPath = "public/static/" + URIUtil::urlDecode(reportNum.getValue(""));
+
+	// 读取文件
+	auto fstring = String::loadFromFile(fullPath.c_str());
+
+	// 判断是否读取成功
+	if (!fstring)
+	{
+		std::cerr << "Failed to open file: " << std::strerror(errno) << std::endl;
+		return createResponse(Status::CODE_404, "File Not Found");
+	}
+
+	// 创建响应头
+	auto response = createResponse(Status::CODE_200, fstring);
+
+	// 设置响应头信息
+	response->putHeader("Content-Disposition", "attachment; filename=" + reportNum.getValue(""));
+
+	// 影响成功结果
+	return response;
 }

@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 13:05:04
+ @Date: 2023/05/17 11:19:05
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -21,50 +21,43 @@
 #define _DOWNLOADREPORT_CONTROLLER_H_
 
 #include "domain/vo/BaseJsonVO.h"
-#include "domain/query/downloadReportQuery.h"
-#include "domain/dto/downloadReportDTO.h"
+#include "ApiHelper.h"
+#include "ServerInfo.h"
+
 #include "domain/vo/downloadReportVO.h"
 
-// 0 定义API控制器使用宏
-#include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
+// 定义API控制器使用宏
+#include OATPP_CODEGEN_BEGIN(ApiController)
 
 /**
  * 批量下载PDF报告
  * 负责人：晚风
  */
-class downloadReportController : public oatpp::web::server::api::ApiController // 1 
+class downloadReportController  : public oatpp::web::server::api::ApiController 
 {
-	// 2 定义控制器访问入口
+	//  定义控制器访问入口
 	API_ACCESS_DECLARE(downloadReportController);
 
-	// 3 定义接口
 public:
-	// 3.1 定义查询接口描述
-	ENDPOINT_INFO(querydownloadReport) {
-		// 定义接口标题
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("download.get.summary"));
-		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
-		API_DEF_ADD_AUTH();
-		// 定义响应参数格式
-		API_DEF_ADD_RSP_JSON_WRAPPER(downloadReportJsonVO);
-
-		// 定义查询参数描述
+	// 定义一个文件下载接口
+	// 定义描述
+	ENDPOINT_INFO(downloadFile) {
+		// 定义描述
+		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("download.get.summary"), Void);
 		// 待下载的报告编号
 		API_DEF_ADD_QUERY_PARAMS(String, "reportNum", ZH_WORDS_GETTER("preview.field.reportNum"), "1202204010001", true);
 	}
-	// 3.2 定义查询接口处理
-	ENDPOINT(API_M_GET, "/downloadReport", querydownloadReport, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
-		// 解析查询参数为Query领域模型
-		API_HANDLER_QUERY_PARAM(uq, downloadReportQuery, params);
-		// 呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execQuerydownloadReport(uq));
+
+	// 定义端点
+	ENDPOINT(API_M_GET, "/file/download", downloadFile, QUERY(String, reportNum)) {
+		return execDownloadFile(reportNum);
 	}
 
-private:
-
-	downloadReportJsonVO::Wrapper execQuerydownloadReport(const downloadReportQuery::Wrapper& query);
+private: // 定义接口执行函数
+	// 执行文件下载处理
+	std::shared_ptr<OutgoingResponse> execDownloadFile(const String& reportNum);
 };
 
-// 0 取消API控制器使用宏
-#include OATPP_CODEGEN_END(ApiController) //<- End Codegen
+#include OATPP_CODEGEN_END(ApiController)
+
 #endif // _DOWNLOADREPORT_CONTROLLER_H_
