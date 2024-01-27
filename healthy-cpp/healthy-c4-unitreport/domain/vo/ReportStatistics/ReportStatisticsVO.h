@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _REPORTSTATISTICS_H_
-#define _REPORTSTATISTICS_H_
+#ifndef _REPORTSTATISTICSVO_H_
+#define _REPORTSTATISTICSVO_H_
 
 #include "../../GlobalInclude.h"
 #include "../../dto/ReportStatistics/ReportStatisticsDTO.h"
@@ -48,7 +48,7 @@ class ReviewResultsJsonVO : public JsonVO<ReviewResultsDTO::Wrapper>
 {
 	DTO_INIT(ReviewResultsJsonVO, JsonVO<ReviewResultsDTO::Wrapper>);
 };
-#include OATPP_CODEGEN_END(DTO)
 
+#include OATPP_CODEGEN_END(DTO)
 
 #endif // !_SAMPLE_VO_

@@ -6,6 +6,7 @@
 #include "domain/vo/BaseJsonVO.h"
 #include "../../domain/vo/unitreportlist/UnitListVO.h"
 #include "../../domain/query/unitreportlist/UnitPhysicalExaminationOrdersQuery.h"
+
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
 class UnitListController : public oatpp::web::server::api::ApiController
@@ -26,9 +27,9 @@ public://定义接口
 		//单位名称
 		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("unitreport.unit.name"),"",false );
 		//查找订单签订时间的开始时间
-		API_DEF_ADD_QUERY_PARAMS(String, "beginTime", ZH_WORDS_GETTER("unitreport.order.signingTime"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "beginTime", ZH_WORDS_GETTER("unitreport.order.signingTime"), "", false );
 		//查找订单签订时间的结束时间
-		API_DEF_ADD_QUERY_PARAMS(String, "endTime", ZH_WORDS_GETTER("unitreport.order.signingTime"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "endTime", ZH_WORDS_GETTER("unitreport.order.signingTime"), "", false );
 		//// 定义其他查询参数描述
 		//API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("sample.field.name"), "li ming", false);
 		//API_DEF_ADD_QUERY_PARAMS(String, "sex", ZH_WORDS_GETTER("sample.field.sex"), "N", false);
