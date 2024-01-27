@@ -19,6 +19,10 @@
 #include "stdafx.h"
 #include "downloadReportController.h"
 
+/**
+ * 批量下载PDF报告
+ * 负责人：晚风
+ */
 downloadReportJsonVO::Wrapper downloadReportController::execQuerydownloadReport(const downloadReportQuery::Wrapper& query)
 {
 	downloadReportJsonVO::Wrapper vo = downloadReportJsonVO::Wrapper::createShared();

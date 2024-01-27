@@ -20,6 +20,10 @@
 #include "downloadReportService.h"
 #include "../../dao/downloadReport/downloadReportDAO.h"
 
+/**
+ * 下载PDF
+ * 负责人：晚风
+ */
 downloadReportPageDTO::Wrapper downloadReportService::listAll(const downloadReportQuery::Wrapper& query)
 {
 	// 构建返回对象

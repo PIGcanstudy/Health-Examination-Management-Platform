@@ -20,6 +20,10 @@
 #include "printReportService.h"
 #include "../../dao/printReport/printReportDAO.h"
 
+/**
+ * 下载PDF
+ * 负责人：晚风
+ */
 printReportPageDTO::Wrapper printReportService::listAll(const printReportQuery::Wrapper& query)
 {
 	// 构建返回对象
