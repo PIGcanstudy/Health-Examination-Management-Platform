@@ -1,32 +1,35 @@
-select:
+preview:
  field:
-  name: 姓名
   personId: 体检人员编号
-  reportId: 报告编号
-  reportName: 报告名称
-  dept: 工作单位名称
+  id: 编号
+  reportNum: 报告编号
+  href: 文件地址
+  presonId: 姓名ID
+ get:
+  view: 报告预览 
+download:
+ field:
+  downloadState: 下载
+ get:
+  summary: 报告下载
+print:
+ field:
+  id: 编号
+  name: 姓名
+  age: 年龄
+  sex: 性别
+  statu: 审核
+  printState: 打印
+  orderId: 订单编号
+  testNum: 体检编号
+  dept: 单位名称
   checkDate: 体检日期
+  isRecheck: 复查
+  sporadicPhysical: 零星检查
+  targetPrinter: 目标打印机
+  page: 页面
+  pageNumPerTable: 每个工作表的页数
+  printSampleCode: 打印样本条码
  get:
-  summary: 选择要下载的报告
-downloadSetting:
- field:
-  downloadRportId: 待下载报告编号
-  downloadpath: 下载路径
- get:
-  view: 下载设置
-confirm:
- field:
-  printReportId: 待打印报告编号
-  printReportName: 待打印报告名称
-  isPrint: 是否打印
-  status: 打印完成状态
- get:
-  summary: 打印确认
-printSetting:
- field:
-  papersize: 打印用纸尺寸
-  pagerange: 打印页面范围
-  isDoubleSid: 是否双面
-  copiesNum: 打印份数
- get:
-  printview: 打印设置
+  view: 打印确认
+  summary: 获取体检人员报告

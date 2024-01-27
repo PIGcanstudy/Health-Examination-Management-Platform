@@ -17,20 +17,12 @@
  limitations under the License.
 */
 #include "stdafx.h"
-#include "selectReportController.h"
+#include "downloadReportController.h"
 
-selectReportPageJsonVO::Wrapper selectReportController::execQueryselectReport(const selectReportQuery::Wrapper& query)
+downloadReportJsonVO::Wrapper downloadReportController::execQuerydownloadReport(const downloadReportQuery::Wrapper& query)
 {
-
-	selectReportPageJsonVO::Wrapper vo = selectReportPageJsonVO::createShared();
-	auto dto = selectReportPageDTO::createShared();
-	if (query->pageIndex == 1)
-	{
-		vo->success(dto);
-	}
-	else
-	{
-		vo->fail(dto);
-	}
+	downloadReportJsonVO::Wrapper vo = downloadReportJsonVO::Wrapper::createShared();
+	auto dto = downloadReportDTO::createShared();
+	vo->success(dto);
 	return vo;
 }

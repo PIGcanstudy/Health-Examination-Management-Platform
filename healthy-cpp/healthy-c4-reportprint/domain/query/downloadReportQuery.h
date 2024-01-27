@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _PRINTSETTING_H_
-#define _PRINTSETTING_H_
+#ifndef _DOWNLOADREPORT_H_
+#define _DOWNLOADREPORT_H_
 
 #include "../GlobalInclude.h"
 #include "domain/query/PageQuery.h"
@@ -26,33 +26,24 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
-* 批量下载PDF报告
-* 负责人：晚风
+* 涓嬭浇璁剧疆
+* 璐熻矗浜猴細鏅氶
  */
-class printSettingQuery : public PageQuery
+class downloadReportQuery : public PageQuery
 {
-	DTO_INIT(printSettingQuery, PageQuery);
-	// 打印用纸尺寸
-	DTO_FIELD(String, papersize);
-	DTO_FIELD_INFO(papersize) {
-		info->description = ZH_WORDS_GETTER("printSetting.field.papersize");
+	DTO_INIT(downloadReportQuery, PageQuery);
+
+	// 鏄惁涓嬭浇
+	DTO_FIELD(String, downloadState);
+	DTO_FIELD_INFO(downloadState) {
+		info->description = ZH_WORDS_GETTER("download.field.downloadState");
 	}
-	// 打印页面范围
-	DTO_FIELD(String, pagerange);
-	DTO_FIELD_INFO(pagerange) {
-		info->description = ZH_WORDS_GETTER("printSetting.field.pagerange");
-	}
-	// 是否双面
-	DTO_FIELD(Boolean, isDoubleSid);
-	DTO_FIELD_INFO(isDoubleSid) {
-		info->description = ZH_WORDS_GETTER("printSetting.field.isDoubleSid");
-	}
-	// 打印份数
-	DTO_FIELD(UInt32, copiesNum);
-	DTO_FIELD_INFO(copiesNum) {
-		info->description = ZH_WORDS_GETTER("printSetting.field.copiesNum");
+	// 涓嬭浇鎶ュ憡缂栧彿
+	DTO_FIELD(String, reportNum);
+	DTO_FIELD_INFO(reportNum) {
+		info->description = ZH_WORDS_GETTER("preview.field.reportNum");
 	}
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_PRINTSETTING_H_
+#endif // !_DOWNLOADREPORT_H_

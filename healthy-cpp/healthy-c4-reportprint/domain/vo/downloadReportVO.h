@@ -1,8 +1,9 @@
+#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 13:00:32
+ @Date: 2024/01/16 11:34:14
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,13 +17,22 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#include "stdafx.h"
-#include "printSettingController.h"
+#ifndef _DOWNLOADREPORT_VO_
+#define _DOWNLOADREPORT_VO_
 
-printSettingJsonVO::Wrapper printSettingController::execQueryprintSetting(const printSettingQuery::Wrapper& query)
-{
-	printSettingJsonVO::Wrapper vo = printSettingJsonVO::Wrapper::createShared();
-	auto dto = printSettingDTO::createShared();
-	vo->success(dto);
-	return vo;
-}
+#include "../GlobalInclude.h"
+#include "../dto/downloadReportDTO.h"
+
+#include OATPP_CODEGEN_BEGIN(DTO)
+
+/**
+* 批量下载PDF报告
+* 负责人：晚风
+ */
+class downloadReportJsonVO : public JsonVO<downloadReportDTO::Wrapper> {
+	DTO_INIT(downloadReportJsonVO, JsonVO<downloadReportDTO::Wrapper>);
+};
+
+#include OATPP_CODEGEN_END(DTO)
+
+#endif // !_DOWNLOADREPORT_VO_
