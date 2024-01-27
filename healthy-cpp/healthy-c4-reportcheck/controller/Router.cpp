@@ -37,6 +37,8 @@ router->addController(__CLASS__::createShared())
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 BIND_CONTROLLER(docEndpoints, router, __CLASS__)
 #endif
+#include "checks/CheckReportController.h"
+#include "previews/PreviewReportController.h"
 
 Router::Router(Endpoints* docEndpoints, HttpRouter* router)
 {
@@ -51,7 +53,8 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-
+	ROUTER_SIMPLE_BIND(CheckReportController);
+	ROUTER_SIMPLE_BIND(PreviewReportController);
 }
 
 #ifdef HTTP_SERVER_DEMO
@@ -63,7 +66,7 @@ void Router::createSampleRouter()
 	ROUTER_SIMPLE_BIND(UserController);
 	// 绑定文件控制器
 	ROUTER_SIMPLE_BIND(FileController);
-	
+
 	// 绑定WebSocket控制器
 	router->addController(WSContorller::createShared());
 }
