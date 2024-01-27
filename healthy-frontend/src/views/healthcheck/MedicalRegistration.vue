@@ -1,4 +1,3 @@
-<!-- eslint-disable prettier/prettier -->
 <!-- 体检登记 -->
 <template>
   <el-container style="height: 100vh">
@@ -34,60 +33,65 @@
       />
       <!-- 按钮区域 -->
       <div style="margin-bottom: 10px">
-        <el-button type="primary" v-if="!isShow" style="background-color: #ffad33; border-color: #ffad33" disabled>
-          <el-icon style="margin-right: 2px"><Edit /></el-icon>修改信息
+        <el-button type="primary" v-if="!isShow" @click="handleEditInfo" style="background-color: #ffad33; border-color: #ffad33">
+          <el-icon style="margin-right: 2px"> <Edit /> </el-icon>修改信息
         </el-button>
         <el-button type="primary" v-if="!isShow" @click="handleSingleAdd">
-          <el-icon style="margin-right: 2px"><Plus /></el-icon>零星新增
+          <el-icon style="margin-right: 2px"> <Plus /> </el-icon>零星新增
         </el-button>
         <el-button type="primary" v-if="!isShow" @click="handleTeamAdd">
-          <el-icon style="margin-right: 2px"><Plus /></el-icon>团检新增
+          <el-icon style="margin-right: 2px"> <Plus /> </el-icon>团检新增
         </el-button>
         <el-button type="primary" v-if="!isShow" style="background-color: #f16643; border-color: #f16643" disabled
-          ><el-icon style="margin-right: 2px"><Delete /></el-icon>删除
+          ><el-icon style="margin-right: 2px"> <Delete /> </el-icon>删除
         </el-button>
         <el-button type="primary" v-if="isShow" @click="readIdCard">
-          <el-icon style="margin-right: 2px"><Loading v-if="isLoading" class="icon-loading" /><Plus v-else /></el-icon>读取二代身份证
+          <el-icon style="margin-right: 2px">
+            <Loading v-if="isLoading" class="icon-loading" />
+            <Plus v-else /> </el-icon
+          >读取二代身份证
         </el-button>
         <el-button type="primary" v-if="!isShow" @click="printSheet">
-          <el-icon style="margin-right: 2px"><Printer /></el-icon>打印导检单
+          <el-icon style="margin-right: 2px"> <Printer /> </el-icon>打印导检单
         </el-button>
         <el-button type="primary" v-if="isShow" @click="savePersonInfo"
-          ><el-icon style="margin-right: 2px"><CaretRight /></el-icon>保存信息</el-button
+          ><el-icon style="margin-right: 2px"> <CaretRight /> </el-icon>保存信息</el-button
         >
       </div>
       <!-- 体检项目选择 -->
       <div class="card-header">
         <span>体检项目</span>
         <CheckItems bottonTitle="套餐选择" tableTitle="套餐选择" :isShowSelectDown="false" :tableLieForTc="tableLieForTc" :tableDataForTc="tableDataForTc">
-          <el-icon style="margin-right: 2px"><Plus /></el-icon>
+          <el-icon style="margin-right: 2px">
+            <Plus />
+          </el-icon>
         </CheckItems>
         <CheckItems bottonTitle="选检项目" tableTitle="套餐项目" :tableLieForTc="tableLieForTc2" :tableDataForTc="tableDataForTc2" :selectDown="selectDown">
-          <el-icon style="margin-right: 2px"><Plus /></el-icon>
+          <el-icon style="margin-right: 2px">
+            <Plus />
+          </el-icon>
         </CheckItems>
       </div>
       <!-- 数据列表显示 -->
       <BaseDataList ref="baseDataListRef" :use-form="false" :form-data="formData" :table-column-attribute="tableColumnAttribute" :table-data="tableData" :use-fixed="true">
         <template #fixed="{ row }">
           <el-button type="primary" @click="deleteProject(row)" style="background-color: #f16643; border-color: #f16643">
-            <el-icon style="margin-right: 2px"><Delete /></el-icon>删除
+            <el-icon style="margin-right: 2px"> <Delete /> </el-icon>删除
           </el-button>
         </template>
       </BaseDataList>
       <!-- 折扣选择 -->
-      <!-- 使用 style 来应用 Flexbox 布局 -->
-      <div style="display: flex; margin-top: 20px;">
+      <div style="display: flex; margin-top: 20px">
         <el-form-item label="必检项折扣：">
-          <el-input placeholder=""></el-input>
+          <el-input-number v-model="requiredItemDiscount" :min="0" :max="100"></el-input-number>
         </el-form-item>
         <el-form-item label="选检项折扣：">
-          <el-input placeholder=""></el-input>
+          <el-input-number v-model="optionalItemDiscount" :min="0" :max="100"></el-input-number>
         </el-form-item>
         <el-form-item label="优惠价：">
-          <el-input placeholder=""></el-input>
+          <el-input-number v-model="discountPrice" :min="0"></el-input-number>
         </el-form-item>
       </div>
-
       <!-- 操作提示 -->
       <div class="card-content">
         <span>操作说明</span>
@@ -106,15 +110,104 @@
           <!-- 头部容器 -->
           <div class="header-container">
             <Head name="体检导检单" style="width: 70%; font-size: 15px" />
+
             <Head name="样本条码" style="width: 25%; font-size: 15px">
               <el-button type="primary" @click="printBarcode" style="height: 30px; margin-left: 100px">
-                <el-icon style="margin-right: 2px"><Printer /></el-icon>打印样本条码
+                <el-icon style="margin-right: 2px"> <Printer /> </el-icon>打印样本条码
               </el-button>
             </Head>
           </div>
           <!-- PDF容器 -->
           <PdfObject />
         </div>
+      </el-dialog>
+      <el-dialog v-model="isEditInfoVisible" title="人员信息修改" style="width: 60%">
+        <div class="editInfoCard-header">
+          <span class="header-title">基本信息</span>
+          <el-button type="primary" @click="readIdCard">
+            <el-icon style="margin-right: 2px">
+              <Loading v-if="isLoading" class="icon-loading" />
+              <Plus v-else />
+            </el-icon>
+            读取二代身份证
+          </el-button>
+        </div>
+        <el-form :rules="editRules" class="two-column-form">
+          <div class="form-container">
+          <div class="form-row">
+            <el-form-item label="人员姓名" prop="personName">
+            <el-input v-model="editData.name" placeholder="请输入姓名" />
+          </el-form-item>
+          <el-form-item label="证件号码" prop="idNumber">
+            <el-input v-model="editData.idNumber" placeholder="请输入证件号码" />
+          </el-form-item>
+          <el-form-item label="性别" prop="sex">
+            <el-radio-group v-model="editData.sex">
+              <el-radio label="male">男</el-radio>
+              <el-radio label="female">女</el-radio>
+            </el-radio-group>
+          </el-form-item>
+          <el-form-item label="出生日期" prop="birth">
+            <el-date-picker
+              v-model="editData.checkTime"
+              type="date"
+              placeholder="选择日期"
+              />
+          </el-form-item>
+          <el-form-item label="年龄" prop="age">
+            <el-input v-model="editData.age" placeholder="请输入年龄"/>
+          </el-form-item>
+          <el-form-item label="结婚状况" prop="isMarry">
+            <el-select v-model="editData.isMarry" placeholder="请选择">
+              <el-option label="未婚" value="single"></el-option>
+              <el-option label="已婚" value="married"></el-option>
+              <el-option label="离异" value="divorced"></el-option>
+              <el-option label="丧偶" value="widowed"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="手机号码" prop="mobile">
+            <el-input v-model="editData.mobile" placeholder="请输入手机号"/>
+          </el-form-item>
+          <el-form-item label="危害因素" prop="harmName">
+            <el-input v-model="editData.harmName" placeholder="请输入危害因素"/>
+          </el-form-item>
+          <el-form-item label="工种名称" prop="jobName">
+            <el-input v-model="editData.jobName" placeholder="请输入工种名称"/>
+          </el-form-item>
+          <el-form-item label="在岗状态" prop="workStatus">
+            <el-select v-model="editData.workStatus" placeholder="请选择">
+              <el-option label="在岗" value="online"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="监测类型" prop="monitorType">
+            <el-select v-model="editData.monitorType" placeholder="请选择">
+              <el-option label="常规监测" value="usually"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="登记时间" prop="checkTime">
+            <el-date-picker
+              v-model="editData.checkTime"
+              type="date"
+              placeholder="选择日期"
+              />
+          </el-form-item>
+          <el-form-item label="单位名称" prop="untiName">
+            <el-select v-model="editData.unitName" placeholder="请选择">
+              <el-option label="测试单位" value="test"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="分组" prop="groupName">
+            <el-select v-model="editData.groupName" placeholder="请选择">
+              <el-option label="测试分组" value="test2"></el-option>
+            </el-select>
+          </el-form-item>
+          </div>
+          <div class="button-group">
+            <el-button @click="cancelButton">取消</el-button>
+            <el-button type="primary">提交</el-button>
+          </div>
+        </div>
+        </el-form>
       </el-dialog>
     </el-main>
   </el-container>
@@ -314,7 +407,55 @@ const isCollapsed = ref(false) // 是否收缩侧边栏
 const isShow = ref(false) // 是否展示按钮
 const isCheckItemsVisible = ref(false) // 是否展示抽屉
 const isLoading = ref(false) // 读取身份证图标显示
-const isPdfObjectVisible = ref(false)
+const isPdfObjectVisible = ref(false) // 是否显示pdf弹窗
+const requiredItemDiscount = ref(100) // 必检项
+const optionalItemDiscount = ref(100) // 选检项
+const discountPrice = ref(0) // 优惠价
+const isEditInfoVisible = ref(false) // 是否显示修改信息弹窗
+const editRules= ref( {
+      personName: [
+        { required: true, message: '请输入人员姓名', trigger: 'blur' }
+      ],
+      sex: [
+        { required: true, message: '请选择性别', trigger: 'blur' }
+      ],
+      age: [
+        { required: true, message: '请输入年龄', trigger: 'blur' }
+      ],
+      mobile: [
+        { required: true, message: '请输入手机号', trigger: 'blur' }
+      ],
+      harmName: [
+        { required: true, message: '请输入危害因素', trigger: 'blur' }
+      ],
+      jobName: [
+        { required: true, message: '请输入工种名称', trigger: 'blur' }
+      ],
+      workStatus: [
+        { required: true, message: '请输入在岗状态', trigger: 'blur' }
+      ],
+      monitorType: [
+        { required: true, message: '请输入监测类型', trigger: 'blur' }
+      ],
+      groupName: [
+        { required: true, message: '请输入分组', trigger: 'blur' }
+      ],
+})
+const editData = ref({
+  personName: '',
+  sex: '',
+  birth: '',
+  age: '',
+  isMarry: '',
+  mobile: '',
+  harmName: '',
+  jobName: '',
+  workStatus: '',
+  monitorType: '',
+  checkTime: '',
+  unitName: '',
+  groupName: ''
+})
 // 选择工种名称
 const checkJob = () => {
   isCheckItemsVisible.value = false // 首先设置为 false
@@ -371,6 +512,17 @@ const savePersonInfo = () => {
 const printBarcode = () => {
   ElMessage.warning('正在打印条码...')
 }
+// 修改信息
+const handleEditInfo = () => {
+  isEditInfoVisible.value = false
+  nextTick(() => {
+    isEditInfoVisible.value = true
+  })
+}
+// 修改的取消按钮
+const cancelButton = () => {
+  isEditInfoVisible.value = false
+}
 </script>
 <style scoped>
 .shrink-button {
@@ -424,4 +576,45 @@ const printBarcode = () => {
   justify-content: space-between;
   margin-bottom: 20px;
 }
+.editInfoCard-header {
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc; /* 添加底部边框 */
+}
+.header-title {
+  position: relative;
+  color: rgb(41, 136, 243);
+  font-size: 14px;
+}
+.header-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px; /* 调整下划线位置 */
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgb(41, 136, 243); /* 下划线颜色 */
+  display: block;
+}
+
+.two-column-form .form-row {
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* 添加间隙 */
+  align-items: flex-start; /* 对齐表单项 */
+}
+
+.two-column-form .el-form-item {
+  flex: 1 1 47%; /* 灵活性调整，考虑间隙 */
+  min-width: 250px; /* 最小宽度，用于响应式 */
+}
+.button-group {
+  text-align: right; /* 按钮向右对齐 */
+  padding: 10px; /* 添加一些内边距 */
+}
+
 </style>
