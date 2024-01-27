@@ -24,4 +24,6 @@ preview:
   href: 文件地址
   presonId: 姓名ID
  get:
-  view: 报告预览   
+  view: 报告预览  
+
+ 
