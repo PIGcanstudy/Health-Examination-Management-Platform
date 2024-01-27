@@ -13,6 +13,7 @@ import { Bottom } from '@element-plus/icons-vue'
 import { Fold } from '@element-plus/icons-vue'
 import { ArrowLeftBold } from '@element-plus/icons-vue'
 import { ArrowRightBold } from '@element-plus/icons-vue'
+import { Plus } from '@element-plus/icons-vue'
 
 export default (app) => {
   app.component('IconMenu', Menu)
@@ -28,4 +29,5 @@ export default (app) => {
   app.component('IconFold', Fold)
   app.component('IconArrowLeftBold', ArrowLeftBold)
   app.component('IconArrowRightBold', ArrowRightBold)
+  app.component('IconArrowPlus', Plus)
 }
