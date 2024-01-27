@@ -36,7 +36,7 @@ public interface SecuritySettingApis {
      * @param modifyPhoneDTO 修改手机号视图对象
      * @return 修改结果
      */
-    JsonVO<String> changePhone(ModifyPhoneDTO modifyPhoneDTO);
+    //JsonVO<String> changePhone(ModifyPhoneDTO modifyPhoneDTO);
 
     /**
      * 系统管理-用户管理，用户邮箱修改相关接口（修改用户邮箱）
