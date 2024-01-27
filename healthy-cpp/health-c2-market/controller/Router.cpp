@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "ApiHelper.h"
 #include "check/ThreeLevCheckController.h"
+#include "check/CountCheckController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
@@ -53,6 +54,9 @@ void Router::initRouter()
 
 	//#TIP :系统扩展路由定义，写在这个后面
 	ROUTER_SIMPLE_BIND(ThreeLevCheckController);
+	//快乐五香蛋
+	ROUTER_SIMPLE_BIND(CountCheckController);
+
 }
 
 #ifdef HTTP_SERVER_DEMO
