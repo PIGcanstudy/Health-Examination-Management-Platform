@@ -1,10 +1,9 @@
 #pragma once
-
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/10/25 11:52:32
+ @Date: 2022/10/25 14:23:49
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -18,21 +17,17 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-
-#ifndef _PACKAGE_DO_
-#define _PACKAGE_DO_
-#include "./DoInclude.h"
+#ifndef _DOWNLOADREPORT_DAO_
+#define _DOWNLOADREPORT_DAO_
+#include "BaseDAO.h"
+#include "../../domain/do/downloadReportDO.h"
+#include "../../domain/query/downloadReportQuery.h"
 
 /**
- * 获取报告列表数据库实体类
- * 负责人：晚风
+ * 绀轰緥琛ㄦ暟鎹簱鎿嶄綔瀹炵幇
  */
-class PackageDO
+class downloadReportDAO : public BaseDAO
 {
-	// 报告编号
-	CC_SYNTHESIZE(string, reportNum, ReportNum);
 public:
-	PackageDO() = default;
 };
-
-#endif // !_PACKAGE_DO_
+#endif // !_DOWNLOADREPORT_DAO_

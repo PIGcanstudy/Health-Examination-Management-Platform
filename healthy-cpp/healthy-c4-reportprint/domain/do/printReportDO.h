@@ -21,7 +21,7 @@
 
 #ifndef _PACKAGE_DO_
 #define _PACKAGE_DO_
-#include "../DoInclude.h"
+#include "./DoInclude.h"
 
 /**
  * 获取套餐名称列表数据库实体类

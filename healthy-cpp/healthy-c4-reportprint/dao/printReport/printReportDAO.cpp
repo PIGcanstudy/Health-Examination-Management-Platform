@@ -1,10 +1,8 @@
-#pragma once
-
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/10/25 11:52:32
+ @Date: 2022/10/25 14:26:52
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -18,21 +16,23 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
+#include "stdafx.h"
+#include "printReportDAO.h"
+#include <sstream>
 
-#ifndef _PACKAGE_DO_
-#define _PACKAGE_DO_
-#include "./DoInclude.h"
-
-/**
- * 获取报告列表数据库实体类
- * 负责人：晚风
- */
-class PackageDO
-{
-	// 报告编号
-	CC_SYNTHESIZE(string, reportNum, ReportNum);
-public:
-	PackageDO() = default;
-};
-
-#endif // !_PACKAGE_DO_
+//瀹氫箟鏉′欢瑙ｆ瀽瀹忥紝鍑忓皯閲嶅浠ｇ爜
+#define SAMPLE_TERAM_PARSE(query, sql) \
+SqlParams params; \
+sql<<" WHERE 1=1"; \
+if (query->name) { \
+	sql << " AND `name`=?"; \
+	SQLPARAMS_PUSH(params, "s", std::string, query->name.getValue("")); \
+} \
+if (query->sex) { \
+	sql << " AND sex=?"; \
+	SQLPARAMS_PUSH(params, "s", std::string, query->sex.getValue("")); \
+} \
+if (query->age) { \
+	sql << " AND age=?"; \
+	SQLPARAMS_PUSH(params, "i", int, query->age.getValue(0)); \
+}
