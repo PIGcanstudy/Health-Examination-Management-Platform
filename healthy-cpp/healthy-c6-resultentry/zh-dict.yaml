@@ -1,17 +1,22 @@
 checkitem:
  portfolio:
   name: 组合项目名称
-  eg_name: 耳鼻喉口腔常规
+  eg_name: 第二个项目
+  id: 组合项目编号
+  eg_id: 0002
  base:
   id: 项目编号
   code: 项目代码
   name: 体检项目
   unit_name: 单位
-  default_value: 参考值
-  result_type: 提示
+  healthy_value: 参考值
+  default_value: 明细结果默认值
+  result_type: 明细结果类型
  person:
   id: 人员编号
+  eg_id: 49d75bd94ca5b80735c5d2d98fb48fd3
   name: 姓名
+  eg_name: 张三
  filed:
   project_summary: 查询组合项目的基础项目体检结果数据
   person_summary: 查询人员的体检组合项目

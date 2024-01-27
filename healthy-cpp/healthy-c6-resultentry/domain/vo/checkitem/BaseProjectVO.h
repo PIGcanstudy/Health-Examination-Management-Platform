@@ -16,5 +16,9 @@ class BaseProjectJsonVO : public JsonVO<BaseProjectListDTO::Wrapper> {
 
 };
 
+class BaseProjectPageJsonVO : public JsonVO<BaseProjectPageDTO::Wrapper> {
+	DTO_INIT(BaseProjectPageJsonVO, JsonVO<BaseProjectPageDTO::Wrapper>);
+};
+
 #include OATPP_CODEGEN_END(DTO)
 #endif // !_BASEPROJECTVO_H_

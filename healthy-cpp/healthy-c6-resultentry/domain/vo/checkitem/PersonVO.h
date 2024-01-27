@@ -16,5 +16,9 @@ class PersonJsonVO : public JsonVO<PersonDTO::Wrapper> {
 
 };
 
+class PersonPageJsonVO : public JsonVO<PersonPageDTO::Wrapper> {
+	DTO_INIT(PersonPageJsonVO, JsonVO<PersonPageDTO::Wrapper>);
+};
+
 #include OATPP_CODEGEN_END(DTO)
 #endif // !_PERSONVO_H_

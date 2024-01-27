@@ -25,7 +25,7 @@ public:	//定义接口
 		// 定义响应参数格式
 		API_DEF_ADD_RSP_JSON_WRAPPER(PersonJsonVO);
 		// 定义其他查询参数描述
-		//API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("checkitem.person.name"), ZH_WORDS_GETTER("checkitem.person.eg_name"), false);
+		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("checkitem.person.id"), ZH_WORDS_GETTER("checkitem.person.eg_id"), true);
 	}
 
 	//定义分页查询单位列表接口
@@ -37,7 +37,7 @@ public:	//定义接口
 	}
 
 private:	//定义接口执行函数
-	PersonJsonVO::Wrapper execQueryPerson(const PersonQuery::Wrapper& query);
+	PersonPageJsonVO::Wrapper execQueryPerson(const PersonQuery::Wrapper& query);
 };
 
 // 0 取消API控制器使用宏

@@ -1,7 +1,14 @@
 #include "stdafx.h"
 #include "BaseProjectController.h"
+#include "../../service/checkitem/BaseProejctService.h"
+#include "../ApiDeclarativeServicesHelper.h"
 
-BaseProjectJsonVO::Wrapper BaseProjectController::execQueryBaseProject(const BaseProjectQuery::Wrapper& query)
+BaseProjectPageJsonVO::Wrapper BaseProjectController::execQueryBaseProject(const BaseProjectQuery::Wrapper& query)
 {
-	return BaseProjectJsonVO::Wrapper();
+
+	BaseProjectService service;
+	auto result = service.listAll(query);
+	auto jvo = BaseProjectPageJsonVO::createShared();
+	jvo->success(result);
+	return jvo;
 }
