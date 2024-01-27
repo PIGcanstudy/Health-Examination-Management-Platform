@@ -34,7 +34,7 @@ order:
  preview-entrust:
   summary: 附件预览
  field:
-  id: 主键
+  id: 主键(订单id)
   order_code: 订单编号
   group_unit_id: 团检单位id
   group_unit_name: 团检单位名称
@@ -62,7 +62,7 @@ order:
 # 项目信息
 item:
  field:
-  id: 主键
+  id: 主键(项目id)
   group_id: 分组id
   group_order_id: 订单id
   name: 名称
@@ -82,7 +82,7 @@ item:
 # 分组信息
 group:
  field:
-  id: 主键
+  id: 主键(分组id)
   group_order_id: 订单id
   name: 分组名称
   combo_id: 套餐id
@@ -102,7 +102,7 @@ group:
 # 人员信息
 person:
  field:
-  id: 主键
+  id: 主键(人员id)
   person_name: 人员姓名
   sex: 性别
   id_card: 证件号码
@@ -118,11 +118,12 @@ person:
   work_name: 其他工种名称
   work_state_text: 在岗状态
   department: 所属部门
+  is_pass: 是否通过检查(0-未登记, 1-登记, 2-在检, 3-总检, 4-已完成)
 
 # 审批信息
 flow:
  field:
-  id: 主键
+  id: 主键(审批id)
   audit_state: 审核状态 2通过 3未通过  0默认
   audit_user_id: 审核人员id
   audit_user_name: 审核人员

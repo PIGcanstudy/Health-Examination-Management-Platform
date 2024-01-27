@@ -36,6 +36,12 @@
 #include "add-order/AddOrderController.h"
 #include "get-order-approval/QueryOrderApprovalController.h"
 #include "export-person/ExportPersonController.h"
+#include "preview-entrust/PreviewEntrustController.h"
+#include "confirm-order/ConfirmOrderController.h"
+#include "download-person-template/DownloadPersonController.h"
+#include "update-order/ModifyOrderController.h"
+#include "import-person/ImportPersonController.h"
+#include "upload-entrust/UploadEntrustController.h"
 
 
 
@@ -80,19 +86,22 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(AddOrderController);
 
 	/*------  修改订单    负责人：jimyy  ------*/
+	ROUTER_SIMPLE_BIND(ModifyOrderController);
 
 	/*------  删除订单    负责人：Adam  ------*/
 	ROUTER_SIMPLE_BIND(RemoveOrderController);
 
 	/*------  订单确认    负责人：jimyy  ------*/
+	ROUTER_SIMPLE_BIND(ConfirmOrderController);
 
 	/*------  查看审批信息    负责人：无敌霸王龙  ------*/
 	ROUTER_SIMPLE_BIND(QueryOrderApprovalController);
 
 	/*------  人员  ------*/
 	/*------  生成导入模板    负责人：Gary  ------*/
-
+	ROUTER_SIMPLE_BIND(DownloadPersonController);
 	/*------  保存导入信息    负责人：Gary  ------*/
+	ROUTER_SIMPLE_BIND(ImportPersonController);
 
 	/*------  导出人员信息    负责人：无敌霸王龙  ------*/
 	ROUTER_SIMPLE_BIND(ExportPersonController);
@@ -102,8 +111,11 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(DownloadEntrustController);
 
 	/*------  保存附件    负责人：y  ------*/
+	ROUTER_SIMPLE_BIND(UploadEntrustController);
 
 	/*------  附件预览    负责人：kzz  ------*/
+	ROUTER_SIMPLE_BIND(PreviewEntrustController);
+
 }
 
 #ifdef HTTP_SERVER_DEMO

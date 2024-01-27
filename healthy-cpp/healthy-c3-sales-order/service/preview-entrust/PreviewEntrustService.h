@@ -1,0 +1,7 @@
+#pragma once
+
+#ifndef _PREVIEWENTRUSTSERVICE_H_
+#define _PREVIEWENTRUSTSERVICE_H_
+
+
+#endif // !_PREVIEWENTRUSTSERVICE_H_

@@ -29,6 +29,9 @@
 #include "get-unit-list/QueryUnitListController.h"
 #include "update-unit/ModifyUnitController.h"
 #include "get-unit-name/QueryUnitNameController.h"
+#include "get-unit-detail/QueryUnitDetailController.h"
+#include "add-unit/AddUnitController.h"
+#include "delete-unit/RemoveUnitController.h"
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -61,13 +64,16 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(QueryUnitListController);
 
 	/*------  获取单位详情    负责人：duxlong  ------*/
+	ROUTER_SIMPLE_BIND(QueryUnitDetailController);
 
 	/*------  新增单位    负责人：duxlong  ------*/
+	ROUTER_SIMPLE_BIND(AddUnitController);
 
 	/*------  修改单位    负责人：kzz  ------*/
 	ROUTER_SIMPLE_BIND(ModifyUnitController);
 
 	/*------  删除单位（支持批量删除）    负责人：罗浩巍  ------*/
+	ROUTER_SIMPLE_BIND(RemoveUnitController);
 
 }
 
