@@ -1,22 +1,4 @@
 #pragma once
-/*
- Copyright Zero One Star. All rights reserved.
-
- @Author: awei
- @Date: 2024/01/16 13:05:04
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #ifndef _PREVIEWREPORT_CONTROLLER_H_
 #define _PREVIEWREPORT_CONTROLLER_H_
 
@@ -46,11 +28,9 @@ public:
 		API_DEF_ADD_AUTH();
 		// 定义响应参数格式
 		API_DEF_ADD_RSP_JSON_WRAPPER(PreviewReportJsonVO);
-		// 定义分页查询参数描述
-		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
-		// 姓名
-		API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("preview.field.presonId"), "12321", true);
+		// 姓名ID
+		API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("preview.field.presonId"), "1", true);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/preview", queryPreviewReport, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
