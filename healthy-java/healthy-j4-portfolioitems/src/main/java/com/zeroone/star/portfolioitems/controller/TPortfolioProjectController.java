@@ -8,6 +8,7 @@ import com.zeroone.star.project.j4.dto.PortfolioItemListDTO;
 import com.zeroone.star.project.j4.portfolioitems.PortfolioProjectApi;
 import com.zeroone.star.project.j4.query.PortfolioItemListQuery;
 import com.zeroone.star.project.vo.JsonVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/portfolioitems/")
+@Api(tags = "组合项目")
 public class TPortfolioProjectController implements PortfolioProjectApi {
 
     @Autowired
