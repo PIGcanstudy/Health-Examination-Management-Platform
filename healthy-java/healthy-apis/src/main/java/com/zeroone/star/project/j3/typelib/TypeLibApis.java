@@ -60,8 +60,5 @@ public interface TypeLibApis {
     * @Date: 2024/1/22
     * @Time:15:14
     */
-
-    JsonVO<typeUpdateVO> updateType(typeUpdateVO typeupdatevo);
-
     JsonVO<Object> updateType(typeUpdateDTO typeupdatedto);
 }
