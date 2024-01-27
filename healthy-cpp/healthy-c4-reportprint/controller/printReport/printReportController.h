@@ -49,8 +49,6 @@ public:
 		API_DEF_ADD_RSP_JSON_WRAPPER(printReportJsonVO);
 
 		// 定义其他查询参数描述
-		// 是否打印
-		API_DEF_ADD_QUERY_PARAMS(Boolean, "printState", ZH_WORDS_GETTER("print.field.printState"), false, true);
 		// 待打印的报告编号
 		API_DEF_ADD_QUERY_PARAMS(String, "reportNum", ZH_WORDS_GETTER("preview.field.reportNum"), "1202204010001", true);
 		// 目标打印机
