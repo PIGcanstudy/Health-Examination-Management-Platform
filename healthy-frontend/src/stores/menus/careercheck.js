@@ -92,7 +92,7 @@ let testMenus = {
     {
       id: 13,
       text: '数据网报',
-      href: '/careercheck/DatanetworkReport.vue',
+      href: '/careercheck/NetworkRecords.vue',
       icon: 'IconSetting',
       pid: 1
     }
