@@ -18,8 +18,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class typeAddDTO {
-    @ApiModelProperty(value = "用户id",example = "1")
-    private Long id;
+    @ApiModelProperty(value = "创建者id",example = "1")
+    private Long createId;
     @ApiModelProperty(value = "类型名称",example = "经济类型")
     private String typeName;
     @ApiModelProperty(value = "类型编码",example = "TYPE_003")

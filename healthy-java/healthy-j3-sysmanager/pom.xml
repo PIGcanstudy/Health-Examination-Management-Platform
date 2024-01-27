@@ -67,6 +67,14 @@
             <artifactId>mapstruct</artifactId>
         </dependency>
         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.zeroone.star</groupId>
             <artifactId>healthy-domain</artifactId>
         </dependency>

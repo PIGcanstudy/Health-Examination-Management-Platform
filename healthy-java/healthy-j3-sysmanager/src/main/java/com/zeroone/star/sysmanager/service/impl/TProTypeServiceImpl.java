@@ -1,19 +1,28 @@
 package com.zeroone.star.sysmanager.service.impl;
 
 
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.zeroone.star.project.dto.j3.typeLibrary.typeAddDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeLibraryTreeDTO;
+import com.zeroone.star.project.dto.j3.typeLibrary.typeUpdateDTO;
 import com.zeroone.star.project.query.j3.TypeLibraryQuery;
 import com.zeroone.star.project.vo.j3.typeLibrary.TProTypeVO;
+import com.zeroone.star.project.vo.j3.typeLibrary.typeAddVO;
+import com.zeroone.star.project.vo.j3.typeLibrary.typeUpdateVO;
 import com.zeroone.star.sysmanager.entity.ProType;
 import com.zeroone.star.sysmanager.mapper.ProTypeMapper;
 import com.zeroone.star.sysmanager.service.ITProTypeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.micrometer.core.instrument.util.StringUtils;
+import org.junit.Test;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.sql.Time;
+import java.sql.Wrapper;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,6 +42,10 @@ interface MsTypeMapper {
      * @return 转换结果
      */
     List<TProTypeVO> TProTypeTOtypeLibraryTreeVO(List<ProType> tProType);
+    typeAddVO TProTypeTOtypeAddTypeVO(ProType tProType);
+    typeUpdateVO TProTypeTOtypeUpdateTypeVO(ProType tProType);
+    ProType AddTypeDTOTOProType(typeAddDTO typeadddto);
+    ProType UpdateTypeDTOTOProType(typeUpdateDTO typeUpdateDTO);
 }
 @Service
 public class TProTypeServiceImpl extends ServiceImpl<ProTypeMapper, ProType> implements ITProTypeService {
@@ -92,6 +105,39 @@ public class TProTypeServiceImpl extends ServiceImpl<ProTypeMapper, ProType> imp
             }
             return tProTypeVOS;
         }
+    @Override
+    public typeAddVO addType(typeAddDTO typeadddto) {
+        ProType proType = msTypeMapper.AddTypeDTOTOProType(typeadddto);
+        proType.setCreateTime(LocalDateTime.now());
+        baseMapper.insert(proType);
+        return msTypeMapper.TProTypeTOtypeAddTypeVO(proType);
+    }
+
+
+    @Override
+    public typeUpdateVO updateType(typeUpdateDTO typeupdatedto) {
+        QueryWrapper<ProType> queryWrapper = new QueryWrapper<>();
+        //queryWrapper.ne("del_flag",1);
+        if(StrUtil.isNotBlank(typeupdatedto.getTypeCodePre())){
+            queryWrapper.eq("type_code",typeupdatedto.getTypeCodePre());
+        }
+        else{
+            return null;
+        }
+        if(StrUtil.isNotBlank(typeupdatedto.getTypeNamePre())){
+            queryWrapper.eq("type_name",typeupdatedto.getTypeNamePre());
+        }
+        else{
+            return null;
+        }
+        ProType proType = msTypeMapper.UpdateTypeDTOTOProType(typeupdatedto);
+        proType.setUpdateTime(LocalDateTime.now());
+        int update = baseMapper.update(proType, queryWrapper);
+        if(update!=0){
+            return msTypeMapper.TProTypeTOtypeUpdateTypeVO(proType);
+        }
+        return null;
+    }
 
     /**
      * 递归找类型树的子集
