@@ -1,3 +1,17 @@
+preview:
+ field:
+  personId: 体检人员编号
+  id: 编号
+  reportNum: 报告编号
+  href: 文件地址
+  presonId: 姓名ID
+ get:
+  view: 报告预览 
+download:
+ field:
+  downloadState: 下载
+ get:
+  summary: 报告下载
 print:
  field:
   id: 编号
@@ -12,14 +26,9 @@ print:
   checkDate: 体检日期
   isRecheck: 复查
   sporadicPhysical: 零星检查
- get:
+  targetPrinter: 目标打印机
+  page: 页面
+  pageNumPerTable: 每个工作表的页数
+  printSampleCode: 打印样本条码 get:
+  view: 打印确认
   summary: 获取体检人员报告
-preview:
- field:
-  personId: 体检人员编号
-  id: 编号
-  reportNum: 报告编号
-  href: 文件地址
-  presonId: 姓名ID
- get:
-  view: 报告预览   

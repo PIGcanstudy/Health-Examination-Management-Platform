@@ -17,31 +17,31 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _selectREPORT_VO_
-#define _selectREPORT_VO_
+#ifndef _PRINTREPORT_VO_
+#define _PRINTREPORT_VO_
 
 #include "../GlobalInclude.h"
-#include "../dto/selectReportDTO.h"
+#include "../dto/printReportDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PDFï¿½ï¿½ï¿½ï¿½
- * ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½
+* ÅúÁ¿ÏÂÔØPDF±¨¸æ
+* ¸ºÔðÈË£ºÍí·ç
  */
-class selectReportJsonVO : public JsonVO<selectReportDTO::Wrapper> {
-	DTO_INIT(selectReportJsonVO, JsonVO<selectReportDTO::Wrapper>);
+class printReportJsonVO : public JsonVO<printReportDTO::Wrapper> {
+	DTO_INIT(printReportJsonVO, JsonVO<printReportDTO::Wrapper>);
 };
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PDFï¿½ï¿½ï¿½ï¿½
- * ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½
+* ÅúÁ¿ÏÂÔØPDF±¨¸æ
+* ¸ºÔðÈË£ºÍí·ç
  */
 
-class selectReportPageJsonVO : public JsonVO<selectReportPageDTO::Wrapper> {
-	DTO_INIT(selectReportPageJsonVO, JsonVO<selectReportPageDTO::Wrapper>);
+class printReportPageJsonVO : public JsonVO<printReportPageDTO::Wrapper> {
+	DTO_INIT(printReportPageJsonVO, JsonVO<printReportPageDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)
 
-#endif // !_selectREPORT_VO_
+#endif // !_PRINTREPORTS_VO_

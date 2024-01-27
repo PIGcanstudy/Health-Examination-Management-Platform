@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 10:59:38
+ @Date: 2024/01/16 11:36:29
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,27 +17,22 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _settingREPORTDTO_H_
-#define _settingREPORTDTO_H_
+#ifndef _DOWNLOADREPORT_H_
+#define _DOWNLOADREPORT_H_
+
 #include "../GlobalInclude.h"
+#include "domain/query/PageQuery.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * ��������PDF����
- * �����ˣ�����
+* 下载设置
+* 负责人：晚风
  */
-class settingReportDTO : public oatpp::DTO
+class downloadReportQuery : public PageQuery
 {
-	DTO_INIT(settingReportDTO, DTO);
-	// Ψһ���
-	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("setting.field.id"));
-	// ������
-	API_DTO_FIELD_DEFAULT(String, reportNum, ZH_WORDS_GETTER("setting.field.reportNum"));
-	// PDF��ַ
-	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("setting.field.href"));
+	DTO_INIT(downloadReportQuery, PageQuery);
 };
 
-
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_settingREPORTDTO_H_
+#endif // !_DOWNLOADREPORT_H_

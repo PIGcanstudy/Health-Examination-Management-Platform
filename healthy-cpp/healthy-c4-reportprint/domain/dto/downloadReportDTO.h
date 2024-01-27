@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 11:34:14
+ @Date: 2024/01/16 10:59:38
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,22 +17,26 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _settingREPORT_VO_
-#define _settingREPORT_VO_
-
+#ifndef _DOWNLOADREPORTDTO_H_
+#define _DOWNLOADREPORTDTO_H_
 #include "../GlobalInclude.h"
-#include "../dto/settingReportDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * ��������PDF����
- * �����ˣ�����
+* 下载设置
+* 负责人：晚风
  */
-class settingReportJsonVO : public JsonVO<settingReportDTO::Wrapper> {
-	DTO_INIT(settingReportJsonVO, JsonVO<settingReportDTO::Wrapper>);
+class downloadReportDTO : public oatpp::DTO
+{
+	DTO_INIT(downloadReportDTO, DTO);
+	// 下载报告编号
+	DTO_FIELD(String, reportNum);
+	DTO_FIELD_INFO(reportNum) {
+		info->description = ZH_WORDS_GETTER("preview.field.reportNum");
+	}
 };
 
-#include OATPP_CODEGEN_END(DTO)
 
-#endif // !_settingREPORT_VO_
+#include OATPP_CODEGEN_END(DTO)
+#endif // !_DOWNLOADREPORTDTO_H_

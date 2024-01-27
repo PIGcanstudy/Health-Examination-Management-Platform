@@ -1,8 +1,10 @@
+#pragma once
+
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 13:00:32
+ @Date: 2022/10/25 11:52:32
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,21 +18,21 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#include "stdafx.h"
-#include "selectReportController.h"
 
-selectReportPageJsonVO::Wrapper selectReportController::execQueryselectReport(const selectReportQuery::Wrapper& query)
+#ifndef _PACKAGE_DO_
+#define _PACKAGE_DO_
+#include "../DoInclude.h"
+
+/**
+ * 获取套餐名称列表数据库实体类
+ * 负责人：晚风
+ */
+class PackageDO
 {
+	// 报告编号
+	CC_SYNTHESIZE(string, reportNum, ReportNum);
+public:
+	PackageDO() = default;
+};
 
-	selectReportPageJsonVO::Wrapper vo = selectReportPageJsonVO::createShared();
-	auto dto = selectReportPageDTO::createShared();
-	if (query->pageIndex == 1)
-	{
-		vo->success(dto);
-	}
-	else
-	{
-		vo->fail(dto);
-	}
-	return vo;
-}
+#endif // !_PACKAGE_DO_
