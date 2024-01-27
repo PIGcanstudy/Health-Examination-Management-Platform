@@ -117,7 +117,7 @@
           <img src="../../assets/navigation/arrow03.png" />
         </div>
         <div class="ic12">
-          <router-link to="/careercheck/DatanetworkReport.vue">
+          <router-link to="/careercheck/NetworkRecords.vue">
             <img src="../../assets/navigation/icon12.png" />
             </router-link>
             <el-text  size="large">数据网报</el-text>
