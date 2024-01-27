@@ -29,7 +29,7 @@
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /*
- * 批量下载PDF报告，报告的选择部分
+ * 打印PDF报告
  * 负责人：晚风
  */
 class printReportController : public oatpp::web::server::api::ApiController // 1 
@@ -50,7 +50,7 @@ public:
 
 		// 定义其他查询参数描述
 		// 是否打印
-		API_DEF_ADD_QUERY_PARAMS(Boolean, "printState", ZH_WORDS_GETTER("print.field.printState"), true, true);
+		API_DEF_ADD_QUERY_PARAMS(Boolean, "printState", ZH_WORDS_GETTER("print.field.printState"), false, true);
 		// 目标打印机
 		API_DEF_ADD_QUERY_PARAMS(String, "targetPrinter", ZH_WORDS_GETTER("print.field.targetPrinter"), "save as PDF", true);
 		// 页面
@@ -58,7 +58,7 @@ public:
 		// 每个工作表的页数
 		API_DEF_ADD_QUERY_PARAMS(UInt16, "pageNumPerTable", ZH_WORDS_GETTER("print.field.pageNumPerTable"), 1, true);
 		// 是否打印样本条码
-		API_DEF_ADD_QUERY_PARAMS(Boolean, "printSampleCode", ZH_WORDS_GETTER("print.field.printSampleCode"), true, true);
+		API_DEF_ADD_QUERY_PARAMS(Boolean, "printSampleCode", ZH_WORDS_GETTER("print.field.printSampleCode"), false, true);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/printReport", queryprintReport, QUERIES(QueryParams, params),API_HANDLER_AUTH_PARAME) {

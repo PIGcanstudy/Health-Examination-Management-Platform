@@ -50,7 +50,7 @@ public:
 
 		// 定义查询参数描述
 		// 下载确认
-		API_DEF_ADD_QUERY_PARAMS(Boolean, "downloadState", ZH_WORDS_GETTER("download.field.downloadState"), true, true);
+		API_DEF_ADD_QUERY_PARAMS(Boolean, "downloadState", ZH_WORDS_GETTER("download.field.downloadState"), false, true);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/downloadReport", querydownloadReport, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {

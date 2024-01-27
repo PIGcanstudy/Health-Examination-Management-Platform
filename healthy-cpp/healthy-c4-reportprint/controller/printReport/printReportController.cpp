@@ -18,6 +18,11 @@
 */
 #include "stdafx.h"
 #include "printReportController.h"
+
+/*
+ * 打印PDF报告
+ * 负责人：晚风
+ */
 printReportPageJsonVO::Wrapper printReportController::execQueryprintReport(const printReportQuery::Wrapper& query)
 {
 
