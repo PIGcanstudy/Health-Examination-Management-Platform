@@ -1,9 +1,19 @@
 unit:
+ phyType: 体检类型
  phyUnit: 体检单位
  begDate: 开始时间
  endDate: 结束时间
  code: 报告编号
  phyDate: 体检日期
- title: 查询报告
+ check: 查询报告
  id: 唯一编号
+ choice: 选择报告 
+ enUnit: 委托单位
+ phyNum: 体检人数
+ hazFactor: 危险因素
+ phyProj: 体检项目
+ phyConclusion: 体检结论
+ downloadAddr: 下载地址
+ 
+
  
