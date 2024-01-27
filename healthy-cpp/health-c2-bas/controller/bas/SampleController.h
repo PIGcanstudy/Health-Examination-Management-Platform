@@ -15,14 +15,14 @@ class SampleController : public oatpp::web::server::api::ApiController
 public://定义接口
 
 	// 3.1 定义修改接口描述
-	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("sample.put.summary"), modifySample, Uint64JsonVO::Wrapper);
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("sample.put.summary"), modifySample, StringJsonVO::Wrapper);
 	// 3.2 定义修改接口处理
 	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/bas", modifySample, BODY_DTO(SampleDTO::Wrapper, dto), execModifySample(dto));
 
 private://定义接口执行函数
 
 	// 3.3 演示修改数据
-	Uint64JsonVO::Wrapper execModifySample(const SampleDTO::Wrapper& dto);
+	StringJsonVO::Wrapper execModifySample(const SampleDTO::Wrapper& dto);
 };
 
 
