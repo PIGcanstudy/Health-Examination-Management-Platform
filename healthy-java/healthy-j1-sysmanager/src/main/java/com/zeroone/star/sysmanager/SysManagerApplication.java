@@ -3,6 +3,7 @@ package com.zeroone.star.sysmanager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * <p>
@@ -15,6 +16,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
+@ComponentScan(basePackages = "com.zeroone.star.project.components.user")
+@ComponentScan(basePackages = "com.zeroone.star.project.components.jwt")
 public class SysManagerApplication {
 
     public static void main(String[] args) {

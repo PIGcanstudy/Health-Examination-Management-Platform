@@ -39,7 +39,7 @@ public class CreateUserDTO {
     private String avatar;
 
     @ApiModelProperty(value = "角色分配")
-    private String departmentId;
+    private Long departmentId;
 
     @ApiModelProperty(value = "所在地区")
     private String address;
