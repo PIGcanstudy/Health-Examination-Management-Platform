@@ -38,7 +38,7 @@
     <el-form-item>
       <el-button type="primary" :icon="Search" @click="handleSearchTc">搜索</el-button>
       <el-button plain @click="handleCzTc">重置</el-button>
-      
+      <NewButtonHx :ksmcsw="ksmcsw" :tjlxsw="tjlxsw" :sylxsw="sylxsw" :whyssw="whyssw" :zgztsw="zgztsw"/>
     </el-form-item>
   </el-form>
 
@@ -103,6 +103,7 @@
 import { reactive,ref,defineProps,watch,defineEmits} from 'vue'
 import { Search } from '@element-plus/icons-vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
+import NewButtonHx from  '@/components/checkitems/NewButtonHx.vue'
 
 // 分页属性
 const currentPage4 = ref(1)
@@ -110,6 +111,9 @@ const pageSize4 = ref(10)
 const small = ref(false)
 const disabled = ref(false)
 
+//新增按钮是否显示
+const isShowNew = ref(false)
+const isOnlyShowButton = ref(true)
 //编辑
 const handleEdit = (index: number, row: Array<String>) => {
   alert(index)
@@ -173,6 +177,11 @@ const drawer2 = ref(false)
 
 // 定义抽屉预设
 const props = defineProps({
+  //是否显示新增按钮
+  isShowNew:{
+    type: Boolean,
+    default: false
+  },
   //是否显示编辑删除按钮
   EditDButtonShow:{
     typr: Boolean,
@@ -250,15 +259,13 @@ const isShowSelectDown=ref(true)
 const title = ref()
 //初始化方法
 created:{
-  if(!props.isShowButtonForTc){
-    showSubmitForTc.value = false
-    showCloseForTc.value = false
-  }
+
   EditDButtonShow.value = props.EditDButtonShow
   hideButton.value=props.hideButton
   isShowSelectDown.value = props.isShowSelectDown
   drawer2.value=props.openDrawer
   title.value = props.tableTitle
+  isShowNew.value=props.isShowNew
 }
 
 
@@ -364,6 +371,28 @@ const tableRowClassName = ({
   return ''
 }
 
+//新增按钮下拉框的数据
+const ksmcsw = [{
+        value:'字段属性值-绑定用',
+        label:'下拉显示的数据'
+      }]
+
+      const tjlxsw = [{
+        value:'字段属性值-绑定用',
+        label:'下拉显示的数据'
+      }]
+      const sylxsw = [{
+        value:'字段属性值-绑定用',
+        label:'下拉显示的数据'
+      }]
+      const whyssw = [{
+        value:'字段属性值-绑定用',
+        label:'下拉显示的数据'
+      }]
+      const zgztsw = [{
+        value:'字段属性值-绑定用',
+        label:'下拉显示的数据'
+      }]
 </script>
 
 <style lang="scss"  >
