@@ -2,7 +2,11 @@ package com.zeroone.star.project.j3.stopword;
 
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.stopword.StopWordDTO;
+import com.zeroone.star.project.dto.j3.stopword.UpdateWordDTO;
 import com.zeroone.star.project.vo.JsonVO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -24,5 +28,23 @@ public interface StopWordApis {
      * @return 添加禁用词的结果
      */
     JsonVO<String> addStopWord(String title);
+
+    /**
+     * @description:x修改禁用词
+     * @author: ZhangJF
+     * @date: 2024/1/23 20:14
+     * @param: [title]
+     * @return: com.zeroone.star.project.vo.JsonVO<com.zeroone.star.project.dto.j3.stopword.StopWordDTO>
+     **/
+    JsonVO<Boolean> updateWord(UpdateWordDTO word);
+
+    /**
+     * @description:批量删除禁用词
+     * @author: ZhangJF
+     * @date: 2024/1/23 20:18
+     * @param: [ids]
+     * @return: com.zeroone.star.project.vo.JsonVO<java.lang.Boolean>
+     **/
+    JsonVO<Boolean> deleteWordsByIds(List<String> ids);
 
 }

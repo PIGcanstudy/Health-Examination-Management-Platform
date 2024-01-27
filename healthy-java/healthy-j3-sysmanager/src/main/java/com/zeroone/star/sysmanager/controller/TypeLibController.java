@@ -1,5 +1,6 @@
 package com.zeroone.star.sysmanager.controller;
 
+import com.zeroone.star.project.dto.j3.typeLibrary.TypeLibDeleteDTO;
 import cn.hutool.core.util.ObjectUtil;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeAddDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeLibraryTreeDTO;
@@ -47,12 +48,16 @@ public class TypeLibController implements TypeLibApis {
 
     /**
      * 搜索类型列表
-     *
      * @param typeLibraryQuery
      * @return
      */
     @Override
     public JsonVO<List<TProTypeVO>> queryTProTypeListByPage(TypeLibraryQuery typeLibraryQuery) {
+        return null;
+    }
+
+    @Override
+    public JsonVO<Integer> removeTypeLib(TypeLibDeleteDTO typeLibDeleteDTO) {
         return null;
     }
 

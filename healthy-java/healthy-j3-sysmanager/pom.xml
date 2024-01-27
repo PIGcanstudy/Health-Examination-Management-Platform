@@ -74,6 +74,14 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.zeroone.star</groupId>
+            <artifactId>healthy-domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zeroone.star</groupId>
+            <artifactId>healthy-apis</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
