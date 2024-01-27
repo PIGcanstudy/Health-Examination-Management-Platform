@@ -28,5 +28,6 @@ public interface OauthService {
     @PostMapping("/oauth/token")
     JsonVO<Oauth2TokenDTO> postAccessToken(@RequestParam Map<String, String> parameters);
 
-    JsonVO<Oauth2TokenDTO> postDenyToken(Map<String, String> params);
+    @PostMapping("/oauth/denyToken")
+    JsonVO<Oauth2TokenDTO> postDenyToken(@RequestParam Map<String, String> params);
 }

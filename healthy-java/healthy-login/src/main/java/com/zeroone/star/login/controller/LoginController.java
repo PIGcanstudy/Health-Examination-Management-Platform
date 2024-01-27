@@ -70,7 +70,8 @@ public class LoginController implements LoginApis {
         String code = loginDTO.getCode();
         if (!Objects.equals(redisTemplate.opsForValue().get(loginDTO.getClientId()), code)) {
             //错误则返回前端并提示
-            return oAuthService.postDenyToken(params);
+//            return oAuthService.postDenyToken(params);
+            return oAuthService.postAccessToken(params);
         }
         //验证成功则清除redis内的验证码缓存
         redisTemplate.delete(loginDTO.getClientId());
