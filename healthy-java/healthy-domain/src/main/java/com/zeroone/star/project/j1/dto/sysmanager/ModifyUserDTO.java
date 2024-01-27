@@ -15,7 +15,7 @@ import java.util.List;
 @ApiModel("修改用户信息时获取当前用户信息数据对象")
 public class ModifyUserDTO {
 	@ApiModelProperty(value = "用户id", example = "gsaf1342sdfsdf")
-	private String id;
+	private Long id;
 	@ApiModelProperty(value = "登录账号", example = "test1")
 	private String username;
 	@ApiModelProperty(value = "用户名", example = "test1")
