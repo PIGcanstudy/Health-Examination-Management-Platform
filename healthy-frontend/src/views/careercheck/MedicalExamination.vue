@@ -5,7 +5,7 @@
     <!-- 侧边栏 -->
     <el-aside :style="{maxWidth: isCollapsed ? '64px' : '300px'}">
       <!-- 伸缩按钮 -->
-      <img src="@/assets/img-rom/slider.svg" style="cursor: pointer; width: 20px;" @click="isCollapsed = !isCollapsed">
+      <!-- <img src="@/assets/img-rom/slider.svg" style="cursor: pointer; width: 20px;" @click="isCollapsed = !isCollapsed">npm  -->
       <PeopleList
         :style="isCollapsed ? 'display: none;' : 'min-width: 300px;'"
         :title="title"
@@ -47,6 +47,7 @@
         </el-form-item>
         </template>
       </BaseDataList>
+      <TestArea></TestArea>
     </el-main>
   </el-container>
 </template>
@@ -56,6 +57,7 @@ import { ref, reactive } from 'vue'
 import PeopleList from '@/components/peoplelist/PeopleList-Rom.vue'
 import MedicalInfo from '@/components/medicalinfo/MedicalInfo.vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
+import TestArea from '@/components/checkitems/TestArea.vue'
 
 // PeopleList的变量
 const title = ref('人员查询')
@@ -191,6 +193,30 @@ const tableColumnAttribute = ref([
 ])
 // table数据
 const tableData = ref([
+  {
+    tjxm: '乐山市峨边盛和矿业',
+    mxjg: '--',
+    unitName: '健康体检',
+    ckValue: '--',
+    ts: '铁矿采选*',
+    yc: '国有企业'
+  },
+  {
+    tjxm: '乐山市峨边盛和矿业',
+    mxjg: '--',
+    unitName: '健康体检',
+    ckValue: '--',
+    ts: '铁矿采选*',
+    yc: '国有企业'
+  },
+  {
+    tjxm: '乐山市峨边盛和矿业',
+    mxjg: '--',
+    unitName: '健康体检',
+    ckValue: '--',
+    ts: '铁矿采选*',
+    yc: '国有企业'
+  },
   {
     tjxm: '乐山市峨边盛和矿业',
     mxjg: '--',
