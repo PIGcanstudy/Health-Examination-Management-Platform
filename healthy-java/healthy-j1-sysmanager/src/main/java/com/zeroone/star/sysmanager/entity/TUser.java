@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,8 +18,7 @@ import lombok.Setter;
  * @author 阿布
  * @since 2024-01-23
  */
-@Getter
-@Setter
+@Data
 @TableName("t_user")
 public class TUser implements Serializable {
 
@@ -26,7 +27,7 @@ public class TUser implements Serializable {
     /**
      * 唯一ID
      */
-    private String id;
+    private Long id;
 
     /**
      * 用户名用于登录

@@ -155,9 +155,20 @@ public class LoginController implements LoginApis {
     public JsonVO<List<MenuTreeVO>> getMenus() throws Exception {
         // TODO:未实现根据实际数据库设计业务逻辑，下面逻辑属于示例逻辑
         //1 获取当前用户
-        UserDTO currentUser = userHolder.getCurrentUser();
+        UserDTO currentUser;
+        try {
+            currentUser = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            return JsonVO.create(null, ResultStatus.UNAUTHORIZED.getCode(), e.getMessage());
+        }
+
         //2 获取当前用户拥有的菜单
-        List<MenuTreeVO> menus = menuService.listMenuByRoleName(currentUser.getRoles());
-        return JsonVO.success(menus);
+        try {
+            List<MenuTreeVO> menus = menuService.listMenuByRoleName(currentUser.getRoles());
+            return JsonVO.success(menus);
+        } catch (Exception e) {
+            return JsonVO.create(null, ResultStatus.FAIL.getCode(), e.getMessage());
+        }
+
     }
 }

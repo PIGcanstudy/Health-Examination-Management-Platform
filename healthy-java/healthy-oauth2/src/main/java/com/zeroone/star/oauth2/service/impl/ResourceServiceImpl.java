@@ -43,10 +43,10 @@ public class ResourceServiceImpl {
         List<Menu> tMenus = menuService.listAllLinkUrl();
         tMenus.forEach(menu -> {
             // 2 获取菜单对应的角色
-            List<Role> rolesMenu = roleService.listRoleByMenuPath(menu.getLinkUrl());
+            List<Role> rolesMenu = roleService.listRoleByMenuPath(menu.getUrl());
             List<String> roles = new ArrayList<>();
-            rolesMenu.forEach(role -> roles.add(role.getKeyword()));
-            resourceRolesMap.put(menu.getLinkUrl(), roles);
+            rolesMenu.forEach(role -> roles.add(role.getName()));
+            resourceRolesMap.put(menu.getUrl(), roles);
         });
 
         //将资源缓存到redis

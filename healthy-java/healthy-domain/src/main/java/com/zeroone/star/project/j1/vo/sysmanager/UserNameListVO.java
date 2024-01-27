@@ -10,7 +10,7 @@ import java.io.Serializable;
 @ApiModel("用户名称")
 public class UserNameListVO implements Serializable {
     @ApiModelProperty(value = "唯一ID", example = "682265633886208")
-    private String id;
+    private Long id;
     @ApiModelProperty(value = "用户昵称", example = "管理员")
     private String nickname;
 }

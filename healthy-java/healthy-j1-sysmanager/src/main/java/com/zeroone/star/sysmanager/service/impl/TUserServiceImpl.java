@@ -49,9 +49,6 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
     @Resource
     private TUserMapper userMapper;
 
-    @Resource
-    private RedisTemplate redisTemplate;
-
     /**
      * 获取用户名称列表（用于输入表单下拉列表框）
      * @return

@@ -1,7 +1,9 @@
 package com.zeroone.star.oauth2.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +18,7 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
+@TableName(value = "t_permission")
 public class Menu implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,7 +27,7 @@ public class Menu implements Serializable {
      * 菜单编号
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    private Long id;
 
     /**
      * 菜单名
@@ -34,7 +37,7 @@ public class Menu implements Serializable {
     /**
      * 链接地址
      */
-    private String linkUrl;
+    private String url;
 
     /**
      * 路由地址
@@ -44,6 +47,7 @@ public class Menu implements Serializable {
     /**
      * 显示优先级别
      */
+    @TableField(exist = false)
     private Integer priority;
 
     /**
@@ -59,7 +63,7 @@ public class Menu implements Serializable {
     /**
      * 父级菜单编号
      */
-    private Integer parentMenuId;
+    private Long parentId;
 
     /**
      * 层次级别
@@ -69,7 +73,7 @@ public class Menu implements Serializable {
     /**
      * 是否启用 0 禁用 1 启用
      */
-    private Integer isEnable;
+    private boolean status;
 
 
 }
