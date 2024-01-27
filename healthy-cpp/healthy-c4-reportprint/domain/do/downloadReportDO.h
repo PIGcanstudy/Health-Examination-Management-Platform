@@ -1,9 +1,10 @@
 #pragma once
+
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 11:36:29
+ @Date: 2022/10/25 11:52:32
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,22 +18,21 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _DOWNLOADREPORT_H_
-#define _DOWNLOADREPORT_H_
 
-#include "../GlobalInclude.h"
-#include "domain/query/PageQuery.h"
-
-#include OATPP_CODEGEN_BEGIN(DTO)
+#ifndef _PACKAGE_DO_
+#define _PACKAGE_DO_
+#include "../DoInclude.h"
 
 /**
-* 涓嬭浇璁剧疆
-* 璐熻矗浜猴細鏅氶
+ * 获取报告列表数据库实体类
+ * 负责人：晚风
  */
-class downloadReportQuery : public PageQuery
+class PackageDO
 {
-	DTO_INIT(downloadReportQuery, PageQuery);
+	// 报告编号
+	CC_SYNTHESIZE(string, reportNum, ReportNum);
+public:
+	PackageDO() = default;
 };
 
-#include OATPP_CODEGEN_END(DTO)
-#endif // !_DOWNLOADREPORT_H_
+#endif // !_PACKAGE_DO_
