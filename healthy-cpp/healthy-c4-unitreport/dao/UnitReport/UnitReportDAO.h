@@ -2,7 +2,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: กฃบร
- @Date: 2024/01/14 19:11:39
+ @Date: 2024/01/27 20:37:49
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,16 +16,16 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
+#ifndef _UNITREPORTDAO_H_
+#define _UNITREPORTDAO_H_
 
-#include "stdafx.h"
-#include "UnitReportController.h"
-#include "../../service/UnitReport/UnitReportService.h"
+#include "BaseDAO.h"
+#include "domain/do/UnitReport/UnitReportDO.h"
 
-UnitReportJsonVO::Wrapper UnitReportController::execQueryUnitReport()
+class UnitReportDAO : public BaseDAO
 {
-	UnitReportService service;
-	auto result = service.listAll();
-	auto jvo = UnitReportJsonVO::createShared();
-	jvo->success(result);
-	return jvo;
-}
+public:
+	list<UnitReportDO> selectAll();
+};
+
+#endif // !_UNITREPORTDAO_H_

@@ -2,7 +2,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: กฃบร
- @Date: 2024/01/14 19:11:39
+ @Date: 2024/01/27 20:48:57
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,16 +16,14 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-
 #include "stdafx.h"
-#include "UnitReportController.h"
-#include "../../service/UnitReport/UnitReportService.h"
+#include "UnitReportDAO.h"
+#include "UnitReportMapper.h"
 
-UnitReportJsonVO::Wrapper UnitReportController::execQueryUnitReport()
+list<UnitReportDO> UnitReportDAO::selectAll()
 {
-	UnitReportService service;
-	auto result = service.listAll();
-	auto jvo = UnitReportJsonVO::createShared();
-	jvo->success(result);
-	return jvo;
+	string sql = "SELECT unit_code, physical_unit, physical_date, physical_project, concluding_observations, physical_type, entrust_unit, physical_number, evaluation_basis FROM t_unit_report";
+	UnitReportMapper mapper;
+	auto result = sqlSession->executeQuery<UnitReportDO, UnitReportMapper>(sql, mapper);
+	return result;
 }
