@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -13,6 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @ApiModel("修改用户信息时获取当前用户信息数据对象")
 public class ModifyUserDTO {
+	@ApiModelProperty(value = "用户id", example = "gsaf1342sdfsdf")
+	private String id;
 	@ApiModelProperty(value = "登录账号", example = "test1")
 	private String username;
 	@ApiModelProperty(value = "用户名", example = "test1")
@@ -24,13 +27,13 @@ public class ModifyUserDTO {
 	@ApiModelProperty(value = "性别", example = "男")
 	private String sex;
 	@ApiModelProperty(value = "所属部门id", example = "40322777781112832")
-	private String departmentId;
+	private Long departmentId;
 	@ApiModelProperty(value = "用户类型", example = "普通用户")
-	private String type;
+	private Integer type;
 	@ApiModelProperty(value = "头像", example = "/photos/photo1.jpg")
 	private String avatar;
 //	@ApiModelProperty(value = "角色分配", example = "检验科,眼科,电测听,内科,皮肤科,DR室,心电图")
-	@ApiModelProperty(value = "角色分配")
+	@ApiModelProperty(value = "角色分配") // where?
 	private List<String> roles;
 	@ApiModelProperty(value = "所在地区", example = "北京市,市辖区,东城区")
 	private String address;
@@ -39,7 +42,7 @@ public class ModifyUserDTO {
 	@ApiModelProperty(value = "签名文件")
 	private String autograph;
 	@ApiModelProperty(value = "生日", example = "2000/1/1")
-	private String birth;
+	private LocalDateTime birth;
 	@ApiModelProperty(value = "简介", example = "我很帅")
 	private String description;
 }

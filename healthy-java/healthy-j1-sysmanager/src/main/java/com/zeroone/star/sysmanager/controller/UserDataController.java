@@ -92,6 +92,7 @@ public class UserDataController implements UserDataApis {
     @PutMapping("/modify-user-info")
     @ApiOperation("修改用户信息")
 	public JsonVO modifyUser(@RequestBody ModifyUserDTO user) {
+		userService.modifyUser(user);
         return JsonVO.success("修改成功");
 	}
 
