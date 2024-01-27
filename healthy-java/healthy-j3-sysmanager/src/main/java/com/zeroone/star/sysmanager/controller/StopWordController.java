@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 禁用词
@@ -55,7 +56,7 @@ public class StopWordController implements StopWordApis {
     @DeleteMapping("/deleteWordsByIds")
     @ApiOperation("批量删除禁用词")
     @Override
-    public JsonVO<Boolean> deleteWordsByIds(ArrayList<String> ids) {
+    public JsonVO<Boolean> deleteWordsByIds(@RequestParam List<String> ids) {
         boolean success = stopWordService.removeByIds(ids);
         if (success) {
             return JsonVO.success(success);
