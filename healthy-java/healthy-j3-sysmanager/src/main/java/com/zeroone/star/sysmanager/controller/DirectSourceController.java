@@ -3,9 +3,11 @@ package com.zeroone.star.sysmanager.controller;
 
 
 import com.zeroone.star.project.dto.PageDTO;
-import com.zeroone.star.project.j3.direct.DirectSourceApis;
+import com.zeroone.star.project.dto.j3.dictdata.DictDataDTO;
+import com.zeroone.star.project.j3.dictory.DirectSourceApis;
 import com.zeroone.star.project.dto.j3.dictdata.AddDictDataDTO;
 import com.zeroone.star.project.dto.j3.dictdata.UpdateDictDataDTO;
+import com.zeroone.star.project.query.j3.DictData.DictDataQuery;
 import com.zeroone.star.project.query.j3.WordTypeListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.service.ITDictDataService;
@@ -43,6 +45,20 @@ public class DirectSourceController implements DirectSourceApis {
     public JsonVO<PageDTO<AddDictDataDTO>> AddDictData() {
         return null;
     }
+
+    @ApiOperation("查询字典数据名称列表")
+    @GetMapping("/queryDataTitle")
+    @Override
+    public JsonVO<List<String>> queryDataTitle() {
+        return null;
+    }
+    @ApiOperation("查询字典数据列表")
+    @PostMapping("/queryDictDataByCondition")
+    @Override
+    public JsonVO<PageDTO<DictDataDTO>> queryDictDataByCondition(DictDataQuery condition) {
+        return null;
+    }
+
     @ApiOperation("根据id批量删除数据字典")
     @PostMapping("/deleteByIds")
     @Override

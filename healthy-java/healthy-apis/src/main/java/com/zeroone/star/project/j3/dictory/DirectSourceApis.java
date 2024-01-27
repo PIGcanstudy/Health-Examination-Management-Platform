@@ -1,7 +1,8 @@
+package com.zeroone.star.project.j3.dictory;
 
 
-package com.zeroone.star.project.j3.direct;
-
+import com.zeroone.star.project.dto.j3.dictdata.DictDataDTO;
+import com.zeroone.star.project.query.j3.DictData.DictDataQuery;
 import com.zeroone.star.project.query.j3.WordTypeListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 
@@ -33,5 +34,20 @@ public interface DirectSourceApis {
      */
     JsonVO<List<WordTypeListQuery>> queryByWordType(WordTypeListQuery wordTypeListQuery);
     JsonVO<PageDTO<AddDictDataDTO>> AddDictData();
+
+    /**
+     * 获取字典数据名称列表
+     * @auther MSNzqs
+     * @return
+     */
+    JsonVO<List<String>> queryDataTitle();
+
+    /**
+     * 根据条件及分页查询字典数据列表
+     * @param condition
+     * @return
+     */
+    JsonVO<PageDTO<DictDataDTO>> queryDictDataByCondition(DictDataQuery condition);
+
 }
 
