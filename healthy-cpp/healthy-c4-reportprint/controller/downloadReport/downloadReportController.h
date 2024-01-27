@@ -51,6 +51,8 @@ public:
 		// 定义查询参数描述
 		// 下载确认
 		API_DEF_ADD_QUERY_PARAMS(Boolean, "downloadState", ZH_WORDS_GETTER("download.field.downloadState"), false, true);
+		// 待下载的报告编号
+		API_DEF_ADD_QUERY_PARAMS(String, "reportNum", ZH_WORDS_GETTER("preview.field.reportNum"), "1202204010001", true);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/downloadReport", querydownloadReport, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
