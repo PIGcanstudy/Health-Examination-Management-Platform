@@ -3,114 +3,117 @@ package com.zeroone.star.term.entity;
 import java.io.Serializable;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+
 /**
- * @author 刘静
- * 时间：2024.1.1
- * 功能：
+ * <p>
+ * 科室术语表
+ * </p>
+ *
+ * @author lj
+ * @since 2024-01-23
  */
 @Data
-@TableName("t_office_term")
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="TOfficeTerm对象", description="科室术语表")
-public class TOfficeTerm<TSectionOffice> implements Serializable {
+public class TOfficeTerm implements Serializable {
+
     private static final long serialVersionUID = 1L;
-//    private String name;
-//     private String medicalType;
-//     private String termType;
-//     private String hazardFactor;
-//     private String jobStatus;
-//     private String status;
-//     private String termContent;
-//     private Date createTime;
-//     private String operation;
 
-
-
-    @ApiModelProperty(value = "主键" )
-    @TableId(value = "id",type = IdType.ASSIGN_UUID)
+    /**
+     * 主键
+     */
+    @TableId(value = "id", type = IdType.ASSIGN_UUID)
     private String id;
 
-    @TableField(value = "office_id")
-    @ApiModelProperty(value = "科室Id")
-    private String officeId;
+    /**
+     * 科室Id
+     */
+    private String office_id;
 
-    @TableField(value = "hazard_factors_text")
-    @ApiModelProperty(value = "危害因素text")
-    private String hazardFactorsText;
+    /**
+     * 危害因素text
+     */
+    private String hazard_factors_text;
 
-    @TableField(value = "inspect_type")
-    @ApiModelProperty(value = "体检类型")
-    private String inspectType;
+    /**
+     * 体检类型
+     */
+    private String inspect_type;
 
-    @TableField(value = "hazard_factors")
-    @ApiModelProperty(value = "危害因素")
-    private String hazardFactors;
+    /**
+     * 危害因素
+     */
+    private String hazard_factors;
 
-    @ApiModelProperty(value = "类型")
+    /**
+     * 类型
+     */
     private String type;
 
-
-    @ApiModelProperty(value = "状态")
+    /**
+     * 状态(0-启用，1-停用)
+     */
     private String status;
 
-    @ApiModelProperty(value = "术语内容")
+    /**
+     * 术语内容
+     */
     private String content;
 
-    @TableField(value = "order_num")
-    @ApiModelProperty(value = "排序")
-    private Float orderNum;
+    /**
+     * 排序
+     */
+    private Float order_num;
 
-    @TableField(value = "del_flag")
-    @ApiModelProperty(value = "是否删除(0-未删除，1-已删除)")
-    @TableLogic
-    private Integer delFlag;
+    /**
+     * 是否删除(0-未删除，1-已删除)
+     */
+    private Integer del_flag;
 
-    @TableField(value = "create_id")
-    @ApiModelProperty(value = "创建人")
-    private String createId;
+    /**
+     * 创建人
+     */
+    private String create_id;
 
-    @TableField(value = "create_time")
-    @ApiModelProperty(value = "创建时间")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createTime;
+    /**
+     * 创建时间
+     */
+    private LocalDateTime create_time;
 
-    @TableField(value = "update_id")
-    @ApiModelProperty(value = "修改人")
-    private String updateId;
+    /**
+     * 修改人
+     */
+    private String update_id;
 
-    @TableField(value = "update_time")
-    @ApiModelProperty(value = "修改时间")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updateTime;
+    /**
+     * 修改时间
+     */
+    private LocalDateTime update_time;
 
-    @TableField(value = "delete_id")
-    @ApiModelProperty(value = "删除人")
-    private String deleteId;
+    /**
+     * 删除人
+     */
+    private String delete_id;
 
-    @TableField(value = "delete_time")
-    @ApiModelProperty(value = "删除时间")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date deleteTime;
+    /**
+     * 删除时间
+     */
+    private LocalDateTime delete_time;
 
-    @TableField(value = "work_state_code")
-    @ApiModelProperty(value = "在岗状态编码")
-    private String workStateCode;
+    /**
+     * 在岗状态编码
+     */
+    private String work_state_code;
 
-    @TableField(value = "work_state_text")
-    @ApiModelProperty(value = "在岗状态名称")
-    private String workStateText;
+    /**
+     * 在岗状态
+     */
+    private String work_state_text;
 
     @ApiModelProperty("科室名称")
     @TableField(exist = false)
@@ -120,7 +123,7 @@ public class TOfficeTerm<TSectionOffice> implements Serializable {
     @TableField(exist = false)
     private String typeName;
 
-    @ApiModelProperty(value = "科室数据")
-    @TableField(exist = false)
-    private TSectionOffice officeData;
+//    @ApiModelProperty(value = "科室数据")
+//    @TableField(exist = false)
+//    private TSectionOffice officeData;
 }

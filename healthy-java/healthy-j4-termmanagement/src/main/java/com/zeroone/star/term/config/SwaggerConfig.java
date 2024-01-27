@@ -20,6 +20,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 public class SwaggerConfig {
     @Bean
     Docket sampleApis(){
-        return SwaggerCore.defaultDocketBuilder("示例模块","com.zeroone.star.sample.controller","sample");
+        return SwaggerCore.defaultDocketBuilder("示例模块","com.zeroone.star.term.controller","term");
     }
 }

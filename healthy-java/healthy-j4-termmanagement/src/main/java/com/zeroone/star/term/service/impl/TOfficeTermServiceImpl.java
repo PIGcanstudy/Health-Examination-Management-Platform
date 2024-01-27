@@ -40,14 +40,14 @@ public class TOfficeTermServiceImpl extends ServiceImpl<TOfficeTermMapper, TOffi
         //表示要查询的分页条件
         Page<TOfficeTerm> page = new Page<>(query.getPageIndex(), query.getPageSize());
         // 构建查询条件
-        //用于构建查询条件。在这个例子中，查询条件是根据termContent模糊匹配。
+        //用于构建查询条件。
         QueryWrapper<TOfficeTerm> wrapper = new QueryWrapper<>();
-        wrapper.like("体检类型", query.getInspectType());
-        wrapper.like("术语类型", query.getType());
-        wrapper.like("危害因素", query.getHazardFactors());
-        wrapper.like("在岗状态", query.getWorkStateText());
-        wrapper.like("术语内容", query.getContent());
-        wrapper.like("创建时间", query.getCreateTime());
+        wrapper.like("inspect_type", query.getInspect_type());
+        wrapper.like("type", query.getType());
+        wrapper.like("hazard_factors", query.getHazard_factors());
+        wrapper.like("work_state_text", query.getWork_state_text());
+        wrapper.like("content", query.getContent());
+        wrapper.like("create_time", query.getCreate_time());
         // 执行查询
         Page<TOfficeTerm> result = baseMapper.selectPage(page, wrapper);
         return PageDTO.create(result, src -> msTermMapper.termToTermDto(src));
@@ -57,14 +57,15 @@ public class TOfficeTermServiceImpl extends ServiceImpl<TOfficeTermMapper, TOffi
     public PageDTO<TermDto> queryTermnameList(TermNameQuery nameQuery) {
         Page<TOfficeTerm> page1 = new Page<>(nameQuery.getPageIndex(), nameQuery.getPageSize());
         // 构建查询条件
-        //用于构建查询条件。在这个例子中，查询条件是根据termContent模糊匹配。
+        //用于构建查询条件。
         QueryWrapper<TOfficeTerm> wrapper1 = new QueryWrapper<>();
-        wrapper1.like("体检类型", nameQuery.getInspectType());
-        wrapper1.like("术语类型", nameQuery.getType());
-        wrapper1.like("危害因素", nameQuery.getHazardFactors());
-        wrapper1.like("在岗状态", nameQuery.getWorkStateText());
-        wrapper1.like("术语内容", nameQuery.getContent());
-        wrapper1.like("创建时间", nameQuery.getCreateTime());
+        wrapper1.like("officeName", nameQuery.getOfficeName());
+        wrapper1.like("inspect_type", nameQuery.getInspect_type());
+        wrapper1.like("type", nameQuery.getType());
+        wrapper1.like("hazard_factors", nameQuery.getHazard_factors());
+        wrapper1.like("work_state_text", nameQuery.getWork_state_text());
+        wrapper1.like("content", nameQuery.getContent());
+        wrapper1.like("create_time", nameQuery.getCreate_time());
         // 执行查询
         Page<TOfficeTerm> result = baseMapper.selectPage(page1, wrapper1);
         return PageDTO.create(result, src -> msTermMapper.termToTermDto(src));
