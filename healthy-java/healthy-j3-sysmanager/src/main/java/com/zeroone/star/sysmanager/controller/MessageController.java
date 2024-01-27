@@ -9,14 +9,13 @@ import com.zeroone.star.project.query.j3.msgGetAndSendAndUpate.MsgListQuery;
 import com.zeroone.star.project.query.j3.msgGetAndSendAndUpate.SendMsgQuery;
 import com.zeroone.star.project.query.j3.msgGetAndSendAndUpate.UpdateMsgQuery;
 import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.sysmanager.service.ITMessageSendService;
 import com.zeroone.star.sysmanager.service.ITMessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
-import com.zeroone.star.sysmanager.entity.Message;
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -32,9 +31,10 @@ public class MessageController implements MessageApis {
     @Resource
     private ITMessageService messageService;
 
+    @ApiOperation("批量删除消息")
     @DeleteMapping("/deleteByIds")
     @Override
-    public JsonVO<Boolean> deleteByIds(@RequestParam ArrayList<String> ids) {
+    public JsonVO<Boolean> deleteByIds(@RequestParam List<String> ids) {
         boolean success = messageService.removeByIds(ids);
         if (success) {
             return JsonVO.success(success);
