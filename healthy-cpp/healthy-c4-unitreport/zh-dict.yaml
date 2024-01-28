@@ -2,11 +2,14 @@ unitreport:
   unit:
     name: "单位名称"
     department : "所属部门"
-
   order:
     code: "订单编号"  
     signingTime: "签订时间"
     summary : "获取单位订单"
+    unreported : "未报"
+    reported : "已报"
+    groupInspection : "团检"
+    sporadic : "零星"
   summaryTable:
      type : "统计表类型"
      PhysicalExaminationPersonnel: "体检人员汇总表"
