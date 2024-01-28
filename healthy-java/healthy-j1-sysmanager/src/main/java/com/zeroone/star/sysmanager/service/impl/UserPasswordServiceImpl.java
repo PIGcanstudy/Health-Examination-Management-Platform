@@ -7,7 +7,7 @@ import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.j1.dto.sysmanager.ModifyPasswordDTO;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
-import com.zeroone.star.sysmanager.entity.TUserDO;
+import com.zeroone.star.sysmanager.entity.TUser;
 import com.zeroone.star.sysmanager.mapper.UserPasswordMapper;
 import com.zeroone.star.sysmanager.service.UserPasswordService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -27,7 +27,7 @@ import java.util.Objects;
  * @since 2024-01-18
  */
 @Service("userPasswordService")
-public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUserDO> implements UserPasswordService {
+public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUser> implements UserPasswordService {
 
 
     @Autowired
@@ -49,9 +49,9 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
         } catch (Exception e) {
             return JsonVO.create(null,ResultStatus.UNAUTHORIZED);
         }
-        TUserDO currentUserDO = getBaseMapper().selectById(currentUserId);
+        TUser currentUserDO = getBaseMapper().selectById(currentUserId);
         // 获取被修改密码的用户
-        TUserDO changeUser = getBaseMapper().selectById(modifyPasswordDTO.getId());
+        TUser changeUser = getBaseMapper().selectById(modifyPasswordDTO.getId());
         // 判断被修改密码的用户是否存在
         if(Objects.isNull(changeUser)){
             return JsonVO.create(null,8000,"用户id非法");
@@ -72,7 +72,7 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
         }
         // 使用加密后的新密码替换原来的密码,同时更改密码强度
         String encodePassword = bCryptPasswordEncoder.encode(modifyPasswordDTO.getNew_password());
-        UpdateWrapper<TUserDO> tUserUpdateWrapper = new UpdateWrapper<>();
+        UpdateWrapper<TUser> tUserUpdateWrapper = new UpdateWrapper<>();
         tUserUpdateWrapper
                 .set("password",encodePassword)
                 .set("pass_strength",modifyPasswordDTO.getPass_strength())
@@ -100,7 +100,7 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
         } catch (Exception e) {
             return JsonVO.create(null,ResultStatus.UNAUTHORIZED);
         }
-        TUserDO currentUserDO = getBaseMapper().selectById(currentUserId);
+        TUser currentUserDO = getBaseMapper().selectById(currentUserId);
         // 判断token解析后获得的id是否存在于数据库中
         if(Objects.isNull(currentUserDO)){
             return JsonVO.create(null,8000,"数据库中不存在此用户");
@@ -112,11 +112,11 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
 
         // 被重置密码的用户中有管理员用户时就不能进行重置操作
         for(String id : ids){
-            LambdaQueryWrapper<TUserDO> tUserLambdaQueryWrapper = new LambdaQueryWrapper<>();
+            LambdaQueryWrapper<TUser> tUserLambdaQueryWrapper = new LambdaQueryWrapper<>();
             tUserLambdaQueryWrapper
-                    .select(TUserDO::getId, TUserDO::getType)
-                    .eq(TUserDO::getId,id);
-            TUserDO tUserDO = getBaseMapper().selectOne(tUserLambdaQueryWrapper);
+                    .select(TUser::getId, TUser::getType)
+                    .eq(TUser::getId,id);
+            TUser tUserDO = getBaseMapper().selectOne(tUserLambdaQueryWrapper);
             // 判断数据库中是否存在数据
             if(Objects.isNull(tUserDO)){
                 return JsonVO.create(null,8005,"存在非法的用户id");
@@ -129,7 +129,7 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
         for(String id : ids){
             BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
             String password = bCryptPasswordEncoder.encode("123456");
-            UpdateWrapper<TUserDO> tUserUpdateWrapper = new UpdateWrapper<>();
+            UpdateWrapper<TUser> tUserUpdateWrapper = new UpdateWrapper<>();
             tUserUpdateWrapper
                     .set("password",password)
                     .eq("id",id);

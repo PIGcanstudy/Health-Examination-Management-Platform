@@ -12,13 +12,20 @@ import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.project.vo.JsonVO;
 
 import com.zeroone.star.sysmanager.service.ITUserService;
+
 import com.zeroone.star.sysmanager.service.UserDataService;
+
+import com.zeroone.star.sysmanager.service.UserService;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.cache.annotation.CachePut;
+
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -34,14 +41,13 @@ import java.util.List;
 @Api(tags = "用户管理-用户数据")
 public class UserDataController implements UserDataApis {
 
-
+    @Autowired
+    private UserService userService;
     @Resource
     private ITUserService itUserService;
-
-
-
     @Autowired
     private UserDataService userDataService;
+
     /**
      * 获取用户名称列表（用于输入表单下拉列表框）
      * @return
@@ -73,10 +79,11 @@ public class UserDataController implements UserDataApis {
      * @return
      */
     @Override
-    @GetMapping("/set-user-status/{status}")
+    @GetMapping("/set-user-status/{id}/{status}")
     @ApiImplicitParam(name = "status",required = true)
     @ApiOperation("设置用户状态")
-    public JsonVO setUserStatus(@PathVariable Integer status){
+    public JsonVO setUserStatus(@PathVariable Long id,@PathVariable Integer status){
+        userService.setUserStatus(id,status);
         return JsonVO.success(null);
     }
 
@@ -90,7 +97,8 @@ public class UserDataController implements UserDataApis {
     @ApiImplicitParam(name = "id",required = true)
     @ApiOperation("获取用户详情")
     public JsonVO<UserDataVO> queryUserData(@PathVariable Long id) {
-        return JsonVO.success(null);
+        UserDataVO userVo =userService.getUserData(id);
+        return JsonVO.success(userVo);
     }
 
     /**

@@ -1,6 +1,6 @@
 package com.zeroone.star.sysmanager.mapper;
 
-import com.zeroone.star.sysmanager.entity.TUserDO;
+import com.zeroone.star.sysmanager.entity.TUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2024-01-18
  */
 @Mapper
-public interface UserPasswordMapper extends BaseMapper<TUserDO> {
+public interface UserPasswordMapper extends BaseMapper<TUser> {
 
 }

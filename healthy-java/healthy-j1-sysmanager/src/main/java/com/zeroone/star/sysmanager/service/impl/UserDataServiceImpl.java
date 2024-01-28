@@ -21,8 +21,6 @@ public class UserDataServiceImpl implements UserDataService {
     @Autowired
     private UserDataMapper userDataMapper;
 
-    @Autowired
-    private UserHolder userHolder;
 
 
     @Override
@@ -51,7 +49,7 @@ public class UserDataServiceImpl implements UserDataService {
 
     @Override
     public JsonVO deleteUserList(List<String> ids) {
-        // TODO 缺少对参数的合法性判断，不参数合法时缺少相应的提示
+        // TODO 缺少对参数的合法性判断，参数不合法时缺少相应的提示
         userDataMapper.deleteUserList(ids);
         return null;
     }

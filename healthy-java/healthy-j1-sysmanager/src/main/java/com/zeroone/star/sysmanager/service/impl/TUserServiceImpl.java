@@ -48,7 +48,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
      * t_user表相关的Mapper
      */
     @Resource
-    private TUserMapper userMapper;
+    private TUserMapper tUserMapper;
 
     /**
      * 获取用户名称列表（用于输入表单下拉列表框）
@@ -57,7 +57,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
     @Override
     public List<UserNameListVO> listUsernameList() {
         QueryWrapper<TUser> wrapper = new QueryWrapper<>();
-        List<TUser> users = userMapper.selectList(wrapper);
+        List<TUser> users = tUserMapper.selectList(wrapper);
         List<UserNameListVO> list = new ArrayList<>();
         if (BeanUtil.isNotEmpty(users) && users.size() > 0) {
             for (TUser user : users) {
@@ -93,6 +93,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
 		tUser.setBirth(user.getBirth());
 		tUser.setDescription(user.getDescription());
 		tUser.setDelFlag(false);
-		userMapper.updateById(tUser);
+		tUserMapper.updateById(tUser);
 	}
+
 }
