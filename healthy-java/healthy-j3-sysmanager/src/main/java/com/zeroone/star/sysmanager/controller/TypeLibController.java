@@ -5,7 +5,6 @@ import cn.hutool.core.util.ObjectUtil;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeAddDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeLibraryTreeDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeUpdateDTO;
-import com.zeroone.star.project.j3.sysconfig.SysConfigApis;
 import com.zeroone.star.project.j3.typelib.TypeLibApis;
 import com.zeroone.star.project.query.j3.TypeLibraryQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -14,10 +13,8 @@ import com.zeroone.star.project.vo.j3.typeLibrary.typeAddVO;
 import com.zeroone.star.project.vo.j3.typeLibrary.typeUpdateVO;
 import com.zeroone.star.sysmanager.service.ITProTypeService;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -35,15 +32,19 @@ public class TypeLibController implements TypeLibApis {
     @Resource
     ITProTypeService typeService;
 
+    @Resource
+    ITProTypeService itProTypeService;
     /**
      * 获取类型树
-     *
      * @param typeLibraryTreedto
      * @return
      */
+    @GetMapping("get-TProTypeTree")
+    @ApiOperation("获取类型树接口")
     @Override
     public JsonVO<List<TProTypeVO>> getAllProTypeByTree(typeLibraryTreeDTO typeLibraryTreedto) {
-        return null;
+        List<TProTypeVO> allProTypeByTree = itProTypeService.getAllProTypeByTree(typeLibraryTreedto);
+        return JsonVO.success(allProTypeByTree);
     }
 
     /**
@@ -51,11 +52,13 @@ public class TypeLibController implements TypeLibApis {
      * @param typeLibraryQuery
      * @return
      */
+    @GetMapping("query-TProTypeList")
+    @ApiOperation("搜索类型列表")
     @Override
     public JsonVO<List<TProTypeVO>> queryTProTypeListByPage(TypeLibraryQuery typeLibraryQuery) {
-        return null;
+        List<TProTypeVO> tProTypeListByPage = itProTypeService.getTProTypeListByPage(typeLibraryQuery);
+        return JsonVO.success(tProTypeListByPage);
     }
-
     @Override
     public JsonVO<Integer> removeTypeLib(TypeLibDeleteDTO typeLibDeleteDTO) {
         return null;
