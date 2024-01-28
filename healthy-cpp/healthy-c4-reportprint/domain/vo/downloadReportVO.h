@@ -26,7 +26,8 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * editor响应图片上传结果数据
+ * PDF上传结果数据
+ * 负责人：晚风
  */
 class downloadReportVO : public JsonVO<downloadReportDTO::Wrapper>
 {
