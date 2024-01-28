@@ -1,7 +1,7 @@
 spring:
   application:
-    name: ${sn.j3-sysmanager}
+    name: ${sn.sys}
 server:
-  port: ${sp.j3-sysmanager}
+  port: ${sp.sys}
   servlet:
     context-path: /sysmanager

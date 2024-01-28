@@ -15,13 +15,10 @@ import com.zeroone.star.sysmanager.mapper.ProTypeMapper;
 import com.zeroone.star.sysmanager.service.ITProTypeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.micrometer.core.instrument.util.StringUtils;
-import org.junit.Test;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.sql.Time;
-import java.sql.Wrapper;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
