@@ -9,11 +9,6 @@ preview:
   report-alt: 报告文字描述
  get:
   view: 报告预览 
-download:
- field:
-  downloadState: 下载
- get:
-  summary: 报告下载
 print:
  field:
   id: 编号
@@ -21,6 +16,7 @@ print:
   age: 年龄
   sex: 性别
   statu: 审核
+  downloadState: 下载
   printState: 打印
   orderId: 订单编号
   testNum: 体检编号
@@ -33,5 +29,7 @@ print:
   pageNumPerTable: 每个工作表的页数
   printSampleCode: 打印样本条码
  get:
-  view: 打印确认
   summary: 获取体检人员报告
+  download: 报告下载
+  print: 报告打印
+  

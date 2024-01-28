@@ -43,7 +43,7 @@ public:
 	// 定义描述
 	ENDPOINT_INFO(downloadFile) {
 		// 定义描述
-		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("download.get.summary"), Void);
+		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("print.get.download"), Void);
 		// 待下载的报告编号
 		API_DEF_ADD_QUERY_PARAMS(String, "reportNum", ZH_WORDS_GETTER("preview.field.reportNum"), "1202204010001", true);
 	}

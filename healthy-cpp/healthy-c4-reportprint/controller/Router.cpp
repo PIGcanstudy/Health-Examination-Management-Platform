@@ -29,6 +29,8 @@
 #endif
 #include "downloadReport/downloadReportController.h"
 #include "printReport/printReportController.h"
+#include "medexamprintreport/MedExamPrintReportController.h"
+#include "previewreport/PreviewReportController.h"
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -54,6 +56,8 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
+	ROUTER_SIMPLE_BIND(PreviewReportController);
+	ROUTER_SIMPLE_BIND(MedExamPrintReportController);
 	ROUTER_SIMPLE_BIND(downloadReportController);
 	ROUTER_SIMPLE_BIND(printReportController);
 }

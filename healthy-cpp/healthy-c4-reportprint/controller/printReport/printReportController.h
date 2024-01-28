@@ -42,7 +42,7 @@ public:
 	// 3.1 定义查询接口描述
 	ENDPOINT_INFO(queryprintReport) {
 		// 定义接口标题
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("print.get.view"));
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("print.get.print"));
 		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
 		API_DEF_ADD_AUTH();
 		// 定义响应参数格式

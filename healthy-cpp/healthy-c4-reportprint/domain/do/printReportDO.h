@@ -19,12 +19,12 @@
  limitations under the License.
 */
 
-#ifndef _PACKAGE_DO_
-#define _PACKAGE_DO_
+#ifndef _DOWNLOADREPORT_DO_
+#define _DOWNLOADREPORT_DO_
 #include "./DoInclude.h"
 
 /**
- * 获取套餐名称列表数据库实体类
+ * 获取列表数据库实体类
  * 负责人：晚风
  */
 class PackageDO
