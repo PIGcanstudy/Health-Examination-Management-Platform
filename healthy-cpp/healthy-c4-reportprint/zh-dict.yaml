@@ -17,8 +17,7 @@ print:
   age: 年龄
   sex: 性别
   statu: 审核
-  downloadState: 下载
-  printState: 打印
+  printState: 打印状态
   orderId: 订单编号
   testNum: 体检编号
   dept: 单位名称

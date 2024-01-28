@@ -33,10 +33,6 @@ class printReportJsonVO : public JsonVO<printReportDTO::Wrapper> {
 	DTO_INIT(printReportJsonVO, JsonVO<printReportDTO::Wrapper>);
 };
 
-/**
-* 批量下载PDF报告
-* 负责人：晚风
- */
 
 class printReportPageJsonVO : public JsonVO<printReportPageDTO::Wrapper> {
 	DTO_INIT(printReportPageJsonVO, JsonVO<printReportPageDTO::Wrapper>);
