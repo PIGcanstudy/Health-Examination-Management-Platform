@@ -45,8 +45,8 @@ public class StopWordController implements StopWordApis {
     @PutMapping("/updateWord")
     @ApiOperation("修改禁用词")
     @Override
-    public JsonVO<Boolean> updateWord(UpdateWordDTO updateWord) {
-        int count = stopWordService.updateWord(updateWord);
+    public JsonVO<Boolean> updateWord(UpdateWordDTO updateWord, @RequestHeader("Authorization") String token) {
+        int count = stopWordService.updateWord(updateWord,token);
         if (count > 0) {
             return JsonVO.success(true);
         }
