@@ -1,13 +1,14 @@
+package com.zeroone.star.project.j3.dictory;
 
 
-package com.zeroone.star.project.j3.direct;
-
+import com.zeroone.star.project.dto.PageDTO;
+import com.zeroone.star.project.dto.j3.dictdata.DictDataDTO;
+import com.zeroone.star.project.query.j3.DictData.DictDataQuery;
 import com.zeroone.star.project.query.j3.WordTypeListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 
-import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.dictdata.AddDictDataDTO;
-import com.zeroone.star.project.dto.j3.dictdata.UpdateDictDataDTO;
+import com.zeroone.star.project.dto.j3.dictdata.ModifyDictData;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ import java.util.List;
  * @date: 2024/1/15 20:34
  **/
 public interface DirectSourceApis {
-    JsonVO<PageDTO<UpdateDictDataDTO>> UpdateDictData();
+    JsonVO<Boolean> ModifyDictData(ModifyDictData modifyDictData);
     /**
      * 通过id删除数据字典，支持批量删除
      * @auther chenxiaxin
@@ -32,6 +33,21 @@ public interface DirectSourceApis {
      * @return
      */
     JsonVO<List<WordTypeListQuery>> queryByWordType(WordTypeListQuery wordTypeListQuery);
-    JsonVO<PageDTO<AddDictDataDTO>> AddDictData();
+
+    /**
+     * 获取字典数据名称列表
+     * @auther MSNzqs
+     * @return
+     */
+    JsonVO<List<String>> queryDataTitle();
+
+    /**
+     * 根据条件及分页查询字典数据列表
+     * @param condition
+     * @return
+     */
+    JsonVO<PageDTO<DictDataDTO>> queryDictDataByCondition(DictDataQuery condition);
+
+    JsonVO<Boolean> AddDictData(AddDictDataDTO addDictDataDTO);
 }
 

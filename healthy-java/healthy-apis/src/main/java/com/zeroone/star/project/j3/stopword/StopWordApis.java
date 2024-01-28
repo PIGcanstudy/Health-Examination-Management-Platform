@@ -6,6 +6,7 @@ import com.zeroone.star.project.dto.j3.stopword.UpdateWordDTO;
 import com.zeroone.star.project.vo.JsonVO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -35,7 +36,7 @@ public interface StopWordApis {
      * @param: [title]
      * @return: com.zeroone.star.project.vo.JsonVO<com.zeroone.star.project.dto.j3.stopword.StopWordDTO>
      **/
-    JsonVO<StopWordDTO> updateWord(UpdateWordDTO word);
+    JsonVO<Boolean> updateWord(UpdateWordDTO word, String token);
 
     /**
      * @description:批量删除禁用词
@@ -44,6 +45,6 @@ public interface StopWordApis {
      * @param: [ids]
      * @return: com.zeroone.star.project.vo.JsonVO<java.lang.Boolean>
      **/
-    JsonVO<Boolean> deleteWordsByIds(ArrayList<String> ids);
+    JsonVO<Boolean> deleteWordsByIds(List<String> ids);
 
 }
