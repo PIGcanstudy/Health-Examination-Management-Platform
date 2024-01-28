@@ -1,8 +1,7 @@
 package com.zeroone.star.project.j1.vo.sysmanager;
 
 import cn.hutool.core.date.DateTime;
-
-// import com.zeroone.star.oauth2.entity.Role;
+import com.zeroone.star.project.j1.vo.sysmanager.entiy.Role;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -41,8 +40,8 @@ public class UserDataVO {
     private String email;
     @ApiModelProperty(value = "手机号")
     private String phone;
-    // TODO j1-userData分支的healthy-domain模块中缺少ROle类 3
-     // @ApiModelProperty(value = "角色")
-     // private List<Role> roleList;
+
+    @ApiModelProperty(value = "角色")
+    private List<Role> roleList;
 
 }

@@ -2,7 +2,7 @@ package com.zeroone.star.sysmanager.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.j1.vo.sysmanager.UserDataVO;
-// import com.zeroone.star.project.j1.vo.sysmanager.entiy.Role;
+import com.zeroone.star.project.j1.vo.sysmanager.entiy.Role;
 import com.zeroone.star.sysmanager.entity.TUser;
 import com.zeroone.star.sysmanager.mapper.RoleMapper;
 import com.zeroone.star.sysmanager.mapper.UserMapper;
@@ -40,9 +40,8 @@ public class UserServiceImpl implements UserService {
         }
         UserDataVO userDataVO = new UserDataVO();
         BeanUtils.copyProperties(tUser,userDataVO);
-        // TODO j1-userData分支的healthy-domain模块中缺少ROle类 1
-//         List<Role> rolelist= roleMapper.selectRoleByUserId(id);
-//         userDataVO.setRoleList(rolelist);
+        List<Role> rolelist = roleMapper.selectRoleByUserId(id);
+        userDataVO.setRoleList(rolelist);
         return userDataVO;
     }
 
