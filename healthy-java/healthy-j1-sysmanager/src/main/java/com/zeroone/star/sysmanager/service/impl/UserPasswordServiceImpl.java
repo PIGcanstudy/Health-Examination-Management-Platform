@@ -101,6 +101,10 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
             return JsonVO.create(null,ResultStatus.UNAUTHORIZED);
         }
         TUserDO currentUserDO = getBaseMapper().selectById(currentUserId);
+        // 判断token解析后获得的id是否存在于数据库中
+        if(Objects.isNull(currentUserDO)){
+            return JsonVO.create(null,8000,"数据库中不存在此用户");
+        }
         // 当前登录的用户不是管理员则提示权限不足
         if(currentUserDO.getType() != 1){
             return JsonVO.create(null, ResultStatus.FORBIDDEN);
