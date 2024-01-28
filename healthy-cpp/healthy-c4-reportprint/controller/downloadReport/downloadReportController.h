@@ -30,8 +30,7 @@
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
 /**
- * 批量下载PDF报告
- * 负责人：晚风
+ * 文件操作接口
  */
 class downloadReportController  : public oatpp::web::server::api::ApiController 
 {

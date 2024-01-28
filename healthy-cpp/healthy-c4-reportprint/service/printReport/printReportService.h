@@ -24,13 +24,9 @@
 #include "domain/query/printReportQuery.h"
 #include "domain/dto/printReportDTO.h"
 
-/**
- * 下载PDF
- * 负责人：晚风
- */
 class printReportService
 {
-public:
+
 };
 
 #endif // !_PRINTREPORT_SERVICE_

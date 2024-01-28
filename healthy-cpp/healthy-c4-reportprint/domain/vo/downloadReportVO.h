@@ -27,7 +27,6 @@
 
 /**
  * PDF上传结果数据
- * 负责人：晚风
  */
 class downloadReportVO : public JsonVO<downloadReportDTO::Wrapper>
 {

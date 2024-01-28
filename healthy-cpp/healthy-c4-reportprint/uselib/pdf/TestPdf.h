@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/10/25 11:08:56
+ @Date: 2023/12/29 11:30:58
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,12 +17,18 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _DOWNLOADREPORT_SERVICE_
-#define _DOWNLOADREPORT_SERVICE_
-#include <list>
-#include "domain/vo/downloadReportVO.h"
-#include "domain/query/downloadReportQuery.h"
-#include "domain/dto/downloadReportDTO.h"
+#ifndef _TESTPDF_H_
+#define _TESTPDF_H_
+/**
+ * PDF组件测试使用
+ */
+class TestPdf
+{
+public:
+	// 测试绘制文本
+	static void testText();
+	// 测试模板绘制
+	static void testTpl();
+};
 
-#endif // !_DOWNLOADREPORT_SERVICE_
-
+#endif // !_TESTPDF_H_

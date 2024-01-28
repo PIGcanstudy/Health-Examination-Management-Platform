@@ -20,7 +20,3 @@
 #include "downloadReportService.h"
 #include "../../dao/downloadReport/downloadReportDAO.h"
 
-/**
- * 下载PDF
- * 负责人：晚风
- */

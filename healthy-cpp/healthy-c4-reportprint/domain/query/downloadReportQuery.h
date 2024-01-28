@@ -25,14 +25,7 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
-/**
-* 下载设置
-* 负责人：晚风
- */
-class downloadReportQuery : public PageQuery
-{
-	DTO_INIT(downloadReportQuery, PageQuery);
-};
+
 
 #include OATPP_CODEGEN_END(DTO)
 #endif // !_DOWNLOADREPORT_H_
