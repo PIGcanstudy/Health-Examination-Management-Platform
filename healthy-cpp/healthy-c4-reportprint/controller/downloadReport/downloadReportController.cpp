@@ -26,10 +26,10 @@
 #include "FastDfsClient.h"
 #include "SimpleDateTimeFormat.h"
 
-std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> downloadReportController::execDownloadFile(const String& reportNum)
+std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> downloadReportController::execDownloadFile(const String& id)
 {
 	// 构建文件全路径
-	std::string fullPath = "public/static/" + URIUtil::urlDecode(reportNum.getValue(""));
+	std::string fullPath = "public/static/" + URIUtil::urlDecode(id.getValue(""));
 
 	// 读取文件
 	auto fstring = String::loadFromFile(fullPath.c_str());
@@ -45,7 +45,7 @@ std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> downlo
 	auto response = createResponse(Status::CODE_200, fstring);
 
 	// 设置响应头信息
-	response->putHeader("Content-Disposition", "attachment; filename=" + reportNum.getValue(""));
+	response->putHeader("Content-Disposition", "attachment; filename=" + id.getValue(""));
 
 	// 影响成功结果
 	return response;

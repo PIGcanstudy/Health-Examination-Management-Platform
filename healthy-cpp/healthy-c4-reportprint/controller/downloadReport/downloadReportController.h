@@ -44,7 +44,7 @@ public:
 		// 定义描述
 		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("print.get.download"), Void);
 		// 待下载的报告编号
-		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("preview.field.reportNum"), "1202204010001", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("preview.field.reportNum"), "/file/test.jpg", true);
 	}
 
 	// 定义端点
@@ -54,7 +54,7 @@ public:
 
 private: // 定义接口执行函数
 	// 执行文件下载处理
-	std::shared_ptr<OutgoingResponse> execDownloadFile(const String& reportNum);
+	std::shared_ptr<OutgoingResponse> execDownloadFile(const String& id);
 };
 
 #include OATPP_CODEGEN_END(ApiController)
