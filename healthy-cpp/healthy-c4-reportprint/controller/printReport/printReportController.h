@@ -50,7 +50,7 @@ public:
 
 		// 定义其他查询参数描述
 		// 待打印的报告编号
-		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("preview.field.reportNum"), "1202204010001", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("preview.field.reportNum"), "1202204010001", false);
 		// 打印状态
 		API_DEF_ADD_QUERY_PARAMS(String, "printState", ZH_WORDS_GETTER("print.field.printState"), "finished", false);
 		// 目标打印机
