@@ -32,14 +32,14 @@ public:
 	// 3.2 定义新增接口处理
 	ENDPOINT("POST", "/addDepartRes", addDepartRes, BODY_DTO(SaveResDTO::Wrapper, dto), API_HANDLER_AUTH_PARAME) {
 		// 呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execAddDepartRes(dto));
+		API_HANDLER_RESP_VO(execAddDepartRes(dto, authObject->getPayload()));
 	}
 
 	
 private:
 	
 	// 3.3 演示新增数据
-	Uint64JsonVO::Wrapper execAddDepartRes(const SaveResDTO::Wrapper& dto);
+	Uint64JsonVO::Wrapper execAddDepartRes(const SaveResDTO::Wrapper& dto, const PayloadDTO& payload);
 };
 
 // 0 取消API控制器使用宏

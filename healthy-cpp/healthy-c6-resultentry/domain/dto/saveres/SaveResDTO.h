@@ -23,7 +23,7 @@ class SaveResDTO : public oatpp::DTO
 	// 检查医生
 	API_DTO_FIELD_DEFAULT(String, checkDoc, ZH_WORDS_GETTER("save.filed.checkDoc"));
 	// 检查日期
-	API_DTO_FIELD_DEFAULT(String, checkDate, ZH_WORDS_GETTER("save.filed.checkDate"));
+	API_DTO_FIELD(String, checkDate, ZH_WORDS_GETTER("save.filed.checkDate"), true, "2002-11-11");
 	// del flag
 	API_DTO_FIELD_DEFAULT(Int32, delFlag, ZH_WORDS_GETTER("save.filed.delFlag"));
 	// 分组项目id
@@ -47,7 +47,7 @@ class SaveResDTO : public oatpp::DTO
 	// item depart res 部分
 
 	// 关联的基础项目id
-	API_DTO_FIELD_DEFAULT(String, orderGroupItemProjectId, ZH_WORDS_GETTER("save.filed.orderGroupItemProjectId"));
+	API_DTO_FIELD(String, orderGroupItemProjectId, ZH_WORDS_GETTER("save.filed.orderGroupItemProjectId"),false, "");
 	// 关联的基础项目名称
 	API_DTO_FIELD_DEFAULT(String, orderGroupItemProjectName, ZH_WORDS_GETTER("save.filed.orderGroupItemProjectName"));
 	// 体检结果
