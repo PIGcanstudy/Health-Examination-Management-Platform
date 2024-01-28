@@ -26,18 +26,14 @@ UnitReportListDTO::Wrapper UnitReportService::listAll()
 	auto result = UnitReportListDTO::createShared();
 
 	// 调用DAO层
-	UnitReportDAO dao;	// 定义后,在swagger ui发送请求后会报错,甚至没有使用
-	//list<UnitReportDO> listDO = dao.selectAll();
-
-	list<UnitReportDO> listDO;
-	for (int i = 0; i < 3; i++)
-		listDO.push_back(UnitReportDO());
+	UnitReportDAO dao;
+	list<UnitReportDO> listDO = dao.selectAll();
 
 	// 将DO转换为DTO
 	for (auto DO : listDO)
 	{
 		auto dto = UnitReportDTO::createShared();
-		ZO_STAR_DOMAIN_DO_TO_DTO(dto, DO, unit_code, UnitCode, physical_unit, PhysicalUnit, physical_date, PhysicalDate, physical_project, PhysicalProject, concluding_observations, ConcludingObservations, 
+		ZO_STAR_DOMAIN_DO_TO_DTO(dto, DO, code, CCode, physical_unit, PhysicalUnit, physical_date, PhysicalDate, physical_project, PhysicalProject, concluding_observations, ConcludingObservations, 
 							     physical_type, PhysicalType, entrust_unit, EntrustUnit, physical_number, PhysicalNumber, evaluation_basis, EvaluationBasis);
 		result->push(dto);
 	}

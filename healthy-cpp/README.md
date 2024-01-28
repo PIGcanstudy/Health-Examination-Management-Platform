@@ -451,7 +451,7 @@ int main(int argc, char* argv[]) {
 }
 ```
 
-所有启动参数说明：
+所有启动参数说明
 
 ```sh
 "na: nacos server host and port. example na=39.99.114.126:8848"

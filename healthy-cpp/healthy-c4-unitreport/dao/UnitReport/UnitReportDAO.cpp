@@ -22,8 +22,8 @@
 
 list<UnitReportDO> UnitReportDAO::selectAll()
 {
-	string sql = "SELECT unit_code, physical_unit, physical_date, physical_project, concluding_observations, physical_type, entrust_unit, physical_number, evaluation_basis FROM t_unit_report";
-	UnitReportMapper mapper;
+	string sql = "SELECT code, physical_unit, physical_date, physical_project, concluding_observations, physical_type, entrust_unit, physical_number, evaluation_basis FROM t_unit_report";
+	UnitReportMapper mapper;                                                            
 	auto result = sqlSession->executeQuery<UnitReportDO, UnitReportMapper>(sql, mapper);
 	return result;
 }

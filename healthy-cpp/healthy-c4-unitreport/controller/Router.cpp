@@ -29,7 +29,6 @@
 #include "uselib/ws/WSController.h"
 #endif
 
-#include "MedExamUnitOrder/MedExamUnitOrderController.h"
 #include "UnitReport/UnitReportController.h"
 
 // 如果定义了关闭Swagger文档宏
@@ -55,8 +54,7 @@ void Router::initRouter()
 	createSampleRouter();
 #endif
 	//#TIP :系统扩展路由定义，写在这个后面
-	ROUTER_SIMPLE_BIND(MedExamUnitOrderController);
-	ROUTER_SIMPLE_BIND(UnitReportController);
+	ROUTER_SIMPLE_BIND(UnitReportController);//获取团检单位报告
 	ROUTER_SIMPLE_BIND(UnitListController);//分页查询体检单位订单列表
 	ROUTER_SIMPLE_BIND(PhysicalExaminationPersonnelController);//查询体检人员汇总表
 	ROUTER_SIMPLE_BIND(ReviewPersonnelController);//查询复查人员汇总表

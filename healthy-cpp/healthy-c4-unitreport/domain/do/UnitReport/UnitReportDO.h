@@ -24,7 +24,7 @@
 class UnitReportDO
 {
 	// 报告编号
-	CC_SYNTHESIZE(string, unit_code, UnitCode)
+	CC_SYNTHESIZE(string, code, CCode)
 	// 体检单位
 	CC_SYNTHESIZE(string, physical_unit, PhysicalUnit)
 	// 体检日期
@@ -41,11 +41,6 @@ class UnitReportDO
 	CC_SYNTHESIZE(string, physical_number, PhysicalNumber)
 	// 评论依据
 	CC_SYNTHESIZE(string, evaluation_basis, EvaluationBasis)
-public:
-	UnitReportDO()
-	{
-		unit_code = "123456";
-	}
 };
 
 #endif // !_UNITREPORTDO_H_

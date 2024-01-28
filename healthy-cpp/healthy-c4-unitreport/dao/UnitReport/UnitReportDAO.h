@@ -20,7 +20,7 @@
 #define _UNITREPORTDAO_H_
 
 #include "BaseDAO.h"
-#include "domain/do/UnitReport/UnitReportDO.h"
+#include "../../domain/do/UnitReport/UnitReportDO.h"
 
 class UnitReportDAO : public BaseDAO
 {

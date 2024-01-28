@@ -40,7 +40,7 @@ public: // 定义接口
 	}
 
 	// 定义接口处理
-	ENDPOINT(API_M_GET, "/UnitReport", queryUnitReport) {
+	ENDPOINT(API_M_GET, "/UnitReport/get-all", queryUnitReport) {
 		// 呼叫执行函数响应结果
 		API_HANDLER_RESP_VO(execQueryUnitReport());
 	}

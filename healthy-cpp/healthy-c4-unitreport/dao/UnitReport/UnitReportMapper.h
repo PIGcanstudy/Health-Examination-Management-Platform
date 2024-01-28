@@ -36,7 +36,7 @@ public:
 		date.setPhysicalProject(rs->getString(6));
 		date.setPhysicalType(rs->getString(7));
 		date.setPhysicalUnit(rs->getString(8));
-		date.setUnitCode(rs->getString(9));
+		date.setCCode(rs->getString(9));
 		return date;
 	}
 };
