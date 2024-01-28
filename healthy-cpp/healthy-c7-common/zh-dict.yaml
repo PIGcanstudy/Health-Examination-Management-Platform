@@ -1,4 +1,27 @@
-<<<<<<< HEAD
+groupItemIgno:
+ update:
+  summary: 忽略指定基础项目
+
+detail:
+ field:
+  project: 获取人员详情
+
+id:
+ query:
+  summary: 暂时没用
+
+term:
+ query:
+  summary: 获取术语名称列表
+
+Info:
+ query:
+  summary: 保存总检报告
+
+Dangerous:
+ query:
+  summary: 获取体检项目结果明细
+
 unit:
  filed:
   type: 体检类型
@@ -6,7 +29,10 @@ unit:
   uscc: 信用代码
   LinkMan: 联系人
   LinkPhone: 联系电话
+
 positive:
+ query:
+  summary: 获取阳性结果列表
  filed:
   summary: 示例
   personname: 姓名
@@ -16,7 +42,6 @@ positive:
   result: 结果
   unit_name: 单位名称
   scope: 参考范围
-
   crisis_degree: 危机程度
   checkdate: 体检日期
   isNormal: 结果状态
@@ -38,7 +63,6 @@ itemResult:
   fail: 查询失败
 
 
-
 inquiry:
  get:
   summary: 获取问诊明细
@@ -56,6 +80,8 @@ inquiry:
 
 
 result:
+ query:
+  list: 获取添加项目结论列表
  field:
   id: 编号
   orderGroupItemProjectName: 基础项目名
@@ -65,6 +91,8 @@ result:
 
 
 review:
+ query:
+  summary: 获取复查项目列表（修改 删除）
  field:
   id: 唯一编号
   personName: 姓名
@@ -76,11 +104,14 @@ review:
   createTime: 登记日期
   state: 登记状态
   hazardFactorCode: 危害因素
+
 addNewItems:
+ query:
+  summary: 新增复查项目
  field:
- projectsToBeSelected: 待选项目
- selectedProjects: 已选项目
- reason: 复查原因
+  projectsToBeSelected: 待选项目
+  selectedProjects: 已选项目
+  reason: 复查原因
 
 personalReview:
  update:
@@ -88,16 +119,16 @@ personalReview:
  field:
   personId: 体检人员id
   updateId: 更新人id
+
 wordFile:
  download:
   summary: 下载个人报告word
  field:
   fileUrl: 文件的完整路径http://123.123.123.123/----/1.docx
   
-evalue:
-=======
 getUserName:
->>>>>>> remotes/origin/c7-get-username-whx
+ query:
+  summary: 获取体检人员名称列表
  field:
   ispass: 体检类型
   isRecheck: 复查状态
@@ -106,10 +137,8 @@ getUserName:
   personName: 姓名
   testNum: 体检编号
   dept: 单位名称
-<<<<<<< HEAD
-=======
   sex: 性别
   age: 年龄
   physicalType: 体检类型
   sporadicPhysical: 是否零星体检(0-否，1-是)
->>>>>>> remotes/origin/c7-get-username-whx
+   

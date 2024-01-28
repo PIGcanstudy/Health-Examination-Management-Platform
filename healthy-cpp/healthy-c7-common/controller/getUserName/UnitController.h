@@ -39,7 +39,7 @@ public://定义接口
 	// 3.1 定义分页查询单位列表接口描述
 	ENDPOINT_INFO(queryUnit) {
 		// 定义接口标题
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("Unit.query.summary"));
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("getUserName.query.summary"));
 		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
 		API_DEF_ADD_AUTH();
 		// 定义响应参数格式
