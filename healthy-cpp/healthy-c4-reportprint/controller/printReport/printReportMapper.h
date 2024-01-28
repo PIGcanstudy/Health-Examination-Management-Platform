@@ -24,7 +24,7 @@
 #include "../../domain/do/printReportDO.h"
 
 /**
- * Ê¾Àı±í×Ö¶ÎÆ¥ÅäÓ³Éä
+ * ±í×Ö¶ÎÆ¥ÅäÓ³Éä
  */
 class printReportMapper : public printReport<printReportDO>
 {

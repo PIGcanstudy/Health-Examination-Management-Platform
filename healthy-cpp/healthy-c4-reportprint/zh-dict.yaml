@@ -5,6 +5,8 @@ preview:
   reportNum: 报告编号
   href: 文件地址
   presonId: 姓名ID
+  report-url: 报告src
+  report-alt: 报告文字描述
  get:
   view: 报告预览 
 download:

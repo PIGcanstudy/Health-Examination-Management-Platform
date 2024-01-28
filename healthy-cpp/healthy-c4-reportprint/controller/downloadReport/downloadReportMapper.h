@@ -24,7 +24,7 @@
 #include "../../domain/do/downloadReportDO.h"
 
 /**
- * Ê¾Àı±í×Ö¶ÎÆ¥ÅäÓ³Éä
+ * ±í×Ö¶ÎÆ¥ÅäÓ³Éä
  */
 class downloadReportMapper : public Mapper<downloadReportDO>
 {
