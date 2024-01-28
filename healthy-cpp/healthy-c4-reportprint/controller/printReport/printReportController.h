@@ -54,13 +54,13 @@ public:
 		// 打印状态
 		API_DEF_ADD_QUERY_PARAMS(String, "printState", ZH_WORDS_GETTER("print.field.printState"), "finished", true);
 		// 目标打印机
-		API_DEF_ADD_QUERY_PARAMS(String, "targetPrinter", ZH_WORDS_GETTER("print.field.targetPrinter"), "save as PDF", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "targetPrinter", ZH_WORDS_GETTER("print.field.targetPrinter"), "save as PDF", false);
 		// 页面
-		API_DEF_ADD_QUERY_PARAMS(String, "page", ZH_WORDS_GETTER("print.field.page"), "all", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "page", ZH_WORDS_GETTER("print.field.page"), "all", false);
 		// 每个工作表的页数
-		API_DEF_ADD_QUERY_PARAMS(UInt16, "pageNumPerTable", ZH_WORDS_GETTER("print.field.pageNumPerTable"), 1, true);
+		API_DEF_ADD_QUERY_PARAMS(UInt16, "pageNumPerTable", ZH_WORDS_GETTER("print.field.pageNumPerTable"), 1, false);
 		// 是否打印样本条码
-		API_DEF_ADD_QUERY_PARAMS(Boolean, "printSampleCode", ZH_WORDS_GETTER("print.field.printSampleCode"), false, true);
+		API_DEF_ADD_QUERY_PARAMS(Boolean, "printSampleCode", ZH_WORDS_GETTER("print.field.printSampleCode"), false, false);
 	}
 	// 3.2 定义查询接口处理
 	ENDPOINT(API_M_GET, "/printReport", queryprintReport, QUERIES(QueryParams, params),API_HANDLER_AUTH_PARAME) {
