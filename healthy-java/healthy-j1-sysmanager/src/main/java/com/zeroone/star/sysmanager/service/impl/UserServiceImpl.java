@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void setUserStatus(Long id, Integer status) {
         TUser tUser = userMapper.selectById(id);
-        if (tUser != null) {
+        if (tUser == null) {
             throw new RuntimeException("用户不存在");
         }
         if (status == null) {
@@ -41,8 +41,8 @@ public class UserServiceImpl implements UserService {
         UserDataVO userDataVO = new UserDataVO();
         BeanUtils.copyProperties(tUser,userDataVO);
         // TODO j1-userData分支的healthy-domain模块中缺少ROle类 1
-        // List<Role> rolelist= roleMapper.selectRoleByUserId(id);
-        // userDataVO.setRoleList(rolelist);
+//         List<Role> rolelist= roleMapper.selectRoleByUserId(id);
+//         userDataVO.setRoleList(rolelist);
         return userDataVO;
     }
 
