@@ -70,6 +70,13 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
 
 	@Override
 	public void modifyUser(ModifyUserDTO user) {
+        // TODO 测试未通过，待修改
+        /*
+        报错如下：
+        "JSON parse error: Cannot deserialize value of type
+        `java.time.LocalDateTime` from String \"2000/1/1\":
+        Failed to deserialize java.time.LocalDateTime:
+         */
 		TUser tUser = new TUser();
 		tUser.setId(user.getId());
 		tUser.setUsername(user.getUsername());
