@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _UNITPHYSICALEXAMINATIONORDERSQUERY_
-#define _UNITPHYSICALEXAMINATIONORDERSQUERY_
+#ifndef _UNITPHYSICALEXAMINATIONORDERSQUERY_H_
+#define _UNITPHYSICALEXAMINATIONORDERSQUERY_H_
 
 #include "../../GlobalInclude.h"
 #include "domain/query/PageQuery.h"
@@ -14,7 +14,7 @@
 class UnitPhysicalExaminationOrdersQuery : public PageQuery
 {
 	//定义初始化
-	DTO_INIT(UnitPhysicalExaminationOrdersQuery,PageQuery);
+	DTO_INIT(UnitPhysicalExaminationOrdersQuery, PageQuery);
 	//单位名称
 	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("unitreport.unit.name"));
 	//查找订单签订时间的开始时间

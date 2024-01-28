@@ -27,6 +27,8 @@
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
 #endif
+#include "downloadReport/downloadReportController.h"
+#include "printReport/printReportController.h"
 #include "medexamprintreport/MedExamPrintReportController.h"
 #include "previewreport/PreviewReportController.h"
 
@@ -53,7 +55,8 @@ void Router::initRouter()
 	createSampleRouter();
 #endif
 
-	//#TIP :系统扩展路由定义，写在这个后面
+	ROUTER_SIMPLE_BIND(downloadReportController);
+	ROUTER_SIMPLE_BIND(printReportController);
 	ROUTER_SIMPLE_BIND(MedExamPrintReportController);
 	ROUTER_SIMPLE_BIND(PreviewReportController);
 }

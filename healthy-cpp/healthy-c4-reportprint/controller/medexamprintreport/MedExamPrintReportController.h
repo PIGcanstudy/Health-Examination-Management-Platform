@@ -1,22 +1,4 @@
 #pragma once
-/*
- Copyright Zero One Star. All rights reserved.
-
- @Author: awei
- @Date: 2024/01/16 13:05:04
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #ifndef _MEDEXAMPRINTREPORT_CONTROLLER_H_
 #define _MEDEXAMPRINTREPORT_CONTROLLER_H_
 
@@ -51,15 +33,19 @@ public:
 		// 定义其他查询参数描述
 
 		// 姓名
-		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("print.field.name"), "li ming", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("print.field.name"), "na", false);
+		// 体检类型
+		API_DEF_ADD_QUERY_PARAMS(String, "type", ZH_WORDS_GETTER("print.field.type"), "", true);
 		// 订单编号
-		API_DEF_ADD_QUERY_PARAMS(String, "orderId", ZH_WORDS_GETTER("print.field.orderId"), "12", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "orderId", ZH_WORDS_GETTER("print.field.orderId"), "", false);
 		// 体检编号
-		API_DEF_ADD_QUERY_PARAMS(String, "testNum", ZH_WORDS_GETTER("print.field.testNum"), "11", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "testNum", ZH_WORDS_GETTER("print.field.testNum"), "", false);
 		// 单位名称
-		API_DEF_ADD_QUERY_PARAMS(String, "dept", ZH_WORDS_GETTER("print.field.dept"), "wuih", false);
-		// 体检日期
-		API_DEF_ADD_QUERY_PARAMS(String, "checkDate", ZH_WORDS_GETTER("print.field.checkDate"), "20231209", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "dept", ZH_WORDS_GETTER("print.field.dept"), "", false);
+		// 开始日期
+		API_DEF_ADD_QUERY_PARAMS(String, "startDate", ZH_WORDS_GETTER("print.field.startDate"), "", false);
+		// 结束日期
+		API_DEF_ADD_QUERY_PARAMS(String, "endDate", ZH_WORDS_GETTER("print.field.endDate"), "", false);
 		// 是否复查
 		API_DEF_ADD_QUERY_PARAMS(Boolean, "isRecheck", ZH_WORDS_GETTER("print.field.isRecheck"), "1", false);
 	}

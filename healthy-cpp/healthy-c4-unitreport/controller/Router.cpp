@@ -28,6 +28,7 @@
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
 #endif
+#include "report/ReportController.h"
 
 #include "MedExamUnitOrder/MedExamUnitOrderController.h"
 #include "UnitReport/UnitReportController.h"
@@ -61,6 +62,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(PhysicalExaminationPersonnelController);//查询体检人员汇总表
 	ROUTER_SIMPLE_BIND(ReviewPersonnelController);//查询复查人员汇总表
 	ROUTER_SIMPLE_BIND(ReviewResultsController);//查询复查结果汇总表
+	ROUTER_SIMPLE_BIND(ReportController);   //查询生成报告数据
 }
 
 #ifdef HTTP_SERVER_DEMO
