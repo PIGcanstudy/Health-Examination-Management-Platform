@@ -14,5 +14,5 @@ import com.zeroone.star.sysmanager.entity.StopWord;
  */
 public interface ITStopWordService extends IService<StopWord> {
 
-    int updateWord(UpdateWordDTO updateWord);
+    int updateWord(UpdateWordDTO updateWord,String token);
 }

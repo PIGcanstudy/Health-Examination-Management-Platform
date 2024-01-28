@@ -8,6 +8,7 @@ import com.zeroone.star.project.query.j3.msgGetAndSendAndUpate.SendMsgQuery;
 import com.zeroone.star.project.query.j3.msgGetAndSendAndUpate.UpdateMsgQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @description:消息管理Api
@@ -21,7 +22,7 @@ public interface MessageApis {
      * @param: [id]
      * @return: com.zeroone.star.project.vo.JsonVO<java.lang.Boolean>
      **/
-    JsonVO<Boolean> deleteByIds(ArrayList<String> ids);
+    JsonVO<Boolean> deleteByIds(List<String> ids);
 
     /**
      * @description:获取消息详情页。

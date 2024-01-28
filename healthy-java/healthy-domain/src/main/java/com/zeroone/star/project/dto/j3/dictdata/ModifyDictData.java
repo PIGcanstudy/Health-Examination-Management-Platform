@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateDictDataDTO {
+public class ModifyDictData {
     @ApiModelProperty(value = "名称",example = "健康体检")
     private String title;
     @ApiModelProperty(value = "数据值",example = "健康体检")

@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -33,7 +34,7 @@ public class MessageController implements MessageApis {
     @ApiOperation("批量删除消息")
     @DeleteMapping("/deleteByIds")
     @Override
-    public JsonVO<Boolean> deleteByIds(@RequestParam ArrayList<String> ids) {
+    public JsonVO<Boolean> deleteByIds(@RequestParam List<String> ids) {
         boolean success = messageService.removeByIds(ids);
         if (success) {
             return JsonVO.success(success);

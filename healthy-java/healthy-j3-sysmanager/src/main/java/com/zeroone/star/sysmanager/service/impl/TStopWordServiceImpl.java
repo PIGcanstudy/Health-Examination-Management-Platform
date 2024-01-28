@@ -28,9 +28,8 @@ public class TStopWordServiceImpl extends ServiceImpl<StopWordMapper, StopWord> 
     private StringRedisTemplate stringRedisTemplate;
 
     @Override
-    public int updateWord(UpdateWordDTO updateWord) {
+    public int updateWord(UpdateWordDTO updateWord,String token) {
         //TODO: 后面看从哪里获取token
-
 
         //数据封装
         StopWord stopWord = new StopWord();
