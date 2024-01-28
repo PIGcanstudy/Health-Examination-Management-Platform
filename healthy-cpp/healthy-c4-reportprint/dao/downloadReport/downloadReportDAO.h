@@ -23,11 +23,5 @@
 #include "../../domain/do/downloadReportDO.h"
 #include "../../domain/query/downloadReportQuery.h"
 
-/**
- * 示例表数据库操作实现
- */
-class downloadReportDAO : public BaseDAO
-{
-public:
-};
+
 #endif // !_DOWNLOADREPORT_DAO_

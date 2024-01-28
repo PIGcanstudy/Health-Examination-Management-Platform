@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2024/01/16 11:34:14
+ @Date: 2023/09/18 14:46:10
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _DOWNLOADREPORT_VO_
-#define _DOWNLOADREPORT_VO_
+#ifndef _DOWNLOADREPORTVO_H_
+#define _DOWNLOADREPORTVO_H_
 
 #include "../GlobalInclude.h"
 #include "../dto/downloadReportDTO.h"
@@ -26,13 +26,13 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
-* 批量下载PDF报告
-* 负责人：晚风
+ * editor响应图片上传结果数据
  */
-class downloadReportJsonVO : public JsonVO<downloadReportDTO::Wrapper> {
-	DTO_INIT(downloadReportJsonVO, JsonVO<downloadReportDTO::Wrapper>);
+class downloadReportVO : public JsonVO<downloadReportDTO::Wrapper>
+{
+	DTO_INIT(downloadReportVO, JsonVO<downloadReportDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)
 
-#endif // !_DOWNLOADREPORT_VO_
+#endif // !_DOWNLOADREPORTVO_H_
