@@ -30,10 +30,12 @@ public interface UserDataApis {
 
 	/**
 	 * 设置用户状态
+	 *
+	 * @param id
 	 * @param status 需要改成的状态
 	 * @return
 	 */
-    JsonVO setUserStatus(Integer status);
+    JsonVO setUserStatus(Long id,Integer status);
 
 	/**
 	 * 获取用户详情
