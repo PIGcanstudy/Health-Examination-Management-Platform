@@ -1,53 +1,41 @@
 #pragma once
-/*
- Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2023/05/17 11:19:05
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #ifndef _FILECONTROLLER_H_
 #define _FILECONTROLLER_H_
 
 #include "domain/vo/BaseJsonVO.h"
 #include "ApiHelper.h"
 #include "ServerInfo.h"
+#include "domain/vo/file/FileVO.h"
+#include "domain/dto/file/FileDTO.h"
 
 
-#include OATPP_CODEGEN_BEGIN(ApiController)
+// 0 定义API控制器使用宏
+#include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
- * 文件操作示例接口
+ * 示例控制器，演示基础接口的使用
  */
-class FileController : public oatpp::web::server::api::ApiController
+class FileController : public oatpp::web::server::api::ApiController // 1 继承控制器
 {
-	// 定义控制器访问入口
+	// 2 定义控制器访问入口
 	API_ACCESS_DECLARE(FileController);
+	// 3 定义接口
 public:
-	// 定义一个单文件上传接口
-	// 定义描述
-	API_DEF_ENDPOINT_INFO(ZH_WORDS_GETTER("file.upload.summary"), uploadFile, StringJsonVO::Wrapper);
-	// 定义端点
-	API_HANDLER_ENDPOINT(API_M_POST, "/file/upload", uploadFile, REQUEST(std::shared_ptr<IncomingRequest>, request), execUploadOne(request));
+	
+	// 3.1 定义修改接口描述
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("file.upload.summary"), modifySample, Uint64JsonVO::Wrapper);
+	
+	// 3.2 定义修改接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/file/upload", modifySample, BODY_DTO(FileDTO::Wrapper, dto), execModifySample(dto, authObject->getPayload()));
 
-
-private: // 定义接口执行函数
-	// 执行单文件上传处理
-	StringJsonVO::Wrapper execUploadOne(std::shared_ptr<IncomingRequest> request);
+	
+	// 3.3 演示修改数据
+	Uint64JsonVO::Wrapper execModifySample(const FileDTO::Wrapper& dto, const PayloadDTO& payload);
 	
 };
 
-#include OATPP_CODEGEN_END(ApiController)
+// 0 取消API控制器使用宏
+#include OATPP_CODEGEN_END(ApiController) //<- End Codegen
 
 #endif // !_FILECONTROLLER_H_

@@ -140,6 +140,7 @@ file:
 
  field:
   filename: 文件名
+  id: 主键id
   img-url: 图片src
   img-alt: 图片文字描述
   img-href: 图片链接地址

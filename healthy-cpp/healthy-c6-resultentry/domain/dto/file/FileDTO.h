@@ -27,24 +27,48 @@
 /**
  * editorÍ¼Æ¬ÐÅÏ¢´«ÊäÊý¾Ý¶ÔÏó
  */
-class EditorImageDTO : public oatpp::DTO
+class FileDTO : public oatpp::DTO
 {
-	DTO_INIT(EditorImageDTO, DTO);
-	// Í¼Æ¬src
-	API_DTO_FIELD(String, url, ZH_WORDS_GETTER("file.field.img-url"), true, {});
-	// Í¼Æ¬ÎÄ×ÖÃèÊö
-	API_DTO_FIELD_DEFAULT(String, alt, ZH_WORDS_GETTER("file.field.img-alt"));
-	// Í¼Æ¬Á´½ÓµØÖ·
-	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("file.field.img-href"));
-public:
-	EditorImageDTO() {}
-	EditorImageDTO(String url, String alt = "", String href = "") 
-	{
-		this->url = url;
-		this->alt = alt;
-		this->href = href;
+	DTO_INIT(FileDTO, DTO);
+	// Ö÷¼ü
+	DTO_FIELD(String, id);
+	DTO_FIELD_INFO(id) {
+		info->description = ZH_WORDS_GETTER("file.field.id");
 	}
+	// url
+	DTO_FIELD(String, url);
+	DTO_FIELD_INFO(url) {
+		info->description = ZH_WORDS_GETTER("file.field.img-url");
+	}
+	
 };
+
+//class FileDTO : public oatpp::DTO
+//{
+//	DTO_INIT(FileDTO, DTO);
+//	//Ö÷¼üid
+//	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("file.field.id"));
+//	// Í¼Æ¬src
+//	//API_DTO_FIELD(String, url, ZH_WORDS_GETTER("file.field.img-url"), true, {});
+//	API_DTO_FIELD_DEFAULT(String, url, ZH_WORDS_GETTER("file.field.img-url"));
+//	// Í¼Æ¬ÎÄ×ÖÃèÊö
+//	//API_DTO_FIELD_DEFAULT(String, alt, ZH_WORDS_GETTER("file.field.img-alt"));
+//	// Í¼Æ¬Á´½ÓµØÖ·
+//	//API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("file.field.img-href"));
+//public:
+//	FileDTO() {}
+//	FileDTO(String id, String url) {
+//		this->id = id;
+//		this->url = url;
+//	}
+//	//EditorImageDTO(String id="", String url = "")
+//	//{
+//	//	this->id = id;
+//	//	this->url = url;
+//	//	/*this->alt = alt;
+//	//	this->href = href;*/
+//	//}
+//};
 
 #include OATPP_CODEGEN_END(DTO)
 
