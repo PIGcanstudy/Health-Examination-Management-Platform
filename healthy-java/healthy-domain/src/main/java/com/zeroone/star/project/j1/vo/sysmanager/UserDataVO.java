@@ -2,7 +2,7 @@ package com.zeroone.star.project.j1.vo.sysmanager;
 
 import cn.hutool.core.date.DateTime;
 
-import com.zeroone.star.oauth2.entity.Role;
+import com.zeroone.star.project.j1.vo.sysmanager.entiy.Role;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
