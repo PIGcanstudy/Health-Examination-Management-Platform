@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ITDepartmentService extends IService<TDepartment> {
 
+    void updateUpdateBy(String[] ids, String username);
 }
