@@ -31,15 +31,15 @@ class UnitListDTO : public oatpp::DTO
 {
 	DTO_INIT(UnitListDTO, DTO);
 	//姓名
-	API_DTO_FIELD_DEFAULT(String, personName, ZH_WORDS_GETTER("evalue.field.personName"));
+	API_DTO_FIELD_DEFAULT(String, personName, ZH_WORDS_GETTER("getUserName.field.personName"));
 	//性别
-	API_DTO_FIELD_DEFAULT(String, sex, ZH_WORDS_GETTER("evalue.field.sex"));
+	API_DTO_FIELD_DEFAULT(String, sex, ZH_WORDS_GETTER("getUserName.field.sex"));
 	// 年龄
-	API_DTO_FIELD_DEFAULT(UInt32, reviewStatu, ZH_WORDS_GETTER("evalue.field.reviewStatu"));
+	API_DTO_FIELD_DEFAULT(UInt32, age, ZH_WORDS_GETTER("getUserName.field.age"));
 	//体检类型 physicalType
-	API_DTO_FIELD_DEFAULT(String, physicalType, ZH_WORDS_GETTER("evalue.field.physicalType"));
-	//否零星体检(0-否，1-是)
-	API_DTO_FIELD_DEFAULT(UInt32, sporadicPhysical, ZH_WORDS_GETTER("evalue.field.sporadicPhysical"));
+	API_DTO_FIELD_DEFAULT(String, physicalType, ZH_WORDS_GETTER("getUserName.field.physicalType"));
+	//是否零星体检(0-否，1-是)
+	API_DTO_FIELD_DEFAULT(UInt32, sporadicPhysical, ZH_WORDS_GETTER("getUserName.field.sporadicPhysical"));
 
 };
 
@@ -47,17 +47,19 @@ class UnitListDTO : public oatpp::DTO
 * 单位列表分页传输数据对象实体
 */
 class UnitListPageDTO : public PageDTO<UnitListDTO::Wrapper> {
-	DTO_INIT(UnitListPageDTO, DTO);
+	DTO_INIT(UnitListPageDTO, PageDTO<UnitListDTO::Wrapper>);
+	/*
 	//姓名
-	API_DTO_FIELD_DEFAULT(String, personName, ZH_WORDS_GETTER("evalue.field.personName"));
+	API_DTO_FIELD_DEFAULT(String, personName, ZH_WORDS_GETTER("getUserName.field.personName"));
 	//性别
-	API_DTO_FIELD_DEFAULT(String, sex, ZH_WORDS_GETTER("evalue.field.sex"));
+	API_DTO_FIELD_DEFAULT(String, sex, ZH_WORDS_GETTER("getUserName.field.sex"));
 	// 年龄
-	API_DTO_FIELD_DEFAULT(UInt32, reviewStatu, ZH_WORDS_GETTER("evalue.field.reviewStatu"));
+	API_DTO_FIELD_DEFAULT(UInt32, age, ZH_WORDS_GETTER("getUserName.field.age"));
 	//体检类型 physicalType
-	API_DTO_FIELD_DEFAULT(String, physicalType, ZH_WORDS_GETTER("evalue.field.physicalType"));
+	API_DTO_FIELD_DEFAULT(String, physicalType, ZH_WORDS_GETTER("getUserName.field.physicalType"));
 	//否零星体检(0-否，1-是)
-	API_DTO_FIELD_DEFAULT(UInt32, sporadicPhysical, ZH_WORDS_GETTER("evalue.field.sporadicPhysical"));
+	API_DTO_FIELD_DEFAULT(UInt32, sporadicPhysical, ZH_WORDS_GETTER("getUserName.field.sporadicPhysical"));
+	*/
 };
 #include OATPP_CODEGEN_END(DTO)
 #endif // 

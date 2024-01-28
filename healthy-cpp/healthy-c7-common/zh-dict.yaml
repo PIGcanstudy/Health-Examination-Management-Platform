@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 unit:
  filed:
   type: 体检类型
@@ -94,6 +95,9 @@ wordFile:
   fileUrl: 文件的完整路径http://123.123.123.123/----/1.docx
   
 evalue:
+=======
+getUserName:
+>>>>>>> remotes/origin/c7-get-username-whx
  field:
   ispass: 体检类型
   isRecheck: 复查状态
@@ -102,3 +106,10 @@ evalue:
   personName: 姓名
   testNum: 体检编号
   dept: 单位名称
+<<<<<<< HEAD
+=======
+  sex: 性别
+  age: 年龄
+  physicalType: 体检类型
+  sporadicPhysical: 是否零星体检(0-否，1-是)
+>>>>>>> remotes/origin/c7-get-username-whx
