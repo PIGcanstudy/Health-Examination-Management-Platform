@@ -78,7 +78,7 @@ public:
 		API_DEF_ADD_QUERY_PARAMS(String, "sampleCodeName", ZH_WORDS_GETTER("addition.field.sampleCodeName"), ZH_WORDS_GETTER("addition.test.sampleCodeName"), false);
 	}
 	// 定义端点
-	ENDPOINT(API_M_GET, "/downloadsampleCode", downloadFile, QUERY(String, sampleCodeName)) {
+	ENDPOINT(API_M_GET, "/downloadSampleCode", downloadFile, QUERY(String, sampleCodeName)) {
 		return execDownloadSampleCode(sampleCodeName);
 	}
 
@@ -86,7 +86,7 @@ private:
 	// 报告打印 
 	printReportPageJsonVO::Wrapper execQueryprintReport(const printReportQuery::Wrapper& query);
 	// 获取样本条码
-	std::shared_ptr<OutgoingResponse> execDownloadSampleCode(const String& sampleCodeNum);
+	std::shared_ptr<OutgoingResponse> execDownloadSampleCode(const String& sampleCodeName);
 };
 
 // 取消API控制器使用宏

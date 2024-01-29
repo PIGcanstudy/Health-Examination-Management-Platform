@@ -25,10 +25,7 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
-/**
-* 批量打印确认
-* 负责人：晚风
- */
+
 class printReportQuery : public PageQuery
 {
 	DTO_INIT(printReportQuery, PageQuery);

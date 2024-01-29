@@ -45,10 +45,10 @@ printReportPageJsonVO::Wrapper printReportController::execQueryprintReport(const
 	return vo;
 }
 
-std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> printReportController::execDownloadSampleCode(const String& sampleCodeNum)
+std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> printReportController::execDownloadSampleCode(const String& sampleCodeName)
 {
 	// 构建样本条码全路径
-	std::string code_fullPath = "public/static/sampleCode/sampleCode.jpg";
+	std::string code_fullPath = "public/static/sampleCode/SampleCode.png";
 
 	// 读取样本条码
 	auto code_fstring = String::loadFromFile(code_fullPath.c_str());
@@ -64,7 +64,7 @@ std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> printR
 	auto code_response = createResponse(Status::CODE_200, code_fstring);
 
 	// 设置响应头信息
-	code_response->putHeader("Content-Disposition", "attachment; filename=" + sampleCodeNum.getValue("") + ".jpg");
+	code_response->putHeader("Content-Disposition", "attachment; filename=" + sampleCodeName.getValue("") + ".png");
 
 	// 影响成功结果
 	return code_response;

@@ -52,7 +52,7 @@ public:
 	}
 
 	// 定义端点
-	ENDPOINT(API_M_GET, "/downloadfile", downloadFile, QUERY(String , reportName)) {
+	ENDPOINT(API_M_GET, "/downloadReport", downloadFile, QUERY(String , reportName)) {
 		return execDownloadFile(reportName);
 	}
 
