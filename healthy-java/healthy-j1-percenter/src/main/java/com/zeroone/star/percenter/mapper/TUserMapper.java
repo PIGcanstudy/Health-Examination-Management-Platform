@@ -2,6 +2,7 @@ package com.zeroone.star.percenter.mapper;
 
 import com.zeroone.star.percenter.entity.TUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zeroone.star.project.j1.dto.percenter.ModifyPersonalInfoDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -15,4 +16,10 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface TUserMapper extends BaseMapper<TUser> {
 
+
+    /**
+     * 修改个人信息
+     * @param tUser
+     */
+    void updatePersonalInfo(TUser tUser);
 }

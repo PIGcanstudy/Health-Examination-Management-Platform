@@ -3,6 +3,7 @@ package com.zeroone.star.percenter.service;
 import com.zeroone.star.percenter.entity.TUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPasswordDTO;
+import com.zeroone.star.project.j1.dto.percenter.ModifyPersonalInfoDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPhoneDTO;
 import com.zeroone.star.project.vo.JsonVO;
 
@@ -24,6 +25,13 @@ public interface ITUserService extends IService<TUser> {
      * @return JsonVO<String> 返回操作的结果，包括成功或失败的信息
      */
     JsonVO<String> modifyPassword(ModifyPasswordDTO modifyPasswordDTO);
+
+    /**
+     * 修改个人基础信息
+     * @param modifyPersonalInfoDTO 可修改的个人基础信息
+     * @return
+     */
+    void updatePersonalInfo(ModifyPersonalInfoDTO modifyPersonalInfoDTO) throws Exception;
 
     /**
      * 修改用户手机号。

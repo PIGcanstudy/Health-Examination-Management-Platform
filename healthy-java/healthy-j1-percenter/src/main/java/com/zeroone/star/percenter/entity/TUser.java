@@ -26,7 +26,7 @@ public class TUser implements Serializable {
     /**
      * 唯一ID
      */
-    private String id;
+    private Long id;
 
     /**
      * 用户名用于登录

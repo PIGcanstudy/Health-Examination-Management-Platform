@@ -14,10 +14,12 @@ import java.time.LocalDateTime;
 public class ModifyPersonalInfoDTO {
     @ApiModelProperty(value = "用户头像")
     private String avatar;
+    @ApiModelProperty(value = "用户名")
+    private String nickname;
     @ApiModelProperty(value = "性别", example = "男")
     private String sex;
     @ApiModelProperty(value = "生日", example = "1980-12-26 15:24:03")
-    private Timestamp birth;
+    private LocalDateTime birth;
     @ApiModelProperty(value = "所在省市", example = "四川省,成都市,武侯区")
     private String address;
     @ApiModelProperty(value = "街道地址", example = "天府一街")

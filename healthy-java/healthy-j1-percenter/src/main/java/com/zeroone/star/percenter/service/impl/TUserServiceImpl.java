@@ -1,5 +1,6 @@
 package com.zeroone.star.percenter.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.zeroone.star.percenter.entity.TUser;
 import com.zeroone.star.percenter.mapper.TUserMapper;
 import com.zeroone.star.percenter.service.ITUserService;
@@ -7,14 +8,27 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPasswordDTO;
+import com.zeroone.star.project.j1.dto.percenter.ModifyPersonalInfoDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPhoneDTO;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.ResultStatus;
+import org.mapstruct.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 
+@Mapper(componentModel = "spring")
+interface MsUserMapper{
+    /**
+     * 将ModifyPersonalInfoDTO转成TUser
+     * @param modifyPersonalInfoDTO 转换的DTO
+     * @return 转换结果
+     */
+    TUser modifyPersonalInfoDTOToTUser(ModifyPersonalInfoDTO modifyPersonalInfoDTO);
+}
 /**
  * <p>
  * 用户 服务实现类
@@ -32,6 +46,12 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
     @Resource
     private PasswordEncoder passwordEncoder;        // 处理密码的加密和验证
 
+    @Resource
+    private TUserMapper userMapper;
+
+    @Resource
+    private MsUserMapper msUserMapper; // 将各类型的DTO转换成TUser实体
+
 
     /**
      * 更新用户密码。
@@ -43,7 +63,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
     public JsonVO<String> modifyPassword(ModifyPasswordDTO modifyPasswordDTO) {
         try {
             UserDTO currentUser = userHolder.getCurrentUser();
-            Integer userId = currentUser.getId();
+            Long userId = currentUser.getId();
 
             TUser user = this.getById(userId);
             if (user == null) {
@@ -63,6 +83,26 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
         } catch (Exception e) {
             return JsonVO.fail("密码更新失败: " + e.getMessage());
         }
+    }
+
+    /**
+     * 修改个人基础信息
+     * @param modifyPersonalInfoDTO 可修改的个人基础信息
+     * @return
+     */
+    @Override
+    public void updatePersonalInfo(ModifyPersonalInfoDTO modifyPersonalInfoDTO) throws Exception {
+        UserDTO userDTO = userHolder.getCurrentUser();
+        Long userId = userDTO.getId();
+        TUser user = getById(userId);
+        if (user == null) {
+            throw new RuntimeException(ResultStatus.UNAUTHORIZED.getMessage());
+        }
+        TUser tUser = msUserMapper.modifyPersonalInfoDTOToTUser(modifyPersonalInfoDTO);
+        tUser.setId(user.getId());
+        tUser.setUpdateTime(LocalDateTime.now());
+        tUser.setUpdateBy(user.getUsername());
+        userMapper.updatePersonalInfo(tUser);
     }
 
 

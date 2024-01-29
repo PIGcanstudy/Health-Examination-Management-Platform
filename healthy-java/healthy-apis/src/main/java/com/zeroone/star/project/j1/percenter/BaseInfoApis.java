@@ -12,5 +12,5 @@ public interface BaseInfoApis {
      * @param modifyPersonalInfoDTO 可修改的个人基础信息
      * @return
      */
-    JsonVO<String> modifyPersonalInfo(ModifyPersonalInfoDTO modifyPersonalInfoDTO);
+    JsonVO<String> modifyPersonalInfo(ModifyPersonalInfoDTO modifyPersonalInfoDTO) throws Exception;
 }
