@@ -1,18 +1,18 @@
 <template>
-  <div class="box-card">
+  <div class="Leftside_bar">
     <!-- 顶部标题区域 -->
     <template v-if="props?.useHeader">
-      <el-card class="card-header">
+      <div class="card-header">
         <span>{{ props.title }}</span>
-      </el-card>
+      </div>
     </template>
     <!-- 是否使用el-tabs-插槽 -->
     <div class="change-page">
       <slot name="change-page"></slot>
     </div>
 
-    <!-- 主体部分的内容 -->
-    <el-card class="card-main" shadow="hover">
+    <!-- 主体部分 -->
+    <div class="card-body">
       <!-- 使用多个按钮组(插槽) -->
       <div class="button-group">
         <slot name="button-group"></slot>
@@ -29,7 +29,9 @@
           <el-row>
             <el-form-item v-if="props.isShowCheckbox" prop="checkbox" style="display: flex; margin-right: auto">
               <el-radio-group v-model="form.checkbox">
-                <el-radio v-for="item in checkboxItem" :key="item" :label="item" />
+                <!-- <el-radio v-for="item in checkboxItem" :key="item" :label="item" /> -->
+                <el-radio label="已检" />
+                <el-radio label="未检" />
               </el-radio-group>
             </el-form-item>
 
@@ -48,29 +50,31 @@
           </el-form-item>
 
           <!-- 查询输入框区域 -->
-          <!-- 姓名输入项，固定显示 -->
           <el-form-item v-if="props.isShowNameInput" prop="name">
             <el-input v-model="form.name" placeholder="请输入姓名" clearable />
           </el-form-item>
           <!-- 从父组件传入的其他表单项 -->
-          <div v-if="isShowInput">
+          <!-- <div v-if="isShowInput">
             <el-form-item v-for="(item, index) of externalFormItems" :key="index">
               <el-input v-model="item.name" :placeholder="item.placeholder" clearable />
             </el-form-item>
-          </div>
+          </div> -->
 
           <!-- 从父组件传入的其他表单项(插槽方式，暂时保留) -->
           <!-- 以下是示例代码，在没有接口数据传入之前，没有死数据填充会导致被折叠的输入框不展开 -->
-          <!-- <div v-if="isShowInput"> -->
-          <!-- 身份证搜索框(插槽) -->
-          <!-- <slot name="id-input"></slot>
-              <el-form-item prop="serialNumber">
-                <el-input v-model="form.serialNumber" placeholder="请输入体检编号" clearable />
-              </el-form-item>
-              <el-form-item prop="workplace">
-                <el-input v-model="form.workplace" placeholder="请输入单位名称" clearable></el-input>
-              </el-form-item>
-          </div> -->
+          <div v-if="isShowInput">
+            <!-- 身份证搜索框(插槽) -->
+            <slot name="id-input"></slot>
+            <el-form-item prop="serialNumber">
+              <el-input v-model="form.serialNumber" placeholder="请输入体检编号" clearable />
+            </el-form-item>
+            <el-form-item prop="workplace">
+              <el-input v-model="form.workplace" placeholder="请输入单位名称" clearable></el-input>
+            </el-form-item>
+            <el-form-item prop="workplace">
+              <el-input v-model="form.workplace" placeholder="请输入单位名称" clearable></el-input>
+            </el-form-item>
+          </div>
 
           <!-- 表单按钮区域 -->
           <el-form-item>
@@ -92,21 +96,49 @@
       </div>
 
       <!-- 原表格，可以注释掉以测试列表样式 -->
+      <el-table v-loading="openLoading" style="font-size: 12px; width: 100%; height: 350" table-layout="auto" :data="props?.tableData" @selection-change="handleSelectionChange">
+        <!-- 第一列：多选 -->
+        <el-table-column v-if="props?.useSelectColumn" type="selection" width="55"></el-table-column>
 
+        <!-- <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label"> -->
+        <!-- 表格的列内容如果使用tag -->
+        <!-- <template v-if="item.useTag" #default="{ row }">
+            <el-tag :type="row[item.prop].tagType">
+              {{ row[item.prop].value }}
+            </el-tag>
+          </template>
+        </el-table-column> -->
+
+        <el-table-column prop="name" label="姓名"></el-table-column>
+        <el-table-column prop="gender" label="性别"></el-table-column>
+        <el-table-column prop="age" label="年龄"></el-table-column>
+        <el-table-column prop="tag" label="标签" style="display: flex">
+          <template #default>
+            <el-tag :type="info">好</el-tag>
+            <el-tag :type="info">坏</el-tag>
+          </template>
+        </el-table-column>
+
+        <!-- 表格没有数据的样式 -->
+        <template #empty>
+          <el-empty class="emptyTable" description="没有数据"></el-empty>
+        </template>
+      </el-table>
 
       <!-- 分页器 -->
-      <template v-if="props?.usePagination" #footer>
+      <template v-if="props?.usePagination">
         <el-pagination
           v-model:current-page="paginationData.currentPage"
           v-model:page-size="paginationData.pageSize"
           :page-sizes="props.pageSizes"
-          layout=" prev, jumper, next"
+          layout=" prev,pager, next"
           :total="props.total"
+          pager-count="5"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
         />
       </template>
-    </el-card>
+    </div>
   </div>
 </template>
 
@@ -132,13 +164,13 @@ const props = defineProps({
     default: true
   },
   // 当前checkbox状态
-  checkboxItem: {
-    type: Array,
-    require: true,
-    default: () => {
-      return ['已检', '未检']
-    }
-  },
+  // checkboxItem: {
+  //   type: Array,
+  //   require: true,
+  //   default: () => {
+  //     return ['已检', '未检']
+  //   }
+  // },
   // 当前switch状态
   checkSwitchItem: {
     type: Array,
@@ -187,7 +219,7 @@ const props = defineProps({
   pageSizes: {
     type: Array,
     default: () => {
-      return [10]
+      return [5]
     }
   },
   // 表格的数据数量
@@ -212,7 +244,8 @@ const props = defineProps({
 // 表单验证逻辑
 const form = ref({
   // 设置默认选择哪个状态
-  checkbox: props.checkboxItem[0],
+  // checkbox: props.checkboxItem[0],
+  checkbox: '已检',
   switch: false,
   name: '',
   id: '',
@@ -258,84 +291,84 @@ const rows = ref([])
 const openLoading = ref(false)
 
 // 表格数据存放区域
-const defaultTableData = [
-  {
-    name: '张楠楠',
-    gender: '女',
-    age: '30',
-    tag: '健'
-  },
-  {
-    name: '张楠楠',
-    gender: '女',
-    age: '30',
-    tag: '零'
-  },
-  {
-    name: '张楠楠',
-    gender: '女',
-    age: '30',
-    tag: '零'
-  },
-  {
-    name: '张楠楠',
-    gender: '女',
-    age: '30',
-    tag: '零'
-  },
-  {
-    name: '张楠楠',
-    gender: '女',
-    age: '30',
-    tag: '零'
-  },
-  {
-    name: '张楠楠',
-    gender: '女',
-    age: '30',
-    tag: '零'
-  },
-  {
-    name: '张楠楠',
-    gender: '女',
-    age: '30',
-    tag: '零'
-  },
-  {
-    name: '张楠楠',
-    gender: '女',
-    age: '30',
-    tag: '零'
-  },
-  {
-    name: '张楠楠',
-    gender: '女',
-    age: '30',
-    tag: '零'
-  },
-  {
-    name: '张楠楠',
-    gender: '女',
-    age: '30',
-    tag: '零'
-  }
-]
+// const defaultTableData = [
+//   {
+//     name: '张楠楠',
+//     gender: '女',
+//     age: '30',
+//     tag: '健'
+//   },
+//   {
+//     name: '张楠楠',
+//     gender: '女',
+//     age: '30',
+//     tag: '零'
+//   },
+//   {
+//     name: '张楠楠',
+//     gender: '女',
+//     age: '30',
+//     tag: '零'
+//   },
+//   {
+//     name: '张楠楠',
+//     gender: '女',
+//     age: '30',
+//     tag: '零'
+//   },
+//   {
+//     name: '张楠楠',
+//     gender: '女',
+//     age: '30',
+//     tag: '零'
+//   },
+//   {
+//     name: '张楠楠',
+//     gender: '女',
+//     age: '30',
+//     tag: '零'
+//   },
+//   {
+//     name: '张楠楠',
+//     gender: '女',
+//     age: '30',
+//     tag: '零'
+//   },
+//   {
+//     name: '张楠楠',
+//     gender: '女',
+//     age: '30',
+//     tag: '零'
+//   },
+//   {
+//     name: '张楠楠',
+//     gender: '女',
+//     age: '30',
+//     tag: '零'
+//   },
+//   {
+//     name: '张楠楠',
+//     gender: '女',
+//     age: '30',
+//     tag: '零'
+//   }
+// ]
 
 // 分页数据的处理逻辑
 const paginationData = ref({
   currentPage: 1,
-  pageSize: props.pageSizes ? props.pageSizes[0] : 10
+  pageSize: props.pageSizes ? props.pageSizes[0] : 5
 })
 
 const handleSizeChange = (pageSize) => {
-  // 当前页的数据容量改变，重置页码为1(因页面大小限制，每页条数固定值为10)
+  // 当前页的数据容量改变，重置页码为1
   paginationData.value.currentPage = 1
   // 传入当期那页面的容量大小和当前页面
   emits('updateTableData', pageSize, paginationData.value.currentPage)
 }
 const handleCurrentChange = (currentPage) => {
   paginationData.value.currentPage = currentPage
-  // 传入当前页码容量(默认值10)和当前页码
+  // 传入当前页码容量(默认值5)和当前页码
   emits('updateTableData', paginationData.value.pageSize, currentPage)
 }
 
@@ -356,15 +389,13 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
-.box-card {
+.Leftside_bar {
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  position: relative;
 }
 
 .card-header {
-  height: 7%;
+  height: 5%;
   display: flex;
   text-align: center;
   justify-content: center;
@@ -379,10 +410,14 @@ defineExpose({
   }
 }
 
-.card-main {
-  min-height: 93%;
+.card-body {
+  height: 95%;
   width: 100%;
-  height: 83vh;
+  padding: 15px;
+  background-color: #fff;
+}
+.card-body:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 9px 0px;
 }
 
 .emptyTable {
@@ -391,7 +426,10 @@ defineExpose({
 }
 
 .el-pagination {
+  display: flex;
   justify-content: center;
-  margin-top: 75px;
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
 }
 </style>

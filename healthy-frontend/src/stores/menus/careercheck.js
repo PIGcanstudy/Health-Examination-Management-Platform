@@ -1,7 +1,7 @@
 // 职业体检菜单数据
 let testMenus = {
   id: 2,
-  text: '从业体检系统',
+  text: '职业体检系统',
   icon: 'IconUser',
   children: [
     {
@@ -92,7 +92,7 @@ let testMenus = {
     {
       id: 13,
       text: '数据网报',
-      href: '/careercheck/DatanetworkReport.vue',
+      href: '/careercheck/NetworkRecords.vue',
       icon: 'IconSetting',
       pid: 1
     }

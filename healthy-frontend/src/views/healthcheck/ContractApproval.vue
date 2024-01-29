@@ -119,7 +119,7 @@
           <el-footer><el-button @click="CloseCard">取消</el-button>
               <el-button>提交</el-button>
 </el-footer>
-        </el-container>
+        </el-container> 
       </el-container>
     </el-container>
     

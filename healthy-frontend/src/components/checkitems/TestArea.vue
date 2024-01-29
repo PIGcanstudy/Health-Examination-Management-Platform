@@ -15,7 +15,7 @@
     :hideButton="hideButton"  :openDrawer="openDrawer"
     :tableLieForTc="tableLieForTc"  :tableDataForTc="tableDataForTc"
     :selectDown="selectDown" :isShowSelectDown="isShowSelectDown"
-    :EditDButtonShow="EditDButtonShow"    
+    :EditDButtonShow="EditDButtonShow" :isShowNew="isShowNew"    
      @submitTc="submitTc"  />
             </el-form-item>
             <el-form-item label="体检小结" class="bold-label">
@@ -35,7 +35,7 @@
     :hideButton="hideButton"  :openDrawer="openDrawer"
     :tableLieForTc="tableLieForTc"  :tableDataForTc="tableDataForTc"
     :selectDown="selectDown" :isShowSelectDown="isShowSelectDown"
-    :EditDButtonShow="EditDButtonShow"  
+    :EditDButtonShow="EditDButtonShow" :isShowNew="isShowNew"  
      @submitTc="submitTc"  />
             </el-form-item>
             <el-form-item label="检查医生" class="bold-label">
@@ -80,10 +80,10 @@
 import { reactive,ref,defineProps,watch,defineEmits, createHydrationRenderer} from 'vue'
 import CheckItems from '@/components/checkitems/CheckItems.vue'
 
-// const textarea1 = ref()
-// const textarea2 = ref()
-// const checkDate = ref()
-// const jcys = ref()
+
+
+//是否显示新增按钮
+const isShowNew = ref(true)
 
 // 表单数据
 const formInline = reactive({
@@ -249,6 +249,8 @@ const selectDown =[
     label: '蔡徐坤11',
   }
 ]
+
+
 
 </script>
   
