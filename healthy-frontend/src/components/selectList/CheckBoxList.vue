@@ -46,10 +46,6 @@ function handleItemChange() {
 </script>
 
 <style scoped>
-.all {
-  margin-inline: 10px;
-  padding-inline: 10px;
-}
 .group {
   display: block;
 }

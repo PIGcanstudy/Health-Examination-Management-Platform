@@ -5,7 +5,7 @@
       <el-aside>
         <PeoplleList :isShowCheckbox="false" :isShowSwitch="false" title="报告查询">
           <template #table-area>
-            <SelectList use-which="radio" :lists-data="listsData"></SelectList>
+            <SelectList use-which="checkbox" :lists-data="listsData"></SelectList>
           </template>
         </PeoplleList>
       </el-aside>
@@ -55,7 +55,7 @@
                 </el-col>
                 <el-col span="12">
                   <el-form-item label="体检人数">
-                    <el-input v-model="formData.num" placeholder="请输入" clearable />
+                    <el-input-number v-model="formData.num" :min="0" clearable />
                   </el-form-item>
                 </el-col>
               </el-row>
@@ -77,6 +77,7 @@
                 <el-form-item style="width: 100%" class="result" label="体检结论与处理意见" prop="result">
                   <el-input v-model="formData.result" :autosize="{ minRows: 6 }" placeholder="请输入" clearable
                     type="textarea" />
+                <CheckItems bottonTitle="选"></CheckItems>
                 </el-form-item>
               </el-row>
             </el-form>
@@ -114,6 +115,7 @@ import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import Head from '@/components/head/Head.vue'
 import Excel from '@/components/excel/Excel.vue'
 import SelectList from '@/components/selectList/SelectList.vue'
+import CheckItems from '@/components/checkitems/CheckItems.vue'
 
 // 修改&保存按钮
 const isDisabled = ref(true)
@@ -147,7 +149,7 @@ const formData = reactive(
     checkUnit: '',
     commissionedUnit: '',
     date: '',
-    num: '',
+    num: 0,
     project: '',
     reason: '',
     result: ''
