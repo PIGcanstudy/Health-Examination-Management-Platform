@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @ApiModel(value = "新建用户", description = "获取新用户数据传输对象")
@@ -23,8 +24,8 @@ public class CreateUserDTO {
     @ApiModelProperty(value = "手机号", required = true)
     private String mobile;
 
-    @ApiModelProperty(value = "所属部门", required = true)
-    private String departmentTitle;
+    @ApiModelProperty(value = "所属部门ID", required = true)
+    private Long departmentId;
 
     @ApiModelProperty(value = "邮箱")
     private String email;
@@ -39,7 +40,7 @@ public class CreateUserDTO {
     private String avatar;
 
     @ApiModelProperty(value = "角色分配")
-    private Long departmentId;
+    private List<Long> roleIds;
 
     @ApiModelProperty(value = "所在地区")
     private String address;

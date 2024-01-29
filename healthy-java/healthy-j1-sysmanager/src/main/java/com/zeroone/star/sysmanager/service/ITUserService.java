@@ -1,5 +1,6 @@
 package com.zeroone.star.sysmanager.service;
 
+import com.zeroone.star.project.j1.dto.percenter.CreateUserDTO;
 import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.sysmanager.entity.TUser;
@@ -28,4 +29,10 @@ public interface ITUserService extends IService<TUser> {
 	 * @return
 	 */
 	void modifyUser(ModifyUserDTO user);
+
+	/**
+	 * 新增用户
+	 * @param user
+	 */
+	void saveUser(CreateUserDTO user);
 }

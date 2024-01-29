@@ -56,7 +56,7 @@ public interface UserDataApis {
 	 * @param user 用户实体
 	 * @return
 	 */
-	JsonVO createUser(CreateUserDTO user);
+	JsonVO addUser(CreateUserDTO user);
 
 	/**
 	 * 批量删除用户

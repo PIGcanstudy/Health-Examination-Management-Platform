@@ -2,7 +2,6 @@ package com.zeroone.star.sysmanager.controller;
 
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j1.dto.percenter.CreateUserDTO;
-import com.zeroone.star.project.j1.dto.percenter.entity.TUser;
 import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
 import com.zeroone.star.project.j1.dto.sysmanager.UserDTO;
 import com.zeroone.star.project.j1.query.sysmanager.UserListQuery;
@@ -20,19 +19,13 @@ import com.zeroone.star.sysmanager.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.cache.annotation.CachePut;
-
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -120,44 +113,13 @@ public class UserDataController implements UserDataApis {
      * @return
      */
     @Override
-    @PostMapping("/add-user")
+    @PostMapping("/add-newUser")
     @ApiOperation("新增用户")
-    public JsonVO createUser(@RequestBody CreateUserDTO user) {
-        try {
-            // 将DTO转换为TUser实体
-            TUser tuser = convertDTOToEntity(user);
-
-            // 调用UserService的方法保存用户
-            userDataService.createUser(tuser);
-
-            return JsonVO.success("新增成功");
-        } catch (Exception e) {
-            log.error("新增用户失败", e);
-            return JsonVO.fail("新增失败");
-        }
+    public JsonVO addUser(@RequestBody CreateUserDTO user) {
+        itUserService.saveUser(user);
+        return JsonVO.success("新增成功");
     }
 
-
-    // 辅助方法：将DTO转换为TUser实体
-    private TUser convertDTOToEntity(CreateUserDTO createUserDTO) {
-        TUser user = new TUser();
-        user.setUsername(createUserDTO.getUsername());
-        user.setPassword(createUserDTO.getPassword());
-        user.setNickname(createUserDTO.getNickname());
-        user.setMobile(createUserDTO.getMobile());
-        user.setDepartmentTitle(createUserDTO.getDepartmentTitle());
-        user.setEmail(createUserDTO.getEmail());
-        user.setSex(createUserDTO.getSex());
-        user.setType(createUserDTO.getType());
-        user.setAvatar(createUserDTO.getAvatar());
-        user.setDepartmentId(createUserDTO.getDepartmentId());
-        user.setAddress(createUserDTO.getAddress());
-        user.setStreet(createUserDTO.getStreet());
-        user.setAutograph(createUserDTO.getAutograph());
-        user.setBirth(createUserDTO.getBirth());
-        user.setDescription(createUserDTO.getDescription());
-        return user;
-    }
     /**
      * 批量删除用户
      * @param ids 用户id

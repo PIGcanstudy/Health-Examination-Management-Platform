@@ -8,6 +8,7 @@ import cn.hutool.core.io.FastByteArrayOutputStream;
 import cn.hutool.core.util.IdUtil;
 import com.zeroone.star.login.service.IMenuService;
 import com.zeroone.star.login.service.OauthService;
+import com.zeroone.star.login.service.UserService;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.constant.AuthConstant;
@@ -53,6 +54,9 @@ public class LoginController implements LoginApis {
     UserHolder userHolder;
     @Resource
     RedisTemplate redisTemplate;
+
+    @Resource
+    UserService userService;
 
     @ApiOperation(value = "授权登录")
     @PostMapping("auth-login")
@@ -133,9 +137,10 @@ public class LoginController implements LoginApis {
             return JsonVO.fail(null);
         } else {
             //TODO:这里需要根据业务逻辑接口，重新实现
-            LoginVO vo = new LoginVO();
-            BeanUtil.copyProperties(currentUser, vo);
-            return JsonVO.success(vo);
+            LoginVO loginVO = userService.getUserById(currentUser.getId());
+//            LoginVO vo = new LoginVO();
+//            BeanUtil.copyProperties(currentUser, vo);
+            return JsonVO.success(loginVO);
         }
     }
 

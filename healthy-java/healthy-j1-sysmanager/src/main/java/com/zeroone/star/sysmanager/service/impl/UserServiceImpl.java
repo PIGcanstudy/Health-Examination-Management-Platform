@@ -70,6 +70,9 @@ public class UserServiceImpl implements UserService {
         if (user == null || user.getDelFlag()) {
             throw new RuntimeException("用户不存在");
         }
+        if (user.getStatus() == 1) {
+            throw new RuntimeException("用户处于禁用状态");
+        }
         return user;
     }
 

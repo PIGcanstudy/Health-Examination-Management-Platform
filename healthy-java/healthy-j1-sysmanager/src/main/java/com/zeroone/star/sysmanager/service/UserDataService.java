@@ -16,4 +16,5 @@ public interface UserDataService {
 
     //删除用户
     JsonVO deleteUserList(List<String> ids);
+
 }
