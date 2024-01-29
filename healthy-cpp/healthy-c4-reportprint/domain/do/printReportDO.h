@@ -23,16 +23,4 @@
 #define _DOWNLOADREPORT_DO_
 #include "./DoInclude.h"
 
-/**
- * 获取列表数据库实体类
- * 负责人：晚风
- */
-class PackageDO
-{
-	// 报告编号
-	CC_SYNTHESIZE(string, reportNum, ReportNum);
-public:
-	PackageDO() = default;
-};
-
 #endif // !_PACKAGE_DO_

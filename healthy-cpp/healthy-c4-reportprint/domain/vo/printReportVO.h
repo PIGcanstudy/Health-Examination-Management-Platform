@@ -25,19 +25,13 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
-/**
-* 批量下载PDF报告
-* 负责人：晚风
- */
 class printReportJsonVO : public JsonVO<printReportDTO::Wrapper> {
 	DTO_INIT(printReportJsonVO, JsonVO<printReportDTO::Wrapper>);
 };
 
-
 class printReportPageJsonVO : public JsonVO<printReportPageDTO::Wrapper> {
 	DTO_INIT(printReportPageJsonVO, JsonVO<printReportPageDTO::Wrapper>);
 };
-
 #include OATPP_CODEGEN_END(DTO)
 
 #endif // !_PRINTREPORTS_VO_

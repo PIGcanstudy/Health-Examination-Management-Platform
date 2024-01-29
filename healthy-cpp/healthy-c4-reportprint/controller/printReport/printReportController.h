@@ -58,8 +58,6 @@ public:
 		API_DEF_ADD_QUERY_PARAMS(String, "page", ZH_WORDS_GETTER("print.field.page"), "all", false);
 		// 每个工作表的页数
 		API_DEF_ADD_QUERY_PARAMS(UInt16, "pageNumPerTable", ZH_WORDS_GETTER("print.field.pageNumPerTable"), 1, false);
-		// 是否打印样本条码
-		API_DEF_ADD_QUERY_PARAMS(Boolean, "printSampleCode", ZH_WORDS_GETTER("print.field.printSampleCode"), false, false);
 	}
 	// 定义查询接口处理
 	ENDPOINT(API_M_GET, "/printReport", queryprintReport, QUERIES(QueryParams, params),API_HANDLER_AUTH_PARAME) {
@@ -72,19 +70,19 @@ public:
 	// 定义一个样本条码获取接口
 	// 定义描述
 	ENDPOINT_INFO(downloadFile) {
-		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("file.download.summary"), Void);
-		API_DEF_ADD_QUERY_PARAMS(String, "sampleCodeNum", ZH_WORDS_GETTER("addition.sampleCodeNum"), "123456", true);
+		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("print.get.sampleCode"), Void);
+		API_DEF_ADD_QUERY_PARAMS(String, "sampleCodeNum", ZH_WORDS_GETTER("addition.sampleCodeNum"), "12345678", true);
 	}
 	// 定义端点
 	ENDPOINT(API_M_GET, "/sampleCode/download", downloadFile, QUERY(String, sampleCodeNum)) {
-		return execDownloadFile(sampleCodeNum);
+		return execDownloadSampleCode(sampleCodeNum);
 	}
 
 private:
 	// 报告打印 
 	printReportPageJsonVO::Wrapper execQueryprintReport(const printReportQuery::Wrapper& query);
 	// 获取样本条码
-	std::shared_ptr<OutgoingResponse> execDownloadFile(const String& sampleCodeNum);
+	std::shared_ptr<OutgoingResponse> execDownloadSampleCode(const String& sampleCodeNum);
 };
 
 // 取消API控制器使用宏

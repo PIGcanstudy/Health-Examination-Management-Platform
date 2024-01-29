@@ -45,7 +45,7 @@ printReportPageJsonVO::Wrapper printReportController::execQueryprintReport(const
 	return vo;
 }
 
-std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> printReportController::execDownloadFile(const String& sampleCodeNum)
+std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> printReportController::execDownloadSampleCode(const String& sampleCodeNum)
 {
 	// 构建文件全路径
 	std::string fullPath = "public/static/sampleCode/sampleCode.jpg";

@@ -25,7 +25,7 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * editor图片信息传输数据对象
+ * 信息传输数据对象
  */
 class downloadReportDTO : public oatpp::DTO
 {

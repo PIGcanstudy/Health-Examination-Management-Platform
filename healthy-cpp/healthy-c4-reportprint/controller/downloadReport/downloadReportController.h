@@ -48,7 +48,7 @@ public:
 	}
 
 	// 定义端点
-	ENDPOINT(API_M_GET, "/file/download", downloadFile, QUERY(String, id)) {
+	ENDPOINT(API_M_GET, "/downloadfile", downloadFile, QUERY(String, id)) {
 		return execDownloadFile(id);
 	}
 

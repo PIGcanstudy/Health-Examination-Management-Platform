@@ -22,11 +22,6 @@
 #include "../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
-
-/**
-* 批量打印确认
-* 负责人：晚风
- */
 class printReportDTO : public oatpp::DTO
 {
 	DTO_INIT(printReportDTO, DTO);
@@ -50,14 +45,8 @@ class printReportDTO : public oatpp::DTO
 	DTO_FIELD_INFO(pageNumPerTable) {
 		info->description = ZH_WORDS_GETTER("print.field.pageNumPerTable");
 	}
-public:
-	printReportDTO() {}
 };
 
-/*
-* 批量打印确认
-* 负责人：晚风
- */
 class printReportPageDTO : public PageDTO<printReportDTO::Wrapper>
 {
 	DTO_INIT(printReportPageDTO, PageDTO<printReportDTO::Wrapper>);
