@@ -40,6 +40,7 @@
 
 #include "controller/interro/InterroController.h"
 #include "result-entry/ClAbanProjController.h"
+#include "GroupPersonInfo/GroupPersonInfoController.h"
 
 #include "file/FileController.h"
 
@@ -82,7 +83,8 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(BaseProjectController);
 	ROUTER_SIMPLE_BIND(PersonController);
 	ROUTER_SIMPLE_BIND(FileController);
-
+	ROUTER_SIMPLE_BIND(GroupPersonInfoController);
+	
 }
 
 #ifdef HTTP_SERVER_DEMO
