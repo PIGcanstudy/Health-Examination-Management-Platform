@@ -42,6 +42,4 @@ addition:
   sampleCodeName: 条码名称
  test:
   testReportName: 职业健康体检报告
-  saveAsPDF: 另存为PDF
-  all: 全部
   sampleCodeName: 职业健康体检条码
