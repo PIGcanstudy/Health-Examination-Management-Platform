@@ -36,10 +36,48 @@
       <el-container>
         <!-- 导航栏 -->
         <el-header>
+          <!-- 伸缩按钮 -->
           <el-button class="collBtn" @click="isCollapsed = !isCollapsed">
             <el-icon v-if="!isCollapsed"><icon-arrow-left-bold /></el-icon>
             <el-icon v-if="isCollapsed"><icon-arrow-right-bold /></el-icon>
           </el-button>
+
+          <!-- 下拉菜单 -->
+          <el-dropdown>
+            <span class="el-dropdown-link">
+              Dropdown List
+              <el-icon class="el-icon--right">
+                <arrow-down />
+              </el-icon>
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu style="display: ">
+                <router-link to="/"><el-dropdown-item>AAAA</el-dropdown-item></router-link>
+                <el-dropdown-item :icon="Plus">Action 3</el-dropdown-item>
+                <el-dropdown-item>Action 3</el-dropdown-item>
+                <el-dropdown-item disabled>Action 4</el-dropdown-item>
+                <el-dropdown-item divided>Action 5</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+
+          <!-- 用户信息 -->
+          <el-dropdown class="ml-2">
+            <el-button type="" circle>
+              <el-icon :size="20">
+                <UserFilled />
+              </el-icon>
+            </el-button>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item>Action 1</el-dropdown-item>
+                <el-dropdown-item>Action 2</el-dropdown-item>
+                <el-dropdown-item>Action 3</el-dropdown-item>
+                <el-dropdown-item disabled>Action 4</el-dropdown-item>
+                <el-dropdown-item divided>Action 5</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
           <div>{{ userInfo }}</div>
         </el-header>
         <el-main style="padding: 0">
@@ -53,6 +91,9 @@
 <script setup>
 import { ref } from 'vue'
 import { userStore } from '../stores/user'
+import { ArrowDown } from '@element-plus/icons-vue'
+
+import { Check, CircleCheck, CirclePlus, CirclePlusFilled, Plus } from '@element-plus/icons-vue'
 // import { Expand } from '@element-plus/icons-vue'
 
 // 本界面变量及函数
@@ -90,12 +131,15 @@ const menus = store.getMenus
   padding: 20px;
 }
 .el-header {
-  background-color: #6c777f;
+  // background-color: #6c777f;
+  border-bottom: solid 1px var(--el-border-color);
   color: #f8f8f8;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
+  .el-dropdown {
+  }
   .collBtn {
     width: 32px;
     font-size: 22px;
