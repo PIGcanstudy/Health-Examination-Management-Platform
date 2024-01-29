@@ -1,5 +1,6 @@
 package com.zeroone.star.portfolioitems.service.impl;
 
+import com.alibaba.cloud.commons.lang.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.portfolioitems.entity.TPortfolioProject;
@@ -49,7 +50,16 @@ public class TPortfolioProjectServiceImpl extends ServiceImpl<TPortfolioProjectM
     public PageDTO<PortfolioItemListDTO> listPortfolioItems(PortfolioItemListQuery query) throws Exception {
         Page<TPortfolioProject> tPortfolioProjectPage = new Page<>(query.getPageIndex(), query.getPageSize());
         QueryWrapper<TPortfolioProject> wrapper = new QueryWrapper<>();
-        wrapper.like("name", query.getName());
+
+        // 判断是否需要添加条件
+        // 如果字段为空，不需要加条件
+        if (StringUtils.isNotBlank(query.getName())) {
+            wrapper.like("name", query.getName());
+        }
+
+        if (StringUtils.isNotBlank(query.getShortName())) {
+            wrapper.like("short_name", query.getShortName());
+        }
         Page<TPortfolioProject> result = baseMapper.selectPage(tPortfolioProjectPage, wrapper);
         return PageDTO.create(result, src -> msTPortfolioProjectStruct.pDosToTDtos(src));
     }
