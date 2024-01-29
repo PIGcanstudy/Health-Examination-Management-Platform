@@ -92,33 +92,7 @@
       </div>
 
       <!-- 原表格，可以注释掉以测试列表样式 -->
-      <el-table v-loading="openLoading" style="font-size: 12px; width: 100%; height: 350" table-layout="auto" :data="props?.tableData" @selection-change="handleSelectionChange">
-        <!-- 第一列：多选 -->
-        <el-table-column v-if="props?.useSelectColumn" type="selection" width="55"></el-table-column>
-        <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label">
-          <!-- 表格的列内容如果使用tag -->
-          <template v-if="item.useTag" #default="{ row }">
-            <el-tag :type="row[item.prop].tagType">
-              {{ row[item.prop].value }}
-            </el-tag>
-          </template>
-        </el-table-column>
 
-        <!-- <el-table-column prop="name" label="姓名"></el-table-column>
-        <el-table-column prop="gender" label="性别"></el-table-column>
-        <el-table-column prop="age" label="年龄"></el-table-column> -->
-        <!-- <el-table-column prop="tag" label="标签" style="display: flex">
-          <template #default>
-            <el-tag :type="info">好</el-tag>
-            <el-tag :type="info">坏</el-tag>
-          </template>
-        </el-table-column> -->
-
-        <!-- 表格没有数据的样式 -->
-        <template #empty>
-          <el-empty class="emptyTable" description="没有数据"></el-empty>
-        </template>
-      </el-table>
 
       <!-- 分页器 -->
       <template v-if="props?.usePagination" #footer>
