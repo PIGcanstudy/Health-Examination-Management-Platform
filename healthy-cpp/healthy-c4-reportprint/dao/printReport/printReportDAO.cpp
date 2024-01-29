@@ -36,3 +36,9 @@ if (query->age) { \
 	sql << " AND age=?"; \
 	SQLPARAMS_PUSH(params, "i", int, query->age.getValue(0)); \
 }
+
+int printReportDAO::update(const printReportDO & uObj)
+{
+	string sql = "UPDATE `sample` SET `name`=?, `sex`=?, `age`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%i%ull", uObj.getName(), uObj.getSex(), uObj.getAge(), uObj.getId());
+}

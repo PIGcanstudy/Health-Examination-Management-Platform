@@ -29,5 +29,9 @@
 class printReportDAO : public BaseDAO
 {
 public:
+	// 修改数据
+	int update(const printReportDO& uObj);
 };
+
+
 #endif // !_printReport_DAO_

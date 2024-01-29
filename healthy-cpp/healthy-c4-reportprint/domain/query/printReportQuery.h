@@ -29,6 +29,8 @@
 class printReportQuery : public PageQuery
 {
 	DTO_INIT(printReportQuery, PageQuery);
+	// ´òÓ¡×´Ì¬
+	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("preview.field.personId"));
 };
 
 #include OATPP_CODEGEN_END(DTO)

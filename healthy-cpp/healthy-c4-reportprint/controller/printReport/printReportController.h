@@ -38,34 +38,11 @@ class printReportController : public oatpp::web::server::api::ApiController // 1
 
 	// 定义接口
 public:
-	// 定义查询接口描述
-	ENDPOINT_INFO(queryprintReport) {
-		// 定义接口标题
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("print.get.print"));
-		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
-		API_DEF_ADD_AUTH();
-		// 定义响应参数格式
-		API_DEF_ADD_RSP_JSON_WRAPPER(printReportJsonVO);
+	// 定义一个报告打印确认接口
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("print.get.print"), modifyprintReport, Uint64JsonVO::Wrapper);
+	// 定义接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/printConfire", modifyprintReport, BODY_DTO(printReportDTO::Wrapper, dto), execModifyprintReport(dto));
 
-		// 定义其他查询参数描述
-		// 待打印的报告编号
-		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("preview.field.reportNum"), "1202204010001", true);
-		// 打印状态
-		API_DEF_ADD_QUERY_PARAMS(String, "printState", ZH_WORDS_GETTER("print.field.printState"), "finished", false);
-		// 目标打印机
-		API_DEF_ADD_QUERY_PARAMS(String, "targetPrinter", ZH_WORDS_GETTER("print.field.targetPrinter"), ZH_WORDS_GETTER("addition.test.saveAsPDF"), false);
-		// 页面
-		API_DEF_ADD_QUERY_PARAMS(String, "page", ZH_WORDS_GETTER("print.field.page"), ZH_WORDS_GETTER("addition.test.all"), false);
-		// 每个工作表的页数
-		API_DEF_ADD_QUERY_PARAMS(UInt16, "pageNumPerTable", ZH_WORDS_GETTER("print.field.pageNumPerTable"), 1, false);
-	}
-	// 定义查询接口处理
-	ENDPOINT(API_M_GET, "/printReport", queryprintReport, QUERIES(QueryParams, params),API_HANDLER_AUTH_PARAME) {
-		// 解析查询参数为Query领域模型
-		API_HANDLER_QUERY_PARAM(uq, printReportQuery, params);
-		// 呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execQueryprintReport(uq));
-	}
 
 	// 定义一个样本条码获取接口
 	// 定义描述
@@ -84,7 +61,7 @@ public:
 
 private:
 	// 报告打印 
-	printReportPageJsonVO::Wrapper execQueryprintReport(const printReportQuery::Wrapper& query);
+	StringJsonVO::Wrapper execModifyprintReport(const printReportDTO::Wrapper& dto);
 	// 获取样本条码
 	std::shared_ptr<OutgoingResponse> execDownloadSampleCode(const String& sampleCodeName);
 };

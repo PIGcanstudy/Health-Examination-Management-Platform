@@ -26,7 +26,8 @@
 
 class printReportService
 {
-
+public:
+	bool updateData(const printReportDTO::Wrapper& dto);
 };
 
 #endif // !_PRINTREPORT_SERVICE_

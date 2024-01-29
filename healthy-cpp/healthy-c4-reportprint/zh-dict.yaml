@@ -37,6 +37,7 @@ print:
 addition:
  field:
   reportName: 报告名称
+  printNum: 报告打印次数
   sampleCodeNum: 条码数字
   sampleCodeName: 条码名称
  test:

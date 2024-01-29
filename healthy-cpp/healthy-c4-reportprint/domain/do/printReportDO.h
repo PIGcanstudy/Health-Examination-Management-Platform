@@ -19,8 +19,27 @@
  limitations under the License.
 */
 
-#ifndef _DOWNLOADREPORT_DO_
-#define _DOWNLOADREPORT_DO_
+#ifndef _PRINTREPORT_DO_
+#define _PRINTREPORT_DO_
 #include "./DoInclude.h"
 
-#endif // !_PACKAGE_DO_
+class printReportDO
+{
+	// 编号
+	CC_SYNTHESIZE(uint64_t, id, Id);
+	// 姓名
+	CC_SYNTHESIZE(string, name, Name);
+	// 性别
+	CC_SYNTHESIZE(string, sex, Sex);
+	// 年龄
+	CC_SYNTHESIZE(int, age, Age);
+public:
+	printReportDO() {
+		id = 0;
+		name = "";
+		sex = "";
+		age = -1;
+	}
+};
+
+#endif // !_PRINTREPORT_DO_

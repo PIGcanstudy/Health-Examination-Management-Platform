@@ -32,7 +32,7 @@
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
 /**
- * 文件操作接口
+ * 报告下载接口
  */
 class downloadReportController  : public oatpp::web::server::api::ApiController 
 {
@@ -52,12 +52,12 @@ public:
 	}
 
 	// 定义端点
-	ENDPOINT(API_M_GET, "/downloadReport", downloadFile, QUERY(String , reportName)) {
+	ENDPOINT(API_M_GET, "/downloadReport", downloadFile, QUERY(String, reportName)) {
 		return execDownloadFile(reportName);
 	}
 
 private: // 定义接口执行函数
-	// 执行文件下载处理
+	// 执行下载处理
 	std::shared_ptr<OutgoingResponse> execDownloadFile(const String& reportName);
 };
 

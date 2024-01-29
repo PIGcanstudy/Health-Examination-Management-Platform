@@ -25,25 +25,20 @@
 class printReportDTO : public oatpp::DTO
 {
 	DTO_INIT(printReportDTO, DTO);
-	// 打印报告编号
-	DTO_FIELD(String, reportNum);
-	DTO_FIELD_INFO(reportNum) {
+	// 报告id
+	DTO_FIELD(String, id);
+	DTO_FIELD_INFO(id) {
 		info->description = ZH_WORDS_GETTER("preview.field.reportNum");
 	}
-	// 目标打印机
-	DTO_FIELD(String, targetPrinter);
-	DTO_FIELD_INFO(targetPrinter) {
-		info->description = ZH_WORDS_GETTER("print.field.targetPrinter");
+	// 报告打印次数
+	DTO_FIELD(UInt32, reportPrintingNum);
+	DTO_FIELD_INFO(reportPrintingNum) {
+		info->description = ZH_WORDS_GETTER("addition.field.printNum");
 	}
-	// 页面
-	DTO_FIELD(String, page);
-	DTO_FIELD_INFO(page) {
-		info->description = ZH_WORDS_GETTER("print.field.page");
-	}
-	// 每个工作表的页数
-	DTO_FIELD(String, pageNumPerTable);
-	DTO_FIELD_INFO(pageNumPerTable) {
-		info->description = ZH_WORDS_GETTER("print.field.pageNumPerTable");
+	// 打印状态
+	DTO_FIELD(String, printState);
+	DTO_FIELD_INFO(printState) {
+		info->description = ZH_WORDS_GETTER("print.field.printState");
 	}
 public:
 	printReportDTO() {};
