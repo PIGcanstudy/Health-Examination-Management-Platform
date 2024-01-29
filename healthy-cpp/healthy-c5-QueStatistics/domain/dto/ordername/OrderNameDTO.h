@@ -93,9 +93,9 @@ class  OrderNameDTO : public oatpp::DTO
 	//}
 
 	//µ¥Î»Ãû³Æ
-	DTO_FIELD(String, unfinishedProject);
-	DTO_FIELD_INFO(unfinishedProject) {
-		info->description = ZH_WORDS_GETTER("ordername.field.unfinishedProject");
+	DTO_FIELD(String, unitName);
+	DTO_FIELD_INFO(unitName) {
+		info->description = ZH_WORDS_GETTER("ordername.field.unitName");
 	}
 };
 

@@ -33,6 +33,8 @@ class ResultsListQuery : public PageQuery
 	DTO_INIT(ResultsListQuery, PageQuery);
 	// 查询类型
 	API_DTO_FIELD_DEFAULT(UInt32, type, ZH_WORDS_GETTER("results.field.type"));
+	// ID
+	API_DTO_FIELD_DEFAULT(UInt32, id, ZH_WORDS_GETTER("results.field.id"));
 	// 姓名
 	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("results.field.name"));
 	// 体检编号 

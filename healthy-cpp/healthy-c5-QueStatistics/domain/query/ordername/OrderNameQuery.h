@@ -33,6 +33,10 @@ class OrderNameQuery : public PageQuery
 	DTO_INIT(OrderNameQuery, PageQuery);
 	// 查询类型
 	API_DTO_FIELD_DEFAULT(UInt32, type, ZH_WORDS_GETTER("ordername.field.type"));
+	//体检日期
+	API_DTO_FIELD_DEFAULT(String, checkDate, ZH_WORDS_GETTER("ordername.field.checkDate"));
+	//单位订单名称
+	API_DTO_FIELD_DEFAULT(String, unitName, ZH_WORDS_GETTER("ordername.field.unitName"));
 	//// 姓名
 	//API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("results.field.name"));
 	//// 体检编号 
@@ -51,10 +55,7 @@ class OrderNameQuery : public PageQuery
 	//API_DTO_FIELD_DEFAULT(String, checkDate, ZH_WORDS_GETTER("results.field.checkDate"));
 	////体检结论
 	//API_DTO_FIELD_DEFAULT(String, checkResults, ZH_WORDS_GETTER("results.field.checkResults"));
-	//体检日期
-	API_DTO_FIELD_DEFAULT(String, checkDate, ZH_WORDS_GETTER("ordername.field.checkDate"));
-	//单位订单名称
-	API_DTO_FIELD_DEFAULT(String, unitName, ZH_WORDS_GETTER("ordername.field.unitName"));
+	
 };
 
 #include OATPP_CODEGEN_END(DTO)
