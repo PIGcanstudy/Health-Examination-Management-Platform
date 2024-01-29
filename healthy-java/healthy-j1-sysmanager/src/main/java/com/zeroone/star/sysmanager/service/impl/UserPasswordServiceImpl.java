@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,10 +43,10 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
     public JsonVO updatePasswordToChange(ModifyPasswordDTO modifyPasswordDTO) {
         // 判断当前登录的用户是否为管理员账号(type字段是否为1)
         // 获取当前登录的用户id
-        String currentUserId;
+        Long currentUserId;
         try {
             UserDTO currentUser = userHolder.getCurrentUser();
-            currentUserId = currentUser.getId().toString();
+            currentUserId = currentUser.getId();
         } catch (Exception e) {
             return JsonVO.create(null,ResultStatus.UNAUTHORIZED);
         }
@@ -76,6 +77,8 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
         tUserUpdateWrapper
                 .set("password",encodePassword)
                 .set("pass_strength",modifyPasswordDTO.getPass_strength())
+                .set("update_by", currentUserDO.getUsername())
+                .set("update_time", LocalDateTime.now())
                 .eq("id",modifyPasswordDTO.getId());
         getBaseMapper().update(null,tUserUpdateWrapper);
         return JsonVO.success(null);
@@ -93,10 +96,10 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
             return JsonVO.create(null,8001,"请选择需要被重置密码的用户");
         }
         // 获取当前登录的用户id
-        String currentUserId;
+        Long currentUserId;
         try {
             UserDTO currentUser = userHolder.getCurrentUser();
-            currentUserId = currentUser.getId().toString();
+            currentUserId = currentUser.getId();
         } catch (Exception e) {
             return JsonVO.create(null,ResultStatus.UNAUTHORIZED);
         }
@@ -132,9 +135,11 @@ public class UserPasswordServiceImpl extends ServiceImpl<UserPasswordMapper, TUs
             UpdateWrapper<TUser> tUserUpdateWrapper = new UpdateWrapper<>();
             tUserUpdateWrapper
                     .set("password",password)
+                    .set("update_by", currentUserDO.getUsername())
+                    .set("update_time", LocalDateTime.now())
                     .eq("id",id);
             getBaseMapper().update(null,tUserUpdateWrapper);
         }
-        return JsonVO.success(null);
+        return JsonVO.success("重置完成");
     }
 }
