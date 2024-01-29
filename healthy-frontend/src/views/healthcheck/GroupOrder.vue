@@ -2,7 +2,46 @@
 <template>
   <el-container style="height: 100%">
     <el-aside width="250px">
-      <PeopleList style="height: 100%; width: 100%" />
+      <PeopleListCG style="height: 100%; width: 100%">
+        <!-- 表单 -->
+        <template #form>
+          <el-form :model="form">
+            <el-form-item prop="date">
+              <el-row clearable>
+                <el-date-picker v-model="form.startDate" type="date" placeholder="开始时间" style="width: 46%" />
+                <span style="width: 8%; padding: 0 4px">~</span>
+                <el-date-picker v-model="form.endDate" type="date" placeholder="结束时间" style="width: 46%" />
+              </el-row>
+            </el-form-item>
+            <el-form-item prop="name">
+              <el-input v-model="form.name" placeholder="请输入关键字" clearable />
+            </el-form-item>
+            <!-- 重置 -->
+            <el-button @click="onSubmit" size="small">重置</el-button>
+          </el-form>
+        </template>
+
+        <!-- 表格 -->
+        <template #table>
+          <List></List>
+        </template>
+
+        <!-- 分页 -->
+        <template #page>
+          <el-pagination
+            v-model:current-page="currentPage"
+            v-model:page-size="pageSize"
+            :page-sizes="[100, 200, 300, 400]"
+            :small="small"
+            :disabled="disabled"
+            :background="background"
+            layout="prev, jumper, next"
+            :total="400"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+          />
+        </template>
+      </PeopleListCG>
     </el-aside>
     <el-main style="">
       <!-- 按钮 -->
@@ -107,7 +146,7 @@
         <el-table-column prop="reference" label="年龄" />
       </el-table>
       <!-- 分页 -->
-      <div class="demo-pagination-block" style="display: flex;justify-content: end;margin-top: 15px;">
+      <div class="demo-pagination-block" style="display: flex; justify-content: end; margin-top: 15px">
         <el-pagination
           v-model:current-page="currentPage4"
           v-model:page-size="pageSize4"
@@ -128,8 +167,20 @@
 <script setup>
 import { ref } from 'vue'
 import ActionTable from '@/components/details/ActionTable.vue'
-import PeopleList from '@/components/peoplelist/PeopleList.vue'
+import PeopleListCG from '@/components/peoplelist/PeopleList-CG.vue'
+import List from '@/components/peoplelist/List.vue'
 import Head from '@/components/head/Head.vue'
+
+const form = ref({
+  checkbox: '',
+  slider: '',
+  date: '',
+  serialNumber: '',
+  workplace: '',
+  name: '',
+  startDate: '',
+  endDate: ''
+})
 
 // 单选框
 const radio1 = ref('1')
