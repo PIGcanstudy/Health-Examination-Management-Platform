@@ -3,5 +3,5 @@ result:
   id: 编号
   orderGroupItemProjectName: 基础项目名
   result: 结果
-  personId: 人员ID
+  personId: 体检人ID
   orderGroupItemId: 组合项目名

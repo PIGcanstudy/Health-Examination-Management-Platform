@@ -30,6 +30,7 @@
 #ifdef LINUX
 #include "NacosClient.h"
 #endif
+#include"./uselib/rocketmq/TestRocket.h"
 
 // 是否是发布Swagger文档包
 #ifndef _RELEASE_DOC_
@@ -140,7 +141,8 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
-
+	//TestRocket tr;
+	//tr.testRocket();
 #ifdef LINUX
 	// 创建Nacos客户端对象
 	NacosClient nacosClient(

@@ -44,12 +44,12 @@ public: //定义接口
 		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
 		//人员ID
-		API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("result.field.personId"),"007",true);
+		API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("result.field.personId"),"001",true);
 	}
 	//1.2项目结论查询接口处理
 	ENDPOINT(API_M_GET,"/result/depart-result", queryResult,QUERIES(QueryParams,params),API_HANDLER_AUTH_PARAME)
 	{  
-		// 解析查询参数为Query领域模型（接收Browser层的Query）
+		// 解析查询参数为Query领域模型（接收Browser层的Query）,解析得到resultQuery
 		API_HANDLER_QUERY_PARAM(resultQuery, ResultQuery, params);
 		// 呼叫执行函数响应结果
 		API_HANDLER_RESP_VO(execQueryPrimCheck(resultQuery));

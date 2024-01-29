@@ -1,8 +1,9 @@
+#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: smartPiggy
- @Date: 2024-01-19
+ @Date: 2024-01-27
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,23 +17,22 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#include"stdafx.h"
-#include"./ResultController.h"
-#include"../../service/result/ResultService.h"
+#ifndef _RESULTSERVICE_H_
+#define _RESULTSERVICE_H_
+#include <list>
+#include"../../domain/vo/result/ResultVO.h"
+#include"../../domain/query/result/ResultQuery.h"
+#include"../../domain/dto/result/ResultDTO.h"
 
-ResultPageJsonVO::Wrapper ResultController::execQueryPrimCheck(const ResultQuery::Wrapper& query)
+/**
+ * 服务实现
+ */
+class ResultService
 {
-	// 定义一个Service
-	ResultService service;
-	// 查询数据
-	auto result = service.listByPersonId(query);
-	// 响应结果
-	auto jvo = ResultPageJsonVO::createShared();
-	jvo->success(result);
-	return jvo;
-}
+public:
+	// 分页查询该体检人诊台数据
+	ResultPageDTO::Wrapper listByPersonId(const ResultQuery::Wrapper& query);
+};
 
-//ItemResultPageJsonVO::Wrapper ResultController::execQueryPrimCheckDetail(const ResultQuery::Wrapper& query)
-//{
-//	return ItemResultPageJsonVO::Wrapper();
-//}
+#endif // !_RESULTSERVICE_H_
+

@@ -1,8 +1,9 @@
+#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: smartPiggy
- @Date: 2024-01-19
+ @Date: 2024-01-27
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,23 +17,26 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#include"stdafx.h"
-#include"./ResultController.h"
-#include"../../service/result/ResultService.h"
+#ifndef _RESULTMAPPER_H_
+#define _RESULTMAPPER_H_
 
-ResultPageJsonVO::Wrapper ResultController::execQueryPrimCheck(const ResultQuery::Wrapper& query)
+#include "Mapper.h"
+#include"../../domain/do/result/ResultDO.h"
+/**
+ * 表字段匹配映射
+ */
+class ResultMapper : public Mapper<ResultDO>
 {
-	// 定义一个Service
-	ResultService service;
-	// 查询数据
-	auto result = service.listByPersonId(query);
-	// 响应结果
-	auto jvo = ResultPageJsonVO::createShared();
-	jvo->success(result);
-	return jvo;
-}
+public:
+	ResultDO mapper(ResultSet* resultSet) const override
+	{
+		ResultDO data;
+		data.setId(resultSet->getString(1));
+		data.setOfficeName(resultSet->getString(2));
+		data.setGroupItemName(resultSet->getString(3));
+		data.setDiagnoseSum(resultSet->getString(4));
+		return data;
+	}
+};
 
-//ItemResultPageJsonVO::Wrapper ResultController::execQueryPrimCheckDetail(const ResultQuery::Wrapper& query)
-//{
-//	return ItemResultPageJsonVO::Wrapper();
-//}
+#endif // !_RESULTMAPPER_H_
