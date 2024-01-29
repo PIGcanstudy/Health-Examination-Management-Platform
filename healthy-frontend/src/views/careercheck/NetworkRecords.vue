@@ -1,4 +1,4 @@
-<!-- 团检单位 -->
+<!-- 数据网报 -->
 <template>
   <div class="contain">
     <BaseDataList
@@ -16,6 +16,7 @@
       @update-selected-rows="selectRows"
     >
       <!-- fixed固定列 -->
+      <!-- 表格后面的操作选项群 -->
       <template #fixed="{ row }">
         <el-button type="primary" style="margin-right: 5px" @click="handelLook(row)">
           <el-icon><View></View></el-icon>
@@ -43,21 +44,76 @@
           </template>
         </el-dropdown>
       </template>
-
+     
       <!-- form表单区域 -->
       <template #form>
-        <el-form-item label="单位名称">
-          <el-input v-model="formData.unitName"></el-input>
+        <el-form-item label="企业名称" :style="{ width: '260px' }">
+            <el-select v-model="formData.unitName" placeholder="请选择">
+            <el-option label="乐山市峨边盛和矿业" value="乐山市峨边盛和矿业" />
+            <el-option label="乐山市峨边盛和农业" value="乐山市峨边盛和农业" />
+          </el-select>
         </el-form-item>
-        <el-form-item label="信用代码">
-          <el-input v-model="formData.creditCode"></el-input>
+
+
+        <el-form-item label="体检日期">
+          <el-radio-group v-model="formData.checkdate" label="体检日期" size="small">
+           <el-date-picker
+           v-model="formData.checkdate"
+           type="daterange"
+           start-placeholder="开始时间"
+           end-placeholder="结束时间"
+           :size="size"
+          />
+        </el-radio-group>
         </el-form-item>
-        <el-form-item label="联系人">
-          <el-input v-model="formData.contactPerson"></el-input>
+        <el-form-item label="网传状态">
+          <el-select
+          v-model="formData.webstate"
+          class="m-2"
+          placeholder="请选择"
+          style="width: 240px"
+        >
+            <el-option
+              v-for="item in webstateoptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+        </el-select>
         </el-form-item>
-        <el-form-item label="联系电话">
-          <el-input v-model="formData.contactPhone" :style="{ width: '140px' }"></el-input>
+        <el-form-item label="是否复查" :style="{ width: '200px' }">
+          <el-select
+          v-model="formData.ifcheck"
+          class="m-2"
+          placeholder="请选择"
+          style="width: 240px"
+        >
+            <el-option
+              v-for="item in ifcheckoptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+        </el-select>
         </el-form-item>
+     <div  v-if="isShowInput" class="expend">
+      <el-form-item label="订单编号">
+          <el-input v-model="formData.checkid" :style="{ width: '200px' }"></el-input>
+        </el-form-item>
+        <el-form-item label="人员姓名">
+          <el-input v-model="formData. checkname" :style="{ width: '200px' }"></el-input>
+        </el-form-item>
+        <el-form-item label="证件号码">
+          <el-input v-model="formData.identity" :style="{ width: '200px' }"></el-input>
+        </el-form-item>
+        <el-form-item label="体检结论">
+          <el-input v-model="formData.checkresult" :style="{ width: '230px' }"></el-input>
+        </el-form-item>
+        <el-form-item label="主检建议">
+          <el-input v-model="formData.maincheckadvise" :style="{ width: '230px' }"></el-input>
+        </el-form-item>
+      </div>
+        
         <el-form-item>
           <el-button type="primary">
             <el-icon><Search></Search></el-icon>
@@ -66,16 +122,22 @@
         </el-form-item>
         <el-form-item>
           <el-button @click="resetForm">重置</el-button>
+
+          <el-button type="text" style="margin-left: 20px" @click="toggleCollapse"
+            >{{ isShowInput ? '收起' : '展开' }}
+            <el-icon v-show="isShowInput === true"><ArrowUp /></el-icon>
+            <el-icon v-show="isShowInput === false"><ArrowDown /></el-icon>
+          </el-button>
         </el-form-item>
-      </template>
+      </template>                               
 
       <!-- operation功能区域 -->
       <template #operation>
         <div class="operation">
-          <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true">
+          <!-- <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true">
             <el-icon><Plus></Plus></el-icon>
             新增
-          </el-button>
+          </el-button> -->
           <!-- 新增对话框区域 -->
           <el-dialog v-model="dialogVisible" title="新增" width="60%" :before-close="handleClose">
             <el-row>
@@ -142,6 +204,22 @@
               </span>
             </template>
           </el-dialog>
+
+          
+            <el-button type="primary">
+              <el-icon><Refresh></Refresh></el-icon>数据同步</el-button>
+            <el-button type="danger" dark="true">
+              <el-icon><Refresh></Refresh></el-icon>错误数据同步</el-button>
+            <el-button type="primary">
+              <el-icon><Refresh></Refresh></el-icon>复查数据同步</el-button>
+            <el-button type="danger">
+              <el-icon><Refresh></Refresh></el-icon>复查错误数据同步</el-button>
+            <el-button type="success"  dark="true" style="margin-right: 10px;">
+              <el-icon><Refresh></Refresh></el-icon>自定义上报</el-button>
+          
+          
+
+          <!-- 下拉按钮 -->
           <el-dropdown>
             <el-button style="margin-right: 8px">
               更多操作
@@ -164,6 +242,7 @@
               </el-dropdown-menu>
             </template>
           </el-dropdown>
+
           <el-button @click="closeForm">关闭搜索</el-button>
           <el-button @click="closeHint">关闭提示</el-button>
         </div>
@@ -186,7 +265,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import { ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit } from '@element-plus/icons-vue'
+import {ArrowUp,ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit} from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 // 上传图片
 const imageUrl = ref('')
@@ -215,28 +294,37 @@ const useFixed = ref(true)
 const labelWidth = '125px'
 // table列
 const tableColumnAttribute = ref([
-  { prop: 'name', label: '单位名称', width: '240', align: 'center' },
-  { prop: 'credit', label: '信用代码', width: '120', align: 'center' },
-  { prop: 'examination', label: '体检类型', width: '120', align: 'center' },
-  { prop: 'address', label: '所属地区', width: '120', align: 'center' },
-  { prop: 'category', label: '行业类别', width: '120', align: 'center' },
-  { prop: 'etype', label: '经济类型', width: '120', align: 'center' },
-  { prop: 'scale', label: '企业规模', width: '120', align: 'center' },
-  { prop: 'contact', label: '联系人', width: '120', align: 'center' },
-  { prop: 'phone', label: '联系电话', width: '120', align: 'center' }
+  { prop: 'name', label: '企业名称', width: '240', align: 'center' },
+  { prop: 'credit', label: '订单编号', width: '120', align: 'center' },
+  { prop: 'examination', label: '人员姓名', width: '120', align: 'center' },
+  { prop: 'address', label: '性别', width: '120', align: 'center' },
+  { prop: 'category', label: '证件号码', width: '120', align: 'center' },
+  { prop: 'etype', label: '年龄', width: '120', align: 'center' },
+  { prop: 'scale', label: '婚否', width: '120', align: 'center' },
+  { prop: 'contact', label: '人员联系电话', width: '120', align: 'center' },
+  { prop: 'harmfulfactors', label: '接害因素', width: '120', align: 'center' },
+  { prop: 'harmfulfactorsyears', label: '接害工龄年数', width: '120', align: 'center' },
+  { prop: 'harmfulfactorsmonths', label: '接害工龄月数', width: '120', align: 'center' },
+  { prop: 'othernames', label: '工种其他名称', width: '120', align: 'center' },
+  { prop: 'datecheck', label: '体检日期', width: '120', align: 'center' },
+  { prop: 'resultcheck', label: '体检结果', width: '120', align: 'center' },
+  { prop: 'maindoctor', label: '主检医师', width: '120', align: 'center' },
+  { prop: 'begindate', label: '开始接害日期', width: '120', align: 'center' },
+  { prop: 'webstate', label: '网传状态', width: '120', align: 'center' },
+  { prop: 'ifcheck', label: '是否复查', width: '120', align: 'center' },
 ])
 // table数据
 const tableData = ref([
   {
     name: '乐山市峨边盛和矿业',
-    credit: '--',
-    examination: '健康体检',
-    address: '--',
-    category: '铁矿采选*',
-    etype: '国有企业',
-    scale: '--',
-    contact: '--',
-    phone: '--'
+    credit: '3456356',
+    examination: '姓名1',
+    address: '男',
+    category: '123412354*',
+    etype: '18',
+    scale: '否',
+    contact: '1234353456',
+    phone: '无-'
   },
   {
     name: '---',
@@ -249,71 +337,62 @@ const tableData = ref([
     contact: '--',
     phone: '--'
   },
-  {
-    name: '乐山市峨边盛和矿业',
-    credit: '--',
-    examination: '健康体检',
-    address: '--',
-    category: '铁矿采选*',
-    etype: '国有企业',
-    scale: '--',
-    contact: '--',
-    phone: '--'
-  },
-  {
-    name: '乐山市峨边盛和矿业',
-    credit: '--',
-    examination: '健康体检',
-    address: '--',
-    category: '铁矿采选*',
-    etype: '国有企业',
-    scale: '--',
-    contact: '--',
-    phone: '--'
-  },
-  {
-    name: '乐山市峨边盛和矿业',
-    credit: '--',
-    examination: '健康体检',
-    address: '--',
-    category: '铁矿采选*',
-    etype: '国有企业',
-    scale: '--',
-    contact: '--',
-    phone: '--'
-  },
-  {
-    name: '乐山市峨边盛和矿业',
-    credit: '--',
-    examination: '健康体检',
-    address: '--',
-    category: '铁矿采选*',
-    etype: '国有企业',
-    scale: '--',
-    contact: '--',
-    phone: '--'
-  },
-  {
-    name: '乐山市峨边盛和矿业',
-    credit: '--',
-    examination: '健康体检',
-    address: '--',
-    category: '铁矿采选*',
-    etype: '国有企业',
-    scale: '--',
-    contact: '--',
-    phone: '--'
-  }
 ])
 function handelLook(row) {
   console.log(row)
 }
+
 const formData = reactive({
   unitName: '',
-  creditCode: '',
-  contactPerson: '',
-  contactPhone: ''
+  checkdate: '',
+  webstate: '',
+  ifcheck: '',
+  checkid:'',
+  checkname:'',
+  identity:'',
+  checkresult:'',
+  maincheckadvise:''
 })
+
+const webstateoptions = [
+  {
+    value: '未上传',
+    label: '未上传',
+  },
+  {
+    value: '上传成功',
+    label: '上传成功',
+  },
+  {
+    value: '上传失败',
+    label: '上传失败',
+  },
+  {
+    value: '已删除',
+    label: '已删除',
+  },
+]
+
+const ifcheckoptions = [
+  {
+    value: '是',
+    label: '是',
+  },
+  {
+    value: '否',
+    label: '否',
+  }
+]
+
+
+
+// 点击展开按钮按钮的折叠逻辑
+const isShowInput = ref(false)
+const toggleCollapse = () => {
+  isShowInput.value = !isShowInput.value
+}
+
+// 新增部分的内容
 // 基础信息表单
 const basicForm = reactive({
   unitName: '',
@@ -326,6 +405,8 @@ const basicForm = reactive({
   number: '',
   dangerousNum: ''
 })
+
+ 
 // 联系人表单
 const contactForm = reactive({
   people: '',
@@ -356,7 +437,7 @@ const clearRows = () => {
 }
 // 重置表单方法
 const resetForm = () => {
-  ;(formData.unitName = ''), (formData.creditCode = ''), (formData.contactPerson = ''), (formData.contactPhone = '')
+  BaseDataRef.value.clearForm()
 }
 const total = tableData.value.length
 // 分页参数
@@ -388,6 +469,9 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.expend{
+  display:isShowInput
+}
 .operation {
   margin-bottom: 10px;
 }

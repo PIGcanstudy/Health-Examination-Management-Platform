@@ -3,7 +3,7 @@
     <el-container class="mater">
       <el-main>
         <div class="ic01">
-          <router-link to="/careercheck/InspectionCompany.vue">
+          <router-link to="/careercheck/InspectionCompany.vue" @click="findurl()">
             <img src="../../assets/navigation/icon01.png" />
           </router-link>
           <el-text size="large">团检单位</el-text>
@@ -14,7 +14,7 @@
 
 
         <div class="ic02">
-          <router-link to="/careercheck/GroupOrder.vue">
+          <router-link to="/careercheck/GroupOrder.vue" @click="findurl()">
             <img src="../../assets/navigation/icon02.png" />
           </router-link>
           <el-text size="large">团检订单</el-text>
@@ -117,7 +117,7 @@
           <img src="../../assets/navigation/arrow03.png" />
         </div>
         <div class="ic12">
-          <router-link to="/careercheck/DatanetworkReport.vue">
+          <router-link to="/careercheck/NetworkRecords.vue">
             <img src="../../assets/navigation/icon12.png" />
             </router-link>
             <el-text  size="large">数据网报</el-text>
@@ -161,8 +161,12 @@
 
 <script setup>
   let line01 = 550;
-  function iconlight(){
-    
+  function findurl(){
+    var url = window.location.href; //获取地址栏路径
+    console.log(url);
+    var temp1 = url.split('3000');//对url地址进行分割
+    console.log(temp1);
+    console.log(temp1[1]);
   }
 </script>
 

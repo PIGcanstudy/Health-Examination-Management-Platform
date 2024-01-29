@@ -1,6 +1,6 @@
-<!-- 数据网报 -->
+<!-- 健康证管理 -->
 <template>
-  <div>数据网报</div>
+  <div>健康证管理</div>
 </template>
 
 <script setup></script>
