@@ -30,5 +30,5 @@ public interface ITStopWordService extends IService<StopWord> {
      * @return DTO
      */
     StopWordDTO findByTitle(String title);
-    int updateWord(UpdateWordDTO updateWord,String token);
+    int updateWord(UpdateWordDTO updateWord);
 }
