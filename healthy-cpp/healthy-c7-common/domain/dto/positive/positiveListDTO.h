@@ -30,7 +30,7 @@ class PositiveListDTO : public oatpp::DTO {
 	// 参考范围
 	API_DTO_FIELD_DEFAULT(String, scope, ZH_WORDS_GETTER("positive.filed.scope"));
 	// 提示
-
+	API_DTO_FIELD_DEFAULT(String, diagnose_sum, ZH_WORDS_GETTER("positive.filed.diagnose_sum"));
 	// 危急程度
 	API_DTO_FIELD_DEFAULT(String, crisis_degree, ZH_WORDS_GETTER("positive.filed.crisis_degree"));
 	// 体检日期
