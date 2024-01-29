@@ -23,7 +23,7 @@
 #include "unknownmodulelifehistory/LifeHistoryController.h"
 #include "unknownmodulepastmedicalhistory/PastMedicalHistoryController.h"
 #include "unknownmoduleprofessionalhistory/ProfessionalHistoryController.h"
-#include "GroupPerson/GroupPersonController.h"
+//#include "GroupPerson/GroupPersonController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
@@ -36,7 +36,7 @@
 #include "controller/interro/InterroController.h"
 #include "result-entry/ClAbanProjController.h"
 
-#include "file/FileController.h"
+#include "file_chengfeng/UpFileController.h"
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -62,18 +62,18 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-	//ROUTER_SIMPLE_BIND(SaveResController);
+	/*ROUTER_SIMPLE_BIND(SaveResController);
 	ROUTER_SIMPLE_BIND(SaveResController);
 	ROUTER_SIMPLE_BIND(GroupPersonController);
 	ROUTER_SIMPLE_BIND(ClAbanProjController);
 	ROUTER_SIMPLE_BIND(BasicInformationController);
 	ROUTER_SIMPLE_BIND(LifeHistoryController);
 	ROUTER_SIMPLE_BIND(PastMedicalHistoryController);
-	ROUTER_SIMPLE_BIND(ProfessionalHistoryController);
+	ROUTER_SIMPLE_BIND(ProfessionalHistoryController);*/
 
-	ROUTER_SIMPLE_BIND(InterroController);
+	//ROUTER_SIMPLE_BIND(InterroController);
 
-	ROUTER_SIMPLE_BIND(FileController);
+	ROUTER_SIMPLE_BIND(UpFileController);
 
 }
 

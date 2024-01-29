@@ -1,12 +1,12 @@
 #pragma once
-#ifndef _FILE_DO_
-#define _FILE_DO_
+#ifndef _UP_FILE_DO_
+#define _UP_FILE_DO_
 #include "../DoInclude.h"
 
 /**
  * 示例数据库实体类
  */
-class FileDO
+class UpFileDO
 {
 	// 主键
 	CC_SYNTHESIZE(string, id, Id);
@@ -14,10 +14,10 @@ class FileDO
 	CC_SYNTHESIZE(string, url, Url);
 	
 public:
-	FileDO() {
+	UpFileDO() {
 		id = "";
 		url = "";
 	}
 };
 
-#endif // !_FILE_DO_
+#endif // !_UP_FILE_DO_

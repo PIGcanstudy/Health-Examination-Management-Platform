@@ -134,15 +134,16 @@ interro1:
   degree: 危及程度
   time:	病程时间
 
-file:
+file_chengfeng:
  upload: 
   summary: 影像文件上传
-
  field:
   filename: 文件名
   id: 主键id
   img-url: 图片src
-  img-alt: 图片文字描述
-  img-href: 图片链接地址
+  success: 成功
+  fail: 失败
+
+ 
 
  
