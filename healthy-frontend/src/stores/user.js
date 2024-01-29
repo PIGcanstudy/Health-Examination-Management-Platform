@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia'
 import healthcheck from './menus/healthcheck'
 import careercheck from './menus/careercheck'
+import employmentcheck from './menus/employmentcheck'
 import Request from '@/apis/request'
 // 测试菜单数据
-let testMenus = [healthcheck, careercheck]
+let testMenus = [healthcheck, careercheck, employmentcheck]
 //职业体验菜单数据
 // let careerMenus = [careercheck]
 
