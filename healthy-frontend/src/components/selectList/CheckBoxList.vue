@@ -52,8 +52,6 @@ function handleItemChange() {
 }
 .group {
   display: block;
-  margin-inline: 10px;
-  padding-inline: 10px;
 }
 
 .empty {

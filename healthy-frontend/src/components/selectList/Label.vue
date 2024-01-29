@@ -2,19 +2,23 @@
   <div class="main">
     <div class="top">
       <el-row justify="space-between">
-        <el-col :style="{ display: code === undefined ? 'none' : 'flex' }" span="8">
+        <el-col :style="{ display: code === undefined ? 'none' : 'flex' }" span="6">
           <div>
             <span class="text">{{ code }}</span>
           </div>
         </el-col>
-        <el-col span="8">
+        <el-col span="6">
+          <div class="status">
+            <span :class="report.style">{{ report.name }}</span>
+          </div>
+        </el-col>
+        <el-col span="6">
           <div>
             <span class="text">{{ date }}</span>
           </div>
         </el-col>
-        <el-col span="8">
+        <el-col span="6">
           <div class="status">
-            <span :class="report.style">{{ report.name }}</span>
             <span :class="sys.style">{{ sys.name }}</span>
           </div>
         </el-col>
@@ -169,23 +173,28 @@ const together = togetherIcon[props.useTogether]
 // 设置边框
 .main {
   color: black;
-  margin: 10px;
+  // margin: 10px;
   width: 100%;
 
   .top {
-    margin: 10px;
+    margin-bottom: 10px;
     width: 100%;
   }
 
   .bottom {
-    margin: 10px;
+    // margin: 10px;
     width: 100%;
   }
 }
 
 // 显示文字的盒子
 .text {
-  margin-inline: 2px;
+  margin: 2px;
+}
+
+// 图标盒子
+.status {
+  margin: 2px;
 }
 
 // 盒子默认隐藏

@@ -24,8 +24,6 @@ const radioData = ref('1')
 <style scoped>
 .group {
   display: block;
-  margin-inline: 10px;
-  padding-inline: 10px;
 }
 
 .empty {
