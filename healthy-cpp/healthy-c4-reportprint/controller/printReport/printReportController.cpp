@@ -47,25 +47,25 @@ printReportPageJsonVO::Wrapper printReportController::execQueryprintReport(const
 
 std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> printReportController::execDownloadSampleCode(const String& sampleCodeNum)
 {
-	// 构建文件全路径
-	std::string fullPath = "public/static/sampleCode/sampleCode.jpg";
+	// 构建样本条码全路径
+	std::string code_fullPath = "public/static/sampleCode/sampleCode.jpg";
 
-	// 读取文件
-	auto fstring = String::loadFromFile(fullPath.c_str());
+	// 读取样本条码
+	auto code_fstring = String::loadFromFile(code_fullPath.c_str());
 
 	// 判断是否读取成功
-	if (!fstring)
+	if (!code_fstring)
 	{
 		std::cerr << "Failed to open file: " << std::strerror(errno) << std::endl;
 		return createResponse(Status::CODE_404, "File Not Found");
 	}
 
 	// 创建响应头
-	auto response = createResponse(Status::CODE_200, fstring);
+	auto code_response = createResponse(Status::CODE_200, code_fstring);
 
 	// 设置响应头信息
-	response->putHeader("Content-Disposition", "attachment; filename=" + sampleCodeNum.getValue("") + ".jpg");
+	code_response->putHeader("Content-Disposition", "attachment; filename=" + sampleCodeNum.getValue("") + ".jpg");
 
 	// 影响成功结果
-	return response;
+	return code_response;
 }

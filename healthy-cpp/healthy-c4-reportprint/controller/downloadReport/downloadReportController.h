@@ -23,6 +23,8 @@
 #include "domain/vo/BaseJsonVO.h"
 #include "ApiHelper.h"
 #include "ServerInfo.h"
+#include <iostream>
+#include <utility>
 
 #include "domain/vo/downloadReportVO.h"
 
@@ -44,17 +46,19 @@ public:
 		// 定义描述
 		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("print.get.download"), Void);
 		// 待下载的报告编号
-		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("preview.field.reportNum"), "1202204010001", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("preview.field.reportNum"), "1202204010001", true);
+		// 报告名称设定
+		API_DEF_ADD_QUERY_PARAMS(String, "reportName", ZH_WORDS_GETTER("addition.field.reportName"), ZH_WORDS_GETTER("addition.test.testReportName"), false);
 	}
 
 	// 定义端点
-	ENDPOINT(API_M_GET, "/downloadfile", downloadFile, QUERY(String, id)) {
-		return execDownloadFile(id);
+	ENDPOINT(API_M_GET, "/downloadfile", downloadFile, QUERY(String , reportName)) {
+		return execDownloadFile(reportName);
 	}
 
 private: // 定义接口执行函数
 	// 执行文件下载处理
-	std::shared_ptr<OutgoingResponse> execDownloadFile(const String& id);
+	std::shared_ptr<OutgoingResponse> execDownloadFile(const String& reportName);
 };
 
 #include OATPP_CODEGEN_END(ApiController)

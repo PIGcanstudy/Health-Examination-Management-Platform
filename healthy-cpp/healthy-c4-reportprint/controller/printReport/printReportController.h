@@ -49,7 +49,7 @@ public:
 
 		// 定义其他查询参数描述
 		// 待打印的报告编号
-		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("preview.field.reportNum"), "1202204010001", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("preview.field.reportNum"), "1202204010001", true);
 		// 打印状态
 		API_DEF_ADD_QUERY_PARAMS(String, "printState", ZH_WORDS_GETTER("print.field.printState"), "finished", false);
 		// 目标打印机
@@ -71,7 +71,7 @@ public:
 	// 定义描述
 	ENDPOINT_INFO(downloadFile) {
 		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("print.get.sampleCode"), Void);
-		API_DEF_ADD_QUERY_PARAMS(String, "sampleCodeNum", ZH_WORDS_GETTER("addition.sampleCodeNum"), "12345678", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "sampleCodeNum", ZH_WORDS_GETTER("addition.field.sampleCodeNum"), "12345678", true);
 	}
 	// 定义端点
 	ENDPOINT(API_M_GET, "/sampleCode/download", downloadFile, QUERY(String, sampleCodeNum)) {
