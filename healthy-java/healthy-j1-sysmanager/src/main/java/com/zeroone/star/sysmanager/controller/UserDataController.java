@@ -81,10 +81,10 @@ public class UserDataController implements UserDataApis {
     @Override
     @GetMapping("/set-user-status/{id}/{status}")
     @ApiImplicitParam(name = "status",required = true)
-    @ApiOperation("设置用户状态")
+    @ApiOperation("设置用户状态（0启用 1禁用）")
     public JsonVO setUserStatus(@PathVariable Long id,@PathVariable Integer status){
         userService.setUserStatus(id,status);
-        return JsonVO.success(null);
+        return JsonVO.success("状态修改成功");
     }
 
     /**

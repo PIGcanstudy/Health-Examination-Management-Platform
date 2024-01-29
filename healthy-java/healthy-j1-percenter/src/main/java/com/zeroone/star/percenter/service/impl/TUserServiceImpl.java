@@ -63,13 +63,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
      */
     public JsonVO<String> modifyPassword(ModifyPasswordDTO modifyPasswordDTO) {
         try {
-//            UserDTO currentUser = userHolder.getCurrentUser();
-//            Long userId = currentUser.getId();
-//
-//            TUser user = this.getById(userId);
-//            if (user == null) {
-//                return JsonVO.fail("用户不存在");
-//            }
+            // 从token中获取当前用户信息
             TUser user = getUserByToken();
 
             // 使用PasswordEncoder来验证密码
@@ -131,7 +125,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
         }
         Long userId = currentUser.getId();
         TUser user = this.getById(userId);
-        if (user == null) {
+        if (user == null || user.getDelFlag()) {
             throw new RuntimeException("用户不存在");
         }
         return user;

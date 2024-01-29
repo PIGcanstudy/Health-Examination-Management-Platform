@@ -27,14 +27,4 @@ public class SysManagerApplication {
     public static void main(String[] args) {
         SpringApplication.run(SysManagerApplication.class, args);
     }
-
-    @Bean
-    public UserHolder userHolder(){
-        return new UserHolder();
-    }
-
-    @Bean
-    public JwtComponent jwtComponent(){
-        return  new JwtComponent();
-    }
 }
