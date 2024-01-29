@@ -5,7 +5,7 @@
         <!-- 侧边栏菜单 -->
         <div class="menu-wrap" :style="isCollapsed ? 'display: none;' : ''">
           <el-scrollbar max-height="100vh">
-            <el-menu default-active="/home" class="el-menu-vertical-demo" active-text-color="#409EFF" text-color="#fff" background-color="#545c64" unique-opened router>
+            <el-menu id="homemenu" default-active="/home" class="el-menu-vertical-demo" active-text-color="#409EFF" text-color="#fff" background-color="#545c64" unique-opened router>
               <el-menu-item index="/home">
                 <el-icon>
                   <icon-menu />
@@ -50,7 +50,7 @@
     </el-container>
   </div>
 </template>
-<script setup>
+<script  setup>
 import { ref } from 'vue'
 import { userStore } from '../stores/user'
 // import { Expand } from '@element-plus/icons-vue'
@@ -65,6 +65,17 @@ const userInfo = ref('欢迎用户：' + (store.getUser === null ? '游客' : st
 
 // 菜单数据
 const menus = store.getMenus
+
+
+  // var url = window.location.href; //获取地址栏路径
+  // console.log(url);
+  // var temp1 = url.split('3000');//对url地址进行分割
+  // console.log(temp1);
+  // console.log(temp1[1]);
+
+
+
+
 </script>
 <style lang="scss" scoped>
 .sec-container {
