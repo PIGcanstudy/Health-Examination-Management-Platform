@@ -32,28 +32,28 @@ class InquiryDetailQuery : public PageQuery
 {
 	// 定义初始化
 	DTO_INIT(InquiryDetailQuery, PageQuery);
-
+	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("inquiry.field.Id"));
 	// 工龄年段
-	API_DTO_FIELD_DEFAULT(Int32, workYear, ZH_WORDS_GETTER("inquiry.field.workYear"));
+	API_DTO_FIELD_DEFAULT(UInt64, workYear, ZH_WORDS_GETTER("inquiry.field.workYear"));
 	// 工龄月段
-	API_DTO_FIELD_DEFAULT(Int32, workMonth, ZH_WORDS_GETTER("inquiry.field.workMonth"));
+	API_DTO_FIELD_DEFAULT(UInt64, workMonth, ZH_WORDS_GETTER("inquiry.field.workMonth"));
 	// 结婚状况
-	API_DTO_FIELD_DEFAULT(String, maritalStatus, ZH_WORDS_GETTER("inquiry.field.maritalStatus"));
+	API_DTO_FIELD_DEFAULT(String, isMarry, ZH_WORDS_GETTER("inquiry.field.isMarry"));
 	//按需年龄
-	API_DTO_FIELD_DEFAULT(Int32, needYear, ZH_WORDS_GETTER("inquiry.field.needYear"));
+	API_DTO_FIELD_DEFAULT(UInt64, exposureWorkYear, ZH_WORDS_GETTER("inquiry.field.exposureWorkYear"));
 	//按需月龄
-	API_DTO_FIELD_DEFAULT(Int32, needmonth, ZH_WORDS_GETTER("inquiry.field.needMonth"));
+	API_DTO_FIELD_DEFAULT(UInt64, exposureWorkMonth, ZH_WORDS_GETTER("inquiry.field.exposureWorkMonth"));
 
 	//非必须
 
 	//文化程度
-	API_DTO_FIELD_DEFAULT(String, culture, ZH_WORDS_GETTER("inquiry.field.culture"));
+	API_DTO_FIELD_DEFAULT(String, education, ZH_WORDS_GETTER("inquiry.field.education"));
 	//家庭地址
-	API_DTO_FIELD_DEFAULT(String, homeAddress, ZH_WORDS_GETTER("inquiry.field.homeAddress"));
+	API_DTO_FIELD_DEFAULT(String, familyAddress, ZH_WORDS_GETTER("inquiry.field.familyAddress"));
 	//工种名称
-	API_DTO_FIELD_DEFAULT(String, jobName, ZH_WORDS_GETTER("inquiry.field.jobName"));
+	API_DTO_FIELD_DEFAULT(String, workTypeText, ZH_WORDS_GETTER("inquiry.field.workTypeText"));
 	//工种其他名称
-	API_DTO_FIELD_DEFAULT(String, jobOrderName, ZH_WORDS_GETTER("inquiry.field.jobOrderName"));
+	API_DTO_FIELD_DEFAULT(String, workName, ZH_WORDS_GETTER("inquiry.field.workName"));
 	//所属部门
 	API_DTO_FIELD_DEFAULT(String, department, ZH_WORDS_GETTER("inquiry.field.department"));
 

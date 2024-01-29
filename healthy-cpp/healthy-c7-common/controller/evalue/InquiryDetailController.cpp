@@ -19,14 +19,33 @@
 
 #include "stdafx.h"
 #include "InquiryDetailController.h"
+#include "domain/dto/evalue/InquiryDetailDTO.h"
+#include "../../service/evalue/InquiryDetailService.h"
 
 // 这个结构体代表了查询细节的 JSON 响应的包装器。
 // 它作为 execQueryInquiryDetail 函数的返回类型。
-struct InquiryDetailJsonVO::Wrapper InquiryDetailController::execQueryInquiryDetail(const InquiryDetailQuery::Wrapper& query)
+
+Uint64JsonVO::Wrapper InquiryDetailController::execModifyInquiryDetail(const InquiryDetailDTO::Wrapper& dto)
 {
-    // 测试数据
-
-    // TODO: 实现查询和获取查询细节的逻辑。
-
-    return {}; // 目前返回一个空的包装器。
+	// 定义返回数据对象
+	auto jvo = Uint64JsonVO::createShared();
+	// 参数校验
+	if (!dto->id || dto->id <= 0)
+	{
+		jvo->init(UInt64(-1), RS_PARAMS_INVALID);
+		return jvo;
+	}
+	// 定义一个Service
+	InquiryDetailService service;
+	// 执行数据修改
+	if (service.updateData(dto)) {
+		jvo->success(dto->id);
+	}
+	else
+	{
+		jvo->fail(dto->id);
+	}
+	// 响应结果
+	return jvo;
+	//return {};
 }
