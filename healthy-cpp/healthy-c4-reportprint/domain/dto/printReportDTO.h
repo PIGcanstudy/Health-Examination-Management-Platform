@@ -36,7 +36,7 @@ class printReportDTO : public oatpp::DTO
 		info->description = ZH_WORDS_GETTER("addition.field.printNum");
 	}
 	// ´òÓ¡×´Ì¬
-	DTO_FIELD(String, printState);
+	DTO_FIELD(UInt32, printState);
 	DTO_FIELD_INFO(printState) {
 		info->description = ZH_WORDS_GETTER("print.field.printState");
 	}

@@ -24,13 +24,12 @@ bool printReportService::updateData(const printReportDTO::Wrapper& dto)
 {
 	// 组装DO数据
 	printReportDO data;
-	// 	data.setId(dto->id.getValue(0));
-	// 	data.setName(dto->name.getValue(""));
-	// 	data.setSex(dto->sex.getValue(""));
-	// 	data.setAge(dto->age.getValue(1));
-	//  ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Name, name, Sex, sex, Age, age, Id, id)
-		// 执行数据修改
-		printReportDAO dao;
+	data.setId(dto->id.getValue(""));
+	data.setReportPrintingNum(dto->reportPrintingNum.getValue(1));
+	data.setPrintState(dto->printState.getValue(1));
+
+	// 执行数据修改
+	printReportDAO dao;
 	return dao.update(data) == 1;
 }
 

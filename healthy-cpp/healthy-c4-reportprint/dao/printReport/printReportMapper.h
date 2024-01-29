@@ -32,7 +32,9 @@ public:
 	printReportDO mapper(ResultSet* resultSet) const override
 	{
 		printReportDO data;
-
+		data.setId(resultSet->getString(1));
+		data.setReportPrintingNum(resultSet->getUInt32(2));
+		data.setPrintState(resultSet->getUInt32(3));
 		return data;
 	}
 };

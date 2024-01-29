@@ -25,20 +25,17 @@
 
 class printReportDO
 {
-	// 编号
-	CC_SYNTHESIZE(uint64_t, id, Id);
-	// 姓名
-	CC_SYNTHESIZE(string, name, Name);
-	// 性别
-	CC_SYNTHESIZE(string, sex, Sex);
-	// 年龄
-	CC_SYNTHESIZE(int, age, Age);
+	// id
+	CC_SYNTHESIZE(string, id, Id);
+	// 打印次数
+	CC_SYNTHESIZE(int, report_printing_num, ReportPrintingNum);
+	// 打印状态
+	CC_SYNTHESIZE(int, print_state, PrintState);
 public:
 	printReportDO() {
-		id = 0;
-		name = "";
-		sex = "";
-		age = -1;
+		id = "";
+		report_printing_num = 1;
+		print_state = 1;
 	}
 };
 
