@@ -34,6 +34,12 @@ public interface ITUserService extends IService<TUser> {
     void updatePersonalInfo(ModifyPersonalInfoDTO modifyPersonalInfoDTO) throws Exception;
 
     /**
+     * 密码身份验证
+     * @param password 用户传入的密码
+     */
+    void passwordAuthentication(String password);
+
+    /**
      * 修改用户手机号。
      * 根据提供的信息更改用户的手机号码。
      *

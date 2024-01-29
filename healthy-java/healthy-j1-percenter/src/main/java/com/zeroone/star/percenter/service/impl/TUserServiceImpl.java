@@ -1,6 +1,7 @@
 package com.zeroone.star.percenter.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zeroone.star.percenter.entity.TUser;
 import com.zeroone.star.percenter.mapper.TUserMapper;
 import com.zeroone.star.percenter.service.ITUserService;
@@ -62,13 +63,14 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
      */
     public JsonVO<String> modifyPassword(ModifyPasswordDTO modifyPasswordDTO) {
         try {
-            UserDTO currentUser = userHolder.getCurrentUser();
-            Long userId = currentUser.getId();
-
-            TUser user = this.getById(userId);
-            if (user == null) {
-                return JsonVO.fail("用户不存在");
-            }
+//            UserDTO currentUser = userHolder.getCurrentUser();
+//            Long userId = currentUser.getId();
+//
+//            TUser user = this.getById(userId);
+//            if (user == null) {
+//                return JsonVO.fail("用户不存在");
+//            }
+            TUser user = getUserByToken();
 
             // 使用PasswordEncoder来验证密码
             if (!passwordEncoder.matches(modifyPasswordDTO.getOldPassword(), user.getPassword())) {
@@ -77,7 +79,10 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
 
             // 使用PasswordEncoder来加密新密码
             user.setPassword(passwordEncoder.encode(modifyPasswordDTO.getNewPassword()));
-            this.updateById(user);
+            // 修改密码
+            UpdateWrapper<TUser> wrapper = new UpdateWrapper<>();
+            wrapper.eq("id", user.getId()).set("password", user.getPassword());
+            baseMapper.update(null, wrapper);
 
             return JsonVO.success("密码更新成功");
         } catch (Exception e) {
@@ -91,18 +96,45 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
      * @return
      */
     @Override
-    public void updatePersonalInfo(ModifyPersonalInfoDTO modifyPersonalInfoDTO) throws Exception {
-        UserDTO userDTO = userHolder.getCurrentUser();
-        Long userId = userDTO.getId();
-        TUser user = getById(userId);
-        if (user == null) {
-            throw new RuntimeException(ResultStatus.UNAUTHORIZED.getMessage());
-        }
+    public void updatePersonalInfo(ModifyPersonalInfoDTO modifyPersonalInfoDTO) {
+        TUser user = getUserByToken();
         TUser tUser = msUserMapper.modifyPersonalInfoDTOToTUser(modifyPersonalInfoDTO);
         tUser.setId(user.getId());
         tUser.setUpdateTime(LocalDateTime.now());
         tUser.setUpdateBy(user.getUsername());
         userMapper.updatePersonalInfo(tUser);
+    }
+
+    /**
+     * 密码身份验证
+     * @param password 用户传入的密码
+     */
+    @Override
+    public void passwordAuthentication(String password) {
+        TUser user = getUserByToken();
+        // 使用PasswordEncoder来验证密码
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new RuntimeException("密码验证失败");
+        }
+    }
+
+    /**
+     * 从userHolder中获取用户信息
+     * @return
+     */
+    public TUser getUserByToken() {
+        UserDTO currentUser = null;
+        try {
+            currentUser = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            throw new RuntimeException(ResultStatus.UNAUTHORIZED.getMessage());
+        }
+        Long userId = currentUser.getId();
+        TUser user = this.getById(userId);
+        if (user == null) {
+            throw new RuntimeException("用户不存在");
+        }
+        return user;
     }
 
 

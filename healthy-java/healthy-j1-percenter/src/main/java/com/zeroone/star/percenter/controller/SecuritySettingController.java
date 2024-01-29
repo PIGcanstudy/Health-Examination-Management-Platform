@@ -23,6 +23,9 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "安全设置")
 @Validated
 public class SecuritySettingController implements SecuritySettingApis {
+    @Autowired
+    private ITUserService userService;
+
     /**
      * 密码身份验证
      * @param passwordAuthenticationQuery 密码身份验证传入的数据
@@ -32,12 +35,9 @@ public class SecuritySettingController implements SecuritySettingApis {
     @GetMapping("/password-authentication")
     @ApiOperation("密码身份验证")
     public JsonVO<String> passwordAuthentication(@Validated PasswordAuthenticationQuery passwordAuthenticationQuery){
-        return JsonVO.success("验证成功");
+        userService.passwordAuthentication(passwordAuthenticationQuery.getPassword());
+        return JsonVO.success("密码验证成功");
     }
-
-
-    @Autowired
-    private ITUserService userService;
 
     /**
      * 用户修改自己的密码

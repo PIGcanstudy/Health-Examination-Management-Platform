@@ -4,6 +4,7 @@ import com.zeroone.star.percenter.entity.TUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPersonalInfoDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 
 /**
  * <p>
