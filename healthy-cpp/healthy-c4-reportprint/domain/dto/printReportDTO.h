@@ -31,17 +31,15 @@ class printReportDTO : public oatpp::DTO
 		info->description = ZH_WORDS_GETTER("preview.field.reportNum");
 	}
 	// 报告打印次数
-	DTO_FIELD(UInt32, reportPrintingNum);
-	DTO_FIELD_INFO(reportPrintingNum) {
+	DTO_FIELD(UInt32, report_printing_num);
+	DTO_FIELD_INFO(report_printing_num) {
 		info->description = ZH_WORDS_GETTER("addition.field.printNum");
 	}
 	// 打印状态
-	DTO_FIELD(UInt32, printState);
-	DTO_FIELD_INFO(printState) {
+	DTO_FIELD(UInt32, print_state);
+	DTO_FIELD_INFO(print_state) {
 		info->description = ZH_WORDS_GETTER("print.field.printState");
 	}
-public:
-	printReportDTO() {};
 };
 
 class printReportPageDTO : public PageDTO<printReportDTO::Wrapper>

@@ -26,25 +26,5 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 
-class printReportQuery : public PageQuery
-{
-	DTO_INIT(printReportQuery, PageQuery);
-	// 报告id
-	DTO_FIELD(String, id);
-	DTO_FIELD_INFO(id) {
-		info->description = ZH_WORDS_GETTER("preview.field.reportNum");
-	}
-	// 报告打印次数
-	DTO_FIELD(UInt32, reportPrintingNum);
-	DTO_FIELD_INFO(reportPrintingNum) {
-		info->description = ZH_WORDS_GETTER("addition.field.printNum");
-	}
-	// 打印状态
-	DTO_FIELD(UInt32, printState);
-	DTO_FIELD_INFO(printState) {
-		info->description = ZH_WORDS_GETTER("print.field.printState");
-	}
-};
-
 #include OATPP_CODEGEN_END(DTO)
 #endif // !_PRINTREPORT_H_

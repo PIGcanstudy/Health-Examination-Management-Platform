@@ -34,8 +34,8 @@ class printReportDO
 public:
 	printReportDO() {
 		id = "";
-		report_printing_num = 1;
-		print_state = 1;
+		report_printing_num = 0;
+		print_state = 0;
 	}
 };
 
