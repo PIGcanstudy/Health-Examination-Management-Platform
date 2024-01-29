@@ -25,4 +25,16 @@ public interface DictApis {
      * @return
      */
     JsonVO<Boolean> add(com.zeroone.star.project.dto.j3.dictory.DictDTO dict);
+
+
+    /**
+     * 修改字典
+     * @return
+     */
+    JsonVO<Boolean> update(com.zeroone.star.project.dto.j3.dictory.DictDTO dict);
+    /**
+     * 删除字典
+     * @return
+     */
+    JsonVO<Boolean> delete(com.zeroone.star.project.dto.j3.dictory.DictDTO dict);
 }
