@@ -29,7 +29,7 @@ INSERT INTO `t_dict` VALUES (1443468359168561152, 'admin', '2021-09-30 14:50:50'
 INSERT INTO `t_dict` VALUES (1443478591877812225, 'admin', '2021-09-30 15:31:30', 0, 'admin', '2021-09-30 15:31:30', '', '组合项目服务类型', 'serviceType', 17.00);
 INSERT INTO `t_dict` VALUES (1443478822497423360, 'admin', '2021-09-30 15:32:24', 0, 'admin', '2021-09-30 15:32:24', '', '诊台显示', 'diagnosticType', 18.00);
 INSERT INTO `t_dict` VALUES (1446369526794031105, 'admin', '2021-10-08 14:59:02', 0, 'admin', '2021-10-08 14:59:02', '', '企业规模', 'companyScale', 19.00);
-INSERT INTO `t_dict  VALUES (1446388048249098240, 'admin', '2021-10-08 16:12:38', 0, 'admin', '2021-10-08 16:12:38', '', '体检类型', 'physicalType', 20.00);
+INSERT INTO `t_dict`  VALUES (1446388048249098240, 'admin', '2021-10-08 16:12:38', 0, 'admin', '2021-10-08 16:12:38', '', '体检类型', 'physicalType', 20.00);
 INSERT INTO `t_dict` VALUES (1447871138549075969, 'admin', '2021-10-12 18:25:54', 0, 'admin', '2021-10-12 18:25:54', '', '在岗状态', 'workState', 21.00);
 INSERT INTO `t_dict` VALUES (1452607630634782720, 'admin', '2021-10-25 20:07:02', 0, 'admin', '2021-10-25 20:07:02', '', '模板类型', 'templateType', 22.00);
 INSERT INTO `t_dict` VALUES (1452626687144628224, 'admin', '2021-10-25 21:22:45', 0, 'admin', '2021-10-25 21:22:45', '', '术语类型', 'office_term_type', 23.00);
