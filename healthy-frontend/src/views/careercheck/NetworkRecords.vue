@@ -96,7 +96,7 @@
             />
         </el-select>
         </el-form-item>
-     <div class="expend">
+     <div  v-if="isShowInput" class="expend">
       <el-form-item label="订单编号">
           <el-input v-model="formData.checkid" :style="{ width: '200px' }"></el-input>
         </el-form-item>
@@ -123,7 +123,7 @@
         <el-form-item>
           <el-button @click="resetForm">重置</el-button>
 
-          <el-button type="text" style="margin-left: 14px" @click="toggleCollapse"
+          <el-button type="text" style="margin-left: 20px" @click="toggleCollapse"
             >{{ isShowInput ? '收起' : '展开' }}
             <el-icon v-show="isShowInput === true"><ArrowUp /></el-icon>
             <el-icon v-show="isShowInput === false"><ArrowDown /></el-icon>
@@ -134,10 +134,10 @@
       <!-- operation功能区域 -->
       <template #operation>
         <div class="operation">
-          <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true">
+          <!-- <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true">
             <el-icon><Plus></Plus></el-icon>
             新增
-          </el-button>
+          </el-button> -->
           <!-- 新增对话框区域 -->
           <el-dialog v-model="dialogVisible" title="新增" width="60%" :before-close="handleClose">
             <el-row>
@@ -204,8 +204,23 @@
               </span>
             </template>
           </el-dialog>
+
+          
+            <el-button type="primary">
+              <el-icon><Refresh></Refresh></el-icon>数据同步</el-button>
+            <el-button type="danger" dark="true">
+              <el-icon><Refresh></Refresh></el-icon>错误数据同步</el-button>
+            <el-button type="primary">
+              <el-icon><Refresh></Refresh></el-icon>复查数据同步</el-button>
+            <el-button type="danger">
+              <el-icon><Refresh></Refresh></el-icon>复查错误数据同步</el-button>
+            <el-button type="success"  dark="true" style="margin-right: 10px;">
+              <el-icon><Refresh></Refresh></el-icon>自定义上报</el-button>
+          
+          
+
+          <!-- 下拉按钮 -->
           <el-dropdown>
-            <el-button type="primary":icon="Edit" >数据同步</el-button>
             <el-button style="margin-right: 8px">
               更多操作
               <el-icon class="el-icon--right"> <arrow-down /> </el-icon
@@ -227,6 +242,7 @@
               </el-dropdown-menu>
             </template>
           </el-dropdown>
+
           <el-button @click="closeForm">关闭搜索</el-button>
           <el-button @click="closeHint">关闭提示</el-button>
         </div>
@@ -249,7 +265,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import {ArrowUp,ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit } from '@element-plus/icons-vue'
+import {ArrowUp,ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit} from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 // 上传图片
 const imageUrl = ref('')
@@ -286,16 +302,16 @@ const tableColumnAttribute = ref([
   { prop: 'etype', label: '年龄', width: '120', align: 'center' },
   { prop: 'scale', label: '婚否', width: '120', align: 'center' },
   { prop: 'contact', label: '人员联系电话', width: '120', align: 'center' },
-  { prop: 'phone', label: '接害因素', width: '120', align: 'center' }
-  // { prop: 'phone', label: '接害工龄年数', width: '120', align: 'center' }
-  // { prop: 'phone', label: '接害工龄月数', width: '120', align: 'center' }
-  // { prop: 'phone', label: '工种其他名称', width: '120', align: 'center' }
-  // { prop: 'phone', label: '体检日期', width: '120', align: 'center' }
-  // { prop: 'phone', label: '体检结果', width: '120', align: 'center' }
-  // { prop: 'phone', label: '主检医师', width: '120', align: 'center' }
-  // { prop: 'phone', label: '开始接害日期', width: '120', align: 'center' }
-  // { prop: 'phone', label: '网传状态', width: '120', align: 'center' }
-  // { prop: 'phone', label: '是否复查', width: '120', align: 'center' }
+  { prop: 'harmfulfactors', label: '接害因素', width: '120', align: 'center' },
+  { prop: 'harmfulfactorsyears', label: '接害工龄年数', width: '120', align: 'center' },
+  { prop: 'harmfulfactorsmonths', label: '接害工龄月数', width: '120', align: 'center' },
+  { prop: 'othernames', label: '工种其他名称', width: '120', align: 'center' },
+  { prop: 'datecheck', label: '体检日期', width: '120', align: 'center' },
+  { prop: 'resultcheck', label: '体检结果', width: '120', align: 'center' },
+  { prop: 'maindoctor', label: '主检医师', width: '120', align: 'center' },
+  { prop: 'begindate', label: '开始接害日期', width: '120', align: 'center' },
+  { prop: 'webstate', label: '网传状态', width: '120', align: 'center' },
+  { prop: 'ifcheck', label: '是否复查', width: '120', align: 'center' },
 ])
 // table数据
 const tableData = ref([
@@ -336,7 +352,6 @@ const formData = reactive({
   identity:'',
   checkresult:'',
   maincheckadvise:''
-
 })
 
 const webstateoptions = [
@@ -371,15 +386,13 @@ const ifcheckoptions = [
 
 
 
+// 点击展开按钮按钮的折叠逻辑
+const isShowInput = ref(false)
 const toggleCollapse = () => {
   isShowInput.value = !isShowInput.value
 }
 
-// 点击展开按钮按钮的折叠逻辑
-// const isShowInput = ref(false)
-// const toggleCollapse = () => {
-//   isShowInput.value = !isShowInput.value
-// }
+// 新增部分的内容
 // 基础信息表单
 const basicForm = reactive({
   unitName: '',
@@ -392,6 +405,8 @@ const basicForm = reactive({
   number: '',
   dangerousNum: ''
 })
+
+ 
 // 联系人表单
 const contactForm = reactive({
   people: '',
@@ -492,8 +507,5 @@ onMounted(() => {
   width: 178px;
   height: 178px;
   text-align: center;
-}
-.wholedate{
-
 }
 </style>
