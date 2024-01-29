@@ -33,4 +33,9 @@ print:
   summary: 获取体检人员报告
   download: 报告下载
   print: 报告打印
+  sampleCode: 获取样本条码
+addition:
+ reportName: 报告名称
+ sampleName: 条码名称
+ sampleCodeNum: 条码数字
   

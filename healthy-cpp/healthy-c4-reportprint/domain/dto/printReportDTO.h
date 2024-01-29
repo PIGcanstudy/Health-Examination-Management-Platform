@@ -50,6 +50,8 @@ class printReportDTO : public oatpp::DTO
 	DTO_FIELD_INFO(pageNumPerTable) {
 		info->description = ZH_WORDS_GETTER("print.field.pageNumPerTable");
 	}
+public:
+	printReportDTO() {}
 };
 
 /*
