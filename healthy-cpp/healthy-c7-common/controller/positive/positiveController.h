@@ -21,11 +21,11 @@ public:
 		// 定义其他查询参数描述
 
 		// 姓名
-		API_DEF_ADD_QUERY_PARAMS(String, "personName", ZH_WORDS_GETTER("positive.filed.personname"), "LiMing", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "personName", ZH_WORDS_GETTER("positive.filed.personname"), "李子恒", true);
 		// 体检科室
-		API_DEF_ADD_QUERY_PARAMS(String, "officeName", ZH_WORDS_GETTER("positive.filed.officename"), "001", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "officeName", ZH_WORDS_GETTER("positive.filed.officename"), "", false);
 		// 体检日期
-		API_DEF_ADD_QUERY_PARAMS(String, "checkDate", ZH_WORDS_GETTER("positive.filed.checkdate"), "2024-01-07", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "checkDate", ZH_WORDS_GETTER("positive.filed.checkdate"), "", false);
 		// 结果状态 是否正常 0为正常 1为不正常
 		API_DEF_ADD_QUERY_PARAMS(UInt32, "isNormal", ZH_WORDS_GETTER("positive.filed.isNormal"), 1, false);
 

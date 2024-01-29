@@ -8,15 +8,16 @@ unit:
   LinkPhone: 联系电话
 positive:
  filed:
+  id: 体检人员Id
   summary: 示例
   personname: 姓名
-  est_num: 体检编号
+  test_num: 体检编号
   officename: 体检科室
-  order_group_item_project_name: 体检科室
+  order_group_item_project_name: 体检项目
   result: 结果
   unit_name: 单位名称
   scope: 参考范围
-
+  diagnose_sum: 提示
   crisis_degree: 危机程度
   checkdate: 体检日期
   isNormal: 结果状态
