@@ -262,12 +262,6 @@ const dataOneRow = [
 // 列表数据
 const listsData = [
   {
-    code: '102039338441',
-    date: '2023-4-4',
-    company: 'test company',
-    icon: [4, 1, 2, 1, 2] // 放、未报、通、未打、团
-  },
-  {
     code: '121111118442',
     date: '2093-4-4',
     company: 'test company3',
@@ -278,6 +272,24 @@ const listsData = [
     date: '2023-4-4',
     company: 'test company3',
     icon: [1, 0, 0, 0, 2]
+  },
+  {
+    code: '102039338445',
+    date: '2023-4-4',
+    company: 'test company3',
+    icon: [1, 0, 0, 0, 2]
+  },
+  {
+    code: '102039338446',
+    date: '2023-4-4',
+    company: 'test company3',
+    icon: [1, 0, 0, 0, 2]
+  },
+  {
+    code: '102039338441',
+    date: '2023-4-4',
+    company: 'test company',
+    icon: [4, 1, 2, 1, 2] // 放、未报、通、未打、团
   }
 ]
 </script>

@@ -1,7 +1,11 @@
 <template>
   <div>
-    <RadioList v-if="useWhich === 'radio'" :lists-data="listsData"></RadioList>
-    <CheckBoxList v-else-if="useWhich === 'checkbox'" :lists-data="listsData"></CheckBoxList>
+    <el-scrollbar height="300px">
+      <div class="box">
+        <RadioList v-if="useWhich === 'radio'" :lists-data="listsData"></RadioList>
+        <CheckBoxList v-else-if="useWhich === 'checkbox'" :lists-data="listsData"></CheckBoxList>
+      </div>
+    </el-scrollbar>
   </div>
 </template>
 
@@ -28,3 +32,9 @@ const props = defineProps({
   }
 })
 </script>
+
+<style scoped>
+.box {
+  margin: 10px;
+}
+</style>
