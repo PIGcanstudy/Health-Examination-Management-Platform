@@ -1,6 +1,7 @@
 package com.zeroone.star.project.j4.portfolioitems;
 
 import com.zeroone.star.project.dto.PageDTO;
+import com.zeroone.star.project.j4.query.BasePortfolioListQuery;
 import com.zeroone.star.project.j4.vo.BasePortfolioListVO;
 import com.zeroone.star.project.j4.vo.ProjectNameListVO;
 import com.zeroone.star.project.j4.vo.SectionNameListVO;
@@ -17,7 +18,7 @@ public interface PortfolioitemsApi {
      * @param query 查询条件
      * @return 基础项目列表
      */
-    JsonVO<PageDTO<BasePortfolioListVO>> queryBasePortfolio(BasePortfolioListVO query);
+    JsonVO<PageDTO<BasePortfolioListVO>> queryBasePortfolio(BasePortfolioListQuery query);
 
     /**
      * 科室名称接口
