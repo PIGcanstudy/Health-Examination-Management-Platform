@@ -88,7 +88,7 @@
 import Search from '@/components/search/Search.vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import Head from '@/components/head/Head.vue'
-import SelectList from '../../../components/selectList/SelectList.vue'
+import SelectList from '@/components/selectList/SelectList.vue'
 import peoplelist from '@/components/peoplelist/PeopleList.vue'
 // import PeopleListInter from '../../../components/peoplelist/PeopleList-Inter.vue'
 

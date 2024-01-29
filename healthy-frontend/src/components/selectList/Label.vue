@@ -4,12 +4,12 @@
       <el-row justify="space-between">
         <el-col :style="{ display: code === undefined ? 'none' : 'flex' }" span="8">
           <div>
-            <span>{{ code }}</span>
+            <span class="text">{{ code }}</span>
           </div>
         </el-col>
         <el-col span="8">
           <div>
-            <span>{{ date }}</span>
+            <span class="text">{{ date }}</span>
           </div>
         </el-col>
         <el-col span="8">
@@ -23,7 +23,9 @@
     <div class="bottom">
       <el-row justify="space-between">
         <el-col span="12">
-          <div>{{ company }}</div>
+          <div>
+            <span class="text">{{ company }}</span>
+          </div>
         </el-col>
         <el-col span="12">
           <div class="status">
@@ -181,6 +183,11 @@ const together = togetherIcon[props.useTogether]
   }
 }
 
+// 显示文字的盒子
+.text {
+  margin-inline: 2px;
+}
+
 // 盒子默认隐藏
 .status span {
   display: none;
@@ -238,6 +245,7 @@ const together = togetherIcon[props.useTogether]
     color: green;
     border-color: green;
   }
+
   .together {
     color: red;
     border-color: red;
