@@ -37,8 +37,10 @@ print:
 addition:
  field:
   reportName: 报告名称
-  sampleName: 条码名称
   sampleCodeNum: 条码数字
+  sampleCodeName: 条码名称
  test:
   testReportName: 职业健康体检报告
-  
+  saveAsPDF: 另存为PDF
+  all: 全部
+  sampleCodeName: 职业健康体检条码

@@ -53,9 +53,9 @@ public:
 		// 打印状态
 		API_DEF_ADD_QUERY_PARAMS(String, "printState", ZH_WORDS_GETTER("print.field.printState"), "finished", false);
 		// 目标打印机
-		API_DEF_ADD_QUERY_PARAMS(String, "targetPrinter", ZH_WORDS_GETTER("print.field.targetPrinter"), "save as PDF", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "targetPrinter", ZH_WORDS_GETTER("print.field.targetPrinter"), ZH_WORDS_GETTER("addition.test.saveAsPDF"), false);
 		// 页面
-		API_DEF_ADD_QUERY_PARAMS(String, "page", ZH_WORDS_GETTER("print.field.page"), "all", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "page", ZH_WORDS_GETTER("print.field.page"), ZH_WORDS_GETTER("addition.test.all"), false);
 		// 每个工作表的页数
 		API_DEF_ADD_QUERY_PARAMS(UInt16, "pageNumPerTable", ZH_WORDS_GETTER("print.field.pageNumPerTable"), 1, false);
 	}
@@ -70,12 +70,16 @@ public:
 	// 定义一个样本条码获取接口
 	// 定义描述
 	ENDPOINT_INFO(downloadFile) {
+		// 接口标题
 		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("print.get.sampleCode"), Void);
-		API_DEF_ADD_QUERY_PARAMS(String, "sampleCodeNum", ZH_WORDS_GETTER("addition.field.sampleCodeNum"), "12345678", true);
+		// 条码编号
+		API_DEF_ADD_QUERY_PARAMS(String, "sampleCodeNum", ZH_WORDS_GETTER("addition.field.sampleCodeNum"), "436591946372", false);
+		// 条码名称
+		API_DEF_ADD_QUERY_PARAMS(String, "sampleCodeName", ZH_WORDS_GETTER("addition.field.sampleCodeName"), ZH_WORDS_GETTER("addition.test.sampleCodeName"), false);
 	}
 	// 定义端点
-	ENDPOINT(API_M_GET, "/sampleCode/download", downloadFile, QUERY(String, sampleCodeNum)) {
-		return execDownloadSampleCode(sampleCodeNum);
+	ENDPOINT(API_M_GET, "/downloadsampleCode", downloadFile, QUERY(String, sampleCodeName)) {
+		return execDownloadSampleCode(sampleCodeName);
 	}
 
 private:
