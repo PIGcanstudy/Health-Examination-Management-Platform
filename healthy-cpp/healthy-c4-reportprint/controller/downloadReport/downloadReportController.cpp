@@ -29,7 +29,7 @@
 std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> downloadReportController::execDownloadFile(const String& id)
 {
 	// 构建文件全路径
-	std::string fullPath = "public/static/file/" + URIUtil::urlDecode(id.getValue("")) + ".pdf" ;
+	std::string fullPath = "public/static/report/sample.pdf" ;
 
 	// 读取文件
 	auto fstring = String::loadFromFile(fullPath.c_str());
