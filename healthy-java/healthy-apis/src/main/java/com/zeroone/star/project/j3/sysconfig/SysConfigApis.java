@@ -17,13 +17,13 @@ public interface SysConfigApis {
      *@Description: 发布系统公告配置
      *@Author: Mr.Lin
      */
-    JsonVO<SystemNoticeDTO> addSystemNotice(SystemNoticeDTO systemNoticeDTO);
+    JsonVO<SystemNoticeDTO> addSystemNotice(SystemNoticeDTO systemNoticeDTO) throws Exception;
 
     /**
      *@Description: 修改系统公告配置
      *@Author: Mr.Lin
      */
-    JsonVO<SystemNoticeDTO> modifySystemNotice(SystemNoticeDTO systemNoticeDTO);
+    JsonVO<SystemNoticeDTO> modifySystemNotice(SystemNoticeDTO systemNoticeDTO) throws Exception;
 
     /**
      *@Description: 获取当前系统公告配置
