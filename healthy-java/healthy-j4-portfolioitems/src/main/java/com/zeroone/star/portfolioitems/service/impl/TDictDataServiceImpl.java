@@ -8,6 +8,8 @@ import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.vo.ProjectNameListVO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  * 字典数据 服务实现类
@@ -20,7 +22,7 @@ import org.springframework.stereotype.Service;
 public class TDictDataServiceImpl extends ServiceImpl<TDictDataMapper, TDictData> implements ITDictDataService {
 
     @Override
-    public PageDTO<ProjectNameListVO> ListProjectName() {
-        return null;
+    public List<ProjectNameListVO> ListProjectName() {
+        return baseMapper.listPorjectName();
     }
 }

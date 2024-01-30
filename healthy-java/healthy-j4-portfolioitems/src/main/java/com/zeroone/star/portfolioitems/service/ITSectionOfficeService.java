@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.vo.SectionNameListVO;
 
+import java.util.List;
+
 /**
  * <p>
  * 科室 服务类
@@ -19,5 +21,5 @@ public interface ITSectionOfficeService extends IService<TSectionOffice> {
      * 获取科室名称
      * @return 查询结果
      */
-    PageDTO<SectionNameListVO> listSectionName();
+    List<SectionNameListVO>  listSectionName();
 }

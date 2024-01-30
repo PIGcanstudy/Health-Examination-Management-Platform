@@ -31,9 +31,9 @@ public class TBaseProjectServiceImpl extends ServiceImpl<TBaseProjectMapper, TBa
     public PageDTO<BasePortfolioListVO> ListBaseProject(BasePortfolioListQuery query) {
         Page<TBaseProject> page = new Page<>(query.getPageIndex(),query.getPageSize());
         QueryWrapper<TBaseProject> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("del_flag", 0);
         if (query.getName() != null) {
             queryWrapper.like("name",query.getName());
-
         }
         if (query.getOfficeId() != null) {
             queryWrapper.like("office_id",query.getOfficeId());
@@ -44,7 +44,7 @@ public class TBaseProjectServiceImpl extends ServiceImpl<TBaseProjectMapper, TBa
         List list = new ArrayList<>();
         records.forEach(item->{
             BasePortfolioListVO vo = new BasePortfolioListVO();
-            BeanUtil.copyProperties(item,vo );
+            BeanUtil.copyProperties(item,vo);
             list.add(vo);
         });
         result.setRecords(list);
