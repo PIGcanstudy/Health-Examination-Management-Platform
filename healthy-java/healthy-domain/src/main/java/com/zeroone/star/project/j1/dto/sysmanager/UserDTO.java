@@ -8,17 +8,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @ApiModel("用户列表展示数据")
 public class UserDTO {
     @ApiModelProperty(value = "唯一ID", example = "682265633886208")
-    private String id;
+    private Long id;
     @ApiModelProperty(value = "登录账号", example = "admin")
-    private String userName;
+    private String username;
     @ApiModelProperty(value = "用户名", example = "管理员")
-    private String nickName;
+    private String nickname;
     @ApiModelProperty(value = "头像")
     private String avatar;
     @ApiModelProperty(value = "所属部门编号", example = "40322777781112832")
@@ -34,5 +35,5 @@ public class UserDTO {
     @ApiModelProperty(value = "状态(0 启用 1 禁用)", example = "0")
     private Integer status;
     @ApiModelProperty(value = "创建时间", example = "2023-12-26 15:18:32")
-    private Timestamp createTime;
+    private LocalDateTime createTime;
 }

@@ -1,7 +1,10 @@
 package com.zeroone.star.sysmanager.service;
 
+import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j1.dto.percenter.CreateUserDTO;
 import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
+import com.zeroone.star.project.j1.dto.sysmanager.UserDTO;
+import com.zeroone.star.project.j1.query.sysmanager.UserListQuery;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.sysmanager.entity.TUser;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -35,4 +38,17 @@ public interface ITUserService extends IService<TUser> {
 	 * @param user
 	 */
 	void saveUser(CreateUserDTO user);
+
+	/**
+	 * 批量删除用户
+	 * @param ids
+	 */
+    void removeUserList(List<Long> ids);
+
+	/**
+	 * 获取用户列表
+	 * @param userListQuery
+	 * @return
+	 */
+    PageDTO<UserDTO> listUserList(UserListQuery userListQuery);
 }

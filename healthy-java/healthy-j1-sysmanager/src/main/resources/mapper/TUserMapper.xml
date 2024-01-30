@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zeroone.star.sysmanager.mapper.TUserMapper">
-
+    <update id="deleteUserByIds">
+        update zo_healthy.t_user
+        set del_flag = 1, update_by = #{UpdateBy}, update_time = #{updateTime}
+        where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </update>
 </mapper>

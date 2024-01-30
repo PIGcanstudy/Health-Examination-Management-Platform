@@ -1,5 +1,6 @@
 package com.zeroone.star.sysmanager.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j1.dto.percenter.CreateUserDTO;
 import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
@@ -9,19 +10,12 @@ import com.zeroone.star.project.j1.sysmanager.UserDataApis;
 import com.zeroone.star.project.j1.vo.sysmanager.UserDataVO;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.project.vo.JsonVO;
-
 import com.zeroone.star.sysmanager.service.ITUserService;
-
 import com.zeroone.star.sysmanager.service.UserDataService;
-
 import com.zeroone.star.sysmanager.service.UserService;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,8 +24,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user-data")
-@Api(tags = "用户管理-用户数据")
-public class UserDataController implements UserDataApis {
+@Api(tags = "用户管理-用户数据s")
+public class UserDatasController {
 
     @Resource
     private UserService userService;
@@ -44,7 +38,6 @@ public class UserDataController implements UserDataApis {
      * 获取用户名称列表（用于输入表单下拉列表框）
      * @return
      */
-    @Override
     @GetMapping("/query-username-list")
     @ApiOperation("获取用户名称列表（用于输入表单下拉列表框）")
     @Cacheable(cacheNames = "UserNameListVOCache", key = "")
@@ -58,11 +51,11 @@ public class UserDataController implements UserDataApis {
      * @param userListQuery 查询条件 + 分页条件
      * @return
      */
-    @Override
     @GetMapping("/query-user-list")
     @ApiOperation("获取用户列表（条件 + 分页）")
     public JsonVO<PageDTO<UserDTO>> queryUserList(UserListQuery userListQuery) {
-        return JsonVO.success(new PageDTO<UserDTO>());
+        PageDTO<UserDTO> pageDTO =  itUserService.listUserList(userListQuery);
+        return JsonVO.success(pageDTO);
     }
 
     /**
@@ -70,11 +63,10 @@ public class UserDataController implements UserDataApis {
      * @param status 需要改成的状态
      * @return
      */
-    @Override
     @GetMapping("/set-user-status/{id}/{status}")
     @ApiImplicitParam(name = "status",required = true)
     @ApiOperation("设置用户状态（0启用 1禁用）")
-    public JsonVO setUserStatus(@PathVariable Long id,@PathVariable Integer status){
+    public JsonVO setUserStatus(@PathVariable Long id, @PathVariable Integer status){
         userService.setUserStatus(id,status);
         return JsonVO.success("状态修改成功");
     }
@@ -84,7 +76,6 @@ public class UserDataController implements UserDataApis {
      * @param id 用户id
      * @return
      */
-    @Override
     @GetMapping("/query-user-data/{id}")
     @ApiImplicitParam(name = "id",required = true)
     @ApiOperation("获取用户详情")
@@ -98,20 +89,18 @@ public class UserDataController implements UserDataApis {
      * @param user 用户实体
      * @return
      */
-	@Override
     @PutMapping("/modify-user-info")
     @ApiOperation("修改用户信息")
-	public JsonVO modifyUser(@RequestBody ModifyUserDTO user) {
-		itUserService.modifyUser(user);
+    public JsonVO modifyUser(@RequestBody ModifyUserDTO user) {
+        itUserService.modifyUser(user);
         return JsonVO.success("修改成功");
-	}
+    }
 
     /**
      * 新增用户
      * @param user 用户实体
      * @return
      */
-    @Override
     @PostMapping("/add-newUser")
     @ApiOperation("新增用户")
     public JsonVO addUser(@RequestBody CreateUserDTO user) {
@@ -124,16 +113,10 @@ public class UserDataController implements UserDataApis {
      * @param ids 用户id
      * @return
      */
-    @Override
     @DeleteMapping("/delete-user-list")
     @ApiOperation("批量删除用户")
-    public JsonVO deleteUserList(@RequestBody List<String> ids) {
-        try {
-            userDataService.deleteUserList(ids);
-            return JsonVO.success("删除成功");
-        } catch (Exception e) {
-            return JsonVO.fail("删除失败");
-        }
+    public JsonVO removeUserList(@RequestBody List<Long> ids) {
+        itUserService.removeUserList(ids);
+        return JsonVO.success("删除成功");
     }
-
 }

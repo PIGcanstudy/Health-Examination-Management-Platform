@@ -6,12 +6,16 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.io.FastByteArrayOutputStream;
 import cn.hutool.core.util.IdUtil;
+import com.anji.captcha.model.common.ResponseModel;
+import com.anji.captcha.model.vo.CaptchaVO;
+import com.anji.captcha.service.CaptchaService;
 import com.zeroone.star.login.service.IMenuService;
 import com.zeroone.star.login.service.OauthService;
 import com.zeroone.star.login.service.UserService;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.constant.AuthConstant;
+import com.zeroone.star.project.constant.RedisConstant;
 import com.zeroone.star.project.dto.login.LoginDTO;
 import com.zeroone.star.project.dto.login.Oauth2TokenDTO;
 import com.zeroone.star.project.login.LoginApis;
@@ -21,13 +25,17 @@ import com.zeroone.star.project.vo.login.LoginVO;
 import com.zeroone.star.project.vo.login.MenuTreeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
@@ -58,11 +66,26 @@ public class LoginController implements LoginApis {
     @Resource
     UserService userService;
 
+    @Autowired
+    private CaptchaService captchaService;
+
     @ApiOperation(value = "授权登录")
     @PostMapping("auth-login")
     @Override
     public JsonVO<Oauth2TokenDTO> authLogin(LoginDTO loginDTO) {
         //TODO:未实现验证码验证
+        CaptchaVO captchaVO = new CaptchaVO();
+        captchaVO.setCaptchaVerification(loginDTO.getCode());
+        ResponseModel response = captchaService.verification(captchaVO);
+        if (!response.isSuccess()) {
+            //验证码校验失败，返回信息告诉前端
+            //repCode  0000  无异常，代表成功
+            //repCode  9999  服务器内部异常
+            //repCode  0011  参数不能为空
+            //repCode  6110  验证码已失效，请重新获取
+            //repCode  6111  验证失败
+            //repCode  6112  获取验证码失败,请联系管理员
+        }
         //账号密码认证
         Map<String, String> params = new HashMap<>(5);
         params.put("grant_type", "password");
@@ -149,7 +172,22 @@ public class LoginController implements LoginApis {
     @Override
     public JsonVO<String> logout() {
         //TODO:登出逻辑，需要配合登录逻辑实现
-        return null;
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        String token=null;
+        if (servletRequestAttributes != null) {
+            HttpServletRequest request = servletRequestAttributes.getRequest();
+            String authorizationHeader = request.getHeader("Authorization");
+            if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+                token = authorizationHeader.replace("Bearer ", "");
+            }
+        }
+
+        String tokenKeyInRedis = RedisConstant.USER_TOKEN + ":" + token;
+        if (Boolean.FALSE.equals(redisTemplate.hasKey(tokenKeyInRedis))) {
+            return JsonVO.create(null, ResultStatus.UNAUTHORIZED.getCode(), ResultStatus.UNAUTHORIZED.getMessage());
+        }
+        redisTemplate.delete(tokenKeyInRedis);
+        return JsonVO.create(null, ResultStatus.SUCCESS.getCode(), "退出成功");
     }
 
     @Resource

@@ -2,10 +2,13 @@ package com.zeroone.star.sysmanager.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
+import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j1.dto.percenter.CreateUserDTO;
 import com.zeroone.star.project.j1.dto.sysmanager.ModifyUserDTO;
+import com.zeroone.star.project.j1.query.sysmanager.UserListQuery;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.sysmanager.entity.TUser;
@@ -15,10 +18,7 @@ import com.zeroone.star.sysmanager.mapper.TUserMapper;
 import com.zeroone.star.sysmanager.mapper.UserRoleMapper;
 import com.zeroone.star.sysmanager.service.ITUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.Mapper;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +45,13 @@ interface MsUserMapper{
      * @return 转换结果
      */
     TUser CreateUserDTOToTUser(CreateUserDTO createUserDTO);
+
+    /**
+     * 将 TUser 转换成 UserDTO
+     * @param tUser 待转换的DTO
+     * @return 转换结果
+     */
+    com.zeroone.star.project.j1.dto.sysmanager.UserDTO TUserToUserDTO(TUser tUser);
 }
 /**
  * <p>
@@ -168,6 +175,60 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
             }
             userRoleMapper.insert(list);
         }
+    }
+
+    /**
+     * 批量删除用户
+     * @param ids
+     */
+    @Override
+    public void removeUserList(List<Long> ids) {
+        TUser userByToken = getUserByToken();
+        if (userByToken.getType() != 1) {
+            throw new RuntimeException("用户权限不足");
+        }
+        List<TUser> tUserList = tUserMapper.selectBatchIds(ids);
+        for (TUser user : tUserList) {
+            if (user.getDelFlag()) {
+                ids.remove(user.getId());
+            }
+        }
+        tUserMapper.deleteUserByIds(ids, LocalDateTime.now(), userByToken.getUsername());
+    }
+
+    @Override
+    public PageDTO<com.zeroone.star.project.j1.dto.sysmanager.UserDTO> listUserList(UserListQuery userListQuery) {
+        // 构建分页对象
+        Page<TUser> page = new Page<>(userListQuery.getPageIndex(), userListQuery.getPageSize());
+        // 构建查询条件
+        QueryWrapper<TUser> wrapper = new QueryWrapper<>();
+        if (userListQuery.getNickname() != null) {
+            wrapper.like("nickname", userListQuery.getNickname());
+        }
+        if (userListQuery.getDepartmentTitle() != null) {
+            wrapper.like("department_title", userListQuery.getDepartmentTitle());
+        }
+        if (userListQuery.getMobile() != null) {
+            wrapper.like("mobile", userListQuery.getMobile());
+        }
+        if (userListQuery.getEmail() != null) {
+            wrapper.like("email", userListQuery.getEmail());
+        }
+        if (userListQuery.getSex() != null) {
+            wrapper.like("sex", userListQuery.getSex());
+        }
+        if (userListQuery.getUsername() != null) {
+            wrapper.like("userName", userListQuery.getUsername());
+        }
+        if (userListQuery.getId() != null) {
+            wrapper.like("id", userListQuery.getId());
+        }
+        if (userListQuery.getCreateTime() != null) {
+            wrapper.like("create_time", userListQuery.getCreateTime());
+        }
+        // 执行查询
+        Page<TUser> result = baseMapper.selectPage(page, wrapper);
+        return PageDTO.create(result, src -> msUserMapper.TUserToUserDTO(src));
     }
 
     /**

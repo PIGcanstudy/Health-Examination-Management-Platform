@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -20,4 +21,9 @@ import java.util.List;
 public interface TUserMapper extends BaseMapper<TUser> {
 
 
+    /**
+     * 批量删除用户
+     * @param ids
+     */
+    void deleteUserByIds(List<Long> ids, LocalDateTime updateTime, String UpdateBy);
 }
