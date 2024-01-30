@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import { watch, ref, defineEmits } from 'vue'
+import { watch, ref } from 'vue'
 const props = defineProps({
   // 是否使用Form表单
   useForm: {
@@ -90,10 +90,9 @@ const props = defineProps({
   usePagination: {
     type: Boolean,
     default: true
-  },
-  // 编辑方法
-  handleEdit: Function,
-  handleDelete: Function
+  }
+  // handleEdit: Function,
+  // handleDelete: Function
 })
 const emits = defineEmits(['updateTableData', 'update:modelValue', 'update-table-data', 'update-selected-rows'])
 // 实现 form表单v-model 逻辑
