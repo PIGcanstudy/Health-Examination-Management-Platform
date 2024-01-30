@@ -19,7 +19,7 @@
     </el-button>
     </el-button-group> -->
 
-    <el-select placeholder="更多操作" style="width: 100px">
+    <el-select placeholder="更多操作" style="width: 100px" v-if="!isOnlyShowButton">
       <el-option @click="dialogFormVisible = true">
         <el-icon style="margin-right: 5px"><icon-refresh /></el-icon>
         刷新
@@ -43,6 +43,7 @@
       style="width: 100%; margin-top: 10px"
       @selection-change="handleSelectionChange"
       border
+      v-if="!isOnlyShowButton"
     >
       <el-table-column type="selection" width="60" />
       <el-table-column property="name" label="单位名称" />
@@ -143,6 +144,10 @@ const props = defineProps({
   companies: {
     type: Array,
     default: () => []
+  },
+  isOnlyShowButton: {
+    type: Boolean,
+    default: false
   }
 })
 

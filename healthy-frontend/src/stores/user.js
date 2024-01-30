@@ -1,11 +1,32 @@
 import { defineStore } from 'pinia'
 import healthcheck from './menus/healthcheck'
 import careercheck from './menus/careercheck'
+import employmentcheck from './menus/employmentcheck'
+import configurationmanagement from './menus/configurationmanagement'
+import dataonline from './menus/dataonline'
+import basicdata from './menus/basicdata'
+import marketingmanagement from './menus/marketingmanagement'
+import medicalregistration from './menus/medicalregistration'
+import resultsinput from './menus/resultsinput'
+import masterinspection from './menus/masterinspection'
+import systemconfiguration from './menus/systemconfiguration'
+import inspectionstatistics from './menus/inspectionstatistics'
 import Request from '@/apis/request'
 // 测试菜单数据
-let testMenus = [healthcheck, careercheck]
-//职业体验菜单数据
-// let careerMenus = [careercheck]
+let testMenus = [
+  healthcheck,
+  careercheck,
+  employmentcheck,
+  basicdata,
+  marketingmanagement,
+  medicalregistration,
+  resultsinput,
+  masterinspection,
+  inspectionstatistics,
+  configurationmanagement,
+  systemconfiguration,
+  dataonline
+]
 
 export const userStore = defineStore('user', {
   state: () => ({
@@ -31,6 +52,18 @@ export const userStore = defineStore('user', {
     getMenus: (state) => state.menus
   },
   actions: {
+    //修改菜单数据的方法
+    // changeMenu(data) {
+    //   this.menus = data
+    // },
+    // showMenus(path) {
+    //   if (path.includes('basicdata')) {
+    //     this.menus = basicdata
+    //   } else {
+    //     console.log('默认菜单')
+    //     this.menus = testMenus
+    //   }
+    // },
     // 加载用户
     async loadUser() {
       // 发送获取当前用户信息请求

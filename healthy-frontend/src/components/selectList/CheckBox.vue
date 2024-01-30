@@ -22,6 +22,6 @@ const props = defineProps({
   margin-bottom: 10px;
   margin-right: 0px;
   border-bottom: 1px solid gray;
-  height: 78px;
+  height: auto;
 }
 </style>

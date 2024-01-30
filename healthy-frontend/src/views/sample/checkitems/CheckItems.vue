@@ -26,7 +26,7 @@ alert(tcRowData.value)
 }
 
 //是否显示编辑删除按钮
-const EditDButtonShow = ref(true)
+const EditDButtonShow = ref(false)
 //是否显示确定取消按钮-套餐
 const isShowButtonForTc = ref(true)
 //抽屉按钮名字

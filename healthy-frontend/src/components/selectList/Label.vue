@@ -2,19 +2,23 @@
   <div class="main">
     <div class="top">
       <el-row justify="space-between">
-        <el-col :style="{ display: code === undefined ? 'none' : 'flex' }" span="8">
+        <el-col :style="{ display: code === undefined ? 'none' : 'flex' }" span="6">
           <div>
-            <span>{{ code }}</span>
+            <span class="text">{{ code }}</span>
           </div>
         </el-col>
-        <el-col span="8">
-          <div>
-            <span>{{ date }}</span>
-          </div>
-        </el-col>
-        <el-col span="8">
+        <el-col span="6">
           <div class="status">
             <span :class="report.style">{{ report.name }}</span>
+          </div>
+        </el-col>
+        <el-col span="6">
+          <div>
+            <span class="text">{{ date }}</span>
+          </div>
+        </el-col>
+        <el-col span="6">
+          <div class="status">
             <span :class="sys.style">{{ sys.name }}</span>
           </div>
         </el-col>
@@ -23,7 +27,9 @@
     <div class="bottom">
       <el-row justify="space-between">
         <el-col span="12">
-          <div>{{ company }}</div>
+          <div>
+            <span class="text">{{ company }}</span>
+          </div>
         </el-col>
         <el-col span="12">
           <div class="status">
@@ -167,18 +173,28 @@ const together = togetherIcon[props.useTogether]
 // 设置边框
 .main {
   color: black;
-  margin: 10px;
+  // margin: 10px;
   width: 100%;
 
   .top {
-    margin: 10px;
+    margin-bottom: 10px;
     width: 100%;
   }
 
   .bottom {
-    margin: 10px;
+    // margin: 10px;
     width: 100%;
   }
+}
+
+// 显示文字的盒子
+.text {
+  margin: 2px;
+}
+
+// 图标盒子
+.status {
+  margin: 2px;
 }
 
 // 盒子默认隐藏
@@ -238,6 +254,7 @@ const together = togetherIcon[props.useTogether]
     color: green;
     border-color: green;
   }
+
   .together {
     color: red;
     border-color: red;

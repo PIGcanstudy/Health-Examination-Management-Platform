@@ -113,14 +113,6 @@ function clearSelectedRows() {
     tableRef.value.clearSelection()
   }
 }
-// 重置form表单
-const formRef = ref()
-function clearForm() {
-  if (formRef.value) {
-    console.log(formRef)
-    formRef.value.resetFields()
-  }
-}
 const handleSelectionChange = (selectRows) => {
   rows.value = selectRows
   emits('update-selected-rows', selectRows)
@@ -129,9 +121,7 @@ defineExpose({
   // 暴露选中的row
   rows,
   // 暴露清除选中项方法
-  clearSelectedRows,
-  // 暴露重置表单方法
-  clearForm
+  clearSelectedRows
 })
 const handleCurrentChange = (currentPage) => {
   // console.log(currentPage)

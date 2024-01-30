@@ -41,6 +41,10 @@
       <SelectList use-which="checkbox" :lists-data="listsData"></SelectList>
       <h2>单选列表</h2>
       <SelectList use-which="radio" :lists-data="listsData"></SelectList>
+      <h2>空单选列表</h2>
+      <SelectList use-which="radio"></SelectList>
+      <h2>空多选列表</h2>
+      <SelectList use-which="checkbox"></SelectList>
     </div>
 
     <!-- peoplelist-inter 演示
@@ -61,7 +65,21 @@
 
     <!-- peoplelist 演示 -->
     <peoplelist :isShowCheckbox="false" :isShowSwitch="false">
+      <template #table-area>
+        <SelectList use-which="radio" :lists-data="listsData"></SelectList>
+      </template>
+    </peoplelist>
 
+    <peoplelist :isShowCheckbox="false" :isShowSwitch="false">
+      <template #table-area>
+        <SelectList use-which="checkbox" :lists-data="listsData"></SelectList>
+      </template>
+    </peoplelist>
+
+    <peoplelist :isShowCheckbox="false" :isShowSwitch="false">
+      <template #table-area>
+        <SelectList use-which="checkbox"></SelectList>
+      </template>
     </peoplelist>
   </div>
 </template>
@@ -70,7 +88,7 @@
 import Search from '@/components/search/Search.vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import Head from '@/components/head/Head.vue'
-import SelectList from '../../../components/selectList/SelectList.vue'
+import SelectList from '@/components/selectList/SelectList.vue'
 import peoplelist from '@/components/peoplelist/PeopleList.vue'
 // import PeopleListInter from '../../../components/peoplelist/PeopleList-Inter.vue'
 

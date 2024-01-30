@@ -2,18 +2,18 @@
  * @Author: setti5 2283356040@qq.com
  * @Date: 2024-01-22 18:16:25
  * @LastEditors: setti5 2283356040@qq.com
- * @LastEditTime: 2024-01-26 21:24:58
+ * @LastEditTime: 2024-01-29 21:09:40
  * @FilePath: \zero-one-healthy-check\healthy-frontend\src\views\healthcheck\MedivalExaminer.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <!-- 体检人员 -->
 <template>
-  <el-container style="height: 100%" class="container">
-    <el-aside style="width: 20%">
-      <!-- 子组件属性：:table-data="MedicalExaminer.tableData" （未定义会导致页面崩溃） -->
+  <el-container style="background-color: #f0f0f0; padding: 10px; height: 100%" class="container">
+    <el-aside style="width: 20%" :style="{ maxWidth: isCollapsed ? '0' : '20%' }">
       <PeopleList
         title="团检订单"
         :table-column-attribute="tableColumnAttribute"
+        :style="isCollapsed ? 'display: none;' : 'min-width: 20%;'"
         @update-table-data="
           (pageSize, pageIndex) => {
             getTableData({
@@ -25,27 +25,30 @@
       />
     </el-aside>
 
-    <!-- 点击折叠侧边栏事件，未定义方法 -->
-    <div class="collapse" style="height: 100%; line-height: 100vh; margin: 4px" @collapse-aside="collapseAside">
-      <el-icon><ArrowLeft /></el-icon>
+    <div class="collapse" style="height: 100%; line-height: 100vh; margin: 4px" @click="isCollapsed = !isCollapsed">
+      <el-icon v-show="isCollapsed == false"><ArrowLeft /></el-icon>
+      <el-icon v-show="isCollapsed == true"><ArrowRight /></el-icon>
     </div>
 
-    <el-main class="main">
+    <el-main class="body">
       <!-- 中间部分：团检人员 -->
       <div class="center-part">
         <el-card class="title-operation">
-          <el-row>
+          <el-row style="display: flex; align-items: center; justify-content: center">
             <span>团检人员</span>
-            <el-button type="primary" style="margin-right: 12px" @click="dialogVisible = true">
+            <el-button type="primary" style="margin-right: 12px" @click="uploadDialogVisible = true">
               <el-icon><Upload /></el-icon>
               导入
             </el-button>
             <!-- 导入按钮的对话框 -->
-            <el-dialog v-model="dialogVisible" title="人员批量导入" width="50%" style="justify-content: left">
-              <div class="model-body">
-                <el-upload>
-                  <div class="upload-area" style="border: 1px solid #dfdfdf; width: 800px; height: 150px; display: flex; justify-content: center; align-items: center">
-                    <el-icon style="width: 30px; height: 50px"><Upload /></el-icon>
+            <el-dialog v-model="uploadDialogVisible" width="50%" style="justify-content: left">
+              <template #header>
+                <h4>人员批量导入</h4>
+              </template>
+              <template #default>
+                <el-upload style="border: 1px solid #c3c3c3" multiple>
+                  <div class="el-upload__text" style="width: 800px; height: 150px; display: flex; justify-content: center; align-items: center">
+                    <el-icon style="display: flex; justify-content: center; align-items: center" class="el-icon--upload"><UploadFilled /></el-icon>
                     请选择需要上传的文件
                   </div>
                 </el-upload>
@@ -53,13 +56,13 @@
                 <p>1.请按模板填写数据，模板格式禁止调整</p>
                 <p>2.导入会覆盖之前数据（请慎重操作）</p>
                 <p>3.上传文件类型只能为"xls", "xlsx", "xlsm"</p>
-              </div>
+              </template>
               <template #footer>
                 <span class="dialog-footer">
                   <el-upload>
                     <el-button style="background-color: #2db7f5; border-color: #2db7f5; color: #fff; margin-right: 12px"> 模板下载</el-button>
                   </el-upload>
-                  <el-button type="primary" style="margin-bottom: 10px" @click="dialogVisible = false"> 关闭 </el-button>
+                  <el-button type="primary" style="margin-bottom: 10px" @click="uploadDialogVisible = false"> 关闭 </el-button>
                 </span>
               </template>
             </el-dialog>
@@ -69,44 +72,45 @@
               新增
             </el-button>
             <!-- 新增按钮的对话框 -->
-            <el-dialog v-model="dialogFormVisible" title="新增">
+            <el-dialog v-model="dialogFormVisible">
+              <template #header>
+                <h3>新增</h3>
+              </template>
               <div class="tabs" style="display: flex; justify-content: space-between">
-                <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+                <el-tabs v-model="activeName" @tab-click="handleClick">
                   <el-tab-pane label="基本信息" name="first"> </el-tab-pane>
                 </el-tabs>
-                <el-button type="primary"
+                <el-button type="primary" @click="idInfoTips"
                   ><el-icon style="margin-right: 10px"><Plus /></el-icon>读取二代身份证</el-button
                 >
               </div>
 
-              <el-form :model="form" :inline="true" :label-width="formLabelWidth" style="padding: 16px 26px">
+              <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" :inline="true" label-width="120px" style="padding: 16px 26px" status-icon>
                 <el-form-item label="人员姓名" required>
-                  <el-input v-model="form.name" />
+                  <el-input v-model="ruleForm.name" />
                 </el-form-item>
                 <el-form-item label="证件号码">
-                  <el-input v-model="form.name" />
+                  <el-input v-model="ruleForm.idNumber" />
                 </el-form-item>
                 <el-form-item label="性别" required>
-                  <el-radio-group style="width: 200px">
+                  <el-radio-group v-model="ruleForm.gender" style="width: 200px">
                     <el-radio label="男" />
                     <el-radio label="女" />
                   </el-radio-group>
                 </el-form-item>
-
                 <el-form-item label="出生日期" required>
                   <el-form-item>
-                    <el-date-picker v-model="form.name" type="date" placeholder="请选择" p style="width: 200px" />
+                    <el-date-picker v-model="ruleForm.birthday" type="date" placeholder="请选择" p style="width: 200px" />
                   </el-form-item>
                 </el-form-item>
                 <el-form-item label="年龄" required>
-                  <el-input v-model="form.name" />
+                  <el-input v-model="ruleForm.age" />
                 </el-form-item>
                 <el-form-item label="手机号码" required>
-                  <el-input v-model="form.name" />
+                  <el-input v-model="ruleForm.phoneNumber" />
                 </el-form-item>
-
                 <el-form-item label="婚姻状况">
-                  <el-select v-model="form.region" placeholder="请选择" style="width: 200px">
+                  <el-select v-model="ruleForm.maritalStatus" placeholder="请选择" style="width: 200px">
                     <el-option label="未婚" value="未婚" />
                     <el-option label="已婚" value="已婚" />
                     <el-option label="离异" value="离异" />
@@ -114,27 +118,47 @@
                     <el-option label="其他" value="其他" />
                   </el-select>
                 </el-form-item>
-              </el-form>
-
-              <template #footer>
-                <span class="dialog-footer" style="justify-content: right">
+                <el-form-item style="j;display: flex; margin-left: 500px;">
                   <el-button @click="dialogFormVisible = false">取消</el-button>
-                  <el-button type="primary" @click="dialogFormVisible = false"> 提交 </el-button>
-                </span>
-              </template>
+                  <el-button type="primary" @click="submitForm">提交</el-button>
+                </el-form-item>
+              </el-form>
             </el-dialog>
 
-            <el-button type="primary">
-              <el-icon><Download /></el-icon>
-              导出
-            </el-button>
-            <el-button type="primary">
-              <el-icon><Download /></el-icon>
-              导出订单
-            </el-button>
+            <el-upload
+              v-model:file-list="fileList"
+              action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+              multiple
+              :on-preview="handlePreview"
+              :on-remove="handleRemove"
+              :before-remove="beforeRemove"
+              :on-exceed="handleExceed"
+              style="display: flex"
+            >
+              <el-button type="primary" style="margin-right: 12px">
+                <el-icon><Download /></el-icon>
+                导出
+              </el-button>
+            </el-upload>
+
+            <el-upload
+              v-model:file-list="fileList"
+              action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+              multiple
+              :on-preview="handlePreview"
+              :on-remove="handleRemove"
+              :before-remove="beforeRemove"
+              :on-exceed="handleExceed"
+              style="display: flex"
+            >
+              <el-button type="primary">
+                <el-icon><Download /></el-icon>
+                导出订单
+              </el-button>
+            </el-upload>
           </el-row>
         </el-card>
-        <div class="test-code" style="height: 93%">
+        <div style="height: 95%">
           <el-card style="height: 100%" shadow="hover">
             <el-tabs type="border-card">
               <el-tab-pane label="男">
@@ -207,7 +231,7 @@
           </el-form>
         </el-card>
         <el-card class="title-bar" body-style="font-weight: 700" style="margin-top: 6px">团体项目</el-card>
-        <div style="height: 55%">
+        <div style="height: 59%">
           <el-card style="height: 100%" shadow="hover">
             <el-table :data="personInfo" border style="width: 100%">
               <el-table-column prop="project" label="体检项目" />
@@ -237,23 +261,42 @@
 
 <script setup>
 import PeopleList from '@/components/peoplelist/PeopleList.vue'
-import { Upload, CirclePlus, Download, ArrowLeft, Plus } from '@element-plus/icons-vue'
+import { Upload, CirclePlus, Download, ArrowLeft, ArrowRight, UploadFilled, Plus } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 import { defineProps, defineEmits } from 'vue'
+import { ElMessage } from 'element-plus'
 
-const dialogVisible = ref(false) // 导入按钮的弹出框
+const isCollapsed = ref(false)
+
+const uploadDialogVisible = ref(false) // 导入按钮的弹出框
+
 const dialogFormVisible = ref(false) //导出按钮的弹出框
-const formLabelWidth = '120px'
-const form = ref({
+
+const idInfoTips = () => {
+  ElMessage.error('请安装身份证读卡器服务！')
+}
+const ruleForm = ref({
   name: '',
-  region: '',
-  date1: '',
-  date2: '',
-  delivery: false,
-  type: [],
-  resource: '',
-  desc: ''
+  idNumber: '',
+  gender: '男',
+  birthday: '',
+  age: '',
+  phoneNumber: '',
+  maritalStatus: ''
 })
+const ruleFormRef = ref(null)
+const rules = ref({
+  name: [{ required: true, message: '人员姓名不能为空!', trigger: 'blur' }],
+  idNumber: [{ message: '人员姓名不能为空!', trigger: 'blur' }],
+  gender: [{ required: true, message: '性别不能为空!', trigger: 'change' }],
+  birthday: [{ type: 'date', required: true, message: '出生日期不能为空!', trigger: 'blur' }],
+  age: [{ required: true, message: '请输入正确的年龄!', trigger: 'blur' }],
+  phoneNumber: [{ required: true, message: '手机号码有误!', trigger: 'change' }],
+  maritalStatus: [{ message: '手机号码有误!', trigger: 'change' }]
+})
+const submitForm = () => {
+  console.log('提交成功')
+}
 
 const props = defineProps({
   usePagination: {
@@ -289,10 +332,10 @@ defineExpose({
 <style lang="scss" scoped>
 .container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
 }
-.main {
+.body {
   display: flex;
   position: relative;
 }
@@ -307,7 +350,7 @@ defineExpose({
   align-items: center;
 }
 .title-operation {
-  height: 7%;
+  height: 5%;
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -330,7 +373,7 @@ p {
 }
 
 .title-bar {
-  height: 7%;
+  height: 5%;
   font-size: 14px;
   font-weight: 550;
   display: flex;

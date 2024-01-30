@@ -4,6 +4,9 @@
   </el-checkbox>
   <el-checkbox-group v-model="checkBoxData" class="group" @change="handleItemChange">
     <CheckBox v-for="(item, index) in listsData" :key="index" :label="item.code" :list-data="item"></CheckBox>
+    <template v-if="listsData.length === 0">
+      <el-empty class="empty" description="没有数据"></el-empty>
+    </template>
   </el-checkbox-group>
 </template>
 
@@ -13,7 +16,8 @@ import { ref } from 'vue'
 const props = defineProps({
   listsData: {
     type: Array,
-    required: true
+    required: true,
+    default: () => []
   }
 })
 
@@ -42,13 +46,12 @@ function handleItemChange() {
 </script>
 
 <style scoped>
-.all {
-  margin-inline: 10px;
-  padding-inline: 10px;
-}
 .group {
   display: block;
-  margin-inline: 10px;
-  padding-inline: 10px;
+}
+
+.empty {
+  min-width: auto;
+  min-height: auto;
 }
 </style>
