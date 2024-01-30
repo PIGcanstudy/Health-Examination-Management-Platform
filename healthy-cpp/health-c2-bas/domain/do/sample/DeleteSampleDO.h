@@ -24,34 +24,34 @@
 /**
  * 示例数据库实体类
  */
-class SampleDO
+class DeleteSampleDO
 {
 	//是否删除(0-未删除，1-已删除)del_flag
 	CC_SYNTHESIZE(int, del_flag, Del_flag);
 	// 创建人create_id
-	CC_SYNTHESIZE(int, create_id, Create_id);
+	CC_SYNTHESIZE(string, create_id, Create_id);
 	// 创建时间create_time
 	CC_SYNTHESIZE(string, create_time, Create_time);
 	// 修改人update_id
-	CC_SYNTHESIZE(int, update_id, Update_id);
+	CC_SYNTHESIZE(string, update_id, Update_id);
 	// 修改时间update_time
 	CC_SYNTHESIZE(string, update_time, Update_time);
 	// 删除人delete_id
-	CC_SYNTHESIZE(int, delete_id, Delete_id);
+	CC_SYNTHESIZE(string, delete_id, Delete_id);
 	// 删除时间delete_time
 	CC_SYNTHESIZE(string, delete_time, Delete_time);
 	// 所属部门department_id
-	CC_SYNTHESIZE(int, department_id, Department_id);
+	CC_SYNTHESIZE(string, department_id, Department_id);
 public:
-	SampleDO() {
+	DeleteSampleDO() {
 		del_flag = 0;
-		create_id = 0;
+		create_id = "";
 		create_time = "";
-		update_id = 0;
+		update_id = "";
 		update_time = "";
-		delete_id = 0;
+		delete_id = "";
 		delete_time = "";
-		department_id = 0;
+		department_id = "";
 
 	}
 };

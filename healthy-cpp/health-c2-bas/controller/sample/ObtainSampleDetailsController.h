@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_CONTROLLER_
-#define _SAMPLE_CONTROLLER_
+#ifndef _OBTAIN_SAMPLE_DETAILS_CONTROLLER_
+#define _OBTAIN_SAMPLE_DETAILS_CONTROLLER_
 
 #include "domain/vo/BaseJsonVO.h"
 #include "domain/query/sample/ObtainSampleDetailsQuery.h"
@@ -52,10 +52,10 @@ public:
 		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("sampleDetails.field.name"), "", false);
 		API_DEF_ADD_QUERY_PARAMS(UInt32, "barcode_num", ZH_WORDS_GETTER("sampleDetails.field.barcode_num"), 10, false);
 		API_DEF_ADD_QUERY_PARAMS(String, "spec", ZH_WORDS_GETTER("sampleDetails.field.spec"), "", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "need_take_blood", ZH_WORDS_GETTER("sampleDetails.field.need_take_blood"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "need_take_blood", ZH_WORDS_GETTER("sampleDetails.field.need_take_blood"), 1, false);
 		API_DEF_ADD_QUERY_PARAMS(String, "code", ZH_WORDS_GETTER("sampleDetails.field.code"), "", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "order_num", ZH_WORDS_GETTER("sampleDetails.field.order_num"), "", false);
-		API_DEF_ADD_QUERY_PARAMS(String, "is_print", ZH_WORDS_GETTER("sampleDetails.field.is_print"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(Float32, "order_num", ZH_WORDS_GETTER("sampleDetails.field.order_num"), 1, false);
+		API_DEF_ADD_QUERY_PARAMS(UInt32, "is_print", ZH_WORDS_GETTER("sampleDetails.field.is_print"), 1, false);
 		API_DEF_ADD_QUERY_PARAMS(String, "liscode", ZH_WORDS_GETTER("sampleDetails.field.liscode"), "", false);
 		API_DEF_ADD_QUERY_PARAMS(String, "capacity", ZH_WORDS_GETTER("sampleDetails.field.capacity"), "", false);
 	}
@@ -64,12 +64,12 @@ public:
 		// 解析查询参数为Query领域模型
 		API_HANDLER_QUERY_PARAM(userQuery, ObtainSampleDetailsQuery, queryParams);
 		// 呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execQuerySample(userQuery, authObject->getPayload()));
+		API_HANDLER_RESP_VO(execQuerySampleDetails(userQuery, authObject->getPayload()));
 	}
 	
 	
 	// 3.3 演示分页查询数据
-	ObtainSampleDetailsPageJsonVO::Wrapper execQuerySample(const ObtainSampleDetailsQuery::Wrapper& query, const PayloadDTO& payload); 
+	ObtainSampleDetailsPageJsonVO::Wrapper execQuerySampleDetails(const ObtainSampleDetailsQuery::Wrapper& query, const PayloadDTO& payload); 
 
 };
 

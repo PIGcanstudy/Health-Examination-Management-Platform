@@ -18,10 +18,30 @@
 */
 #include "stdafx.h"
 #include "DeleteSampleController.h"
-//#include "../../service/sample/SampleService.h"
+#include "../../service/sample/DeleteSampleService.h"
 #include "../ApiDeclarativeServicesHelper.h"
 
-Uint64JsonVO::Wrapper DeleteSampleController::execRemoveSample(const UInt64& id)
+StringJsonVO::Wrapper DeleteSampleController::execRemoveSample(const String& id)
 {
-	return {};
+	// 定义返回数据对象
+	auto jvo = StringJsonVO::createShared();
+	// 参数校验
+	if (id=="")
+	{
+		jvo->init(String(-1), RS_PARAMS_INVALID);
+		return jvo;
+	}
+	// 定义一个Service
+	DeleteSampleService service;
+	// 执行数据删除
+	if (service.removeData(id)) {
+		jvo->success(id);
+	}
+	else
+	{
+		jvo->fail(id);
+	}
+	// 响应结果
+	return jvo;
 }
+

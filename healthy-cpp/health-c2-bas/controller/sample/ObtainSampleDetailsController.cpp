@@ -18,11 +18,18 @@
 */
 #include "stdafx.h"
 #include "ObtainSampleDetailsController.h"
-//#include "../../service/sample/SampleService.h"
+#include "../../service/sample/ObtainSampleDetailsService.h"
 #include "../ApiDeclarativeServicesHelper.h"
 
-ObtainSampleDetailsPageJsonVO::Wrapper ObtainSampleDetailsController::execQuerySample(const ObtainSampleDetailsQuery::Wrapper& query, const PayloadDTO& payload)
+ObtainSampleDetailsPageJsonVO::Wrapper ObtainSampleDetailsController::execQuerySampleDetails(const ObtainSampleDetailsQuery::Wrapper& query, const PayloadDTO& payload)
 {
-	return {};
+	// 定义一个Service
+	ObtainSampleDetailsService service;
+	// 查询数据
+	auto result = service.listAll(query);
+	// 响应结果
+	auto jvo = ObtainSampleDetailsPageJsonVO::createShared();
+	jvo->success(result);
+	return jvo;
 }
 
