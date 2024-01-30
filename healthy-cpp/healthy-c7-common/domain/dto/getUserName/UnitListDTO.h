@@ -40,7 +40,6 @@ class UnitListDTO : public oatpp::DTO
 	API_DTO_FIELD_DEFAULT(String, physicalType, ZH_WORDS_GETTER("getUserName.field.physicalType"));
 	// «∑Ò¡„–«ÃÂºÏ(0-∑Ò£¨1- «)
 	API_DTO_FIELD_DEFAULT(UInt32, sporadicPhysical, ZH_WORDS_GETTER("getUserName.field.sporadicPhysical"));
-
 };
 
 /*
