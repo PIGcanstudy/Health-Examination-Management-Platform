@@ -23,6 +23,13 @@
 #include "controller/Router.h"
 #include "controller/OtherComponent.hpp"
 #include "DbInit.h"
+#include "uselib/pdf/InspectPDF.h"
+#include "uselib/InspectFastDfs/InspectFastDfs.h"
+
+
+#include "FastDfsClient.h"
+#include "ServerInfo.h"
+#include "NacosClient.h"
 #ifdef HTTP_SERVER_DEMO
 #include "uselib/jwt/TestToken.h"
 #endif
@@ -132,6 +139,11 @@ bool getStartArg(int argc, char* argv[]) {
 	return isSetDb;
 }
 
+
+
+
+
+
 int main(int argc, char* argv[]) {
 #ifdef HTTP_SERVER_DEMO
 	// 测试生成 JWT Token
@@ -140,6 +152,9 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
+
+	
+
 
 #ifdef LINUX
 	// 创建Nacos客户端对象

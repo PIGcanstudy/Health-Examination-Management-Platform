@@ -22,6 +22,7 @@
 #include "HttpServer.h"
 #include "controller/Router.h"
 #include "controller/OtherComponent.hpp"
+#include "uselib/pdf/TestPdf.h"
 #include "DbInit.h"
 #ifdef HTTP_SERVER_DEMO
 #include "uselib/jwt/TestToken.h"
@@ -140,6 +141,7 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
+
 
 #ifdef LINUX
 	// 创建Nacos客户端对象

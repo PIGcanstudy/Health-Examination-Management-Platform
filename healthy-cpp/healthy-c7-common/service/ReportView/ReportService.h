@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: DY
- @Date: 2024/01/19 11:36:29
+ @Date: 2022/10/25 11:08:56
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,25 +17,22 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _REPORT_QUERY_
-#define _REPORT_QUERY_
-
-#include "../../GlobalInclude.h"
-#include "domain/query/PageQuery.h"
-
-#include OATPP_CODEGEN_BEGIN(DTO)
+#ifndef _REPORT_SERVICE_
+#define _REPORT_SERVICE_
+#include <list>
+#include "domain/vo/ReportView/ReportVO.h"
+#include "domain/query/ReportView/ReportQuery.h"
+#include "domain/dto/ReportView/ReportDTO.h"
 
 /**
- * 示例分页查询对象
+ * 示例服务实现，演示基础的示例服务实现
  */
-class ReportQuery : public PageQuery
+class ReportService
 {
-	DTO_INIT(ReportQuery, PageQuery);
-
-	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("report.field.personId"));
-
-
+public:
+	// 查询所有数据
+	ReportDTO::Wrapper listId(const ReportQuery::Wrapper& query);
 };
 
-#include OATPP_CODEGEN_END(DTO)
-#endif // !_SAMPLE_QUERY_
+#endif // !_SAMPLE_SERVICE_
+

@@ -1,0 +1,9 @@
+Info:
+ field:
+  id: 顺序号码（主键）
+  personId: 体检人员Id
+  inspectionDoctor: 总检医生
+  inspectionDate: 总检日期
+  medicalAdvice: 医学建议
+  handleOpinion: 处理意见
+  

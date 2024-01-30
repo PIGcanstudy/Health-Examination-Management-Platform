@@ -27,6 +27,7 @@
 #include "uselib/ws/WSController.h"
 #endif
 #include "controller/info-inspectionSave/InfoController.h"
+#include "controller/ReportView/ReportController.h"
 
 
 // 如果定义了关闭Swagger文档宏
@@ -54,6 +55,7 @@ void Router::initRouter()
 
 	//#TIP :系统扩展路由定义，写在这个后面
 	ROUTER_SIMPLE_BIND(InfoController);
+	ROUTER_SIMPLE_BIND(ReportController);
 
 }
 

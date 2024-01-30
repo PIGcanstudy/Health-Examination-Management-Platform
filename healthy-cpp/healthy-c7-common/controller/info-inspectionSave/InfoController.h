@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _Unit_CONTROLLER_
-#define _Unit_CONTROLLER_
+#ifndef _INFO_CONTROLLER_
+#define _INFO_CONTROLLER_
 
 #include "domain/query/info-inspectionSave/InfoQuery.h"
 #include "domain/vo/info-inspectionSave/InfoVO.h"
@@ -38,7 +38,7 @@ public:
 	// 3.1 定义查询接口描述
 	ENDPOINT_INFO(queryInfo) {
 		// 定义接口标题
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("Info.query.summary"));
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("info.query.summary"));
 		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
 		API_DEF_ADD_AUTH();
 		// 定义响应参数格式

@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: DY
- @Date: 2024/01/19 11:36:29
+ @Date: 2022/10/25 14:23:49
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,25 +17,19 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _REPORT_QUERY_
-#define _REPORT_QUERY_
-
-#include "../../GlobalInclude.h"
-#include "domain/query/PageQuery.h"
-
-#include OATPP_CODEGEN_BEGIN(DTO)
+#ifndef _INFO_LIST_DAO_
+#define _INFO_LIST_DAO_
+#include "BaseDAO.h"
+#include "domain/do/ReportView/ReportDO.h"
+#include "domain/query/ReportView/ReportQuery.h"
 
 /**
- * 示例分页查询对象
+ * 示例表数据库操作实现
  */
-class ReportQuery : public PageQuery
+class ReportDAO : public BaseDAO
 {
-	DTO_INIT(ReportQuery, PageQuery);
-
-	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("report.field.personId"));
-
-
+public:
+	// 通过姓名查询数据
+	list<ReportDO> selectByName(const string& nameID);
 };
-
-#include OATPP_CODEGEN_END(DTO)
-#endif // !_SAMPLE_QUERY_
+#endif // !_SAMPLE_DAO_
