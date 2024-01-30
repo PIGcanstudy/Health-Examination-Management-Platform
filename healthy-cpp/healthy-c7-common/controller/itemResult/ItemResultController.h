@@ -52,10 +52,10 @@ public: // 定义接口
 		// 解析查询参数为ItemResultQuery领域模型
 		API_HANDLER_QUERY_PARAM(iq, ItemResultQuery, params);
 		// 呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execQueryItemResult(iq));
+		API_HANDLER_RESP_VO(execQueryItemResult(iq, authObject->getPayload()));
 	}
 private: // 定义接口执行函数
-	ItemResultJsonVO::Wrapper execQueryItemResult(const ItemResultQuery::Wrapper& query);
+	ItemResultPageJsonVO::Wrapper execQueryItemResult(const ItemResultQuery::Wrapper& query, const PayloadDTO& payload);
 };
 
 #include OATPP_CODEGEN_END(ApiController)
