@@ -2,7 +2,7 @@
  query-dictnamelist:
   summary: 获取字典数据名称列表（用于输入表单下拉列表）
  field:
-  keyword: 字典数据关键字
+  dict_name: 字典数据名称
 jobnamelist:
  query-jobnamelist:
   summary: 获取工种名称列表（分页+条件）
@@ -22,6 +22,7 @@ plannamelist:
   summary: 获取套餐名称列表（条件+分页）
  field:
   keyword: 套餐名称关键字
+  plan_name: 套餐名称
 planprolist:
  query-planprolist:
   summary: 获取套餐组合项目列表

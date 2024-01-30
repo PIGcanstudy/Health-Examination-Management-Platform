@@ -11,6 +11,7 @@
 class PlanNameListDTO : public oatpp::DTO
 {
 	DTO_INIT(PlanNameListDTO, DTO);
+	API_DTO_FIELD_DEFAULT(String, plan_name, ZH_WORDS_GETTER("plannamelist.field.plan_name"));
 };
 
 /**

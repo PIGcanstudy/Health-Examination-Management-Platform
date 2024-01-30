@@ -13,14 +13,6 @@
 class DictNameListJsonVO : public JsonVO<DictNameListDTO::Wrapper> {
 	DTO_INIT(DictNameListJsonVO, JsonVO<DictNameListDTO::Wrapper>);
 };
-
-/**
- * 示例分页显示JsonVO，用于响应给客户端的Json对象
- */
-class DictNameListPageJsonVO : public JsonVO<DictNameListPageDTO::Wrapper> {
-	DTO_INIT(DictNameListPageJsonVO, JsonVO<DictNameListPageDTO::Wrapper>);
-};
-
 #include OATPP_CODEGEN_END(DTO)
 
 #endif // !_SAMPLE_VO_

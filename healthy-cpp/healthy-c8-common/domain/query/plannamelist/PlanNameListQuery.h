@@ -12,7 +12,9 @@
  */
 class PlanNameListQuery : public PageQuery
 {
-
+	DTO_INIT(PlanNameListQuery, PageQuery);
+	// Ì×²ÍÃû³Æ¹Ø¼ü×Ö
+	API_DTO_FIELD(String, plan_name, ZH_WORDS_GETTER("plannamelist.field.plan_name"), false, "");
 };
 
 #include OATPP_CODEGEN_END(DTO)

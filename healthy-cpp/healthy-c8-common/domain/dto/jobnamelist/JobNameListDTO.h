@@ -11,6 +11,7 @@
 class JobNameListDTO : public oatpp::DTO
 {
 	DTO_INIT(JobNameListDTO, DTO);
+	API_DTO_FIELD_DEFAULT(String, keyword, ZH_WORDS_GETTER("jobnamelist.field.keyword"));
 };
 
 /**
