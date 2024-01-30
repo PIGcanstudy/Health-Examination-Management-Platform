@@ -1,6 +1,6 @@
 // 职业体检菜单数据
 let testMenus = {
-  id: 2,
+  id: 3,
   text: '职业体检系统',
   icon: 'IconUser',
   children: [
