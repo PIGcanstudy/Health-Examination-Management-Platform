@@ -30,6 +30,20 @@ uint64_t SaveResDAO::insertItem(const SaveResDO& iObj)
 		iObj.getId(), iObj.getPersonId(), iObj.getOrderGroupItemProjectId(), iObj.getOrderGroupItemProjectName(),iObj.getOfficeId(), \
 		iObj.getOfficeName(), iObj.getResult(), iObj.getUnitCode(), iObj.getUnitName(),iObj.getCheckDoc(),iObj.getCheckDate(), iObj.getCrisisDegree(),\
 		iObj.getDelFlag(), iObj.getCreateId(), iObj.getCreateDate(), iObj.getIgnoreStatus(),iObj.getDepartResId(), \
-		iObj.getGroupItemId(), iObj.getGroupItemName(), iObj.getOrderNum(), iObj.getDiagnoseSum(), iObj.getPostive());
+		iObj.getGroupItemId(), iObj.getGroupItemName(), iObj.getOrderNum(), iObj.getDiagnoseSum(), iObj.getPositive());
 
+}
+
+int SaveResDAO::update(const SaveResDO& iObj)
+{
+	string sql = "UPDATE `t_depart_result` SET `check_doc`=?, `diagnose_tip`=?, `diagnose_sum`=?, `update_date`=?, `update_id`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s", iObj.getCheckDoc(), iObj.getDiagnoseTip(), iObj.getDiagnoseSum(),\
+		 iObj.getUpdateDate(), iObj.getCreateId(), iObj.getUpdateId());
+}
+
+int SaveResDAO::updateItem(const SaveResDO& iObj)
+{
+	string sql = "UPDATE `t_depart_item_result` SET `result`=?, `diagnose_sum`=?, `positive`=?,  `update_date`=?, `update_id`=? ,`check_doc`=? WHERE `id`=?";
+	return sqlSession->executeUpdate(sql, "%s%s%i%s%s%s%s", iObj.getResult(), iObj.getDiagnoseSum(), iObj.getPositive(), iObj.getUpdateDate(),\
+		iObj.getCreateId(), iObj.getCheckDoc(), iObj.getId());
 }

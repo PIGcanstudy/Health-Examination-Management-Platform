@@ -6,6 +6,7 @@
 #include "../../../lib-mysql/include/TransactionManager.h"
 
 
+
 uint64_t SaveResService::saveData(const SaveResDTO::Wrapper& dto, const string createId)
 {
 	SnowFlake sf(1, 1);
@@ -26,6 +27,7 @@ uint64_t SaveResService::saveData(const SaveResDTO::Wrapper& dto, const string c
 		GroupItemId, groupItemId, GroupItemName, groupItemName, DiagnoseSum, diagnoseSum, \
 		IsCheck, isCheck, DiagnoseTip, diagnoseTip)
 	// 执行数据添加;;
+		
 	SaveResDAO d1, d2;
 	// 定义事务
 	TransactionManager tm(&d1, &d2);
@@ -33,7 +35,6 @@ uint64_t SaveResService::saveData(const SaveResDTO::Wrapper& dto, const string c
 	int row = d1.insert(data);
 	data.setDepartResId(id);
 	data.setOrderNum(1);
-	data.setPostive(0);
 	for (int i = 0; i < dto->itemList->size(); i++)
 	{
 		auto &itemDto = dto->itemList[i];
@@ -42,7 +43,7 @@ uint64_t SaveResService::saveData(const SaveResDTO::Wrapper& dto, const string c
 		data.setId(id);
 		ZO_STAR_DOMAIN_DTO_TO_DO(data, itemDto, OrderGroupItemProjectId, orderGroupItemProjectId, \
 			OrderGroupItemProjectName, orderGroupItemProjectName, \
-			Result, result, UnitCode, unitCode, UnitName, unitName, CrisisDegree, crisisDegree)
+			Result, result, UnitCode, unitCode, UnitName, unitName, CrisisDegree, crisisDegree, Positive, positive)
 		row = row + d2.insertItem(data);
 	}
 	if (row == 1 + dto->itemList->size())
@@ -59,8 +60,42 @@ uint64_t SaveResService::saveData(const SaveResDTO::Wrapper& dto, const string c
 	return row == 1 + dto->itemList->size();
 }
 
-uint64_t SaveResService::saveDataItem(const SaveResDTO::Wrapper& dto, const string createId)
-{	
+uint64_t SaveResService::updateData(const SaveResDTO::Wrapper& dto, const string createId)
+{
 	SaveResDO data;
-	return {};
+	data.setCreateId(createId);
+	SimpleDateTimeFormat updateDate;
+	data.setUpdateDate(updateDate.format());
+
+
+	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, CheckDoc, checkDoc,DiagnoseSum, diagnoseSum, DiagnoseTip, diagnoseTip, UpdateId, updateId)
+		// 执行数据修改
+	SaveResDAO d1, d2;
+	// 定义事务
+	TransactionManager tm(&d1, &d2);
+
+	int row = d1.update(data);
+	
+	for (int i = 0; i < dto->itemList->size(); i++)
+	{
+		auto& itemDto = dto->itemList[i];
+		data.setId(itemDto->itemId);
+		ZO_STAR_DOMAIN_DTO_TO_DO(data, itemDto, Result, result, Positive, positive)
+		row = row + d2.updateItem(data);
+	}
+	if (row == 1 + dto->itemList->size())
+	{
+		cout << "tm commit" << endl;
+		tm.commit();
+	}
+	else
+	{
+		cout << "tm rollback" << endl;
+		tm.rollback();
+	}
+
+	return row == 1 + dto->itemList->size();
+
 }
+
+

@@ -13,7 +13,7 @@
 class  SaveResService {
 public:
 	uint64_t saveData(const SaveResDTO::Wrapper& dto, const string createId);
-	uint64_t saveDataItem(const SaveResDTO::Wrapper& dto, const string createId);
+	uint64_t updateData(const SaveResDTO::Wrapper& dto, const string createId);
 };
 
 

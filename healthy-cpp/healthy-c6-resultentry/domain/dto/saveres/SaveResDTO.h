@@ -37,14 +37,14 @@ class SaveResDTO : public oatpp::DTO
 	// 是否复查(0否1是）
 	API_DTO_FIELD_DEFAULT(Int32, isCheck, ZH_WORDS_GETTER("save.filed.isCheck"));
 
-
-
 	// depart res 部分
 	// 诊断提醒
 	API_DTO_FIELD_DEFAULT(String, diagnoseTip, ZH_WORDS_GETTER("save.filed.diagnoseTip"));
 	
-	
-
+	// 是否是更新(0不是更新， 1是更新）
+	API_DTO_FIELD(Int32, isUpdate, ZH_WORDS_GETTER("save.filed.isUpdate"), false, 0);
+	// 如果是更新，更新的depart_res_id
+	API_DTO_FIELD(String, updateId, ZH_WORDS_GETTER("save.filed.updateId"), false, "");
 
 	// item depart res 部分
 
@@ -64,7 +64,7 @@ class SaveResDTO : public oatpp::DTO
 	//API_DTO_FIELD(String, crisisDegree, ZH_WORDS_GETTER("save.filed.crisisDegree"), false, u8"正常");
 	//// 阳性
 	//API_DTO_FIELD(Int32, postive, ZH_WORDS_GETTER("save.filed.postive"), false, 0);
-
+	// 明细dto
 	API_DTO_FIELD_DEFAULT(List<SaveResItemDTO::Wrapper>, itemList, ZH_WORDS_GETTER("save.filed.item"));
 
 };
