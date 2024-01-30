@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <iostream>
-#include "downloadReportController.h"
+#include "DownloadReportController.h"
 
 // FastDFS需要导入的头
 #include "ServerInfo.h"
@@ -8,7 +8,7 @@
 #include "FastDfsClient.h"
 #include "SimpleDateTimeFormat.h"
 
-std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> downloadReportController::execDownloadFile(const String& reportName)
+std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> DownloadReportController::execDownloadFile(const String& reportName)
 {
 	// 构建PDF报告全路径
 	std::string report_fullPath = "public/static/report/sample.pdf" ;

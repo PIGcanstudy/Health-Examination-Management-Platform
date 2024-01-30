@@ -1,8 +1,7 @@
-
 #include "stdafx.h"
 #include <iostream>
 #include "printReportController.h"
-#include "../../service/printReport/printReportService.h"
+#include "../../service/printreport/PrintReportService.h"
 #include "../ApiDeclarativeServicesHelper.h"
 
 // FastDFS需要导入的头
@@ -14,7 +13,7 @@
 /*
  * 打印PDF报告
  */
-StringJsonVO::Wrapper printReportController::execModifyprintReport(const printReportDTO::Wrapper& dto)
+StringJsonVO::Wrapper PrintReportController::execModifyPrintReport(const PrintReportDTO::Wrapper& dto)
 {
 	// 定义返回数据对象
 	auto jvo = StringJsonVO::createShared();
@@ -25,7 +24,7 @@ StringJsonVO::Wrapper printReportController::execModifyprintReport(const printRe
 		return jvo;
 	}
 	// 定义一个Service
-	printReportService service;
+	PrintReportService service;
 	// 执行数据修改
 	if (service.updateData(dto)) {
 		jvo->success(dto->id);

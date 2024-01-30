@@ -4,9 +4,9 @@
 #define _PRINTREPORT_CONTROLLER_H_
 
 #include "domain/vo/BaseJsonVO.h"
-#include "domain/query/printReportQuery.h"
-#include "domain/dto/printReportDTO.h"
-#include "domain/vo/printReportVO.h"
+#include "domain/query/PrintReportQuery.h"
+#include "domain/dto/PrintReportDTO.h"
+#include "domain/vo/PrintReportVO.h"
 
 
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
@@ -14,24 +14,24 @@
 /*
  * 打印PDF报告
  */
-class printReportController : public oatpp::web::server::api::ApiController // 1 
+class PrintReportController : public oatpp::web::server::api::ApiController // 1 
 {
 	// 定义控制器访问入口
-	API_ACCESS_DECLARE(printReportController);
+	API_ACCESS_DECLARE(PrintReportController);
 
 	// 定义接口
 public:
 	// 定义一个报告打印确认接口
-	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("print.get.print"), modifyprintReport, Uint64JsonVO::Wrapper);
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("print.get.print"), modifyPrintReport, Uint64JsonVO::Wrapper);
 	// 定义接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/printConfire", modifyprintReport, BODY_DTO(printReportDTO::Wrapper, dto), execModifyprintReport(dto));
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/printConfire", modifyPrintReport, BODY_DTO(PrintReportDTO::Wrapper, dto), execModifyPrintReport(dto));
 
 
 
 
 private:
 	// 报告打印 
-	StringJsonVO::Wrapper execModifyprintReport(const printReportDTO::Wrapper& dto);
+	StringJsonVO::Wrapper execModifyPrintReport(const PrintReportDTO::Wrapper& dto);
 
 };
 

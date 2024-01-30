@@ -4,17 +4,17 @@
 #define _PRINTREPORT_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/printReportDO.h"
+#include "../../domain/do/PrintReportDO.h"
 
 /**
  * ±Ì◊÷∂Œ∆•≈‰”≥…‰
  */
-class printReportMapper : public printReport<printReportDO>
+class PrintReportMapper : public printReport<PrintReportDO>
 {
 public:
-	printReportDO mapper(ResultSet* resultSet) const override
+	PrintReportDO mapper(ResultSet* resultSet) const override
 	{
-		printReportDO data;
+		PrintReportDO data;
 		data.setId(resultSet->getString(1));
 		data.setReportPrintingNum(resultSet->getUInt32(2));
 		data.setPrintState(resultSet->getUInt32(3));

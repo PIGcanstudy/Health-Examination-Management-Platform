@@ -3,9 +3,9 @@
 #ifndef _DOWNLOADREPORT_SERVICE_
 #define _DOWNLOADREPORT_SERVICE_
 #include <list>
-#include "domain/vo/downloadReportVO.h"
-#include "domain/query/downloadReportQuery.h"
-#include "domain/dto/downloadReportDTO.h"
+#include "domain/vo/DownloadReportVO.h"
+#include "domain/query/DownloadReportQuery.h"
+#include "domain/dto/DownloadReportDTO.h"
 
 #endif // !_DOWNLOADREPORT_SERVICE_
 

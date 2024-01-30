@@ -1,20 +1,20 @@
 #pragma once
 
-#ifndef _printReport_DAO_
-#define _printReport_DAO_
+#ifndef _PRINTREPORT_DAO_
+#define _PRINTREPORT_DAO_
 #include "BaseDAO.h"
-#include "../../domain/do/printReportDO.h"
-#include "../../domain/query/printReportQuery.h"
+#include "../../domain/do/PrintReportDO.h"
+#include "../../domain/query/PrintReportQuery.h"
 
 /**
  * 示例表数据库操作实现
  */
-class printReportDAO : public BaseDAO
+class PrintReportDAO : public BaseDAO
 {
 public:
 	// 修改数据
-	int update(const printReportDO& uObj);
+	int update(const PrintReportDO& uObj);
 };
 
 
-#endif // !_printReport_DAO_
+#endif // !_PRINTREPORT_DAO_

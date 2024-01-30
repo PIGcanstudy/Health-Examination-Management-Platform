@@ -9,7 +9,7 @@
 #include <iostream>
 #include <utility>
 
-#include "domain/vo/downloadReportVO.h"
+#include "domain/vo/DownloadReportVO.h"
 
 // 定义API控制器使用宏
 #include OATPP_CODEGEN_BEGIN(ApiController)
@@ -17,10 +17,10 @@
 /**
  * 报告下载接口
  */
-class downloadReportController  : public oatpp::web::server::api::ApiController 
+class DownloadReportController  : public oatpp::web::server::api::ApiController 
 {
 	//  定义控制器访问入口
-	API_ACCESS_DECLARE(downloadReportController);
+	API_ACCESS_DECLARE(DownloadReportController);
 
 public:
 	// 定义一个文件下载接口

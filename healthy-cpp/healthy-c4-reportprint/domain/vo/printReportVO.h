@@ -8,12 +8,12 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
-class printReportJsonVO : public JsonVO<printReportDTO::Wrapper> {
-	DTO_INIT(printReportJsonVO, JsonVO<printReportDTO::Wrapper>);
+class PrintReportJsonVO : public JsonVO<PrintReportDTO::Wrapper> {
+	DTO_INIT(PrintReportJsonVO, JsonVO<PrintReportDTO::Wrapper>);
 };
 
-class printReportPageJsonVO : public JsonVO<printReportPageDTO::Wrapper> {
-	DTO_INIT(printReportPageJsonVO, JsonVO<printReportPageDTO::Wrapper>);
+class PrintReportPageJsonVO : public JsonVO<PrintReportPageDTO::Wrapper> {
+	DTO_INIT(PrintReportPageJsonVO, JsonVO<PrintReportPageDTO::Wrapper>);
 };
 #include OATPP_CODEGEN_END(DTO)
 

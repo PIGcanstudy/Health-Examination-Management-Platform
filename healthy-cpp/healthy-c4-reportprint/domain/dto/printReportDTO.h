@@ -5,9 +5,9 @@
 #include "../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
-class printReportDTO : public oatpp::DTO
+class PrintReportDTO : public oatpp::DTO
 {
-	DTO_INIT(printReportDTO, DTO);
+	DTO_INIT(PrintReportDTO, DTO);
 	// ±¨¸æid
 	DTO_FIELD(String, id);
 	DTO_FIELD_INFO(id) {
@@ -25,9 +25,9 @@ class printReportDTO : public oatpp::DTO
 	}
 };
 
-class printReportPageDTO : public PageDTO<printReportDTO::Wrapper>
+class PrintReportPageDTO : public PageDTO<PrintReportDTO::Wrapper>
 {
-	DTO_INIT(printReportPageDTO, PageDTO<printReportDTO::Wrapper>);
+	DTO_INIT(PrintReportPageDTO, PageDTO<PrintReportDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)

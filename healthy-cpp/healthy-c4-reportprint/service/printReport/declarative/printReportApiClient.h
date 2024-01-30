@@ -8,13 +8,13 @@
 #include "ApiHelper.h"
 
 
-class printReportApiClient : public oatpp::web::client::ApiClient 
+class PrintReportApiClient : public oatpp::web::client::ApiClient 
 {
 
 #include OATPP_CODEGEN_BEGIN(ApiClient)
 	
 
-	API_CLIENT_INIT(printReportApiClient);
+	API_CLIENT_INIT(PrintReportApiClient);
 
 	// Í¨¹ýID²éÑ¯
 	API_CALL(API_M_GET, "/query-one", queryById, API_HANDLER_AUTN_HEADER, QUERY(String, id));

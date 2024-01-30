@@ -6,7 +6,7 @@
 #define _PRINTREPORT_DO_
 #include "./DoInclude.h"
 
-class printReportDO
+class PrintReportDO
 {
 	// id
 	CC_SYNTHESIZE(string, id, Id);
@@ -15,7 +15,7 @@ class printReportDO
 	// ´òÓ¡×´Ì¬
 	CC_SYNTHESIZE(int, print_state, PrintState);
 public:
-	printReportDO() {
+	PrintReportDO() {
 		id = "";
 		report_printing_num = 0;
 		print_state = 0;

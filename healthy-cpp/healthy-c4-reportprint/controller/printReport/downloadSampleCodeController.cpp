@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <iostream>
-#include "downloadSampleCodeController.h"
+#include "DownloadSampleCodeController.h"
 
 // FastDFS需要导入的头
 #include "ServerInfo.h"
@@ -8,7 +8,7 @@
 #include "FastDfsClient.h"
 #include "SimpleDateTimeFormat.h"
 
-std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> downloadSampleCodeController::execDownloadSampleCode(const String& sampleCodeName)
+std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> DownloadSampleCodeController::execDownloadSampleCode(const String& sampleCodeName)
 {
 	// 构建样本条码全路径
 	std::string code_fullPath = "public/static/SampleCode/SampleCode.png";

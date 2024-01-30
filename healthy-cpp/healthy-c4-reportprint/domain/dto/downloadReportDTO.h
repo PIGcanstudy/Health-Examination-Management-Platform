@@ -10,9 +10,9 @@
 /**
  * 信息传输数据对象
  */
-class downloadReportDTO : public oatpp::DTO
+class DownloadReportDTO : public oatpp::DTO
 {
-	DTO_INIT(downloadReportDTO, DTO);
+	DTO_INIT(DownloadReportDTO, DTO);
 	// 报告src
 	API_DTO_FIELD(String, url, ZH_WORDS_GETTER("preview.field.report-url"), true, {});
 	// 报告文字描述
@@ -20,8 +20,8 @@ class downloadReportDTO : public oatpp::DTO
 	// 报告链接地址
 	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("preview.field.href"));
 public:
-	downloadReportDTO() {}
-	downloadReportDTO(String url, String alt = "", String href = "")
+	DownloadReportDTO() {}
+	DownloadReportDTO(String url, String alt = "", String href = "")
 	{
 		this->url = url;
 		this->alt = alt;

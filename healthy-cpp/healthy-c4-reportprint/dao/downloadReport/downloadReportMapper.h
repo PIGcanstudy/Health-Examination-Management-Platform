@@ -4,17 +4,17 @@
 #define _DOWNLOADREPORT_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/downloadReportDO.h"
+#include "../../domain/do/DownloadReportDO.h"
 
 /**
  * ±Ì◊÷∂Œ∆•≈‰”≥…‰
  */
-class downloadReportMapper : public Mapper<downloadReportDO>
+class DownloadReportMapper : public Mapper<DownloadReportDO>
 {
 public:
-	downloadReportDO mapper(ResultSet* resultSet) const override
+	DownloadReportDO mapper(ResultSet* resultSet) const override
 	{
-		downloadReportDO data;
+		DownloadReportDO data;
 
 		return data;
 	}

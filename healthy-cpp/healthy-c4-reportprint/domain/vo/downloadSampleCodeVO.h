@@ -11,9 +11,9 @@
 /**
  * PDF上传结果数据
  */
-class downloadSampleCodeVO : public JsonVO<downloadSampleCodeDTO::Wrapper>
+class DownloadSampleCodeVO : public JsonVO<DownloadSampleCodeDTO::Wrapper>
 {
-	DTO_INIT(downloadSampleCodeVO, JsonVO<downloadSampleCodeDTO::Wrapper>);
+	DTO_INIT(DownloadSampleCodeVO, JsonVO<DownloadSampleCodeDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)

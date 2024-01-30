@@ -1,5 +1,4 @@
-  
 #include "stdafx.h"
-#include "downloadReportService.h"
-#include "../../dao/downloadReport/downloadReportDAO.h"
+#include "DownloadReportService.h"
+#include "../../dao/downloadreport/DownloadReportDAO.h"
 

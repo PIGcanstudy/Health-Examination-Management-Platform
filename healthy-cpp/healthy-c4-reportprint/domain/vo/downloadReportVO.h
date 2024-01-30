@@ -11,9 +11,9 @@
 /**
  * PDF上传结果数据
  */
-class downloadReportVO : public JsonVO<downloadReportDTO::Wrapper>
+class DownloadReportVO : public JsonVO<DownloadReportDTO::Wrapper>
 {
-	DTO_INIT(downloadReportVO, JsonVO<downloadReportDTO::Wrapper>);
+	DTO_INIT(DownloadReportVO, JsonVO<DownloadReportDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)

@@ -3,14 +3,14 @@
 #ifndef _PRINTREPORT_SERVICE_
 #define _PRINTREPORT_SERVICE_
 #include <list>
-#include "domain/vo/printReportVO.h"
-#include "domain/query/printReportQuery.h"
-#include "domain/dto/printReportDTO.h"
+#include "domain/vo/PrintReportVO.h"
+#include "domain/query/PrintReportQuery.h"
+#include "domain/dto/PrintReportDTO.h"
 
-class printReportService
+class PrintReportService
 {
 public:
-	bool updateData(const printReportDTO::Wrapper& dto);
+	bool updateData(const PrintReportDTO::Wrapper& dto);
 };
 
 #endif // !_PRINTREPORT_SERVICE_
