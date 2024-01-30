@@ -26,6 +26,7 @@ ordername:
   idCard: 身份证号
   checkState: 体检状态
   dangerFactors: 危害因素
+  dutyState: 在岗状态
   checkDate: 体检日期
   checkResults: 体检结论
   unfinishedProject: 未完成项目
@@ -33,5 +34,6 @@ ordername:
   type: 查询类型
   checkType: 检查种类
   unitName: 体检单位订单名称
+  id: id
  query:
   summary: 获取体检单位订单名称列表

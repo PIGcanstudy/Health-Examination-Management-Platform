@@ -39,16 +39,16 @@ class  OrderNameDTO : public oatpp::DTO
 	DTO_FIELD_INFO(name) {
 		info->description = ZH_WORDS_GETTER("ordername.field.name");
 	}
-	//// 年龄
-	//DTO_FIELD(Int32, age);
-	//DTO_FIELD_INFO(age) {
-	//	info->description = ZH_WORDS_GETTER("ordername.field.age");
-	//}
-	//// 性别
-	//DTO_FIELD(String, sex);
-	//DTO_FIELD_INFO(sex) {
-	//	info->description = ZH_WORDS_GETTER("ordername.field.sex");
-	//}
+	// 年龄
+	DTO_FIELD(Int32, age);
+	DTO_FIELD_INFO(age) {
+		info->description = ZH_WORDS_GETTER("ordername.field.age");
+	}
+	// 性别
+	DTO_FIELD(String, sex);
+	DTO_FIELD_INFO(sex) {
+		info->description = ZH_WORDS_GETTER("ordername.field.sex");
+	}
 
 	//身份证号
 	DTO_FIELD(String, idCard);
@@ -56,11 +56,11 @@ class  OrderNameDTO : public oatpp::DTO
 		info->description = ZH_WORDS_GETTER("ordername.field.idCard");
 	}
 
-	////体检状态
-	//DTO_FIELD(String, checkState);
-	//DTO_FIELD_INFO(checkState) {
-	//	info->description = ZH_WORDS_GETTER("ordername.field.checkState");
-	//}
+	//体检状态
+	DTO_FIELD(String, checkState);
+	DTO_FIELD_INFO(checkState) {
+		info->description = ZH_WORDS_GETTER("ordername.field.checkState");
+	}
 
 	//审核状态/
 	DTO_FIELD(Int32, state);
@@ -68,11 +68,11 @@ class  OrderNameDTO : public oatpp::DTO
 		info->description = ZH_WORDS_GETTER("ordername.field.state");
 	}
 
-	////危害因素
-	//DTO_FIELD(String, dangerFactors);
-	//DTO_FIELD_INFO(dangerFactors) {
-	//	info->description = ZH_WORDS_GETTER("ordername.field.dangerFactors");
-	//}
+	//危害因素
+	DTO_FIELD(String, dangerFactors);
+	DTO_FIELD_INFO(dangerFactors) {
+		info->description = ZH_WORDS_GETTER("ordername.field.dangerFactors");
+	}
 
 	//体检日期
 	DTO_FIELD(String, checkDate);
@@ -85,7 +85,11 @@ class  OrderNameDTO : public oatpp::DTO
 	DTO_FIELD_INFO(checkResults) {
 		info->description = ZH_WORDS_GETTER("ordername.field.checkResults");
 	}
-
+	//在岗状态
+	DTO_FIELD(String, dutyState);
+	DTO_FIELD_INFO(dutyState) {
+		info->description = ZH_WORDS_GETTER("ordername.field.dutyState");
+	}
 	////未完成项目
 	//DTO_FIELD(String, unfinishedProject);
 	//DTO_FIELD_INFO(unfinishedProject) {

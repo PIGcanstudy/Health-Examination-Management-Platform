@@ -61,8 +61,8 @@ public:
 		////性别
 		//API_DEF_ADD_QUERY_PARAMS(String, "sex", ZH_WORDS_GETTER("ordername.field.sex"), "N", false);
 		
-		//体检日期
-		API_DEF_ADD_QUERY_PARAMS(String, "checkDate", ZH_WORDS_GETTER("ordername.field.checkDate"), "2024-1-1", false);
+		////体检日期
+		//API_DEF_ADD_QUERY_PARAMS(String, "checkDate", ZH_WORDS_GETTER("ordername.field.checkDate"), "2024-1-1", false);
 		//体检单位订单名称
 		API_DEF_ADD_QUERY_PARAMS(String, "unitName", ZH_WORDS_GETTER("ordername.field.unitName"), "yyyy", true);
 	}

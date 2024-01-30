@@ -63,7 +63,7 @@ if(WIN32)
 endif()
 
 # 编译可执行文件
-add_executable (${appName} ${SC_FILES} "controller/resultslist/ResultsListController.cpp" "controller/resultslist/ResultsListController.h" "domain/dto/resultslist/ResultsListDTO.h" "domain/query/resultslist/ResultsListQuery.h" "domain/vo/ordername/ordernameVO.h" "domain/query/ordername/OrderNameQuery.h" "domain/dto/ordername/OrderNameDTO.h" "domain/vo/ordername/OrderNameVO.h" "controller/ordername/OrderNameController.h" "controller/ordername/OrderNameController.cpp" "service/resultslist/ResultsListService.h" "service/resultslist/ResultsListService.cpp" "dao/resultslist/ResultsListDAO.h" "dao/resultslist/ResultsListDAO.cpp" "dao/resultslist/ResultsListMapper.h"  "domain/do/resultslist/ResultsListDO.h")
+add_executable (${appName} ${SC_FILES} "controller/resultslist/ResultsListController.cpp" "controller/resultslist/ResultsListController.h" "domain/dto/resultslist/ResultsListDTO.h" "domain/query/resultslist/ResultsListQuery.h" "domain/vo/ordername/ordernameVO.h" "domain/query/ordername/OrderNameQuery.h" "domain/dto/ordername/OrderNameDTO.h" "domain/vo/ordername/OrderNameVO.h" "controller/ordername/OrderNameController.h" "controller/ordername/OrderNameController.cpp" "service/resultslist/ResultsListService.h" "service/resultslist/ResultsListService.cpp" "dao/resultslist/ResultsListDAO.h" "dao/resultslist/ResultsListDAO.cpp" "dao/resultslist/ResultsListMapper.h"  "domain/do/resultslist/ResultsListDO.h" "dao/ordername/OrderNameDAO.h" "dao/ordername/OrderNameDAO.cpp" "dao/ordername/OrderNameMapper.h" "service/ordername/OrderNameService.h" "service/ordername/OrderNameService.cpp")
 
 # 链接库
 target_link_libraries (${appName} "lib-common" "lib-oatpp" "lib-mysql")

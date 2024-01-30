@@ -17,28 +17,23 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _ORDERNAME_VO_
-#define _ORDERNAME_VO_
-
-#include "../../GlobalInclude.h"
-#include "../../dto/ordername/OrderNameDTO.h"
-
-#include OATPP_CODEGEN_BEGIN(DTO)
-
-/**
- * 体检单位订单名称显示JsonVO，用于响应给客户端的Json对象
- */
-class OrderNameJsonVO : public JsonVO<OrderNameDTO::Wrapper> {
-	DTO_INIT(OrderNameJsonVO, JsonVO<OrderNameDTO::Wrapper>);
-};
+#ifndef _ORDERNAME_SERVICE_
+#define _ORDERNAME_SERVICE_
+#include <list>
+#include "domain/vo/ordername/OrderNameVO.h"
+#include "domain/query/ordername/OrderNameQuery.h"
+#include "domain/dto/ordername/OrderNameDTO.h"
 
 /**
- * 体检单位订单名称分页显示JsonVO，用于响应给客户端的Json对象
+ * 获取体检单位订单名称列表实现
  */
-class OrderNamePageJsonVO : public JsonVO<OrderNamePageDTO::Wrapper> {
-	DTO_INIT(OrderNamePageJsonVO, JsonVO<OrderNamePageDTO::Wrapper>);
+class OrderNameService
+{
+public:
+	// 分页查询所有数据
+	OrderNamePageDTO::Wrapper listAll(const OrderNameQuery::Wrapper& query);
+
 };
 
-#include OATPP_CODEGEN_END(DTO)
+#endif // !_ORDERNAME_SERVICE_
 
-#endif // !_ORDERNAME_VO_

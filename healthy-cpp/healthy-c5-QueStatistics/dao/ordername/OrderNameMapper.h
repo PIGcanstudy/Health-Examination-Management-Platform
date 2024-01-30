@@ -17,16 +17,16 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _RESULTSLIST_MAPPER_
-#define _RESULTSLIST_MAPPER_
+#ifndef _ORDERNAME_MAPPER_
+#define _ORDERNAME_MAPPER_
 
 #include "Mapper.h"
 #include "../../domain/do/resultslist/ResultsListDO.h"
 
 /**
- *体检结论表字段匹配映射
+ * 体检单位订单名称表字段匹配映射
  */
-class ResultsListMapper : public Mapper<ResultsListDO>
+class OrderNameMapper : public Mapper<ResultsListDO>
 {
 public:
 	ResultsListDO mapper(ResultSet* resultSet) const override
@@ -42,9 +42,9 @@ public:
 		data.setDangerFactors(resultSet->getString(8));
 		data.setCheckDate(resultSet->getString(9));
 		data.setCheckResults(resultSet->getString(10));
-		
+		data.setunitName(resultSet->getString(11));
 		return data;
 	}
 };
 
-#endif // !_RESULTSLIST_MAPPER_
+#endif // !_ORDERNAME_MAPPER_

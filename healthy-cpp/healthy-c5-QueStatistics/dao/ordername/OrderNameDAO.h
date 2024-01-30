@@ -17,28 +17,21 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _ORDERNAME_VO_
-#define _ORDERNAME_VO_
+#ifndef _ORDERNAME_DAO_
+#define _ORDERNAME_DAO_
+#include "BaseDAO.h"
+#include "../../domain/do/resultslist/ResultsListDO.h"
+#include "../../domain/query/ordername/OrderNameQuery.h"
 
-#include "../../GlobalInclude.h"
-#include "../../dto/ordername/OrderNameDTO.h"
-
-#include OATPP_CODEGEN_BEGIN(DTO)
-
-/**
- * 体检单位订单名称显示JsonVO，用于响应给客户端的Json对象
+/*
+ * 体检单位订单名称表数据库操作实现
  */
-class OrderNameJsonVO : public JsonVO<OrderNameDTO::Wrapper> {
-	DTO_INIT(OrderNameJsonVO, JsonVO<OrderNameDTO::Wrapper>);
+class OrderNameDAO : public BaseDAO
+{
+public:
+	// 统计数据条数
+	uint64_t count(const OrderNameQuery::Wrapper& query);
+	// 分页查询数据
+	list<ResultsListDO> selectWithPage(const OrderNameQuery::Wrapper& query);
 };
-
-/**
- * 体检单位订单名称分页显示JsonVO，用于响应给客户端的Json对象
- */
-class OrderNamePageJsonVO : public JsonVO<OrderNamePageDTO::Wrapper> {
-	DTO_INIT(OrderNamePageJsonVO, JsonVO<OrderNamePageDTO::Wrapper>);
-};
-
-#include OATPP_CODEGEN_END(DTO)
-
-#endif // !_ORDERNAME_VO_
+#endif // !_ORDERNAME_DAO_

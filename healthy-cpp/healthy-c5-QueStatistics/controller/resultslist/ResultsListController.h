@@ -46,22 +46,22 @@ public:
 		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
 
-		// 姓名
-		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("results.field.name"), "li ming", true);
-		// 体检编号 
-		API_DEF_ADD_QUERY_PARAMS(String, "checkId", ZH_WORDS_GETTER("results.field.checkId"), "1234567", false);
-		// 检查种类
-		API_DEF_ADD_QUERY_PARAMS(String, "checkType", ZH_WORDS_GETTER("results.field.checkType"), "rrr", false);
-		//身份证号
-		API_DEF_ADD_QUERY_PARAMS(String, "idCard", ZH_WORDS_GETTER("results.field.idCard"), "1234567234453322", false);
-		//危害因素
-		API_DEF_ADD_QUERY_PARAMS(String, "dangerFactors", ZH_WORDS_GETTER("results.field.dangerFactors"), "ttt", false);
-		//状态
-		API_DEF_ADD_QUERY_PARAMS(String, "state", ZH_WORDS_GETTER("results.field.state"), "www", false);
-		//性别
-		API_DEF_ADD_QUERY_PARAMS(String, "sex", ZH_WORDS_GETTER("results.field.sex"), "N", false);
-		//体检日期
-		API_DEF_ADD_QUERY_PARAMS(String, "checkDate", ZH_WORDS_GETTER("results.field.checkDate"), "2024-1-1", false);
+		//// 姓名
+		//API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("results.field.name"), "li ming", true);
+		//// 体检编号 
+		//API_DEF_ADD_QUERY_PARAMS(String, "checkId", ZH_WORDS_GETTER("results.field.checkId"), "1234567", false);
+		//// 检查种类
+		//API_DEF_ADD_QUERY_PARAMS(String, "checkType", ZH_WORDS_GETTER("results.field.checkType"), "rrr", false);
+		////身份证号
+		//API_DEF_ADD_QUERY_PARAMS(String, "idCard", ZH_WORDS_GETTER("results.field.idCard"), "1234567234453322", false);
+		////危害因素
+		//API_DEF_ADD_QUERY_PARAMS(String, "dangerFactors", ZH_WORDS_GETTER("results.field.dangerFactors"), "ttt", false);
+		////状态
+		//API_DEF_ADD_QUERY_PARAMS(String, "state", ZH_WORDS_GETTER("results.field.state"), "www", false);
+		////性别
+		//API_DEF_ADD_QUERY_PARAMS(String, "sex", ZH_WORDS_GETTER("results.field.sex"), "N", false);
+		////体检日期
+		//API_DEF_ADD_QUERY_PARAMS(String, "checkDate", ZH_WORDS_GETTER("results.field.checkDate"), "2024-1-1", false);
 		//体检结论
 		API_DEF_ADD_QUERY_PARAMS(String, "checkResults", ZH_WORDS_GETTER("results.field.checkResults"), "yyyy", true);
 	}

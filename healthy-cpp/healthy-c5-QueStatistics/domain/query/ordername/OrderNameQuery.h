@@ -26,35 +26,35 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * 获取体检结果分页查询对象
+ * 获取体检单位订单名称分页查询对象
  */
 class OrderNameQuery : public PageQuery
 {
 	DTO_INIT(OrderNameQuery, PageQuery);
+	// ID
+	API_DTO_FIELD_DEFAULT(UInt32, id, ZH_WORDS_GETTER("ordername.field.id"));
 	// 查询类型
 	API_DTO_FIELD_DEFAULT(UInt32, type, ZH_WORDS_GETTER("ordername.field.type"));
-	//体检日期
-	API_DTO_FIELD_DEFAULT(String, checkDate, ZH_WORDS_GETTER("ordername.field.checkDate"));
 	//单位订单名称
 	API_DTO_FIELD_DEFAULT(String, unitName, ZH_WORDS_GETTER("ordername.field.unitName"));
-	//// 姓名
-	//API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("results.field.name"));
-	//// 体检编号 
-	//API_DTO_FIELD_DEFAULT(String, checkId, ZH_WORDS_GETTER("results.field.checkId"));
-	//// 检查种类
-	//API_DTO_FIELD_DEFAULT(String, checkType, ZH_WORDS_GETTER("results.field.checkType"));
-	////身份证号
-	//API_DTO_FIELD_DEFAULT(String, idCard, ZH_WORDS_GETTER("results.field.idCard"));
-	////危害因素
-	//API_DTO_FIELD_DEFAULT(String, dangerFactors, ZH_WORDS_GETTER("results.field.dangerFactors"));
-	////状态
-	//API_DTO_FIELD_DEFAULT(String, state, ZH_WORDS_GETTER("results.field.state"));
-	////性别
-	//API_DTO_FIELD_DEFAULT(String, sex, ZH_WORDS_GETTER("results.field.sex"));
-	////体检日期
-	//API_DTO_FIELD_DEFAULT(String, checkDate, ZH_WORDS_GETTER("results.field.checkDate"));
-	////体检结论
-	//API_DTO_FIELD_DEFAULT(String, checkResults, ZH_WORDS_GETTER("results.field.checkResults"));
+	// 姓名
+	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("ordername.field.name"));
+	// 体检编号 
+	API_DTO_FIELD_DEFAULT(String, checkId, ZH_WORDS_GETTER("ordername.field.checkId"));
+	// 检查种类
+	API_DTO_FIELD_DEFAULT(String, checkType, ZH_WORDS_GETTER("ordername.field.checkType"));
+	//身份证号
+	API_DTO_FIELD_DEFAULT(String, idCard, ZH_WORDS_GETTER("ordername.field.idCard"));
+	//危害因素
+	API_DTO_FIELD_DEFAULT(String, dangerFactors, ZH_WORDS_GETTER("ordername.field.dangerFactors"));
+	//状态
+	API_DTO_FIELD_DEFAULT(String, state, ZH_WORDS_GETTER("ordername.field.state"));
+	//性别
+	API_DTO_FIELD_DEFAULT(String, sex, ZH_WORDS_GETTER("ordername.field.sex"));
+	//体检日期
+	API_DTO_FIELD_DEFAULT(String, checkDate, ZH_WORDS_GETTER("ordername.field.checkDate"));
+	//体检结论
+	API_DTO_FIELD_DEFAULT(String, checkResults, ZH_WORDS_GETTER("ordername.field.checkResults"));
 	
 };
 
