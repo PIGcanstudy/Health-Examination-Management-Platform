@@ -20,6 +20,18 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Mapper(componentModel = "spring")
+interface MsTSectionOfficeMapper {
+    /**
+     * tSectionOffice 转换成 tSectionOfficeDTO
+     *
+     * @param tSectionOffice 待转换的DO
+     * @return 转换结果
+     */
+    TSectionOfficeDTO tSectionOfficeTotSectionOfficeDTO(TSectionOffice tSectionOffice);
+}
+
+
 /**
  * <p>
  * 服务实现类
@@ -33,6 +45,7 @@ import java.util.List;
 public class TSectionOfficeServiceImpl extends ServiceImpl<TSectionOfficeMapper, TSectionOffice> implements ITSectionOfficeService {
     @Resource
     private TSectionOfficeMapper tSectionOfficeMapper;
+
     @Resource
     private UserHolder userHolder;
 
@@ -91,7 +104,7 @@ public class TSectionOfficeServiceImpl extends ServiceImpl<TSectionOfficeMapper,
     public JsonVO<ResultStatus> updateSectionOffice(TSectionOfficeDTO tSectionOfficeDTO) {
         // 判断数据是否已经被删除
         TSectionOffice tSectionOffice1 = getSectionOffice(tSectionOfficeDTO.getId());
-        if (tSectionOffice1.getDelFlag() == 1) return JsonVO.create(null, ResultStatus.FAIL.getCode(), "数据已经被删除");
+        if (tSectionOffice1 == null || tSectionOffice1.getDelFlag() == 1) return JsonVO.create(null, ResultStatus.FAIL.getCode(), "数据不存在或已经被删除");
 
         // 获取当前用户
         UserDTO currentUser = null;
@@ -102,7 +115,6 @@ public class TSectionOfficeServiceImpl extends ServiceImpl<TSectionOfficeMapper,
         }
         if (currentUser == null) return JsonVO.create(null, ResultStatus.FAIL.getCode(), "当前用户不存在");
 
-        // 封装数据
         val tSectionOffice = new TSectionOffice();
         // 拷贝数据
         BeanUtils.copyProperties(tSectionOfficeDTO, tSectionOffice);
@@ -135,7 +147,7 @@ public class TSectionOfficeServiceImpl extends ServiceImpl<TSectionOfficeMapper,
         }
         if (currentUser == null) return JsonVO.create(null, ResultStatus.FAIL.getCode(), "当前用户不存在");
 
-        // 逐条处理数据
+        // 逐条删除
         for(String id: ids) {
             val tSectionOffice = new TSectionOffice();
             tSectionOffice.setId(id);
