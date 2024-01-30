@@ -11,4 +11,7 @@ import java.util.List;
 public interface RoleMapper {
      @Select("select t.name from t_role t left join t_user_role tr on t.id = tr.role_id where tr.user_id = #{id}")
      List<Role> selectRoleByUserId(Long id);
+
+     @Select("select id from zo_healthy.t_role where name = #{role}")
+     Long selectRoleIdByName(String role);
 }

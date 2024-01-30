@@ -14,6 +14,7 @@ import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.sysmanager.entity.TUser;
 import com.zeroone.star.sysmanager.entity.TUserRole;
 import com.zeroone.star.sysmanager.mapper.DepartmentMapper;
+import com.zeroone.star.sysmanager.mapper.RoleMapper;
 import com.zeroone.star.sysmanager.mapper.TUserMapper;
 import com.zeroone.star.sysmanager.mapper.UserRoleMapper;
 import com.zeroone.star.sysmanager.service.ITUserService;
@@ -52,6 +53,13 @@ interface MsUserMapper{
      * @return 转换结果
      */
     com.zeroone.star.project.j1.dto.sysmanager.UserDTO TUserToUserDTO(TUser tUser);
+
+    /**
+     * 将 ModifyUserDTO 转换成 TUser
+     * @param modifyUserDTO 待转换的DTO
+     * @return 转换结果
+     */
+    TUser ModifyUserDTOToTUser(ModifyUserDTO modifyUserDTO);
 }
 /**
  * <p>
@@ -82,6 +90,9 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
     @Resource
     private UserRoleMapper userRoleMapper;
 
+    @Resource
+    private RoleMapper roleMapper;
+
     /**
      * 获取用户名称列表（用于输入表单下拉列表框）
      * @return
@@ -100,33 +111,47 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
         return list;
     }
 
+    /**
+     * 修改用户
+     * @param user
+     */
 	@Override
 	public void modifyUser(ModifyUserDTO user) {
-        // TODO 测试未通过，待修改
-        /*
-        报错如下：
-        "JSON parse error: Cannot deserialize value of type
-        `java.time.LocalDateTime` from String \"2000/1/1\":
-        Failed to deserialize java.time.LocalDateTime:
-         */
-		TUser tUser = new TUser();
-		tUser.setId(user.getId());
-		tUser.setUsername(user.getUsername());
-		tUser.setNickname(user.getNickName());
-		tUser.setEmail(user.getEmail());
-		tUser.setMobile(user.getMobile());
-		tUser.setSex(user.getSex());
-		tUser.setDepartmentId(user.getDepartmentId());
-		tUser.setType(user.getType());
-		tUser.setAvatar(user.getAvatar());
-		tUser.setAddress(user.getAddress());
-		tUser.setStreet(user.getStreet());
-		tUser.setAutograph(user.getAutograph());
-		tUser.setBirth(user.getBirth());
-		tUser.setDescription(user.getDescription());
-		tUser.setDelFlag(false);
-		tUserMapper.updateById(tUser);
-	}
+        TUser userByToken = getUserByToken();
+        if (userByToken.getType() == 0) {
+            throw new RuntimeException("用户权限不足");
+        }
+        TUser selectById = tUserMapper.selectById(user.getId());
+        if (selectById.getDelFlag()) {
+            throw new RuntimeException("该用户已被删除");
+        }
+        TUser tUser = msUserMapper.ModifyUserDTOToTUser(user);
+        if (tUser.getDepartmentId() != 0) {
+            String departmentTitle = departmentMapper.selectTitleById(tUser.getDepartmentId());
+            tUser.setDepartmentTitle(departmentTitle);
+        }
+        tUser.setUpdateTime(LocalDateTime.now());
+        tUser.setUpdateBy(userByToken.getUsername());
+        tUserMapper.updateUser(tUser);
+        // 修改用户角色
+        List<String> roles = user.getRoles();
+        List<TUserRole> tUserRoles = new ArrayList<>();
+        if (BeanUtil.isNotEmpty(roles) && roles.size() > 0) {
+            for (String role : roles) {
+                TUserRole tUserRole = new TUserRole();
+                Long roleId = roleMapper.selectRoleIdByName(role);
+                tUserRole.setCreateBy(userByToken.getUsername());
+                tUserRole.setCreateTime(LocalDateTime.now());
+                tUserRole.setDelFlag(true);
+                tUserRole.setUpdateBy(userByToken.getUsername());
+                tUserRole.setUpdateTime(LocalDateTime.now());
+                tUserRole.setRoleId(roleId);
+                tUserRole.setUserId(tUser.getId());
+                tUserRoles.add(tUserRole);
+            }
+            userRoleMapper.insert(tUserRoles);
+        }
+    }
 
     /**
      * 新增用户

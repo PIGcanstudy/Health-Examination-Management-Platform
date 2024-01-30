@@ -14,10 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @ApiModel("修改用户信息时获取当前用户信息数据对象")
 public class ModifyUserDTO {
-	@ApiModelProperty(value = "用户id", example = "gsaf1342sdfsdf")
+	@ApiModelProperty(value = "用户id", example = "gsaf1342sdfsdf", required = true)
 	private Long id;
-	@ApiModelProperty(value = "登录账号", example = "test1")
-	private String username;
 	@ApiModelProperty(value = "用户名", example = "test1")
 	private String nickName;
 	@ApiModelProperty(value = "邮箱", example = "6666666@qq.com")
@@ -32,8 +30,7 @@ public class ModifyUserDTO {
 	private Integer type;
 	@ApiModelProperty(value = "头像", example = "/photos/photo1.jpg")
 	private String avatar;
-//	@ApiModelProperty(value = "角色分配", example = "检验科,眼科,电测听,内科,皮肤科,DR室,心电图")
-	@ApiModelProperty(value = "角色分配") // where?
+	@ApiModelProperty(value = "角色分配")
 	private List<String> roles;
 	@ApiModelProperty(value = "所在地区", example = "北京市,市辖区,东城区")
 	private String address;
@@ -41,7 +38,7 @@ public class ModifyUserDTO {
 	private String street;
 	@ApiModelProperty(value = "签名文件")
 	private String autograph;
-	@ApiModelProperty(value = "生日", example = "2000/1/1")
+	@ApiModelProperty(value = "生日", example = "2000-1-1T12:34:56")
 	private LocalDateTime birth;
 	@ApiModelProperty(value = "简介", example = "我很帅")
 	private String description;

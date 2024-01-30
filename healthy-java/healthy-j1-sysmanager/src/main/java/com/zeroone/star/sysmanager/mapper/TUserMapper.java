@@ -26,4 +26,10 @@ public interface TUserMapper extends BaseMapper<TUser> {
      * @param ids
      */
     void deleteUserByIds(List<Long> ids, LocalDateTime updateTime, String UpdateBy);
+
+    /**
+     * 修改用户信息
+     * @param tUser
+     */
+    void updateUser(TUser tUser);
 }
