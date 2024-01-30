@@ -93,10 +93,9 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-import router from '@/router'
 import { userStore } from '../stores/user'
 import { ArrowDown } from '@element-plus/icons-vue'
-import basicdata from '@/stores/menus/basicdata.js'
+
 
 import { Check, CircleCheck, CirclePlus, CirclePlusFilled, Plus } from '@element-plus/icons-vue'
 import testMenus from '../stores/menus/healthcheck'
@@ -144,7 +143,7 @@ const menu = store.getMenus
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
-  .el-dropdown {
+ .el-dropdown {
   }
   .collBtn {
     width: 32px;

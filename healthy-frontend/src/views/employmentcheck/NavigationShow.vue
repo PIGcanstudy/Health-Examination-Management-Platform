@@ -1,10 +1,13 @@
 <!-- 流程展示 -->
 <template>
-  <Navigation></Navigation>
+  <div>
+    <Navigation02></Navigation02>
+  </div>
 </template>
 
 <script setup>
-import Navigation from '../../components/navigation/Navigation.vue'
+import Navigation from '@/components/navigation/Navigation02.vue'
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

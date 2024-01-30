@@ -8,14 +8,14 @@
     </div>
 
     <div class="btn02">
-      <el-button style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
+      <el-button @click="enter02" style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
     </div>
     <div class="icon02">
       <img src="../../assets/dashboard/icon02.png" style="height: 195px; width: 350px" />
     </div>
 
     <div class="btn03">
-      <el-button style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
+      <el-button @click="enter03" style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
     </div>
     <div class="icon03">
       <img src="../../assets/dashboard/icon03.png" style="height: 400px; width: 434px" />
@@ -51,6 +51,14 @@ const router = useRouter()
 
 function enter01() {
   router.push('/healthcheck')
+}
+
+function enter02() {
+  router.push('/employmentcheck')
+}
+
+function enter03() {
+  router.push('/careercheck')
 }
 </script>
 
