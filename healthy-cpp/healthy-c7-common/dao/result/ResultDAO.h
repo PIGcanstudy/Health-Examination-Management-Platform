@@ -1,8 +1,9 @@
+#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: smartPiggy
- @Date: 2024-01-19
+ @Date: 2024-01-27
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,23 +17,22 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#include"stdafx.h"
-#include"./ResultController.h"
-#include"../../service/result/ResultService.h"
-
-ResultPageJsonVO::Wrapper ResultController::execQueryPrimCheck(const ResultQuery::Wrapper& query)
+#ifndef _RESULTDAO_H_
+#define _RESULTDAO_H_
+#include "BaseDAO.h"
+#include"../../domain/do/result/ResultDO.h"
+#include"../../domain/query/result/ResultQuery.h"
+/**
+ * 示例表数据库操作实现
+ */
+class ResultDAO : public BaseDAO
 {
-	// 定义一个Service
-	ResultService service;
-	// 查询数据
-	auto result = service.listByPersonId(query);
-	// 响应结果
-	auto jvo = ResultPageJsonVO::createShared();
-	jvo->success(result);
-	return jvo;
-}
-
-//ItemResultPageJsonVO::Wrapper ResultController::execQueryPrimCheckDetail(const ResultQuery::Wrapper& query)
-//{
-//	return ItemResultPageJsonVO::Wrapper();
-//}
+public:
+	// 统计数据条数
+	uint64_t count(const ResultQuery::Wrapper& query);
+	// 分页查询数据
+	list<ResultDO> selectWithPage(const ResultQuery::Wrapper& query);
+	// 通过体检人姓名查询数据
+	list<ResultDO> selectByPersonId(const ResultQuery::Wrapper& query, const string& PersonId);
+};
+#endif // !_RESULTDAO_H_

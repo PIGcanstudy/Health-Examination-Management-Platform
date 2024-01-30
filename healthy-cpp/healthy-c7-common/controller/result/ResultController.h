@@ -28,33 +28,33 @@
 
 class ResultController : public oatpp::web::server::api::ApiController
 {
-	//¶¨Òå¿ØÖÆÆ÷·ÃÎÊÈë¿Ú
+	//å®šä¹‰æŽ§åˆ¶å™¨è®¿é—®å…¥å£
 	API_ACCESS_DECLARE(ResultController);
-public: //¶¨Òå½Ó¿Ú
+public: //å®šä¹‰æŽ¥å£
 
-	//1.1ÏîÄ¿½áÂÛ²éÑ¯½Ó¿ÚÃèÊö
+	//1.1é¡¹ç›®ç»“è®ºæŸ¥è¯¢æŽ¥å£æè¿°
 	ENDPOINT_INFO(queryResult) {
-		// ¶¨Òå½Ó¿Ú±êÌâ
+		// å®šä¹‰æŽ¥å£æ ‡é¢˜
 		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("result.query.list"));
-		// ¶¨ÒåÄ¬ÈÏÊÚÈ¨²ÎÊý£¨¿ÉÑ¡¶¨Òå£¬Èç¹û¶¨ÒåÁË£¬ÏÂÃæENDPOINTÀïÃæÐèÒª¼ÓÈëAPI_HANDLER_AUTH_PARAME£©
+		// å®šä¹‰é»˜è®¤æŽˆæƒå‚æ•°ï¼ˆå¯é€‰å®šä¹‰ï¼Œå¦‚æžœå®šä¹‰äº†ï¼Œä¸‹é¢ENDPOINTé‡Œé¢éœ€è¦åŠ å…¥API_HANDLER_AUTH_PARAMEï¼‰
 		API_DEF_ADD_AUTH();
-		// ¶¨ÒåÏìÓ¦²ÎÊý¸ñÊ½
+		// å®šä¹‰å“åº”å‚æ•°æ ¼å¼
 		API_DEF_ADD_RSP_JSON_WRAPPER(ResultPageJsonVO);
-		// ¶¨Òå·ÖÒ³²éÑ¯²ÎÊýÃèÊö
+		// å®šä¹‰åˆ†é¡µæŸ¥è¯¢å‚æ•°æè¿°
 		API_DEF_ADD_PAGE_PARAMS();
-		// ¶¨ÒåÆäËû²éÑ¯²ÎÊýÃèÊö
-		//ÈËÔ±ID
-		API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("result.field.personId"), "007", true);
+		// å®šä¹‰å…¶ä»–æŸ¥è¯¢å‚æ•°æè¿°
+		//äººå‘˜ID
+		API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("result.field.personId"),"001",true);
 	}
-	//1.2ÏîÄ¿½áÂÛ²éÑ¯½Ó¿Ú´¦Àí
+	//1.2é¡¹ç›®ç»“è®ºæŸ¥è¯¢æŽ¥å£å¤„ç†
 	ENDPOINT(API_M_GET, "/result/depart-result", queryResult, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME)
-	{
-		// ½âÎö²éÑ¯²ÎÊýÎªQueryÁìÓòÄ£ÐÍ£¨½ÓÊÕBrowser²ãµÄQuery£©
+	{  
+		// è§£æžæŸ¥è¯¢å‚æ•°ä¸ºQueryé¢†åŸŸæ¨¡åž‹ï¼ˆæŽ¥æ”¶Browserå±‚çš„Queryï¼‰,è§£æžå¾—åˆ°resultQuery
 		API_HANDLER_QUERY_PARAM(resultQuery, ResultQuery, params);
-		// ºô½ÐÖ´ÐÐº¯ÊýÏìÓ¦½á¹û
+		// å‘¼å«æ‰§è¡Œå‡½æ•°å“åº”ç»“æžœ
 		API_HANDLER_RESP_VO(execQueryPrimCheck(resultQuery));
 	}
-private: //¶¨Òå½Ó¿ÚÖ´ÐÐº¯Êý
+private: //å®šä¹‰æŽ¥å£æ‰§è¡Œå‡½æ•°
 	ResultPageJsonVO::Wrapper execQueryPrimCheck(const ResultQuery::Wrapper& query);
 };
 
