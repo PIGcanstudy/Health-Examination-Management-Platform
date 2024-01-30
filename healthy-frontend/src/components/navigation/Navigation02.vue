@@ -5,42 +5,62 @@
           <el-main >
            
 <div class="mid">
-    
+
+            <div class="ic01" >
+              <router-link to="/employmentcheck/CompanyInfo.vue" >
+              <img src="../../assets/navigation/icon01.png" />
+              </router-link>
+              <el-text  size="large" style="font-size: medium; position:center;width: 64px;font-weight: bold;" >单位信息</el-text>
+            </div>
+            <div class="arrow01">
+              <img src="../../assets/navigation/arrow03.png"/>
+            </div> 
+
+          <div class="ic11">
+          <router-link to="/employmentcheck/MedicalRegistration.vue">
+            <img src="../../assets/navigation/icon11.png" />
+          </router-link>
+          <el-text size="large" style="font-size: medium; position:center;width: 64px;font-weight: bold;">体检登记</el-text>
+          </div>
+          <div class="arrow11">
+          <img src="../../assets/navigation/arrow03.png" />
+          </div>
+
            
   
             <div class="ic06">
-              <router-link to="/sample/print">
+              <router-link to="/employmentcheck/MedicalExamination.vue">
               <img src="../../assets/navigation/icon06.png" />
               </router-link>
-              <el-text  size="large">体检诊台</el-text>
+              <el-text  size="large" style="font-size: medium; position:center;width: 64px;font-weight: bold;">体检诊台</el-text>
             </div>
             
   
             <div class="ic07">
-              <router-link to="/sample/pdfobject">
+              <router-link to="/employmentcheck/DoctorInspection.vue">
               <img src="../../assets/navigation/icon07.png" />
               </router-link>
-              <el-text  size="large">医生总检</el-text>
+              <el-text  size="large" style="font-size: medium; position:center;width: 64px;font-weight: bold;">医生总检</el-text>
             </div>
             <div class="arrow07">
               <img src="../../assets/navigation/arrow03.png"/>
             </div> 
   
             <div class="ic08">
-              <router-link to="/sample/basedatalist">
-              <img src="../../assets/navigation/icon08.png" />
+              <router-link to="/employmentcheck/MedicalReport.vue">
+              <img src="../../assets/navigation/icon09.png" />
               </router-link>
-              <el-text  size="large">报告审核</el-text>
+              <el-text  size="large" style="font-size: medium; position:center;width: 64px;font-weight: bold;">体检报告</el-text>
             </div>
             <div class="arrow08">
               <img src="../../assets/navigation/arrow03.png"/>
             </div> 
   
             <div class="ic09">
-              <router-link to="/sample/basedatalisttest">
-              <img src="../../assets/navigation/icon09.png" />
+              <router-link to="/employmentcheck/HealthCertificate.vue">
+              <img src="../../assets/navigation/icon13.png" />
               </router-link>
-              <el-text  size="large">体检报告</el-text>
+              <el-text  size="large" style="font-size: medium; position:center;width: 64px;font-weight: bold;">健  康  证</el-text>
             </div>
             <div class="arrow09">
               <img src="../../assets/navigation/arrow03.png"/>
@@ -67,8 +87,8 @@
     position:center;
     width: 64px;
     height: 64px;
-    left: 80px;
-    top: 100px;
+    left: 333px;
+    top: 167px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255,0.7);
   }
@@ -108,7 +128,7 @@
     width: 64px;
     height: 64px;
     left: 580px;
-    top: 30px;
+    top: 38px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255,0.7);
   }
@@ -116,7 +136,7 @@
     width: 64px;
     height: 64px;
     left: 700px;
-    top: -30px;
+    top: -17px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255,0.7);
   }
@@ -124,15 +144,15 @@
     width: 64px;
     height: 64px;
     left: 820px;
-    top: -100px;
+    top: -91px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255,0.7);
   }
   .ic09{
     width: 64px;
     height: 64px;
-    left: 940px;
-    top: -165px;
+    left: 1050px;
+    top: -150px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255,0.7);
   }
@@ -145,10 +165,11 @@
     background-color: rgb(255, 255, 255,0.7);
   }
   .ic11{
+    position:center;
     width: 64px;
     height: 64px;
-    left: 440px;
-    top: -30px;
+    left: 462px;
+    top: 102px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255,0.7);
   }
@@ -193,8 +214,8 @@
     text-align: center;
   }
   .arrow01{
-    top: 70px;
-    left :172px ;
+    top: 145px;
+    left :430px ;
     height:1px;
     width: 40px;
     margin: 0 ;
@@ -252,7 +273,7 @@
   //9
   .arrow07{
     top: -55px;
-    left :915px ;
+    left :788px ;
     height:1px;
     width: 40px;
     margin: 0 ;
@@ -261,9 +282,9 @@
   }
   .arrow08{
     top: -120px;
-    left :790px ;
+    left :970px ;
     height:1px;
-    width: 40px;
+    width: 80px;
     margin: 0 ;
     border: 0 ;
     padding: 0;
@@ -289,8 +310,8 @@
   }
 //   图九的前面的箭头
   .arrow11{
-    top: -250px;
-    left :1030px ;
+    top: 75px;
+    left :550px ;
     height:1px;
     width: 40px;
     margin: 0 ;

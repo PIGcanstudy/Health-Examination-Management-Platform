@@ -5,7 +5,7 @@
         <!-- 侧边栏菜单 -->
         <div class="menu-wrap" :style="isCollapsed ? 'display: none;' : ''">
           <el-scrollbar max-height="100vh">
-            <el-menu id="homemenu" default-active="/home" class="el-menu-vertical-demo" active-text-color="#409EFF" text-color="#fff" background-color="#545c64" unique-opened router>
+            <el-menu default-active="/home" class="el-menu-vertical-demo" active-text-color="#409EFF" text-color="#fff" background-color="#545c64" unique-opened router>
               <el-menu-item index="/home">
                 <el-icon>
                   <icon-menu />
@@ -91,12 +91,11 @@
     </el-container>
   </div>
 </template>
-<script  setup>
+<script setup>
 import { ref } from 'vue'
-import router from '@/router'
 import { userStore } from '../stores/user'
 import { ArrowDown } from '@element-plus/icons-vue'
-import basicdata from '@/stores/menus/basicdata.js'
+
 
 import { Check, CircleCheck, CirclePlus, CirclePlusFilled, Plus } from '@element-plus/icons-vue'
 import testMenus from '../stores/menus/healthcheck'
@@ -144,7 +143,7 @@ const menu = store.getMenus
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
-  .el-dropdown {
+ .el-dropdown {
   }
   .collBtn {
     width: 32px;
