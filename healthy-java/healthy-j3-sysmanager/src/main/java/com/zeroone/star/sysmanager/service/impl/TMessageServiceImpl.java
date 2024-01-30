@@ -7,6 +7,8 @@ import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zeroone.star.project.components.user.UserDTO;
+import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.constant.RedisConstant;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.message.MessageResponseDTO;
@@ -26,6 +28,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -44,6 +47,9 @@ public class TMessageServiceImpl extends ServiceImpl<MessageMapper, Message> imp
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
+
+    @Resource
+    private UserHolder userHolder;
     /**
      * @description:消息详情业务
      * @author: 坚强少年
@@ -103,7 +109,8 @@ public class TMessageServiceImpl extends ServiceImpl<MessageMapper, Message> imp
 //        LocalDateTime localDateTime = LocalDateTime.parse(sendMsgQuery.getCreateTime(), formatter);
 //        message.setCreateTime(localDateTime);
 
-        message.setCreateTime(sendMsgQuery.getCreateTime());
+//        message.setCreateTime(sendMsgQuery.getCreateTime());
+        message.setCreateTime(LocalDateTime.now());
         message.setType(sendMsgQuery.getType());
         message.setTitle(sendMsgQuery.getTitle());
         message.setContent(sendMsgQuery.getContent());
@@ -119,18 +126,23 @@ public class TMessageServiceImpl extends ServiceImpl<MessageMapper, Message> imp
 
 
     @Override
-    public JsonVO<Boolean> updateMsg(UpdateMsgQuery updateMsgQuery) {
+    public JsonVO<Boolean> updateMsg(UpdateMsgQuery updateMsgQuery) throws Exception {
         //获取元消息
         Message message = messageMapper.selectById(updateMsgQuery.getId());
+        /**
+         * 根据userHolder  token根据ID获取元消息
+         */
+        UserDTO currentUser = userHolder.getCurrentUser();
 
         //构建更新条件
         LambdaUpdateWrapper<Message> wrapper = new LambdaUpdateWrapper<>();
         if (updateMsgQuery.getUpdateByID()!= null){
-            wrapper.eq(Message::getUpdateBy,message.getUpdateBy()).set(Message::getUpdateBy,updateMsgQuery.getUpdateByID());
+            wrapper.eq(Message::getUpdateBy,message.getUpdateBy()).set(Message::getUpdateBy,currentUser.getUsername());
         }
-        if (updateMsgQuery.getUpdateTime()!= null){
-            wrapper.eq(Message::getUpdateTime,message.getUpdateTime()).set(Message::getUpdateTime,updateMsgQuery.getUpdateTime());
-        }
+//        if (updateMsgQuery.getUpdateTime()!= null){
+//            wrapper.eq(Message::getUpdateTime,message.getUpdateTime()).set(Message::getUpdateTime,updateMsgQuery.getUpdateTime());
+//        }
+        wrapper.eq(Message::getUpdateTime,message.getUpdateTime()).set(Message::getUpdateTime,LocalDateTime.now());
         if (updateMsgQuery.getType()!= null){
             wrapper.eq(Message::getType,message.getType()).set(Message::getType,updateMsgQuery.getType());
         }

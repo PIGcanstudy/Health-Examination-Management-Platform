@@ -53,5 +53,5 @@ public interface MessageApis {
      * @param updateMsgQuery
      * @return
      */
-    JsonVO<Boolean> updateMessage(UpdateMsgQuery updateMsgQuery);
+    JsonVO<Boolean> updateMessage(UpdateMsgQuery updateMsgQuery) throws Exception;
 }

@@ -33,11 +33,11 @@ public class SendMsgQuery implements Serializable {
     @ApiModelProperty(value = "创建人不能为空", example = "梅西")
     private String createBy;
 
-    @NotBlank(message = "创建时间不能为空")
-    @ApiModelProperty(value = "创建时间不能为空", example = "2024-01-17 14:36:12")
-    @TableField(fill = FieldFill.INSERT)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createTime;
+//    @NotBlank(message = "创建时间不能为空")
+//    @ApiModelProperty(value = "创建时间", example = "2024-01-17 14:36:12")
+//    @TableField(fill = FieldFill.INSERT)
+//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    private LocalDateTime createTime;
 
     @ApiModelProperty(value = "消息类型")
     private String type;

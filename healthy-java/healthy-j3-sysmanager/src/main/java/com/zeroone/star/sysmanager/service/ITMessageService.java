@@ -40,5 +40,5 @@ public interface ITMessageService extends IService<Message> {
     JsonVO<Boolean> sendMsg(SendMsgQuery sendMsgQuery);
 
 
-    JsonVO<Boolean> updateMsg(UpdateMsgQuery updateMsgQuery);
+    JsonVO<Boolean> updateMsg(UpdateMsgQuery updateMsgQuery) throws Exception;
 }
