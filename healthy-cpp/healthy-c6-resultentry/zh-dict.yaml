@@ -22,6 +22,7 @@ save:
   ignoreStatus: 是否忽略异常（1-否，2-是）
   crisisDegree: 危急程度
   postive: 阳性
+  item: 明细dto
 
 group_person:
  get:

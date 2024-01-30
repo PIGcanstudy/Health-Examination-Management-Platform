@@ -11,7 +11,7 @@ uint64_t SaveResDAO::insert(const SaveResDO& iObj)
 		" `diagnose_sum`, `office_id`, `office_name`, `check_num`, `check_doc`, `check_date`, `del_flag`,"
 		"`create_id`, `create_date`, `is_file`,`state`)"
 		"VALUES(? , ? , ? , ?, ? , ? , ?, ? , ? , ?, ? , ? , ?, ? , ?, ?)";
-	return sqlSession->executeInsert(sql, "%s%s%s%s%s%s%s%s%i%s%s%i%i%s%s%i",\
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%i%s%s%i%s%s%s%i",\
 		iObj.getId(), iObj.getPersonId(), iObj.getGroupItemId(), iObj.getGroupItemName(),\
 		iObj.getDiagnoseTip(), iObj.getDiagnoseSum(), iObj.getOfficeId(), iObj.getOfficeName(),\
 		iObj.getCheck_num(), iObj.getCheckDoc(), iObj.getCheckDate(), iObj.getDelFlag(),\

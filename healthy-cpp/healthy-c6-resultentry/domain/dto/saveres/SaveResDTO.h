@@ -2,6 +2,8 @@
 #ifndef _SAVERES_DTO_
 #define _SAVERES_DTO_
 #include "../../GlobalInclude.h"
+#include "SaveResItemDTO.h"
+
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
@@ -46,24 +48,24 @@ class SaveResDTO : public oatpp::DTO
 
 	// item depart res 部分
 
-	// 关联的基础项目id
-	API_DTO_FIELD(String, orderGroupItemProjectId, ZH_WORDS_GETTER("save.filed.orderGroupItemProjectId"),false, "");
-	// 关联的基础项目名称
-	API_DTO_FIELD_DEFAULT(String, orderGroupItemProjectName, ZH_WORDS_GETTER("save.filed.orderGroupItemProjectName"));
-	// 体检结果
-	API_DTO_FIELD_DEFAULT(String, result, ZH_WORDS_GETTER("save.filed.result"));
-	// 计量单位代码
-	API_DTO_FIELD_DEFAULT(String, unitCode, ZH_WORDS_GETTER("save.filed.unitCode"));
-	// 计量单位名称
-	API_DTO_FIELD_DEFAULT(String, unitName, ZH_WORDS_GETTER("save.filed.unitName"));
-	// 是否忽略异常（1-否，2-是）
-	API_DTO_FIELD(Int32, ignoreStatus, ZH_WORDS_GETTER("save.filed.ignoreStatus"), false, 1);
-	// 危急程度
-	API_DTO_FIELD(String, crisisDegree, ZH_WORDS_GETTER("save.filed.crisisDegree"), false, u8"正常");
-	// 阳性
-	API_DTO_FIELD(Int32, postive, ZH_WORDS_GETTER("save.filed.postive"), false, 0);
+	//// 关联的基础项目id
+	//API_DTO_FIELD(String, orderGroupItemProjectId, ZH_WORDS_GETTER("save.filed.orderGroupItemProjectId"),false, "");
+	//// 关联的基础项目名称
+	//API_DTO_FIELD_DEFAULT(String, orderGroupItemProjectName, ZH_WORDS_GETTER("save.filed.orderGroupItemProjectName"));
+	//// 体检结果
+	//API_DTO_FIELD_DEFAULT(String, result, ZH_WORDS_GETTER("save.filed.result"));
+	//// 计量单位代码
+	//API_DTO_FIELD_DEFAULT(String, unitCode, ZH_WORDS_GETTER("save.filed.unitCode"));
+	//// 计量单位名称
+	//API_DTO_FIELD_DEFAULT(String, unitName, ZH_WORDS_GETTER("save.filed.unitName"));
+	//// 是否忽略异常（1-否，2-是）
+	//API_DTO_FIELD(Int32, ignoreStatus, ZH_WORDS_GETTER("save.filed.ignoreStatus"), false, 1);
+	//// 危急程度
+	//API_DTO_FIELD(String, crisisDegree, ZH_WORDS_GETTER("save.filed.crisisDegree"), false, u8"正常");
+	//// 阳性
+	//API_DTO_FIELD(Int32, postive, ZH_WORDS_GETTER("save.filed.postive"), false, 0);
 
-
+	API_DTO_FIELD_DEFAULT(List<SaveResItemDTO::Wrapper>, item, ZH_WORDS_GETTER("save.filed.item"));
 
 };
 

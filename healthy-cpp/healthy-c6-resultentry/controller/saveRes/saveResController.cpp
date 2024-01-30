@@ -26,7 +26,7 @@ Uint64JsonVO::Wrapper SaveResController::execAddDepartRes(const SaveResDTO::Wrap
 
 	// 定义一个Service
 	SaveResService service;
-	if (dto->orderGroupItemProjectId->empty())//如果这个是空则不是明细
+	if (1)//如果这个是空则不是明细
 	{
 		// 执行数据新增
 		uint64_t id = service.saveData(dto, createId);
