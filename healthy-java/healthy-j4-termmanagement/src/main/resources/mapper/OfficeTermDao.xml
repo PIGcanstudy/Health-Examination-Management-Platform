@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace=".dao.OfficeTermDao">
+
+    <resultMap type=".entity.OfficeTerm" id="OfficeTermMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="officeId" column="office_id" jdbcType="VARCHAR"/>
+        <result property="hazardFactorsText" column="hazard_factors_text" jdbcType="VARCHAR"/>
+        <result property="inspectType" column="inspect_type" jdbcType="VARCHAR"/>
+        <result property="hazardFactors" column="hazard_factors" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="orderNum" column="order_num" jdbcType="VARCHAR"/>
+        <result property="delFlag" column="del_flag" jdbcType="INTEGER"/>
+        <result property="createId" column="create_id" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateId" column="update_id" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="deleteId" column="delete_id" jdbcType="VARCHAR"/>
+        <result property="deleteTime" column="delete_time" jdbcType="TIMESTAMP"/>
+        <result property="workStateCode" column="work_state_code" jdbcType="VARCHAR"/>
+        <result property="workStateText" column="work_state_text" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="OfficeTermMap">
+        select
+          id, office_id, hazard_factors_text, inspect_type, hazard_factors, type, status, content, order_num, del_flag, create_id, create_time, update_id, update_time, delete_id, delete_time, work_state_code, work_state_text
+        from t_office_term
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="OfficeTermMap">
+        select
+          id, office_id, hazard_factors_text, inspect_type, hazard_factors, type, status, content, order_num, del_flag, create_id, create_time, update_id, update_time, delete_id, delete_time, work_state_code, work_state_text
+        from t_office_term
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="officeId != null and officeId != ''">
+                and office_id = #{officeId}
+            </if>
+            <if test="hazardFactorsText != null and hazardFactorsText != ''">
+                and hazard_factors_text = #{hazardFactorsText}
+            </if>
+            <if test="inspectType != null and inspectType != ''">
+                and inspect_type = #{inspectType}
+            </if>
+            <if test="hazardFactors != null and hazardFactors != ''">
+                and hazard_factors = #{hazardFactors}
+            </if>
+            <if test="type != null and type != ''">
+                and type = #{type}
+            </if>
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="content != null and content != ''">
+                and content = #{content}
+            </if>
+            <if test="orderNum != null and orderNum != ''">
+                and order_num = #{orderNum}
+            </if>
+            <if test="delFlag != null">
+                and del_flag = #{delFlag}
+            </if>
+            <if test="createId != null and createId != ''">
+                and create_id = #{createId}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateId != null and updateId != ''">
+                and update_id = #{updateId}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="deleteId != null and deleteId != ''">
+                and delete_id = #{deleteId}
+            </if>
+            <if test="deleteTime != null">
+                and delete_time = #{deleteTime}
+            </if>
+            <if test="workStateCode != null and workStateCode != ''">
+                and work_state_code = #{workStateCode}
+            </if>
+            <if test="workStateText != null and workStateText != ''">
+                and work_state_text = #{workStateText}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from t_office_term
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="officeId != null and officeId != ''">
+                and office_id = #{officeId}
+            </if>
+            <if test="hazardFactorsText != null and hazardFactorsText != ''">
+                and hazard_factors_text = #{hazardFactorsText}
+            </if>
+            <if test="inspectType != null and inspectType != ''">
+                and inspect_type = #{inspectType}
+            </if>
+            <if test="hazardFactors != null and hazardFactors != ''">
+                and hazard_factors = #{hazardFactors}
+            </if>
+            <if test="type != null and type != ''">
+                and type = #{type}
+            </if>
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="content != null and content != ''">
+                and content = #{content}
+            </if>
+            <if test="orderNum != null and orderNum != ''">
+                and order_num = #{orderNum}
+            </if>
+            <if test="delFlag != null">
+                and del_flag = #{delFlag}
+            </if>
+            <if test="createId != null and createId != ''">
+                and create_id = #{createId}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateId != null and updateId != ''">
+                and update_id = #{updateId}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="deleteId != null and deleteId != ''">
+                and delete_id = #{deleteId}
+            </if>
+            <if test="deleteTime != null">
+                and delete_time = #{deleteTime}
+            </if>
+            <if test="workStateCode != null and workStateCode != ''">
+                and work_state_code = #{workStateCode}
+            </if>
+            <if test="workStateText != null and workStateText != ''">
+                and work_state_text = #{workStateText}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into t_office_term(office_id, hazard_factors_text, inspect_type, hazard_factors, type, status, content, order_num, del_flag, create_id, create_time, update_id, update_time, delete_id, delete_time, work_state_code, work_state_text)
+        values (#{officeId}, #{hazardFactorsText}, #{inspectType}, #{hazardFactors}, #{type}, #{status}, #{content}, #{orderNum}, #{delFlag}, #{createId}, #{createTime}, #{updateId}, #{updateTime}, #{deleteId}, #{deleteTime}, #{workStateCode}, #{workStateText})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into t_office_term(office_id, hazard_factors_text, inspect_type, hazard_factors, type, status, content, order_num, del_flag, create_id, create_time, update_id, update_time, delete_id, delete_time, work_state_code, work_state_text)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.officeId}, #{entity.hazardFactorsText}, #{entity.inspectType}, #{entity.hazardFactors}, #{entity.type}, #{entity.status}, #{entity.content}, #{entity.orderNum}, #{entity.delFlag}, #{entity.createId}, #{entity.createTime}, #{entity.updateId}, #{entity.updateTime}, #{entity.deleteId}, #{entity.deleteTime}, #{entity.workStateCode}, #{entity.workStateText})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into t_office_term(office_id, hazard_factors_text, inspect_type, hazard_factors, type, status, content, order_num, del_flag, create_id, create_time, update_id, update_time, delete_id, delete_time, work_state_code, work_state_text)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.officeId}, #{entity.hazardFactorsText}, #{entity.inspectType}, #{entity.hazardFactors}, #{entity.type}, #{entity.status}, #{entity.content}, #{entity.orderNum}, #{entity.delFlag}, #{entity.createId}, #{entity.createTime}, #{entity.updateId}, #{entity.updateTime}, #{entity.deleteId}, #{entity.deleteTime}, #{entity.workStateCode}, #{entity.workStateText})
+        </foreach>
+        on duplicate key update
+        office_id = values(office_id),
+        hazard_factors_text = values(hazard_factors_text),
+        inspect_type = values(inspect_type),
+        hazard_factors = values(hazard_factors),
+        type = values(type),
+        status = values(status),
+        content = values(content),
+        order_num = values(order_num),
+        del_flag = values(del_flag),
+        create_id = values(create_id),
+        create_time = values(create_time),
+        update_id = values(update_id),
+        update_time = values(update_time),
+        delete_id = values(delete_id),
+        delete_time = values(delete_time),
+        work_state_code = values(work_state_code),
+        work_state_text = values(work_state_text)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update t_office_term
+        <set>
+            <if test="officeId != null and officeId != ''">
+                office_id = #{officeId},
+            </if>
+            <if test="hazardFactorsText != null and hazardFactorsText != ''">
+                hazard_factors_text = #{hazardFactorsText},
+            </if>
+            <if test="inspectType != null and inspectType != ''">
+                inspect_type = #{inspectType},
+            </if>
+            <if test="hazardFactors != null and hazardFactors != ''">
+                hazard_factors = #{hazardFactors},
+            </if>
+            <if test="type != null and type != ''">
+                type = #{type},
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="orderNum != null and orderNum != ''">
+                order_num = #{orderNum},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag},
+            </if>
+            <if test="createId != null and createId != ''">
+                create_id = #{createId},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateId != null and updateId != ''">
+                update_id = #{updateId},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="deleteId != null and deleteId != ''">
+                delete_id = #{deleteId},
+            </if>
+            <if test="deleteTime != null">
+                delete_time = #{deleteTime},
+            </if>
+            <if test="workStateCode != null and workStateCode != ''">
+                work_state_code = #{workStateCode},
+            </if>
+            <if test="workStateText != null and workStateText != ''">
+                work_state_text = #{workStateText},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from t_office_term where id = #{id}
+    </delete>
+
+</mapper>
+

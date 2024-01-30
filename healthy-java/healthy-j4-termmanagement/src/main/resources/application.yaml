@@ -1,0 +1,6 @@
+server:
+  port: ${sp.term}
+spring:
+  application:
+    name: ${sn.term}
+
