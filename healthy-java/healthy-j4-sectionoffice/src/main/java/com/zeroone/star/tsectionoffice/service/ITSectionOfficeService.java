@@ -1,6 +1,8 @@
 package com.zeroone.star.tsectionoffice.service;
 
 import com.zeroone.star.project.j4.dto.TSectionOfficeDTO;
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.tsectionoffice.entity.TSectionOffice;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -22,7 +24,7 @@ public interface ITSectionOfficeService extends IService<TSectionOffice> {
      * @return: void
      * @Description: 插入科室
      **/
-    void saveSectionOffice(TSectionOfficeDTO tSectionOfficeDTO);
+    JsonVO<ResultStatus> saveSectionOffice(TSectionOfficeDTO tSectionOfficeDTO);
 
     /**
      * @Author: ayuan
@@ -30,7 +32,7 @@ public interface ITSectionOfficeService extends IService<TSectionOffice> {
      * @return: void
      * @Description: 修改科室
      **/
-    void updateSectionOffice(TSectionOfficeDTO tSectionOfficeDTO);
+    JsonVO<ResultStatus> updateSectionOffice(TSectionOfficeDTO tSectionOfficeDTO);
 
     /**
      * @Author: ayuan
@@ -38,5 +40,5 @@ public interface ITSectionOfficeService extends IService<TSectionOffice> {
      * @return: void
      * @Description: 删除科室
      **/
-    void removeSectionOffice(List<String> ids);
+    JsonVO<ResultStatus> removeSectionOffice(List<String> ids);
 }

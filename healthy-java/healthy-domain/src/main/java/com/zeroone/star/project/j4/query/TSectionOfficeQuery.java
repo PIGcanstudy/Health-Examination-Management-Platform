@@ -10,7 +10,7 @@ import lombok.Data;
  * @BelongsPackage: com.zeroone.star.project.j4.query
  * @Author: ayuan
  * @CreateTime: 2024-01-16
- * @Description:
+ * @Description: 查询科室的领域对象
  */
 @Data
 @ApiModel("科室查询")
