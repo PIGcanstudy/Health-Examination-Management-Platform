@@ -3,6 +3,7 @@ package com.zeroone.star.sysmanager.service.impl;
 
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.zeroone.star.project.dto.j3.typeLibrary.TypeLibDeleteDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeAddDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeLibraryTreeDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeUpdateDTO;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,6 +45,8 @@ interface MsTypeMapper {
     typeUpdateVO TProTypeTOtypeUpdateTypeVO(ProType tProType);
     ProType AddTypeDTOTOProType(typeAddDTO typeadddto);
     ProType UpdateTypeDTOTOProType(typeUpdateDTO typeUpdateDTO);
+
+    ProType removeTypeDTO(TypeLibDeleteDTO typeLibDeleteDTO);
 }
 @Service
 public class TProTypeServiceImpl extends ServiceImpl<ProTypeMapper, ProType> implements ITProTypeService {
@@ -135,6 +139,21 @@ public class TProTypeServiceImpl extends ServiceImpl<ProTypeMapper, ProType> imp
         }
         return null;
     }
+
+    @Override
+    public Integer removeType(List<TypeLibDeleteDTO> typeLibDeleteDTOS) {
+        int i = 0;
+        for (; i < typeLibDeleteDTOS.size(); i++) {
+            TypeLibDeleteDTO typeLibDeleteDTO = typeLibDeleteDTOS.get(i);
+            ProType proType = msTypeMapper.removeTypeDTO(typeLibDeleteDTO);
+            LocalDateTime now = LocalDateTime.now();
+            proType.setDeleteTime(now);
+            proType.setDelFlag(1);
+            baseMapper.updateById(proType);
+        }
+        return i;
+    }
+
 
     /**
      * 递归找类型树的子集

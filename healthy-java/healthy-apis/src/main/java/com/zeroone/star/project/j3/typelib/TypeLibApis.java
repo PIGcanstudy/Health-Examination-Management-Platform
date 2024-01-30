@@ -40,7 +40,7 @@ public interface TypeLibApis {
      *@Author: Mr.Lin
      *@Date: 2024/1/17 13:07
      */
-    JsonVO<Integer> removeTypeLib(TypeLibDeleteDTO typeLibDeleteDTO);
+    JsonVO<Integer> removeTypeLib(List<TypeLibDeleteDTO> typeLibDeleteDTOS);
     /**
     * @Description: 新增类型
     * @Param:
