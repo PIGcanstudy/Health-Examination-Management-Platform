@@ -1,5 +1,6 @@
 package com.zeroone.star.project.query.j3;
 
+import com.zeroone.star.project.query.PageQuery;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -17,7 +18,7 @@ import javax.validation.constraints.Min;
  */
 @Data
 @ApiModel("禁用词单位查询")
-public class StopWordQuery {
+public class StopWordQuery extends PageQuery{
     /**
      * 禁用词
      */
