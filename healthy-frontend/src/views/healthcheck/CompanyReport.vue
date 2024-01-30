@@ -3,7 +3,11 @@
   <div>
     <el-container style="height: 600px;">
       <el-aside>
-        <PeoplleList :isShowCheckbox="false" :isShowSwitch="false" title="报告查询"></PeoplleList>
+        <PeoplleList :isShowCheckbox="false" :isShowSwitch="false" title="报告查询">
+          <template #table-area>
+            <SelectList use-which="checkbox" :lists-data="listsData"></SelectList>
+          </template>
+        </PeoplleList>
       </el-aside>
       <el-main>
         <div class="form">
@@ -51,7 +55,7 @@
                 </el-col>
                 <el-col span="12">
                   <el-form-item label="体检人数">
-                    <el-input v-model="formData.num" placeholder="请输入" clearable />
+                    <el-input-number v-model="formData.num" :min="0" clearable />
                   </el-form-item>
                 </el-col>
               </el-row>
@@ -73,6 +77,7 @@
                 <el-form-item style="width: 100%" class="result" label="体检结论与处理意见" prop="result">
                   <el-input v-model="formData.result" :autosize="{ minRows: 6 }" placeholder="请输入" clearable
                     type="textarea" />
+                <CheckItems bottonTitle="选"></CheckItems>
                 </el-form-item>
               </el-row>
             </el-form>
@@ -109,6 +114,8 @@ import { reactive, ref } from 'vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import Head from '@/components/head/Head.vue'
 import Excel from '@/components/excel/Excel.vue'
+import SelectList from '@/components/selectList/SelectList.vue'
+import CheckItems from '@/components/checkitems/CheckItems.vue'
 
 // 修改&保存按钮
 const isDisabled = ref(true)
@@ -142,7 +149,7 @@ const formData = reactive(
     checkUnit: '',
     commissionedUnit: '',
     date: '',
-    num: '',
+    num: 0,
     project: '',
     reason: '',
     result: ''
@@ -251,6 +258,40 @@ const dataOneRow = [
     scale: '--',
     contact: '--',
     phone: '--'
+  }
+]
+
+// 列表数据
+const listsData = [
+  {
+    code: '121111118442',
+    date: '2093-4-4',
+    company: 'test company3',
+    icon: [1, 0, 0, 0, 2]
+  },
+  {
+    code: '102039338444',
+    date: '2023-4-4',
+    company: 'test company3',
+    icon: [1, 0, 0, 0, 2]
+  },
+  {
+    code: '102039338445',
+    date: '2023-4-4',
+    company: 'test company3',
+    icon: [1, 0, 0, 0, 2]
+  },
+  {
+    code: '102039338446',
+    date: '2023-4-4',
+    company: 'test company3',
+    icon: [1, 0, 0, 0, 2]
+  },
+  {
+    code: '102039338441',
+    date: '2023-4-4',
+    company: 'test company',
+    icon: [4, 1, 2, 1, 2] // 放、未报、通、未打、团
   }
 ]
 </script>

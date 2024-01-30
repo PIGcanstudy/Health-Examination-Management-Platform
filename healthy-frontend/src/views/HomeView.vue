@@ -12,7 +12,7 @@
                 </el-icon>
                 <span>首页</span>
               </el-menu-item>
-              <el-sub-menu v-for="item in menus" :key="item.id" :index="item.id + ''">
+              <el-sub-menu v-for="item in menu" :key="item.id" :index="item.id + ''">
                 <template #title>
                   <el-icon>
                     <component :is="item.icon" />
@@ -43,44 +43,47 @@
           </el-button>
 
           <!-- 下拉菜单 -->
+          <!-- TODO 路由菜单导航还需完善-->
           <el-dropdown>
             <span class="el-dropdown-link">
-              Dropdown List
+              系统菜单
               <el-icon class="el-icon--right">
                 <arrow-down />
               </el-icon>
             </span>
             <template #dropdown>
-              <el-dropdown-menu style="display: ;">
-                <router-link to="/"><el-dropdown-item>AAAA</el-dropdown-item></router-link>
-                <el-dropdown-item :icon="Plus">Action 3</el-dropdown-item>
-                <el-dropdown-item>Action 3</el-dropdown-item>
-                <el-dropdown-item disabled>Action 4</el-dropdown-item>
-                <el-dropdown-item divided>Action 5</el-dropdown-item>
+              <el-dropdown-menu style="display: ">
+                <router-link to="/home"><el-dropdown-item>基础数据</el-dropdown-item></router-link>
+                <router-link to="/"><el-dropdown-item>营销管理</el-dropdown-item></router-link>
+                <router-link to="/"><el-dropdown-item>体检登记</el-dropdown-item></router-link>
+                <router-link to="/"><el-dropdown-item>结果录入</el-dropdown-item></router-link>
+                <router-link to="/"><el-dropdown-item>主检评价</el-dropdown-item></router-link>
+                <router-link to="/"><el-dropdown-item>配置管理</el-dropdown-item></router-link>
+                <router-link to="/"><el-dropdown-item>系统配置</el-dropdown-item></router-link>
+                <router-link to="/"><el-dropdown-item>数据网报</el-dropdown-item></router-link>
+                <router-link to="/"><el-dropdown-item>查询统计</el-dropdown-item></router-link>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
 
           <!-- 用户信息 -->
           <el-dropdown class="ml-2">
-                    <el-button type="" circle>
-                        <el-icon :size="20">
-                            <UserFilled />
-                        </el-icon>
-                    </el-button>
-                    <template #dropdown>
-                        <el-dropdown-menu>
-                            <el-dropdown-item>Action 1</el-dropdown-item>
-                            <el-dropdown-item>Action 2</el-dropdown-item>
-                            <el-dropdown-item>Action 3</el-dropdown-item>
-                            <el-dropdown-item disabled>Action 4</el-dropdown-item>
-                            <el-dropdown-item divided>Action 5</el-dropdown-item>
-                        </el-dropdown-menu>
-                    </template>
-                </el-dropdown>
+            <el-button type="" circle>
+              <el-icon :size="20">
+                <UserFilled />
+              </el-icon>
+            </el-button>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item>个人中心</el-dropdown-item>
+                <el-dropdown-item>修改密码</el-dropdown-item>
+                <el-dropdown-item>退出登录</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
           <div>{{ userInfo }}</div>
         </el-header>
-        <el-main>
+        <el-main style="padding: 0">
           <!-- 布局路由 -->
           <router-view />
         </el-main>
@@ -90,28 +93,25 @@
 </template>
 <script setup>
 import { ref } from 'vue'
+import router from '@/router'
 import { userStore } from '../stores/user'
 import { ArrowDown } from '@element-plus/icons-vue'
+import basicdata from '@/stores/menus/basicdata.js'
 
-import {
-  Check,
-  CircleCheck,
-  CirclePlus,
-  CirclePlusFilled,
-  Plus,
-} from '@element-plus/icons-vue'
+import { Check, CircleCheck, CirclePlus, CirclePlusFilled, Plus } from '@element-plus/icons-vue'
+import testMenus from '../stores/menus/healthcheck'
 // import { Expand } from '@element-plus/icons-vue'
 
 // 本界面变量及函数
 const isCollapsed = ref(false)
-
+//定义仓库
 const store = userStore()
 
 // 用户信息提示
 const userInfo = ref('欢迎用户：' + (store.getUser === null ? '游客' : store.getUser.username))
 
-// 菜单数据
-const menus = store.getMenus
+// 首页菜单数据e
+const menu = store.getMenus
 </script>
 <style lang="scss" scoped>
 .sec-container {
@@ -145,7 +145,6 @@ const menus = store.getMenus
   align-items: center;
   padding: 0 10px;
   .el-dropdown {
-
   }
   .collBtn {
     width: 32px;
