@@ -1,9 +1,8 @@
 package com.zeroone.star.terminologymanagement.controller;
 
 
-import com.zeroone.star.project.j4.dto.PortfolioItemDTO;
 import com.zeroone.star.project.j4.query.SwitchTermQuery;
-import com.zeroone.star.project.j4.terminologymanagement.TerminologymanagementApi;
+import com.zeroone.star.project.j4.terminologymanagement.TOfficeTermApi;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.terminologymanagement.service.ITOfficeTermService;
 import io.swagger.annotations.ApiOperation;
@@ -22,8 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2024-01-30
  */
 @RestController
-@RequestMapping("/terminologymanagement")
-public class TOfficeTermController implements TerminologymanagementApi {
+@RequestMapping("/terminologymanagement/t_office_term")
+public class TOfficeTermController implements TOfficeTermApi {
 
     @Autowired
     private ITOfficeTermService termService;
@@ -41,5 +40,8 @@ public class TOfficeTermController implements TerminologymanagementApi {
         }
         return JsonVO.success(true);
     }
+
+
+
 }
 
