@@ -27,8 +27,8 @@ public class UpdateMsgQuery implements Serializable {
     private String id;
 
 //    @NotBlank(message = "消息人不能为空")
-    @ApiModelProperty(value = "修改人")
-    private String updateByID;
+//    @ApiModelProperty(value = "修改人")
+//    private String updateByID;
 
 //    @NotBlank(message = "修改时间不能为空")
 //    @ApiModelProperty(value = "修改时间不能为空", example = "2023-10-01 14:36:12")

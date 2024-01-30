@@ -60,7 +60,7 @@ public class MessageController implements MessageApis {
     @ApiOperation("发送消息")
     @PostMapping("/sendMessage")
     @Override
-    public JsonVO<Boolean> querySendMessage(SendMsgQuery sendMsgQuery) {
+    public JsonVO<Boolean> querySendMessage(SendMsgQuery sendMsgQuery) throws Exception {
         JsonVO<Boolean> booleanJsonVO = messageService.sendMsg(sendMsgQuery);
 
         return booleanJsonVO;

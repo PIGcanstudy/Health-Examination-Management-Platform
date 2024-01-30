@@ -29,9 +29,9 @@ public class SendMsgQuery implements Serializable {
     @ApiModelProperty(value = "消息id不能为空", example = "1")
     private String id;
 
-    @NotBlank(message = "创建人不能为空")
-    @ApiModelProperty(value = "创建人不能为空", example = "梅西")
-    private String createBy;
+//    @NotBlank(message = "创建人不能为空")
+//    @ApiModelProperty(value = "创建人", example = "梅西")
+//    private String createBy;
 
 //    @NotBlank(message = "创建时间不能为空")
 //    @ApiModelProperty(value = "创建时间", example = "2024-01-17 14:36:12")
