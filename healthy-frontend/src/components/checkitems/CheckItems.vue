@@ -38,7 +38,9 @@
     <el-form-item>
       <el-button type="primary" :icon="Search" @click="handleSearchTc">搜索</el-button>
       <el-button plain @click="handleCzTc">重置</el-button>
+      <div v-if="isShowNew">
       <NewButtonHx :ksmcsw="ksmcsw" :tjlxsw="tjlxsw" :sylxsw="sylxsw" :whyssw="whyssw" :zgztsw="zgztsw"/>
+    </div>
     </el-form-item>
   </el-form>
 
@@ -113,7 +115,7 @@ const disabled = ref(false)
 
 //新增按钮是否显示
 const isShowNew = ref(false)
-const isOnlyShowButton = ref(true)
+
 //编辑
 const handleEdit = (index: number, row: Array<String>) => {
   alert(index)
@@ -147,11 +149,6 @@ const handleDelete = (index: number, row: Array<String>) => {
   alert(index)
   alert(row)
 }
-
-//按钮开关
-//套餐
-const showCloseForTc = ref(true);
-const showSubmitForTc = ref(true);
 
 
 //分页方法-套餐

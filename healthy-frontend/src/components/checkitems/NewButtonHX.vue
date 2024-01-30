@@ -7,10 +7,6 @@
 
      <!-- 对话框 -->
      <el-dialog v-model="dialogFormVisible" title="术语添加" width="1025px">
-      <!-- <el-upload class="upload-demo" drag action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15" multiple>
-        <el-icon style="margin: 10px 0; font-size: 30px"><Plus /></el-icon>
-        <div class="el-upload__text">上传营业执照</div>
-      </el-upload> -->
 
       <!-- 表单 -->
       <el-form :label-position="right" :inline="true" :model="formInline" class="demo-form-inline">
@@ -136,9 +132,10 @@ const onSubmit = () => {
 
 // 清空表单
 const resetFrom = () => {
-  formInline.user = ''
-  formInline.region = ''
-  formInline.date = ''
+ // 将表单中的输入框清空
+ for (const key in formInline) {
+  formInline[key] = ''
+  }
 }
 
 </script>

@@ -356,7 +356,7 @@ const clearRows = () => {
 }
 // 重置表单方法
 const resetForm = () => {
-  BaseDataRef.value.clearForm()
+  ;(formData.unitName = ''), (formData.creditCode = ''), (formData.contactPerson = ''), (formData.contactPhone = '')
 }
 const total = tableData.value.length
 // 分页参数
