@@ -25,10 +25,10 @@ public://定义接口
 		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
 		API_DEF_ADD_QUERY_PARAMS(String, "officeId", ZH_WORDS_GETTER("term.field.officeId"), "00000", true);
-		API_DEF_ADD_QUERY_PARAMS(String, "hazardFactorsText", ZH_WORDS_GETTER("term.field.hazardFactorsText"),"  ",false);
-		API_DEF_ADD_QUERY_PARAMS(String, "inspectType", ZH_WORDS_GETTER("term.field.inspectType"),"职业体检",true);
-		API_DEF_ADD_QUERY_PARAMS(String, "content", ZH_WORDS_GETTER("term.field.content"),"  ",false);
-		API_DEF_ADD_QUERY_PARAMS(String, "workStateText", ZH_WORDS_GETTER("term.field.workStateText"),"在岗",false);
+		API_DEF_ADD_QUERY_PARAMS(String, "hazardFactorsText", ZH_WORDS_GETTER("term.field.hazardFactorsText"),"",false);
+		API_DEF_ADD_QUERY_PARAMS(String, "inspectType", ZH_WORDS_GETTER("term.field.inspectType"),"体检",true);
+		API_DEF_ADD_QUERY_PARAMS(String, "content", ZH_WORDS_GETTER("term.field.content"),"",false);
+		API_DEF_ADD_QUERY_PARAMS(String, "workStateText", ZH_WORDS_GETTER("term.field.workStateText"),"",false);
 	}
 
 	

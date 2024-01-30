@@ -10,7 +10,7 @@
  */
 class TermQuery :public PageQuery
 {
-	DTO_INIT(TermQuery, DTO);
+	DTO_INIT(TermQuery, PageQuery);
 	//ID
 	API_DTO_FIELD_DEFAULT(String, officeId, ZH_WORDS_GETTER("term.field.officeId"));
 	//Œ£∫¶“ÚÀÿ
