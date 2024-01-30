@@ -35,6 +35,11 @@ class SaveResDO
 	CC_SYNTHESIZE(string, createId, CreateId);
 	//createDate
 	CC_SYNTHESIZE(string, createDate, CreateDate);
+	//updateId
+	CC_SYNTHESIZE(string, updateId, UpdateId);
+	//updateDate
+	CC_SYNTHESIZE(string, updateDate, UpdateDate);
+
 	
 	
 	// depart res 部分
@@ -65,7 +70,7 @@ class SaveResDO
 	// 危急程度
 	CC_SYNTHESIZE(string, crisisDegree, CrisisDegree);
 	// 阳性
-	CC_SYNTHESIZE(int, postive, Postive);
+	CC_SYNTHESIZE(int, positive, Positive);
 	// depart res 的id
 	CC_SYNTHESIZE(string, departResId, DepartResId);
 	// 排序num
@@ -98,7 +103,7 @@ public:
 		unitName(""),
 		ignoreStatus(0),
 		crisisDegree(""),
-		postive(0),
+		positive(0),
 		departResId(""),
 		orderNum(1)
 	{

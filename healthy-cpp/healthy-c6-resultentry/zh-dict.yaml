@@ -21,8 +21,11 @@ save:
   unitName: 计量单位名称
   ignoreStatus: 是否忽略异常（1-否，2-是）
   crisisDegree: 危急程度
-  postive: 阳性
+  positive: 阳性
   item: 明细dto
+  isUpdate: 是否是更新(0不是更新， 1是更新）
+  updateId: 更新部分的depart_res_id
+  itemId: 明细唯一id（仅在更改时有效）
 
 group_person:
  get:

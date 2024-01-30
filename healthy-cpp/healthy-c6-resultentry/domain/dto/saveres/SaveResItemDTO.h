@@ -54,7 +54,9 @@ class SaveResItemDTO : public oatpp::DTO
 	// 危急程度
 	API_DTO_FIELD(String, crisisDegree, ZH_WORDS_GETTER("save.filed.crisisDegree"), false, u8"正常");
 	// 阳性
-	API_DTO_FIELD(Int32, postive, ZH_WORDS_GETTER("save.filed.postive"), false, 0);
+	API_DTO_FIELD(Int32, positive, ZH_WORDS_GETTER("save.filed.positive"), false, 0);
+	// 明细唯一id（仅在更改时有效）
+	API_DTO_FIELD(String, itemId, ZH_WORDS_GETTER("save.filed.itemId"), false, "");
 
 };
 
