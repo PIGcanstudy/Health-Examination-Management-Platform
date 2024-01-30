@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include <iostream>
 #include "downloadReportController.h"
@@ -33,3 +32,7 @@ std::shared_ptr<oatpp::web::server::api::ApiController::OutgoingResponse> downlo
 	// 影响成功结果
 	return report_response;
 }
+
+
+
+
