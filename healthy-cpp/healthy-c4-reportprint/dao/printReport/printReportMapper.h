@@ -4,7 +4,7 @@
 #define _PRINTREPORT_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/PrintReportDO.h"
+#include "../../domain/do/printreport/PrintReportDO.h"
 
 /**
  * ±Ì◊÷∂Œ∆•≈‰”≥…‰

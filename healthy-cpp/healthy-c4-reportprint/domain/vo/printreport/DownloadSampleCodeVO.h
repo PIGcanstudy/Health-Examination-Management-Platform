@@ -3,8 +3,8 @@
 #ifndef _DOWNLOADSAMPLECODEVO_H_
 #define _DOWNLOADSAMPLECODEVO_H_
 
-#include "../GlobalInclude.h"
-#include "../dto/downloadSampleCodeDTO.h"
+#include "../../GlobalInclude.h"
+#include "../../dto/printreport/DownloadSampleCodeDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 

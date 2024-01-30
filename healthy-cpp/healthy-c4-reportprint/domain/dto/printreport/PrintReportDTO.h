@@ -2,7 +2,7 @@
 
 #ifndef _PRINTREPORTDTO_H_
 #define _PRINTREPORTDTO_H_
-#include "../GlobalInclude.h"
+#include "../../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 class PrintReportDTO : public oatpp::DTO

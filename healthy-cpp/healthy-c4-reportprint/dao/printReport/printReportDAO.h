@@ -3,8 +3,8 @@
 #ifndef _PRINTREPORT_DAO_
 #define _PRINTREPORT_DAO_
 #include "BaseDAO.h"
-#include "../../domain/do/PrintReportDO.h"
-#include "../../domain/query/PrintReportQuery.h"
+#include "../../domain/do/printreport/PrintReportDO.h"
+#include "../../domain/query/printreport/PrintReportQuery.h"
 
 /**
  * 示例表数据库操作实现

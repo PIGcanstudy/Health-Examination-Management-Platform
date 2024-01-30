@@ -3,8 +3,8 @@
 #ifndef _PRINTREPORT_VO_
 #define _PRINTREPORT_VO_
 
-#include "../GlobalInclude.h"
-#include "../dto/printReportDTO.h"
+#include "../../GlobalInclude.h"
+#include "../../dto/printreport/PrintReportDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 

@@ -9,7 +9,7 @@
 #include <iostream>
 #include <utility>
 
-#include "domain/vo/DownloadReportVO.h"
+#include "domain/vo/downloadreport/DownloadReportVO.h"
 
 // 定义API控制器使用宏
 #include OATPP_CODEGEN_BEGIN(ApiController)

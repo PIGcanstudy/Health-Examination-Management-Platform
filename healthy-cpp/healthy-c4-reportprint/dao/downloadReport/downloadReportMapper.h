@@ -4,7 +4,7 @@
 #define _DOWNLOADREPORT_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/DownloadReportDO.h"
+#include "../../domain/do/downloadreport/DownloadReportDO.h"
 
 /**
  * ±Ì◊÷∂Œ∆•≈‰”≥…‰

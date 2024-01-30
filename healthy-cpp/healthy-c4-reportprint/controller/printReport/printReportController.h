@@ -4,9 +4,9 @@
 #define _PRINTREPORT_CONTROLLER_H_
 
 #include "domain/vo/BaseJsonVO.h"
-#include "domain/query/PrintReportQuery.h"
-#include "domain/dto/PrintReportDTO.h"
-#include "domain/vo/PrintReportVO.h"
+#include "domain/query/printreport/PrintReportQuery.h"
+#include "domain/dto/printreport/PrintReportDTO.h"
+#include "domain/vo/printreport/PrintReportVO.h"
 
 
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen

@@ -3,8 +3,8 @@
 #ifndef _DOWNLOADREPORTVO_H_
 #define _DOWNLOADREPORTVO_H_
 
-#include "../GlobalInclude.h"
-#include "../dto/downloadReportDTO.h"
+#include "../../GlobalInclude.h"
+#include "../../dto/downloadreport/downloadReportDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 

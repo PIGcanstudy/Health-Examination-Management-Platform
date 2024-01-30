@@ -4,7 +4,7 @@
 
 #ifndef _PRINTREPORT_DO_
 #define _PRINTREPORT_DO_
-#include "./DoInclude.h"
+#include "../DoInclude.h"
 
 class PrintReportDO
 {
