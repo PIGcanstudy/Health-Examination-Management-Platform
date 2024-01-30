@@ -42,21 +42,14 @@ public:
 		// 定义标题和返回类型以及授权支持
 		API_DEF_ADD_COMMON_AUTH(ZH_WORDS_GETTER("DeleteSample.delete.summary"), Uint64JsonVO::Wrapper);
 		// 定义其他路径参数说明
-		API_DEF_ADD_PATH_PARAMS(UInt64, "del_flag", ZH_WORDS_GETTER("DeleteSample.field.del_flag"), , true);
-		API_DEF_ADD_PATH_PARAMS(UInt64, "create_id", ZH_WORDS_GETTER("DeleteSample.field.create_id"), , true);
-		API_DEF_ADD_PATH_PARAMS(String, "create_time", ZH_WORDS_GETTER("DeleteSample.field.create_time"), , true);
-		API_DEF_ADD_PATH_PARAMS(UInt64, "update_id", ZH_WORDS_GETTER("DeleteSample.field.update_id"), , true);
-		API_DEF_ADD_PATH_PARAMS(String, "update_time", ZH_WORDS_GETTER("DeleteSample.field.update_time"), , true);
-		API_DEF_ADD_PATH_PARAMS(UInt64, "delete_id", ZH_WORDS_GETTER("DeleteSample.field.delete_id"), , true);
-		API_DEF_ADD_PATH_PARAMS(String, "delete_time", ZH_WORDS_GETTER("DeleteSample.field.delete_time"), , true);
-		API_DEF_ADD_PATH_PARAMS(UInt64, "department_id", ZH_WORDS_GETTER("DeleteSample.field.department_id"), , true);
+		API_DEF_ADD_PATH_PARAMS(String, "id", ZH_WORDS_GETTER("sample.field.id"), "0c48696821bd11eca32bb42e99af990f", true);
 
 	}
 	// 3.2 定义删除接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/sample/{id}", removeSample, PATH(UInt64, id), execRemoveSample(id));
+	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/sample/{id}", removeSample, PATH(String, id), execRemoveSample(id));
 
 	// 3.3 演示删除数据
-	Uint64JsonVO::Wrapper execRemoveSample(const UInt64& id);
+	StringJsonVO::Wrapper execRemoveSample(const String& id);
 };
 
 // 0 取消API控制器使用宏

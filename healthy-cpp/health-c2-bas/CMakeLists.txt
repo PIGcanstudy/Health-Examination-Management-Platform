@@ -66,7 +66,7 @@ if(WIN32)
 endif()
 
 # 编译可执行文件
-add_executable (${appName} ${SC_FILES} "domain/vo/sample/DeleteSampleVO.h" "domain/vo/sample/DeleteSampleVO.h" "controller/sample/DeleteSampleController.h" "controller/sample/DeleteSampleController.cpp" "domain/query/sample/DeleteSampleQuery.h")
+add_executable (${appName} ${SC_FILES} "domain/vo/sample/DeleteSampleVO.h" "domain/vo/sample/DeleteSampleVO.h" "controller/sample/DeleteSampleController.h" "controller/sample/DeleteSampleController.cpp"  "dao/sample/ObtainSampleDetailsDAO.h" "domain/do/sample/ObtainSampleDetailsDO.h" "dao/sample/ ObtainSampleDetailsDao.cpp"  "dao/sample/ObtainSampleDetailsMapper.h" "service/sample/ObtainSampleDetailsService.h" "service/sample/ObtainSampleDetailsService.cpp" "dao/sample/DeleteSampleDao.h" "dao/sample/DeleteSampleDao.cpp" "dao/sample/DeleteSampleMapper.h" "service/sample/DeleteSampleService.h" "service/sample/DeleteSampleService.cpp")
 
 # 链接库
 target_link_libraries (${appName} "lib-common" "lib-oatpp" "lib-mysql")

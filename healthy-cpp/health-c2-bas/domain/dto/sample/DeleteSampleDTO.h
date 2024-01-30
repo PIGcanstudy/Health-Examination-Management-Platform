@@ -46,7 +46,7 @@ class DeleteSampleDTO : public oatpp::DTO
 		info->description = ZH_WORDS_GETTER("DeleteSample.field.create_time");
 	}
 	// 修改人update_id
-	DTO_FIELD(UInt32, update_id);
+	DTO_FIELD(String, update_id);
 	DTO_FIELD_INFO(update_id) {
 		info->description = ZH_WORDS_GETTER("DeleteSample.field.update_id");
 	}
@@ -56,7 +56,7 @@ class DeleteSampleDTO : public oatpp::DTO
 		info->description = ZH_WORDS_GETTER("DeleteSample.field.update_time");
 	}
 	// 删除人delete_id
-	DTO_FIELD(UInt32, delete_id);
+	DTO_FIELD(String, delete_id);
 	DTO_FIELD_INFO(delete_id) {
 		info->description = ZH_WORDS_GETTER("DeleteSample.field.delete_id");
 	}
@@ -66,7 +66,7 @@ class DeleteSampleDTO : public oatpp::DTO
 		info->description = ZH_WORDS_GETTER("DeleteSample.field.delete_time");
 	}
 	// 所属部门department_id
-	DTO_FIELD(UInt32, department_id);
+	DTO_FIELD(String, department_id);
 	DTO_FIELD_INFO(department_id) {
 		info->description = ZH_WORDS_GETTER("DeleteSample.field.department_id");
 	}

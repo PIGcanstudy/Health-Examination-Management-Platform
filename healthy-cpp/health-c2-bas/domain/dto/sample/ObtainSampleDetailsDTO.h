@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _SAMPLE_DTO_
-#define _SAMPLE_DTO_
+#ifndef _OBTAIN_SAMPLE_DETAILS_DTO_
+#define _OBTAIN_SAMPLE_DETAILS_DTO_
 #include "../../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
@@ -45,7 +45,7 @@ class ObtainSampleDetailsDTO : public oatpp::DTO
 		info->description = ZH_WORDS_GETTER("sampleDetails.field.spec");
 	}
 	//是否采血
-	DTO_FIELD(String, need_take_blood);
+	DTO_FIELD(UInt32, need_take_blood);
 	DTO_FIELD_INFO(need_take_blood) {
 		info->description = ZH_WORDS_GETTER("sampleDetails.field.need_take_blood");
 	}
@@ -55,12 +55,12 @@ class ObtainSampleDetailsDTO : public oatpp::DTO
 		info->description = ZH_WORDS_GETTER("sampleDetails.field.code");
 	}
 	//排序
-	DTO_FIELD(UInt32, order_num);
+	DTO_FIELD(Float32, order_num);
 	DTO_FIELD_INFO(order_num) {
 		info->description = ZH_WORDS_GETTER("sampleDetails.field.order_num");
 	}
 	//是否打印
-	DTO_FIELD(String, is_print);
+	DTO_FIELD(UInt32, is_print);
 	DTO_FIELD_INFO(is_print) {
 		info->description = ZH_WORDS_GETTER("sampleDetails.field.is_print");
 	}
@@ -70,7 +70,7 @@ class ObtainSampleDetailsDTO : public oatpp::DTO
 		info->description = ZH_WORDS_GETTER("sampleDetails.field.liscode");
 	}
 	//容量
-	DTO_FIELD(UInt32, capacity);
+	DTO_FIELD(String, capacity);
 	DTO_FIELD_INFO(capacity) {
 		info->description = ZH_WORDS_GETTER("sampleDetails.field.capacity");
 	}
