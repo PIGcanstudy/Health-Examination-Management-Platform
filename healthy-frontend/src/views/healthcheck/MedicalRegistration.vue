@@ -24,6 +24,7 @@
     <el-main>
       <!-- 登记信息 -->
       <MedicalInfo
+        ref="medicalInfoRef"
         :current-progress="currentProgress"
         :progress-steps="progressSteps"
         :person-info="personInfo"
@@ -104,7 +105,15 @@
         <p>或执行第四、五、六步</p>
       </div>
       <!-- 默认隐藏的组件 -->
-      <CheckItems v-if="isCheckItemsVisible" tableTitle="工种名称" :hideButton="true" :openDrawer="true" :isShowSelectDown="false" />
+      <CheckItems
+      v-if="isCheckItemsVisible"
+      tableTitle="工种名称"
+      :hideButton="true"
+      :openDrawer="true"
+      :isShowSelectDown="false"
+      :tableLieForTc="jobNameLie"
+      :tableDataForTc="jobNameData"
+      @submitTc="getJobNameData" />
       <el-dialog v-model="isPdfObjectVisible" title="打印导检单" style="width: 80%">
         <div class="dialog-content">
           <!-- 头部容器 -->
@@ -310,6 +319,26 @@ const personInfo = ref({
 })
 /* CheckItems的变量 */
 // 套餐选择
+const jobNameLie = ref([
+  {
+    prop: 'id',
+    label: '#'
+  },
+  {
+    prop: 'job_name',
+    label: '工种名称'
+  }
+])
+const jobNameData = ref([
+  {
+    id: '1',
+    job_name: '护士'
+  },
+  {
+    id: '2',
+    job_name: '护师'
+  }
+])
 const tableLieForTc = ref([
   {
     prop: 'id',
@@ -362,7 +391,13 @@ const selectDown = ref([
     label: '五官科'
   }
 ])
-
+// 获取数据
+const getJobNameData = (row) =>{
+  const jobNameField = fieldConfig.value.find(field => field.prop === 'job_name');
+  if (jobNameField) {
+    personInfo.value.job_name = row[0].job_name // 更新 job_name 的值
+  }
+}
 /* BaseDataList的变量 */
 const tableColumnAttribute = ref([
   { prop: 'id', label: '#', width: 150, align: 'center' },
@@ -412,6 +447,7 @@ const requiredItemDiscount = ref(100) // 必检项
 const optionalItemDiscount = ref(100) // 选检项
 const discountPrice = ref(0) // 优惠价
 const isEditInfoVisible = ref(false) // 是否显示修改信息弹窗
+const medicalInfoRef = ref(null) // 调用子组件传递的方法
 const editRules= ref( {
       personName: [
         { required: true, message: '请输入人员姓名', trigger: 'blur' }
@@ -500,7 +536,15 @@ const printSheet = () => {
   })
 }
 // 保存信息
-const savePersonInfo = () => {
+const savePersonInfo = async () => {
+  // 假设 formRef 是子组件的引用
+  const isValid = await medicalInfoRef.value.validate();
+  if (!isValid) {
+    // 表单验证失败
+    ElMessage.error('表单验证失败，请检查输入');
+    return;
+  }
+  // 表单验证成功，继续执行保存逻辑
   isShow.value = false
   fieldConfig.value.forEach((field) => {
     if (!field.readonly) {

@@ -43,7 +43,7 @@
         </ul>
       </div>
       <!-- 个人信息 -->
-        <el-form ref="personInfo" :model="personInfo" label-width="80px" :rules="rules" class="flex-form">
+        <el-form ref="medicalInfoRdivef" :model="personInfo" label-width="80px" :rules="rules" class="flex-form">
           <div v-for="field in props.fieldConfig">
             <el-form-item :label="field.label" :prop="field.prop" v-if="field.type === 'input'">
               <el-input
@@ -64,7 +64,7 @@
   </div>
 </template>
 <script setup>
-import { ref, computed, watch, toRefs } from 'vue'
+import { ref, computed, watch, toRefs,defineEmits,defineExpose } from 'vue'
 import { ElDialog, ElUpload, ElButton, ElMessageBox, ElMessage } from 'element-plus'
 /* 向父组件传递的数据 */
 const props = defineProps({
@@ -128,7 +128,26 @@ const props = defineProps({
     default: () => ['id_card']
   },
   onInputClick: Function,
+  // 暴露出输入框的值
+  modelValue: Object
 })
+const medicalInfoRef = ref(null)
+// 方法来执行表单验证
+const validate = async () => {
+  try {
+    await formRef.value.validate();
+    return true; // 验证通过
+  } catch (error) {
+    return false; // 验证失败
+  }
+};
+// 暴露 validate 方法供父组件调用
+defineExpose({ validate });
+
+const emit = defineEmits(['update:modelValue']);
+watch(() => props.modelValue, (newValue) => {
+  emit('update:modelValue', newValue);
+}, { deep: true });
 
 // 根据当前流程判断展示的图片
 function getImagePath(index) {
