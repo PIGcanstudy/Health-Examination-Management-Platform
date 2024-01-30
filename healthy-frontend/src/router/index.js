@@ -20,6 +20,7 @@ routes.push(
   }
 )
 
+// 读取user模块路由
 // 读取login模块路由
 const loginRouter = import.meta.glob('./login/index.js', { eager: true })
 for (const path in loginRouter) {
@@ -46,6 +47,7 @@ const router = createRouter({
 
 // 添加一个路由的全局前置守卫
 router.beforeEach(async function (to, from, next) {
+  // menuUser.showMenus(to.path)
   // 判断是否是登录页面
   if (
     to.name === 'Login' ||
