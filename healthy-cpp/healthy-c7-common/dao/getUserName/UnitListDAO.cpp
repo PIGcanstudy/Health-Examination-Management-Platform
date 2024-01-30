@@ -50,8 +50,7 @@ uint64_t UnitListDAO::count(const UnitQuery::Wrapper& query)
 list<UnitListDO> UnitListDAO::selectWithPage(const UnitQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT b.person_name,a.check_project_name,a.review_explain,a.review_time,a.create_time,a.state,b.hazard_factor_code FROM t_review_record AS a JOIN t_review_person AS b ON a.id = b.id";
-	//sql << "SELECT person_name,sex,age,physical_type,sporadic_physical FROM t_group_person";
+	sql << "SELECT person_name,sex,age,physical_type,sporadic_physical FROM t_group_person";
 	SAMPLE_TERAM_PARSE(query, sql);
 	sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
 	UnitListMapper mapper;
@@ -61,7 +60,6 @@ list<UnitListDO> UnitListDAO::selectWithPage(const UnitQuery::Wrapper& query)
 
 list<UnitListDO> UnitListDAO::selectByName(const string& person_name)
 {
-	//string sql = "SELECT b.person_name,a.check_project_name,a.review_explain,a.review_time,a.create_time,a.state,b.hazard_factor_code FROM t_review_record AS a JOIN t_review_person AS b ON a.id = b.id WHERE b.person_name LIKE CONCAT('%',?,'%')";
 	string sql = "SELECT person_name,sex,age,physical_type,sporadic_physical FROM t_group_person WHERE person_name LIKE CONCAT('%',?,'%')";
 	UnitListMapper mapper;
 	return sqlSession->executeQuery<UnitListDO, UnitListMapper>(sql, mapper, "%s", person_name);
