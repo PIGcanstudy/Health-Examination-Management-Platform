@@ -1,10 +1,13 @@
 package com.zeroone.star.departmanagement.entity;
 
-import java.util.Date;
 import java.io.Serializable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.Api;
+import lombok.*;
 
 /**
  * (SectionOffice)表实体类
@@ -14,11 +17,13 @@ import lombok.NoArgsConstructor;
  */
 @SuppressWarnings("serial")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class SectionOffice {
+@Getter
+@Setter
+@TableName("t_section_office")
+public class SectionOfficeEntity implements Serializable {
+    private static final long serialVersionUID = 1L;
     //主键id
-
+    @TableId(value = "id", type = IdType.AUTO)
     private String id;
     //编码
     private String sectionCode;
@@ -50,5 +55,6 @@ public class SectionOffice {
     private Date deleteTime;
     //所属部门
     private String departmentId;
+
 
 }
