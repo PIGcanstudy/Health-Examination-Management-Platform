@@ -26,6 +26,7 @@ StringJsonVO::Wrapper UpFileController::execModifySample(const UpFileDTO::Wrappe
 		//获得DFS中文件下载地址
 		UpFileDFS dfs;
 		string download = dfs.testDfs(dto->url);
+		//string download = dfs.testDfsWithConf(dto->url);
 
 
 		// 定义一个Service
