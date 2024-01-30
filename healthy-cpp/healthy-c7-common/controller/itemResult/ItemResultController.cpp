@@ -18,14 +18,24 @@
 */
 #include "stdafx.h"
 #include "ItemResultController.h"
+#include "../../service/itemResult/ItemResultService.h"
+#include "../ApiDeclarativeServicesHelper.h"
 
-ItemResultJsonVO::Wrapper ItemResultController::execQueryItemResult(const ItemResultQuery::Wrapper& pq)
+ItemResultPageJsonVO::Wrapper ItemResultController::execQueryItemResult(const ItemResultQuery::Wrapper& pq, const PayloadDTO& payload)
 {
-	ItemResultDTO::Wrapper dto = ItemResultDTO::createShared(ZH_WORDS_GETTER("itemResult.field.name"),
-		ZH_WORDS_GETTER("itemResult.field.defaultValue"),
-		ZH_WORDS_GETTER("itemResult.field.unitName"),
-		ZH_WORDS_GETTER("itemResult.field.scope"));
-	ItemResultJsonVO::Wrapper vo = ItemResultJsonVO::createShared();
-	vo->success(dto);
-	return vo;
+	////ItemResultDTO::Wrapper dto = ItemResultDTO::createShared(ZH_WORDS_GETTER("itemResult.field.name"),
+	////	ZH_WORDS_GETTER("itemResult.field.defaultValue"),
+	////	ZH_WORDS_GETTER("itemResult.field.unitName"),
+	////	ZH_WORDS_GETTER("itemResult.field.scope"));
+	//ItemResultPageJsonVO::Wrapper vo = ItemResultPageJsonVO::createShared();
+	////vo->success(dto);
+	//return vo;
+	// 定义一个Service
+	ItemResultService service;
+	// 查询数据
+	auto result = service.getItemResultData(pq);
+	// 响应结果
+	auto jvo = ItemResultPageJsonVO::createShared();
+	jvo->success(result);
+	return jvo;
 }
