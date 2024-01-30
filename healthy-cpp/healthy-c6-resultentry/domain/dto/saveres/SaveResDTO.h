@@ -65,7 +65,7 @@ class SaveResDTO : public oatpp::DTO
 	//// бєад
 	//API_DTO_FIELD(Int32, postive, ZH_WORDS_GETTER("save.filed.postive"), false, 0);
 
-	API_DTO_FIELD_DEFAULT(List<SaveResItemDTO::Wrapper>, item, ZH_WORDS_GETTER("save.filed.item"));
+	API_DTO_FIELD_DEFAULT(List<SaveResItemDTO::Wrapper>, itemList, ZH_WORDS_GETTER("save.filed.item"));
 
 };
 

@@ -66,17 +66,46 @@ class SaveResDO
 	CC_SYNTHESIZE(string, crisisDegree, CrisisDegree);
 	// 阳性
 	CC_SYNTHESIZE(int, postive, Postive);
+	// depart res 的id
+	CC_SYNTHESIZE(string, departResId, DepartResId);
+	// 排序num
+	CC_SYNTHESIZE(int, orderNum, OrderNum);
 
 
 public:
-	SaveResDO() : id(""), personId(""), officeId(""), officeName(""),
-		checkDoc(""), checkDate(""), delFlag(0), groupItemId(""),
-		groupItemName(""), diagnoseSum(""), isCheck(0),
-		createId(""), createDate(""), diagnoseTip(""),
-		check_num(0), state(0), isFile(""),
-		orderGroupItemProjectId(""), orderGroupItemProjectName(""),
-		result(""), unitCode(""), unitName(""),
-		ignoreStatus(0), crisisDegree(""), postive(0) {}
+	SaveResDO::SaveResDO()
+		: id(""),
+		personId(""),
+		officeId(""),
+		officeName(""),
+		checkDoc(""),
+		checkDate(""),
+		delFlag(0),
+		groupItemId(""),
+		groupItemName(""),
+		diagnoseSum(""),
+		isCheck(0),
+		createId(""),
+		createDate(""),
+		diagnoseTip(""),
+		check_num(0),
+		state(0),
+		isFile(""),
+		orderGroupItemProjectId(""),
+		orderGroupItemProjectName(""),
+		result(""),
+		unitCode(""),
+		unitName(""),
+		ignoreStatus(0),
+		crisisDegree(""),
+		postive(0),
+		departResId(""),
+		orderNum(1)
+	{
+		// 这里将类中的各个成员变量初始化为合适的默认值
+		// 如果有其他默认值或者初始化逻辑，请根据实际情况进行修改
+	}
+
 };
 
 

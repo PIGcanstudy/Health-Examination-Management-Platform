@@ -20,6 +20,16 @@ uint64_t SaveResDAO::insert(const SaveResDO& iObj)
 
 uint64_t SaveResDAO::insertItem(const SaveResDO& iObj)
 {
-	return {};
-	
+	string sql = "INSERT INTO `t_depart_item_result`"
+		"(`id`, `person_id`, `order_group_item_project_id`, `order_group_item_project_name`, `office_id`,"
+		" `office_name`, `result`, `unit_code`, `unit_name`, `check_doc`, `check_date`, `crisis_degree`,"
+		"`del_flag`, `create_id`, `create_date`,`ignore_status`,`depart_result_id`,"
+		"`order_group_item_id`, `order_group_item_name`, `order_num`,`diagnose_sum`,`positive`)"
+		"VALUES(? , ? , ? , ?, ? , ? , ?, ? , ? , ?, ? , ? , ?, ? , ?, ?, ?, ?, ? , ?, ?, ?)";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%s%s%s%s%s%i%s%s%i%s%s%s%i%s%i", \
+		iObj.getId(), iObj.getPersonId(), iObj.getOrderGroupItemProjectId(), iObj.getOrderGroupItemProjectName(),iObj.getOfficeId(), \
+		iObj.getOfficeName(), iObj.getResult(), iObj.getUnitCode(), iObj.getUnitName(),iObj.getCheckDoc(),iObj.getCheckDate(), iObj.getCrisisDegree(),\
+		iObj.getDelFlag(), iObj.getCreateId(), iObj.getCreateDate(), iObj.getIgnoreStatus(),iObj.getDepartResId(), \
+		iObj.getGroupItemId(), iObj.getGroupItemName(), iObj.getOrderNum(), iObj.getDiagnoseSum(), iObj.getPostive());
+
 }

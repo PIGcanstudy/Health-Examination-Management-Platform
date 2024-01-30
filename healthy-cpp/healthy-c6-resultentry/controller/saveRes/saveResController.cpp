@@ -26,19 +26,17 @@ Uint64JsonVO::Wrapper SaveResController::execAddDepartRes(const SaveResDTO::Wrap
 
 	// 定义一个Service
 	SaveResService service;
-	if (1)//如果这个是空则不是明细
-	{
-		// 执行数据新增
-		uint64_t id = service.saveData(dto, createId);
-		if (id > 0) {
-			jvo->success(UInt64(id));
-		}
-		else
-		{
-			jvo->fail(UInt64(id));
-		}
-		//响应结果
-		return jvo;
+	
+	// 执行数据新增
+	uint64_t id = service.saveData(dto, createId);
+	if (id > 0) {
+		jvo->success(UInt64(id));
 	}
-	return {};
+	else
+	{
+		jvo->fail(UInt64(id));
+	}
+	//响应结果
+	return jvo;
+	
 }
