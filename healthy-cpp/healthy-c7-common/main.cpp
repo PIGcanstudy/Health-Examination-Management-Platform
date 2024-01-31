@@ -32,10 +32,10 @@
 #endif
 
 // 是否是发布Swagger文档包
-#ifndef _RELEASE_DOC_
+//#ifndef _RELEASE_DOC_
 // 查看Swagger文档的时候不需要连接数据库，解开下面的注释关闭启动连接数据库
-#define _RELEASE_DOC_
-#endif
+//#define _RELEASE_DOC_
+//#endif
 
 /**
  * 解析启动参数
@@ -51,8 +51,8 @@
 	// 服务器端口
 	std::string serverPort = "8090";
 	// 数据库连接信息
-	std::string dbUsername = "root";
-	std::string dbPassword = "123456";
+	std::string dbUsername = "yp";
+	std::string dbPassword = "yj147258";
 	std::string dbName = "healthy";
 	std::string dbHost = "127.0.0.1";
 	int dbPort = 3306;

@@ -7,7 +7,7 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 class DepartQuery : public PageQuery {
-	DTO_INIT(DepartQuery, DTO);
+	DTO_INIT(DepartQuery, PageQuery);
 	//Ìå¼ìÈËÔ±ID
 	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("depart.field.officeName"));
 };

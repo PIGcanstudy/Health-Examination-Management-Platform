@@ -25,7 +25,7 @@ public:
 		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
 		//体检人员ID
-		API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("depart.field.officeName"), "0a", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("depart.field.officeName"), "c82624d2a32bc9f711c62fa80f50df60", true);
 
 	}
 
