@@ -2,6 +2,9 @@ package com.zeroone.star.sysmanager.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.dto.j3.dictdata.AddDictDataDTO;
+import com.zeroone.star.project.dto.j3.dictdata.ModifyDictData;
+import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.entity.DictData;
 
 /**
@@ -13,5 +16,7 @@ import com.zeroone.star.sysmanager.entity.DictData;
  * @since 2024-01-16
  */
 public interface ITDictDataService extends IService<DictData> {
+    JsonVO<Boolean> AddDictData(AddDictDataDTO addDictDataDTO);
 
+    JsonVO<Boolean> ModifyDictData(ModifyDictData modifyDictData);
 }
