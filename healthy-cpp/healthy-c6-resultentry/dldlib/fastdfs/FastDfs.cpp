@@ -78,14 +78,14 @@ string BarcodesFastDfs::barcodesDfs(string fileName)
 	FastDfsClient client("conf/client.conf");
 #else
 	//定义客户端对象
-	FastDfsClient client("192.168.220.128");
+	FastDfsClient client("39.101.128.111");
+	//ZO_CREATE_DFS_CLIENT_URL(dfs, urlPrefix);
 #endif
-
 	//测试上传
 	std::string fieldName = client.uploadFile(fileName);
 	//测试是否上传成功
 	if (fieldName.empty()) {
-		return string("PDF上传失败");
+		return "";
 	}
 	else {
 		return fileName;

@@ -62,29 +62,9 @@ void BarcodesPdf::barcodesText()
 	pdf.saveDocToFile("test-text.pdf");
 }
 
-void BarcodesPdf::barcodesTpl(oatpp::List<SampleBarcodesViewDTO::Wrapper> ldto,string filename)
+bool BarcodesPdf::barcodesTpl(oatpp::List<SampleBarcodesViewDTO::Wrapper> ldto,string filename)
 {
-	//// 测试注册渲染模板
-	//PdfComponent::registerTplRender("barcodes", [](YAML::Node* node, PdfComponent* pdf, void* realData)
-	//	{
-	//		// 创建一个页面
-	//		HPDF_Page newPage = pdf->getNewPage();
-	//		// 设置页面字体
-	//		HPDF_Page_SetFontAndSize(newPage, pdf->getCnSFont("SimSun"), 20);
-	//		// 绘制静态数据
-	//		auto title = (*node)["t"].as<std::string>();
-	//		auto foot = (*node)["f"].as<std::string>();
-	//		pdf->drawTextCenterH(title, HPDF_Page_GetHeight(newPage) - 20);
-	//		pdf->drawTextCenterH(foot, 20);
-	//		// 绘制动态数据
-	//		std::string content = static_cast<std::string*>(realData)->c_str();
-	//		pdf->drawTextCenter(content);
-	//		// 绘制一个条码
-	//		addBarCodeToPdf(pdf);
-	//		// 保存到文件
-	//		pdf->saveDocToFile("barcodes.pdf");
-	//	});
-
+	
 	// 测试绘制
 	string content ;
 	PdfComponent pdf;
@@ -100,13 +80,16 @@ void BarcodesPdf::barcodesTpl(oatpp::List<SampleBarcodesViewDTO::Wrapper> ldto,s
 		content.clear();
 	}
 	// 保存到文件
-	if (!pdf.saveDocToFile(filename+".pdf"))
+	if (!pdf.saveDocToFile(filename))
 	{
-		cout << "pdf生成失败";
+		return false;
+	}
+	else {
+		return true;
 	}
 }
 
-void BarcodesPdf::reportTpl(oatpp::List<ReportPreviewViewDTO::Wrapper> rpdto, oatpp::List<T_symptomDTO::Wrapper> tsdto, string filename)
+bool BarcodesPdf::reportTpl(oatpp::List<ReportPreviewViewDTO::Wrapper> rpdto, oatpp::List<T_symptomDTO::Wrapper> tsdto, string filename)
 {
 	// 测试绘制
 	string content;
@@ -159,8 +142,11 @@ void BarcodesPdf::reportTpl(oatpp::List<ReportPreviewViewDTO::Wrapper> rpdto, oa
 	}
 
 	// 保存到文件
-	if (!pdf.saveDocToFile(filename + ".pdf"))
+	if (!pdf.saveDocToFile(filename))
 	{
-		cout << "pdf生成失败";
+		return false;
+	}
+	else {
+		return true;
 	}
 }
