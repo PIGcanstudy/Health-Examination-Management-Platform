@@ -4,19 +4,16 @@
 #include "../DoInclude.h"
 
 /**
- * 示例数据库实体类
+ * 数据库实体类
  */
 class UpFileDO
 {
-	// 主键
-	CC_SYNTHESIZE(string, id, Id);
-	// 图片src
-	CC_SYNTHESIZE(string, url, Url);
+	// 人员id
+	CC_SYNTHESIZE(string, person_id, Person_id);
 	
 public:
 	UpFileDO() {
-		id = "";
-		url = "";
+		person_id = "";
 	}
 };
 

@@ -139,10 +139,12 @@ file_chengfeng:
   summary: 影像文件上传
  field:
   filename: 文件名
-  id: 主键id
-  img-url: 图片src
+  person_id: 体检人员id
+  file_addr: 需要上传的文件地址
   success: 成功
   fail: 失败
+  no_zip: 文件不是.zip类型
+  fail_dfs: 文件上传服务器失败
 
  
 

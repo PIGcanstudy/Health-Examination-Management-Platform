@@ -11,7 +11,7 @@ bool UpFileService::updateData(const UpFileDTO::Wrapper& dto,const string downlo
 	// 	data.setName(dto->name.getValue(""));
 	// 	data.setSex(dto->sex.getValue(""));
 	// 	data.setAge(dto->age.getValue(1));
-	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Id, id)
+	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Person_id, person_id)
 	
 		// 执行数据修改
 		UpFileDAO dao;

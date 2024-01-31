@@ -13,7 +13,7 @@
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
- * 示例控制器，演示基础接口的使用
+ * 控制器，修改接口
  */
 class UpFileController : public oatpp::web::server::api::ApiController // 1 继承控制器
 {
@@ -30,7 +30,7 @@ public:
 
 
 private:	
-	// 3.3 演示修改数据
+	// 3.3 修改数据
 	StringJsonVO::Wrapper execModifySample(const UpFileDTO::Wrapper& dto, const PayloadDTO& payload);
 
 };

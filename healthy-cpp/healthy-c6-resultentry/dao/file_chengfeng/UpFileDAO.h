@@ -6,7 +6,7 @@
 #include "../../domain/dto/file_chengfeng/UpFileDTO.h"
 
 /**
- * 示例表数据库操作实现
+ * 数据库操作实现
  */
 class UpFileDAO : public BaseDAO
 {

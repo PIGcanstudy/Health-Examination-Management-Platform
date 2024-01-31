@@ -7,28 +7,24 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * editor图片信息传输数据对象
+ * 文件传输数据对象
  */
 class UpFileDTO : public oatpp::DTO
 {
 	DTO_INIT(UpFileDTO, DTO);
-	// 主键
-	DTO_FIELD(String, id);
-	DTO_FIELD_INFO(id) {
-		info->description = ZH_WORDS_GETTER("file_chengfeng.field.id");
+	// 体检人员id
+	DTO_FIELD(String, person_id);
+	DTO_FIELD_INFO(person_id) {
+		info->description = ZH_WORDS_GETTER("file_chengfeng.field.person_id");
 	}
-	// url
-	DTO_FIELD(String, url);
-	DTO_FIELD_INFO(url) {
-		info->description = ZH_WORDS_GETTER("file_chengfeng.field.img-url");
+	// 需要上传文件的地址
+	DTO_FIELD(String, file_addr);
+	DTO_FIELD_INFO(file_addr) {
+		info->description = ZH_WORDS_GETTER("file_chengfeng.field.file_addr");
 	}
 
 public:
 	UpFileDTO() {}
-	UpFileDTO(String id, String url) {
-		this->id = id;
-		this->url = url;
-	}
 	
 };
 

@@ -6,11 +6,6 @@
 int UpFileDAO::update(const UpFileDO& uObj,const string download)
 {
 
-	if (download != "") {
-		string sql = "UPDATE `t_depart_result` SET `url`=?,`is_file`='yes' WHERE `id`= ? ";
-		return sqlSession->executeUpdate(sql, "%s%s", download, uObj.getId());
-	}
-	else {
-		return 0;
-	}
+		string sql = "UPDATE `t_depart_result` SET `url`=?,`is_file`='yes' WHERE `person_id`= ? ";
+		return sqlSession->executeUpdate(sql, "%s%s", download, uObj.getPerson_id());
 }
