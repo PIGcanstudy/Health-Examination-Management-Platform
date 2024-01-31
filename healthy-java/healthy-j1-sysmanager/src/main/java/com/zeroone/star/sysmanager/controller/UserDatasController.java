@@ -26,7 +26,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user-data")
-@Api(tags = "用户管理-用户数据s")
+@Api(tags = "用户管理-用户数据")
 public class UserDatasController {
 
     @Resource
