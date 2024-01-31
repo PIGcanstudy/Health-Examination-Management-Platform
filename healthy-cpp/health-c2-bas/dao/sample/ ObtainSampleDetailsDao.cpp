@@ -30,35 +30,35 @@ if (query->name) { \
 	SQLPARAMS_PUSH(params, "s", std::string, query->name.getValue("")); \
 } \
  if (query->barcode_num) { \
-	sql << " AND barcode_num=?"; \
+	sql << " AND `barcode_num`=?"; \
 	SQLPARAMS_PUSH(params, "i", int, query->barcode_num.getValue(0)); \
 } \
 if (query->spec) { \
-	sql << " AND spec=?"; \
+	sql << " AND `spec`=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, query->spec.getValue("")); \
 } \
 if (query->need_take_blood) { \
-	sql << " AND need_take_blood=?"; \
+	sql << " AND `need_take_blood`=?"; \
 	SQLPARAMS_PUSH(params, "i", int, query->need_take_blood.getValue(0)); \
 } \
 if (query->code) { \
-	sql << " AND code=?"; \
+	sql << " AND `code`=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, query->code.getValue("")); \
 } \
 if (query->order_num) { \
-	sql << " AND order_num=?"; \
+	sql << " AND `order_num`=?"; \
 	SQLPARAMS_PUSH(params, "f", float, query->order_num.getValue(0)); \
 } \
 if (query->is_print) { \
-	sql << " AND is_print=?"; \
+	sql << " AND `is_print`=?"; \
 	SQLPARAMS_PUSH(params, "i", int, query->is_print.getValue(0)); \
 } \
 if (query->liscode) { \
-	sql << " AND liscode=?"; \
+	sql << " AND `liscode`=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, query->liscode.getValue("")); \
 } \
 if (query->capacity) { \
-	sql << " AND capacity=?"; \
+	sql << " AND `capacity`=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, query->capacity.getValue("")); \
 }
   
@@ -76,7 +76,7 @@ uint64_t ObtainSampleDetailsDAO::count(const ObtainSampleDetailsQuery::Wrapper& 
 std::list<ObtainSampleDetailsDO> ObtainSampleDetailsDAO::selectWithPage(const ObtainSampleDetailsQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT name,barcode_num,spec,need_take_blood,code,order_num,order_num,liscode,capacity FROM t_sample";
+	sql << "SELECT name,barcode_num,spec,need_take_blood,code,order_num,is_print,liscode,capacity FROM t_sample";
 	SAMPLE_TERAM_PARSE(query, sql);
 	sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
 	ObtainSampleDetailsMapper mapper;

@@ -38,7 +38,7 @@ public:
 		data.setSpec(resultSet->getString(3));
 		data.setNeed_take_blood(resultSet->getUInt(4));
 		data.setCode(resultSet->getString(5));
-		data.setOrder_num(resultSet->getUInt(6));//order_num是Float32类型，但没对应
+		data.setOrder_num(resultSet->getDouble(6));//order_num是Float32类型，但没对应
 		data.setIs_print(resultSet->getUInt(7));
 		data.setLiscode(resultSet->getString(8));
 		data.setCapacity(resultSet->getString(9));

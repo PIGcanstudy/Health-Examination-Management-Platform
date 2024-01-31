@@ -54,7 +54,7 @@ public:
 		API_DEF_ADD_QUERY_PARAMS(String, "spec", ZH_WORDS_GETTER("sampleDetails.field.spec"), "", false);
 		API_DEF_ADD_QUERY_PARAMS(UInt32, "need_take_blood", ZH_WORDS_GETTER("sampleDetails.field.need_take_blood"), 1, false);
 		API_DEF_ADD_QUERY_PARAMS(String, "code", ZH_WORDS_GETTER("sampleDetails.field.code"), "", false);
-		API_DEF_ADD_QUERY_PARAMS(Float32, "order_num", ZH_WORDS_GETTER("sampleDetails.field.order_num"), 1, false);
+		//API_DEF_ADD_QUERY_PARAMS(Float32, "order_num", ZH_WORDS_GETTER("sampleDetails.field.order_num"), 1, false);
 		API_DEF_ADD_QUERY_PARAMS(UInt32, "is_print", ZH_WORDS_GETTER("sampleDetails.field.is_print"), 1, false);
 		API_DEF_ADD_QUERY_PARAMS(String, "liscode", ZH_WORDS_GETTER("sampleDetails.field.liscode"), "", false);
 		API_DEF_ADD_QUERY_PARAMS(String, "capacity", ZH_WORDS_GETTER("sampleDetails.field.capacity"), "", false);
