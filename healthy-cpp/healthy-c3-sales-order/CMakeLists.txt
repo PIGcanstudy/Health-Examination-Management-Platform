@@ -3,6 +3,8 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
+add_definitions(-DHTTP_SERVER_ORDER)
+
 # 设置文件名称
 set (appName healthy-c3-sales-order)
 

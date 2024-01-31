@@ -21,18 +21,18 @@ order:
   summary: 查看审批信息
  # 人员部分
  download-person:
-  summary: 生成导入模板
+  summary: 生成人员导入模板
  import-person:
-  summary: 保存导入信息
+  summary: 保存人员导入信息
  export-person:
   summary: 导出人员信息
  # 合同（委托）部分
  download-entrust:
-  summary: 下载模板
+  summary: 下载委托合同模板
  upload-entrust:
-  summary: 保存附件
+  summary: 保存委托合同附件
  preview-entrust:
-  summary: 附件预览
+  summary: 委托合同附件预览
  field:
   id: 主键(订单id)
   order_code: 订单编号

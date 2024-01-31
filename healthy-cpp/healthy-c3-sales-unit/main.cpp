@@ -23,7 +23,7 @@
 #include "controller/Router.h"
 #include "controller/OtherComponent.hpp"
 #include "DbInit.h"
-#ifdef HTTP_SERVER_DEMO
+#ifdef HTTP_SERVER_UNIT
 #include "uselib/jwt/TestToken.h"
 #endif
 
@@ -133,7 +133,7 @@ bool getStartArg(int argc, char* argv[]) {
 }
 
 int main(int argc, char* argv[]) {
-#ifdef HTTP_SERVER_DEMO
+#ifdef HTTP_SERVER_UNIT
 	// ≤‚ ‘…˙≥… JWT Token
 	TestToken::generateToken();
 #endif

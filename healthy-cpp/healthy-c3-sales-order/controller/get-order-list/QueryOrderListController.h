@@ -37,7 +37,7 @@ public:
 
 
 	//定义分页查询接口
-	ENDPOINT(API_M_GET, "/sales/query-order", queryOrderList, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME)
+	ENDPOINT(API_M_GET, "/sales/order/query-order", queryOrderList, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME)
 	{
 		// 解析查询参数为Query领域模型
 		API_HANDLER_QUERY_PARAM(oq, OrderListQuery, params);

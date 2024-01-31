@@ -21,7 +21,7 @@ public: // 3 定义接口
 // 	// 3.1 定义接口描述
 // 	// 3.2 定义接口处理
 	API_DEF_ENDPOINT_INFO(ZH_WORDS_GETTER("order.upload-entrust.summary"), uploadEntrust, StringJsonVO::Wrapper);
-	API_HANDLER_ENDPOINT(API_M_POST, "/order/upload-entrust", uploadEntrust, REQUEST(std::shared_ptr<IncomingRequest>, request), execUploadEntrust(request));
+	API_HANDLER_ENDPOINT(API_M_POST, "sales/order/upload-entrust", uploadEntrust, REQUEST(std::shared_ptr<IncomingRequest>, request), execUploadEntrust(request));
 
 private: // 3.3 定义接口执行函数
 	StringJsonVO::Wrapper execUploadEntrust(std::shared_ptr<IncomingRequest> request);

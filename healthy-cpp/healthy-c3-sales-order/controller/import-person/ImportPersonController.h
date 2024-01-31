@@ -21,7 +21,7 @@ public: // 3 定义接口
 // 	// 3.1 定义接口描述
 // 	// 3.2 定义接口处理
 	API_DEF_ENDPOINT_INFO(ZH_WORDS_GETTER("order.import-person.summary"), importPerson, StringJsonVO::Wrapper);
-	API_HANDLER_ENDPOINT(API_M_POST, "/order/import-person", importPerson, REQUEST(std::shared_ptr<IncomingRequest>, request), execImportPerson(request));
+	API_HANDLER_ENDPOINT(API_M_POST, "sales/order/import-person", importPerson, REQUEST(std::shared_ptr<IncomingRequest>, request), execImportPerson(request));
 
 private: // 3.3 定义接口执行函数
 	StringJsonVO::Wrapper execImportPerson(std::shared_ptr<IncomingRequest> request);
