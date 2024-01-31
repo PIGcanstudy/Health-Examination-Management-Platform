@@ -1,6 +1,7 @@
 package com.zeroone.star.sysmanager.service.impl;
 
 
+import com.alibaba.nacos.shaded.com.google.protobuf.ServiceException;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -19,6 +20,7 @@ import org.mapstruct.Mapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
@@ -51,8 +53,6 @@ interface  MsStopWordMapper{
 public class TStopWordServiceImpl extends ServiceImpl<StopWordMapper, StopWord> implements ITStopWordService {
     @Resource
     private StopWordMapper stopWordMapper;
-
-
     @Resource
     private UserHolder userHolder;
     @Resource
@@ -69,7 +69,30 @@ public class TStopWordServiceImpl extends ServiceImpl<StopWordMapper, StopWord> 
         Page<StopWord> result = baseMapper.selectPage(page,queryWrapper);
         return PageDTO.create(result,src->msStopWordMapper.StopWordToStopWordDTO(src));
     }
-
+    @Override
+    @Transactional
+    public boolean addWord(StopWordDTO addWord)  {
+        UserDTO currentUser = null;
+        try {
+            currentUser = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            log.error("解析用户失败！！！",e);
+        }
+        if (addWord == null || addWord.getTitle() == null ||
+                findByTitle(addWord.getTitle()) != null) {
+            return false;
+        }else {
+            StopWord stopWord = new StopWord();
+            stopWord.setId(addWord.getId());
+            stopWord.setCreateBy(currentUser != null ? currentUser.getUsername() : "unknown"); // 若无用户信息，设置为未知
+            stopWord.setCreateTime(LocalDateTime.now());
+            stopWord.setUpdateBy(currentUser != null ? currentUser.getUsername() : "unknown"); // 若无用户信息，设置为未知
+            stopWord.setUpdateTime(LocalDateTime.now());
+            stopWord.setDelFlag(0);
+            stopWord.setTitle(addWord.getTitle());
+            return save(stopWord);
+        }
+    }
     @Override
     public int updateWord(UpdateWordDTO updateWord) {
         UserDTO user = null;
@@ -92,11 +115,9 @@ public class TStopWordServiceImpl extends ServiceImpl<StopWordMapper, StopWord> 
         LambdaQueryWrapper<StopWord> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(StopWord::getTitle, title);
         StopWord stopWord = baseMapper.selectOne(wrapper);
-        StopWordDTO stopWordDTO = new StopWordDTO();
-        BeanUtils.copyProperties(stopWord, stopWordDTO);
-        return stopWordDTO;
-//        LambdaQueryWrapper<StopWordDTO> wrapper = new LambdaQueryWrapper<>();
-//        wrapper.eq(StopWordDTO::getTitle, title);
-//        return baseMapper.selectOne(wrapper);
+        if (stopWord == null) {
+            return null;
+        }
+        return msStopWordMapper.StopWordToStopWordDTO(stopWord);
     }
 }

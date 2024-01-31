@@ -1,5 +1,6 @@
 package com.zeroone.star.sysmanager.controller;
 
+import com.alibaba.nacos.shaded.com.google.protobuf.ServiceException;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.stopword.StopWordDTO;
 import com.zeroone.star.project.dto.j3.stopword.UpdateWordDTO;
@@ -10,12 +11,14 @@ import com.zeroone.star.sysmanager.entity.StopWord;
 import com.zeroone.star.sysmanager.service.ITStopWordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.ErrorManager;
 
 /**
  * 禁用词
@@ -40,24 +43,12 @@ public class StopWordController implements StopWordApis {
     @ApiOperation("添加禁用词")
     @PostMapping("/addStopWord")
     @Override
-    public JsonVO<Boolean> addStopWord(StopWordDTO word) {
-        if (word == null || word.getTitle() == null ||
-                stopWordService.findByTitle(word.getTitle()) != null) {
-            return JsonVO.fail(Boolean.FALSE);
-        }
-        StopWord stopWord = convertToStopWord(word); // 转换为StopWord类型
-        stopWordService.save(stopWord);
-        return JsonVO.success(Boolean.TRUE);
-//        stopWordService.save(word);
-//        return JsonVO.success(Boolean.TRUE);
-    }
-    // 添加一个转换方法，将StopWordDTO转换为StopWord
-    private StopWord convertToStopWord(StopWordDTO dto) {
-        StopWord stopWord = new StopWord();
-        stopWord.setTitle(dto.getTitle());
-        // 设置其他属性
-
-        return stopWord;
+    public JsonVO<Boolean> addStopWord(@Validated StopWordDTO addWord) {
+            boolean count = stopWordService.addWord(addWord);
+            if (count) {
+                return JsonVO.success(true);
+            }
+            return JsonVO.fail(false);
     }
 
     @PutMapping("/updateWord")
