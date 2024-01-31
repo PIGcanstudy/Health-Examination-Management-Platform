@@ -52,6 +52,7 @@ group_person:
   physical_type: 健康体检
   start_regist_date: 2023-12-12
   finish_regist_date: 2024-01-01
+
 result-entry:
  cl-aban-proj:
   put:
@@ -60,6 +61,7 @@ result-entry:
    personid: 人员id
    order-group-item-id: 分组项目id
    office-id: 科室id
+
 unknownmodulebasicinformation:
  controller:
   title: 基本信息查询
@@ -130,6 +132,7 @@ unknownmoduleprofessionalhistory:
   hazard_factors_text: 危害因素
   protective_measures: 防护措施
   contact_time: 接触时间
+
 interro1:
  field:
   id: 体检人编号
@@ -137,6 +140,7 @@ interro1:
   project1: 体检项目
   degree: 危及程度
   time:	病程时间
+
 samplebarcodesview:
  file:
   personid: 体检人ID
@@ -196,17 +200,20 @@ reportpreview:
 
  get:
   report: 报告预览
+
 interro:
  get:
   summary: 症状询问
  post:
   summary: 保存症状询问
+
 interro2:
  field:
   id: 体检人编号
   project: 体检项目
   degree: 危及程度
   time:	病程时间
+
 checkitem:
  portfolio:
   name: 组合项目名称
