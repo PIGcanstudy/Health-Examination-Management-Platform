@@ -213,6 +213,9 @@ interro2:
   degree: 危及程度
   time:	病程时间
 
+ 
+
+
 checkitem:
  portfolio:
   name: 组合项目名称
@@ -230,3 +233,19 @@ checkitem:
  filed:
   project_summary: 查询组合项目的基础项目体检结果数据
   person_summary: 查询人员的体检组合项目
+
+file_chengfeng:
+ upload: 
+  summary: 影像文件上传
+ field:
+  filename: 文件名
+  person_id: 体检人员id
+  file_addr: 需要上传的文件地址
+  success: 成功
+  fail: 失败
+  no_zip: 文件不是.zip类型
+  fail_dfs: 文件上传服务器失败
+
+ 
+
+ 

@@ -41,15 +41,15 @@
 #include "controller/interro/InterroController.h"
 #include "result-entry/ClAbanProjController.h"
 
-#include "file/FileController.h"
+#include "file_chengfeng/UpFileController.h"
 
-// 如果定义了关闭Swagger文档�?
+// 濡傛灉瀹氫箟浜嗗叧闂璖wagger鏂囨。瀹?
 #ifdef CLOSE_SWAGGER_DOC
-// 简化绑定控制器宏定�?
+// 绠€鍖栫粦瀹氭帶鍒跺櫒瀹忓畾涔?
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 router->addController(__CLASS__::createShared())
 #else
-// 简化绑定控制器宏定�?
+// 绠€鍖栫粦瀹氭帶鍒跺櫒瀹忓畾涔?
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 BIND_CONTROLLER(docEndpoints, router, __CLASS__)
 #endif
@@ -66,7 +66,7 @@ void Router::initRouter()
 	createSampleRouter();
 #endif
 
-	//#TIP :系统扩展路由定义，写在这个后�?
+	//#TIP :绯荤粺鎵╁睍璺敱瀹氫箟锛屽啓鍦ㄨ繖涓悗闈?
 	//ROUTER_SIMPLE_BIND(SaveResController);
 	ROUTER_SIMPLE_BIND(SaveResController);
 	ROUTER_SIMPLE_BIND(GroupPersonController);
@@ -76,26 +76,26 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(PastMedicalHistoryController);
 	ROUTER_SIMPLE_BIND(ProfessionalHistoryController);
 	ROUTER_SIMPLE_BIND(InterroController);
-	ROUTER_SIMPLE_BIND(SampleBarcodesViewController);//�����
-	ROUTER_SIMPLE_BIND(ReportPreviewController);//�����
+	ROUTER_SIMPLE_BIND(SampleBarcodesViewController);//地灵殿
+	ROUTER_SIMPLE_BIND(ReportPreviewController);//地灵殿
 	ROUTER_SIMPLE_BIND(InterroController);
 	ROUTER_SIMPLE_BIND(BaseProjectController);
 	ROUTER_SIMPLE_BIND(PersonController);
-	ROUTER_SIMPLE_BIND(FileController);
+	ROUTER_SIMPLE_BIND(UpFileController);
 
 }
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
-	// 绑定示例控制�?
+	// 缁戝畾绀轰緥鎺у埗鍣?
 	ROUTER_SIMPLE_BIND(SampleController);
-	// 绑定用户控制�?
+	// 缁戝畾鐢ㄦ埛鎺у埗鍣?
 	ROUTER_SIMPLE_BIND(UserController);
-	// 绑定文件控制�?
+	// 缁戝畾鏂囦欢鎺у埗鍣?
 	ROUTER_SIMPLE_BIND(FileController);
 
-	// 绑定WebSocket控制�?
+	// 缁戝畾WebSocket鎺у埗鍣?
 	router->addController(WSContorller::createShared());
 }
 #endif
