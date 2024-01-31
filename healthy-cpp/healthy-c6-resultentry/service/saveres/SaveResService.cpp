@@ -4,6 +4,9 @@
 #include "../../../lib-common/include/SimpleDateTimeFormat.h"
 #include "../../Macros.h"
 #include "../../../lib-mysql/include/TransactionManager.h"
+#include "../../domain/dto/saveres/RPProCheckDTO.h"
+#include "../../domain/do/saveres/RPProCheckDO.h"
+#include "../../dao/saveres/RPProCheckDAO.h"
 
 
 
@@ -12,6 +15,7 @@ uint64_t SaveResService::saveData(const SaveResDTO::Wrapper& dto, const string c
 	SnowFlake sf(1, 1);
 	uint64_t uint_id = sf.nextId();
 	string id = to_string(uint_id);
+	uint64_t tem_uint_id = uint_id;
 
 	SaveResDO data;
 	data.setCreateId(createId);
@@ -50,17 +54,19 @@ uint64_t SaveResService::saveData(const SaveResDTO::Wrapper& dto, const string c
 	{
 		cout << "tm commit" << endl;
 		tm.commit();
+		return tem_uint_id;
 	}
 	else
 	{
 		cout << "tm rollback" << endl;
 		tm.rollback();
+		return 0;
 	}
 
-	return row == 1 + dto->itemList->size();
+	 
 }
 
-uint64_t SaveResService::updateData(const SaveResDTO::Wrapper& dto, const string createId)
+bool SaveResService::updateData(const SaveResDTO::Wrapper& dto, const string createId)
 {
 	SaveResDO data;
 	data.setCreateId(createId);
@@ -96,6 +102,40 @@ uint64_t SaveResService::updateData(const SaveResDTO::Wrapper& dto, const string
 
 	return row == 1 + dto->itemList->size();
 
+}
+
+uint64_t SaveResService::saveRPProCheck(const RPProCheckDTO::Wrapper& dto)
+{
+	SnowFlake sf(1, 1);
+	uint64_t uint_id = sf.nextId();
+	string id = to_string(uint_id);
+
+	RPProCheckDO data;
+	data.setId(id);
+	data.setState(1);
+	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, PersonId, personId, OfficeId, officeId, \
+		GroupItemId, groupItemId)
+		// 执行数据添加;;
+		RPProCheckDAO dao;
+	if (dao.insert(data))
+	{
+		return uint_id;
+	}
+	else
+		return 0;
+	 
+}
+
+bool SaveResService::updateRPProCheck(const RPProCheckDTO::Wrapper& dto)
+{
+	RPProCheckDO data;
+	// 设置为弃检
+	data.setState(2);
+	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, PersonId, personId, OfficeId, officeId, \
+		GroupItemId, groupItemId)
+		//执行数据修改
+		RPProCheckDAO dao;
+	return dao.update(data) == 1;
 }
 
 

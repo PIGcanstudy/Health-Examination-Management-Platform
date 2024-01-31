@@ -1,6 +1,9 @@
 save:
  post:
   addDepartRes: 新增诊台结果
+  addRPProCheck: 到检确认
+ put:
+  waiveCheck: 弃检项目
  filed:
   id: 唯一编号
   personId: 体检人id

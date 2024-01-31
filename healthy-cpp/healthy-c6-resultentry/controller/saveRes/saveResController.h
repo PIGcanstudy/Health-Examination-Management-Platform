@@ -5,6 +5,7 @@
 
 #include "domain/dto/saveres/SaveResDTO.h"
 #include "../../../lib-oatpp/include/domain/vo/BaseJsonVO.h"
+#include "../../domain/dto/saveres/RPProCheckDTO.h"
 
 
 
@@ -20,6 +21,7 @@ class SaveResController : public oatpp::web::server::api::ApiController // 1 ¼Ì³
 	API_ACCESS_DECLARE(SaveResController);
 	// 3 ¶¨Òå½Ó¿Ú
 public:
+	// ÕïÌ¨ÏîÄ¿¼°ÆäÃ÷Ï¸±£´æ½Ó¿Ú
 	// 3.1 ¶¨ÒåĞÂÔö½Ó¿ÚÃèÊö
 	ENDPOINT_INFO(addDepartRes) {
 		// ¶¨Òå½Ó¿Ú±êÌâ
@@ -35,11 +37,37 @@ public:
 		API_HANDLER_RESP_VO(execAddDepartRes(dto, authObject->getPayload()));
 	}
 
+	// µ½¼ìÈ·ÈÏ½Ó¿Ú
+	// 3.1 ¶¨ÒåĞÂÔö½Ó¿ÚÃèÊö
+	ENDPOINT_INFO(addRPProCheck) {
+		// ¶¨Òå½Ó¿Ú±êÌâ
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("save.post.addRPProCheck"));
+		// ¶¨ÒåÄ¬ÈÏÊÚÈ¨²ÎÊı£¨¿ÉÑ¡¶¨Òå£¬Èç¹û¶¨ÒåÁË£¬ÏÂÃæENDPOINTÀïÃæĞèÒª¼ÓÈëAPI_HANDLER_AUTH_PARAME£©
+		API_DEF_ADD_AUTH();
+		// ¶¨ÒåÏìÓ¦²ÎÊı¸ñÊ½
+		API_DEF_ADD_RSP_JSON_WRAPPER(Uint64JsonVO);
+	}
+	// 3.2 ¶¨ÒåĞÂÔö½Ó¿Ú´¦Àí
+	ENDPOINT("POST", "/addRPProCheck", addRPProCheck, BODY_DTO(RPProCheckDTO::Wrapper, dto), API_HANDLER_AUTH_PARAME) {
+		// ºô½ĞÖ´ĞĞº¯ÊıÏìÓ¦½á¹û
+		API_HANDLER_RESP_VO(execAddRPProCheck(dto));
+	}
+
+
+	// ÏîÄ¿Æú¼ì½Ó¿Ú
+	// 3.1 ¶¨ÒåĞŞ¸Ä½Ó¿ÚÃèÊö
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("save.put.waiveCheck"), waiveCheck, Uint64JsonVO::Wrapper);
+	// 3.2 ¶¨ÒåĞŞ¸Ä½Ó¿Ú´¦Àí
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/waiveCheck", waiveCheck, BODY_DTO(RPProCheckDTO::Wrapper, dto), execModifywaiveCheck(dto));
 	
 private:
 	
 	// 3.3 ÑİÊ¾ĞÂÔöÊı¾İ
 	Uint64JsonVO::Wrapper execAddDepartRes(const SaveResDTO::Wrapper& dto, const PayloadDTO& payload);
+	// µ½¼ìÈ·ÈÏ
+	Uint64JsonVO::Wrapper execAddRPProCheck(const RPProCheckDTO::Wrapper& dto);
+	// Æú¼ìÏîÄ¿
+	Uint64JsonVO::Wrapper execModifywaiveCheck(const RPProCheckDTO::Wrapper& dto);
 };
 
 // 0 È¡ÏûAPI¿ØÖÆÆ÷Ê¹ÓÃºê
