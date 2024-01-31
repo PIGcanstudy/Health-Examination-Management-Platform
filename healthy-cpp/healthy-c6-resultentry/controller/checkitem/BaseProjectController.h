@@ -25,7 +25,7 @@ public:	//定义接口
 		// 定义响应参数格式
 		API_DEF_ADD_RSP_JSON_WRAPPER(BaseProjectJsonVO);
 		// 定义其他查询参数描述
-		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("checkitem.portfolio.name"), ZH_WORDS_GETTER("checkitem.portfolio.eg_name"), false);
+		API_DEF_ADD_QUERY_PARAMS(String, "portfolioId", ZH_WORDS_GETTER("checkitem.portfolio.id"), ZH_WORDS_GETTER("checkitem.portfolio.eg_id"), true);
 	}
 
 	//定义分页查询单位列表接口
@@ -37,7 +37,7 @@ public:	//定义接口
 	}
 
 private:	//定义接口执行函数
-	BaseProjectJsonVO::Wrapper execQueryBaseProject(const BaseProjectQuery::Wrapper& query);
+	BaseProjectPageJsonVO::Wrapper execQueryBaseProject(const BaseProjectQuery::Wrapper& query);
 };
 
 // 0 取消API控制器使用宏

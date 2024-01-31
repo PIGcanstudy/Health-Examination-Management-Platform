@@ -20,9 +20,17 @@ class BaseProjectListDTO : public oatpp::DTO
 	//单位
 	API_DTO_FIELD_DEFAULT(String, unit_name, ZH_WORDS_GETTER("checkitem.base.unit_name"));
 	//参考值
+	API_DTO_FIELD_DEFAULT(String, healthy_value, ZH_WORDS_GETTER("checkitem.base.healthy_value"));
+	//默认值
 	API_DTO_FIELD_DEFAULT(String, default_value, ZH_WORDS_GETTER("checkitem.base.default_value"));
-	//提示
+	//明细结果类型
 	API_DTO_FIELD_DEFAULT(String, result_type, ZH_WORDS_GETTER("checkiten.base.result_type"));
+
+
+};
+
+class BaseProjectPageDTO : public PageDTO<BaseProjectListDTO::Wrapper> {
+	DTO_INIT(BaseProjectPageDTO, PageDTO<BaseProjectListDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)

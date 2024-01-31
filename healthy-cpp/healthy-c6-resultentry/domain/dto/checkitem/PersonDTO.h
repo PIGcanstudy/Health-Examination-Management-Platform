@@ -13,10 +13,15 @@
 class PersonDTO : public oatpp::DTO
 {
 	DTO_INIT(PersonDTO, DTO);
-	//人员编号
-	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("checkitem.person.id"));
+	//组合项目编号
+	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("checkitem.portfolio.id"));
+	//组合项目名称
+	API_DTO_FIELD_DEFAULT(String, portfolioName, ZH_WORDS_GETTER("checkitem.portfolio.name"));
 };
 
+class PersonPageDTO : public PageDTO<PersonDTO::Wrapper>{
+	DTO_INIT(PersonPageDTO, PageDTO<PersonDTO::Wrapper>);
+};
 #include OATPP_CODEGEN_END(DTO)
 #endif // !_PERSONDTO_H_
 
