@@ -10,6 +10,6 @@ import javax.validation.constraints.NotBlank;
 @ApiModel(value = "获取短信验证码", description = "获取短信验证码数据传输对象")
 public class GetSmsCodeDTO {
     @NotBlank(message = "手机号不能为空")
-    @ApiModelProperty(value = "手机号", required = true, example = "18782059031")
+    @ApiModelProperty(value = "手机号", required = true, example = "19864394134")
     private String newPhone;
 }

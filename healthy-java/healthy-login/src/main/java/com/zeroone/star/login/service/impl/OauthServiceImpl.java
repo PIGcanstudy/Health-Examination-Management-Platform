@@ -34,10 +34,4 @@ public class OauthServiceImpl implements OauthService {
         setMessage(vo);
         return vo;
     }
-    @Override
-    public JsonVO<Oauth2TokenDTO> postDenyToken(Map<String, String> parameters) {
-        JsonVO<Oauth2TokenDTO> vo = JsonVO.fail(null);
-        setMessage(vo);
-        return vo;
-    }
 }

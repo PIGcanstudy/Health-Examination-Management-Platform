@@ -14,10 +14,10 @@ import javax.validation.constraints.NotBlank;
 public class ModifyPhoneDTO {
 
     @NotBlank(message = "新手机号不能为空")
-    @ApiModelProperty(value = "新手机号", required = true, example = "110")
+    @ApiModelProperty(value = "新手机号", required = true, example = "19864394134")
     private String newPhone;
 
     @NotBlank(message = "验证码不能为空")
-    @ApiModelProperty(value = "验证码", required = true, example = "123123")
+    @ApiModelProperty(value = "验证码", required = true, example = "998007")
     private String verificationCode;
 }

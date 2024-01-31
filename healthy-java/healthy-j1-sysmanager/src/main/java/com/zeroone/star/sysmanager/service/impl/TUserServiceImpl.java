@@ -20,6 +20,7 @@ import com.zeroone.star.sysmanager.mapper.UserRoleMapper;
 import com.zeroone.star.sysmanager.service.ITUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.mapstruct.Mapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -75,6 +76,9 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
     @Resource
     private MsUserMapper msUserMapper;
 
+    @Resource
+    private PasswordEncoder passwordEncoder;
+
     /**
      * t_user表相关的Mapper
      */
@@ -104,8 +108,10 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
         List<UserNameListVO> list = new ArrayList<>();
         if (BeanUtil.isNotEmpty(users) && users.size() > 0) {
             for (TUser user : users) {
-                UserNameListVO userNameListVO = msUserMapper.userToUserNameListVO(user);
-                list.add(userNameListVO);
+                if (user.getStatus() == 0 && !user.getDelFlag()) {
+                    UserNameListVO userNameListVO = msUserMapper.userToUserNameListVO(user);
+                    list.add(userNameListVO);
+                }
             }
         }
         return list;
@@ -168,6 +174,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
 
         // 将DTO转换成TUser实体
         TUser user = msUserMapper.CreateUserDTOToTUser(createUserDTO);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         // 设置新增、修改的时间和修改人
         user.setCreateBy(tUser.getUsername());
         user.setUpdateBy(tUser.getUsername());
@@ -213,6 +220,9 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
             throw new RuntimeException("用户权限不足");
         }
         List<TUser> tUserList = tUserMapper.selectBatchIds(ids);
+        if (BeanUtil.isEmpty(tUserList) || tUserList.size() == 0) {
+            throw new RuntimeException("未找到相关用户");
+        }
         for (TUser user : tUserList) {
             if (user.getDelFlag()) {
                 ids.remove(user.getId());

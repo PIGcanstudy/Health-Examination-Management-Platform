@@ -8,6 +8,7 @@ import com.zeroone.star.percenter.service.ITUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
+import com.zeroone.star.project.j1.dto.percenter.EmailDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPasswordDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPersonalInfoDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPhoneDTO;
@@ -15,6 +16,7 @@ import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import org.mapstruct.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -43,15 +45,14 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
 
     @Resource
     private UserHolder userHolder;      // 用户信息获取组件
-
     @Resource
     private PasswordEncoder passwordEncoder;        // 处理密码的加密和验证
-
     @Resource
     private TUserMapper userMapper;
-
     @Resource
     private MsUserMapper msUserMapper; // 将各类型的DTO转换成TUser实体
+    @Resource
+    private RedisTemplate redisTemplate;
 
 
     /**
@@ -112,6 +113,60 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
         }
     }
 
+    //    @Autowired
+//    private VerificationCodeService verificationCodeService;    // 验证码服务
+
+    /**
+     * 更新用户手机号。
+     * 该方法首先验证提供的验证码，然后更新用户的手机号信息。
+     * @param modifyPhoneDTO 包含新手机号和验证码的数据传输对象
+     * @return JsonVO<String> 表示操作结果，成功或失败信息
+     */
+    public void modifyPhone(ModifyPhoneDTO modifyPhoneDTO) {
+//        try {
+//            UserDTO currentUser = userHolder.getCurrentUser();
+//            Long userId = currentUser.getId();
+//
+//            if (!verificationCodeService.checkCode(modifyPhoneDTO.getNewPhone(), modifyPhoneDTO.getVerificationCode())) {
+//                return JsonVO.fail("验证码不正确或已过期");
+//            }
+//
+//            TUser user = this.getById(userId);
+//            if (user == null) {
+//                return JsonVO.fail("用户不存在");
+//            }
+//
+//            user.setMobile(modifyPhoneDTO.getNewPhone());
+//            this.updateById(user);
+//
+//            return JsonVO.success("手机号更新成功");
+//        } catch (Exception e) {
+//            return JsonVO.fail("手机号更新失败: " + e.getMessage());
+//        }
+        TUser userByToken = getUserByToken();
+        String SmsCode = userByToken.getId() + ":" + modifyPhoneDTO.getNewPhone();
+        String code = String.valueOf(redisTemplate.opsForValue().get(SmsCode));
+        if (!modifyPhoneDTO.getVerificationCode().equals(code)) {
+            throw new RuntimeException("验证码错误");
+        }
+        userMapper.updatePhone(modifyPhoneDTO.getNewPhone(), LocalDateTime.now(), userByToken.getUsername(), userByToken.getId());
+    }
+
+    /**
+     * 修改邮箱
+     * @param emailDTO
+     */
+    @Override
+    public void modifyEmail(EmailDTO emailDTO) {
+        TUser userByToken = getUserByToken();
+        String emailCode = userByToken.getId() + ":" + emailDTO.getEmail();
+        String code = String.valueOf(redisTemplate.opsForValue().get(emailCode));
+        if (!emailDTO.getVerificationCode().equals(code)) {
+            throw new RuntimeException("验证码错误");
+        }
+        userMapper.updateEmail(emailDTO.getEmail(), LocalDateTime.now(), userByToken.getUsername(), userByToken.getId());
+    }
+
     /**
      * 从userHolder中获取用户信息
      * @return
@@ -133,38 +188,4 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
         }
         return user;
     }
-
-
-    //@Autowired
-    //private VerificationCodeService verificationCodeService;    // 验证码服务
-
-    ///**
-    // * 更新用户手机号。
-    // * 该方法首先验证提供的验证码，然后更新用户的手机号信息。
-    // *
-    // * @param modifyPhoneDTO 包含新手机号和验证码的数据传输对象
-    // * @return JsonVO<String> 表示操作结果，成功或失败信息
-    // */
-    //public JsonVO<String> modifyPhone(ModifyPhoneDTO modifyPhoneDTO) {
-    //    try {
-    //        UserDTO currentUser = userHolder.getCurrentUser();
-    //        Integer userId = currentUser.getId();
-    //
-    //        if (!verificationCodeService.checkCode(modifyPhoneDTO.getNewPhone(), modifyPhoneDTO.getVerificationCode())) {
-    //            return JsonVO.fail("验证码不正确或已过期");
-    //        }
-    //
-    //        TUser user = this.getById(userId);
-    //        if (user == null) {
-    //            return JsonVO.fail("用户不存在");
-    //        }
-    //
-    //        user.setMobile(modifyPhoneDTO.getNewPhone());
-    //        this.updateById(user);
-    //
-    //        return JsonVO.success("手机号更新成功");
-    //    } catch (Exception e) {
-    //        return JsonVO.fail("手机号更新失败: " + e.getMessage());
-    //    }
-    //}
 }

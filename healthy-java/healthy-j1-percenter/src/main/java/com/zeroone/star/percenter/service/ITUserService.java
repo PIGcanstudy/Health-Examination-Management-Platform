@@ -2,6 +2,7 @@ package com.zeroone.star.percenter.service;
 
 import com.zeroone.star.percenter.entity.TUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.j1.dto.percenter.EmailDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPasswordDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPersonalInfoDTO;
 import com.zeroone.star.project.j1.dto.percenter.ModifyPhoneDTO;
@@ -46,5 +47,13 @@ public interface ITUserService extends IService<TUser> {
      * @param modifyPhoneDTO 包含用户新手机号和验证码的数据传输对象
      * @return JsonVO<String> 返回操作的结果，包括成功或失败的信息
      */
-    //JsonVO<String> modifyPhone(ModifyPhoneDTO modifyPhoneDTO);
+    void modifyPhone(ModifyPhoneDTO modifyPhoneDTO);
+
+    /**
+     * 修改邮箱
+     * @param emailDTO
+     */
+    void modifyEmail(EmailDTO emailDTO);
+
+    TUser getUserByToken();
 }

@@ -1,11 +1,5 @@
 package com.zeroone.star.login.controller;
 
-import cn.hutool.captcha.CaptchaUtil;
-import cn.hutool.captcha.LineCaptcha;
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.codec.Base64;
-import cn.hutool.core.io.FastByteArrayOutputStream;
-import cn.hutool.core.util.IdUtil;
 import com.anji.captcha.model.common.ResponseModel;
 import com.anji.captcha.model.vo.CaptchaVO;
 import com.anji.captcha.service.CaptchaService;
@@ -26,6 +20,7 @@ import com.zeroone.star.project.vo.login.MenuTreeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,12 +31,10 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -62,30 +55,38 @@ public class LoginController implements LoginApis {
     UserHolder userHolder;
     @Resource
     RedisTemplate redisTemplate;
-
     @Resource
     UserService userService;
-
+    @Resource
+    IMenuService menuService;
     @Autowired
     private CaptchaService captchaService;
+    @Value("${secure.open-captcha}")
+    private Boolean openCaptcha;
 
     @ApiOperation(value = "授权登录")
     @PostMapping("auth-login")
     @Override
     public JsonVO<Oauth2TokenDTO> authLogin(LoginDTO loginDTO) {
         //TODO:未实现验证码验证
-        CaptchaVO captchaVO = new CaptchaVO();
-        captchaVO.setCaptchaVerification(loginDTO.getCode());
-        ResponseModel response = captchaService.verification(captchaVO);
-        if (!response.isSuccess()) {
-            //验证码校验失败，返回信息告诉前端
-            //repCode  0000  无异常，代表成功
-            //repCode  9999  服务器内部异常
-            //repCode  0011  参数不能为空
-            //repCode  6110  验证码已失效，请重新获取
-            //repCode  6111  验证失败
-            //repCode  6112  获取验证码失败,请联系管理员
+        if (openCaptcha) {
+            CaptchaVO captchaVO = new CaptchaVO();
+            captchaVO.setCaptchaVerification(loginDTO.getCode());
+            ResponseModel response = captchaService.verification(captchaVO);
+            if (!response.isSuccess()) {
+                JsonVO<Oauth2TokenDTO> fail = JsonVO.fail(null);
+                fail.setMessage(response.getRepCode() + response.getRepMsg());
+                //验证码校验失败，返回信息告诉前端
+                //repCode  0000  无异常，代表成功
+                //repCode  9999  服务器内部异常
+                //repCode  0011  参数不能为空
+                //repCode  6110  验证码已失效，请重新获取
+                //repCode  6111  验证失败
+                //repCode  6112  获取验证码失败,请联系管理员
+                return fail;
+            }
         }
+
         //账号密码认证
         Map<String, String> params = new HashMap<>(5);
         params.put("grant_type", "password");
@@ -93,56 +94,55 @@ public class LoginController implements LoginApis {
         params.put("client_secret", AuthConstant.CLIENT_PASSWORD);
         params.put("username", loginDTO.getUsername());
         params.put("password", loginDTO.getPassword());
-        //获取验证码
-        String code = loginDTO.getCode();
-        if (!Objects.equals(redisTemplate.opsForValue().get(loginDTO.getClientId()), code)) {
-            //错误则返回前端并提示
-//            return oAuthService.postDenyToken(params);
-            return oAuthService.postAccessToken(params);
+        // 获取Token
+        JsonVO<Oauth2TokenDTO> oauth2TokenDTO = oAuthService.postAccessToken(params);
+        if (oauth2TokenDTO.getData() == null) {
+            JsonVO<Oauth2TokenDTO> fail = JsonVO.fail(null);
+            fail.setCode(ResultStatus.SERVER_ERROR.getCode());
+            fail.setMessage(ResultStatus.SERVER_ERROR.getMessage());
+            return fail;
         }
-        //验证成功则清除redis内的验证码缓存
-        redisTemplate.delete(loginDTO.getClientId());
+        //将授权token存储到Redis中，记录登录状态
+        String token = oauth2TokenDTO.getData().getToken();
+        String userTokenKey = RedisConstant.USER_TOKEN + ":" + token;
+        redisTemplate.opsForValue().set(userTokenKey, 1, Long.valueOf(oauth2TokenDTO.getData().getExpiresIn()), TimeUnit.SECONDS);
 
-        return oAuthService.postAccessToken(params);
+        return oauth2TokenDTO;
         //TODO:未实现认证成功后如何实现注销凭证（如记录凭证到内存数据库）
     }
     
-    @ApiOperation(value = "获取验证码")
-    @GetMapping("getCode")
-    @Override
-    public JsonVO<LoginDTO> getCode() {
-        LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(200, 100);
-        String verify = IdUtil.simpleUUID();
-        //图形验证码写出到文件流
-        FastByteArrayOutputStream os = new FastByteArrayOutputStream();
-        lineCaptcha.write(os);
-        String code = lineCaptcha.getCode();
-        //缓存一分钟的验证码
-        redisTemplate.opsForValue().set(verify, code, Duration.ofMinutes(1));
 
-
-        ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>(5);
-        //验证码对应的redis上的uuid
-        map.put("uuid", verify);
-        //图片上的验证码
-        map.put("code", code);
-        //将图片转换成输出流传到前端上
-        map.put("img", Base64.encode(os.toByteArray()));
-        LoginDTO dto = new LoginDTO();
-        BeanUtil.copyProperties(code, dto);
-        return JsonVO.success(dto);
-    }
 
     @ApiOperation(value = "刷新登录")
     @PostMapping("refresh-token")
     @Override
     public JsonVO<Oauth2TokenDTO> refreshToken(Oauth2TokenDTO oauth2TokenDTO) {
         //TODO:未实现注销凭证验证
+        //检查缓存中是否存在对应的旧token
+        if (Boolean.FALSE.equals(redisTemplate.hasKey(RedisConstant.USER_TOKEN + ":" + oauth2TokenDTO.getToken()))) {
+            JsonVO<Oauth2TokenDTO> fail = JsonVO.fail(null);
+            fail.setCode(ResultStatus.UNAUTHORIZED.getCode());
+            fail.setMessage(ResultStatus.UNAUTHORIZED.getMessage());
+            return fail;
+        }
         Map<String, String> params = new HashMap<>(4);
         params.put("grant_type", "refresh_token");
         params.put("client_id", oauth2TokenDTO.getClientId());
         params.put("client_secret", AuthConstant.CLIENT_PASSWORD);
         params.put("refresh_token", oauth2TokenDTO.getRefreshToken());
+        // 使用refresh_token调用远程接口获取新token
+        JsonVO<Oauth2TokenDTO> refreshedTokenDTO = oAuthService.postAccessToken(params);
+        if (refreshedTokenDTO.getData() == null) {
+            JsonVO<Oauth2TokenDTO> fail = JsonVO.fail(null);
+            fail.setCode(ResultStatus.SERVER_ERROR.getCode());
+            fail.setMessage(ResultStatus.SERVER_ERROR.getMessage());
+            return fail;
+        }
+        redisTemplate.delete(RedisConstant.USER_TOKEN + ":" + oauth2TokenDTO.getToken());
+        //将授权token存储到Redis中，记录登录状态
+        String token = refreshedTokenDTO.getData().getToken();
+        String userTokenKey = RedisConstant.USER_TOKEN + ":" + token;
+        redisTemplate.opsForValue().set(userTokenKey, 1, Long.valueOf(refreshedTokenDTO.getData().getExpiresIn()), TimeUnit.SECONDS);
         return oAuthService.postAccessToken(params);
     }
 
@@ -161,8 +161,6 @@ public class LoginController implements LoginApis {
         } else {
             //TODO:这里需要根据业务逻辑接口，重新实现
             LoginVO loginVO = userService.getUserById(currentUser.getId());
-//            LoginVO vo = new LoginVO();
-//            BeanUtil.copyProperties(currentUser, vo);
             return JsonVO.success(loginVO);
         }
     }
@@ -189,9 +187,6 @@ public class LoginController implements LoginApis {
         redisTemplate.delete(tokenKeyInRedis);
         return JsonVO.create(null, ResultStatus.SUCCESS.getCode(), "退出成功");
     }
-
-    @Resource
-    IMenuService menuService;
 
     @ApiOperation(value = "获取菜单")
     @GetMapping("get-menus")

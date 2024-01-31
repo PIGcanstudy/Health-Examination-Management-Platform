@@ -16,6 +16,8 @@ import com.zeroone.star.sysmanager.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,6 +68,7 @@ public class UserDatasController {
     @GetMapping("/set-user-status/{id}/{status}")
     @ApiImplicitParam(name = "status",required = true)
     @ApiOperation("设置用户状态（0启用 1禁用）")
+    @CacheEvict(value = "UserNameListVOCache", key = "")
     public JsonVO setUserStatus(@PathVariable Long id, @PathVariable Integer status){
         userService.setUserStatus(id,status);
         return JsonVO.success("状态修改成功");
@@ -91,6 +94,7 @@ public class UserDatasController {
      */
     @PutMapping("/modify-user-info")
     @ApiOperation("修改用户信息")
+    @CacheEvict(value = "UserNameListVOCache", key = "")
     public JsonVO modifyUser(@RequestBody ModifyUserDTO user) {
         itUserService.modifyUser(user);
         return JsonVO.success("修改成功");
@@ -103,6 +107,7 @@ public class UserDatasController {
      */
     @PostMapping("/add-newUser")
     @ApiOperation("新增用户")
+    @CacheEvict(value = "UserNameListVOCache", key = "")
     public JsonVO addUser(@RequestBody CreateUserDTO user) {
         itUserService.saveUser(user);
         return JsonVO.success("新增成功");
@@ -115,6 +120,7 @@ public class UserDatasController {
      */
     @DeleteMapping("/delete-user-list")
     @ApiOperation("批量删除用户")
+    @CacheEvict(value = "UserNameListVOCache", key = "")
     public JsonVO removeUserList(@RequestBody List<Long> ids) {
         itUserService.removeUserList(ids);
         return JsonVO.success("删除成功");
