@@ -1,5 +1,6 @@
 package com.zeroone.star.sysmanager.service;
 
+import com.alibaba.nacos.shaded.com.google.protobuf.ServiceException;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.stopword.StopWordDTO;
@@ -30,5 +31,6 @@ public interface ITStopWordService extends IService<StopWord> {
      * @return DTO
      */
     StopWordDTO findByTitle(String title);
+    boolean addWord(StopWordDTO addWord);
     int updateWord(UpdateWordDTO updateWord);
 }
