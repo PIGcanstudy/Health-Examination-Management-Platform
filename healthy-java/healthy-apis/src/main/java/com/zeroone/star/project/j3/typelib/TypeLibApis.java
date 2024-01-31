@@ -34,13 +34,13 @@ public interface TypeLibApis {
 
 
     /**
-     *@Description: 批量删除类型库
-     *@Param: [typeLibDTO]
-     *@return:com.zeroone.star.project.vo.JsonVO<java.lang.Integer>
-     *@Author: Mr.Lin
-     *@Date: 2024/1/17 13:07
-     */
-    JsonVO<Integer> removeTypeLib(List<TypeLibDeleteDTO> typeLibDeleteDTOS);
+     * @Author car
+     * @Description //TODO 批量删除类型库
+     * @Date 17:45 2024/1/31
+     * @Param [java.lang.String[]]
+     * @return com.zeroone.star.project.vo.JsonVO<java.lang.Integer>
+     **/
+    JsonVO<Integer> removeTypeLib(String[] ids);
     /**
     * @Description: 新增类型
     * @Param:

@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -141,14 +142,18 @@ public class TProTypeServiceImpl extends ServiceImpl<ProTypeMapper, ProType> imp
     }
 
     @Override
-    public Integer removeType(List<TypeLibDeleteDTO> typeLibDeleteDTOS) {
+    public Integer removeType(String[] ids) {
+        //根据id获取对象
+        List<String> list = Arrays.asList(ids);
+        List<ProType> proTypes = baseMapper.selectBatchIds(list);
+        //更新日期 更新标记
+        LocalDateTime now = LocalDateTime.now();
         int i = 0;
-        for (; i < typeLibDeleteDTOS.size(); i++) {
-            TypeLibDeleteDTO typeLibDeleteDTO = typeLibDeleteDTOS.get(i);
-            ProType proType = msTypeMapper.removeTypeDTO(typeLibDeleteDTO);
-            LocalDateTime now = LocalDateTime.now();
+        for ( ;i < proTypes.size(); i++) {
+            ProType proType = proTypes.get(i);
             proType.setDeleteTime(now);
             proType.setDelFlag(1);
+            //根据id更新type
             baseMapper.updateById(proType);
         }
         return i;

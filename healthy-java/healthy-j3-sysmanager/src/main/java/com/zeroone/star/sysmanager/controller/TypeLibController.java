@@ -64,11 +64,11 @@ public class TypeLibController implements TypeLibApis {
     @PostMapping("remove-typelib")
     @ApiOperation("删除节点")
     @Override
-    public JsonVO<Integer> removeTypeLib(List<TypeLibDeleteDTO> typeLibDeleteDTOS) {
-        Integer typeAmount = itProTypeService.removeType(typeLibDeleteDTOS);
+    public JsonVO<Integer> removeTypeLib(@RequestParam String[] ids) {
         JsonVO<Integer> vo = new JsonVO<>();
-        vo.setData(typeAmount);
-        vo.setMessage("删除了"+typeAmount+"节点");
+        Integer i = itProTypeService.removeType(ids);
+        vo.setMessage("删除了"+i+"节点");
+        vo.setData(i);
         return vo;
     }
 

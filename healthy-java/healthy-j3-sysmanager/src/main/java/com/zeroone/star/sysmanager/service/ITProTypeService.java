@@ -32,5 +32,5 @@ public interface ITProTypeService extends IService<ProType> {
 
     typeUpdateVO updateType(typeUpdateDTO typeupdatevo);
 
-    Integer removeType(List<TypeLibDeleteDTO> typeLibDeleteDTOS);
+    Integer removeType(String[] ids);
 }

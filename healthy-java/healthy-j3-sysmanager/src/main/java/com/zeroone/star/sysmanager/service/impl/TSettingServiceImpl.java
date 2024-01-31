@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Calendar;
@@ -50,12 +51,12 @@ public class TSettingServiceImpl extends ServiceImpl<TSettingMapper, TSetting> i
     private TSettingMapper settingMapper;
     @Autowired
     private MySetting mySetting;
-
+    @Resource
+    private UserHolder userHolder;
     @Override
     public JsonVO<SystemNoticeDTO> addSystemNotice(SystemNoticeDTO systemNoticeDTO) throws Exception {
         //获得当前用户
-//        UserDTO currentUser = new UserHolder().getCurrentUser();
-//        systemNoticeDTO.setCreateBy(currentUser.getUsername());
+        systemNoticeDTO.setCreateBy(userHolder.getCurrentUser().getUsername());
         //设置插入时间
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
@@ -88,8 +89,7 @@ public class TSettingServiceImpl extends ServiceImpl<TSettingMapper, TSetting> i
         LocalDateTime date = LocalDateTime.now();
         tSetting.setUpdateTime(date);
         //获得更新人
-//        UserDTO currentUser = new UserHolder().getCurrentUser();
-//        tSetting.setUpdateBy(currentUser.getUsername());
+        systemNoticeDTO.setCreateBy(userHolder.getCurrentUser().getUsername());
         //标记上一个数据已经删除 更新
         settingMapper.updateById(tSetting);
         //插入新公告
