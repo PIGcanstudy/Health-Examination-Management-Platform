@@ -13,9 +13,9 @@ public:
 	// 测试绘制文本
 	static void barcodesText();
 	// 样本条码绘制
-	static void barcodesTpl(oatpp::List<SampleBarcodesViewDTO::Wrapper> ldto,string filename);
+	static bool barcodesTpl(oatpp::List<SampleBarcodesViewDTO::Wrapper> ldto,string filename);
 	//报告预览绘制
-	static void reportTpl(oatpp::List<ReportPreviewViewDTO::Wrapper> rpdto,oatpp::List<T_symptomDTO::Wrapper> tsdto, string filename);
+	static bool reportTpl(oatpp::List<ReportPreviewViewDTO::Wrapper> rpdto,oatpp::List<T_symptomDTO::Wrapper> tsdto, string filename);
 };
 
 #endif // !_TESTPDF_H_

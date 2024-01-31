@@ -28,6 +28,6 @@ public:
 private:
 	StringJsonVO::Wrapper execQueryReportPreview(const ReportPreviewQuery::Wrapper& qdto, const PayloadDTO& payload);
 };
-
+#include OATPP_CODEGEN_END(ApiController) //<- End Codegen
 #endif // !_REPORTPREVIEW_CONTROLLER_
 

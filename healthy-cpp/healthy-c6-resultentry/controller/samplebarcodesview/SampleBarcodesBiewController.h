@@ -28,6 +28,6 @@ public:
 private:
 	StringJsonVO::Wrapper execQuerySampleBarcodesView(const SampleBarcodesViewQuery::Wrapper& qdto, const PayloadDTO& payload);
 };
-
+#include OATPP_CODEGEN_END(ApiController) //<- End Codegen
 #endif // !_SAMPLEBARCODESVIEW_CONTROLLER_
 
