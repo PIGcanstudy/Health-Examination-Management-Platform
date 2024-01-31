@@ -12,9 +12,8 @@ class GroupPersonInfoQuery : public oatpp::DTO
 {
 	DTO_INIT(GroupPersonInfoQuery, DTO);
 
-	// ÐÕÃû
-	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("group_person.field.name"));
+	// Ìå¼ì±àºÅ
+	API_DTO_FIELD_DEFAULT(String, test_num, ZH_WORDS_GETTER("group_person.data.test_num"));
 };
-
 #include OATPP_CODEGEN_END(DTO)
 #endif // !_GROUP_PERSON_INFO_QUERY_

@@ -16,13 +16,13 @@ public: // 定义接口
 	// 定义人员详情查询接口描述
 	ENDPOINT_INFO(queryPersonInfo) {
 		// 定义接口标题
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("group_person.query.info"));
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("group_person.get.info"));
 		// 定义默认授权参数
 		API_DEF_ADD_AUTH();
 		// 定义响应参数格式
 		API_DEF_ADD_RSP_JSON_WRAPPER(GroupPersonInfoJsonVO);
 		// 定义其他查询参数描述
-		API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("group_person.field.name"), ZH_WORDS_GETTER("group_person.example.name"), true);
+		API_DEF_ADD_QUERY_PARAMS(String, "test_num", ZH_WORDS_GETTER("group_person.data.test_num"), ZH_WORDS_GETTER("group_person.example.test_num"), true);
 	};
 
 

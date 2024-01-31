@@ -33,6 +33,7 @@ save:
 group_person:
  get:
   summary: 查询体检人员列表
+  info: 查询人员详情
  field:
   succ: 查询成功
   fail: 查询失败
@@ -45,6 +46,12 @@ group_person:
   is_recheck: 是否复查
   start_regist_date: 开始登记时间
   finish_regist_date: 结束登记时间
+  is_pass: 是否通过检查
+  id_card: 身份证号
+  sex: 性别
+  age: 年龄
+  sporadic_physical: 订单类型
+  create_time: 登记时间
  example:
   name: 张三
   test_num: 0001
