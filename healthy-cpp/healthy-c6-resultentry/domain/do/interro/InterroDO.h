@@ -8,20 +8,35 @@
 */
 class InterroDO
 {
-	// 体检人编号
-	CC_SYNTHESIZE(string, id, Id);
+	// 类别
+	CC_SYNTHESIZE(string, type, Type);
 	// 体检项目
 	CC_SYNTHESIZE(string, project, Project);
+	// 项目编号
+	CC_SYNTHESIZE (string, code, Code);
 	// 危机程度
 	CC_SYNTHESIZE(string, degree, Degree);
-	// 时间
-	CC_SYNTHESIZE(string, time, Time);
+	// 病程时间
+	CC_SYNTHESIZE(string, coursetime, Coursetime);
+	// 人员编号主键
+	CC_SYNTHESIZE(string, personid, Personid);
+	// 创建人-体检医生
+	CC_SYNTHESIZE(string, createid, Createid);
+	//检查医生
+	CC_SYNTHESIZE(string, createname, Createname);
+
 public:
 	InterroDO() {
-		id = "";
+		// id = "";
+		type = "";
 		project = "";
+		code = "";
 		degree = "";
-		time = "";
+		coursetime = "";
+		personid = "";
+		createid = "";
+		createname = "";
+		//createtime = "";
 	}
 };
 
