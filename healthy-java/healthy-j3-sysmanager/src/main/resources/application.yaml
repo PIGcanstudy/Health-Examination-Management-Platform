@@ -5,3 +5,7 @@ server:
   port: ${sp.sys}
   servlet:
     context-path: /sysmanager
+
+application:
+  datacenterId: 2
+  workerId: 1
