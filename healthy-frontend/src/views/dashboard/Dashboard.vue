@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    
     <div class="btn01">
       <el-button @click="enter01" style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
     </div>
@@ -41,6 +42,7 @@
     <div class="icon06">
       <img src="../../assets/dashboard/icon06.png" style="height: 195px; width: 350px" />
     </div>
+
   </div>
 </template>
 
