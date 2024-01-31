@@ -88,7 +88,7 @@ Uint64JsonVO::Wrapper SaveResController::execAddRPProCheck(const RPProCheckDTO::
 	return jvo;
 }
 
-Uint64JsonVO::Wrapper SaveResController::execModifywaiveCheck(const RPProCheckDTO::Wrapper& dto)
+Uint64JsonVO::Wrapper SaveResController::execModifyWaiveCheck(const RPProCheckDTO::Wrapper& dto)
 {
 	// 定义返回数据对象
 	auto jvo = Uint64JsonVO::createShared();

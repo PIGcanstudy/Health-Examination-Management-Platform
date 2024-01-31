@@ -58,7 +58,7 @@ public:
 	// 3.1 定义修改接口描述
 	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("save.put.waiveCheck"), waiveCheck, Uint64JsonVO::Wrapper);
 	// 3.2 定义修改接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/waiveCheck", waiveCheck, BODY_DTO(RPProCheckDTO::Wrapper, dto), execModifywaiveCheck(dto));
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/waiveCheck", waiveCheck, BODY_DTO(RPProCheckDTO::Wrapper, dto), execModifyWaiveCheck(dto));
 	
 private:
 	
@@ -67,7 +67,7 @@ private:
 	// 到检确认
 	Uint64JsonVO::Wrapper execAddRPProCheck(const RPProCheckDTO::Wrapper& dto);
 	// 弃检项目
-	Uint64JsonVO::Wrapper execModifywaiveCheck(const RPProCheckDTO::Wrapper& dto);
+	Uint64JsonVO::Wrapper execModifyWaiveCheck(const RPProCheckDTO::Wrapper& dto);
 };
 
 // 0 取消API控制器使用宏
