@@ -1,25 +1,17 @@
 <!-- 数据网报 -->
 <template>
   <div class="contain">
-    <BaseDataList
-      ref="BaseDataRef"
-      :use-form="useForm"
-      :form-data="formData"
-      :table-data="tableData"
-      :table-column-attribute="tableColumnAttribute"
-      :total="total"
-      :use-pagination="usePagination"
-      :pagination-data="paginationData"
-      :handle-edit="handleEdit"
-      :use-fixed="useFixed"
-      @update-table-data="handlePageChange"
-      @update-selected-rows="selectRows"
-    >
+    <BaseDataList ref="BaseDataRef" :use-form="useForm" :form-data="formData" :table-data="tableData"
+      :table-column-attribute="tableColumnAttribute" :total="total" :use-pagination="usePagination"
+      :pagination-data="paginationData" :handle-edit="handleEdit" :use-fixed="useFixed"
+      @update-table-data="handlePageChange" @update-selected-rows="selectRows">
       <!-- fixed固定列 -->
       <!-- 表格后面的操作选项群 -->
       <template #fixed="{ row }">
         <el-button type="primary" style="margin-right: 5px" @click="handelLook(row)">
-          <el-icon><View></View></el-icon>
+          <el-icon>
+            <View></View>
+          </el-icon>
           查看
         </el-button>
         <el-dropdown>
@@ -33,22 +25,26 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>
-                <el-icon><Edit></Edit></el-icon>
+                <el-icon>
+                  <Edit></Edit>
+                </el-icon>
                 修改
               </el-dropdown-item>
               <el-dropdown-item>
-                <el-icon><DeleteFilled></DeleteFilled></el-icon>
+                <el-icon>
+                  <DeleteFilled></DeleteFilled>
+                </el-icon>
                 删除
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
       </template>
-     
+
       <!-- form表单区域 -->
       <template #form>
         <el-form-item label="企业名称" :style="{ width: '260px' }">
-            <el-select v-model="formData.unitName" placeholder="请选择">
+          <el-select v-model="formData.unitName" placeholder="请选择">
             <el-option label="乐山市峨边盛和矿业" value="乐山市峨边盛和矿业" />
             <el-option label="乐山市峨边盛和农业" value="乐山市峨边盛和农业" />
           </el-select>
@@ -57,79 +53,59 @@
 
         <el-form-item label="体检日期">
           <el-radio-group v-model="formData.checkdate" label="体检日期" size="small">
-           <el-date-picker
-           v-model="formData.checkdate"
-           type="daterange"
-           start-placeholder="开始时间"
-           end-placeholder="结束时间"
-           :size="size"
-          />
-        </el-radio-group>
+            <el-date-picker v-model="formData.checkdate" type="daterange" start-placeholder="开始时间" end-placeholder="结束时间"
+              :size="size" />
+          </el-radio-group>
         </el-form-item>
         <el-form-item label="网传状态">
-          <el-select
-          v-model="formData.webstate"
-          class="m-2"
-          placeholder="请选择"
-          style="width: 240px"
-        >
-            <el-option
-              v-for="item in webstateoptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            />
-        </el-select>
+          <el-select v-model="formData.webstate" class="m-2" placeholder="请选择" style="width: 240px">
+            <el-option v-for="item in webstateoptions" :key="item.value" :label="item.label" :value="item.value" />
+          </el-select>
         </el-form-item>
         <el-form-item label="是否复查" :style="{ width: '200px' }">
-          <el-select
-          v-model="formData.ifcheck"
-          class="m-2"
-          placeholder="请选择"
-          style="width: 240px"
-        >
-            <el-option
-              v-for="item in ifcheckoptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            />
-        </el-select>
+          <el-select v-model="formData.ifcheck" class="m-2" placeholder="请选择" style="width: 240px">
+            <el-option v-for="item in ifcheckoptions" :key="item.value" :label="item.label" :value="item.value" />
+          </el-select>
         </el-form-item>
-     <div  v-if="isShowInput" class="expend">
-      <el-form-item label="订单编号">
-          <el-input v-model="formData.checkid" :style="{ width: '200px' }"></el-input>
-        </el-form-item>
-        <el-form-item label="人员姓名">
-          <el-input v-model="formData. checkname" :style="{ width: '200px' }"></el-input>
-        </el-form-item>
-        <el-form-item label="证件号码">
-          <el-input v-model="formData.identity" :style="{ width: '200px' }"></el-input>
-        </el-form-item>
-        <el-form-item label="体检结论">
-          <el-input v-model="formData.checkresult" :style="{ width: '230px' }"></el-input>
-        </el-form-item>
-        <el-form-item label="主检建议">
-          <el-input v-model="formData.maincheckadvise" :style="{ width: '230px' }"></el-input>
-        </el-form-item>
-      </div>
-        
+        <div v-if="isShowInput" class="expend">
+          <el-form-item label="订单编号">
+            <el-input v-model="formData.checkid" :style="{ width: '200px' }"></el-input>
+          </el-form-item>
+          <el-form-item label="人员姓名">
+            <el-input v-model="formData.checkname" :style="{ width: '200px' }"></el-input>
+          </el-form-item>
+          <el-form-item label="证件号码">
+            <el-input v-model="formData.identity" :style="{ width: '200px' }"></el-input>
+          </el-form-item>
+          <el-form-item label="体检结论">
+            <el-input v-model="formData.checkresult" :style="{ width: '230px' }"></el-input>
+          </el-form-item>
+          <el-form-item label="主检建议">
+            <el-input v-model="formData.maincheckadvise" :style="{ width: '230px' }"></el-input>
+          </el-form-item>
+        </div>
+
         <el-form-item>
           <el-button type="primary">
-            <el-icon><Search></Search></el-icon>
+            <el-icon>
+              <Search></Search>
+            </el-icon>
             搜索
           </el-button>
         </el-form-item>
         <el-form-item>
           <el-button @click="resetForm">重置</el-button>
 
-          <el-button type="text" style="margin-left: 20px" @click="toggleCollapse"
-            >{{ isShowInput ? '收起' : '展开' }}
-            <el-icon v-show="isShowInput === true"><ArrowUp /></el-icon>
-            <el-icon v-show="isShowInput === false"><ArrowDown /></el-icon>
+          <el-button type="text" style="margin-left: 20px" @click="toggleCollapse">{{ isShowInput ? '收起' : '展开' }}
+            <el-icon v-show="isShowInput === true">
+              <ArrowUp />
+            </el-icon>
+            <el-icon v-show="isShowInput === false">
+              <ArrowDown />
+            </el-icon>
           </el-button>
         </el-form-item>
-      </template>                               
+      </template>
 
       <!-- operation功能区域 -->
       <template #operation>
@@ -177,15 +153,12 @@
               </el-col>
               <el-col :span="4">
                 <!-- 上传图片 -->
-                <el-upload
-                  class="avatar-uploader"
-                  action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-                  :show-file-list="false"
-                  :on-success="handleAvatarSuccess"
-                  :before-upload="beforeAvatarUpload"
-                >
+                <el-upload class="avatar-uploader" action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+                  :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
                   <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-                  <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+                  <el-icon v-else class="avatar-uploader-icon">
+                    <Plus />
+                  </el-icon>
                 </el-upload>
               </el-col>
             </el-row>
@@ -205,38 +178,53 @@
             </template>
           </el-dialog>
 
-          
-            <el-button type="primary">
-              <el-icon><Refresh></Refresh></el-icon>数据同步</el-button>
-            <el-button type="danger" dark="true">
-              <el-icon><Refresh></Refresh></el-icon>错误数据同步</el-button>
-            <el-button type="primary">
-              <el-icon><Refresh></Refresh></el-icon>复查数据同步</el-button>
-            <el-button type="danger">
-              <el-icon><Refresh></Refresh></el-icon>复查错误数据同步</el-button>
-            <el-button type="success"  dark="true" style="margin-right: 10px;">
-              <el-icon><Refresh></Refresh></el-icon>自定义上报</el-button>
-          
-          
+
+          <el-button type="primary">
+            <el-icon>
+              <Refresh></Refresh>
+            </el-icon>数据同步</el-button>
+          <el-button type="danger" dark="true">
+            <el-icon>
+              <Refresh></Refresh>
+            </el-icon>错误数据同步</el-button>
+          <el-button type="primary">
+            <el-icon>
+              <Refresh></Refresh>
+            </el-icon>复查数据同步</el-button>
+          <el-button type="danger">
+            <el-icon>
+              <Refresh></Refresh>
+            </el-icon>复查错误数据同步</el-button>
+          <el-button type="success" dark="true" style="margin-right: 10px;">
+            <el-icon>
+              <Refresh></Refresh>
+            </el-icon>自定义上报</el-button>
+
+
 
           <!-- 下拉按钮 -->
           <el-dropdown>
             <el-button style="margin-right: 8px">
               更多操作
-              <el-icon class="el-icon--right"> <arrow-down /> </el-icon
-            ></el-button>
+              <el-icon class="el-icon--right"> <arrow-down /> </el-icon></el-button>
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item>
-                  <el-icon><Refresh></Refresh></el-icon>
+                  <el-icon>
+                    <Refresh></Refresh>
+                  </el-icon>
                   刷新
                 </el-dropdown-item>
                 <el-dropdown-item>
-                  <el-icon><DeleteFilled></DeleteFilled></el-icon>
+                  <el-icon>
+                    <DeleteFilled></DeleteFilled>
+                  </el-icon>
                   批量删除
                 </el-dropdown-item>
                 <el-dropdown-item>
-                  <el-icon><Bottom></Bottom></el-icon>
+                  <el-icon>
+                    <Bottom></Bottom>
+                  </el-icon>
                   导出本页数据
                 </el-dropdown-item>
               </el-dropdown-menu>
@@ -252,7 +240,9 @@
       <template #hint>
         <div v-if="useHint" class="hint">
           <span>
-            <el-icon style="color: blue"><InfoFilled></InfoFilled></el-icon>
+            <el-icon style="color: blue">
+              <InfoFilled></InfoFilled>
+            </el-icon>
             已选择{{ selectedTotal }}项
           </span>
           <el-button type="primary" link style="margin-bottom: 3px" @click="clearRows">清空</el-button>
@@ -265,7 +255,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import {ArrowUp,ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit} from '@element-plus/icons-vue'
+import { ArrowUp, ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit } from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 // 上传图片
 const imageUrl = ref('')
@@ -347,11 +337,11 @@ const formData = reactive({
   checkdate: '',
   webstate: '',
   ifcheck: '',
-  checkid:'',
-  checkname:'',
-  identity:'',
-  checkresult:'',
-  maincheckadvise:''
+  checkid: '',
+  checkname: '',
+  identity: '',
+  checkresult: '',
+  maincheckadvise: ''
 })
 
 const webstateoptions = [
@@ -406,7 +396,7 @@ const basicForm = reactive({
   dangerousNum: ''
 })
 
- 
+
 // 联系人表单
 const contactForm = reactive({
   people: '',
@@ -469,12 +459,14 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.expend{
-  display:isShowInput
+.expend {
+  display: isShowInput
 }
+
 .operation {
   margin-bottom: 10px;
 }
+
 .hint {
   height: 33px;
   line-height: 33px;
@@ -483,11 +475,13 @@ onMounted(() => {
   border-radius: 5px;
   margin-bottom: 10px;
 }
+
 .avatar-uploader .avatar {
   width: 178px;
   height: 178px;
   display: block;
 }
+
 .avatar-uploader .el-upload {
   border: 1px dashed var(--el-border-color);
   border-radius: 6px;
