@@ -1,6 +1,7 @@
 package com.zeroone.star.sysmanager.service.impl;
 
 
+import com.alibaba.cloud.commons.lang.StringUtils;
 import com.alibaba.nacos.shaded.com.google.protobuf.ServiceException;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -61,10 +62,12 @@ public class TStopWordServiceImpl extends ServiceImpl<StopWordMapper, StopWord> 
     @Override
     public PageDTO<StopWordDTO> listpage(StopWordQuery query) {
         //构建分页条件对象
-        Page<StopWord> page = new Page<>(query.getPageSize(),query.getPageIndex());
+        Page<StopWord> page = new Page<>(query.getPageIndex(),query.getPageSize());
         //构建查询条件
         QueryWrapper<StopWord> queryWrapper = new QueryWrapper<>();
+        if (StringUtils.isNotBlank(query.getTitle())) {
         queryWrapper.like("title",query.getTitle());
+        }
         //执行查询
         Page<StopWord> result = baseMapper.selectPage(page,queryWrapper);
         return PageDTO.create(result,src->msStopWordMapper.StopWordToStopWordDTO(src));
