@@ -8,11 +8,11 @@ Uint64JsonVO::Wrapper InterroController::execAddInterro(const InterroDTO::Wrappe
 	auto jvo = Uint64JsonVO::createShared();
 	//参数校验
 	//非空校验 TODO
-	if (!dto->id) {
-		jvo->init(UInt64(-1), RS_PARAMS_INVALID);
-		return jvo;
-	}
-	//有效值校验
+	// if (!dto->id) {
+	// 	jvo->init(UInt64(-1), RS_PARAMS_INVALID);
+	// 	return jvo;
+	// }
+	//有效值校验 TODO
 	//if (dto->age < 0 || dto->name->empty() || dto->sex->empty()) {
 	//	jvo->init(UInt64(-1), RS_PARAMS_INVALID);
 	//	return jvo;
