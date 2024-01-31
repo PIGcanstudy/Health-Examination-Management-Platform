@@ -64,7 +64,7 @@ if(WIN32)
 endif()
 
 # 编译可执行文件
-add_executable (${appName} ${SC_FILES} "dao/review/ReviewMapper.h" "dao/review/ReviewDAO.h" "dao/review/ReviewDAO.cpp" "domain/do/review/ReviewDO.h" "service/review/ReviewService.h" "service/review/ReviewService.cpp" "domain/do/addNewItems/AddNewItemsDO.h" "dao/addNewItems/AddNewItemsDAO.h" "dao/addNewItems/AddNewItemsMapper.h" "dao/addNewItems/AddNewItemsDAO.cpp" "service/addNewItems/AddNewItemsService.cpp" "service/addNewItems/AddNewItemsService.h")
+add_executable (${appName} ${SC_FILES} )
 
 # 链接库
 target_link_libraries (${appName} "lib-common" "lib-oatpp" "lib-mysql")

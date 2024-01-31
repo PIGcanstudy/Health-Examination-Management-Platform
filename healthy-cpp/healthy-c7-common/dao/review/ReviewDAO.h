@@ -15,11 +15,8 @@ public:
 	uint64_t count(const ReviewQuery::Wrapper& query);
 	// 分页查询数据
 	list<ReviewDO> selectWithPage(const ReviewQuery::Wrapper& query);
-	// 通过姓名查询数据
-	//list<ReviewDO> selectByName(const string& name);
-	//此处不需要下面的东西吧？？？？？？？？？？？？？？？？？？？？
-	// 插入数据    在AddNewItems中实现 增加功能，此处应删除
-	//uint64_t insert(const ReviewDO& iObj);
+	// pdf通过姓名查询数据
+	list<ReviewDO> selectByName(const string& name);
 	// 修改数据
 	int update(const ReviewDO& uObj);
 	// 通过ID删除数据

@@ -3,39 +3,58 @@
 #include "../../service/review/ReviewService.h"
 #include "../ApiDeclarativeServicesHelper.h"
 
+//#include "PdfComponent.h"
+//#include "uselib/pdf/ReviewPdf.h"
+// FastDFSä½¿ç”¨éœ€è¦çš„ç›¸å…³å¤´æ–‡ä»¶
+//#include "ServerInfo.h"
+//#include "NacosClient.h"
+//#include "FastDfsClient.h"
+
 ReviewListPageJsonVO::Wrapper ReviewController::execQueryReview(const ReviewQuery::Wrapper& query)
 {
-	// ¶¨ÒåÒ»¸öService
+	// å®šä¹‰ä¸€ä¸ªService
 	ReviewService service;
-	// ²éÑ¯Êı¾İ
+	// æŸ¥è¯¢æ•°æ®
 	auto result = service.listAll(query);
-	// ÏìÓ¦½á¹û
+	// å“åº”ç»“æœ
 	auto jvo = ReviewListPageJsonVO::createShared();
 	jvo->success(result);
 	return jvo;
 }
-//ÔÚAddNewItemsÖĞÊµÏÖ Ôö¼Ó¹¦ÄÜ£¬´Ë´¦Ó¦É¾³ı
+//PDF
+ReviewJsonVO::Wrapper ReviewController::execQueryPdf(const ReviewQuery::Wrapper& query)
+//StringJsonVO::Wrapper ReviewPdfController::execQueryPdf(const String& name)
+{
+	// å®šä¹‰ä¸€ä¸ªService
+	ReviewService service;
+	// æŸ¥è¯¢æ•°æ®
+	auto result = service.listByName(query);
+	auto jvo = ReviewJsonVO::createShared();
+	jvo->success(result);
+	return jvo;
+}
+//åœ¨AddNewItemsä¸­å®ç° å¢åŠ åŠŸèƒ½ï¼Œæ­¤å¤„åº”åˆ é™¤
 //Uint64JsonVO::Wrapper ReviewController::execAddReview(const ReviewListDTO::Wrapper& dto)
 //{
-//	// ¶¨Òå·µ»ØÊı¾İ¶ÔÏó
+//	// å®šä¹‰è¿”å›æ•°æ®å¯¹è±¡
 //	auto jvo = Uint64JsonVO::createShared();
-//	// ²ÎÊıĞ£Ñé
-//	// ·Ç¿ÕĞ£Ñé
+//	// å‚æ•°æ ¡éªŒ
+//	// éç©ºæ ¡éªŒ
 //	if (!dto->checkProjectId || !dto->checkProjectName || !dto->reviewExplain)
 //	{
 //		jvo->init(UInt64(-1), RS_PARAMS_INVALID);
 //		return jvo;
 //	}
-//	// ÓĞĞ§ÖµĞ£Ñé
+//	// æœ‰æ•ˆå€¼æ ¡éªŒ
 //	if (dto->checkProjectId->empty() || dto->checkProjectName->empty() || dto->reviewExplain->empty())
 //	{
 //		jvo->init(UInt64(-1), RS_PARAMS_INVALID);
 //		return jvo;
 //	}
 //
-//	// ¶¨ÒåÒ»¸öService
+//	// å®šä¹‰ä¸€ä¸ªService
 //	ReviewService service;
-//	// Ö´ĞĞÊı¾İĞÂÔö
+//	// æ‰§è¡Œæ•°æ®æ–°å¢
 //	uint64_t id = service.saveData(dto);
 //	if (id > 0) {
 //		jvo->success(UInt64(id));
@@ -44,23 +63,23 @@ ReviewListPageJsonVO::Wrapper ReviewController::execQueryReview(const ReviewQuer
 //	{
 //		jvo->fail(UInt64(id));
 //	}
-//	//ÏìÓ¦½á¹û
+//	//å“åº”ç»“æœ
 //	return jvo;
 //}
-// ĞŞ¸ÄÊı¾İ
+// ä¿®æ”¹æ•°æ®
 StringJsonVO::Wrapper ReviewController::execModifyReview(const ReviewListDTO::Wrapper& dto)
 {
-	// ¶¨Òå·µ»ØÊı¾İ¶ÔÏó
+	// å®šä¹‰è¿”å›æ•°æ®å¯¹è±¡
 	auto jvo = StringJsonVO::createShared();
-	// ²ÎÊıĞ£Ñé
+	// å‚æ•°æ ¡éªŒ
 	if (!dto->id)
 	{
 		jvo->init(String(""), RS_PARAMS_INVALID);
 		return jvo;
 	}
-	// ¶¨ÒåÒ»¸öService
+	// å®šä¹‰ä¸€ä¸ªService
 	ReviewService service;
-	// Ö´ĞĞÊı¾İĞŞ¸Ä
+	// æ‰§è¡Œæ•°æ®ä¿®æ”¹
 	if (service.updateData(dto)) {
 		jvo->success(dto->id);
 	}
@@ -68,23 +87,23 @@ StringJsonVO::Wrapper ReviewController::execModifyReview(const ReviewListDTO::Wr
 	{
 		jvo->fail(dto->id);
 	}
-	// ÏìÓ¦½á¹û
+	// å“åº”ç»“æœ
 	return jvo;
 }
-// É¾³ıÊı¾İ
+// åˆ é™¤æ•°æ®
 StringJsonVO::Wrapper ReviewController::execRemoveReview(const String& id)
 {
-	// ¶¨Òå·µ»ØÊı¾İ¶ÔÏó
+	// å®šä¹‰è¿”å›æ•°æ®å¯¹è±¡
 	auto jvo = StringJsonVO::createShared();
-	// ²ÎÊıĞ£Ñé
+	// å‚æ•°æ ¡éªŒ
 	if (!id)
 	{
 		jvo->init(String(""), RS_PARAMS_INVALID);
 		return jvo;
 	}
-	// ¶¨ÒåÒ»¸öService
+	// å®šä¹‰ä¸€ä¸ªService
 	ReviewService service;
-	// Ö´ĞĞÊı¾İÉ¾³ı
+	// æ‰§è¡Œæ•°æ®åˆ é™¤
 	if (service.removeData(id.getValue(""))) {
 		jvo->success(id);
 	}
@@ -92,6 +111,6 @@ StringJsonVO::Wrapper ReviewController::execRemoveReview(const String& id)
 	{
 		jvo->fail(id);
 	}
-	// ÏìÓ¦½á¹û
+	// å“åº”ç»“æœ
 	return jvo;
 }

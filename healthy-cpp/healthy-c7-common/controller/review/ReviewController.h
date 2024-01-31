@@ -55,21 +55,6 @@ public:
 		// 呼叫执行函数响应结果
 		API_HANDLER_RESP_VO(execQueryReview(userQuery));
 	}
-	//在AddNewItems中实现 增加功能，此处应删除
-	// 3.1 定义新增接口描述
-	//ENDPOINT_INFO(addReview) {
-		// 定义接口标题
-		//API_DEF_ADD_TITLE(ZH_WORDS_GETTER("review.post.summary"));
-		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
-		//API_DEF_ADD_AUTH();
-		// 定义响应参数格式
-		//API_DEF_ADD_RSP_JSON_WRAPPER(Uint64JsonVO);
-	//}
-	// 3.2 定义新增接口处理
-	//ENDPOINT(API_M_POST, "/review/post-addNewItems", addReview, BODY_DTO(ReviewListDTO::Wrapper, dto), API_HANDLER_AUTH_PARAME) {
-		// 呼叫执行函数响应结果
-		//API_HANDLER_RESP_VO(execAddReview(dto));
-	//}
 	
 	// 3.1 定义修改接口描述
 	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("review.put.summary"), modifyReview, Uint64JsonVO::Wrapper);
@@ -85,16 +70,38 @@ public:
 	}
 	// 3.2 定义删除接口处理
 	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/review/{id}", removeReview, PATH(String, id), execRemoveReview(id));
-	
+
+	// 3.1 定义Pdf接口描述
+	ENDPOINT_INFO(queryPdf) {
+		// 定义接口标题
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("review.pdf.summary"));
+		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
+		API_DEF_ADD_AUTH();
+		// 定义响应参数格式
+		API_DEF_ADD_RSP_JSON_WRAPPER(ReviewJsonVO);
+		// 定义分页查询参数描述
+		//API_DEF_ADD_PAGE_PARAMS();
+		// 定义其他查询参数描述
+		API_DEF_ADD_QUERY_PARAMS(String, "personName", ZH_WORDS_GETTER("review.field.personName"), "li ming", false);
+		//API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("review.field.personId"), "0001", false);
+	}
+	// 3.2 定义Pdf接口处理
+	ENDPOINT(API_M_GET, "/review/pdf-review", queryPdf, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
+		// 解析查询参数为Query领域模型
+		API_HANDLER_QUERY_PARAM(pdfQuery, ReviewQuery, queryParams);
+		// 呼叫执行函数响应结果
+		API_HANDLER_RESP_VO(execQueryPdf(pdfQuery));
+	}
+
 private: //定义接口执行函数
 	// 3.3 分页查询数据
 	ReviewListPageJsonVO::Wrapper execQueryReview(const ReviewQuery::Wrapper& query);
-	// 3.3 新增数据  在AddNewItems中实现 增加功能，此处应删除
-	//Uint64JsonVO::Wrapper execAddReview(const ReviewListDTO::Wrapper& dto);
 	// 3.3 修改数据
 	StringJsonVO::Wrapper execModifyReview(const ReviewListDTO::Wrapper& dto);
 	// 3.3 删除数据
 	StringJsonVO::Wrapper execRemoveReview(const String& id);
+	// 3.3 Pdf
+	ReviewJsonVO::Wrapper execQueryPdf(const ReviewQuery::Wrapper& query);
 };
 
 #include OATPP_CODEGEN_END(ApiController)

@@ -27,7 +27,7 @@ class ReviewQuery : public PageQuery {
 	//登记日期create_time datetime '创建日期',
 	API_DTO_FIELD_DEFAULT(String, createTime, ZH_WORDS_GETTER("review.field.createTime"));
 	//登记状态state int '审核状态
-	API_DTO_FIELD_DEFAULT(UInt64, state, ZH_WORDS_GETTER("review.field.state"));
+	API_DTO_FIELD_DEFAULT(UInt32, state, ZH_WORDS_GETTER("review.field.state"));
 	//危害因素hazard_factor_code varchar(255)   t_review_person中有hazard_factor_code
 	API_DTO_FIELD_DEFAULT(String, hazardFactorCode, ZH_WORDS_GETTER("review.field.hazardFactorCode"));
 	//操作

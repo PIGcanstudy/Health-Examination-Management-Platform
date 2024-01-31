@@ -23,10 +23,13 @@ class ReviewDO
 	//登记日期create_time datetime '创建日期'
 	CC_SYNTHESIZE(string, createTime, CreateTime);
 	//登记状态state int 审核状态
-	CC_SYNTHESIZE(uint64_t, state, State);
+	CC_SYNTHESIZE(int, state, State);
 	//危害因素hazard_factor_code varchar(255)   t_review_person中有hazard_factor_code
 	CC_SYNTHESIZE(string, hazardFactorCode, HazardFactorCode);
 	//操作
+	
+	// PDF地址
+	CC_SYNTHESIZE(string, downloadUrl, downloadUrl);
 
 public:
 	ReviewDO() {
@@ -40,6 +43,7 @@ public:
 		createTime = "";
 		state = 0;
 		hazardFactorCode = "";
+		downloadUrl = "";
 	}
 };
 

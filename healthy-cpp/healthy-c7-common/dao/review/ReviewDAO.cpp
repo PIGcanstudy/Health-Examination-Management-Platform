@@ -69,29 +69,18 @@ list<ReviewDO> ReviewDAO::selectWithPage(const ReviewQuery::Wrapper& query)
 	return sqlSession->executeQuery<ReviewDO, ReviewMapper>(sqlStr, mapper, params);
 }
 // 通过姓名查询数据
-//list<ReviewDO> ReviewDAO::selectByName(const string& name)
-//{
-//	string sql = "SELECT b.person_name,a.check_project_name,a.review_explain,a.review_time,a.create_time,a.state,b.hazard_factor_code FROM t_review_record AS a JOIN t_review_person AS b ON a.id = b.id WHERE b.person_name LIKE CONCAT('%',?,'%')"; 
-//	//string sql = "SELECT DISTINCT person_name,check_project_name,review_explain,a.review_time,create_time,state,hazard_factor_code FROM 0125 WHERE person_name=123";
-//	//string sql = "SELECT id,person_id,check_project_id,check_project_name,review_explain,review_time,create_time,state FROM t_review_record WHERE `name` LIKE CONCAT('%',?,'%')";
-//	ReviewMapper mapper;
-//	return sqlSession->executeQuery<ReviewDO, ReviewMapper>(sql, mapper, "%s", name);
-//}
-//此处不需要下面的东西吧？？？？？？？？？？？？
-//// 插入数据       在AddNewItems中实现 增加功能，此处应删除
-//uint64_t ReviewDAO::insert(const ReviewDO& iObj)
-//{
-//	string sql = "INSERT INTO `t_review_record` (`name`, `sex`, `age`) VALUES (?, ?, ?)";
-//	return sqlSession->executeInsert(sql, "%s%s%i", iObj.getName(), iObj.getSex(), iObj.getAge());
-//}
+list<ReviewDO> ReviewDAO::selectByName(const string& name)
+{
+	string sql = "SELECT b.person_name,a.check_project_name,a.review_explain,a.review_time,a.create_time,a.state,b.hazard_factor_code FROM t_review_record AS a JOIN t_review_person AS b ON a.person_id = b.id WHERE b.person_name LIKE CONCAT('%',?,'%')"; 
+	ReviewMapper mapper;
+	return sqlSession->executeQuery<ReviewDO, ReviewMapper>(sql, mapper, "%s", name);
+}
 // 修改数据  下面代码不能同时修改多个表中的数据
 int ReviewDAO::update(const ReviewDO& uObj)
 {
 	//person_name  hazard_factor_code不在该表中，无法修改  swagger上显示的这两个字段，可以直接无视
-	//string sql = "UPDATE `t_review_record` SET `person_name`=?, `person_id`=?, `check_project_id`=?, `check_project_name`=?, `review_explain`=?, `review_time`=?, `create_time`=?, `state`=?, `hazard_factor_code`=? WHERE `id`=?";
-	//return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%s%ull%s%s", uObj.getPersonName(), uObj.getPersonId(), uObj.getCheckProjectId(), uObj.getCheckProjectName(), uObj.getReviewExplain(), uObj.getReviewTime(), uObj.getCreateTime(), uObj.getState(), uObj.getHazardFactorCode(), uObj.getId());
 	string sql = "UPDATE `t_review_record` SET `person_id`=?,`check_project_id`=?, `check_project_name`=?, `review_explain`=?, `review_time`=?, `create_time`=?, `state`=? WHERE `id`=?";
-	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%ull%s", uObj.getPersonId(), uObj.getCheckProjectId(), uObj.getCheckProjectName(), uObj.getReviewExplain(), uObj.getReviewTime(), uObj.getCreateTime(), uObj.getState(), uObj.getId());
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%s%s%i%s", uObj.getPersonId(), uObj.getCheckProjectId(), uObj.getCheckProjectName(), uObj.getReviewExplain(), uObj.getReviewTime(), uObj.getCreateTime(), uObj.getState(), uObj.getId());
 
 }
 // 通过ID删除数据
