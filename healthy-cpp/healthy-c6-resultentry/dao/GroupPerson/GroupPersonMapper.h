@@ -12,8 +12,8 @@ public:
 	{
 		GroupPersonDO data;
 		data.setName(resultSet->getString(1));
-		data.setAge(resultSet->getInt(2));
-		data.setSex(resultSet->getString(3));
+		data.setSex(resultSet->getString(2));
+		data.setAge(resultSet->getInt(3));
 		data.setPhysical_type(resultSet->getString(4));
 		data.setSporadic_physical(resultSet->getInt(5));
 		return data;
