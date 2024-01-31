@@ -10,7 +10,7 @@ class PreviewReportPdf
 {
 public:
 	// Ä£°å»æÖÆ
-	static void PreviewReportTpl(const PreviewReportDO & Do);
+	static void PreviewText(const PreviewReportDO & Do);
 };
 
 #endif // !_PREVIEWREPORT_PDF_H_
