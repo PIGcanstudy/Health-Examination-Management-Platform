@@ -17,7 +17,12 @@
           <!-- 多选列 -->
           <el-table-column v-if="useSelection" type="selection"></el-table-column>
           <!-- 表格内容 -->
-          <el-table-column v-for="item in props.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label" :width="item.width" :align="item.align" />
+          <el-table-column v-for="item in props.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label" :width="item.width" :align="item.align">
+            <!-- 是否使用switch开关 -->
+            <template v-if="item.useSwitch" #default="{ row }">
+              <el-switch :model-value="row[item.prop] ? true : false" inline-prompt active-text="启用" inactive-text="停用" size="large" @change="(state) => emits('updateSwitchState', state, row)" />
+            </template>
+          </el-table-column>
           <!-- 固定列 -->
           <el-table-column v-if="props.useFixed" fixed="right" label="操作" width="220">
             <template #default="{ row }">
@@ -90,11 +95,16 @@ const props = defineProps({
   usePagination: {
     type: Boolean,
     default: true
+  },
+  // 是否使用关凯
+  useSwitch: {
+    type: Boolean,
+    default: false
   }
   // handleEdit: Function,
   // handleDelete: Function
 })
-const emits = defineEmits(['updateTableData', 'update:modelValue', 'update-table-data', 'update-selected-rows'])
+const emits = defineEmits(['updateTableData', 'update:modelValue', 'update-table-data', 'update-selected-rows', 'updateSwitchState'])
 // 实现 form表单v-model 逻辑
 watch(
   () => props.formData,
