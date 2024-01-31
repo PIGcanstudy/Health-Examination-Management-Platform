@@ -1,6 +1,5 @@
 package com.zeroone.star.TemplateManagement.controller;
 
-import cn.hutool.core.date.DateTime;
 import com.zeroone.star.TemplateManagement.service.templateService;
 import com.zeroone.star.project.components.fastdfs.FastDfsClientComponent;
 import com.zeroone.star.project.components.fastdfs.FastDfsFileInfo;
@@ -55,9 +54,9 @@ public class TemplateController implements TemplateApis {
         return JsonVO.success(templateService.getPortfolioItemById(templateId));
     }
     @ApiOperation("删除模板")
-    @GetMapping("delete")
+    @PostMapping("delete")
     @Override
-    public JsonVO<ResultStatus> deleteTemplate(List<String> terplateIds) {
+    public JsonVO<ResultStatus> deleteTemplate(@RequestBody List<String> terplateIds) {
         List<TemplateDto> templateDtos = templateService.listByIds(terplateIds);
         List<String> paths = templateDtos.stream().map(templateDto -> templateDto.getContent()).collect(Collectors.toList());
         paths.stream().forEach(path->
@@ -79,15 +78,14 @@ public class TemplateController implements TemplateApis {
     @Override
     @PostMapping("update")
     @ApiOperation("更新模板")
-    public JsonVO<ResultStatus> updateTemplate(TemplateDto templateDto) {
-
+    public JsonVO<ResultStatus> updateTemplate(@RequestBody TemplateDto templateDto) {
         boolean result = templateService.updateById(templateDto);
         if (result)return new JsonVO<>(200, "ok", ResultStatus.SUCCESS);
         else  return JsonVO.fail(null);
     }
 
     @PostMapping("upload")
-
+    @ApiOperation("上传模板文件")
     public JsonVO<String> uploadFile(MultipartFile file) throws Exception {
         // 获取上传文件的后缀名
         String filename = file.getOriginalFilename();
@@ -105,16 +103,18 @@ public class TemplateController implements TemplateApis {
 
     @GetMapping(value = "download")
     @ApiOperation(value = "下载")
-    public ResponseEntity<byte[]> downloadImage(String path) throws Exception {
+    public ResponseEntity<byte[]> downloadImage(String templateId) throws Exception {
+        TemplateDto templateDto = templateService.getById(templateId);
+        String path = templateDto.getContent();
         String group = path.substring(0,path.lastIndexOf("|"));
-        String id = path.substring(path.lastIndexOf("|")+1);
+        String storageid = path.substring(path.lastIndexOf("|")+1);
         // 下载文件
-        byte[] fc = dfs.downloadFile(FastDfsFileInfo.builder().storageId(id).group(group).build());
+        byte[] fc = dfs.downloadFile(FastDfsFileInfo.builder().storageId(storageid).group(group).build());
         // 响应给前端
         HttpHeaders headers = new HttpHeaders();
-        String filename = "img-" + DateTime.now().toString("yyyyMMddHHmmssS") + ".jpg";
+        String filename = templateDto.getContentName();
         headers.setContentDispositionFormData("attachment", filename);
-        headers.setContentType(MediaType.IMAGE_JPEG);
+        headers.setContentType(MediaType.APPLICATION_PDF);
         return new ResponseEntity<>(fc, headers, HttpStatus.CREATED);
     }
 
