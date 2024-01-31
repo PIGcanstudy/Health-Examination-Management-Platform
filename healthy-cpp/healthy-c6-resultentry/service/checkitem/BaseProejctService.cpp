@@ -11,15 +11,15 @@ BaseProjectPageDTO::Wrapper BaseProjectService::listAll(const BaseProjectQuery::
 
 	// 查询数据总条数
 	BaseProjectDAO dao;
-	/*uint64_t count = dao.count(query);
+	uint64_t count = dao.count(query);
 	if (count <= 0)
 	{
 		return pages;
-	}*/
+	}
 
 	// 查询数据
-	//pages->total = count;
-	//pages->calcPages();
+	pages->total = count;
+	pages->calcPages();
 	list<BaseProjectDO> result = dao.selectWithPage(query);
 	// 将DO转换成DTO
 	for (BaseProjectDO sub : result)
