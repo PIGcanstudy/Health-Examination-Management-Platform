@@ -1,8 +1,10 @@
 package com.zeroone.star.portfolioitems;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * <p>
@@ -14,6 +16,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @author 阿伟学长
  * @version 1.0.0
  */
+@MapperScan("com.zeroone.star.portfolioitems.mapper")
 @SpringBootApplication
 @EnableDiscoveryClient
 public class PortfolioitemsApplication {
