@@ -68,7 +68,7 @@ list<ReviewDO> ReviewDAO::selectWithPage(const ReviewQuery::Wrapper& query)
 	string sqlStr = sql.str();
 	return sqlSession->executeQuery<ReviewDO, ReviewMapper>(sqlStr, mapper, params);
 }
-// 通过姓名查询数据
+// pdf使用 通过姓名查询数据
 list<ReviewDO> ReviewDAO::selectByName(const string& name)
 {
 	string sql = "SELECT b.person_name,a.check_project_name,a.review_explain,a.review_time,a.create_time,a.state,b.hazard_factor_code FROM t_review_record AS a JOIN t_review_person AS b ON a.person_id = b.id WHERE b.person_name LIKE CONCAT('%',?,'%')"; 

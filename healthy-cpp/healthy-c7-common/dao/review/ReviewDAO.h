@@ -15,7 +15,7 @@ public:
 	uint64_t count(const ReviewQuery::Wrapper& query);
 	// 分页查询数据
 	list<ReviewDO> selectWithPage(const ReviewQuery::Wrapper& query);
-	// pdf通过姓名查询数据
+	// pdf使用 通过姓名查询数据
 	list<ReviewDO> selectByName(const string& name);
 	// 修改数据
 	int update(const ReviewDO& uObj);

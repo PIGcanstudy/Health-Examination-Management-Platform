@@ -48,30 +48,6 @@ void addBarCodeToPdf(PdfComponent* pdf) {
 	}
 }
 
-//void ReviewPdf::testText(const List<Object<ReviewListDTO>>& reviewList)
-//{
-//	PdfComponent pdf;
-//	// 创建一个页面
-//	HPDF_Page newPage = pdf.getNewPage();
-//	// 设置页面字体
-//	HPDF_Page_SetFontAndSize(newPage, pdf.getCnSFont("SimSun"), 20);
-//	// 绘制字体
-//	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.title"), HPDF_Page_GetHeight(newPage) - 20);
-//	// 使用reviewList进行字体绘制
-//	for (auto it = reviewList->begin(); it != reviewList->end(); ++it) {
-//		const auto& j = *it;
-//		pdf.drawTextCenter(j->personName);
-//		pdf.drawTextCenter(j->checkProjectName);
-//		pdf.drawTextCenter(j->reviewExplain);
-//		pdf.drawTextCenter(j->reviewTime);
-//		pdf.drawTextCenter(j->createTime);
-//		pdf.drawTextCenter(j->hazardFactorCode);
-//	}
-//	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.foot"), 20);
-//	// 保存到文件
-//	pdf.saveDocToFile("test-text.pdf");
-//}
-
 void ReviewPdf::reviewText(const ReviewDO& Do)
 {
 	PdfComponent pdf;
@@ -93,7 +69,6 @@ void ReviewPdf::reviewText(const ReviewDO& Do)
 }
 
 void ReviewPdf::reviewTpl(const ReviewDO& Do)
-//void ReviewPdf::reviewTpl()
 {
 	// 测试注册渲染模板
 	PdfComponent::registerTplRender("ReviewReport", [](YAML::Node* node, PdfComponent* pdf, void* realData)

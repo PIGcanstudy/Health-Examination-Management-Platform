@@ -11,7 +11,6 @@ public:
 	// Ä£°å»æÖÆ
 	static void reviewText(const ReviewDO& Do);
 	static void reviewTpl(const ReviewDO& Do);
-	//static void reviewTpl();
 };
 
 #endif // !_REVIEWPDF_H_

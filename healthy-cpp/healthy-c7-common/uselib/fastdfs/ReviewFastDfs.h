@@ -9,8 +9,6 @@ using namespace std;
  */
 class ReviewFastDfs {
 public:
-	//static void testDfs(string fileName);
-	//static void testDfsWithConf(string fileName);
 	static string ReviewDfsWithConf(string fileName);
 };
 

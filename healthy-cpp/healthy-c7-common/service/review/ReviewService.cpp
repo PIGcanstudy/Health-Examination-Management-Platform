@@ -34,8 +34,7 @@ ReviewListPageDTO::Wrapper ReviewService::listAll(const ReviewQuery::Wrapper& qu
 	}
 	return pages;
 }
-// Pdf
-//list<ReviewDO> ReviewService::listByName(const ReviewQuery::Wrapper& query)
+// Pdf使用
 ReviewListDTO::Wrapper ReviewService::listByName(const ReviewQuery::Wrapper& query)
 {
 	// 构建返回对象
@@ -51,7 +50,6 @@ ReviewListDTO::Wrapper ReviewService::listByName(const ReviewQuery::Wrapper& que
 		pdf.reviewText(sub);
 		//pdf.reviewTpl(sub);
 		dto->downloadUrl = FastDfs.ReviewDfsWithConf("ReviewReport.pdf");
-		//ZO_STAR_DOMAIN_DO_TO_DTO(dto, sub, personName, PersonName, checkProjectName, CheckProjectName, reviewExplain, ReviewExplain, reviewTime, ReviewTime, createTime, CreateTime, state, State, hazardFactorCode, HazardFactorCode)
 		pages = dto;
 	}
 	return pages;

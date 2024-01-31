@@ -31,7 +31,7 @@ class ReviewListDTO : public oatpp::DTO
 	API_DTO_FIELD_DEFAULT(String, hazardFactorCode, ZH_WORDS_GETTER("review.field.hazardFactorCode"));
 	//操作
 
-	//downloadUrl
+	//pdf downloadUrl
 	API_DTO_FIELD_DEFAULT(String, downloadUrl, ZH_WORDS_GETTER("review.field.pdfDownloadUrl"));
 };
 
