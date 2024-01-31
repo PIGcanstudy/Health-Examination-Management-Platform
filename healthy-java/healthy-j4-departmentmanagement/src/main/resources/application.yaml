@@ -1,5 +1,0 @@
-server:
-  port: ${sp.departmentmanagement}
-spring:
-  application:
-    name: ${sn.departmentmanagement}

@@ -42,8 +42,7 @@
         <module>healthy-login</module>
         <module>healthy-j4-portfolioitems</module>
         <module>healthy-j4-configmanager</module>
-        <module>healthy-j4-departmentmanagement</module>
-        <module>healthy-j4-terminologymanagement</module>
+        <module>healthy-j4-SectionOffice</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
