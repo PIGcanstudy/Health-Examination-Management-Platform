@@ -7,6 +7,11 @@
 #include "domain/vo/checks/CheckReportVO.h"
 #include "domain/dto/checks/CheckReportListDTO.h"
 
+/*
+* contrller 获取报告列表类
+* 负责人Z
+*/
+
 // 定义API控制器使用的宏
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
