@@ -14,6 +14,8 @@ import { Fold } from '@element-plus/icons-vue'
 import { ArrowLeftBold } from '@element-plus/icons-vue'
 import { ArrowRightBold } from '@element-plus/icons-vue'
 import { Plus } from '@element-plus/icons-vue'
+import { Grid } from '@element-plus/icons-vue'
+import { UserFilled } from '@element-plus/icons-vue'
 
 export default (app) => {
   app.component('IconMenu', Menu)
@@ -30,4 +32,6 @@ export default (app) => {
   app.component('IconArrowLeftBold', ArrowLeftBold)
   app.component('IconArrowRightBold', ArrowRightBold)
   app.component('IconArrowPlus', Plus)
+  app.component('IconGrid', Grid)
+  app.component('IconUserFilled', UserFilled)
 }

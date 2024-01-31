@@ -12,7 +12,7 @@ const routes = [
       {
         path: '/marketingmanagement/InspectionOrder.vue',
         name: 'marketingmanagementinspectionorder',
-        component: () => import('@/views/marketingmanagement/InspectionOrder.vue')
+        component: () => import('@/views/healthcheck/GroupOrder.vue')
       },
       {
         path: '/marketingmanagement/OrderApproval.vue',
