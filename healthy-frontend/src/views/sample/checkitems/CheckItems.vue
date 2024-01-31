@@ -150,16 +150,6 @@ const selectDown =[
   }
 ]
 
-
-
-
-
-
-
-
-
-
-
 </script>
 
 <style lang="scss" ></style>
