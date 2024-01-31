@@ -36,14 +36,16 @@ public class DirectSourceController implements DirectSourceApis {
     @PostMapping("/addDictData")
     @Override
     public JsonVO<Boolean> AddDictData(AddDictDataDTO addDictDataDTO) {
-        return null;
+        JsonVO<Boolean> booleanJsonVO = itDictDataService.AddDictData(addDictDataDTO);
+        return booleanJsonVO;
     }
 
     @ApiOperation("修改字典数据")
     @PostMapping ("/modifyDictData")
     @Override
     public JsonVO<Boolean> ModifyDictData(ModifyDictData modifyDictData) {
-        return null;
+        JsonVO<Boolean> booleanJsonVO = itDictDataService.ModifyDictData(modifyDictData);
+        return booleanJsonVO;
     }
 
 
