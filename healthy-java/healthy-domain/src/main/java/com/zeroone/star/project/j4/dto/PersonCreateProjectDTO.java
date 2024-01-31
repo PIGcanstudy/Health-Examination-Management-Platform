@@ -8,7 +8,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.math.BigDecimal;
- import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
  */
 @Data
 @ApiModel(value = "新建项目模型", description = "")
-public class TPortfolioProjectDTO {
+public class PersonCreateProjectDTO {
 
         private static final long serialVersionUID = 1L;
 
@@ -109,11 +110,11 @@ public class TPortfolioProjectDTO {
 
         @ApiModelProperty(value = "下级数据")
         @TableField(exist = false)
-        private List<TPortfolioProjectDTO> children = new ArrayList<>();
+        private List<PersonCreateProjectDTO> children = new ArrayList<>();
 
         @ApiModelProperty(value = "已绑定项目")
         @TableField(exist = false)
-        private List<TPortfolioProjectDTO> projectList = new ArrayList<>();
+        private List<PersonCreateProjectDTO> projectList = new ArrayList<>();
 
         @ApiModelProperty(value = "折扣")
         @TableField(exist = false)
@@ -139,6 +140,6 @@ public class TPortfolioProjectDTO {
         private String deptName;
 
 
-        public TPortfolioProjectDTO() {
+        public PersonCreateProjectDTO() {
         }
 }
