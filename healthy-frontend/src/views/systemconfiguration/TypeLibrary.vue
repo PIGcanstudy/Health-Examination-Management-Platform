@@ -1,352 +1,360 @@
-<!-- 类型库 -->
+<!--
+ * @Author: setti5 2283356040@qq.com
+ * @Date: 2024-01-30 15:48:01
+ * @LastEditors: setti5 2283356040@qq.com
+ * @LastEditTime: 2024-01-30 21:08:00
+ * @FilePath: \zero-one-healthy-check\healthy-frontend\src\views\basicdata\SampleLibrary.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!-- 样本库 -->
 <template>
-    <div>
-      <el-form :inline="true" :model="formInlineLxk" class="demo-form-inline">
-    <el-form-item label="类型名称:" class="bold-label">
-      <!-- 关键字输入框 -->
-      <el-input
-        v-model="formInlineLxk.lxmc"
-        class="suibian"
-        width="50px"
-        placeholder="请输入"
-        :suffix-icon="Search"
-      />
-    </el-form-item>
-<!-- 套餐项目-所属科室-下拉菜单 -->
-<el-form-item label="类型编码" class="bold-label">
-      <!-- 关键字输入框 -->
-      <el-input
-        v-model="formInlineLxk.lxbm"
-        class="suibian"
-        width="50px"
-        placeholder="请输入"
-        :suffix-icon="Search"
-      />
-</el-form-item>
-  <!-- 套餐项目-from表单-按钮 -->
-    <el-form-item>
-      <el-button type="primary" :icon="Search" @click="handleSearchLxk">搜索</el-button>
-      <el-button plain @click="handleCzLxk">重置</el-button>
-      <div >
-      <NewButtonHx :sylxsw="sylxsw" />
-    </div>
-    </el-form-item>
-  </el-form>
-
-    <el-button type="primary" style="margin-right: 10px" @click="dialogFormVisible = true">
-      <el-icon style="margin-right: 5px"><Plus /></el-icon>
-      新增
-    </el-button>
-
-    <el-select placeholder="更多操作" style="width: 100px" v-if="!isOnlyShowButton">
-      <el-option @click="dialogFormVisible = true">
-        <el-icon style="margin-right: 5px"><icon-refresh /></el-icon>
-        刷新
-      </el-option>
-      <el-option @click="dialogFormVisible = true">
-        <el-icon style="margin-right: 5px"><icon-bottom /></el-icon>
-        导出本页数据
-      </el-option>
-    </el-select>
-
-     <!-- 对话框 -->
-     <el-dialog v-model="dialogFormVisible" title="新增" width="1025px">
-
-      <!-- 表单 -->
-      <el-form :label-position="right" :inline="true" :model="formInline" class="demo-form-inline">
-        <el-col :span="24">
-        <el-form-item  label="类型名称" class="bold-label">
-          <el-input v-model="formInline.lxmc" placeholder="请输入类型名称" />
-</el-form-item>
-</el-col>
-<el-form-item  label="类型编码" class="bold-label">
-  <el-input v-model="formInline.lxbm" placeholder="请输入类型编码" />
-</el-form-item>
-<el-form-item  label="上级类型" class="bold-label">
-      <el-select v-model="formInline.sjlx" class="m-2" placeholder="请选择" size="large" style="width: 240px">
-    <el-option v-for="item in sjlxsw " :key="item" :label="item.label" :value="item.value"/>
-  </el-select>
-</el-form-item>
-  <el-form-item label="排序" default="0">
-      <el-input v-model="formInline.px" />
-</el-form-item>
-  <el-form-item label="备注">
-      <el-input v-model="formInline.bz" type="textarea" placeholder="请输入备注"/>
-  </el-form-item>
-</el-form>
-
-      <!-- 底栏 -->
-      <template #footer>
-        <span class="dialog-footer">
-          <el-button
-            @click="dialogFormVisible = false;resetFrom()"
-            >取消</el-button
-          >
-          <el-button
-            type="primary"
-            @click="onSubmit();resetFrom()"
-          >
-            提交
+  <div class="container">
+    <BaseDataList
+      ref="BaseDataRef"
+      :use-form="useForm"
+      :childrenData="childrenData"
+      :form-data="formData"
+      :table-data="tableData"
+      :table-column-attribute="tableColumnAttribute"
+      :total="total"
+      :use-pagination="usePagination"
+      :pagination-data="paginationData"
+      :handle-edit="handleEdit"
+      :use-fixed="useFixed"
+      @update-table-data="handlePageChange"
+      @update-selected-rows="selectRows"
+      @update-selected-row="selectRow"
+    >
+      <!-- fixed固定列 -->
+      <template #fixed="{ row }">
+        <el-button type="primary" style="margin-right: 5px" @click="handelLook(row)">
+          <el-icon><View></View></el-icon>
+          查看
+        </el-button>
+        <el-dropdown>
+          <el-button>
+            更多操作
+            <el-icon class="el-icon--right">
+              <arrow-down />
+            </el-icon>
           </el-button>
-        </span>
+
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item @click.native="editLxk(row)">
+                <el-icon><Edit></Edit></el-icon>
+                修改
+              </el-dropdown-item>
+              <el-dropdown-item @click.native="delLxk">
+                <el-icon><DeleteFilled></DeleteFilled></el-icon>
+                删除
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </template>
-    </el-dialog>
-    </div>
-  
- <!-- 类型库-表格数据table -->
- <el-table
-    ref="multipleTableRefForLxk"
-    :data="tableDataForLxk.slice((currentPage4 - 1) * pageSize4,currentPage4 * pageSize4)"
-    style="width: 100%"
-    :row-class-name="tableRowClassName"
-    @select="selectTc"
-    @selection-change="handleSelectionChangeForTc"
-  >
-    <!-- 单选框 -->
-    <el-table-column type = "selection" label="单选框选择" width="180" />
-    <el-table-column v-for="lieColumn in tableLieForLxk" :key="lieColumn" :prop="lieColumn.prop" :label="lieColumn.label"  />
-    <el-table-column prop="cz" label="操作" v-if="EditDButtonShow">
-      <template #default="scope" >
-        <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
-          >编辑</el-button
-        >
-        <el-button
-          size="small"
-          type="danger"
-          @click="handleDelete(scope.$index, scope.row)"
-          >删除</el-button
-        >
+
+      <!-- form表单区域 -->
+      <template #form>
+        <el-form-item label="类型名称">
+          <el-input v-model="formData.SampleName"></el-input>
+        </el-form-item>
+        <el-form-item label="类型编码">
+          <el-input v-model="formData.SampleCode"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary">
+            <el-icon><Search></Search></el-icon>
+            搜索
+          </el-button>
+        </el-form-item>
+        <el-form-item>
+          <el-button @click="resetForm">重置</el-button>
+        </el-form-item>
       </template>
-    </el-table-column>
-  </el-table>
-  <el-pagination
-      v-model:current-page="currentPage4"
-      v-model:page-size="pageSize4"
-      :page-sizes="[10, 20, 50, 100]"
-      :small="small"
-      :disabled="disabled"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total= tableDataForLxk.length
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    />
+
+      <!-- operation功能区域 -->
+      <template #operation>
+        <div class="operation">
+          <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true">
+            <el-icon><Plus></Plus></el-icon>
+            新增
+          </el-button>
+          <!-- 新增对话框区域 -->
+          <el-dialog v-model="dialogVisible" title="新增" width="60%" :before-close="handleClose">
+            <el-row data="rowData">
+              <el-col :span="20">
+                <el-form :model="basicForm" inline>
+                  <el-form-item >
+                    <el-input type="hidden" v-model="basicForm.id"  style="width: 232px" disabled=isDisabled></el-input>
+                  </el-form-item>
+                  <el-form-item label="类型名称" :label-width="labelWidth">
+                    <el-input v-model="basicForm.lxmc" placeholder="请输入类型名称" style="width: 232px" disabled=isDisabled></el-input>
+                  </el-form-item>
+                  <el-form-item label="类型编码" :label-width="labelWidth">
+                    <el-input v-model="basicForm.lxbm" placeholder="请输入类型编码" style="width: 232px" disabled=isDisabled></el-input>
+                  </el-form-item>
+                  <el-form-item label="上级类型" :label-width="labelWidth">
+                    <el-select v-model="basicForm.sjlx" style="width: 232px" disabled=isDisabled></el-select>
+                  </el-form-item>
+                  <el-form-item label="排序" :label-width="labelWidth">
+                    <el-input v-model="basicForm.px" default="0" style="width: 232px" disabled=isDisabled></el-input>
+                  </el-form-item>
+                  <el-form-item label="备注" :label-width="labelWidth">
+                    <el-input type="textarea" v-model="basicForm.bz" style="width: 232px" placeholder="请输入备注" disabled=isDisabled></el-input>
+                  </el-form-item>
+                </el-form>
+              </el-col>
+            </el-row>
+            <template #footer>
+              <span class="dialog-footer">
+                <el-button @click="dialogVisible = false">取消</el-button>
+                <el-button type="primary" @click="dialogVisible = false">提交</el-button>
+              </span>
+            </template>
+          </el-dialog>
+          <el-dropdown>
+            <el-button style="margin-right: 8px">
+              更多操作
+              <el-icon class="el-icon--right"> <arrow-down /> </el-icon
+            ></el-button>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item>
+                  <el-icon><Refresh></Refresh></el-icon>
+                  刷新
+                </el-dropdown-item>
+                <el-dropdown-item>
+                  <el-icon><Bottom></Bottom></el-icon>
+                  导出本页数据
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+          <el-button @click="closeForm">关闭搜索</el-button>
+          <el-button @click="closeHint">关闭提示</el-button>
+        </div>
+      </template>
+
+      <!-- 多选清除栏 -->
+      <template #hint>
+        <div v-if="useHint" class="hint">
+          <span>
+            <el-icon style="color: blue"><InfoFilled></InfoFilled></el-icon>
+            已选择{{ selectedTotal }}项
+          </span>
+          <el-button type="primary" link style="margin-bottom: 3px" @click="clearRows">清空</el-button>
+        </div>
+      </template>
+    </BaseDataList>
+  </div>
 </template>
 
-<script lang="ts" setup>
-import { reactive,ref,defineProps} from 'vue'
-import { Search } from '@element-plus/icons-vue'
-import { ElMessage, ElMessageBox } from 'element-plus'
-import NewButtonHx from  '@/components/checkitems/NewButtonHx.vue'
+<script setup>
+import { ref, reactive, onMounted } from 'vue'
+import { ElMessage } from 'element-plus'
+import { ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit } from '@element-plus/icons-vue'
+import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 
-//搜索框的变量
-  // 搜索框的字段存放区域-类型库
-  const formInlineLxk = reactive({
-  lxmc: '',
-  lxbm: ''
-})
-//处理搜索-类型库
-const handleSearchLxk = () => {
-  console.log(formInlineLxk.lxmc)
-  console.log(formInlineLxk.lxbm)
-}
-
-//处理重置-类型库
-const handleCzLxk = () => {
-  console.log('Cz')
-   // 将表单中的输入框清空
-   for (const key in formInlineLxk) {
-    formInlineLxk[key] = ''
-  }
-}
-//NewButtonHX的变量
-const dialogFormVisible = ref(false)
-// 对话框数据字段
-const formInline = reactive({
-  lxmc: '',
-  lxbm: '',
-  sjlx:'',
-  px:'',
-  bz:''
-})
-
-const props = defineProps({
-  sjlxsw: {
-    type: Array,
-    default: () => []
-  },
-  isOnlyShowButton: {
-    type: Boolean,
-    default: false
-  }
-})
-
-//新增按钮下拉框的数据
-const sjlxsw = [{
-        value:'字段属性值-绑定用',
-        label:'下拉显示的数据'
-      }]
-
-
-// 提交表单
-const onSubmit = () => {
-  
-}
-
-// 清空表单
-const resetFrom = () => {
- // 将表单中的输入框清空
- for (const key in formInline) {
-  formInline[key] = ''
-  }
-}
-//表格table相关
-const currentPage4 = ref(1)
-const pageSize4 = ref(10)
-const small = ref(false)
-const disabled = ref(false)
-const multipleTableRefForLxk = ref()
-
-const EditDButtonShow = ref(true)
-const hideButton=ref(false)
-//是否显示下拉框
-const isShowSelectDown=ref(true)
-const title = ref()
-
-//搜索变化
-const handleSelectionChangeForTc = (val) => {
-  multipleSelectionForTc.value = val
-  rowDataForTc.value =val
-}
-
-// 套餐项目-表格绑定事件selectTc
-const selectTc = (selection, row) => {
-  // 清除 所有勾选项
-  multipleTableRefForLxk.value.clearSelection()
-  // 当表格数据都没有被勾选的时候 就返回
-  // 主要用于将当前勾选的表格状态清除
-  if (selection.length == 0) return
-  multipleTableRefForLxk.value.toggleRowSelection(row, true)
-
-}
-
-
-
-//套餐项目-表格的class样式
-const tableRowClassName = ({
-  row,
-  rowIndex,
-}: {
-  row: Array<String>
-  rowIndex: number
-}) => {
-  if (rowIndex % 2 === 0) {
-    return 'warning-row'
-  } else if (rowIndex % 2  === 1) {
-    return 'success-row'
-  }
-  return ''
-}
-
-//分页方法-套餐
-const handleSizeChange = (val: number) => {
-  console.log(`${val} items per page`)
-}
-const handleCurrentChange = (val: number) => {
-
-}
-
-//编辑
-const handleEdit = (index: number, row: Array<String>) => {
-  alert(index)
-  alert(row)
-}
-
-//删除
-const handleDelete = (index: number, row: Array<String>) => {
-  ElMessageBox.confirm(
-    'proxy will permanently delete the data. Continue?',
-    'Warning',
-    {
-      confirmButtonText: 'OK',
-      cancelButtonText: 'Cancel',
-      type: 'warning',
-    }
-  )
-    .then(() => {
-      //发请求给后端
-      ElMessage({
-        type: 'success',
-        message: 'Delete completed',
-      })
-    })
-    .catch(() => {
-      ElMessage({
-        type: 'info',
-        message: 'Delete canceled',
-      })
-    })
-  alert(index)
-  alert(row)
-}
-
-//套餐项目表格列
-const tableLieForLxk = [
+const isDisabled = ref(false)
+const childrenData = ref(true)
+const selectValue = ref('')
+const useHint = ref(true)
+const useForm = ref(true)
+const usePagination = ref(true)
+const BaseDataRef = ref()
+const dialogVisible = ref(false)
+const useFixed = ref(true)
+const labelWidth = '125px'
+// table列
+const tableColumnAttribute = ref([
+  { prop: 'lxmc', label: '类型名称', width: '360', align: 'center' },
+  { prop: 'lxbm', label: '类型编码', width: '360', align: 'center' },
+  { prop: 'px', label: '排序', width: '360', align: 'center' },
+  { prop: 'bz', label: '备注', width: '360', align: 'center' }
+])
+// table数据
+const tableData = ref([
   {
-    prop: 'lxmc',
-    label: '类型名称'
-  },
-  {
-    prop: 'lxbm',
-    label: '类型编码'
-  },
-  {
-    prop: 'px',
-    label: '排序'
-  },
-  {
-    prop: 'bz',
-    label: '备注'
-  }
-]
- //套餐项目表格数据
- const tableDataForLxk = [
-  {
+    id: 1,
     lxmc: '经济类型',
     lxbm: 'TYPE_002',
     px: '2',
-    bz: ''
-  },{
-    lxmc: '职业危害因素',
+    bz: '--',
+    children: [
+      {
+        id: 11,
+        lxmc: '内资企业',
+        lxbm: '100',
+        px: '--',
+        bz: '--'
+      },
+      {
+        id: 12,
+        lxmc: '港,澳,台商投资企业',
+        lxbm: '200',
+        px: '--',
+        bz: '--'
+      },
+      {
+        id: 13,
+        lxmc: '外资投商投资企业',
+        lxbm: '300',
+        px: '--',
+        bz: '--'
+      }
+    ]
+  },
+  {
+    id: 2,
+    lxmc: '职业危害因素类型',
     lxbm: 'TYPE_001',
     px: '1',
-    bz: ''
-  },{
+    bz: '--'
+  },
+  {
+    id: 3,
     lxmc: '行业类别',
     lxbm: 'TYPE_003',
     px: '3',
-    bz: ''
+    bz: '--'
   }
-]
+])
+function handelLook(row) {
 
+   for(const key in row){
+    basicForm[key] = row[key]
+   }
+   isDisabled.value = true
+   dialogVisible.value = true
+}
+
+//修改单条数据
+function editLxk(row) {
+
+for(const key in row){
+ basicForm[key] = row[key]
+}
+isDisabled.value = false
+dialogVisible.value = true
+}
 
 const formData = reactive({
+  SampleName: '',
+  SampleCode: '',
+  contactPerson: '',
+  contactPhone: ''
+})
+// 基础信息表单
+const basicForm = reactive({
+  id:'',
   lxmc: '',
   lxbm: '',
+  sjlx: '',
   px: '',
   bz: ''
 })
+// 联系人表单
+const contactForm = reactive({
+  people: '',
+  phone: ''
+})
+const closeForm = () => {
+  useForm.value = !useForm.value
+}
+const closeHint = () => {
+  useHint.value = !useHint.value
+}
+// 编辑功能
+const handleEdit = (row) => {
+  console.log(row)
+}
+// 显示选中几项
+const selectedTotal = ref(0)
+// 选中的row
+const selectRows = (selectRows) => {
+  selectedTotal.value = selectRows.length
+  // console.log(selectRows)
+  console.log(BaseDataRef.value.rows)
+}
+// 清空选中行的方法
+const clearRows = () => {
+  // 调用子组件的 clearSelectedRows 方法
+  BaseDataRef.value.clearSelectedRows()
+}
+// 重置表单方法
+const resetForm = () => {
+  ;(formData.SampleName = ''), (formData.SampleCode = ''), (formData.contactPerson = ''), (formData.contactPhone = '')
+}
+const total = tableData.value.length
+// 分页参数
+const paginationData = ref({
+  currentPage: 1,
+  pageSize: 5
+})
+const currentTableData = ref()
+// 根据分页参数计算当前显示的数据
+function getPagedData(pageSize, currentPage) {
+  const start = (currentPage - 1) * pageSize
+  const end = start + pageSize
+  const tables = []
+  for (let i = start; i < end; i++) {
+    if (tableData.value[i]) tables.push(tableData.value[i])
+  }
+
+  return (currentTableData.value = tables)
+}
+// 更新分页数据
+function handlePageChange(pageSize, currentPage) {
+  paginationData.value.pageSize = pageSize
+  paginationData.value.currentPage = currentPage
+  tableData.value = getPagedData(pageSize, currentPage)
+}
+onMounted(() => {
+  handlePageChange(paginationData.value.pageSize, paginationData.value.currentPage)
+})
 </script>
 
-<style lang="scss">
-.el-table .warning-row {
-  --el-table-tr-bg-color: var(--el-color-warning-light-9);
+<style lang="scss" scoped>
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 16px;
 }
-.el-table .success-row {
-  --el-table-tr-bg-color: var(--el-color-success-light-9);
+.operation {
+  margin-bottom: 10px;
 }
-.suibian{
-  display: flex;
-      justify-content: space-between;
-      align-items: center;
+.hint {
+  height: 33px;
+  line-height: 33px;
+  background-color: rgb(242, 250, 254);
+  border: 1px solid rgb(193, 226, 252);
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.avatar-uploader .avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}
+.avatar-uploader .el-upload {
+  border: 1px dashed var(--el-border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--el-transition-duration-fast);
+}
+
+.avatar-uploader .el-upload:hover {
+  border-color: var(--el-color-primary);
+}
+
+.el-icon.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  text-align: center;
 }
 </style>
