@@ -4,6 +4,8 @@ package com.zeroone.star.sysmanager.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zeroone.star.project.components.user.UserDTO;
+import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.cpp.SampleDTO;
 import com.zeroone.star.project.dto.j3.stopword.StopWordDTO;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.management.Query;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
@@ -49,8 +52,9 @@ public class TStopWordServiceImpl extends ServiceImpl<StopWordMapper, StopWord> 
     @Resource
     private StopWordMapper stopWordMapper;
 
+
     @Resource
-    private StringRedisTemplate stringRedisTemplate;
+    private UserHolder userHolder;
     @Resource
     MsStopWordMapper msStopWordMapper;
 
@@ -67,13 +71,19 @@ public class TStopWordServiceImpl extends ServiceImpl<StopWordMapper, StopWord> 
     }
 
     @Override
-    public int updateWord(UpdateWordDTO updateWord,String token) {
-        //TODO: 后面看从哪里获取token
-
+    public int updateWord(UpdateWordDTO updateWord) {
+        UserDTO user = null;
+        try {
+            user = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            log.error("解析用户失败！！！");
+        }
         //数据封装
         StopWord stopWord = new StopWord();
         stopWord.setId(updateWord.getId());
         stopWord.setTitle(updateWord.getTitle());
+        stopWord.setUpdateBy(user.getUsername());
+        stopWord.setUpdateTime(LocalDateTime.now());
         int count = stopWordMapper.updateById(stopWord);
         return count;
     }
