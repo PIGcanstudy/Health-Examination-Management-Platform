@@ -17,7 +17,7 @@ StringJsonVO::Wrapper PersonalReviewController::execUpdatePersonalReview(const P
 	}
 	else
 	{
-		jvo->fail(dto->personId);
+		 jvo->fail(dto->personId);
 	}
 	// ÏìÓ¦½á¹û
 	return jvo;
