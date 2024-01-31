@@ -17,26 +17,8 @@ public:
 		data.setName(resultSet->getString(1));
 		data.setCode(resultSet->getString(2));
 		data.setSigningTime(resultSet->getString(3));
-		cout <<"***" << resultSet->getInt(4)<<"\n";
-		if (resultSet->getInt(4) == 1)//等于1表示是暂存代表未报
-		{
-			cout << "&&&";
-			data.setEscalation(ZH_WORDS_GETTER("unitreport.order.unreported"));
-			cout << data.getEscalation();
-		}
-		else if (resultSet->getInt(4) == 2)//等于2代表是已报
-		{
-			data.setEscalation(ZH_WORDS_GETTER("unitreport.order.reported"));
-		}
-
-		if (resultSet->getInt(5) == 0)//等于0表是是团检
-		{
-			data.setDetectionType(ZH_WORDS_GETTER("unitreport.order.groupInspection"));
-		}
-		else if(resultSet->getInt(5) == 1) //等于1表示是零星体检
-		{
-			data.setDetectionType(ZH_WORDS_GETTER("unitreport.order.sporadic"));
-		}
+		data.setEscalation(resultSet->getInt(4));
+		data.setDetectionType(resultSet->getInt(5));
 		return data;
 	}
 };

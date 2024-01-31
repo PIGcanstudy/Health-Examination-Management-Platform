@@ -27,8 +27,8 @@ public://定义接口
 		API_DEF_ADD_PAGE_PARAMS();
 		//订单编号
 		API_DEF_ADD_QUERY_PARAMS(String, "code", ZH_WORDS_GETTER("unitreport.order.code"), "", false);
-		//统计表类型用数字来表示1："体检人员汇总表" 2："复查人员汇总表" 3："复查结果汇总表"
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "type", ZH_WORDS_GETTER("unitreport.summaryTable.type"), 1, true);
+		////统计表类型用数字来表示1："体检人员汇总表" 2："复查人员汇总表" 3："复查结果汇总表"
+		//API_DEF_ADD_QUERY_PARAMS(UInt32, "type", ZH_WORDS_GETTER("unitreport.summaryTable.type"), 1, true);
 		//// 定义其他查询参数描述
 		//API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("sample.field.name"), "li ming", false);
 		//API_DEF_ADD_QUERY_PARAMS(String, "sex", ZH_WORDS_GETTER("sample.field.sex"), "N", false);
@@ -44,7 +44,7 @@ public://定义接口
 	}
 
 private://定义接口执行函数
-	PhysicalExaminationPersonnelJsonVO::Wrapper execQueryPhysicalExaminationPersonnel(const ReportStatisticsQuery::Wrapper& query);
+	PhysicalExaminationPersonnelPageJsonVO::Wrapper execQueryPhysicalExaminationPersonnel(const ReportStatisticsQuery::Wrapper& query);
 
 };
 
@@ -66,8 +66,8 @@ public://定义接口
 		API_DEF_ADD_PAGE_PARAMS();
 		//订单编号
 		API_DEF_ADD_QUERY_PARAMS(String, "code", ZH_WORDS_GETTER("unitreport.order.code"), "", false);
-		//统计表类型用数字来表示1："体检人员汇总表" 2："复查人员汇总表" 3："复查结果汇总表"
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "type", ZH_WORDS_GETTER("unitreport.summaryTable.type"), 2, true);
+		////统计表类型用数字来表示1："体检人员汇总表" 2："复查人员汇总表" 3："复查结果汇总表"
+		//API_DEF_ADD_QUERY_PARAMS(UInt32, "type", ZH_WORDS_GETTER("unitreport.summaryTable.type"), 2, true);
 		//// 定义其他查询参数描述
 		//API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("sample.field.name"), "li ming", false);
 		//API_DEF_ADD_QUERY_PARAMS(String, "sex", ZH_WORDS_GETTER("sample.field.sex"), "N", false);
@@ -83,7 +83,7 @@ public://定义接口
 	}
 
 private://定义接口执行函数
-	ReviewPersonnelJsonVO::Wrapper execQueryReviewPersonnel(const  ReportStatisticsQuery::Wrapper& query);
+	ReviewPersonnelPageJsonVO::Wrapper execQueryReviewPersonnel(const  ReportStatisticsQuery::Wrapper& query);
 
 };
 
@@ -105,8 +105,8 @@ public://定义接口
 		API_DEF_ADD_PAGE_PARAMS();
 		//订单编号
 		API_DEF_ADD_QUERY_PARAMS(String, "code", ZH_WORDS_GETTER("unitreport.order.code"), "", false);
-		//统计表类型用数字来表示1："体检人员汇总表" 2："复查人员汇总表" 3："复查结果汇总表"
-		API_DEF_ADD_QUERY_PARAMS(UInt32, "type", ZH_WORDS_GETTER("unitreport.summaryTable.type"), 3, true);
+		////统计表类型用数字来表示1："体检人员汇总表" 2："复查人员汇总表" 3："复查结果汇总表"
+		//API_DEF_ADD_QUERY_PARAMS(UInt32, "type", ZH_WORDS_GETTER("unitreport.summaryTable.type"), 3, true);
 		//// 定义其他查询参数描述
 		//API_DEF_ADD_QUERY_PARAMS(String, "name", ZH_WORDS_GETTER("sample.field.name"), "li ming", false);
 		//API_DEF_ADD_QUERY_PARAMS(String, "sex", ZH_WORDS_GETTER("sample.field.sex"), "N", false);
@@ -121,9 +121,8 @@ public://定义接口
 		API_HANDLER_RESP_VO(execQueryReviewResults(uq));
 	}
 
-
 private://定义接口执行函数
-	ReviewResultsJsonVO::Wrapper execQueryReviewResults(const ReportStatisticsQuery::Wrapper& query);
+	ReviewResultsPageJsonVO::Wrapper execQueryReviewResults(const ReportStatisticsQuery::Wrapper& query);
 
 };
 

@@ -29,11 +29,26 @@ UnitListPageDTO::Wrapper UnitPhysicalExaminationOrdersService::listAll(const Uni
  		dto->name = sub.getName();
  		dto->code = sub.getCode();
  		dto->signingTime = sub.getSigningTime();
- 		dto->Escalation = sub.getEscalation();
-		dto->detectionType = sub.getDetectionType();
+		if (sub.getEscalation() == 1)//1表示暂存未报
+		{
+			dto->Escalation = ZH_WORDS_GETTER("unitreport.order.unreported");
+		}
+		else if(sub.getEscalation()==2)//2表示提交已报
+		{
+			dto->Escalation = ZH_WORDS_GETTER("unitreport.order.reported");
+		}
+
+		if (sub.getDetectionType() == 0)//表示是团体检测
+		{
+			dto->detectionType = ZH_WORDS_GETTER("unitreport.order.groupInspection");
+		}
+		else if(sub.getDetectionType() == 1)//表示是零星检测
+		{
+			dto->detectionType = ZH_WORDS_GETTER("unitreport.order.sporadic");
+		}
+		
 		//ZO_STAR_DOMAIN_DO_TO_DTO(dto, sub, name, Name, code, Code, signingTime, SigningTime, Escalation, Escalation, detectionType, DetectionType)
 	    pages->addData(dto);
-
 	}
 	return pages;
 }

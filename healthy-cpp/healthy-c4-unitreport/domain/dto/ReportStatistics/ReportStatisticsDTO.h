@@ -33,13 +33,18 @@ class PhysicalExaminationPersonnelDTO : public oatpp::DTO
 	//体检类别
 	API_DTO_FIELD_DEFAULT(String, physicalType, ZH_WORDS_GETTER("unitreport.summaryTable.physicalType"));
 	//是否正常
-	API_DTO_FIELD_DEFAULT(UInt32, status, ZH_WORDS_GETTER("unitreport.summaryTable.status"));
+	API_DTO_FIELD_DEFAULT(String, status, ZH_WORDS_GETTER("unitreport.summaryTable.status"));
 	//体检结果
 	API_DTO_FIELD_DEFAULT(String, checkRusult, ZH_WORDS_GETTER("unitreport.summaryTable.checkRusult"));
 	//处理意见
 	API_DTO_FIELD_DEFAULT(String, concludingObservations, ZH_WORDS_GETTER("unitreport.summaryTable.concludingObservations"));
 };
 
+class PhysicalExaminationPersonnelPageDTO : public PageDTO< PhysicalExaminationPersonnelDTO::Wrapper>
+{
+	//定义初始化
+	DTO_INIT(PhysicalExaminationPersonnelPageDTO, PageDTO<PhysicalExaminationPersonnelDTO::Wrapper>);
+};
 /*
 * 复查人员汇总表数据实体
 */
@@ -70,6 +75,11 @@ class ReviewPersonnelDTO : public oatpp::DTO
 	API_DTO_FIELD_DEFAULT(String, checkProjectName, ZH_WORDS_GETTER("unitreport.summaryTable.checkProjectName"));
 };
 
+class ReviewPersonnelPageDTO : public PageDTO< ReviewPersonnelDTO::Wrapper>
+{
+	//定义初始化
+	DTO_INIT(ReviewPersonnelPageDTO, PageDTO<ReviewPersonnelDTO::Wrapper>);
+};
 /*
 * 复查结果汇总表数据实体
 */
@@ -104,6 +114,12 @@ class ReviewResultsDTO : public oatpp::DTO
 	API_DTO_FIELD_DEFAULT(String, checkRusult, ZH_WORDS_GETTER("unitreport.summaryTable.checkRusult"));
 	//复查处理意见
 	API_DTO_FIELD_DEFAULT(String, concludingObservations, ZH_WORDS_GETTER("unitreport.summaryTable.concludingObservations"));
+};
+
+class ReviewResultsPageDTO : public PageDTO< ReviewResultsDTO::Wrapper>
+{
+	//定义初始化
+	DTO_INIT(ReviewResultsPageDTO, PageDTO<ReviewResultsDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)
