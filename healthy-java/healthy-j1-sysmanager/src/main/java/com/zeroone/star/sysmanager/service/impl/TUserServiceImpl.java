@@ -13,6 +13,7 @@ import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.sysmanager.entity.TUser;
 import com.zeroone.star.sysmanager.entity.TUserRole;
+import com.zeroone.star.sysmanager.entity.User;
 import com.zeroone.star.sysmanager.mapper.DepartmentMapper;
 import com.zeroone.star.sysmanager.mapper.RoleMapper;
 import com.zeroone.star.sysmanager.mapper.TUserMapper;
@@ -61,6 +62,13 @@ interface MsUserMapper{
      * @return 转换结果
      */
     TUser ModifyUserDTOToTUser(ModifyUserDTO modifyUserDTO);
+
+    /**
+     * 将 TUser 转换成 User
+     * @param tUser 待转换的DTO
+     * @return 转换结果
+     */
+    User TUserToUser(TUser tUser);
 }
 /**
  * <p>
@@ -264,6 +272,22 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
         // 执行查询
         Page<TUser> result = baseMapper.selectPage(page, wrapper);
         return PageDTO.create(result, src -> msUserMapper.TUserToUserDTO(src));
+    }
+
+    /**
+     * 获取全部数据，用于导出
+     * @return
+     */
+    @Override
+    public List<User> listAll() {
+        QueryWrapper<TUser> wrapper = new QueryWrapper<>();
+        List<TUser> list = tUserMapper.selectList(wrapper);
+        List<User> userList = new ArrayList<>();
+        for (TUser user : list) {
+            User toUser = msUserMapper.TUserToUser(user);
+            userList.add(toUser);
+        }
+        return userList;
     }
 
     /**

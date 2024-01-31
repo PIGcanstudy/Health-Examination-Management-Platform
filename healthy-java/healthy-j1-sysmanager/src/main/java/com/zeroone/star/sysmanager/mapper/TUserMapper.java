@@ -32,4 +32,5 @@ public interface TUserMapper extends BaseMapper<TUser> {
      * @param tUser
      */
     void updateUser(TUser tUser);
+
 }

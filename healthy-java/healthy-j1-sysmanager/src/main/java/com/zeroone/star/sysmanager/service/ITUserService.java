@@ -8,6 +8,7 @@ import com.zeroone.star.project.j1.query.sysmanager.UserListQuery;
 import com.zeroone.star.project.j1.vo.sysmanager.UserNameListVO;
 import com.zeroone.star.sysmanager.entity.TUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.sysmanager.entity.User;
 
 import java.util.List;
 
@@ -51,4 +52,10 @@ public interface ITUserService extends IService<TUser> {
 	 * @return
 	 */
     PageDTO<UserDTO> listUserList(UserListQuery userListQuery);
+
+	/**
+	 * 获取全部用户数据，用于导出数据
+	 * @return
+	 */
+    List<User> listAll();
 }
