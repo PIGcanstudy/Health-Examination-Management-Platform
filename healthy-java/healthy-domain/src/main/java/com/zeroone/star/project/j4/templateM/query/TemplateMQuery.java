@@ -4,6 +4,7 @@ import com.zeroone.star.project.query.PageQuery;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -18,11 +19,6 @@ import java.util.Date;
 @Data
 @ApiModel(value = "模板管理查询对象")
 public class TemplateMQuery extends PageQuery {
-    /**
-     * 查询类型
-     */
-    @ApiModelProperty(value = "查询类型", example = "1")    // 形成文档
-    private Integer queryType;
     /**
      * 报告类型
      */
@@ -41,11 +37,18 @@ public class TemplateMQuery extends PageQuery {
     /**
      * 模板状态
      */
-    @ApiModelProperty(value = "模板状态", example = "启用")
+    @ApiModelProperty(value = "模板状态", example = "")
     private String status;
     /**
-     * 创建时间
+     * 起始时间
      */
-    @ApiModelProperty(value = "创建时间", example = "2022-01-18 22:13:40")
-    private Date createTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")    // 规范标准
+    @ApiModelProperty(value = "起始时间", example = "")
+    private Date startTime;
+    /**
+     * 结束时间
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @ApiModelProperty(value = "结束时间", example = "")
+    private Date endTime;
 }

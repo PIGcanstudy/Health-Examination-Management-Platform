@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
@@ -32,6 +33,12 @@ public class TTemplate implements Serializable {
      * 组合项目id
      */
     private String baseProjectId;
+
+    /**
+     * 项目名称
+     */
+    @TableField(exist = false)
+    private String name;
 
     /**
      * 报告类型
@@ -72,6 +79,7 @@ public class TTemplate implements Serializable {
      * 创建时间
      */
     @TableField(fill = FieldFill.INSERT)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
 
     /**

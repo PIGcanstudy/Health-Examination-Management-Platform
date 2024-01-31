@@ -1,46 +1,48 @@
-package com.zeroone.star.project.j4.templateM;
+package com.zeroone.star.j4.templateManagement.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.j4.templateManagement.entity.TTemplate;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.templateM.dto.ProjectDTO;
 import com.zeroone.star.project.j4.templateM.dto.TemplateMListDTO;
 import com.zeroone.star.project.j4.templateM.query.TemplateMQuery;
-import com.zeroone.star.project.vo.JsonVO;
 
 import java.util.List;
 
 /**
  * <p>
- * 描述：模板管理接口定义
+ * 描述：模板服务类
  * </p>
  *
  * @author Triple Gold
  * @version 1.0.0
  */
-public interface TemplateMApis {
+public interface ITemplateMService extends IService<TTemplate> {
     /**
-     * 组合项目名称列表查询接口
+     * 查询组合项目名称列表
      * @return 查询结果
      */
-    JsonVO<ProjectDTO> queryProjectList();
+    ProjectDTO listProjectList();
 
     /**
-     * 模板列表查询接口
+     * 查询模板列表
      * @param query 查询条件
      * @return 查询结果
      */
-    JsonVO<PageDTO<TemplateMListDTO>> queryTemplateList(TemplateMQuery query);
+    PageDTO<TemplateMListDTO> listTemplateList(TemplateMQuery query);
 
     /**
-     * 启用/禁用模板
+     * 修改模板状态
+     *
      * @param id 模板编号
      * @return 修改结果
      */
-    JsonVO<Integer> modifyTemplateStatus(String id);
+    int updateTemplateStatus(String id);
 
     /**
-     * 预览模板
+     * 查询模板文件存放地址
      * @param id 模板编号
      * @return 模板文件名
      */
-    JsonVO<String> previewTemplate(String id);
+    String getTemplate(String id);
 }

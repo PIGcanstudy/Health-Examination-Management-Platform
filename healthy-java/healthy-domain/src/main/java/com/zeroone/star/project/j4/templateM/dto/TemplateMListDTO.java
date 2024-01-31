@@ -1,8 +1,10 @@
 package com.zeroone.star.project.j4.templateM.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -39,7 +41,7 @@ public class TemplateMListDTO {
     /**
      * 模板状态
      */
-    @ApiModelProperty(value = "状态", example = "启用")
+    @ApiModelProperty(value = "状态", example = "1")
     private String status;
     /**
      * 模板内容文件名
@@ -49,6 +51,7 @@ public class TemplateMListDTO {
     /**
      * 创建时间
      */
+    // @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "创建时间", example = "2022-01-18 22:13:40")
     private Date createTime;
 }
