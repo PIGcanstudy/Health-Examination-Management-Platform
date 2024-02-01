@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.validation.annotation.Validated;
 
+import java.math.BigDecimal;
+
 /**
  * @Description: 获取项目列表 (条件+分页)
  * @Author: Laputa
@@ -16,13 +18,9 @@ import org.springframework.validation.annotation.Validated;
 @Data
 @ApiModel("获取项目列表 (条件+分页)")
 public class PortfolioItemListQuery extends PageQuery {
-
     @ApiModelProperty(value = "项目名称", example = "项目")
     private String name;
 
-//    @ApiModelProperty(value = "资源类型（-1顶部菜单  0界面菜单 1操作按钮）", example = "0")
-//    private Integer type;
-//
-//    @ApiModelProperty(value = "是否启用（0 启动 1禁用）", example = "0")
-//    private Integer status;
+    @ApiModelProperty(value = "简称", example = "项目")
+    private String shortName;
 }
