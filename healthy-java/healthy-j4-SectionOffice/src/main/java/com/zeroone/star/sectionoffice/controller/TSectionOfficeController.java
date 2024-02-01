@@ -1,13 +1,9 @@
 package com.zeroone.star.sectionoffice.controller;
 
-import com.zeroone.star.project.dto.PageDTO;
-import com.zeroone.star.project.j4.dto.GetSecNameDTO;
-import com.zeroone.star.project.j4.dto.GetSectionOfficetDTO;
-import com.zeroone.star.project.j4.query.GetSectionOfficeQuery;
+
 import com.zeroone.star.project.j4.tsectionoffice.TSectionOfficeApis;
 import com.zeroone.star.project.j4.dto.TSectionOfficeDTO;
-import com.zeroone.star.project.j4.vo.GetSecNameVO;
-import com.zeroone.star.project.j4.vo.GetSectionOfficeVO;
+
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.sectionoffice.service.ITSectionOfficeService;
@@ -29,7 +25,7 @@ import java.util.List;
  * @since 2024-01-16
  */
 @RestController
-@Api(tags = "科室管理接口")
+@Api(tags = "科室管理")
 @RequestMapping("/sectionOffice/t-section-office")
 @Validated
 public class TSectionOfficeController implements TSectionOfficeApis {
@@ -76,27 +72,6 @@ public class TSectionOfficeController implements TSectionOfficeApis {
     @Override
     public JsonVO<ResultStatus> removeSectionOffice(@NotNull(message = "List不能为空") @RequestParam List<String> ids) {
         return itSectionOfficeService.removeSectionOffice(ids);
-    }
-
-
-    @Override
-    @GetMapping("query-allsection-office")
-    @ApiOperation(value = "获取科室列表（分页+条件）")
-    public JsonVO<PageDTO<GetSectionOfficeVO>> queryAllSectionOffice(GetSectionOfficeQuery query) {
-        return JsonVO.success(itSectionOfficeService.listAllSectionOffice(query));
-
-    }
-
-    @Override
-    @GetMapping("query-allsection-office-name")
-    @ApiOperation(value = "获取科室名称列表")
-    public JsonVO<List<GetSecNameVO>> GetAllSecName(GetSecNameDTO getSecNameDTO) {
-        return JsonVO.success((itSectionOfficeService.listAllName(getSecNameDTO)));
-    }
-
-    @Override
-    public JsonVO<List<GetSectionOfficeVO>> GetAllSectionOffice(GetSectionOfficetDTO getSectionOfficetDTO) {
-        return JsonVO.success((itSectionOfficeService.getAllSectionOffice(getSectionOfficetDTO)));
     }
 
 

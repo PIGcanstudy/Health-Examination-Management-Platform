@@ -195,46 +195,4 @@ public class TSectionOfficeServiceImpl extends ServiceImpl<TSectionOfficeMapper,
         return tSectionOfficeMapper.selectByUserId(id);
     }
 
-
-    /**
-     * 获取科室管理列表（分页+条件）
-     * @param query
-     * @return GetSectionOfficeVO
-     */
-    @Override
-    public PageDTO<GetSectionOfficeVO> listAllSectionOffice(GetSectionOfficeQuery query){
-        Page<GetSectionOfficeQuery> page = Page.of(query.getPageIndex(), query.getPageSize());
-        Page<GetSectionOfficeVO> secVO = tSectionOfficeMapper.selectAll(page, query);
-        //将page对象转换为list对象
-        List<GetSectionOfficeVO> records = secVO.getRecords();
-        secVO.setRecords(records);
-        return PageDTO.create(secVO);
-    }
-
-    /**
-     * 获取科室管理名称列表
-     * @param getSecNameDTO
-     * @return GetSecNameVO
-     */
-    @Override
-    public List<GetSecNameVO> listAllName(GetSecNameDTO getSecNameDTO) {
-        LambdaQueryWrapper<TSectionOffice> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.like(getSecNameDTO.getName()!=null, TSectionOffice::getSectionName,getSecNameDTO.getName());
-        List<TSectionOffice> sectionOfficeEntities = baseMapper.selectList(queryWrapper);
-        return ConvertUtil.sourceToTarget(sectionOfficeEntities, GetSecNameVO.class);
-
-    }
-
-    /**
-     * 获取详细列表
-     * @param getSectionOfficetDTO
-     * @return getSectionOfficetVO
-     */
-    @Override
-    public List<GetSectionOfficeVO> getAllSectionOffice(GetSectionOfficetDTO getSectionOfficetDTO) {
-        LambdaQueryWrapper<TSectionOffice> queryWrapper = new LambdaQueryWrapper<>();
-        List<TSectionOffice> sectionOfficeEntities = baseMapper.selectList(queryWrapper);
-        return ConvertUtil.sourceToTarget(sectionOfficeEntities, GetSectionOfficeVO.class);
-    }
-
 }

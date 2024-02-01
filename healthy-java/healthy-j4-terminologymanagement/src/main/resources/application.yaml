@@ -1,5 +1,0 @@
-server:
-  port: ${sp.terminologymanagement}
-spring:
-  application:
-    name: ${sn.terminologymanagement}

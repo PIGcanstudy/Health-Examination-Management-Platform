@@ -49,21 +49,4 @@ public interface ITSectionOfficeService extends IService<TSectionOffice> {
     JsonVO<ResultStatus> removeSectionOffice(List<String> ids);
 
 
-
-    /**
-     * 分页查询符合条件数据
-     * @param getSectionOfficeQuery
-     * @return
-     */
-    PageDTO<GetSectionOfficeVO> listAllSectionOffice(GetSectionOfficeQuery getSectionOfficeQuery);
-
-    /**
-     * 获取名称列表
-     * @param getSecNameDTO
-     * @return
-     */
-    List<GetSecNameVO> listAllName(GetSecNameDTO getSecNameDTO);
-
-
-    List<GetSectionOfficeVO> getAllSectionOffice(GetSectionOfficetDTO getSectionOfficetDTO);
 }

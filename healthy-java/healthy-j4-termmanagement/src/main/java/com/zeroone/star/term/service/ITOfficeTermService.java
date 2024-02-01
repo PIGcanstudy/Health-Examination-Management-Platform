@@ -2,6 +2,7 @@ package com.zeroone.star.term.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.j4.dto.TermDTO;
+import com.zeroone.star.project.j4.query.SwitchTermQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.term.entity.TOfficeTerm;
@@ -20,4 +21,6 @@ public interface ITOfficeTermService extends IService<TOfficeTerm> {
      * @Description: 更新术语
      **/
     JsonVO<ResultStatus> updateOfficeTerm(TermDTO termDTO);
+
+    Boolean switchTerm(SwitchTermQuery query) throws Exception;
 }

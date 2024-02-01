@@ -54,12 +54,4 @@ public interface TSectionOfficeApis {
      * @return 封装的统一响应模型
      */
 
-    JsonVO<PageDTO<GetSectionOfficeVO>> queryAllSectionOffice(GetSectionOfficeQuery getSectionOfficeQuery);
-
-    JsonVO<List<GetSecNameVO>> GetAllSecName(GetSecNameDTO getSecNameDTO);
-
-    JsonVO<List<GetSectionOfficeVO>> GetAllSectionOffice(GetSectionOfficetDTO getSectionOfficetDTO);
-
-
-
 }

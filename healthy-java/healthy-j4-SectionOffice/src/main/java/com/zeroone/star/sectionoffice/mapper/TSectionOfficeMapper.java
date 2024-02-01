@@ -27,6 +27,4 @@ public interface TSectionOfficeMapper extends BaseMapper<TSectionOffice> {
      **/
     @Select("SELECT department_id FROM t_user WHERE del_flag = 0 AND id = #{id}")
     String selectByUserId(String id);
-    // @Select("select section_code,section_name,section_alphbet,order_num,contact,contact_mobile,check_type FROM t_section_office where del_flag != 1 limit 1,10")
-    Page<GetSectionOfficeVO> selectAll(Page<GetSectionOfficeQuery> page, GetSectionOfficeQuery query);
 }

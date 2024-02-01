@@ -25,7 +25,7 @@ public class ConfigmanagemerController implements ConfigmanagemerAPI {
     private ITSectionOfficeService itSectionOfficeService;
 
     @ApiOperation(value = "获取科室名称" )
-    @GetMapping("query-secion—name-list")
+    @GetMapping("query-secion-name-list")
     @Override
     public JsonVO<List<SectionNameListVO>> querySectionName() {
         return JsonVO.success(itSectionOfficeService.listSectionName());

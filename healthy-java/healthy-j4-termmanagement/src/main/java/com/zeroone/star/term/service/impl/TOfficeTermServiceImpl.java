@@ -1,9 +1,11 @@
 package com.zeroone.star.term.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.components.user.UserDTO;
 import com.zeroone.star.project.components.user.UserHolder;
 import com.zeroone.star.project.j4.dto.TermDTO;
+import com.zeroone.star.project.j4.query.SwitchTermQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.term.entity.TOfficeTerm;
@@ -69,5 +71,17 @@ public class TOfficeTermServiceImpl extends ServiceImpl<TOfficeTermMapper, TOffi
      **/
     public TOfficeTerm getOfficeTerm(String id) {
         return tOfficeTermMapper.selectById(id);
+    }
+
+    @Override
+    public Boolean switchTerm(SwitchTermQuery query) throws Exception {
+        UpdateWrapper updateWrapper = new UpdateWrapper();
+        updateWrapper.eq("id", query.getId());
+        updateWrapper.set("status", query.getStatus());
+        int num = baseMapper.update(null, updateWrapper);
+        if (num == 0) {
+            return false;
+        }
+        return true;
     }
 }
