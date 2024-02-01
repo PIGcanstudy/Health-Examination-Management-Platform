@@ -1,196 +1,140 @@
 package com.zeroone.star.portfolioitems.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.zeroone.star.project.j4.dto.TPortfolioProjectDTO;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import lombok.Getter;
-import lombok.Setter;
-
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 /**
- * <p>
- * 组合项目
- * </p>
- *
- * @author Laputa
- * @since 2024-01-24
+ * @author rakkaus
  */
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("t_portfolio_project")
-public class TPortfolioProject implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * 主键
-     */
-    @TableId(type = IdType.AUTO)
+public class TPortfolioProject {
+    @ApiModelProperty(value = "主键")
+    @TableId(value = "id", type = IdType.ASSIGN_UUID)
     private String id;
 
-    /**
-     * 名称
-     */
+    @ApiModelProperty(value = "名称")
     private String name;
 
-    /**
-     * 简称
-     */
+    @ApiModelProperty(value = "简称")
     private String shortName;
 
-    /**
-     * 排序
-     */
+    @ApiModelProperty(value = "排序")
     private Float orderNum;
 
-    /**
-     * 父节点ID
-     */
+    @ApiModelProperty(value = "父节点ID")
     private String parentId;
 
-    /**
-     * 科室名称
-     */
-    private String officeName;
-
-    /**
-     * 科室id
-     */
+    @ApiModelProperty(value = "科室id")
     private String officeId;
 
-    /**
-     * 原价（元）
-     */
+    @ApiModelProperty(value = "科室名称")
+    private String officeName;
+
+    @ApiModelProperty(value = "原价（元）")
     private BigDecimal marketPrice;
 
-    /**
-     * 销售价（元）
-     */
+    @ApiModelProperty(value = "销售价（元）")
     private BigDecimal salePrice;
 
-    /**
-     * 成本价（元）
-     */
+    @ApiModelProperty(value = "成本价（元）")
     private BigDecimal costPrice;
 
-    /**
-     * 适合人群
-     */
+    @ApiModelProperty(value = "适合人群")
     private String suitableRange;
 
-    /**
-     * 项目介绍
-     */
+    @ApiModelProperty(value = "项目介绍")
     private String introduce;
 
-    /**
-     * 检查地址
-     */
+    @ApiModelProperty(value = "检查地址")
     private String address;
 
-    /**
-     * 备注
-     */
+    @ApiModelProperty(value = "备注")
     private String remark;
 
-    /**
-     * 是否删除(0-未删除，1-已删除)
-     */
+    @ApiModelProperty(value = "是否删除(0-未删除，1-已删除)")
     private Integer delFlag;
 
-    /**
-     * 创建人
-     */
+    @ApiModelProperty(value = "创建人")
     private String createId;
 
-    /**
-     * 创建时间
-     */
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    @ApiModelProperty(value = "创建时间")
+    private Date createTime;
 
-    /**
-     * 修改人
-     */
+    @ApiModelProperty(value = "修改人")
     private String updateId;
 
-    /**
-     * 修改时间
-     */
-    private LocalDateTime updateTime;
+    @ApiModelProperty(value = "修改时间")
+    private Date updateTime;
 
-    /**
-     * 删除人
-     */
+    @ApiModelProperty(value = "删除人")
     private String deleteId;
 
-    /**
-     * 删除时间
-     */
-    private LocalDateTime deleteTime;
+    @ApiModelProperty(value = "删除时间")
+    private Date deleteTime;
 
-    /**
-     * 所属部门
-     */
+    @ApiModelProperty(value = "所属部门")
     private String departmentId;
 
-    /**
-     * 诊断模板
-     */
+    @ApiModelProperty(value = "诊断模板")
     private String template;
 
-    /**
-     * 服务类型
-     */
+    @ApiModelProperty(value = "服务类型")
     private String serviceType;
 
-    /**
-     * 标本
-     */
+    @ApiModelProperty(value = "标本")
     private String specimen;
 
-    /**
-     * 诊台是否显示
-     */
+    @ApiModelProperty(value = "诊台显示")
     private String diagnostic;
 
-    /**
-     * 是否为附件
-     */
+    @ApiModelProperty(value = "是否为附件")
     private String isFile;
 
-    /**
-     * 获取影像结果的标识
-     */
+    @ApiModelProperty(value = "附件地址")
     private String url;
 
-    /**
-     * lis标本
-     */
+    @ApiModelProperty(value = "下级数据")
+    @TableField(exist = false)
+    private List<TPortfolioProjectDTO> children = new ArrayList<>();
+
+    @ApiModelProperty(value = "已绑定项目")
+    @TableField(exist = false)
+    private List<TPortfolioProjectDTO> projectList = new ArrayList<>();
+
+    @ApiModelProperty(value = "折扣")
+    @TableField(exist = false)
+    private String discount;
+
+    @ApiModelProperty(value = "折扣价")
+    @TableField(exist = false)
+    private String discountPrice;
+
+    @ApiModelProperty(value = "lis标本")
     private String lisSpecimen;
 
-    /**
-     * lis标本名字
-     */
+    @ApiModelProperty(value = "lis标本名字")
     private String lisSpecimenName;
 
-    /**
-     * lis系统对应Id
-     */
+    @ApiModelProperty(value = "lis系统对应Id")
     private String lisId;
 
-    /**
-     * lis系统对应编码
-     */
+    @ApiModelProperty(value = "lis系统对应编码")
     private String lisCode;
 
-    /**
-     * 部位名称
-     */
+    @ApiModelProperty(value = "部位名称")
     private String deptName;
-
-    private String hazardFactorCode;
-
-
 }
