@@ -40,6 +40,9 @@
         <module>healthy-oauth2</module>
         <module>healthy-gateway</module>
         <module>healthy-login</module>
+        <module>healthy-j4-portfolioitems</module>
+        <module>healthy-j4-configmanager</module>
+        <module>healthy-j4-SectionOffice</module>
         <module>healthy-j4-templatemanagerment</module>
     </modules>
     <properties>
