@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.dictdata.DictDataDTO;
 import com.zeroone.star.project.query.j3.DictData.DictDataQuery;
+import com.zeroone.star.project.dto.j3.dictdata.AddDictDataDTO;
+import com.zeroone.star.project.dto.j3.dictdata.ModifyDictData;
+import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.entity.DictData;
 
 import java.util.List;
@@ -18,6 +21,7 @@ import java.util.List;
  * @since 2024-01-16
  */
 public interface ITDictDataService extends IService<DictData> {
+    JsonVO<Boolean> AddDictData(AddDictDataDTO addDictDataDTO);
 
     /**
      * 获取字典数据名称
@@ -32,4 +36,5 @@ public interface ITDictDataService extends IService<DictData> {
      */
     PageDTO<DictDataDTO> ListPage(DictDataQuery query);
 
+    JsonVO<Boolean> ModifyDictData(ModifyDictData modifyDictData);
 }

@@ -6,7 +6,7 @@ import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.dictdata.DictDataDTO;
 import com.zeroone.star.project.j3.dictory.DirectSourceApis;
 import com.zeroone.star.project.dto.j3.dictdata.AddDictDataDTO;
-import com.zeroone.star.project.dto.j3.dictdata.UpdateDictDataDTO;
+import com.zeroone.star.project.dto.j3.dictdata.ModifyDictData;
 import com.zeroone.star.project.query.j3.DictData.DictDataQuery;
 import com.zeroone.star.project.query.j3.WordTypeListQuery;
 import com.zeroone.star.project.vo.JsonVO;
@@ -35,16 +35,19 @@ public class DirectSourceController implements DirectSourceApis {
     @ApiOperation("新增字典数据")
     @PostMapping("/addDictData")
     @Override
-    public JsonVO<PageDTO<UpdateDictDataDTO>> UpdateDictData() {
-        return null;
+    public JsonVO<Boolean> AddDictData(AddDictDataDTO addDictDataDTO) {
+        JsonVO<Boolean> booleanJsonVO = itDictDataService.AddDictData(addDictDataDTO);
+        return booleanJsonVO;
     }
 
     @ApiOperation("修改字典数据")
-    @PostMapping ("/updateDictData")
+    @PostMapping ("/modifyDictData")
     @Override
-    public JsonVO<PageDTO<AddDictDataDTO>> AddDictData() {
-        return null;
+    public JsonVO<Boolean> ModifyDictData(ModifyDictData modifyDictData) {
+        JsonVO<Boolean> booleanJsonVO = itDictDataService.ModifyDictData(modifyDictData);
+        return booleanJsonVO;
     }
+
 
     @ApiOperation("查询字典数据名称列表")
     @GetMapping("/queryDictDataTitle")

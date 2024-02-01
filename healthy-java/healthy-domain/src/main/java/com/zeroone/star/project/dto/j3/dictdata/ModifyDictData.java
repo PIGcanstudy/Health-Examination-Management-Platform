@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateDictDataDTO {
+public class ModifyDictData {
+    @ApiModelProperty(value = "唯一编号",example = "自动生成",required = true)
+    private String id;
     @ApiModelProperty(value = "名称",example = "健康体检")
     private String title;
     @ApiModelProperty(value = "数据值",example = "健康体检")
@@ -20,6 +22,6 @@ public class UpdateDictDataDTO {
     @ApiModelProperty(value = "排序值",example = "1.00")
     private  java.math.BigDecimal sort_order;
     @ApiModelProperty(value = "是否启用",example = "0")
-    private Integer status ;
+    private Boolean status ;
 
 }

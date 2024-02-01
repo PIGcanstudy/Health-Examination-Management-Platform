@@ -5,6 +5,8 @@ import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.query.j3.Dict.DictQuery;
 import com.zeroone.star.project.vo.JsonVO;
 
+import java.util.List;
+
 /**
  * @description: 字典api
  * @author: 坚强少年
@@ -15,7 +17,7 @@ public interface DictApis {
      * 字典查询
      * @return 查询的分页结果
      */
-    JsonVO<PageDTO<com.zeroone.star.project.dto.j3.dictory.DictDTO>> getAll(DictQuery query);
+    JsonVO<List<com.zeroone.star.project.dto.j3.dictory.DictDTO>> getAll();
 
     /**
      * 字典添加

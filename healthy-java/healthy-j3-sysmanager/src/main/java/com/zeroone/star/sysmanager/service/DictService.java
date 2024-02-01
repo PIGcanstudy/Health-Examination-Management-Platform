@@ -18,7 +18,7 @@ import java.util.List;
  */
 public interface DictService extends IService<com.zeroone.star.project.dto.j3.dictory.DictDTO> {
 
-    PageDTO<com.zeroone.star.project.dto.j3.dictory.DictDTO> findAllOrderBySortOrder(DictQuery query);
+    List<com.zeroone.star.project.dto.j3.dictory.DictDTO> findAllOrderBySortOrder();
 
     com.zeroone.star.project.dto.j3.dictory.DictDTO findByType(String type);
 }

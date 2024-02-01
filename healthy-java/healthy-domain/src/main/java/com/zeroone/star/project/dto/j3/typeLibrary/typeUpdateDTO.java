@@ -17,9 +17,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class typeUpdate {
-    @ApiModelProperty(value = "用户id",example = "1")
-    private Long id;
+public class typeUpdateDTO {
+    @ApiModelProperty(value = "更新者id",example = "1")
+    private Long updateId;
     @ApiModelProperty(value = "修改前的类型名称",example = "经济类型")
     private String typeNamePre;
     @ApiModelProperty(value = "修改前的类型编码",example = "TYPE_003")
@@ -29,7 +29,7 @@ public class typeUpdate {
     @ApiModelProperty(value = "类型编码",example = "TYPE_003")
     private String typeCode;
     @ApiModelProperty(value = "上级类型",example = "行业类型")
-    private String fatherType;
+    private String parentId;
     @ApiModelProperty(value = "排序",example = "2")
     private Integer orderNum;
     @ApiModelProperty(value = "备注",example = "这里是备注")
