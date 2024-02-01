@@ -1,9 +1,9 @@
 package com.zeroone.star.project.j3.direct;
 
+import com.zeroone.star.project.dto.PageDTO;
+import com.zeroone.star.project.dto.j3.dict.WordTypeListDTO;
 import com.zeroone.star.project.query.j3.WordTypeListQuery;
 import com.zeroone.star.project.vo.JsonVO;
-
-import java.util.List;
 
 /**
  * @description: 字典数据api
@@ -26,5 +26,5 @@ public interface DirectSourceApis {
      * @param wordTypeListQuery
      * @return
      */
-    JsonVO<List<WordTypeListQuery>> queryByWordType(WordTypeListQuery wordTypeListQuery);
+    JsonVO<PageDTO<WordTypeListDTO>> queryByWordType(WordTypeListQuery wordTypeListQuery);
 }
