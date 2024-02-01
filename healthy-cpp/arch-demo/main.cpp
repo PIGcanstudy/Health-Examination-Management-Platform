@@ -51,8 +51,13 @@ bool getStartArg(int argc, char* argv[]) {
 	// 服务器端口
 	std::string serverPort = "8090";
 	// 数据库连接信息
+<<<<<<< HEAD
 	std::string dbUsername = "root";
 	std::string dbPassword = "zdy134679";
+=======
+	std::string dbUsername = "yp";
+	std::string dbPassword = "yj147258";
+>>>>>>> fc563493e80b8fcba77a2bda315f18b6d8151354
 	std::string dbName = "healthy";
 	std::string dbHost = "127.0.0.1";
 	int dbPort = 3306;
