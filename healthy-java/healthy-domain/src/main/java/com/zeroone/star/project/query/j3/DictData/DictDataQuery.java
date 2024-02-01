@@ -26,6 +26,6 @@ public class DictDataQuery extends PageQuery {
     /**
      * 是否启用 0 启用 1 禁用
      */
-    @ApiModelProperty(value = "状态", example = "1")
+    @ApiModelProperty(value = "状态", example = "0")
     private int status;
 }
