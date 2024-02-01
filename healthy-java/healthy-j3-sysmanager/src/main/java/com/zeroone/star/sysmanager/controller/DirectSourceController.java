@@ -50,13 +50,15 @@ public class DirectSourceController implements DirectSourceApis {
     @GetMapping("/queryDataTitle")
     @Override
     public JsonVO<List<String>> queryDictDataTitle() {
-        return null;
+        List<String> data = itDictDataService.getDictDataTitle();
+        return JsonVO.success(data);
     }
     @ApiOperation("查询字典数据列表")
     @PostMapping("/queryDictDataByCondition")
     @Override
     public JsonVO<PageDTO<DictDataDTO>> queryDictDataByCondition(DictDataQuery condition) {
-        return null;
+        PageDTO<DictDataDTO> data = itDictDataService.ListPage(condition);
+        return JsonVO.success(data);
     }
 
     @ApiOperation("根据id批量删除数据字典")
