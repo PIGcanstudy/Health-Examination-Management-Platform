@@ -1,4 +1,4 @@
-﻿exalanding:
+exalanding:
  put:
   updateInformation: 修改人员信息
  updateInformation:
@@ -14,13 +14,6 @@
   feild: 
   physical: 体检类型
  saveinfo:
-  post:
-   summary: 新增一条示例数据
   field:
    id_card: 身份证号
-   person_name: 姓名
-   sex: 性别
-   age: 年龄
-   mobile: 联系电话
-   is_marry: 是否结婚
  

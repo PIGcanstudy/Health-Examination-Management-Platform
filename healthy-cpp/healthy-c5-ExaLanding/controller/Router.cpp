@@ -29,6 +29,8 @@
 #endif
 
 #include "registration/UpdateInformationController.h"
+#include "Exalanding/SaveInfoController.h"
+
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -55,6 +57,10 @@ void Router::initRouter()
 
 	//#TIP :系统扩展路由定义，写在这个后面
 	ROUTER_SIMPLE_BIND(UpdateInformationController);
+	// 绑定示例控制器
+	ROUTER_SIMPLE_BIND(SaveInfoController);
+
+	
 
 }
 
