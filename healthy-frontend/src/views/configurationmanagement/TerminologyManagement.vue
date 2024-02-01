@@ -1,166 +1,201 @@
 <!-- 术语管理 -->
 <template>
   <div class="contain">
-    <BaseDataList
-      ref="BaseDataRef"
-      :use-form="useForm"
-      :form-data="formData"
-      :table-data="tableData"
-      :table-column-attribute="tableColumnAttribute"
-      :total="total"
-      :use-pagination="usePagination"
-      :pagination-data="paginationData"
-      :use-fixed="useFixed"
-      @update-table-data="handlePageChange"
-      @update-selected-rows="selectRows"
-    >
-      <!-- fixed固定列 -->
-      <template #fixed="{ row }">
-        <el-button type="primary" style="margin-right: 5px" @click="handelLook(row)">
-          <el-icon><View></View></el-icon>
-          查看
-        </el-button>
-        <el-dropdown>
-          <el-button>
-            更多操作
-            <el-icon class="el-icon--right">
-              <arrow-down />
-            </el-icon>
-          </el-button>
+    <el-row>
+      <el-col :span="5"> </el-col>
+      <el-col :span="19">
+        <BaseDataList
+          ref="BaseDataRef"
+          :use-form="useForm"
+          :form-data="formData"
+          :table-data="tableData"
+          :table-column-attribute="tableColumnAttribute"
+          :total="total"
+          :use-pagination="usePagination"
+          :pagination-data="paginationData"
+          :use-fixed="useFixed"
+          :use-switch="useSwitch"
+          @update-table-data="handlePageChange"
+          @update-selected-rows="selectRows"
+          @update-switch-state="handleUpdateSwitchState"
+        >
+          <!-- fixed固定列 -->
+          <template #fixed="{ row }">
+            <el-button type="primary" style="margin-right: 5px" @click="handelLook(row)">
+              <el-icon><View></View></el-icon>
+              查看
+            </el-button>
+            <el-dropdown>
+              <el-button>
+                更多操作
+                <el-icon class="el-icon--right">
+                  <arrow-down />
+                </el-icon>
+              </el-button>
 
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item @click="handleEdit(row)">
-                <el-icon><Edit></Edit></el-icon>
-                修改
-              </el-dropdown-item>
-              <el-dropdown-item>
-                <el-icon><DeleteFilled></DeleteFilled></el-icon>
-                删除
-              </el-dropdown-item>
-            </el-dropdown-menu>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item @click="handleEdit(row)">
+                    <el-icon><Edit></Edit></el-icon>
+                    修改
+                  </el-dropdown-item>
+                  <el-dropdown-item>
+                    <el-icon><DeleteFilled></DeleteFilled></el-icon>
+                    删除
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
           </template>
-        </el-dropdown>
-      </template>
 
-      <!-- form表单区域 -->
-      <template #form>
-        <el-form-item label="报告类型">
-          <el-select v-model="formData.bgType" style="width: 130px">
-            <el-option v-for="item in bgTypeOptions" :key="item.value" :label="item.label" :value="item.value" />
-          </el-select>
-        </el-form-item>
-        <el-form-item label="模版类型">
-          <el-select v-model="formData.mbType" style="width: 130px">
-            <el-option v-for="item in mbTypeOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="项目名称">
-          <el-select v-model="formData.projectName" style="width: 130px">
-            <el-option v-for="item in projectNameOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
-          </el-select>
-          <el-form-item label="模版状态">
-            <el-select v-model="formData.mbState" style="width: 130px">
-              <el-option v-for="item in mbStateOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
-            </el-select>
-          </el-form-item>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary">
-            <el-icon><Search></Search></el-icon>
-            搜索
-          </el-button>
-        </el-form-item>
-        <el-form-item>
-          <el-button @click="resetForm">重置</el-button>
-        </el-form-item>
-      </template>
+          <!-- form表单区域 -->
+          <template #form>
+            <el-form-item label="体检类型">
+              <el-select v-model="formData.bgType" style="width: 130px">
+                <el-option v-for="item in tjTypeOptions" :key="item.value" :label="item.label" :value="item.value" />
+              </el-select>
+            </el-form-item>
+            <el-form-item label="术语类型">
+              <el-select v-model="formData.mbType" style="width: 130px">
+                <el-option v-for="item in syTypeOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="危害因素">
+              <el-select v-model="formData.projectName" style="width: 130px">
+                <el-option v-for="item in dangerFactorsOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="在岗状态">
+              <el-select v-model="formData.mbState" style="width: 130px">
+                <el-option v-for="item in zgStateOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
+              </el-select>
+            </el-form-item>
+            <div v-if="isVisible" class="visible">
+              <el-form-item label="术语内容">
+                <el-input style="width: 130px"></el-input>
+              </el-form-item>
+              <el-form-item label="创建时间">
+                <div class="demo-date-picker">
+                  <div class="block">
+                    <el-date-picker v-model="value1" type="daterange" />
+                  </div>
+                </div>
+              </el-form-item>
+            </div>
+            <el-form-item>
+              <el-button type="primary">
+                <el-icon><Search></Search></el-icon>
+                搜索
+              </el-button>
+            </el-form-item>
+            <el-form-item>
+              <el-button @click="resetForm">重置</el-button>
+            </el-form-item>
+            <el-form-item>
+              <el-button v-if="noVisible" link style="color: rgb(45, 140, 240)" @click="expand">
+                展开
+                <el-icon><ArrowDownBold></ArrowDownBold></el-icon>
+              </el-button>
+            </el-form-item>
+            <el-form-item>
+              <el-button v-if="isVisible" link style="color: rgb(45, 140, 240)" @click="hide">
+                收起
+                <el-icon><ArrowUpBold></ArrowUpBold></el-icon>
+              </el-button>
+            </el-form-item>
+          </template>
 
-      <!-- operation功能区域 -->
-      <template #operation>
-        <div class="operation">
-          <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true">
-            <el-icon><Plus></Plus></el-icon>
-            新增
-          </el-button>
-          <!-- 新增对话框区域 -->
-          <el-dialog v-model="dialogVisible" title="新增" width="40%">
-            <el-form :model="newForm">
-              <el-form-item label="*科室编码" label-width="90px">
-                <el-input v-model="newForm.ksCode"></el-input>
-              </el-form-item>
-              <el-form-item label="*科室名称" label-width="90px">
-                <el-input v-model="newForm.ksName"></el-input>
-              </el-form-item>
-              <el-form-item label="*科室简拼" label-width="90px">
-                <el-input v-model="newForm.ksLogogram"></el-input>
-              </el-form-item>
-              <el-form-item label="*排序" label-width="90px">
-                <el-input v-model="newForm.sort"></el-input>
-              </el-form-item>
-              <el-form-item label="联系人" label-width="90px">
-                <el-input v-model="newForm.contactPeople"></el-input>
-              </el-form-item>
-              <el-form-item label="联系电话" label-width="90px">
-                <el-input v-model="newForm.contactPhone"></el-input>
-              </el-form-item>
-              <el-form-item label="检查类型" label-width="90px">
-                <el-select v-model="newForm.typeCheck" multiple>
-                  <el-option v-for="item in newOptions" :key="item.value" :label="item.label" :value="item.value" />
-                </el-select>
-              </el-form-item>
-            </el-form>
-            <template #footer>
-              <span class="dialog-footer">
-                <el-button @click="dialogVisible = false">取消</el-button>
-                <el-button type="primary" @click="dialogVisible = false">提交</el-button>
+          <!-- operation功能区域 -->
+          <template #operation>
+            <div class="operation">
+              <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true">
+                <el-icon><Plus></Plus></el-icon>
+                新增
+              </el-button>
+              <!-- 新增对话框区域 -->
+              <el-dialog v-model="dialogVisible" title="新增" width="40%">
+                <el-form :model="newForm">
+                  <el-form-item label="*科室名称" label-width="90px">
+                    <el-select :model="newForm.ksName"></el-select>
+                  </el-form-item>
+                  <el-form-item label="*体检类型" label-width="90px">
+                    <el-select :model="newForm.tjType"></el-select>
+                  </el-form-item>
+                  <el-form-item label="*术语类型" label-width="90px">
+                    <el-select :model="newForm.syType"></el-select>
+                  </el-form-item>
+                  <el-form-item label="*危害因素" label-width="90px">
+                    <el-select :model="newForm.dangerFactors"></el-select>
+                  </el-form-item>
+                  <el-form-item label="*在岗状态" label-width="90px">
+                    <el-select :model="newForm.zgStatus"></el-select>
+                  </el-form-item>
+                  <el-form-item label="*状态" label-width="90px">
+                    <el-radio-group v-model="newForm.status" class="ml-4">
+                      <el-radio label="启用" size="large">启用</el-radio>
+                      <el-radio label="停用" size="large">停用</el-radio>
+                    </el-radio-group>
+                  </el-form-item>
+                  <el-form-item label="*术语内容" label-width="90px">
+                    <el-input v-model="newForm.syContent" :rows="2" type="textarea" placeholder="请输入术语内容" />
+                  </el-form-item>
+                  <el-form-item label="*排序" label-width="90px">
+                    <el-input v-model="newForm.sort"></el-input>
+                  </el-form-item>
+                </el-form>
+                <template #footer>
+                  <span class="dialog-footer">
+                    <el-button @click="dialogVisible = false">取消</el-button>
+                    <el-button type="primary" @click="dialogVisible = false">提交</el-button>
+                  </span>
+                </template>
+              </el-dialog>
+              <el-dropdown>
+                <el-button style="margin-right: 8px">
+                  更多操作
+                  <el-icon class="el-icon--right"> <arrow-down /> </el-icon
+                ></el-button>
+                <template #dropdown>
+                  <el-dropdown-menu>
+                    <el-dropdown-item>
+                      <el-icon><Refresh></Refresh></el-icon>
+                      刷新
+                    </el-dropdown-item>
+                    <el-dropdown-item>
+                      <el-icon><DeleteFilled></DeleteFilled></el-icon>
+                      批量删除
+                    </el-dropdown-item>
+                    <el-dropdown-item>
+                      <el-icon><Bottom></Bottom></el-icon>
+                      导出本页数据
+                    </el-dropdown-item>
+                  </el-dropdown-menu>
+                </template>
+              </el-dropdown>
+              <el-button @click="closeForm">关闭搜索</el-button>
+              <el-button @click="closeHint">关闭提示</el-button>
+            </div>
+          </template>
+
+          <!-- 多选清除栏 -->
+          <template #hint>
+            <div v-if="useHint" class="hint">
+              <span>
+                <el-icon style="color: blue"><InfoFilled></InfoFilled></el-icon>
+                已选择{{ selectedTotal }}项
               </span>
-            </template>
-          </el-dialog>
-          <el-dropdown>
-            <el-button style="margin-right: 8px">
-              更多操作
-              <el-icon class="el-icon--right"> <arrow-down /> </el-icon
-            ></el-button>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item>
-                  <el-icon><Refresh></Refresh></el-icon>
-                  刷新
-                </el-dropdown-item>
-                <el-dropdown-item>
-                  <el-icon><DeleteFilled></DeleteFilled></el-icon>
-                  批量删除
-                </el-dropdown-item>
-                <el-dropdown-item>
-                  <el-icon><Bottom></Bottom></el-icon>
-                  导出本页数据
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-          <el-button @click="closeForm">关闭搜索</el-button>
-          <el-button @click="closeHint">关闭提示</el-button>
-        </div>
-      </template>
-
-      <!-- 多选清除栏 -->
-      <template #hint>
-        <div v-if="useHint" class="hint">
-          <span>
-            <el-icon style="color: blue"><InfoFilled></InfoFilled></el-icon>
-            已选择{{ selectedTotal }}项
-          </span>
-          <el-button type="primary" link style="margin-bottom: 3px" @click="clearRows">清空</el-button>
-        </div>
-      </template>
-    </BaseDataList>
+              <el-button type="primary" link style="margin-bottom: 3px" @click="clearRows">清空</el-button>
+            </div>
+          </template>
+        </BaseDataList>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
-import { ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit } from '@element-plus/icons-vue'
+import { ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit, ArrowDownBold, ArrowUpBold, UploadFilled } from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 
 const useHint = ref(true)
@@ -169,31 +204,51 @@ const usePagination = ref(true)
 const BaseDataRef = ref()
 const dialogVisible = ref(false)
 const useFixed = ref(true)
+// form表单中时间
+const value1 = ref('')
+
+// 展开form表单中后两项
+const isVisible = ref(false)
+
+const expand = () => {
+  isVisible.value = true
+  noVisible.value = false
+}
+
+// 收起form表单中后两项
+const noVisible = ref(true)
+
+const hide = () => {
+  isVisible.value = false
+  noVisible.value = true
+}
 
 // 新增功能表单内容是否禁用
 // const formDisabled = ref(false)
 
 // table列数据
 const tableColumnAttribute = ref([
-  { prop: 'ksCode', label: '科室编码', width: '240', align: 'center' },
   { prop: 'ksName', label: '科室名称', width: '240', align: 'center' },
-  { prop: 'ksLogogram', label: '科室简拼', width: '240', align: 'center' },
-  { prop: 'sort', label: '排序', width: '240', align: 'center' },
-  { prop: 'contactPeople', label: '联系人', width: '240', align: 'center' },
-  { prop: 'contactPhone', label: '联系人电话', width: '240', align: 'center' },
-  { prop: 'typeCheck', label: '检查类型', width: '240', align: 'center' }
+  { prop: 'tjType', label: '体检类型', width: '240', align: 'center' },
+  { prop: 'syType', label: '术语类型', width: '240', align: 'center' },
+  { prop: 'dangerFactors', label: '危害因素', width: '240', align: 'center' },
+  { prop: 'zgStatus', label: '在岗状态', width: '240', align: 'center' },
+  { prop: 'status', label: '状态', width: '240', align: 'center', useSwitch: true },
+  { prop: 'syContent', label: '', width: '240', align: 'center' },
+  { prop: 'createTime', label: '创建时间', width: '240', align: 'center' }
 ])
 
 // table数据
 const tableData = ref([
   {
-    ksCode: '002',
-    ksName: '检验科',
-    ksLogogram: 'JYK',
-    sort: '1',
-    contactPeople: 'likk',
-    contactPhone: '110',
-    typeCheck: '健康体检,职业体检,从业体检'
+    ksName: '肺功能',
+    tjType: '职业体检',
+    syType: '诊断小结',
+    dangerFactors: '溴甲烷',
+    zgStatus: '---',
+    status: true,
+    syContent: '它能干扰细胞代谢，造成神经系统、肺、肾、肝及心血管系统的损害',
+    createTime: '---'
   }
 ])
 
@@ -206,8 +261,8 @@ const formData = reactive({
   createTime: ''
 })
 
-// 表单选择器数据byType
-const bgTypeOptions = ref([
+// 表单选择器数据tjType
+const tjTypeOptions = ref([
   {
     value: '职业体检'
   },
@@ -219,48 +274,55 @@ const bgTypeOptions = ref([
   },
   {
     value: '放射体检'
-  },
-  {
-    value: '通用'
   }
 ])
 
-// 表单选择器数据mbType
-const mbTypeOptions = ref([
+// 表单选择器数据syType
+const syTypeOptions = ref([
   {
-    value: '引导单'
+    value: '职业检查结果'
   },
   {
-    value: '分项报告'
+    value: '医学建议'
   }
 ])
 
-// 表单选择器数据projectName
-const projectNameOptions = ref([
+// 表单选择器数据dangerFactors
+const dangerFactorsOptions = ref([
   {
-    value: '1'
+    value: '职业危害因素'
   }
 ])
 
-// 表单选择器数据mbState
-const mbStateOptions = ref([
+// 表单选择器数据zgState
+const zgStateOptions = ref([
   {
-    value: '启用'
+    value: '上岗前'
   },
   {
-    value: '停用'
+    value: '在岗期间'
+  },
+  {
+    value: '离岗时'
+  },
+  {
+    value: '离岗后'
+  },
+  {
+    value: '应急健康检查'
   }
 ])
 
 // 新增功能中表单数据
 const newForm = reactive({
-  ksCode: '',
   ksName: '',
-  ksLogogram: '',
-  sort: '',
-  contactPeople: '',
-  contactPhone: '',
-  typeCheck: ''
+  tjType: '',
+  syType: '',
+  dangerFactors: '',
+  zgStatus: '',
+  status: '',
+  syContent: '',
+  sort: ''
 })
 
 // 新增功能中选择器数据
@@ -322,6 +384,11 @@ const clearRows = () => {
 // 重置表单方法
 const resetForm = () => {
   ;(formData.ksCoding = ''), (formData.ksLogogram = ''), (formData.ksName = ''), (formData.typeCheck = '')
+}
+
+// 开关监听
+const handleUpdateSwitchState = (state, row) => {
+  row.status = state
 }
 
 const total = tableData.value.length
