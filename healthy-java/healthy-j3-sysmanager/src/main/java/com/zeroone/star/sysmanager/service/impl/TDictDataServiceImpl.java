@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.dict.WordTypeListDTO;
+import com.zeroone.star.project.dto.j3.dictdata.DictDataDTO;
+import com.zeroone.star.project.query.j3.DictData.DictDataQuery;
 import com.zeroone.star.project.query.j3.WordTypeListQuery;
 
 import cn.hutool.core.lang.Snowflake;
@@ -22,21 +24,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.Date;
-
-
-import javax.annotation.Resource;
-
-@Mapper(componentModel = "spring")
-interface MsDictDataMapper{
-    /**
-     * 将DictData转为WordTypeListDTO
-     * @param dictData
-     * @return
-     */
-    WordTypeListDTO dictDataToWordTypeListDTO(DictData dictData);
-}
-
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,6 +39,12 @@ interface MsDictDataMapper{
      * @return
      */
     DictDataDTO DictDataToDictDataDto(DictData dictData);
+    /**
+     * 将DictData转为WordTypeListDTO
+     * @param dictData
+     * @return
+     */
+    WordTypeListDTO dictDataToWordTypeListDTO(DictData dictData);
 }
 
 
@@ -78,8 +71,6 @@ public class TDictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> 
     private UserHolder userHolder;
     @Resource
     private Snowflake snowflake;
-    @Resource
-    MsDictDataMapper msDictDataMapper;
     @Override
     public JsonVO<Boolean>AddDictData(AddDictDataDTO addDictDataDTO) {
         UserDTO user = null;
