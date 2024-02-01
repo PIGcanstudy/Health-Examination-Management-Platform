@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/portfolioitems/")
-@Api(tags = "组合项目")
+@Api(tags = "组合项目接口")
 public class TPortfolioProjectController implements PortfolioProjectApi {
 
     @Autowired

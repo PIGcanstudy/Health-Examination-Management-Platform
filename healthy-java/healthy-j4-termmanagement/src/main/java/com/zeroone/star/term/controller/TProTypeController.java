@@ -2,11 +2,13 @@ package com.zeroone.star.term.controller;
 
 
 import com.zeroone.star.project.j4.dto.OccupationalHazardTreeDTO;
-import com.zeroone.star.project.j4.terminologymanagement.TProTypeApi;
+import com.zeroone.star.project.j4.termanagement.TProTypeApi;
 import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.terminologymanagement.service.ITProTypeService;
+import com.zeroone.star.term.service.ITProTypeService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,8 +25,10 @@ import java.util.List;
  * @since 2024-01-30
  */
 @RestController
-@RequestMapping("/terminologymanagement/t-pro-type")
-public class TProTypeController implements TProTypeApi{
+@RequestMapping("/terms")
+@Api(tags = "术语管理接口")
+@Validated
+public class TProTypeController implements TProTypeApi {
 
     @Autowired
     private ITProTypeService typeService;

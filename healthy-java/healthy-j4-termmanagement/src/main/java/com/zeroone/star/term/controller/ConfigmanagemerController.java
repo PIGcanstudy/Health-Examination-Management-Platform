@@ -1,11 +1,12 @@
-package com.zeroone.star.configmanagemer.controller;
+package com.zeroone.star.term.controller;
 
-import com.zeroone.star.configmanagemer.service.ITSectionOfficeService;
 import com.zeroone.star.project.j4.configmanagemer.ConfigmanagemerAPI;
 import com.zeroone.star.project.j4.vo.SectionNameListVO;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.term.service.ITSectionOfficeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,12 +15,13 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author: jiemo
+ * @author: ;jiemo
  * @description: 组合项目controller
  */
 @RestController
-@RequestMapping("configmanagemer")
-@Api(tags = "配置管理接口")
+@RequestMapping("/terms")
+@Api(tags = "术语管理接口")
+@Validated
 public class ConfigmanagemerController implements ConfigmanagemerAPI {
     @Resource
     private ITSectionOfficeService itSectionOfficeService;

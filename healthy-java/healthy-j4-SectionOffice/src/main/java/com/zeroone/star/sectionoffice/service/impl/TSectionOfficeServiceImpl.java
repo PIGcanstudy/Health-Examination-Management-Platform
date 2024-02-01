@@ -85,13 +85,14 @@ public class TSectionOfficeServiceImpl extends ServiceImpl<TSectionOfficeMapper,
         // 拷贝数据
         BeanUtils.copyProperties(tSectionOfficeDTO, tSectionOffice);
         // 设定修改人
-        tSectionOffice.setUpdateId(String.valueOf(currentUser.getId()));
+        // tSectionOffice.setUpdateId(String.valueOf(currentUser.getId()));
         // 设定修改时间
-        tSectionOffice.setUpdateTime(LocalDateTime.now());
+        // tSectionOffice.setUpdateTime(LocalDateTime.now());
         // 设定创建人
         tSectionOffice.setCreateId(String.valueOf(currentUser.getId()));
         // 设定创建时间
         tSectionOffice.setCreateTime(LocalDateTime.now());
+        // 设定删除标志
         tSectionOffice.setDelFlag(0);
         // 设置部门
         tSectionOffice.setDepartmentId(getDepartmentId(String.valueOf(currentUser.getId())));

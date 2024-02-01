@@ -1,7 +1,7 @@
-package com.zeroone.star.configmanagemer.mapper;
+package com.zeroone.star.term.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zeroone.star.configmanagemer.entity.TSectionOffice;
+import com.zeroone.star.term.entity.TSectionOffice;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

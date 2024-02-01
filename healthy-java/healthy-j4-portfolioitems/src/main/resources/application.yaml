@@ -1,5 +1,5 @@
 server:
-  port: ${sp.Portfolioitems}
+  port: ${sp.portfolioitems}
 spring:
   application:
-    name: ${sn.Portfolioitems}
+    name: ${sn.portfolioitems}

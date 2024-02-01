@@ -36,8 +36,6 @@ public class TemplateController implements TemplateApis {
     @Value("${fastdfs.nginx-servers}")
     private String fileServerUrl;
 
-
-
     @PostMapping("add-template")
     @ApiOperation("新增模板")
     @Override

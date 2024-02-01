@@ -1,12 +1,13 @@
-package com.zeroone.star.configmanagemer.service.impl;
+package com.zeroone.star.term.service.impl;
+
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zeroone.star.configmanagemer.entity.TSectionOffice;
-import com.zeroone.star.configmanagemer.mapper.TSectionOfficeMapper;
-import com.zeroone.star.configmanagemer.service.ITSectionOfficeService;
 import com.zeroone.star.project.j4.vo.SectionNameListVO;
+import com.zeroone.star.term.entity.TSectionOffice;
+import com.zeroone.star.term.mapper.TSectionOfficeMapper;
+import com.zeroone.star.term.service.ITSectionOfficeService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.List;
  * 科室 服务实现类
  * </p>
  *
- * @author ;jiemo
+ * @author jiemo
  * @since 2024-01-29
  */
 @Service

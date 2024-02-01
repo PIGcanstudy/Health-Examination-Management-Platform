@@ -1,5 +1,0 @@
-server:
-  port: ${sp.configmanager}
-spring:
-  application:
-    name: ${sn.configmanager}

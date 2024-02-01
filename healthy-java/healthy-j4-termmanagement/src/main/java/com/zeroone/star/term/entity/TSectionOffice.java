@@ -1,4 +1,4 @@
-package com.zeroone.star.configmanagemer.entity;
+package com.zeroone.star.term.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
