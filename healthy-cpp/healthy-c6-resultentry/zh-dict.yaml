@@ -1,4 +1,4 @@
-group_person:
+person:
  get:
   summary: 查询体检人员列表
  field:
