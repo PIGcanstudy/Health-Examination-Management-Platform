@@ -58,7 +58,6 @@ public class DirectSourceController implements DirectSourceApis {
     @Override
     public JsonVO<PageDTO<DictDataDTO>> queryDictDataByCondition(DictDataQuery condition) {
         PageDTO<DictDataDTO> data = itDictDataService.ListPage(condition);
-        System.out.println(data);
         return JsonVO.success(data);
     }
 
