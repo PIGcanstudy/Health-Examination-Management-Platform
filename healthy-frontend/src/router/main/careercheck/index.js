@@ -16,10 +16,10 @@ const routes = [
         component: () => import('@/views/careercheck/InspectionCompany.vue')
       },
       {
-        // 团建订单
+        // 团检订单
         path: '/careercheck/GroupOrder.vue',
         name: 'careergrouporder',
-        component: () => import('@/views/careercheck/GroupOrder.vue')
+        component: () => import('@/views/healthcheck/GroupOrder.vue')
       },
       {
         // 体检人员
