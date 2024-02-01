@@ -25,12 +25,24 @@
 // 这个结构体代表了查询细节的 JSON 响应的包装器。
 // 它作为 execQueryInquiryDetail 函数的返回类型。
 
+InquiryDetailPageJsonVO::Wrapper InquiryDetailController::execQueryInquiryDetail(const InquiryDetailQuery::Wrapper& query, const PayloadDTO& payload)
+{
+	// 定义一个Service
+	InquiryDetailService service;
+	// 查询数据
+	auto result = service.listAll(query);
+	// 响应结果
+	auto jvo = InquiryDetailPageJsonVO::createShared();
+	jvo->success(result);
+	return jvo;
+}
+
 Uint64JsonVO::Wrapper InquiryDetailController::execModifyInquiryDetail(const InquiryDetailDTO::Wrapper& dto)
 {
 	// 定义返回数据对象
 	auto jvo = Uint64JsonVO::createShared();
 	// 参数校验
-	if (!dto->id || dto->id <= 0)
+	if (!dto->id)
 	{
 		jvo->init(UInt64(-1), RS_PARAMS_INVALID);
 		return jvo;

@@ -21,32 +21,42 @@
 #include "../../dao/evalue/InquiryDetailDAO.h"
 
 
-//uint64_t InquiryDetailService::saveData(const InquiryDetailDTO::Wrapper& dto)
-//{
-//	// 组装DO数据
-//	InquiryDetailDO data;
-//	// 	data.setName(dto->name.getValue(""));
-//	// 	data.setSex(dto->sex.getValue(""));
-//	// 	data.setAge(dto->age.getValue(1));
-//	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Name, name, Sex, sex, Age, age)
-//		// 执行数据添加
-//		InquiryDetailDAO dao;
-//	return dao.insert(data);
-//}
-//
-//bool InquiryDetailService::updateData(const InquiryDetailDTO::Wrapper& dto)
-//{
-//	// 组装DO数据
-//	InquiryDetailDO data;
-//	// 	data.setId(dto->id.getValue(0));
-//	// 	data.setName(dto->name.getValue(""));
-//	// 	data.setSex(dto->sex.getValue(""));
-//	// 	data.setAge(dto->age.getValue(1));
-//	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Name, name, Sex, sex, Age, age, Id, id)
-//		// 执行数据修改
-//		InquiryDetailDAO dao;
-//	return dao.update(data) == 1;
-//}
+
+InquiryDetailPageDTO::Wrapper InquiryDetailService::listAll(const InquiryDetailQuery::Wrapper& query)
+{
+	// 构建返回对象
+	auto pages = InquiryDetailPageDTO::createShared();
+	pages->pageIndex = query->pageIndex;
+	pages->pageSize = query->pageSize;
+
+	// 查询数据总条数
+	InquiryDetailDAO dao;
+	uint64_t count = dao.count(query);
+	if (count <= 0)
+	{
+		return pages;
+	}
+
+	// 分页查询数据
+	pages->total = count;
+	pages->calcPages();
+	list<InquiryDetailDO> result = dao.selectWithPage(query);
+	// 将DO转换成DTO
+	for (InquiryDetailDO sub : result)
+	{
+		auto dto = InquiryDetailDTO::createShared();
+		// 		dto->id = sub.getId();
+		// 		dto->name = sub.getName();
+		// 		dto->sex = sub.getSex();
+		// 		dto->age = sub.getAge();
+		ZO_STAR_DOMAIN_DO_TO_DTO(dto, sub, id, Id, workYear, WorkYear, workMonth, WorkMonth, isMarry, IsMarry, exposureWorkYear, ExposureWorkYear,
+			exposureWorkMonth, ExposureWorkMonth, education, Education, familyAddress, FamilyAddress, workTypeText, WorkTypeText,
+			workName, WorkName, department, Department, id, Id)
+			pages->addData(dto);
+
+	}
+	return pages;
+}
 
 
 //uint64_t InquiryDetailService::saveData(const InquiryDetailDTO::Wrapper& dto)
@@ -65,9 +75,10 @@ bool InquiryDetailService::updateData(const InquiryDetailDTO::Wrapper& dto)
 {
 	// 组装DO数据
 	InquiryDetailDO data;
-	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, WorkYear, workYear, WorkMonth, workMonth, IsMarry, isMarry, ExposureWorkYear, exposureWorkYear,
+
+	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Id,id,WorkYear, workYear, WorkMonth, workMonth, IsMarry, isMarry, ExposureWorkYear, exposureWorkYear,
 		ExposureWorkMonth, exposureWorkMonth, Education, education, FamilyAddress, familyAddress, WorkTypeText, workTypeText,
-		WorkName, workName, Department, department, Id, id)
+		WorkName, workName, Department, department)
 		// 执行数据修改
 		InquiryDetailDAO dao;
 	return dao.update(data) == 1;

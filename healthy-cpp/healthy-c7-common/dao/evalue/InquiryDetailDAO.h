@@ -29,7 +29,10 @@
 class InquiryDetailDAO : public BaseDAO
 {
 public:
+	// 统计数据条数
+	uint64_t count(const InquiryDetailQuery::Wrapper& query);
 	// 修改数据
 	int update(const InquiryDetailDO& uObj);
+	list<InquiryDetailDO> selectWithPage(const InquiryDetailQuery::Wrapper& query);
 };
 #endif // !_InquiryDetail_DAO_

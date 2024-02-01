@@ -67,6 +67,27 @@
     } \
 
 
+uint64_t InquiryDetailDAO::count(const InquiryDetailQuery::Wrapper & query)
+{
+    stringstream sql;
+    sql << "SELECT COUNT(*) FROM t_group_person JOIN t_interrogation ON t_group_person.id =t_interrogation.id";
+    SAMPLE_TERAM_PARSE(query, sql);
+    string sqlStr = sql.str();
+    return sqlSession->executeQueryNumerical(sqlStr, params);
+}
+
+
+list<InquiryDetailDO> InquiryDetailDAO::selectWithPage(const InquiryDetailQuery::Wrapper & query)
+{
+    stringstream sql;
+    sql << "SELECT a.id,b.work_year, b.work_month, a.is_marry, b.exposure_work_year, b.exposure_work_month, b.education, b.family_address, a.work_type_text, a.work_name, a.department FROM t_group_person AS a JOIN t_interrogation AS b ON t_group_person.id =t_interrogation.id";
+    SAMPLE_TERAM_PARSE(query, sql);
+    sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
+    InquiryDetailMapper mapper;
+    string sqlStr = sql.str();
+    return sqlSession->executeQuery<InquiryDetailDO, InquiryDetailMapper>(sqlStr, mapper, params);
+}
+
 
 int InquiryDetailDAO::update(const InquiryDetailDO& uObj)
 {

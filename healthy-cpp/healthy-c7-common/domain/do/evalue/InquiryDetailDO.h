@@ -55,6 +55,7 @@ class InquiryDetailDO
 
 public:
 	InquiryDetailDO() {
+		id = 1;
 		workYear = 0;
 		workMonth = 0;
 		isMarry = "";
