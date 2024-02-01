@@ -5,6 +5,14 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.dict.WordTypeListDTO;
 import com.zeroone.star.project.query.j3.WordTypeListQuery;
+
+import cn.hutool.core.lang.Snowflake;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zeroone.star.project.components.user.UserDTO;
+import com.zeroone.star.project.components.user.UserHolder;
+import com.zeroone.star.project.dto.j3.dictdata.AddDictDataDTO;
+import com.zeroone.star.project.dto.j3.dictdata.ModifyDictData;
+import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.entity.DictData;
 import com.zeroone.star.sysmanager.mapper.DictDataMapper;
 import com.zeroone.star.sysmanager.service.ITDictDataService;
@@ -23,6 +31,10 @@ interface MsDictDataMapper{
      */
     WordTypeListDTO dictDataToWordTypeListDTO(DictData dictData);
 }
+import javax.annotation.Resource;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 /**
  * <p>
  * 字典数据 服务实现类
@@ -40,6 +52,36 @@ public class TDictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> 
     public void removeById(String id) {
         baseMapper.deleteById(id);
     }
+    @Resource
+    private DictDataMapper dictDataMapper;
+    @Resource
+    private UserHolder userHolder;
+    @Resource
+    private Snowflake snowflake;
+    @Override
+    public JsonVO<Boolean>AddDictData(AddDictDataDTO addDictDataDTO){
+        UserDTO user = null;
+        try {
+            user = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            log.error("解析用户失败！！！");
+        }
+        DictData dictData= new DictData();
+        dictData.setId(String.valueOf(snowflake.nextId()));
+        dictData.setDictId(addDictDataDTO.getDictId());
+        dictData.setDelFlag(false);
+        dictData.setTitle(addDictDataDTO.getTitle());
+        dictData.setCreateBy(user.getUsername());
+        dictData.setValue(addDictDataDTO.getValue());
+        dictData.setDescription(addDictDataDTO.getDescription());
+        dictData.setSortOrder(addDictDataDTO.getSort_order());
+        dictData.setStatus(addDictDataDTO.getStatus());
+        dictData.setCreateTime(LocalDateTime.now());
+        boolean success = dictDataMapper.insert(dictData) > 0;
+        if (success) {
+            return JsonVO.success(success);
+        }
+        return JsonVO.fail(success);
 
 
     @Override
@@ -58,5 +100,30 @@ public class TDictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> 
         //执行查询语句
         Page<DictData> result = baseMapper.selectPage(page, wrapper);
         return PageDTO.create(result,src -> msDictDataMapper.dictDataToWordTypeListDTO(src));
+    }
+    }
+    @Override
+    public JsonVO<Boolean> ModifyDictData(ModifyDictData modifyDictData){
+        UserDTO user = null;
+        try {
+            user = userHolder.getCurrentUser();
+        } catch (Exception e) {
+            log.error("解析用户失败！！！");
+        }
+        DictData dictData= new DictData();
+        dictData.setId(modifyDictData.getId());
+        dictData.setTitle(modifyDictData.getTitle());
+        dictData.setValue(modifyDictData.getValue());
+        dictData.setUpdateBy(user.getUsername());
+        dictData.setDescription(modifyDictData.getDescription());
+        dictData.setSortOrder(modifyDictData.getSort_order());
+        dictData.setStatus(modifyDictData.getStatus());
+
+        dictData.setUpdateTime(LocalDateTime.now());
+        boolean success = dictDataMapper.updateById(dictData) > 0;
+        if (success) {
+            return JsonVO.success(success);
+        }
+        return JsonVO.fail(success);
     }
 }

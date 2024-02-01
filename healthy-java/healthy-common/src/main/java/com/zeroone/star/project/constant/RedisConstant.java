@@ -15,4 +15,7 @@ public interface RedisConstant {
      * 角色资源映射Map的key
      */
     String RESOURCE_ROLES_MAP = "AUTH:RESOURCE_ROLES";
+
+    /*消息详情key*/
+    String MESSAGE_DETAIL = "message:detail";
 }

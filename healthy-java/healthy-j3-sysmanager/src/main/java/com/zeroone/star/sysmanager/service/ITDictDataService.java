@@ -2,6 +2,9 @@ package com.zeroone.star.sysmanager.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.dto.j3.dictdata.AddDictDataDTO;
+import com.zeroone.star.project.dto.j3.dictdata.ModifyDictData;
+import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.dict.WordTypeListDTO;
 import com.zeroone.star.project.query.j3.WordTypeListQuery;
@@ -18,6 +21,7 @@ import java.util.List;
  * @since 2024-01-16
  */
 public interface ITDictDataService extends IService<DictData> {
+    JsonVO<Boolean> AddDictData(AddDictDataDTO addDictDataDTO);
     /**
      * 通过ID查询数据
      * @param id 唯一ID
@@ -38,4 +42,5 @@ public interface ITDictDataService extends IService<DictData> {
      */
     PageDTO<WordTypeListDTO> listPage(WordTypeListQuery wordTypeListQuery);
 
+    JsonVO<Boolean> ModifyDictData(ModifyDictData modifyDictData);
 }

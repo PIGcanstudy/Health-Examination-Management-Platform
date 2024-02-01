@@ -1,5 +1,13 @@
 package com.zeroone.star.sysmanager.controller;
 
+
+
+import com.zeroone.star.project.dto.PageDTO;
+import com.zeroone.star.project.dto.j3.dictdata.DictDataDTO;
+import com.zeroone.star.project.j3.dictory.DirectSourceApis;
+import com.zeroone.star.project.dto.j3.dictdata.AddDictDataDTO;
+import com.zeroone.star.project.dto.j3.dictdata.ModifyDictData;
+import com.zeroone.star.project.query.j3.DictData.DictDataQuery;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.dict.WordTypeListDTO;
 import com.zeroone.star.project.j3.direct.DirectSourceApis;
@@ -7,6 +15,7 @@ import com.zeroone.star.project.query.j3.WordTypeListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.entity.DictData;
 import com.zeroone.star.sysmanager.service.ITDictDataService;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +35,35 @@ public class DirectSourceController implements DirectSourceApis {
 
     @Resource
     ITDictDataService itDictDataService;
+    @ApiOperation("新增字典数据")
+    @PostMapping("/addDictData")
+    @Override
+    public JsonVO<Boolean> AddDictData(AddDictDataDTO addDictDataDTO) {
+        JsonVO<Boolean> booleanJsonVO = itDictDataService.AddDictData(addDictDataDTO);
+        return booleanJsonVO;
+    }
+
+    @ApiOperation("修改字典数据")
+    @PostMapping ("/modifyDictData")
+    @Override
+    public JsonVO<Boolean> ModifyDictData(ModifyDictData modifyDictData) {
+        JsonVO<Boolean> booleanJsonVO = itDictDataService.ModifyDictData(modifyDictData);
+        return booleanJsonVO;
+    }
+
+
+    @ApiOperation("查询字典数据名称列表")
+    @GetMapping("/queryDataTitle")
+    @Override
+    public JsonVO<List<String>> queryDataTitle() {
+        return null;
+    }
+    @ApiOperation("查询字典数据列表")
+    @PostMapping("/queryDictDataByCondition")
+    @Override
+    public JsonVO<PageDTO<DictDataDTO>> queryDictDataByCondition(DictDataQuery condition) {
+        return null;
+    }
 
     @ApiOperation("根据id批量删除数据字典")
     @PostMapping("/deleteByIds")
