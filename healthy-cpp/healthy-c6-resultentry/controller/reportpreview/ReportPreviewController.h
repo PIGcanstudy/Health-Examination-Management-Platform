@@ -16,7 +16,7 @@ class ReportPreviewController :public oatpp::web::server::api::ApiController // 
 	API_ACCESS_DECLARE(ReportPreviewController);
 	// 3 定义接口
 public:
-	API_HANDLER_ENDPOINT_AUTH(API_M_POST, "healthy-c6-resultentry/report", queryReportPreview, BODY_DTO(ReportPreviewQuery::Wrapper, qdto), execQueryReportPreview(qdto, authObject->getPayload()));
+	API_HANDLER_ENDPOINT_AUTH(API_M_POST, "/resultentry/report", queryReportPreview, BODY_DTO(ReportPreviewQuery::Wrapper, qdto), execQueryReportPreview(qdto, authObject->getPayload()));
 	ENDPOINT_INFO(queryReportPreview) {
 		// 定义接口标题
 		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("reportpreview.get.report"));

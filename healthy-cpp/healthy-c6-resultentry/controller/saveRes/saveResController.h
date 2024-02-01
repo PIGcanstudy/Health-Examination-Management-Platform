@@ -32,7 +32,7 @@ public:
 		API_DEF_ADD_RSP_JSON_WRAPPER(Uint64JsonVO);
 	}
 	// 3.2 定义新增接口处理
-	ENDPOINT("POST", "/addDepartRes", addDepartRes, BODY_DTO(SaveResDTO::Wrapper, dto), API_HANDLER_AUTH_PARAME) {
+	ENDPOINT("POST", "/resultentry/addDepartRes", addDepartRes, BODY_DTO(SaveResDTO::Wrapper, dto), API_HANDLER_AUTH_PARAME) {
 		// 呼叫执行函数响应结果
 		API_HANDLER_RESP_VO(execAddDepartRes(dto, authObject->getPayload()));
 	}
@@ -48,7 +48,7 @@ public:
 		API_DEF_ADD_RSP_JSON_WRAPPER(Uint64JsonVO);
 	}
 	// 3.2 定义新增接口处理
-	ENDPOINT("POST", "/addRPProCheck", addRPProCheck, BODY_DTO(RPProCheckDTO::Wrapper, dto), API_HANDLER_AUTH_PARAME) {
+	ENDPOINT("POST", "/resultentry/addRPProCheck", addRPProCheck, BODY_DTO(RPProCheckDTO::Wrapper, dto), API_HANDLER_AUTH_PARAME) {
 		// 呼叫执行函数响应结果
 		API_HANDLER_RESP_VO(execAddRPProCheck(dto));
 	}
@@ -58,7 +58,7 @@ public:
 	// 3.1 定义修改接口描述
 	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("save.put.waiveCheck"), waiveCheck, Uint64JsonVO::Wrapper);
 	// 3.2 定义修改接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/waiveCheck", waiveCheck, BODY_DTO(RPProCheckDTO::Wrapper, dto), execModifyWaiveCheck(dto));
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/resultentry/modifywaiveCheck", waiveCheck, BODY_DTO(RPProCheckDTO::Wrapper, dto), execModifyWaiveCheck(dto));
 	
 private:
 	

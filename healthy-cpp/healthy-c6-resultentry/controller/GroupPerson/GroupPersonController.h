@@ -36,7 +36,7 @@ public: // 定义接口
 	};
 
 	// 定义查询接口处理
-	ENDPOINT(API_M_GET, "/GroupPerson/Query/list", queryByGroupPerson, QUERIES(QueryParams, queryParams)) {
+	ENDPOINT(API_M_GET, "/resultentry/GroupPerson/Query/list", queryByGroupPerson, QUERIES(QueryParams, queryParams)) {
 		// 将查询参数转换成PageQuery查询模型
 		API_HANDLER_QUERY_PARAM(gpq, GroupPersonQuery, queryParams);
 		// 执行业务逻辑处理

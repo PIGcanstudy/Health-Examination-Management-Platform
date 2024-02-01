@@ -16,7 +16,7 @@ class SampleBarcodesViewController :public oatpp::web::server::api::ApiControlle
 	API_ACCESS_DECLARE(SampleBarcodesViewController);
 	// 3 定义接口
 public:
-	API_HANDLER_ENDPOINT_AUTH(API_M_POST, "healthy-c6-resultentry/barcod", querySampleBarcodesView, BODY_DTO(SampleBarcodesViewQuery::Wrapper,qdto), execQuerySampleBarcodesView(qdto,authObject->getPayload()));
+	API_HANDLER_ENDPOINT_AUTH(API_M_POST, "/resultentry/barcod", querySampleBarcodesView, BODY_DTO(SampleBarcodesViewQuery::Wrapper,qdto), execQuerySampleBarcodesView(qdto,authObject->getPayload()));
 	ENDPOINT_INFO(querySampleBarcodesView) {
 		// 定义接口标题
 		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("samplebarcodesview.get.barcode"));

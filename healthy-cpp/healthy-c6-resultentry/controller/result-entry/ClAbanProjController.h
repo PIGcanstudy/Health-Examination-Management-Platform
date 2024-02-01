@@ -41,7 +41,7 @@ public:
 	// 3.1 定义修改接口描述
 	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("result-entry.cl-aban-proj.put.summary"), modifyProjState, Uint64JsonVO::Wrapper);
 	// 3.2 定义修改接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/result-entry/cl-aban-proj", modifyProjState, BODY_DTO(ClAbanProjDTO::Wrapper, dto), execModifyProjState(dto));
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/resultentry/cl-aban-proj", modifyProjState, BODY_DTO(ClAbanProjDTO::Wrapper, dto), execModifyProjState(dto));
 
 private:
 

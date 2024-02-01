@@ -26,7 +26,7 @@ public:
 	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("file_chengfeng.upload.summary"), modifySample, StringJsonVO::Wrapper);
 	
 	// 3.2 定义修改接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/filexxx/uploadxxx", modifySample, BODY_DTO(UpFileDTO::Wrapper, dto), execModifySample(dto, authObject->getPayload()));
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/resultentry/filexxx/uploadxxx", modifySample, BODY_DTO(UpFileDTO::Wrapper, dto), execModifySample(dto, authObject->getPayload()));
 
 
 private:	

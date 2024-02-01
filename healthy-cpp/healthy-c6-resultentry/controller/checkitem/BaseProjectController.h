@@ -29,7 +29,7 @@ public:	//定义接口
 	}
 
 	//定义分页查询单位列表接口
-	ENDPOINT(API_M_GET, "checkitem/query-baseproject", queryBaseProject, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
+	ENDPOINT(API_M_GET, "/resultentry/checkitem/query-baseproject", queryBaseProject, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
 		API_HANDLER_QUERY_PARAM(bpq, BaseProjectQuery, params);
 		// 呼叫执行函数响应结果

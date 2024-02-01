@@ -27,7 +27,7 @@ public: // 定义接口
 
 
 	// 定义人员详情查询接口
-	ENDPOINT(API_M_GET, "/GroupPerson/Query/info", queryPersonInfo, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
+	ENDPOINT(API_M_GET, "/resultentry/GroupPerson/Query/info", queryPersonInfo, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
 		API_HANDLER_QUERY_PARAM(infoQuery, GroupPersonInfoQuery, params);
 		API_HANDLER_RESP_VO(queryPersonInfo(infoQuery));

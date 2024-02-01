@@ -53,7 +53,7 @@ public:
 		API_DEF_ADD_QUERY_PARAMS(String, "person_id", ZH_WORDS_GETTER("unknownmoduleprofessionalhistory.controller.description"), "", false);
 	}
 
-	ENDPOINT(API_M_GET, "/unknownmoduleprofessionalhistory/queryProfessionalHistory", queryProfessionalHistory, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
+	ENDPOINT(API_M_GET, "/resultentry/unknownmoduleprofessionalhistory/queryProfessionalHistory", queryProfessionalHistory, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
 		API_HANDLER_QUERY_PARAM(phq, ProfessionalHistoryQuery, params);
 		// 呼叫执行函数响应结果
