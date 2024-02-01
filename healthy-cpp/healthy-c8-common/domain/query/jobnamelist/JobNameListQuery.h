@@ -13,6 +13,7 @@ class JobNameListQuery : public PageQuery
 	API_DTO_FIELD(String, keyword, ZH_WORDS_GETTER("jobnamelist.field.keyword"), false, "");
 };
 
+
 #include OATPP_CODEGEN_END(DTO)
 
 #endif // !_CONTACTNAMEQUERY_H_

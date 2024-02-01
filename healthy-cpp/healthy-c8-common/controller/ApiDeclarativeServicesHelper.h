@@ -46,6 +46,8 @@
 #include "service/packageprolist/PackageProListApiClient.h"
 //获取术语名称列表（条件+分页）
 #include "service/termnamelist/TermNameListApiClient.h"
+//获取工种名称列表（分页+条件）
+#include "service/jobnamelist/JobNameListApiClient.h"
 
 
 //////////////////////////////////////////////////////////////////////////

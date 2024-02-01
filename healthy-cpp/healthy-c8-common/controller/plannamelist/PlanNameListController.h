@@ -23,14 +23,16 @@ public:
 	ENDPOINT_INFO(queryPlanNameList) {
 		// 定义标题和返回类型以及授权支持
 		API_DEF_ADD_COMMON_AUTH(ZH_WORDS_GETTER("plannamelist.query-plannamelist.summary"), PlanNameListPageJsonVO::Wrapper);
+		// 定义分页查询参数描述
+		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他路径参数说明
 		API_DEF_ADD_QUERY_PARAMS(String, "keyword", ZH_WORDS_GETTER("plannamelist.field.keyword"), "", false);
 	}
 	// 3.2 定义测试声明式服务调用的接口1处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_GET, "/common/query-plannamelist", queryPlanNameList, QUERY(String, keyword), execQueryPlanNameList(keyword, authObject->getPayload()));
+	API_HANDLER_ENDPOINT_QUERY_AUTH(API_M_GET, "/common/query-plannamelist", queryPlanNameList, PlanNameListQuery, execQueryPlanNameList(query, authObject->getPayload()));
 private:
 	// 3.3 测试声明式服务调用2
-	PlanNameListPageJsonVO::Wrapper execQueryPlanNameList(const String& keyword, const PayloadDTO& payload);
+	PlanNameListPageJsonVO::Wrapper execQueryPlanNameList(const PlanNameListQuery::Wrapper& query, const PayloadDTO& payload);
 };
 // 0 取消API控制器使用宏
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen

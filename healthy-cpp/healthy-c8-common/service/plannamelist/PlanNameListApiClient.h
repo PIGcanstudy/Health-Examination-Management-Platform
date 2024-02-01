@@ -12,7 +12,7 @@ class PlanNameListApiClient : public oatpp::web::client::ApiClient
 	// 初始化定义
 	API_CLIENT_INIT(PlanNameListApiClient);
 	// 声明式调用服务接口
-	API_CALL(API_M_GET, "now-dev-null", queryPlanNameList, API_HANDLER_AUTN_HEADER, QUERY(String,keyword));
+	API_CALL(API_M_GET, "now-dev-null", queryPlanNameList, API_HANDLER_AUTN_HEADER, API_HANDLER_PAGE_PARAME, QUERY(String,keyword));
 };
 
 #include OATPP_CODEGEN_END(ApiClient)
