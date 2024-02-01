@@ -49,7 +49,7 @@ public class DirectSourceController implements DirectSourceApis {
     @ApiOperation("查询字典数据名称列表")
     @GetMapping("/queryDataTitle")
     @Override
-    public JsonVO<List<String>> queryDataTitle() {
+    public JsonVO<List<String>> queryDictDataTitle() {
         return null;
     }
     @ApiOperation("查询字典数据列表")
