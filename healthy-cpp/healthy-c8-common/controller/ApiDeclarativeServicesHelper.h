@@ -44,6 +44,8 @@
 #include "service/usernamelist/UserNameListApiClient.h"
 //获取组合项目列表（条件+分页）
 #include "service/packageprolist/PackageProListApiClient.h"
+//获取术语名称列表（条件+分页）
+#include "service/termnamelist/TermNameListApiClient.h"
 
 
 //////////////////////////////////////////////////////////////////////////
