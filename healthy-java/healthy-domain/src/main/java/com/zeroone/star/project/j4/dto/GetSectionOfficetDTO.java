@@ -1,12 +1,13 @@
 package com.zeroone.star.project.j4.dto;
 
+import com.zeroone.star.project.dto.PageDTO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
 @ApiModel(value = "科室管理分页查询请求参数")
-public class GetSectionOfficetDTO extends PageDTO{
+public class GetSectionOfficetDTO extends PageDTO {
     //编码
     @ApiModelProperty(value = "编码",example = "001",required = true)
     private String sectionCode;

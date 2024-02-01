@@ -8,7 +8,7 @@
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>healthy-j4-Portfolioitems</artifactId>
+    <artifactId>healthy-j4-portfolioitems</artifactId>
     <dependencies>
         <!-- spring mvc -->
         <dependency>

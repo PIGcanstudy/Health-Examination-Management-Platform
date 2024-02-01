@@ -1,4 +1,4 @@
-package com.zeroone.star.project.j4.configmanagemer;
+package com.zeroone.star.project.j4.termanagement;
 
 import com.zeroone.star.project.j4.vo.SectionNameListVO;
 import com.zeroone.star.project.vo.JsonVO;

@@ -1,6 +1,6 @@
 package com.zeroone.star.term.controller;
 
-import com.zeroone.star.project.j4.configmanagemer.ConfigmanagemerAPI;
+import com.zeroone.star.project.j4.termanagement.ConfigmanagemerAPI;
 import com.zeroone.star.project.j4.vo.SectionNameListVO;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.term.service.ITSectionOfficeService;

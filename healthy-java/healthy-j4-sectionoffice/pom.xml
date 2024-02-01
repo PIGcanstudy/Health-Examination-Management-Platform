@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.zeroone.star</groupId>
@@ -10,21 +10,22 @@
     </parent>
     <artifactId>healthy-j4-sectionoffice</artifactId>
     <dependencies>
-        <!-- spring mvc -->
+        <!-- spring web mvc -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <!-- 系统内置模块 -->
-        <dependency>
-            <groupId>com.zeroone.star</groupId>
-            <artifactId>healthy-apis</artifactId>
-        </dependency>
         <!-- common -->
         <dependency>
             <groupId>com.zeroone.star</groupId>
             <artifactId>healthy-common</artifactId>
+        </dependency>
+        <!-- apis -->
+        <dependency>
+            <groupId>com.zeroone.star</groupId>
+            <artifactId>healthy-apis</artifactId>
         </dependency>
 
         <!-- nacos -->
@@ -33,12 +34,13 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <!-- alibaba nacos config -->
+        <!-- alibaba nacos discovery -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
+        <!-- 数据库相关 -->
         <!-- mp -->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -58,6 +60,11 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
         </dependency>
     </dependencies>
     <build>

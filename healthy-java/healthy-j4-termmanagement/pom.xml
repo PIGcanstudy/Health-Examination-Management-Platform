@@ -10,7 +10,7 @@
     </parent>
     <artifactId>healthy-j4-termmanagement</artifactId>
     <dependencies>
-        <!-- spring mvc -->
+        <!-- spring web mvc -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -26,6 +26,7 @@
             <groupId>com.zeroone.star</groupId>
             <artifactId>healthy-common</artifactId>
         </dependency>
+
         <!-- nacos -->
         <!-- alibaba nacos config -->
         <dependency>
