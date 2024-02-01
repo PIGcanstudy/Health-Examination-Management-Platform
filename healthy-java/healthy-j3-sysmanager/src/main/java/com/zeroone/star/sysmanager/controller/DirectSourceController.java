@@ -8,9 +8,7 @@ import com.zeroone.star.project.j3.dictory.DirectSourceApis;
 import com.zeroone.star.project.dto.j3.dictdata.AddDictDataDTO;
 import com.zeroone.star.project.dto.j3.dictdata.ModifyDictData;
 import com.zeroone.star.project.query.j3.DictData.DictDataQuery;
-import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.dto.j3.dict.WordTypeListDTO;
-import com.zeroone.star.project.j3.direct.DirectSourceApis;
 import com.zeroone.star.project.query.j3.WordTypeListQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.sysmanager.entity.DictData;
@@ -21,6 +19,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 字典数据controller

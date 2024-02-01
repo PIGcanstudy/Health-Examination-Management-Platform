@@ -2,6 +2,7 @@ package com.zeroone.star.project.j3.dictory;
 
 
 import com.zeroone.star.project.dto.PageDTO;
+import com.zeroone.star.project.dto.j3.dict.WordTypeListDTO;
 import com.zeroone.star.project.dto.j3.dictdata.DictDataDTO;
 import com.zeroone.star.project.query.j3.DictData.DictDataQuery;
 import com.zeroone.star.project.query.j3.WordTypeListQuery;
@@ -32,7 +33,7 @@ public interface DirectSourceApis {
      * @param wordTypeListQuery
      * @return
      */
-    JsonVO<List<WordTypeListQuery>> queryByWordType(WordTypeListQuery wordTypeListQuery);
+    JsonVO<PageDTO<WordTypeListDTO>> queryByWordType(WordTypeListQuery wordTypeListQuery);
 
     /**
      * 获取字典数据名称列表
@@ -49,5 +50,6 @@ public interface DirectSourceApis {
     JsonVO<PageDTO<DictDataDTO>> queryDictDataByCondition(DictDataQuery condition);
 
     JsonVO<Boolean> AddDictData(AddDictDataDTO addDictDataDTO);
+
 }
 

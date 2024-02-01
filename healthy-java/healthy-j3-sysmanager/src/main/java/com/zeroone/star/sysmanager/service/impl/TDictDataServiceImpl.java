@@ -19,6 +19,10 @@ import com.zeroone.star.sysmanager.service.ITDictDataService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 
 import javax.annotation.Resource;
 
@@ -31,9 +35,6 @@ interface MsDictDataMapper{
      */
     WordTypeListDTO dictDataToWordTypeListDTO(DictData dictData);
 }
-import javax.annotation.Resource;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * <p>
@@ -59,14 +60,14 @@ public class TDictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> 
     @Resource
     private Snowflake snowflake;
     @Override
-    public JsonVO<Boolean>AddDictData(AddDictDataDTO addDictDataDTO){
+    public JsonVO<Boolean>AddDictData(AddDictDataDTO addDictDataDTO) {
         UserDTO user = null;
         try {
             user = userHolder.getCurrentUser();
         } catch (Exception e) {
             log.error("解析用户失败！！！");
         }
-        DictData dictData= new DictData();
+        DictData dictData = new DictData();
         dictData.setId(String.valueOf(snowflake.nextId()));
         dictData.setDictId(addDictDataDTO.getDictId());
         dictData.setDelFlag(false);
@@ -82,7 +83,7 @@ public class TDictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> 
             return JsonVO.success(success);
         }
         return JsonVO.fail(success);
-
+    }
 
     @Override
     public DictData getById(String id) {
@@ -101,7 +102,7 @@ public class TDictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> 
         Page<DictData> result = baseMapper.selectPage(page, wrapper);
         return PageDTO.create(result,src -> msDictDataMapper.dictDataToWordTypeListDTO(src));
     }
-    }
+
     @Override
     public JsonVO<Boolean> ModifyDictData(ModifyDictData modifyDictData){
         UserDTO user = null;

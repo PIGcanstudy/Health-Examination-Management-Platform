@@ -7,10 +7,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 /**
- * @Author: Swagger配置
- * @Date: 2024/01/29 21:53
- * @Description:
- */
  * @author ZhangJF
  * @date 2024/01/19 17:25
  **/
@@ -18,9 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 @EnableSwagger2WebMvc
 public class SwaggerConfig {
     @Bean
-    Docket DirectSourceApis(){
-        return SwaggerCore.defaultDocketBuilder("sys实例模块","com.zeroone.star.sysmanager.controller","sys");
-    Docket sampleApis(){
-        return SwaggerCore.defaultDocketBuilder("系统配置模块","com.zeroone.star.sysmanager.controller","sysmanager");
+    Docket DirectSourceApis() {
+        return SwaggerCore.defaultDocketBuilder("sys实例模块", "com.zeroone.star.sysmanager.controller", "sys");
     }
 }
