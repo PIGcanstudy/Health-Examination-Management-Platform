@@ -45,11 +45,11 @@ public:
 	// 定义一个文件下载接口
 	// 定义描述
 	ENDPOINT_INFO(downloadFile) {
-		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("file.download.summary"), Void);
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("positive.query.download"));
 		API_DEF_ADD_QUERY_PARAMS(String, "filename", ZH_WORDS_GETTER("file.field.filename"), "1.xlsx", true);
 	}
 	// 定义端点
-	ENDPOINT(API_M_GET, "/file/download", downloadFile, QUERY(String, filename)) {
+	ENDPOINT(API_M_GET, "/positive/positive-download", downloadFile, QUERY(String, filename)) {
 		return execDownloadFile(filename);
 	}
 

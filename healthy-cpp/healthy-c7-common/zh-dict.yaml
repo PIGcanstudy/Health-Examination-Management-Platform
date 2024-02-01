@@ -62,6 +62,7 @@ unit:
 positive:
  query:
   summary: 获取阳性结果列表
+  download: 获取阳性结果列表(excel导出执行 查询后就导出在zero-one-healthy-check\healthy-cpp\out\build\x64-Debug\healthy-c7-common\public\excel目录下)
  filed:
   id: 体检人员Id
   summary: 示例
