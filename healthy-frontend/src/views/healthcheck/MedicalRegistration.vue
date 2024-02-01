@@ -225,7 +225,7 @@ import Head from '@/components/head/Head.vue'
 import { ref, nextTick } from 'vue'
 import { ElMessage } from 'element-plus'
 import { ArrowRightBold, ArrowLeftBold, Edit, Plus, Delete, Printer, CaretRight, Loading } from '@element-plus/icons-vue'
-import { useMedicalRegistrationStore } from '@/stores/MedicalRegistration/index.js'
+import { useMedicalRegistrationStore } from '@/stores/medicalregistration/index.js'
 import { usePublicStore } from '@/stores/Public/index.js'
 /* Stores中的方法 */
 const MedicalRegistrationStore = useMedicalRegistrationStore()
