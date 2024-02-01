@@ -59,6 +59,8 @@ public class TDictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> 
     private UserHolder userHolder;
     @Resource
     private Snowflake snowflake;
+    @Resource
+    MsDictDataMapper msDictDataMapper;
     @Override
     public JsonVO<Boolean>AddDictData(AddDictDataDTO addDictDataDTO){
         UserDTO user = null;
@@ -83,9 +85,6 @@ public class TDictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> 
             return JsonVO.success(success);
         }
         return JsonVO.fail(success);
-    @Resource
-    MsDictDataMapper msDictDataMapper;
-
     }
     @Override
     public JsonVO<Boolean> ModifyDictData(ModifyDictData modifyDictData){
