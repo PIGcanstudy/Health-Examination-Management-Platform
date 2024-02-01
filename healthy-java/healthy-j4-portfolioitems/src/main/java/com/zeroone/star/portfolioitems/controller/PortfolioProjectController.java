@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.zeroone.star.portfolioitems.service.PortfolioProjectService;
 import com.zeroone.star.project.j4.dto.TPortfolioProjectDTO;
 import com.zeroone.star.project.vo.JsonVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,8 @@ import java.util.List;
  * @author rakkaus
  */
 @RestController
+@RequestMapping("portfolioitems")
+@Api(tags = "组合项目接口")
 public class PortfolioProjectController {
 
     @Autowired
