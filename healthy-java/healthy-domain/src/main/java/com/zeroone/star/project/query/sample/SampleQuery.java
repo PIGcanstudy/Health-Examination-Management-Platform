@@ -21,7 +21,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @ApiModel("示例查询对象")
 public class SampleQuery extends PageQuery {
-    @NotBlank(message = "用户名不能为空")
+    @NotBlank(message = "用户名不能为空")  // 不允许为空
     @ApiModelProperty(value = "姓名", example = "张三")
     private String name;
 }

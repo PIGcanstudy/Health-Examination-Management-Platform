@@ -1,0 +1,8 @@
+server:
+  port: ${sp.templateManagement}
+spring:
+  application:
+    name: ${sn.templateManagement}
+  jackson:
+    # 配置 Spring 使用正确的时区
+    time-zone: GMT+8
