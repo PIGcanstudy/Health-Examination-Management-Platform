@@ -56,7 +56,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(ReportController);
 	ROUTER_SIMPLE_BIND(TermController);
 	ROUTER_SIMPLE_BIND(PositiveConrtoller);
-	ROUTER_SIMPLE_BIND(ItemResultController);
+ROUTER_SIMPLE_BIND(ItemResultController);
 	ROUTER_SIMPLE_BIND(InquiryDetailController);
 	ROUTER_SIMPLE_BIND(ReviewController);
 	ROUTER_SIMPLE_BIND(AddNewItemsController);

@@ -37,12 +37,11 @@
 #ifdef LINUX
 #include "NacosClient.h"
 #endif
-#include <service/ReportView/ReportService.h>
 
 // 是否是发布Swagger文档包
 #ifndef _RELEASE_DOC_
 // 查看Swagger文档的时候不需要连接数据库，解开下面的注释关闭启动连接数据库
-#define _RELEASE_DOC_
+//#define _RELEASE_DOC_
 #endif
 /**
  * 解析启动参数
@@ -156,8 +155,6 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
-	
-
 
 #ifdef LINUX
 	// 创建Nacos客户端对象

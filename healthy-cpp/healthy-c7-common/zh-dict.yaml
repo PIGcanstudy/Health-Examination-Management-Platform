@@ -1,4 +1,4 @@
-groupItemIgno:
+﻿groupItemIgno:
  update:
   summary: 忽略指定基础项目
 
@@ -78,6 +78,21 @@ positive:
   isNormal: 结果状态
   positive_name: 体检项目
   heavy: 结果 
+excel:
+ sheet:
+  s1: 数据表1
+  s2: 数据表2
+ header:
+  h1:  姓名
+  h2:  体检编号
+  h3:  体检科室
+  h4:  体检项目
+  h5:  结果
+  h6:  单位
+  h7:  参考范围
+  h8:  提示
+  h9:  危急程度
+  h10: 体检日期  
 
 
 itemResult:

@@ -1,6 +1,10 @@
 #pragma once
 #include "../../domain/vo/positive/positiveVO.h"
 #include "../../domain/query/positive/positiveQuery.h"
+#include "domain/vo/BaseJsonVO.h"
+#include "ApiHelper.h"
+#include "ServerInfo.h"
+
 #ifndef _POSITIVECONTROLLER_H_
 #define _POSITIVECONTROLLER_H_
 
@@ -37,8 +41,23 @@ public:
 		// 呼叫执行函数响应结果
 		API_HANDLER_RESP_VO(execQueryPositive(positiveQuery));
 	}
+
+	// 定义一个文件下载接口
+	// 定义描述
+	ENDPOINT_INFO(downloadFile) {
+		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("file.download.summary"), Void);
+		API_DEF_ADD_QUERY_PARAMS(String, "filename", ZH_WORDS_GETTER("file.field.filename"), "1.xlsx", true);
+	}
+	// 定义端点
+	ENDPOINT(API_M_GET, "/file/download", downloadFile, QUERY(String, filename)) {
+		return execDownloadFile(filename);
+	}
+
+
 private:
 	PositiveListPageJsonVO::Wrapper execQueryPositive(const PositiveQuery::Wrapper& query);
+	// 执行文件下载处理
+	std::shared_ptr<OutgoingResponse> execDownloadFile(const String& filename);
 };
 
 #include OATPP_CODEGEN_END(ApiController) 

@@ -35,13 +35,59 @@ class PositiveListDTO : public oatpp::DTO {
 	API_DTO_FIELD_DEFAULT(String, crisis_degree, ZH_WORDS_GETTER("positive.filed.crisis_degree"));
 	// 体检日期
 	API_DTO_FIELD_DEFAULT(String, checkDate, ZH_WORDS_GETTER("positive.filed.checkdate"));
+public:
+	// 获取唯一编号的成员函数
+	const String& getId() const {
+		return id;
+	}
+
+	// 获取姓名的成员函数
+	const String& getPersonName() const {
+		return personName;
+	}
+	// 获取体检编号的成员函数
+	const String& geTest_num() const {
+		return test_num;
+	}
+	// 获取体检科室的成员函数
+	const String& getOfficeName() const {
+		return officeName;
+	}
+	// 获取体检项目的船员函数
+	const String& getOrder_group_item_project_name() const {
+		return order_group_item_project_name;
+	}
+	// 获取结果的成员函数
+	const String& getResult() const {
+		return result;
+	}
+	// 获取单位的成员函数
+	const String& getUnit_name() const {
+		return unit_name;
+	}
+	// 获取参考范围的成员函数
+	const String& getScope() const {
+		return scope;
+	}
+	// 获取提示的成员函数
+	const String& getDiagnose_sum() const {
+		return diagnose_sum;
+	}
+	// 获取危急程度的成员函数
+	const String& getCrisis_degree() const {
+		return crisis_degree;
+	}
+	// 获取体检日期的成员函数
+	const String& getCheckDate() const {
+		return checkDate;
+	}
 };
 
 /**
  * 阳性结果列表分页数据实体
  */
 class PositiveListPageDTO : public PageDTO<PositiveListDTO::Wrapper> {
-	DTO_INIT(PositiveListPageDTO, PageDTO<PositiveListDTO::Wrapper>)
+	DTO_INIT(PositiveListPageDTO, PageDTO<PositiveListDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)
