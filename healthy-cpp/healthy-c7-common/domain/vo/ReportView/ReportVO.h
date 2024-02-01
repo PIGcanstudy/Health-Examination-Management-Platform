@@ -3,7 +3,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: DY
- @Date: 2024/01/19 11:36:29
+ @Date: 2022/01/16 11:34:14
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,27 +17,25 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _REPORT_QUERY_
-#define _REPORT_QUERY_
+#ifndef _REPORT_VO_H_
+#define _REPORT_VO_H_
 
 #include "../../GlobalInclude.h"
-#include "domain/query/PageQuery.h"
+#include "domain/dto/ReportView/ReportDTO.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * 报告打印报告预览
- * 
+ * 单位列表显示JsonVO实体
  */
-class ReportQuery : public PageQuery
-{
-	DTO_INIT(ReportQuery, PageQuery);
-
-	// 体检人员编号
-	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("report.field.personId"));
+class ReportJsonVO : public JsonVO<ReportDTO::Wrapper> {
+	DTO_INIT(ReportJsonVO, JsonVO<ReportDTO::Wrapper>);
 };
 
 
+ 
+
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_REPORT_QUERY_
+
+#endif // !_SAMPLE_VO_

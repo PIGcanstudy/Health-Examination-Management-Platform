@@ -24,6 +24,7 @@
 #include "uselib/ws/WSController.h"
 
 #endif
+#include "controller/ReportView/ReportController.h"
 
 
 #ifdef CLOSE_SWAGGER_DOC
@@ -52,6 +53,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(DepartController);
 	ROUTER_SIMPLE_BIND(ResultController);
 	ROUTER_SIMPLE_BIND(InfoController);
+	ROUTER_SIMPLE_BIND(ReportController);
 	ROUTER_SIMPLE_BIND(TermController);
 	ROUTER_SIMPLE_BIND(PositiveConrtoller);
 	ROUTER_SIMPLE_BIND(ItemResultController);
@@ -63,7 +65,6 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(GroupItemIgnoController);
 	ROUTER_SIMPLE_BIND(DetailController);
 	ROUTER_SIMPLE_BIND(UnitController);
-
 }
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()

@@ -14,9 +14,38 @@ term:
  query:
   summary: 获取术语名称列表
 
-Info:
+info:
  query:
-  summary: 保存总检报告
+  summary: 保存总检信息
+ field:
+  id: 顺序号码（主键）
+  personId: 体检人员Id
+  inspectionDoctor: 总检医生
+  inspectionDate: 总检日期
+  medicalAdvice: 医学建议
+  handleOpinion: 处理意见
+
+report:
+ filed:
+  personId: 体检人员Id
+ query: 
+  summary: 报告预览
+
+pdf:
+ title: 个人信息
+ name: 姓名 
+ sex: 性别
+ age: 年龄
+ idCard: 身份证号 
+ mobile: 联系电话
+ physicalType: 体检种类
+ dept: 工作单位
+ conclusion: 健康检查结论
+ handleOpinion: 处理意见
+ inspectionDoctor: 主检医生
+ inspectionDate: 体检日期
+ diagnosticUnit: 检查单位  
+
 
 Dangerous:
  query:

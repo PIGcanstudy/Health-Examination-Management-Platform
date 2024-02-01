@@ -51,8 +51,10 @@ bool getStartArg(int argc, char* argv[]) {
 	// 服务器端口
 	std::string serverPort = "8090";
 	// 数据库连接信息
-<<<<<<< HEAD
 	std::string dbUsername = "root";
+	std::string dbPassword = "123456";
+	std::string dbName = "healthy";
+	std::string dbHost = "127.0.0.1";
 	int dbPort = 3306;
 	int dbMax = 5;
 #ifdef LINUX
@@ -142,6 +144,7 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
+
 	//TestRocket tr;
 	//tr.testRocket();
 #ifdef LINUX

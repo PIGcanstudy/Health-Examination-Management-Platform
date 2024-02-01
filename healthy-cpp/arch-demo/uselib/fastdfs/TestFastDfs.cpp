@@ -33,7 +33,7 @@ void TestFastDfs::testDfs(string fileName)
 	FastDfsClient client("conf/client.conf");
 #else
 	//定义客户端对象
-	FastDfsClient client("192.168.220.128");
+	FastDfsClient client("127.0.0.1");
 #endif
 
 	//测试上传
