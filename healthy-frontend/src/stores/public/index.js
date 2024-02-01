@@ -12,6 +12,7 @@ import {
   querytypetree,
   queryuesrnamelist
 } from '@/apis/public/index.js'
+
 export const usePublicStore = defineStore('public', () => {
   // 列表数据
   const tableData = ref([])
@@ -28,10 +29,21 @@ export const usePublicStore = defineStore('public', () => {
         console.log('err', err)
       })
   }
+
+
   // 暴露出的数据
   return {
     tableData,
     total,
-    getJobName
+    querydictnamelist,
+    queryjobnamelist,
+    querypackageprolist,
+    querypackagepronamelist,
+    queryplannamelist,
+    queryplanprolist,
+    queryselectionnamelist,
+    querytermnamelist,
+    querytypetree,
+    queryuesrnamelist
   }
 })
