@@ -26,16 +26,18 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * 示例分页查询对象
+ * 报告打印报告预览
+ * 
  */
 class ReportQuery : public PageQuery
 {
 	DTO_INIT(ReportQuery, PageQuery);
 
+	// 体检人员编号
 	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("report.field.personId"));
-
-
 };
 
+
+
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_SAMPLE_QUERY_
+#endif // !_REPORT_QUERY_

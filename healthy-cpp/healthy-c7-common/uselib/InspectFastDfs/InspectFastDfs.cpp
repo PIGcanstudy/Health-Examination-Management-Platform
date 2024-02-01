@@ -29,7 +29,7 @@
 #include "NacosClient.h"
 #include "FastDfsClient.h"
 
-
+string test = "";
 string InspectFastDfs::InspectDfsWithConf(string fileName)
 {
 	//	// 定义一个Nacos客户端对象，用于获取配置
@@ -61,7 +61,7 @@ string InspectFastDfs::InspectDfsWithConf(string fileName)
 	// 构建下载路径
 	std::string downloadUrl = urlPrefix + fieldName;
 	cout << downloadUrl << endl;
+	test = downloadUrl;
 	return downloadUrl;
 }
-
 

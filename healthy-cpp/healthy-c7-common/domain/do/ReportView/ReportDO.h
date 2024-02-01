@@ -70,8 +70,8 @@ public:
 		inspectionDoctor = "";
 		inspectionDate = "";
 		diagnosticUnit = "";
-		href = "";
+		href = "2";
 	}
 };
 
-#endif // !_SAMPLE_DO_
+#endif // !_REPORT_DO_

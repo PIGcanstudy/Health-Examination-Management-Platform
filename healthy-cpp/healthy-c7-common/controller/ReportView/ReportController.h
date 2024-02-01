@@ -43,16 +43,13 @@ class ReportController : public oatpp::web::server::api::ApiController // 1 继承
 public:
 	
 	// 3.1 定义查询接口描述
-	ENDPOINT_INFO(queryreport) {
+	ENDPOINT_INFO(queryReport) {
 		// 定义接口标题
 		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("report.query.summary"));
 		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
 		API_DEF_ADD_AUTH();
 		// 定义响应参数格式
 		API_DEF_ADD_RSP_JSON_WRAPPER(ReportJsonVO);
-		// 定义分页查询参数描述
-		API_DEF_ADD_PAGE_PARAMS();
-		// 定义其他查询参数描述
 		
 		// 姓名ID
 		API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("report.field.presonId"), "1", true);
@@ -63,13 +60,14 @@ public:
 	
 
 	
-	//定义分页查询单页列表接口
-	ENDPOINT(API_M_GET, "/report/report-show", queryreport, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
+	// 3.2 定义查询接口处理
+	ENDPOINT(API_M_GET, "/report", queryReport, QUERIES(QueryParams, params), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
-		API_HANDLER_QUERY_PARAM(re, ReportQuery, params);
+		API_HANDLER_QUERY_PARAM(uq, ReportQuery, params);
 		// 呼叫执行函数响应结果
-		API_HANDLER_RESP_VO(execQueryreport(re));
+		API_HANDLER_RESP_VO(execQueryreport(uq));
 	}
+
 	
 	
 	
@@ -86,4 +84,4 @@ private:
 };
 // 0 取消API控制器使用宏
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen
-#endif // _SAMPLE_CONTROLLER_
+#endif // _REPORT_CONTROLLER_

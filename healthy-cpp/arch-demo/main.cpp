@@ -22,7 +22,7 @@
 #include "HttpServer.h"
 #include "controller/Router.h"
 #include "controller/OtherComponent.hpp"
-#include "uselib/pdf/TestPdf.h"
+#include "uselib/pdf/InspectPDF.h"
 #include "DbInit.h"
 #ifdef HTTP_SERVER_DEMO
 #include "uselib/jwt/TestToken.h"

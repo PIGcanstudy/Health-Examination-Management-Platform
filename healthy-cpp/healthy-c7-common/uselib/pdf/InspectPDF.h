@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _INSPECTPDF_H_
-#define _INSPECTPDF_H_
+#ifndef _INSPECT_PDF_H_
+#define _INSPECT_PDF_H_
 
 #include "domain/do/ReportView/ReportDO.h"
 /**
@@ -28,7 +28,8 @@ class InspectPdf
 {
 public:
 	// Ä£°å»æÖÆ
-	static void ReportTpl(const ReportDO & Do);
+	static void ReportText(const ReportDO & Do);
+	static void InspectPdf::testText();
 };
 
-#endif // !_TESTPDF_H_
+#endif // !_INSPECT_PDF_H_

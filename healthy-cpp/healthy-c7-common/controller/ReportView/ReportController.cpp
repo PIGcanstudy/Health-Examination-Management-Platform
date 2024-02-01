@@ -27,6 +27,7 @@
 #include "service/ReportView/ReportService.h"
 #include "SimpleDateTimeFormat.h"
 #include "../ApiDeclarativeServicesHelper.h"
+#include "uselib/pdf/InspectPDF.h"
 
 ReportJsonVO::Wrapper ReportController::execQueryreport(const ReportQuery::Wrapper& query)
 {

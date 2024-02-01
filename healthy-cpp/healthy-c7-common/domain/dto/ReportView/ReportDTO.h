@@ -34,11 +34,11 @@ class ReportDTO : public oatpp::DTO
 	DTO_INIT(ReportDTO, DTO);
 	
 	// PDFµÿ÷∑
-	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("preview.field.href"));
+	API_DTO_FIELD_DEFAULT(String, href, ZH_WORDS_GETTER("report.field.href"));
 	
 
 };
 
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_USERQUERY_H_
+#endif // !_REPORT_DTO_H_

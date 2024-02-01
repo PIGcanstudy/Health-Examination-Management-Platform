@@ -49,4 +49,4 @@ public:
 	}
 };
 
-#endif // !_SAMPLE_MAPPER_
+#endif // !_REPORT_MAPPER_

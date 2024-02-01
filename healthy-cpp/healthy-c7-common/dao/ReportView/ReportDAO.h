@@ -17,8 +17,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _INFO_LIST_DAO_
-#define _INFO_LIST_DAO_
+#ifndef _REPORT_DAO_
+#define _REPORT_DAO_
 #include "BaseDAO.h"
 #include "domain/do/ReportView/ReportDO.h"
 #include "domain/query/ReportView/ReportQuery.h"
@@ -32,4 +32,4 @@ public:
 	// 通过姓名查询数据
 	list<ReportDO> selectByName(const string& nameID);
 };
-#endif // !_SAMPLE_DAO_
+#endif // !_REPORT_DAO_

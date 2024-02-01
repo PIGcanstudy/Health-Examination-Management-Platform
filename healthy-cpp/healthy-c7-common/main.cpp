@@ -37,6 +37,7 @@
 #ifdef LINUX
 #include "NacosClient.h"
 #endif
+#include <service/ReportView/ReportService.h>
 
 // 是否是发布Swagger文档包
 #ifndef _RELEASE_DOC_
