@@ -52,7 +52,7 @@ public:
 		API_DEF_ADD_RSP_JSON_WRAPPER(ReportJsonVO);
 		
 		// –’√˚ID
-		API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("report.field.presonId"), "1", true);
+		API_DEF_ADD_QUERY_PARAMS(String, "personId", ZH_WORDS_GETTER("report.field.personId"), "1", true);
 	
 	}
 	
