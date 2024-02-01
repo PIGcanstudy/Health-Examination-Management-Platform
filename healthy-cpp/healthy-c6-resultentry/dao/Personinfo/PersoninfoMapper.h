@@ -1,16 +1,16 @@
 #pragma once
-#ifndef _PERSON_MAPPER_
-#define _PERSON_MAPPER_
+#ifndef _PERSONINFO_MAPPER_
+#define _PERSONINFO_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/Person/PersonDO.h"
+#include "../../domain/do/Personinfo/PersoninfoDO.h"
 
-class PersonMapper : public Mapper<PersonDO>
+class PersoninfoMapper : public Mapper<PersoninfoDO>
 {
 public:
-	PersonDO mapper(ResultSet* resultSet) const override
+	PersoninfoDO mapper(ResultSet* resultSet) const override
 	{
-		PersonDO data;
+		PersoninfoDO data;
 		data.setName(resultSet->getString(1));
 		data.setAge(resultSet->getInt(2));
 		data.setSex(resultSet->getString(3));
@@ -20,4 +20,4 @@ public:
 	}
 };
 
-#endif // !_PERSON_MAPPER_
+#endif // !_PERSONINFO_MAPPER_

@@ -1,9 +1,9 @@
 #pragma once
-#ifndef _Person_DO_
-#define _Person_DO_
+#ifndef _PERSONINFO_DO_
+#define _PERSONINFO_DO_
 #include "../DoInclude.h"
 
-class PersonDO
+class PersoninfoDO
 {
 	// ÐÕÃû
 	CC_SYNTHESIZE(string, name, Name);
@@ -18,7 +18,7 @@ class PersonDO
 
 
 public:
-	PersonDO() {
+	PersoninfoDO() {
 		name = "";
 		sex = "";
 		age = -1;
@@ -27,4 +27,4 @@ public:
 	}
 };
 
-#endif // !_Person_DO_
+#endif // !_PERSONINFO_DO_

@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "PersonDAO.h"
-#include "PersonMapper.h"
+#include "PersoninfoDAO.h"
+#include "PersoninfoMapper.h"
 #include <sstream>
 
 //定义条件解析宏，减少重复代码
@@ -40,7 +40,7 @@ if (query->finish_regist_date) { \
 	SQLPARAMS_PUSH(params, "s", std::string, query->finish_regist_date.getValue("")); \
 } 
 
-uint64_t PersonDAO::count(const PersonQuery::Wrapper& query)
+uint64_t PersoninfoDAO::count(const PersoninfoQuery::Wrapper& query)
 {
 	stringstream sql;
 	sql << "SELECT COUNT(*) FROM t_group_person";
@@ -49,13 +49,13 @@ uint64_t PersonDAO::count(const PersonQuery::Wrapper& query)
 	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
-std::list<PersonDO> PersonDAO::selectWithPage(const PersonQuery::Wrapper& query)
+std::list<PersoninfoDO> PersoninfoDAO::selectWithPage(const PersoninfoQuery::Wrapper& query)
 {
 	stringstream sql;
 	sql << "SELECT person_name,sex,age,physical_type,sporadic_physical FROM t_group_person";
 	PERSON_TERAM_PARSE(query, sql);
 	sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
-	PersonMapper mapper;
+	PersoninfoMapper mapper;
 	string sqlStr = sql.str();
-	return sqlSession->executeQuery<PersonDO, PersonMapper>(sqlStr, mapper, params);
+	return sqlSession->executeQuery<PersoninfoDO, PersoninfoMapper>(sqlStr, mapper, params);
 }
