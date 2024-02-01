@@ -22,13 +22,13 @@ public:
 	// 3.1 定义测试声明式服务调用的接口1描述
 	ENDPOINT_INFO(queryPlanProList) {
 		// 定义标题和返回类型以及授权支持
-		API_DEF_ADD_COMMON_AUTH(ZH_WORDS_GETTER("planprolist.query-planprolist.summary"), PlanProListPageJsonVO::Wrapper);
+		API_DEF_ADD_COMMON_AUTH(ZH_WORDS_GETTER("planprolist.query-planprolist.summary"), PlanProListJsonVO::Wrapper);
 	}
 	// 3.2 定义测试声明式服务调用的接口1处理
 	API_HANDLER_ENDPOINT_NOPARAM_AUTH(API_M_GET, "/common/query-planprolist", queryPlanProList, execQueryPlanProList(authObject->getPayload()));
 private:
 	// 3.3 测试声明式服务调用1
-	PlanProListPageJsonVO::Wrapper execQueryPlanProList(const PayloadDTO& payload);
+	PlanProListJsonVO::Wrapper execQueryPlanProList(const PayloadDTO& payload);
 };
 // 0 取消API控制器使用宏
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen

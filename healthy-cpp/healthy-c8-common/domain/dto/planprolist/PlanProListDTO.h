@@ -11,14 +11,7 @@
 class PlanProListDTO : public oatpp::DTO
 {
 	DTO_INIT(PlanProListDTO, DTO);
-};
-
-/**
- * 示例分页传输对象
- */
-class PlanProListPageDTO : public PageDTO<PlanProListDTO::Wrapper>
-{
-	DTO_INIT(PlanProListPageDTO, PageDTO<PlanProListDTO::Wrapper>);
+	API_DTO_FIELD_DEFAULT(String, planpro_name, ZH_WORDS_GETTER("planprolist.field.planpro_name"));
 };
 
 #include OATPP_CODEGEN_END(DTO)

@@ -50,6 +50,8 @@
 #include "service/jobnamelist/JobNameListApiClient.h"
 //获取类型树
 #include "service/typetree/TypeTreeApiClient.h"
+//获取套餐组合项目列表
+#include "service/planprolist/PlanProListApiClient.h"
 
 //////////////////////////////////////////////////////////////////////////
 

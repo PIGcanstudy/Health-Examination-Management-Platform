@@ -29,6 +29,8 @@ plannamelist:
 planprolist:
  query-planprolist:
   summary: 获取套餐组合项目列表
+ field: 
+  planpro_name: 套餐组合项目名称
 sectionnamelist:
  query-sectionnamelist:
   summary: 科室名称列表
