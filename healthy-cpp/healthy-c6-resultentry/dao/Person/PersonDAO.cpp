@@ -43,7 +43,7 @@ if (query->finish_regist_date) { \
 uint64_t PersonDAO::count(const PersonQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT COUNT(*) FROM t_person";
+	sql << "SELECT COUNT(*) FROM t_group_person";
 	PERSON_TERAM_PARSE(query, sql);
 	string sqlStr = sql.str();
 	return sqlSession->executeQueryNumerical(sqlStr, params);
@@ -52,7 +52,7 @@ uint64_t PersonDAO::count(const PersonQuery::Wrapper& query)
 std::list<PersonDO> PersonDAO::selectWithPage(const PersonQuery::Wrapper& query)
 {
 	stringstream sql;
-	sql << "SELECT person_name,sex,age,physical_type,sporadic_physical FROM t_person";
+	sql << "SELECT person_name,sex,age,physical_type,sporadic_physical FROM t_group_person";
 	PERSON_TERAM_PARSE(query, sql);
 	sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
 	PersonMapper mapper;
