@@ -45,7 +45,7 @@
  */
 bool getStartArg(int argc, char* argv[]) {
 	// 服务器端口
-	std::string serverPort = "8090";
+	std::string serverPort = "8139";
 	// 数据库连接信息
 	std::string dbUsername = "root";
 	std::string dbPassword = "123456";
