@@ -9,7 +9,7 @@
     </div>
 
     <div class="btn02">
-      <el-button @click="enter02" style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
+      <el-button style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
     </div>
     <div class="icon02">
       <img src="../../assets/dashboard/icon02.png" style="height: 195px; width: 350px" />
@@ -17,10 +17,8 @@
 
     <div class="btn03">
       <el-button @click="enter03" style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
-    </div>
-    <div class="icon03">
+      <el-button style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
       <img src="../../assets/dashboard/icon03.png" style="height: 400px; width: 434px" />
-    </div>
 
     <div class="btn04">
       <el-button style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
@@ -44,6 +42,7 @@
     </div>
 
   </div>
+</div>
 </template>
 
 <script setup>
