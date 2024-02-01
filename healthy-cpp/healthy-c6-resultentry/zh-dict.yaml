@@ -216,8 +216,14 @@ interro:
 interro2:
  field:
   id: 体检人编号
+  type: 类别
   project: 体检项目
+  code: 项目编号
   degree: 危及程度
+  coursetime: 病程时间
+  personid: 体检人编号
+  createid: 创建人-体检医生
+  createname: 检查医生
   time:	病程时间
 
 checkitem:
