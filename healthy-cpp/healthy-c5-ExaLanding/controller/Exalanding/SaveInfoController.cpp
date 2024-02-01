@@ -3,7 +3,7 @@
 //#include "../../service/sample/SampleService.h"
 #include "../ApiDeclarativeServicesHelper.h"
 
-Uint64JsonVO::Wrapper SaveInfoController::execAddUserInfo(const SaveInfoDTO::Wrapper& dto)
+SaveInfoPageJsonVO::Wrapper SaveInfoController::execQueryUserInfo(const SaveInfoQuery::Wrapper& query, const PayloadDTO& payload)
 {
 	return {};
 }

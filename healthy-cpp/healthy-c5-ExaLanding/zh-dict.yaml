@@ -16,6 +16,8 @@
  saveinfo:
   post:
    summary: 新增一条示例数据
+  get: 
+   summary: 获取一条示例数据
   field:
    id_card: 身份证号
    person_name: 姓名
