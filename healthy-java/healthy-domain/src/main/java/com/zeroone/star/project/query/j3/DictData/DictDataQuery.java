@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
 /**
@@ -20,12 +21,14 @@ public class DictDataQuery extends PageQuery {
     /**
      * 数据名称
      */
+    @NotBlank(message = "字典数据名称不能为空")
     @ApiModelProperty(value = "数据名称", example = "mysql")
     private String title;
 
     /**
      * 是否启用 0 启用 1 禁用
      */
+    @NotBlank(message = "状态不能为空，0或1")
     @ApiModelProperty(value = "状态", example = "0")
     private int status;
 }
