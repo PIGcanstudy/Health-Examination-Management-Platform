@@ -1,21 +1,3 @@
-/*
- Copyright Zero One Star. All rights reserved.
-
- @Author: lenyan~
- @Date: 2024/01/19
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #include "stdafx.h"
 #include "Router.h"
 #include "ApiHelper.h"
@@ -29,7 +11,6 @@
 #include "positive/positiveController.h"
 #include "review/ReviewController.h"
 #include "addNewItems/AddNewItemsController.h"
-#include "id/IdController.h"
 #include "personalReview/PersonalReviewController.h"
 #include "downloadWord/DownloadWordController.h"
 #include "groupItemIgno/GroupItemIgnoController.h"
@@ -46,11 +27,11 @@
 
 
 #ifdef CLOSE_SWAGGER_DOC
-// ç®€åŒ–ç»‘å®šæŽ§åˆ¶å™¨å®å®šä¹‰
+// ¼ò»¯°ó¶¨¿ØÖÆÆ÷ºê¶¨Òå
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 router->addController(__CLASS__::createShared())
 #else
-// ç®€åŒ–ç»‘å®šæŽ§åˆ¶å™¨å®å®šä¹‰
+// ¼ò»¯°ó¶¨¿ØÖÆÆ÷ºê¶¨Òå
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 BIND_CONTROLLER(docEndpoints, router, __CLASS__)
 #endif
@@ -67,7 +48,7 @@ void Router::initRouter()
 	createSampleRouter();
 #endif
 
-	//#TIP :ç³»ç»Ÿæ‰©å±•è·¯ç”±å®šä¹‰ï¼Œå†™åœ¨è¿™ä¸ªåŽé¢
+	//#TIP :ÏµÍ³À©Õ¹Â·ÓÉ¶¨Òå£¬Ð´ÔÚÕâ¸öºóÃæ
 	ROUTER_SIMPLE_BIND(DepartController);
 	ROUTER_SIMPLE_BIND(ResultController);
 	ROUTER_SIMPLE_BIND(InfoController);
@@ -77,23 +58,24 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(InquiryDetailController);
 	ROUTER_SIMPLE_BIND(ReviewController);
 	ROUTER_SIMPLE_BIND(AddNewItemsController);
-	ROUTER_SIMPLE_BIND(IdController);
 	ROUTER_SIMPLE_BIND(PersonalReviewController);
 	ROUTER_SIMPLE_BIND(DownloadWordController);
 	ROUTER_SIMPLE_BIND(GroupItemIgnoController);
 	ROUTER_SIMPLE_BIND(DetailController);
-	ROUTER_SIMPLE_BIND(UnitController);}
+	ROUTER_SIMPLE_BIND(UnitController);
+
+}
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
-	// ç»‘å®šç¤ºä¾‹æŽ§åˆ¶å™¨
+	// °ó¶¨Ê¾Àý¿ØÖÆÆ÷
 	ROUTER_SIMPLE_BIND(SampleController);
-	// ç»‘å®šç”¨æˆ·æŽ§åˆ¶å™¨
+	// °ó¶¨ÓÃ»§¿ØÖÆÆ÷
 	ROUTER_SIMPLE_BIND(UserController);
-	// ç»‘å®šæ–‡ä»¶æŽ§åˆ¶å™¨
+	// °ó¶¨ÎÄ¼þ¿ØÖÆÆ÷
 	ROUTER_SIMPLE_BIND(FileController);
 	
-	// ç»‘å®šWebSocketæŽ§åˆ¶å™¨
+	// °ó¶¨WebSocket¿ØÖÆÆ÷
 	router->addController(WSContorller::createShared());
 }
 #endif

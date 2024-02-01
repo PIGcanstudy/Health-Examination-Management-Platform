@@ -27,7 +27,6 @@
 #include "uselib/ws/WSController.h"
 #endif
 
-
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
 // 简化绑定控制器宏定义

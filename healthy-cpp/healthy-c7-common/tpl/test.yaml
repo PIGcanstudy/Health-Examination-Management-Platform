@@ -1,2 +1,8 @@
-t: 我是中文标题title
-f: 456
+title: 职业健康检查复查报告
+personName: 姓名
+checkProjectName: 复查项目
+reviewExplain: 复查说明
+reviewTime: 复查日期
+createTime: 创建日期
+state: 审核状态
+hazardFactorCode: 危害因素

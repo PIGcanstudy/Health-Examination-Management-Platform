@@ -6,35 +6,37 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 /**
-*  ¸´²é¼ÇÂ¼ÁĞ±í´«ÊäÊı¾İ¶ÔÏóÊµÌå
+*  å¤æŸ¥è®°å½•åˆ—è¡¨ä¼ è¾“æ•°æ®å¯¹è±¡å®ä½“
 */
 class ReviewListDTO : public oatpp::DTO
 {
 	DTO_INIT(ReviewListDTO, DTO);
-	//Î¨Ò»±àºÅ
+	//å”¯ä¸€ç¼–å·
 	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("review.field.id"));
-	//ĞÕÃû
+	//å§“å
 	API_DTO_FIELD_DEFAULT(String, personName, ZH_WORDS_GETTER("review.field.personName"));
 	API_DTO_FIELD_DEFAULT(String, personId, ZH_WORDS_GETTER("review.field.personId"));
-	//¸´²éÏîÄ¿check_project_id varchar(50)
+	//å¤æŸ¥é¡¹ç›®check_project_id varchar(50)
 	API_DTO_FIELD_DEFAULT(String, checkProjectId, ZH_WORDS_GETTER("review.field.checkProjectId"));
 	API_DTO_FIELD_DEFAULT(String, checkProjectName, ZH_WORDS_GETTER("review.field.checkProjectName"));
-	//¸´²éËµÃ÷review_explain varchar(255)
+	//å¤æŸ¥è¯´æ˜review_explain varchar(255)
 	API_DTO_FIELD_DEFAULT(String, reviewExplain, ZH_WORDS_GETTER("review.field.reviewExplain"));
-	//²Ù×÷ÈÕÆÚreview_time` datetime '¸´²éÈÕÆÚ'
+	//æ“ä½œæ—¥æœŸreview_time` datetime 'å¤æŸ¥æ—¥æœŸ'
 	API_DTO_FIELD_DEFAULT(String, reviewTime, ZH_WORDS_GETTER("review.field.reviewTime"));
-	//µÇ¼ÇÈÕÆÚcreate_time datetime '´´½¨ÈÕÆÚ'
+	//ç™»è®°æ—¥æœŸcreate_time datetime 'åˆ›å»ºæ—¥æœŸ'
 	API_DTO_FIELD_DEFAULT(String, createTime, ZH_WORDS_GETTER("review.field.createTime"));
-	//µÇ¼Ç×´Ì¬state int 'ÉóºË×´Ì¬
-	API_DTO_FIELD_DEFAULT(UInt64, state, ZH_WORDS_GETTER("review.field.state"));
-	//Î£º¦ÒòËØhazard_factor_code varchar(255)
+	//ç™»è®°çŠ¶æ€state int 'å®¡æ ¸çŠ¶æ€
+	API_DTO_FIELD_DEFAULT(UInt32, state, ZH_WORDS_GETTER("review.field.state"));
+	//å±å®³å› ç´ hazard_factor_code varchar(255)
 	API_DTO_FIELD_DEFAULT(String, hazardFactorCode, ZH_WORDS_GETTER("review.field.hazardFactorCode"));
-	//²Ù×÷
+	//æ“ä½œ
 
+	//pdf downloadUrl
+	API_DTO_FIELD_DEFAULT(String, downloadUrl, ZH_WORDS_GETTER("review.field.pdfDownloadUrl"));
 };
 
 /**
-*  ¸´²éÁĞ±í·ÖÒ³Êı¾İÊµÌå
+*  å¤æŸ¥åˆ—è¡¨åˆ†é¡µæ•°æ®å®ä½“
 */
 class ReviewListPageDTO : public PageDTO<ReviewListDTO::Wrapper> {
 	DTO_INIT(ReviewListPageDTO, PageDTO<ReviewListDTO::Wrapper>);
