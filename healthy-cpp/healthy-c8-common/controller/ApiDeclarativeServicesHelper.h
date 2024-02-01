@@ -36,6 +36,10 @@
 #include "service/plannamelist/PlanNameListApiClient.h"
 //获取字典数据名称列表（用于输入表单下拉列表）
 #include "service/dictnamelist/DictNameListApiClient.h"
+//科室名称列表
+#include "service/sectionnamelist/SectionNameListApiClient.h"
+//获取组合项目名称列表（用于输入表单下拉列表）
+#include "service/packagepronamelist/PackageProNameListApiClient.h"
 
 
 //////////////////////////////////////////////////////////////////////////

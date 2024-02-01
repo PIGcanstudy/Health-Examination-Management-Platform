@@ -17,6 +17,8 @@ packageprolist:
 packagepronamelist:
  query-packagepronamelist:
   summary: 获取组合项目名称列表（用于输入表单下拉列表）
+ field:
+  packagepro_name: 组合项目名称
 plannamelist:
  query-plannamelist:
   summary: 获取套餐名称列表（条件+分页）
@@ -30,7 +32,7 @@ sectionnamelist:
  query-sectionnamelist:
   summary: 科室名称列表
  field:
-  keyword: 科室关键字
+  section_name: 科室名称
 termnamelist:
  query-termnamelist:
   summary: 获取术语名称列表（条件+分页）

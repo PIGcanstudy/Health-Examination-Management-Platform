@@ -14,12 +14,6 @@ class PackageProNameListJsonVO : public JsonVO<PackageProNameListDTO::Wrapper> {
 	DTO_INIT(PackageProNameListJsonVO, JsonVO<PackageProNameListDTO::Wrapper>);
 };
 
-/**
- * 示例分页显示JsonVO，用于响应给客户端的Json对象
- */
-class PackageProNameListPageJsonVO : public JsonVO<PackageProNameListPageDTO::Wrapper> {
-	DTO_INIT(PackageProNameListPageJsonVO, JsonVO<PackageProNameListPageDTO::Wrapper>);
-};
 
 #include OATPP_CODEGEN_END(DTO)
 

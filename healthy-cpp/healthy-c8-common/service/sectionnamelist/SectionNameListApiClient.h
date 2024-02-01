@@ -12,7 +12,7 @@ class SectionNameListApiClient : public oatpp::web::client::ApiClient
 	// 初始化定义
 	API_CLIENT_INIT(SectionNameListApiClient);
 	// 声明式调用服务接口
-	API_CALL(API_M_GET, "now-dev-null", querySectionNameList, API_HANDLER_AUTN_HEADER, QUERY(String, keyword));
+	API_CALL(API_M_GET, "now-dev-null", querySectionNameList, API_HANDLER_AUTN_HEADER);
 };
 
 #include OATPP_CODEGEN_END(ApiClient)

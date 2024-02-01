@@ -11,15 +11,9 @@
 class PackageProNameListDTO : public oatpp::DTO
 {
 	DTO_INIT(PackageProNameListDTO, DTO);
+	API_DTO_FIELD_DEFAULT(String, packagepro_name, ZH_WORDS_GETTER("packagepronamelist.field.packagepro_name"));
 };
 
-/**
- * 示例分页传输对象
- */
-class PackageProNameListPageDTO : public PageDTO<PackageProNameListDTO::Wrapper>
-{
-	DTO_INIT(PackageProNameListPageDTO, PageDTO<PackageProNameListDTO::Wrapper>);
-};
 
 #include OATPP_CODEGEN_END(DTO)
 #endif 

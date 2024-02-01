@@ -11,6 +11,7 @@
 class SectionNameListDTO : public oatpp::DTO
 {
 	DTO_INIT(SectionNameListDTO, DTO);
+	API_DTO_FIELD_DEFAULT(String, section_name, ZH_WORDS_GETTER("sectionnamelist.field.section_name"));
 };
 
 #include OATPP_CODEGEN_END(DTO)

@@ -3,7 +3,6 @@
 #define _SectionNameListController_
 
 #include "domain/vo/BaseJsonVO.h"
-#include "domain/query/sectionnamelist/SectionNameListQuery.h"
 #include "domain/dto/sectionnamelist/SectionNameListDTO.h"
 #include "domain/vo/sectionnamelist/SectionNameListVO.h"
 
@@ -23,14 +22,12 @@ public:
 	ENDPOINT_INFO(querySectionNameList) {
 		// 定义标题和返回类型以及授权支持
 		API_DEF_ADD_COMMON_AUTH(ZH_WORDS_GETTER("sectionnamelist.query-sectionnamelist.summary"), SectionNameListJsonVO::Wrapper);
-		// 定义其他路径参数说明
-		API_DEF_ADD_QUERY_PARAMS(String, "keyword", ZH_WORDS_GETTER("sectionnamelist.field.keyword"), "", false);
 	}
 	// 3.2 定义测试声明式服务调用的接口1处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_GET, "/common/query-sectionnamelist", querySectionNameList, QUERY(String, keyword), execQuerySectionNameList(keyword, authObject->getPayload()));
+	API_HANDLER_ENDPOINT_NOPARAM_AUTH(API_M_GET, "/common/query-sectionnamelist", querySectionNameList, execQuerySectionNameList(authObject->getPayload()));
 private:
 	// 3.3 测试声明式服务调用2
-	SectionNameListJsonVO::Wrapper execQuerySectionNameList(const String& keyword, const PayloadDTO& payload);
+	SectionNameListJsonVO::Wrapper execQuerySectionNameList(const PayloadDTO& payload);
 };
 // 0 取消API控制器使用宏
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen
