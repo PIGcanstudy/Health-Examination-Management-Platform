@@ -1,5 +1,0 @@
-server:
-  port: ${sp.ws}
-spring:
-  application:
-    name: ${sn.ws}
