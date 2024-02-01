@@ -1,4 +1,4 @@
-package com.zeroone.star.j4.templateManagement.entity;
+package com.zeroone.star.TemplateManagement.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;

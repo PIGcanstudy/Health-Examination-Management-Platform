@@ -1,6 +1,6 @@
-package com.zeroone.star.j4.templateManagement.controller;
+package com.zeroone.star.TemplateManagement.controller;
 
-import com.zeroone.star.j4.templateManagement.service.ITemplateMService;
+import com.zeroone.star.TemplateManagement.service.ITemplateMService;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.templateM.TemplateMApis;
 import com.zeroone.star.project.j4.templateM.dto.ProjectDTO;
@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotBlank;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * <p>

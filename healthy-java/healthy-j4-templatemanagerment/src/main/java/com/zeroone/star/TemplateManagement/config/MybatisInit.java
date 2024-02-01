@@ -1,4 +1,4 @@
-package com.zeroone.star.j4.templateManagement.config;
+package com.zeroone.star.TemplateManagement.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

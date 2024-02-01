@@ -1,10 +1,10 @@
-package com.zeroone.star.j4.templateManagement.mapper;
+package com.zeroone.star.TemplateManagement.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zeroone.star.j4.templateManagement.entity.TTemplate;
+import com.zeroone.star.TemplateManagement.entity.TTemplate;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

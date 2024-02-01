@@ -1,12 +1,12 @@
-package com.zeroone.star.j4.templateManagement.service.impl;
+package com.zeroone.star.TemplateManagement.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zeroone.star.j4.templateManagement.entity.TTemplate;
-import com.zeroone.star.j4.templateManagement.mapper.TemplateMMapper;
-import com.zeroone.star.j4.templateManagement.service.ITemplateMService;
+import com.zeroone.star.TemplateManagement.entity.TTemplate;
+import com.zeroone.star.TemplateManagement.mapper.TemplateMMapper;
+import com.zeroone.star.TemplateManagement.service.ITemplateMService;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.templateM.dto.ProjectDTO;
 import com.zeroone.star.project.j4.templateM.dto.TemplateMListDTO;

@@ -1,7 +1,7 @@
-package com.zeroone.star.j4.templateManagement.service;
+package com.zeroone.star.TemplateManagement.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zeroone.star.j4.templateManagement.entity.TTemplate;
+import com.zeroone.star.TemplateManagement.entity.TTemplate;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.templateM.dto.ProjectDTO;
 import com.zeroone.star.project.j4.templateM.dto.TemplateMListDTO;
