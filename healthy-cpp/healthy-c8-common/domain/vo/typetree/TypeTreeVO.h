@@ -14,13 +14,6 @@ class TypeTreeJsonVO : public JsonVO<TypeTreeDTO::Wrapper> {
 	DTO_INIT(TypeTreeJsonVO, JsonVO<TypeTreeDTO::Wrapper>);
 };
 
-/**
- * 示例分页显示JsonVO，用于响应给客户端的Json对象
- */
-class TypeTreePageJsonVO : public JsonVO<TypeTreePageDTO::Wrapper> {
-	DTO_INIT(TypeTreePageJsonVO, JsonVO<TypeTreePageDTO::Wrapper>);
-};
-
 #include OATPP_CODEGEN_END(DTO)
 
 #endif // !_SAMPLE_VO_

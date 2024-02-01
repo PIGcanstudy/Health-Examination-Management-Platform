@@ -11,15 +11,7 @@
 class TypeTreeDTO : public oatpp::DTO
 {
 	DTO_INIT(TypeTreeDTO, DTO);
+	API_DTO_FIELD_DEFAULT(String, type_name, ZH_WORDS_GETTER("typetree.field.type_name"));
 };
-
-/**
- * 示例分页传输对象
- */
-class TypeTreePageDTO : public PageDTO<TypeTreeDTO::Wrapper>
-{
-	DTO_INIT(TypeTreePageDTO, PageDTO<TypeTreeDTO::Wrapper>);
-};
-
 #include OATPP_CODEGEN_END(DTO)
 #endif 

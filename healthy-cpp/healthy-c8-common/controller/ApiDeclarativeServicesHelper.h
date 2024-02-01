@@ -48,7 +48,8 @@
 #include "service/termnamelist/TermNameListApiClient.h"
 //获取工种名称列表（分页+条件）
 #include "service/jobnamelist/JobNameListApiClient.h"
-
+//获取类型树
+#include "service/typetree/TypeTreeApiClient.h"
 
 //////////////////////////////////////////////////////////////////////////
 
