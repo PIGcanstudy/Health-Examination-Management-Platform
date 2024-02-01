@@ -8,7 +8,7 @@
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>healthy-j4-SectionOffice</artifactId>
+    <artifactId>healthy-j4-sectionoffice</artifactId>
     <dependencies>
         <!-- spring mvc -->
         <dependency>
@@ -66,11 +66,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-<<<<<<<< HEAD:healthy-java/healthy-j4-SectionOffice/pom.xml
-                    <mainClass>com.zeroone.star.SectionOffice.DepartmanagementApplication</mainClass>
-========
-                    <mainClass>com.zeroone.star.tsectionoffice.DepartmanagementApplication</mainClass>
->>>>>>>> j4-departmentmangement-AYuan:healthy-java/healthy-j4-sectionoffice/pom.xml
+                    <mainClass>com.zeroone.star.sectionoffice.SectionOfficeApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

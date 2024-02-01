@@ -19,7 +19,7 @@ public class GetSectionOfficeVO implements Serializable {
     private String sectionName;
     //科室简拼
     @ApiModelProperty(value = "科室简拼",example = "XDT",required = true)
-    private String sectionAlphbet;;
+    private String sectionAlphbet;
     //排序
     @ApiModelProperty(value = "排序",example = "1",required = true)
     private String orderNum;

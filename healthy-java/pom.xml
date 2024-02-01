@@ -43,6 +43,7 @@
         <module>healthy-j4-portfolioitems</module>
         <module>healthy-j4-configmanager</module>
         <module>healthy-j4-SectionOffice</module>
+        <module>healthy-j4-termmanagement</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
