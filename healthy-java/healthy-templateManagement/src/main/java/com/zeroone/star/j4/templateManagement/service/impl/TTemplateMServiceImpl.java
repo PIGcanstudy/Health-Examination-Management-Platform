@@ -12,6 +12,7 @@ import com.zeroone.star.project.j4.templateM.dto.ProjectDTO;
 import com.zeroone.star.project.j4.templateM.dto.TemplateMListDTO;
 import com.zeroone.star.project.j4.templateM.query.TemplateMQuery;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -34,6 +35,10 @@ interface MsTemplateMapper {
      * @param template 待转换的DO
      * @return 转换结果DTO
      */
+    // 解决自动生成代码中，LocalDateTime转Date出现8小时时差的问题
+    @Mapping(target = "createTime",
+            expression = "java(java.util.Date.from(template.getCreateTime().atZone(java.time.ZoneId.systemDefault()).toInstant()))"
+    )
     TemplateMListDTO templateToTemplateMListDTO(TTemplate template);
 }
 
