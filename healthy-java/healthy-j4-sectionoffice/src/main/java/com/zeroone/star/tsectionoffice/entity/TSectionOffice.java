@@ -10,7 +10,7 @@ import lombok.Setter;
 
 /**
  * <p>
- * 
+ *  科室对象
  * </p>
  *
  * @author AYuan

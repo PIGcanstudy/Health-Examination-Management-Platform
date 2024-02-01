@@ -3,7 +3,10 @@ package com.zeroone.star.project.j4.tsectionoffice;
 import com.zeroone.star.project.j4.dto.TSectionOfficeDTO;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.ResultStatus;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -14,8 +17,27 @@ import java.util.List;
  * @Description:
  */
 public interface TSectionOfficeApis {
-    // JsonVO<PageDTO<SectionOfficeDTO>> querySectionOffice(SectionOfficeQuery sectionOfficeQuery);
-    JsonVO<ResultStatus> addSectionOffice(TSectionOfficeDTO TSectionOfficeDTO);
-    JsonVO<ResultStatus> modifySectionOffice(TSectionOfficeDTO TSectionOfficeDTO);
-    JsonVO<ResultStatus> removeSectionOffice(List<String> ids);
+    /**
+     * @Author: ayuan
+     * @param: [TSectionOfficeDTO]
+     * @return: com.zeroone.star.project.vo.JsonVO<com.zeroone.star.project.vo.ResultStatus>
+     * @Description: 新增科室
+     **/
+    JsonVO<ResultStatus> addSectionOffice(@Validated TSectionOfficeDTO TSectionOfficeDTO);
+
+    /**
+     * @Author: ayuan
+     * @param: [TSectionOfficeDTO]
+     * @return: com.zeroone.star.project.vo.JsonVO<com.zeroone.star.project.vo.ResultStatus>
+     * @Description: 修改科室
+     **/
+    JsonVO<ResultStatus> modifySectionOffice(@Validated TSectionOfficeDTO TSectionOfficeDTO);
+
+    /**
+     * @Author: ayuan
+     * @param: [ids]
+     * @return: com.zeroone.star.project.vo.JsonVO<com.zeroone.star.project.vo.ResultStatus>
+     * @Description: 删除科室
+     **/
+    JsonVO<ResultStatus> removeSectionOffice(@NotNull(message = "List不能为空") List<String> ids);
 }
