@@ -1,7 +1,16 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import {
-  queryJobName
+  querydictnamelist,
+  queryjobnamelist,
+  querypackageprolist,
+  querypackagepronamelist,
+  queryplannamelist,
+  queryplanprolist,
+  queryselectionnamelist,
+  querytermnamelist,
+  querytypetree,
+  queryuesrnamelist
 } from '@/apis/public/index.js'
 export const usePublicStore = defineStore('public', () => {
   // 列表数据
