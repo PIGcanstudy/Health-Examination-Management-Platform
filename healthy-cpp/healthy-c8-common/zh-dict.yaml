@@ -12,8 +12,9 @@ packageprolist:
  query-packageprolist:
   summary: 获取组合项目列表（条件+分页）
  field:
-  keyword: 组合项目名称
+  keyword: 组合项目关键字
   section: 所属科室
+  packagepro_name: 组合项目名称
 packagepronamelist:
  query-packagepronamelist:
   summary: 获取组合项目名称列表（用于输入表单下拉列表）
@@ -46,6 +47,8 @@ termnamelist:
 typetree:
  query-typetree:
   summary: 获取类型树
-uesrnamelist:
- query-uesrnamelist:
+usernamelist:
+ query-usernamelist:
   summary: 获取用户名称列表（用于输入表单下拉列表框）
+ field:
+  user_name: 用户名

@@ -11,6 +11,7 @@
 class PackageProListDTO : public oatpp::DTO
 {
 	DTO_INIT(PackageProListDTO, DTO);
+	API_DTO_FIELD_DEFAULT(String, packagepro_name, ZH_WORDS_GETTER("packageprolist.field.packagepro_name"));
 };
 
 /**

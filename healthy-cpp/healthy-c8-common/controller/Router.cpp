@@ -36,7 +36,7 @@
 #include "controller/sectionnamelist/SectionNameListController.h"
 #include "controller/termnamelist/TermNameListController.h"
 #include "controller/typetree/TypeTreeController.h"
-#include "controller/uesrnamelist/UesrNameListController.h"
+#include "controller/usernamelist/UserNameListController.h"
 
 
 // 如果定义了关闭Swagger文档宏
@@ -72,7 +72,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(SectionNameListController);
 	ROUTER_SIMPLE_BIND(TermNameListController);
 	ROUTER_SIMPLE_BIND(TypeTreeController);
-	ROUTER_SIMPLE_BIND(UesrNameListController);
+	ROUTER_SIMPLE_BIND(UserNameListController);
 }
 
 #ifdef HTTP_SERVER_DEMO

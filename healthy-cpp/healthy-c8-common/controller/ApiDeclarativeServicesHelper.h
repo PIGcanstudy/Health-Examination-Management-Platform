@@ -40,6 +40,10 @@
 #include "service/sectionnamelist/SectionNameListApiClient.h"
 //获取组合项目名称列表（用于输入表单下拉列表）
 #include "service/packagepronamelist/PackageProNameListApiClient.h"
+//获取用户名称列表（用于输入表单下拉列表框）
+#include "service/usernamelist/UserNameListApiClient.h"
+//获取组合项目列表（条件+分页）
+#include "service/packageprolist/PackageProListApiClient.h"
 
 
 //////////////////////////////////////////////////////////////////////////
