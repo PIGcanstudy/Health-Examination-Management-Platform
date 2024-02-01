@@ -3,7 +3,6 @@
 #define _DictNameList_Controller_
 
 #include "domain/vo/BaseJsonVO.h"
-#include "domain/query/dictnamelist/DictNameListQuery.h"
 #include "domain/dto/dictnamelist/DictNameListDTO.h"
 #include "domain/vo/dictnamelist/DictNameListVO.h"
 

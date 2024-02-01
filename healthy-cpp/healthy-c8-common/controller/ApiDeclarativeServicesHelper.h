@@ -34,6 +34,8 @@
 
 //获取套餐名称列表（条件+分页）
 #include "service/plannamelist/PlanNameListApiClient.h"
+//获取字典数据名称列表（用于输入表单下拉列表）
+#include "service/dictnamelist/DictNameListApiClient.h"
 
 
 //////////////////////////////////////////////////////////////////////////

@@ -3,6 +3,7 @@
 #define _JobNameListQuery_H_
 
 #include "../../GlobalInclude.h"
+#include "domain/query/PageQuery.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 

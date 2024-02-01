@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "PackagesListController.h"
-#include "../../service/packageslist/PackagesListApiClient.h"
 #include "../ApiDeclarativeServicesHelper.h"
 
 
