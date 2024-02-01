@@ -47,7 +47,7 @@ public class DirectSourceController implements DirectSourceApis {
     }
 
     @ApiOperation("查询字典数据名称列表")
-    @GetMapping("/queryDataTitle")
+    @GetMapping("/queryDictDataTitle")
     @Override
     public JsonVO<List<String>> queryDictDataTitle() {
         List<String> data = itDictDataService.getDictDataTitle();
