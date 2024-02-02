@@ -46,6 +46,12 @@ public:
 		std::regex phone_regex("(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\\d{8}"); // 手机号正则表达式  
 		return std::regex_match(phone_number, phone_regex);
 	}
+
+	//邮编校验
+	bool is_valid_postal_code(const std::string& postal_code) {
+		std::regex code_regex("[0-9]{6}");
+		return std::regex_match(postal_code, code_regex);
+	}
 };
 
 #endif // !_TESTVALIDATOR_H_

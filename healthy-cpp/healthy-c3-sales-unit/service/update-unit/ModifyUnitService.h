@@ -1,4 +1,5 @@
 #pragma once
+#include "../../domain/dto/update-unit/UnitDetailDTO.h"
 
 #ifndef _MODIFYUNITSERVICE_H_
 #define _MODIFYUNITSERVICE_H_
@@ -6,18 +7,7 @@
 class ModifyUnitService
 {
 public:
-	ModifyUnitService();
-	~ModifyUnitService();
-
-private:
-
+	std::string updateUnit(const UnitDetailDTO::Wrapper& dto, const string& updateId);
 };
 
-ModifyUnitService::ModifyUnitService()
-{
-}
-
-ModifyUnitService::~ModifyUnitService()
-{
-}
 #endif // !_MODIFYUNITSERVICE_H_

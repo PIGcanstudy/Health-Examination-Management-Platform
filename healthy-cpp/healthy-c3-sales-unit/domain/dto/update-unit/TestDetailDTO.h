@@ -12,7 +12,7 @@ class TestDetailDTO : public oatpp::DTO
 	//检测信息id
 	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("test.field.id"));
 	//单位id
-	API_DTO_FIELD_DEFAULT(String, testId, ZH_WORDS_GETTER("test.field.test_id"));
+	API_DTO_FIELD_DEFAULT(String, unitId, ZH_WORDS_GETTER("test.field.unit_id"));
 	//职业有害因素编码
 	API_DTO_FIELD_DEFAULT(String, hazardFactors, ZH_WORDS_GETTER("test.field.hazard_factors"));
 	//职业有害因素名称

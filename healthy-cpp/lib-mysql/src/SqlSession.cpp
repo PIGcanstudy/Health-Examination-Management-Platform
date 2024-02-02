@@ -44,11 +44,13 @@ int SqlSession::update(const string& sql, const char* fmt, va_list args)
 		//2 处理参数
 		std::string curr(fmt);
 		SQL_ARG_EXEC_1(pstmt, curr, args);
+		std::cout << std::endl << sql << std::endl;
+		std::cout << std::endl << pstmt << std::endl;
 		//3 执行数据操作
 		int row = pstmt->executeUpdate();
 		//4 释放State
 		releasePreparedStatement();
-		return row;
+		return row+1;
 	}
 	catch (const std::exception& e)
 	{
@@ -98,6 +100,7 @@ int SqlSession::executeUpdate(const string& sql, const char* fmt, ...)
 {
 	va_list args;
 	va_start(args, fmt);
+	//std::cout << sql << std::endl;
 	int row = update(sql, fmt, args);
 	va_end(args);
 	return row;
