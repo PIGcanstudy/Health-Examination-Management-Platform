@@ -31,10 +31,18 @@
 #include "NacosClient.h"
 #endif
 
+//pdf相关头文件
+#include "ServerInfo.h"
+#include "NacosClient.h"
+#include "FastDfsClient.h"
+
+#include "uselib/pdf/InquiryDetailPdf.h"
+#include "uselib/fastdfs/InquiryDetailFastDfs.h"
+
 // 是否是发布Swagger文档包
 #ifndef _RELEASE_DOC_
 // 查看Swagger文档的时候不需要连接数据库，解开下面的注释关闭启动连接数据库
-//#define _RELEASE_DOC_
+// #define _RELEASE_DOC_
 #endif
 
 /**
@@ -74,7 +82,6 @@ bool getStartArg(int argc, char* argv[]) {
 			cout << "arg: " << argv[currIndex] << ", format error." << endl;
 			exit(1);
 		}
-
 		// 根据参数前缀对不同属性赋值
 		std::string prefix = args[0];
 		std::string val = args[1];
@@ -140,6 +147,10 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
+	//InquiryDetailFastDfs("D:\\zero-one-star\\zero-one-healthy-check\\healthy-cpp\\out\\build\\x64-Debug\\healthy-c7-common\\test-text.pdf");
+    InquiryDetailPdf::InquiryDetailText(DO);
+	//InquiryDetailPdf::InquiryDetailTpl();
+
 
 #ifdef LINUX
 	// 创建Nacos客户端对象

@@ -13,3 +13,17 @@ inquiry:
   workTypeText: 工种名称
   workName: 工种其他名称
   department: 所属部门
+pdf:
+  title: 职业健康检查问诊明细报告
+  id: 主键
+  workYear: 工龄年段
+  workMonth: 工龄月段
+  isMarry: 结婚状况
+  exposureWorkYear: 按需年龄
+  exposureWorkMonth: 按需月龄
+  education: 文化程度
+  familyAddress: 家庭地址
+  workTypeText: 工种名称
+  workName: 工种其他名称
+  department: 所属部门
+        

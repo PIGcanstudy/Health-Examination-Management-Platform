@@ -30,7 +30,7 @@
 #include <stb/stb_image_write.h>
 using namespace ZXing;
 
-// 条形码在线预览 https://zxing-cpp.github.io/zxing-cpp/demo_writer.html
+ //条形码在线预览 https://zxing-cpp.github.io/zxing-cpp/demo_writer.html
 void addBarCodeToPdf(PdfComponent* pdf) {
 	// 设置条码绘制相关参数
 	int width = 200, height = 20; // 长宽
@@ -65,46 +65,91 @@ void addBarCodeToPdf(PdfComponent* pdf) {
 	}
 }
 
-void InquiryDetailPdf::InquiryDetailText()
+
+//void InquiryDetailPdf::InquiryDetailTpl()
+//{
+//	// 测试注册渲染模板
+//	PdfComponent::registerTplRender("InquiryDetail", [](YAML::Node* node, PdfComponent* pdf, void* realData)
+//		{
+//			// 创建一个页面
+//			HPDF_Page newPage = pdf->getNewPage();
+//			// 设置页面字体
+//			HPDF_Page_SetFontAndSize(newPage, pdf->getCnSFont("SimSun"), 20);
+//			// 绘制静态数据
+//			auto title = (*node)["t"].as<std::string>();
+//			auto id = (*node)["id"].as<std::string>();
+//			auto workYear = (*node)["workYear"].as<std::string>();
+//			auto workMonth = (*node)["workMonth"].as<std::string>();
+//			auto isMarry = (*node)["isMarry"].as<std::string>();
+//			auto exposureWorkYear = (*node)["exposureWorkYear"].as<std::string>();
+//			auto exposureWorkMonth = (*node)["exposureWorkMonth"].as<std::string>();
+//			auto education = (*node)["education"].as<std::string>();
+//			auto familyAddress = (*node)["familyAddress"].as<std::string>();
+//			auto workTypeText = (*node)["workTypeText"].as<std::string>();
+//			auto workName = (*node)["workName"].as<std::string>();
+//			auto department = (*node)["department"].as<std::string>();
+//
+//			pdf->drawTextCenterH(title, HPDF_Page_GetHeight(newPage) - 20);
+//			pdf->drawTextCenterH(id, HPDF_Page_GetHeight(newPage) - 20);
+//			pdf->drawTextCenterH(workYear, HPDF_Page_GetHeight(newPage) - 20);
+//			pdf->drawTextCenterH(workMonth, HPDF_Page_GetHeight(newPage) - 20);
+//			pdf->drawTextCenterH(isMarry, HPDF_Page_GetHeight(newPage) - 20);
+//			pdf->drawTextCenterH(exposureWorkYear, HPDF_Page_GetHeight(newPage) - 20);
+//			pdf->drawTextCenterH(exposureWorkMonth, HPDF_Page_GetHeight(newPage) - 20);
+//			pdf->drawTextCenterH(education, HPDF_Page_GetHeight(newPage) - 20);
+//			pdf->drawTextCenterH(familyAddress, HPDF_Page_GetHeight(newPage) - 20);
+//			pdf->drawTextCenterH(workTypeText, HPDF_Page_GetHeight(newPage) - 20);
+//			pdf->drawTextCenterH(workName, HPDF_Page_GetHeight(newPage) - 20);
+//			pdf->drawTextCenterH(department, HPDF_Page_GetHeight(newPage) - 20);
+//
+//
+//
+//
+//			//auto title = (*node)["t"].as<std::string>();
+//			//auto foot = (*node)["f"].as<std::string>();
+//			//pdf->drawTextCenterH(title, HPDF_Page_GetHeight(newPage) - 20);
+//			//pdf->drawTextCenterH(foot, 20);
+//			 
+//			
+//			// 绘制动态数据
+//			std::string content = static_cast<std::string*>(realData)->c_str();
+//			pdf->drawTextCenter(content);
+//			// 绘制一个条码
+//			addBarCodeToPdf(pdf);
+//			// 保存到文件
+//			pdf->saveDocToFile("test-tpl.pdf");
+//		});
+//	// 测试绘制
+//	PdfComponent pdf;
+//	auto content = ZH_WORDS_GETTER("pdf.content");
+//	pdf.drawWithTemplate("tpl/test.yaml", "InquiryDetail", &content);
+//}
+
+void InquiryDetailPdf::InquiryDetailText(const InquiryDeatilDO& Do)
 {
 	PdfComponent pdf;
 	// 创建一个页面
-	HPDF_Page newPage = pdf.getNewPage();
+	HPDF_Page newPage = pdf.getNewPage(); 
 	// 设置页面字体
 	HPDF_Page_SetFontAndSize(newPage, pdf.getCnSFont("SimSun"), 20);
 	// 绘制字体
-	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.title"), HPDF_Page_GetHeight(newPage) - 20);
+	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.title"), +": " + Do.getName(), HPDF_Page_GetHeight(newPage) - 20);
+	pdf.drawText(ZH_WORDS_GETTER("pdf.id"), +": " + Do.getName(), 50.0,780.0);
+	pdf.drawText(ZH_WORDS_GETTER("pdf.workYear"), +": " + Do.getName(), 50.0,740.0);
+	pdf.drawText(ZH_WORDS_GETTER("pdf.workMonth"), +": " + Do.getName(), 250.0,740.0);
+	pdf.drawText(ZH_WORDS_GETTER("pdf.isMarry"), +": " + Do.getName(), 50.0,700.0);
+	pdf.drawText(ZH_WORDS_GETTER("pdf.exposureWorkYear"), +": " + Do.getName(), 50.0, 660.0);
+	pdf.drawText(ZH_WORDS_GETTER("pdf.exposureWorkMonth"), +": " + Do.getName(), 250.0, 660.0);
+	pdf.drawText(ZH_WORDS_GETTER("pdf.education"), +": " + Do.getName(), 50.0, 620.0);
+	pdf.drawText(ZH_WORDS_GETTER("pdf.familyAddress"), +": " + Do.getName(), 250.0,620.0);
+	pdf.drawText(ZH_WORDS_GETTER("pdf.workTypeText"), +": " + Do.getName(), 50.0, 580.0);
+	pdf.drawText(ZH_WORDS_GETTER("pdf.workName"), +": " + Do.getName(), 50, 540.0);
+	pdf.drawText(ZH_WORDS_GETTER("pdf.department"), +": " + Do.getName(), 50.0, 500.0);
+
+
+	/*pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.title"), HPDF_Page_GetHeight(newPage) - 20);
 	pdf.drawTextCenter(ZH_WORDS_GETTER("pdf.content"));
-	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.foot"), 20);
+	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.foot"), 20);*/
 	// 保存到文件
 	pdf.saveDocToFile("test-text.pdf");
-}
-
-void InquiryDetailPdf::InquiryDetailTpl()
-{
-	// 测试注册渲染模板
-	PdfComponent::registerTplRender("InquiryDetail", [](YAML::Node* node, PdfComponent* pdf, void* realData)
-		{
-			// 创建一个页面
-			HPDF_Page newPage = pdf->getNewPage();
-			// 设置页面字体
-			HPDF_Page_SetFontAndSize(newPage, pdf->getCnSFont("SimSun"), 20);
-			// 绘制静态数据
-			auto title = (*node)["t"].as<std::string>();
-			auto foot = (*node)["f"].as<std::string>();
-			pdf->drawTextCenterH(title, HPDF_Page_GetHeight(newPage) - 20);
-			pdf->drawTextCenterH(foot, 20);
-			// 绘制动态数据
-			std::string content = static_cast<std::string*>(realData)->c_str();
-			pdf->drawTextCenter(content);
-			// 绘制一个条码
-			addBarCodeToPdf(pdf);
-			// 保存到文件
-			pdf->saveDocToFile("test-tpl.pdf");
-		});
-
-	// 测试绘制
-	PdfComponent pdf;
-	auto content = ZH_WORDS_GETTER("pdf.content");
-	pdf.drawWithTemplate("tpl/test.yaml", "test", &content);
 }

@@ -32,7 +32,7 @@ class InquiryDetailDTO : public oatpp::DTO
 {
 	DTO_INIT(InquiryDetailDTO, DTO);
 
-	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("inquiry.field.Id"));
+	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("inquiry.field.id"));
 	// 工龄年段
 	API_DTO_FIELD_DEFAULT(UInt64, workYear, ZH_WORDS_GETTER("inquiry.field.workYear"));
 	// 工龄月段

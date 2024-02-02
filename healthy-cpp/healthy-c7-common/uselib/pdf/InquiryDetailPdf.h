@@ -12,9 +12,10 @@ public:
 	//static void InquiryDetailText(const InquiryDetailDO& Do);
 	//static void InquiryDetailTpl(const InquiryDetailDO& Do);
 
-	static void InquiryDetailText();
+	static void InquiryDetailText(const InquiryDetailDO& Do);
 	static void InquiryDetailTpl();
-};
+};	
+
 
 #endif // !_INQUIRYDETAILPDF_H_
 
