@@ -24,7 +24,7 @@
 #include "unknownmodulepastmedicalhistory/PastMedicalHistoryController.h"
 #include "unknownmoduleprofessionalhistory/ProfessionalHistoryController.h"
 #include "GroupPerson/GroupPersonController.h"
-
+#include "Personinfo/PersoninfoController.h"
 #include"samplebarcodesview/SampleBarcodesBiewController.h"
 #include"reportpreview/ReportPreviewController.h"
 #ifdef HTTP_SERVER_DEMO
@@ -84,6 +84,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(PersonController);
 	ROUTER_SIMPLE_BIND(UpFileController);
 	ROUTER_SIMPLE_BIND(GroupPersonInfoController);
+    ROUTER_SIMPLE_BIND(PersoninfoController);
 	
 }
 
