@@ -83,8 +83,8 @@
                 <configuration>
                     <!-- Docker 远程管理地址-->
                     <dockerHost>https://47.115.223.221:2375</dockerHost>
-                    <!-- CA 证书位置 -->
-                    <certPath>/home/docker-ca</certPath>
+                    <!-- Docker 证书路径 -->
+                    <certPath>/Users/ayuan/IDEAProject/zero-one-healthy-check/docker-ca47.115.223.221</certPath>
                     <!-- 镜像设置 -->
                     <images>
                         <image>

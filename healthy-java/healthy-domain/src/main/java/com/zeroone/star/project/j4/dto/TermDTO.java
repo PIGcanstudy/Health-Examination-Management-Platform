@@ -8,13 +8,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-/**
- * @BelongsProject: healthy-java
- * @BelongsPackage: com.zeroone.star.project.j4.dto
- * @Author: ayuan
- * @CreateTime: 2024-01-28
- * @Description:
- */
 @Data
 @ApiModel(value = "列表")
 public class TermDTO {
