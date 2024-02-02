@@ -37,7 +37,7 @@ public interface ITemplateMService extends IService<TTemplate> {
      * @param id 模板编号
      * @return 修改结果
      */
-    int updateTemplateStatus(String id);
+    String updateTemplateStatus(String id);
 
     /**
      * 查询模板文件存放地址

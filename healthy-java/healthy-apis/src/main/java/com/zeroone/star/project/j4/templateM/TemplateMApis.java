@@ -35,7 +35,7 @@ public interface TemplateMApis {
      * @param id 模板编号
      * @return 修改结果
      */
-    JsonVO<Integer> modifyTemplateStatus(String id);
+    JsonVO<String> modifyTemplateStatus(String id);
 
     /**
      * 预览模板

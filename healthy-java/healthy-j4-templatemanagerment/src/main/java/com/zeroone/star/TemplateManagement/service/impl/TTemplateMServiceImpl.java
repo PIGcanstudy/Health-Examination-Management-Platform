@@ -114,7 +114,7 @@ public class TTemplateMServiceImpl extends ServiceImpl<TemplateMMapper, TTemplat
         QueryWrapper<TTemplate> wrapper = getWrapper(query);
         // 执行查询
         Page<TTemplate> result = templateMMapper.selectTemplateList(page, wrapper);
-        System.out.println("result: " + result.getRecords().get(0).getCreateTime());
+        // System.out.println("result: " + result.getRecords().get(0).getCreateTime());
         return PageDTO.create(result, src -> msTemplateMapper.templateToTemplateMListDTO(src));
     }
     private static QueryWrapper<TTemplate> getWrapper(TemplateMQuery query) {
@@ -137,9 +137,13 @@ public class TTemplateMServiceImpl extends ServiceImpl<TemplateMMapper, TTemplat
         return wrapper;
     }
     @Override
-    public int updateTemplateStatus(String id) {
+    public String updateTemplateStatus(String id) {
         // 获取文件名
         TTemplate template = baseMapper.selectById(id);
+        // 模板判空
+        if (template == null) {
+            return "模板不存在";
+        }
         String contentName = template.getStatus();
         UpdateWrapper updateWrapper = new UpdateWrapper();
         updateWrapper.eq("id", id);
@@ -149,12 +153,17 @@ public class TTemplateMServiceImpl extends ServiceImpl<TemplateMMapper, TTemplat
         else if (Objects.equals(contentName, "0")) {
             updateWrapper.set("status", "1");
         }
-        return baseMapper.update(template, updateWrapper);
+        baseMapper.update(template, updateWrapper);
+        return "模板状态更新成功";
     }
 
     @Override
     public String getTemplate(String id) {
         TTemplate template = baseMapper.selectById(id);
+        // 模板判空
+        if (template == null) {
+            return "模板不存在";
+        }
         return template.getContent();
     }
 }

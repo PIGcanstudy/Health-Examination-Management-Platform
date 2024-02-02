@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotBlank;
+import java.util.Objects;
 
 /**
  * <p>
@@ -50,16 +51,13 @@ public class TemplateMController implements TemplateMApis {
      * 因此再定义一个modifyTemplateStatusValidated 来调用原方法
      * */
     @Override
-    public JsonVO<Integer> modifyTemplateStatus(String id) {
-        int res = service.updateTemplateStatus(id);
-        if (res != 0) {
-            return JsonVO.success(res);
-        }
-        return JsonVO.fail(res);
+    public JsonVO<String> modifyTemplateStatus(String id) {
+        String res = service.updateTemplateStatus(id);
+        return JsonVO.success(res);
     }
     @ApiOperation(value = "启用/禁用模板")
     @PostMapping("modify-status")
-    public JsonVO<Integer> modifyTemplateStatusValidated(
+    public JsonVO<String> modifyTemplateStatusValidated(
             @NotBlank(message = "id不能为空")
             @RequestParam String id) {
         return modifyTemplateStatus(id);
@@ -68,7 +66,8 @@ public class TemplateMController implements TemplateMApis {
 
     @Override
     public JsonVO<String> previewTemplate(String id) {
-        return JsonVO.success(service.getTemplate(id));
+        String res = service.getTemplate(id);
+        return JsonVO.success(res);
     }
     @ApiOperation(value = "预览模板")
     @GetMapping("query-content")
