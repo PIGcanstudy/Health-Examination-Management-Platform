@@ -1,16 +1,48 @@
 <!-- 部门管理 -->
 <template>
+   <el-tabs type="border-card">
+    <el-tab-pane label="树结构">
   <el-container>
     <el-header>
-  <el-button >添加子部门</el-button>
-  <el-button >添加一级部门</el-button>
-  <el-button >批量删除</el-button>
-  <el-button >刷新</el-button>
+      <div class="dis">
+  <el-button @click="add">添加子部门</el-button>
+  <el-button @click="adddeparitment">添加一级部门</el-button>
+  <el-button @click="delete">批量删除</el-button>
+  <el-button @click="refresh">刷新</el-button>
   <el-switch v-model="value1" witdh="50px" inline-prompt active-text="级联" inactive-text="不级联" />
+      </div>
   </el-header>
+<!-- 添加子部门 -->
+<el-dialog
+    v-model="openbutton1" width="30%">
+<el-card>
+  <template #header>
+    添加子部门
+    </template>
+    <div>上级部门：宜宾美年大健康体检中心</div>
+    <div>部门名称<el-input v-model="name"></el-input></div>
+    <div>排序值<el-input v-model="number"></el-input></div>
+    <div>是否启用 <el-switch v-model="value1" witdh="50px" inline-prompt active-text="启用" inactive-text="不启用" /></div>
+    <template #footer><el-button @click="close">取消</el-button><el-button>提交</el-button></template>
+</el-card>
+</el-dialog>
+<!-- 添加一级部门 -->
+<el-dialog v-model="department" width="30%" >
+  <el-card>
+  <template #header>
+    添加一级部门
+    </template>
+    <div>部门名称<el-input v-model="name"></el-input></div>
+    <div>排序值<el-input v-model="number"></el-input></div>
+    <div>是否启用 <el-switch v-model="value1" witdh="50px" inline-prompt active-text="启用" inactive-text="不启用" /></div>
+    <template #footer><el-button @click="closedepartment">取消</el-button><el-button>提交</el-button></template>
+</el-card>
+</el-dialog>
+
   <el-container>
     <el-aside>
       <div>当前选择编辑</div>
+      <el-input placeholder="输入部门名搜索"></el-input>
     </el-aside>
     <el-main>
       <div display:column>
@@ -29,10 +61,38 @@
         </div>
         <div>是否启用<el-switch v-model="value1" witdh="50px" inline-prompt active-text="启用" inactive-text="不启用" /></div>
       </div>
-      <el-button>重置</el-button>
+      <el-button>修改并保存</el-button><el-button>重置</el-button>
       </el-main>
   </el-container>
   </el-container>
+</el-tab-pane>  
+<!-- 列表 -->
+<el-tab-pane label="列表">
+  <el-container>
+   <el-header>
+     <el-button @click="adddeparitment">添加一级部门</el-button>
+     <el-button @click="delete">批量删除</el-button>
+     <el-button @click="refresh">刷新</el-button>
+     <el-input style="width: 150px;" placeholder="输入部门名搜索"></el-input>
+   </el-header>
+     <div class="dis">已选择20项  <div>清空</div></div>
+     <el-button @click="">关闭提示</el-button>
+        <el-table :data="tableData" height="250" border :cell-style="{ textAlign: 'center' }" :header-cell-style="{ 'text-align': 'center' }" style="width: 100%">
+        <el-table-column prop="" label="" width="60" />
+        <el-table-column prop="number" label="#" width="60" />
+        <el-table-column prop="name" label="部门名称" />
+        <el-table-column prop="id" label="排序" />
+        <el-table-column prop="time" label="创建时间" />
+        <el-table-column fixed="right" label="操作" width="240">
+      <template #default>
+        <el-button link type="primary" size="small">添加子部门</el-button>
+        <el-button link type="primary" size="small">删除</el-button>
+      </template>
+    </el-table-column>
+      </el-table>
+  </el-container>
+        </el-tab-pane> 
+</el-tabs>
 </template>
 
 <script setup>
@@ -41,10 +101,30 @@ import { ref } from 'vue'
 const value1 = ref(true)
 const input = ref('')
 const num = ref(1);
+const openbutton1 = ref(false)
+const add = () =>{
+  openbutton1.value=true;
+};
+const close = ()=>{
+  openbutton1.value=false;
+}
+const department=ref(false)
+const adddeparitment = () => {
+  department.value=true
+}
+const closedepartment = () =>{
+  department.value=false
+}
 const handleChange = (value) => {
   num++;
   console.log(value);
 };
+const tableData = [{
+  number:'123',
+  name:'abc',
+  id:'ac',
+  time:'a'
+}]
 </script>
 
 <style lang="scss" scoped>
@@ -55,5 +135,8 @@ const handleChange = (value) => {
 }
 .text{
   text-align: left;
+}
+.dis{
+  display: flex;
 }
 </style>

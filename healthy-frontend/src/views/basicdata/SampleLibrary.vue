@@ -2,7 +2,7 @@
  * @Author: setti5 2283356040@qq.com
  * @Date: 2024-01-30 15:48:01
  * @LastEditors: setti5 2283356040@qq.com
- * @LastEditTime: 2024-01-31 21:00:13
+ * @LastEditTime: 2024-02-01 16:33:56
  * @FilePath: \zero-one-healthy-check\healthy-frontend\src\views\basicdata\SampleLibrary.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -385,7 +385,6 @@ onMounted(() => {
 .container {
   width: 100%;
   height: 100%;
-  padding: 16px;
 }
 .operation {
   margin-bottom: 10px;
