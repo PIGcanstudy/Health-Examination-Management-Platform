@@ -19,11 +19,11 @@ public:
 	// 定义一个文件下载接口
 	// 定义描述
 	ENDPOINT_INFO(downloadHealthCertiDetail) {
-		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("helthcertidetail.download-helthcertidetail.summary"), Void);
-		API_DEF_ADD_QUERY_PARAMS(String, "pdfname", ZH_WORDS_GETTER("helthcertidetail.field.pdfname"), "", true);
+		API_DEF_ADD_COMMON(ZH_WORDS_GETTER("healthcertidetail.download-healthcertidetail.summary"), Void);
+		API_DEF_ADD_QUERY_PARAMS(String, "pdfname", ZH_WORDS_GETTER("healthcertidetail.field.pdfname"), "", true);
 	}
 	// 定义端点
-	ENDPOINT(API_M_GET, "/healthcertificate-manage/download-helthcertidetail", downloadHealthCertiDetail, QUERY(String, pdfname)) {
+	ENDPOINT(API_M_GET, "/healthcertificate-manage/download-healthcertidetail", downloadHealthCertiDetail, QUERY(String, pdfname)) {
 		return execDownloadHealthCertiDetail(pdfname);
 	}
 
