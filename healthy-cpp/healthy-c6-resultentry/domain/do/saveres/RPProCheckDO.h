@@ -23,7 +23,7 @@ class RPProCheckDO
 
 
 public:
-	RPProCheckDO::RPProCheckDO()
+	RPProCheckDO()
 		: id(""),
 		personId(""),
 		officeId(""),

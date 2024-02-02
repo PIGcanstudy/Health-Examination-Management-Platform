@@ -2,7 +2,8 @@
 #ifndef _SAVERES_DAO_
 #define _SAVERES_DAO_
 #include"BaseDAO.h"
-#include "../../domain/do/saveres/saveresDO.h"
+#include "../../domain/do/saveres/SaveResDO.h"
+
 
 /**
 * class InterroDAO

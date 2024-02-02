@@ -1,12 +1,14 @@
 #include "stdafx.h"
 #include "SaveResService.h"
-#include "../../dao/saveres/saveresDAO.h"
+
 #include "../../../lib-common/include/SimpleDateTimeFormat.h"
 #include "../../Macros.h"
 #include "../../../lib-mysql/include/TransactionManager.h"
 #include "../../domain/dto/saveres/RPProCheckDTO.h"
 #include "../../domain/do/saveres/RPProCheckDO.h"
 #include "../../dao/saveres/RPProCheckDAO.h"
+#include "../../domain/do/saveres/SaveResDO.h"
+#include "../../dao/saveres/SaveResDAO.h"
 
 
 

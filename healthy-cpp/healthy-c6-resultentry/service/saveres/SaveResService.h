@@ -1,7 +1,7 @@
 #pragma once
 #include "../../domain/dto/saveres/SaveResDTO.h"
 #include "../../../lib-common/include/SnowFlake.h"
-#include "../../domain/do/saveres/saveresDO.h"
+
 #include "../../domain/dto/saveres/RPProCheckDTO.h"
 #ifndef _SAVERES_SERVICE_
 #define _SAVERES_SERVICE_

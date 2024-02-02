@@ -78,7 +78,7 @@ class SaveResDO
 
 
 public:
-	SaveResDO::SaveResDO()
+	SaveResDO()
 		: id(""),
 		personId(""),
 		officeId(""),
