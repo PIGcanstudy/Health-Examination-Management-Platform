@@ -20,10 +20,10 @@ public:
 	// 3.1 定义修改接口描述
 	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("printconfirm.put.summary"), modifyPrintConfirm, Uint64JsonVO::Wrapper);
 	// 3.2 定义修改接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/healthcertificate-manage/modify-printconfirm", modifyPrintConfirm, BODY_DTO(PrintConfirmDTO::Wrapper, dto), execModifyPrintConfirm(dto));
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/healthcertificate-manage/modify-printconfirm", modifyPrintConfirm, BODY_DTO(List<String>, dto), execModifyPrintConfirm(dto));
 private:
 	// 3.3 演示修改数据
-	Uint64JsonVO::Wrapper execModifyPrintConfirm(const PrintConfirmDTO::Wrapper& dto);
+	StringJsonVO::Wrapper execModifyPrintConfirm(const List<String>& dto);
 };
 
 // 0 取消API控制器使用宏

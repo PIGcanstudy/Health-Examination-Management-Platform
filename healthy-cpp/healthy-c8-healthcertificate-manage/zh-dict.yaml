@@ -20,6 +20,8 @@ query-healthcertificatelist:
 printconfirm:
  put:
   summary: 打印确认（支持批量）
+ field:
+  order-id: 订单ID
 printmore:
  download-printmore:
   summary: 批量打印
