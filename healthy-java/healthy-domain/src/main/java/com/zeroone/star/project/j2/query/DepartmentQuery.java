@@ -1,9 +1,6 @@
-package com.zeroone.star.project.j2.dto;
+package com.zeroone.star.project.j2.query;
 
-
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-
+import com.zeroone.star.project.query.PageQuery;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -11,9 +8,19 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * <p>
+ * 描述：消息查询对象
+ * </p>
+ * <p>版权：&copy;01星球</p>
+ * <p>地址：01星球总部</p>
+ * @author camille
+ * @version 1.0.0
+ */
+
 @Data
-@ApiModel("部门传输数据对象")
-public class DepartmentDTO {
+@ApiModel("部门查询对象")
+public class DepartmentQuery extends PageQuery {
     //查询Id
     @ApiModelProperty(value = "查询Id",example = "1")
     private String id;
@@ -47,5 +54,4 @@ public class DepartmentDTO {
     //是否为父节点
     @ApiModelProperty(value = "是否为父节点",example = "0")
     private Boolean IsParent;
-
 }

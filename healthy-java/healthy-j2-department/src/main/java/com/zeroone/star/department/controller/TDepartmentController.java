@@ -5,15 +5,14 @@ import cn.hutool.core.bean.BeanUtil;
 import com.zeroone.star.department.entity.TDepartment;
 import com.zeroone.star.department.service.ITDepartmentService;
 import com.zeroone.star.project.components.user.UserHolder;
-import com.zeroone.star.project.j2.DepartmentApis;
 import com.zeroone.star.project.j2.dto.DepartmentDTO;
 import com.zeroone.star.project.vo.JsonVO;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * <p>
@@ -23,14 +22,35 @@ import java.util.Arrays;
  * @author camille
  * @since 2024-01-15
  */
-
-@Api(tags = "部门管理")
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/department/t-department")
-public class TDepartmentController implements DepartmentApis {
+public class TDepartmentController {
+    @Resource
+    ITDepartmentService departmentService;
 
-    private final ITDepartmentService departmentService;
+    @ApiOperation(value = "获取子部门列表")
+    @GetMapping("get-menus")
+    @Override
+    public JsonVO<List<DepartmentMenuVO>> getMenus(int id){
+        List<DepartmentMenuVO> menus = departmentService.selectById(id);
+        return JsonVO.success(menus);
+    }
+
+    /**
+     * 获取指定部门详情
+     *
+     * @param condition 查询条件
+     * @return 查询结果
+     */
+    @ApiOperation(value = "获取部门详情")
+    @GetMapping("get-inform")
+    @Override
+    public JsonVO<DepartmentDTO> queryAll(DepartmentQuery condition) {
+        DepartmentDTO dto = new DepartmentDTO();
+        dto.setTitle(condition.getTitle());
+        return JsonVO.success(dto);
+    }
+
 
     UserHolder userHolder=new UserHolder();
 
@@ -83,6 +103,5 @@ public class TDepartmentController implements DepartmentApis {
             throw new RuntimeException(e);
         }
     }
-
 }
 

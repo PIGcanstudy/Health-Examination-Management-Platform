@@ -6,8 +6,10 @@ import com.zeroone.star.department.entity.TDepartment;
 import com.zeroone.star.department.mapper.TDepartmentMapper;
 import com.zeroone.star.department.service.ITDepartmentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -18,8 +20,24 @@ import org.springframework.stereotype.Service;
  * @since 2024-01-15
  */
 @Service
-@RequiredArgsConstructor
 public class TDepartmentServiceImpl extends ServiceImpl<TDepartmentMapper, TDepartment> implements ITDepartmentService {
+    @Override
+    public List<DepartmentMenuVO> selectById(int parentId) {
+        List<TDepartment> menus = baseMapper.selectById(parentId);
+        return menus.stream()
+                .map(TDepartmentServiceImpl::convertDOToVO)
+                .collect(Collectors.toList());
+    }
+
+    public static DepartmentMenuVO convertDOToVO(TDepartment employeeDO) {
+        DepartmentMenuVO employeeVO = new DepartmentMenuVO();
+        employeeVO.setId(employeeDO.getId());
+        employeeVO.setSortOrder(employeeDO.getSortOrder());
+        employeeVO.setCreateTime(employeeDO.getCreateTime());
+        employeeVO.setTitle(employeeDO.getTitle());
+
+        return employeeVO;
+    }
 
     private final TDepartmentMapper departmentMapper;
 

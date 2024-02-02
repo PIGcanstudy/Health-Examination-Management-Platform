@@ -3,6 +3,8 @@ package com.zeroone.star.department.service;
 import com.zeroone.star.department.entity.TDepartment;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 部门 服务类
@@ -12,6 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2024-01-15
  */
 public interface ITDepartmentService extends IService<TDepartment> {
-
     void updateUpdateBy(String[] ids, String username);
+
+    List<DepartmentMenuVO> selectById(int parentId);
 }
