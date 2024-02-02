@@ -50,10 +50,21 @@
       <!-- fixed固定列 -->
       <!-- 表格后面的操作选项群 -->
       <template #fixed="{ row }">
-        <el-button type="primary" style="margin-right: 5px" @click="handelLook(row)">菜单权限</el-button>
-        <el-button type="primary" style="margin-right: 5px" @click="handelLook(row)">数据权限</el-button>
+
         <el-button type="primary" style="margin-right: 5px" @click="handleEditDialog(row)">编辑</el-button>
-        <el-button type="danger" style="margin-right: 5px" @click="handleCancel(row)">删除</el-button>
+        <el-dropdown>
+          <el-button style="margin-right: 8px">
+            更多操作
+            <el-icon class="el-icon--right"> <arrow-down /> </el-icon></el-button>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>菜单权限</el-dropdown-item>
+              <el-dropdown-item>收合所有</el-dropdown-item>
+              <el-dropdown-item>仅展开一级</el-dropdown-item>
+              <el-dropdown-item>删除</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </template>
 
       <!-- form表单区域 -->
@@ -73,23 +84,14 @@
           <el-button @click="resetForm">重置</el-button>
         </el-form-item>
       </template>
-      
+
 
       <!-- operation功能区域 -->
       <template #operation>
         <div class="operation">
-          <el-button type="primary" @click="dialogVisible = true">
-            <el-icon>
-              <Refresh></Refresh>
-            </el-icon>添加角色</el-button>
-          <el-button type="danger" dark="true" @click="open">
-            <el-icon>
-              <Refresh></Refresh>
-            </el-icon>批量删除</el-button>
-          <el-button type="primary">
-            <el-icon>
-              <Refresh></Refresh>
-            </el-icon>刷新</el-button>
+          <el-button :icon="Plus" type="primary" @click="dialogVisible = true">添加角色</el-button>
+          <el-button :icon="Delete" type="danger" @click="open">批量删除</el-button>
+          <el-button :icon="Refresh" type="primary">刷新</el-button>
 
           <el-button @click="closeForm">关闭搜索</el-button>
           <el-button @click="closeHint">关闭提示</el-button>
@@ -115,7 +117,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import { ArrowUp, ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit } from '@element-plus/icons-vue'
+import { ArrowUp, Delete, Plus, ArrowDown, Search, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit } from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import CheckItems from '@/components/checkItems/CheckItems.vue'
 
