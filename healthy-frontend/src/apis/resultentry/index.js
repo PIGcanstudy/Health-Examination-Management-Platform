@@ -12,7 +12,7 @@ const baseUrl = 'http://localhost:10100/api'
 export const addDepartRes = (params) => {
   return Request.requestJson(
     Request.POST,
-    baseUrl + '/addDepartRes',
+    baseUrl + '/resultentry/addDepartRes',
     params
   )
 }
@@ -21,16 +21,16 @@ export const addDepartRes = (params) => {
 export const addRPProCheck = (params) => {
   return Request.requestJson(
     Request.POST,
-    baseUrl + '/addRPProCheck',
+    baseUrl + '/resultentry/addRPProCheck',
     params
   )
 }
 
 // 弃检项目
-export const waiveCheck = (params) => {
+export const modifywaiveCheck = (params) => {
     return Request.requestJson(
       Request.PUT,
-      baseUrl + '/waiveCheck',
+      baseUrl + '/resultentry//resultentry/modifywaiveCheck',
       params
     )
   }
@@ -40,7 +40,7 @@ export const waiveCheck = (params) => {
 export const queryList = (params) => {
     return Request.requestForm(
       Request.GET,
-      baseUrl + '/groupPerson/query/list',
+      baseUrl + '/resultentry/groupPerson/query/list',
       params
     )
   }
@@ -59,7 +59,7 @@ export const clAbanProj = (params) => {
 export const queryBasicInfoMation = (params) => {
     return Request.requestForm(
       Request.GET,
-      baseUrl + '/unknownmodulebasicinformation/queryBasicInfoMation',
+      baseUrl + '/resultentry/unknownmodulebasicinformation/queryBasicInfoMation',
       params
     )
   }
@@ -68,7 +68,7 @@ export const queryBasicInfoMation = (params) => {
 export const queryLifeHistory = (params) => {
     return Request.requestForm(
       Request.GET,
-      baseUrl + '/unknownmodulelifehistory/queryLifeHistory',
+      baseUrl + '/resultentry/unknownmodulelifehistory/queryLifeHistory',
       params
     )
   }
@@ -77,7 +77,7 @@ export const queryLifeHistory = (params) => {
 export const queryPastMedicalHistory = (params) => {
     return Request.requestForm(
       Request.GET,
-      baseUrl + '/unknownmodulepastmedicalhistory/queryPastMedicalHistory' + params
+      baseUrl + '/resultentry/unknownmodulepastmedicalhistory/queryPastMedicalHistory' + params
     )
   }
 
@@ -85,7 +85,7 @@ export const queryPastMedicalHistory = (params) => {
 export const queryProfessionalHistory = (params) => {
     return Request.requestForm(
       Request.GET,
-      baseUrl + '/unknownmoduleprofessionalhistory/queryProfessionalHistory',
+      baseUrl + '/resultentry/unknownmoduleprofessionalhistory/queryProfessionalHistory',
       params
     )
   }
@@ -94,7 +94,7 @@ export const queryProfessionalHistory = (params) => {
 export const Interro = (params) => {
     return Request.requestJson(
       Request.POST,
-      baseUrl + '/c6-resultentry/Interro',
+      baseUrl + '/resultentry/Interro',
       params
     )
   }
@@ -103,7 +103,8 @@ export const Interro = (params) => {
 export const barcod = (params) => {
     return Request.requestJson(
       Request.POST,
-      baseUrl + '/healthy-c6-resultentry/barcod' + params,
+      baseUrl + '/resultentry/barcod',
+      params,
     )
   }
 
@@ -111,16 +112,17 @@ export const barcod = (params) => {
 export const report = (params) => {
     return Request.requestJson(
       Request.POST,
-      baseUrl + '/healthy-c6-resultentry/report' + params,
+      baseUrl + '/resultentry/report',
+      params,
     )
   }
 
 
 //查询组合项目的基础项目体检效果数据
-export const baseproject = (params) => {
+export const baseProject = (params) => {
     return Request.requestForm(
       Request.GET,
-      baseUrl + '/checkitem/query-baseproject' + params,
+      baseUrl + '/resultentry/checkitem/query-baseproject' + params,
     )
   }
 
@@ -128,16 +130,25 @@ export const baseproject = (params) => {
 export const queryPerson = (params) => {
     return Request.requestForm(
       Request.GET,
-      baseUrl + '/checkitem/query-person' + params,
+      baseUrl + '/resultentry/checkitem/query-person' + params,
     )
   }
 
-    //查询组合项目的基础项目体检效果数据
+//映像文件上传
 export const uploadxxx = (params) => {
-    return Request.requestForm(
+    return Request.requestJson(
       Request.PUT,
-      baseUrl + '/filexxx/uploadxxx' + params,
+      baseUrl + '/resultentry/filexxx/uploadxxx',
+      params,
     )
   }
+
+  //查询人员详情
+export const info = (params) => {
+  return Request.requestForm(
+    Request.PUT,
+    baseUrl + '/resultentry/GroupPerson/Query/info' + params,
+  )
+}
 
 
