@@ -18,3 +18,7 @@ exalanding:
 questatistics:
  remove:
   summary: 删除人员
+saveinfo:
+  field:
+   id_card: 身份证号
+ 

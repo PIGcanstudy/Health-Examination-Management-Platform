@@ -19,10 +19,6 @@
 #include "stdafx.h"
 #include "Router.h"
 #include "ApiHelper.h"
-#include "resultslist/ResultsListController.h"
-#include"ordername/OrderNameController.h"
-#include"personlist/JoinPersonListController.h"
-#include "statisticalmessage/StatisticalMessageController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
@@ -30,7 +26,8 @@
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
 #endif
-
+#include "test/TestController.h"
+#include "sales/UnitController.h"
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -51,16 +48,13 @@ Router::Router(Endpoints* docEndpoints, HttpRouter* router)
 
 void Router::initRouter()
 {
-
 #ifdef HTTP_SERVER_DEMO
 	createSampleRouter();
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-	ROUTER_SIMPLE_BIND(ResultsListController);
-	ROUTER_SIMPLE_BIND(OrderNameController);
-	ROUTER_SIMPLE_BIND(JoinPersonListController);
-	ROUTER_SIMPLE_BIND(StatisticalMessageController);
+	ROUTER_SIMPLE_BIND(TestController);
+	ROUTER_SIMPLE_BIND(UnitController);
 }
 
 #ifdef HTTP_SERVER_DEMO

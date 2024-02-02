@@ -145,4 +145,4 @@ endif()
 #add_subdirectory ("arch-demo")
 # 在后面添加你的模块
 add_subdirectory ("healthy-c5-exalanding")
-add_subdirectory ("healthy-c5-questatistics")
+add_subdirectory ("healthy-c5-questatistics") 

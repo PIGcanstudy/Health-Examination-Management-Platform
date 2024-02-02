@@ -62,3 +62,8 @@ list:
    checkDate: 体检日期
    comments: 体检结论
    unfinishedTerm: 未完成项目
+statistica:
+  rate:
+  isPass: 体检状态
+  summary: 体检完成率
+    

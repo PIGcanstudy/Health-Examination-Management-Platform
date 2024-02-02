@@ -1,9 +1,8 @@
-#pragma once
 /*
  Copyright Zero One Star. All rights reserved.
 
  @Author: awei
- @Date: 2022/12/03 11:01:02
+ @Date: 2022/10/25 0:27:04
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,24 +16,12 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _USERQUERY_H_
-#define _USERQUERY_H_
+#include "stdafx.h"
+#include "UpdateInformationController.h"
 
-#include "../../GlobalInclude.h"
-#include "domain/query/PageQuery.h"
-
-#include OATPP_CODEGEN_BEGIN(DTO)
-
-/**
- * 定义一个查询用户信息的数据传输模型
- */
-class UserQuery : public PageQuery
+UpdateInformationJsonVO::Wrapper UpdateInformationController::execUpdateInformation(const UpdateInformationDTO::Wrapper& dto)
 {
-	// 定义初始化
-	DTO_INIT(UserQuery, PageQuery);
-	// 昵称
-	API_DTO_FIELD_DEFAULT(String, nickname, ZH_WORDS_GETTER("user.field.nickname"));
-};
-
-#include OATPP_CODEGEN_END(DTO)
-#endif // !_USERQUERY_H_
+	// TODO:写一些测试数据
+	return {};
+	//return UpdateInformationJsonVO::Wrapper();
+}
