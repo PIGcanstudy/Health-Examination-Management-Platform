@@ -1,45 +1,45 @@
 import {defineStore} from 'pinia'
 import {ref} from 'vue'
 import{
-    downloadhelthcertidetail,
-    queryherlthcertilist,
-    modifyprintconfirm,
-    queryHelthcertilist,
-    uploadmore,
-    queryviewexception
+    downloadHelthcertidetail,
+    queryHerlthcertiList,
+    modifyPrintConfirm,
+    queryHelthcertiList,
+    uploadMore,
+    queryViewException
 } from '@/apis/healthcertificatemanage/index.js'
 export const usehealthcertificatemanageStore = defineStore('healthcertificatemanage',() => {
     //重写方法
-    const getdownloadhelthcertidetail = async (params) => {
-        return await downloadhelthcertidetail(params)
+    const getdownloadHelthcertidetail = async (params) => {
+        return await downloadHelthcertidetail(params)
     }
 
-    const getqueryherlthcertilist = async (params) => {
-        return await queryherlthcertilist(params)
+    const getqueryHerlthcertiList = async (params) => {
+        return await queryHerlthcertiList(params)
     }
 
-    const getmodifyprintconfirm = async (params) => {
-        return await modifyprintconfirm(params)
+    const getmodifyPrintConfirm = async (params) => {
+        return await modifyPrintConfirm(params)
     }
 
-    const putqueryHelthcertilist = async (params) => {
-        return await queryHelthcertilist(params)
+    const putqueryHelthcertiList = async (params) => {
+        return await queryHelthcertiList(params)
     }
 
-    const postuploadmore = async (params) => {
-        return await uploadmore(params)
+    const postuploadMore = async (params) => {
+        return await uploadMore(params)
     }
 
-    const getqueryviewexception = async (params) => {
-        return await queryviewexception(params)
+    const getqueryViewException = async (params) => {
+        return await queryViewException(params)
     }
     //暴露出的数据
     return{
-        getdownloadhelthcertidetail,
-        getqueryherlthcertilist,
-        getmodifyprintconfirm,
-        putqueryHelthcertilist,
-        postuploadmore,
-        getqueryviewexception
+        getdownloadHelthcertidetail,
+        getqueryHerlthcertiList,
+        getmodifyPrintConfirm,
+        putqueryHelthcertiList,
+        postuploadMore,
+        getqueryViewException
     }
 })

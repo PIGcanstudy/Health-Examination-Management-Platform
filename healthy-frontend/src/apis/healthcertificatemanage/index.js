@@ -2,7 +2,7 @@ import Request from '@/apis/request.js'
 const baseUrl = ''
 
 //获取健康证详情
-export const downloadhelthcertidetail = (params) => {
+export const downloadHelthcertidetail = (params) => {
     return Request.requestJson(
         Request.GET,
         baseUrl + '',
@@ -11,7 +11,7 @@ export const downloadhelthcertidetail = (params) => {
 }
 
 //获取健康证列表
-export const queryherlthcertilist = (params) => {
+export const queryHerlthcertiList = (params) => {
     return Request.requestJson(
         Request.GET,
         baseUrl + '',
@@ -20,7 +20,7 @@ export const queryherlthcertilist = (params) => {
 }
 
 //打印确认（支持批量）
-export const modifyprintconfirm = (params) => {
+export const modifyPrintConfirm = (params) => {
     return Request.requestJson(
         Request.PUT,
         baseUrl + '',
@@ -28,7 +28,7 @@ export const modifyprintconfirm = (params) => {
 }
 
 //批量打印（批量打印）
-export const queryHelthcertilist = (params) => {
+export const queryHelthcertiList = (params) => {
     return Request.requestJson(
         Request.PUT,
         baseUrl + '',
@@ -36,7 +36,7 @@ export const queryHelthcertilist = (params) => {
 }
 
 //批量上传
-export const uploadmore = (params) => {
+export const uploadMore = (params) => {
     return Request.requestJson(
         Request.POST,
         baseUrl + '',
@@ -44,7 +44,7 @@ export const uploadmore = (params) => {
 }
 
 //查看异常
-export const queryviewexception = (params) => {
+export const queryViewException = (params) => {
     return Request.requestJson(
         Request.GET,
         baseUrl + '',

@@ -2,7 +2,7 @@ import Request from '@/apis/request.js'
 const baseUrl = ''
 
 //获取字典数据名称列表（用于输入表单下拉列表）
-export const querydictnamelist = (params) => {
+export const  queryDictnameList = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/',
@@ -11,7 +11,7 @@ export const querydictnamelist = (params) => {
 }
 
 //获取工种名称列表（分页＋条件）
-export const queryjobnamelist = (params) => {
+export const  queryJobnameList = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/',
@@ -20,7 +20,7 @@ export const queryjobnamelist = (params) => {
 }
 
 //获取组合项目列表（条件＋分页）
-export const querypackageprolist = (params) => {
+export const queryPackageProlist = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/',
@@ -29,7 +29,7 @@ export const querypackageprolist = (params) => {
 }
 
 //获取组合项目名称列表（用于输入表单下拉列表）
-export const querypackagepronamelist = (params) => {
+export const queryPackagePronamelist = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/',
@@ -38,7 +38,7 @@ export const querypackagepronamelist = (params) => {
 }
 
 //获取套餐名称列表（条件+分页）
-export const queryplannamelist = (params) => {
+export const queryPlannameList = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/',
@@ -47,7 +47,7 @@ export const queryplannamelist = (params) => {
 }
 
 //获取套餐组合项目列表
-export const queryplanprolist = (params) => {
+export const queryPlanProlist = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/',
@@ -56,7 +56,7 @@ export const queryplanprolist = (params) => {
 }
 
 //科室名称列表
-export const queryselectionnamelist = (params) => {
+export const querySelectionnameList = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/',
@@ -66,7 +66,7 @@ export const queryselectionnamelist = (params) => {
 
 
 //获取术语名称列表（条件+分页）
-export const querytermnamelist = (params) => {
+export const queryTermnameList = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/',
@@ -76,7 +76,7 @@ export const querytermnamelist = (params) => {
 
 
 //获取类型树
-export const querytypetree = (params) => {
+export const queryTypeTree = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/',
@@ -85,7 +85,7 @@ export const querytypetree = (params) => {
 }
 
 //获取用户名称列表（用于输入表单下拉列表框）
-export const queryuesrnamelist = (params) => {
+export const queryUesrnameList = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/',
