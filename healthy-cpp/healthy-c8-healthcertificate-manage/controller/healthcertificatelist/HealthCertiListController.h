@@ -47,7 +47,7 @@ public:
 		// 上传状态
 		API_DEF_ADD_QUERY_PARAMS(Int32, "is_upload", ZH_WORDS_GETTER("query-healthcertificatelist.field.isUpload"), 0, false);
 	}
-	ENDPOINT(API_M_GET, "/common/query-health-certificate-list", queryHealthCertificateList, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
+	ENDPOINT(API_M_GET, "/healthcertificate-manage/healthcertilist", queryHealthCertificateList, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
 		API_HANDLER_QUERY_PARAM(healthCertificateList, HealthCertificateListQuery, queryParams);
 		// 呼叫执行函数响应结果

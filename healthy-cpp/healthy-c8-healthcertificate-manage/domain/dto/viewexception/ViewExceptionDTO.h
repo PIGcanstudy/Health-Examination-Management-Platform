@@ -1,27 +1,20 @@
 #pragma once
-#ifndef _ViewExceptionDTO_
-#define _ViewExceptionDTO_
+
+#ifndef _VIEW_EXCEPTION_DTO_
+#define _VIEW_EXCEPTION_DTO_
 #include "../../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
-/**
- * 示例传输对象
- */
 class ViewExceptionDTO : public oatpp::DTO
 {
 	DTO_INIT(ViewExceptionDTO, DTO);
-	//TODO : 页面要显示的东西
 
-};
-
-/**
- * 示例分页传输对象
- */
-class ViewExceptionPageDTO : public PageDTO<ViewExceptionDTO::Wrapper>
-{
-	DTO_INIT(ViewExceptionPageDTO, PageDTO<ViewExceptionDTO::Wrapper>);
+	DTO_FIELD(String, exception_message);
+	DTO_FIELD_INFO(exception_message) {
+		info->description = ZH_WORDS_GETTER("view-exception.field.exception_message");
+	}
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_SAMPLE_DTO_
+#endif

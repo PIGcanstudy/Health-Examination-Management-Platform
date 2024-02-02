@@ -1,6 +1,15 @@
-#include "ViewExceptionController.h"
 #include "stdafx.h"
-ViewExceptionJsonVO::Wrapper ViewExceptionController::execQueryViewException(const PayloadDTO& payload)
+#include "ViewExceptionController.h"
+#include "../../service/viewexception/ViewExceptionService.h"
+
+ViewExceptionJsonVO::Wrapper ViewExceptionController::execViewException(const ViewExceptionQuery::Wrapper& query, const PayloadDTO& payload)
 {
-	return {};
+	// 定义一个Service
+	ViewExceptionService service;
+	// 查询数据
+	auto result = service.getData(query);
+	// 响应结果
+	auto jvo = ViewExceptionJsonVO::createShared();
+	jvo->success(result);
+	return jvo;
 }
