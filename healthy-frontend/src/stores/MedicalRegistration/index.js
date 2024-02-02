@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { queryMedicalPersonName, queryMedicalPersonInfo } from '@/apis/MedicalRegistration/index.js'
+import { queryMedicalPersonName, queryMedicalPersonInfo } from '@/apis/medicalregistration/index.js'
 export const useMedicalRegistrationStore = defineStore('MedicalRegistration', () => {
   // 重写方法
   const getMedicalPersonName = async (params) => {

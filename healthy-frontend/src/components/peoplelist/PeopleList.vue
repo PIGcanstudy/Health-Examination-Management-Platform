@@ -393,7 +393,7 @@ defineExpose({
 }
 
 .card-header {
-  height: 5%;
+  min-height: 5%;
   width: 100%;
   display: flex;
   text-align: center;

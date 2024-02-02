@@ -1,3 +1,4 @@
+/* 体检登记apis */
 import Request from '@/apis/request.js'
 const baseUrl = ''
 
