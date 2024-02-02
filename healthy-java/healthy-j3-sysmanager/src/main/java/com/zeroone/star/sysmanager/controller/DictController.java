@@ -55,4 +55,25 @@ public class DictController implements DictApis {
         dictService.save(dict);
         return JsonVO.success(Boolean.TRUE);
     }
+
+
+    @GetMapping(value = "/updatedict")
+    @ApiOperation(value = "修改字典")
+    public JsonVO<Boolean> update(com.zeroone.star.project.dto.j3.dictory.DictDTO dict) {
+        if (dictService.findByType(dict.getType()) != null) {
+            return JsonVO.fail(Boolean.FALSE);
+        }
+        dictService.updateById(dict);
+        return JsonVO.success(Boolean.TRUE);
+
+    }
+    @GetMapping(value = "/deletedict")
+    @ApiOperation(value = "删除字典")
+    public JsonVO<Boolean> delete(com.zeroone.star.project.dto.j3.dictory.DictDTO dict) {
+        if (dictService.findByType(dict.getType()) != null) {
+            return JsonVO.fail(Boolean.FALSE);
+        }
+        dictService.removeById(dict);
+        return JsonVO.success(Boolean.TRUE);
+    }
 }
