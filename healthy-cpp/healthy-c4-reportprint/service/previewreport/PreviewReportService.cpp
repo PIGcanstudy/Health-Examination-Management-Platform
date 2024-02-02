@@ -17,8 +17,8 @@ PreviewReportDTO::Wrapper PreviewReportService::listId(const PreviewReportQuery:
 	for (PreviewReportDO sub : result)
 	{
 		auto dto = PreviewReportDTO::createShared();
-		pdf.PreviewReportTpl(sub);
-		dto->href =  FastDfs.PreviewReportDfsWithConf("PreviewReport.pdf");
+		pdf.PreviewText(sub);
+		dto->href =  FastDfs.PreviewReportDfsWithConf("print_report.pdf");
 		//ZO_STAR_DOMAIN_DO_TO_DTO(dto, sub);
 		pages = dto;
 	}
