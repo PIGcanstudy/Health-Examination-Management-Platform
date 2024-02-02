@@ -18,11 +18,11 @@ printconfirm:
  put:
   summary: 打印确认（支持批量）
 printmore:
- put:
-  summary: 批量打印（支持批量）
-uploadmore:
- upload-more:
-  summary: 批量上传
+ download-printmore:
+  summary: 批量打印
+ field:
+  id: 健康证id
+  urls: 下载链接
 viewexception:
  get:
   summary: 查看异常

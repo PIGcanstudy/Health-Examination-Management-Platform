@@ -1,33 +1,31 @@
 #pragma once
-#ifndef _UploadMoreController_
-#define _UploadMoreController_
+#ifndef _UPLOADMORECONTROLLER_
+#define _UPLOADMORECONTROLLER_
 
 #include "domain/vo/BaseJsonVO.h"
-#include "ApiHelper.h"
-#include "ServerInfo.h"
+#include "domain/dto/uploadmore/UploadMoreDTO.h"
 
-#include OATPP_CODEGEN_BEGIN(ApiController)
+// 0 定义API控制器使用宏
+#include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
- * 文件操作示例接口
+ * 健康证批量上传控制器
  */
-class UploadMoreController : public oatpp::web::server::api::ApiController
+class UploadMoreController : public oatpp::web::server::api::ApiController // 1 继承控制器
 {
-	// 定义控制器访问入口
+	// 2 定义批量上传控制器访问入口
 	API_ACCESS_DECLARE(UploadMoreController);
+	// 3 定义接口
 public:
-
-	// 定义一个多文件上传接口
-	// 定义描述
-	API_DEF_ENDPOINT_INFO(ZH_WORDS_GETTER("uploadmore.upload-more.summary"), uploadHealthCertiMore, StringJsonVO::Wrapper);
-	// 定义端点
-	API_HANDLER_ENDPOINT(API_M_POST, "/healthcertificate-manage/upload-more", uploadHealthCertiMore, REQUEST(std::shared_ptr<IncomingRequest>, request), execUploadHealthCertiMore(request));
-
-private: // 定义接口执行函数
-	// 执行多文件上传处理
-	StringJsonVO::Wrapper execUploadHealthCertiMore(std::shared_ptr<IncomingRequest> request);
+	// 3.1 定义批量上传接口描述
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("uploadmore.post.summary"), uploadHealthCertiMore, Uint64JsonVO::Wrapper);
+	// 3.2 定义批量上传接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_POST, "/healthcertificate-manage/uploadmore", uploadHealthCertiMore, BODY_DTO(List<UploadMoreDTO::Wrapper>, dtoArray), execUploadHealthCertiMore(dtoArray));
+private:
+	// 3.3 批量上传
+	StringJsonVO::Wrapper execUploadHealthCertiMore(const List<UploadMoreDTO::Wrapper>& dtoArray);
 };
 
-#include OATPP_CODEGEN_END(ApiController)
-
-#endif // !_FILECONTROLLER_H_
+// 0 取消API控制器使用宏
+#include OATPP_CODEGEN_END(ApiController) //<- End Codegen
+#endif 
