@@ -11,6 +11,7 @@ import resultsinput from './menus/resultsinput'
 import masterinspection from './menus/masterinspection'
 import systemconfiguration from './menus/systemconfiguration'
 import inspectionstatistics from './menus/inspectionstatistics'
+import personalcentre from './menus/personalcentre'
 import Request from '@/apis/request'
 // 测试菜单数据
 let testMenus = [
@@ -25,7 +26,8 @@ let testMenus = [
   inspectionstatistics,
   configurationmanagement,
   systemconfiguration,
-  dataonline
+  dataonline,
+  personalcentre
 ]
 
 export const userStore = defineStore('user', {

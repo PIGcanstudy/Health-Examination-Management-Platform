@@ -3,7 +3,7 @@
     <el-container class="sec-container">
       <el-aside :style="{ maxWidth: isCollapsed ? '0' : '221px' }">
         <!-- 侧边栏菜单 -->
-        <el-menu default-active="/home" class="el-menu-vertical-demo" active-text-color="#409EFF" text-color="#fff" background-color="#545c64" unique-opened router>
+        <el-menu :default-active="route.path" class="el-menu-vertical-demo" active-text-color="#409EFF" text-color="#fff" background-color="#545c64" unique-opened router>
           <el-menu-item index="/home">
             <el-icon>
               <icon-menu />
@@ -43,22 +43,22 @@
           <!-- 下拉菜单 -->
           <!-- TODO 路由菜单导航还需完善-->
           <el-dropdown>
-            <span class="el-dropdown-link" style="font-size: 20px;">
+            <span class="el-dropdown-link" style="font-size: 20px">
               <el-icon>
                 <Grid />
               </el-icon>
             </span>
             <template #dropdown>
               <el-dropdown-menu style="display: ">
-                <router-link to="/home"><el-dropdown-item>基础数据</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>营销管理</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>体检登记</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>结果录入</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>主检评价</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>配置管理</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>系统配置</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>数据网报</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>查询统计</el-dropdown-item></router-link>
+                <router-link to="/basicdata"><el-dropdown-item>基础数据</el-dropdown-item></router-link>
+                <router-link to="/marketingmanagement"><el-dropdown-item>营销管理</el-dropdown-item></router-link>
+                <router-link to="/medicalregistration"><el-dropdown-item>体检登记</el-dropdown-item></router-link>
+                <router-link to="/resultsinput"><el-dropdown-item>结果录入</el-dropdown-item></router-link>
+                <router-link to="/masterinspection"><el-dropdown-item>主检评价</el-dropdown-item></router-link>
+                <router-link to="/configurationmanagement"><el-dropdown-item>配置管理</el-dropdown-item></router-link>
+                <router-link to="/systemconfiguration"><el-dropdown-item>系统配置</el-dropdown-item></router-link>
+                <router-link to="/dataonline"><el-dropdown-item>数据网报</el-dropdown-item></router-link>
+                <router-link to="/inspectionstatistics"><el-dropdown-item>查询统计</el-dropdown-item></router-link>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -68,19 +68,19 @@
           <!-- 用户信息 -->
           <div>
             <el-dropdown class="ml-2">
-              <div style="display: flex;">
+              <div style="display: flex">
                 <el-button type="" circle style="margin-right: 15px">
                   <el-icon :size="18">
                     <UserFilled />
                   </el-icon>
                 </el-button>
-                <span style="align-self: center;">{{ userInfo }}</span>
+                <span style="align-self: center">{{ userInfo }}</span>
               </div>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item>个人中心</el-dropdown-item>
+                  <router-link to="/personalcentre/PersonalCentre.vue"><el-dropdown-item>个人中心</el-dropdown-item></router-link>
                   <el-dropdown-item>修改密码</el-dropdown-item>
-                  <el-dropdown-item>退出登录</el-dropdown-item>
+                  <router-link to="/"><el-dropdown-item>退出登录</el-dropdown-item></router-link>
                 </el-dropdown-menu>
               </template>
             </el-dropdown>
@@ -100,10 +100,13 @@ import router from '@/router'
 import { userStore } from '../stores/user'
 import { ArrowDown, Grid, UserFilled } from '@element-plus/icons-vue'
 import basicdata from '@/stores/menus/basicdata.js'
-
 import { Check, CircleCheck, CirclePlus, CirclePlusFilled, Plus } from '@element-plus/icons-vue'
 import testMenus from '../stores/menus/healthcheck'
+import { useRoute } from 'vue-router'
 // import { Expand } from '@element-plus/icons-vue'
+
+// 将default-active设为当前路由
+const route = useRoute()
 
 // 本界面变量及函数
 const isCollapsed = ref(false)

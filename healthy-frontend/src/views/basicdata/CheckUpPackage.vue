@@ -1,18 +1,48 @@
 <!-- 体检套餐 -->
 <template>
-  <el-container>
+  <el-container style="height: 100%">
     <!-- 侧边栏 -->
-    <el-aside :style="{ maxWidth: isCollapsed ? '0px' : '300px' }">
-      <PeopleList :style="isCollapsed ? 'display: none;' : 'min-width: 300px;'"> </PeopleList>
+    <el-aside width="250px">
+      <PeopleListCG style="height: 100%; width: 100%">
+        <!-- 表单 -->
+        <template #form>
+          <el-form :model="form">
+            <el-form-item>
+              <el-radio-group v-model="radio">
+                <el-radio :label="1" style="margin-right: 10px">职</el-radio>
+                <el-radio :label="2" style="margin-right: 10px">健</el-radio>
+                <el-radio :label="3" style="margin-right: 10px">从</el-radio>
+                <el-radio :label="4" style="margin-right: 10px">放</el-radio>
+              </el-radio-group>
+            </el-form-item>
+            <el-form-item prop="name">
+              <el-input v-model="form.name" placeholder="请输入关键字" clearable />
+            </el-form-item>
+          </el-form>
+        </template>
+
+        <!-- 表格 -->
+        <template #table>
+          <List></List>
+        </template>
+
+        <!-- 分页 -->
+        <template #page>
+          <el-pagination
+            v-model:current-page="currentPage"
+            v-model:page-size="pageSize"
+            :page-sizes="[100, 200, 300, 400]"
+            :small="small"
+            :disabled="disabled"
+            :background="background"
+            layout="prev, jumper, next"
+            :total="400"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+          />
+        </template>
+      </PeopleListCG>
     </el-aside>
-    <!-- 伸缩按钮 -->
-    <div class="shrink-button">
-      <!-- 伸缩按钮 -->
-      <el-icon style="cursor: pointer; width: 20px; margin-right: 5px" @click="isCollapsed = !isCollapsed">
-        <ArrowRightBold v-if="isCollapsed" />
-        <ArrowLeftBold v-else />
-      </el-icon>
-    </div>
     <el-main>
       <div style="margin-bottom: 10px">
         <el-button type="primary">
@@ -140,8 +170,34 @@ import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import { ArrowDown, Search, CirclePlus, DeleteFilled, View, Edit, ArrowRightBold, ArrowLeftBold, CircleCloseFilled, Position } from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
-import PeopleList from '@/components/peoplelist/PeopleList.vue'
+import PeopleListCG from '@/components/peoplelist/PeopleList-CG.vue'
+import List from '@/components/peoplelist/List.vue'
+import Head from '@/components/head/Head.vue'
 
+/* PeopleListCG所用变量及方法 */
+// 分页相关
+const currentPage1 = ref(5)
+const currentPage2 = ref(5)
+const currentPage3 = ref(5)
+const currentPage4 = ref(4)
+const pageSize2 = ref(100)
+const pageSize3 = ref(100)
+const pageSize4 = ref(100)
+const small = ref(false)
+const background = ref(false)
+const disabled = ref(false)
+const form = ref({
+  checkbox: '',
+  slider: '',
+  date: '',
+  serialNumber: '',
+  workplace: '',
+  name: '',
+  startDate: '',
+  endDate: ''
+})
+/* 本界面所用变量及方法 */
+const radio = ref(1)
 const isCollapsed = ref(false) // 是否收缩侧边栏
 const useHint = ref(true)
 const useForm = ref(true)
@@ -191,26 +247,6 @@ const dataForm = reactive({
 const handelLook = (row) => {
   console.log(row)
 }
-
-// 关闭搜索及关闭提示
-const closeSearch = ref('关闭搜索')
-const closeTips = ref('关闭提示')
-const closeForm = () => {
-  useForm.value = !useForm.value
-  if (useForm.value) {
-    closeSearch.value = '关闭搜索'
-  } else {
-    closeSearch.value = '开启搜索'
-  }
-}
-const closeHint = () => {
-  useHint.value = !useHint.value
-  if (useHint.value) {
-    closeTips.value = '关闭提示'
-  } else {
-    closeTips.value = '开启提示'
-  }
-}
 // 编辑功能
 const handleEdit = (row) => {
   console.log(row)
@@ -222,11 +258,6 @@ const selectRows = (selectRows) => {
   selectedTotal.value = selectRows.length
   // console.log(selectRows)
   console.log(BaseDataRef.value.rows)
-}
-// 清空选中行的方法
-const clearRows = () => {
-  // 调用子组件的 clearSelectedRows 方法
-  BaseDataRef.value.clearSelectedRows()
 }
 
 // 数据总条数

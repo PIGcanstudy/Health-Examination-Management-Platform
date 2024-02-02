@@ -225,7 +225,7 @@ import Head from '@/components/head/Head.vue'
 import { ref, nextTick } from 'vue'
 import { ElMessage } from 'element-plus'
 import { ArrowRightBold, ArrowLeftBold, Edit, Plus, Delete, Printer, CaretRight, Loading } from '@element-plus/icons-vue'
-import { useMedicalRegistrationStore } from '@/stores/MedicalRegistration/index.js'
+import { useMedicalRegistrationStore } from '@/stores/medicalregistration/index.js'
 import { usePublicStore } from '@/stores/Public/index.js'
 /* Stores中的方法 */
 const MedicalRegistrationStore = useMedicalRegistrationStore()
@@ -620,10 +620,6 @@ const cancelButton = () => {
 }
 
 .two-column-form .form-row {
-<<<<<<< HEAD
-=======
-
->>>>>>> 0d85e926594ca5157fd6388e4545787edc6fd5ab
   display: flex;
   flex-wrap: wrap;
   gap: 10px; /* 添加间隙 */
@@ -638,8 +634,4 @@ const cancelButton = () => {
   text-align: right; /* 按钮向右对齐 */
   padding: 10px; /* 添加一些内边距 */
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 0d85e926594ca5157fd6388e4545787edc6fd5ab
 </style>

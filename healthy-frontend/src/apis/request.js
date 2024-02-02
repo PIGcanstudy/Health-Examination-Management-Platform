@@ -93,13 +93,7 @@ export default class Request {
       formData.append(key, data[key])
     }
     //发送请求
-    return Request.request(
-      Request.POST,
-      url,
-      formData,
-      http.upType.file,
-      options
-    )
+    return Request.request(Request.POST, url, formData, http.upType.file, options)
   }
 
   /**
@@ -121,13 +115,7 @@ export default class Request {
         return
       }
       // 上传文件
-      Request.request(
-        Request.POST,
-        url,
-        reader.result,
-        http.upType.stream,
-        options
-      )
+      Request.request(Request.POST, url, reader.result, http.upType.stream, options)
         .then((res) => {
           success(res)
         })

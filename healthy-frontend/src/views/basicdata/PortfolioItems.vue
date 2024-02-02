@@ -2,16 +2,33 @@
 <template>
   <el-container>
     <!-- 侧边栏 -->
-    <el-aside :style="{ maxWidth: isCollapsed ? '0px' : '300px' }">
-      <PeopleList :style="isCollapsed ? 'display: none;' : 'min-width: 300px;'"> </PeopleList>
+    <el-aside :width="leftWidth" style="margin-left: 10px">
+      <div v-if="leftVisible" class="left">
+        <div class="choice">
+          <el-icon style="color: rgb(45, 140, 240)"><InfoFilled></InfoFilled></el-icon>
+          <span> 当前选择:</span>
+        </div>
+        <div class="search">
+          <el-input v-model="searchInput" placeholder="输入搜索科室" style="width: 100%"> </el-input>
+        </div>
+        <el-scrollbar height="630px">
+          <div class="department">
+            <ul class="departmentUl">
+              <li v-for="item in departmentArr" :key="item" class="departmentLi">
+                <span class="departmentItem">{{ item.name }}</span>
+              </li>
+            </ul>
+          </div>
+        </el-scrollbar>
+      </div>
     </el-aside>
-    <!-- 伸缩按钮 -->
-    <div class="shrink-button">
-      <!-- 伸缩按钮 -->
-      <el-icon style="cursor: pointer; width: 20px; margin-right: 5px" @click="isCollapsed = !isCollapsed">
-        <ArrowRightBold v-if="isCollapsed" />
-        <ArrowLeftBold v-else />
-      </el-icon>
+    <div class="expend" style="margin-right: 10px">
+      <i>
+        <el-icon v-if="leftGo" @click="collectLeft"><ArrowLeftBold></ArrowLeftBold></el-icon>
+      </i>
+      <i>
+        <el-icon v-if="leftBack" @click="returnLeft"><ArrowRightBold></ArrowRightBold></el-icon>
+      </i>
     </div>
     <el-main>
       <BaseDataList
@@ -200,6 +217,26 @@ const dialogVisible = ref(false)
 const useFixed = ref(true)
 const labelWidth = '125px'
 
+/* 左侧侧边栏 */
+// 控制箭头方向
+const leftGo = ref(true)
+const leftBack = ref(false)
+// 控制左部显隐
+const leftVisible = ref(true)
+// 动态控制左部宽度
+const leftWidth = ref('150px')
+// 收起左部
+const collectLeft = () => {
+  leftWidth.value = '0'
+  leftGo.value = false
+  leftBack.value = true
+}
+// 展开左部
+const returnLeft = () => {
+  leftWidth.value = '150px'
+  leftGo.value = true
+  leftBack.value = false
+}
 // 表格列属性
 const tableColumnAttribute = ref([
   { prop: 'projectName', label: '名称', width: '120', align: 'center' },
@@ -360,6 +397,43 @@ onMounted(() => {
   width: 178px;
   height: 178px;
   text-align: center;
+}
+// 左侧侧边栏
+.left {
+  width: 150px;
+}
+.choice {
+  margin-top: 15px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid rgb(171, 220, 255);
+  border-radius: 5px;
+  background-color: rgb(240, 250, 255);
+}
+
+.search {
+  margin-top: 10px;
+}
+.departmentUl {
+  padding-left: 10px;
+  list-style-type: none;
+  color: rgb(97, 98, 110);
+}
+
+.departmentLi {
+  margin-top: 10px;
+}
+
+.departmentItem {
+  cursor: pointer;
+}
+.departmentItem:hover {
+  background-color: rgb(234, 244, 254);
+}
+
+.expend {
+  padding-top: 363px;
+  cursor: pointer;
 }
 </style>
 <style>
