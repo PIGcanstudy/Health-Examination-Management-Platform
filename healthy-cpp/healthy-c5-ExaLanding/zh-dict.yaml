@@ -2,4 +2,19 @@ Exalanding:
  feild: 
   physical: 体检类型
   personName: 人员姓名
-  
+exalanding:
+ put:
+  modifyInformation: 修改人员信息
+ updateInformation:
+  personName: 人员姓名
+  sex: 性别
+  age: 年龄
+  isMarry: 结婚状况
+  idCard: 证件号码
+  birth: 出生日期
+  groupId: 分组
+  workName: 单位名称
+  mobile: 手机号码
+questatistics:
+ remove:
+  summary: 删除人员
