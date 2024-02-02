@@ -6,10 +6,36 @@
       <a class="header-text">健康体检</a>
       <a class="header-text">团单审批</a>
     </el-header>
-    <div  class="right">
-  <el-container>
+    <div class="right">
+    <el-container>
       <el-aside width="200px">
-        <PeopleList01></PeopleList01>
+        <PeopleListCG style="height: 100%; width: 100%">
+          <template #form>
+          <el-form :model="form">
+            <el-form-item prop="name">
+              <el-input v-model="form.name" placeholder="请输入关键字" clearable />
+            </el-form-item>
+          </el-form>
+        </template>
+
+          <template #table>
+          <List></List>
+        </template>
+          <template #page>
+          <el-pagination
+            v-model:current-page="currentPage"
+            v-model:page-size="pageSize"
+            :page-sizes="[100, 200, 300, 400]"
+            :small="small"
+            :disabled="disabled"
+            :background="background"
+            layout="prev, jumper, next"
+            :total="400"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+          />
+        </template>
+        </PeopleListCG>
       </el-aside>
       <el-main width="600px">
         <div display:flex size="large">
@@ -127,7 +153,8 @@
 </template>
 <script setup>
 import { ref } from 'vue';
-import PeopleList from '@/components/newButton/PeopleList01.vue'
+import PeopleListCG from '@/components/peoplelist/PeopleList-CG.vue'
+import List from '@/components/peoplelist/List.vue'
 const value = ref('')
 const options = [
   {
