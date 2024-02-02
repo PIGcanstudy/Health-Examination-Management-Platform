@@ -60,7 +60,7 @@ void TestPdf::testText()
 	// 设置页面字体
 	HPDF_Page_SetFontAndSize(newPage, pdf.getCnSFont("SimSun"), 20);
 	// 绘制字体
-	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.title"), HPDF_Page_GetHeight(newPage) - 20);
+	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.title"), HPDF_Page_GetHeight(newPage) - 40);
 	pdf.drawTextCenter(ZH_WORDS_GETTER("pdf.content"));
 	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.foot"), 20);
 	// 保存到文件
@@ -79,13 +79,13 @@ void TestPdf::testTpl()
 			// 绘制静态数据
 			auto title = (*node)["t"].as<std::string>();
 			auto foot = (*node)["f"].as<std::string>();
-			pdf->drawTextCenterH(title, HPDF_Page_GetHeight(newPage) - 20);
+			pdf->drawTextCenterH(title, HPDF_Page_GetHeight(newPage)-60);
 			pdf->drawTextCenterH(foot, 20);
 			// 绘制动态数据
 			std::string content = static_cast<std::string*>(realData)->c_str();
 			pdf->drawTextCenter(content);
 			// 绘制一个条码
-			addBarCodeToPdf(pdf);
+			//addBarCodeToPdf(pdf);
 			// 保存到文件
 			pdf->saveDocToFile("test-tpl.pdf");
 		});

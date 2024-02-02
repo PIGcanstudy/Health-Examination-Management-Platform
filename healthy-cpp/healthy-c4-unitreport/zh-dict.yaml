@@ -14,6 +14,8 @@ unit:
  phyProj: 体检项目
  phyConclusion: 体检结论
  downloadAddr: 下载地址
+ pdf: 
+  title: 健康检查结果总结报告
  
 
  

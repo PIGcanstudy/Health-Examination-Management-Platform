@@ -140,7 +140,7 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
-	//TestPdf::testTpl();
+	TestPdf::testText();
 	//TestFastDfs::testDfs("D:\\Users\\Joey\\Desktop\\zero-one-healthy-check\\healthy-cpp\\out\\build\\x64-Debug\\healthy-c4-unitreport\\test-tpl.pdf");
 	//TestFastDfs::testDfsWithConf("D:\\Users\\Joey\\Desktop\\zero-one-healthy-check\\healthy-cpp\\out\\build\\x64-Debug\\healthy-c4-unitreport\\test-tpl.pdf");
 
