@@ -34,8 +34,6 @@ class InsertSampleQuery : public PageQuery
 
 	//查询类型
 	API_DTO_FIELD_DEFAULT(UInt32, type, ZH_WORDS_GETTER("sample.obsl.type"));
-
-
 	//名称
 	API_DTO_FIELD_DEFAULT(String, name, ZH_WORDS_GETTER("sample.obsl.name"));
 	//规格
@@ -46,8 +44,6 @@ class InsertSampleQuery : public PageQuery
 	API_DTO_FIELD_DEFAULT(UInt32, is_print, ZH_WORDS_GETTER("sample.obsl.is_print"));
 	//容量
 	API_DTO_FIELD_DEFAULT(String, capacity, ZH_WORDS_GETTER("sample.obsl.capacity"));
-
-
 	// 条码份数
 	API_DTO_FIELD_DEFAULT(UInt32, barcode_num, ZH_WORDS_GETTER("sample.obsl.barcode_num"));
 	//是否采血
@@ -57,9 +53,7 @@ class InsertSampleQuery : public PageQuery
 	//关联码
 	API_DTO_FIELD_DEFAULT(String, liscode, ZH_WORDS_GETTER("sample.obsl.liscode"));
 
-
-
-
+	//API_DTO_FIELD_DEFAULT(UInt32, del_flag, ZH_WORDS_GETTER("sample.obsl.del_flag"));
 };
 
 #include OATPP_CODEGEN_END(DTO)
