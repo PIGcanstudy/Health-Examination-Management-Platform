@@ -5,8 +5,11 @@ import cn.hutool.core.bean.BeanUtil;
 import com.zeroone.star.department.entity.TDepartment;
 import com.zeroone.star.department.service.ITDepartmentService;
 import com.zeroone.star.project.components.user.UserHolder;
+import com.zeroone.star.project.j2.DepartmentApis;
 import com.zeroone.star.project.j2.dto.DepartmentDTO;
+import com.zeroone.star.project.j2.query.DepartmentQuery;
 import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.department.DepartmentMenuVO;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +27,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/department/t-department")
-public class TDepartmentController {
+public class TDepartmentController implements DepartmentApis {
     @Resource
     ITDepartmentService departmentService;
 

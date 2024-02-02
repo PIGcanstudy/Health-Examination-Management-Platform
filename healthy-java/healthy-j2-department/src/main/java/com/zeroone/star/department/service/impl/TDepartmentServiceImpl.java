@@ -6,8 +6,10 @@ import com.zeroone.star.department.entity.TDepartment;
 import com.zeroone.star.department.mapper.TDepartmentMapper;
 import com.zeroone.star.department.service.ITDepartmentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zeroone.star.project.vo.department.DepartmentMenuVO;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +23,9 @@ import java.util.stream.Collectors;
  */
 @Service
 public class TDepartmentServiceImpl extends ServiceImpl<TDepartmentMapper, TDepartment> implements ITDepartmentService {
+
+    @Resource
+    TDepartmentMapper departmentMapper;
     @Override
     public List<DepartmentMenuVO> selectById(int parentId) {
         List<TDepartment> menus = baseMapper.selectById(parentId);
@@ -39,7 +44,7 @@ public class TDepartmentServiceImpl extends ServiceImpl<TDepartmentMapper, TDepa
         return employeeVO;
     }
 
-    private final TDepartmentMapper departmentMapper;
+
 
     @Override
     public void updateUpdateBy(String[] ids, String username) {
