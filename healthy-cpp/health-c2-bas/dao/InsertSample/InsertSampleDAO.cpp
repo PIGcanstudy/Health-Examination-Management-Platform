@@ -84,9 +84,16 @@ list<InsertSampleDO> InsertSampleDAO::selectWithPage(const InsertSampleQuery::Wr
 
 uint64_t InsertSampleDAO::insert(const InsertSampleDO& iObj)
 {
-	string sql = "INSERT INTO `t_sample` (`id`,`name`, `barcode_num`,`spec`,`need_take_blood`,`code`,`order_num`,`is_print`,`liscode`,`capacity`,`del_flag`) VALUES (?,?, ?, ?, ? , ? , ? , ? , ? , ?,?)";
-	return sqlSession->executeInsert(sql, "%s%s%u%s%u%s%f%u%s%s%u",iObj.getId(), iObj.getName(), iObj.getSpec(), iObj.getCode(), iObj.getIs_print(), iObj.getCapacity(), iObj.getBarcode_num(), iObj.getNeed_take_blood(), iObj.getOrder_num(), iObj.getLiscode(),iObj.getDel_flag());
+	string sql = "INSERT INTO `t_sample` (`id`,`name`, `spec`,`code`,`is_print`,`capacity`,`barcode_num`,`need_take_blood`,`order_num`,`liscode`,`del_flag`) VALUES (?,?,?,?,?,?,?,?,?,?,0)";
+	return sqlSession->executeUpdate(sql, "%s%s%s%s%ui%s%ui%ui%d%s",iObj.getId(), iObj.getName(), iObj.getSpec(),
+		iObj.getCode(), iObj.getIs_print(), iObj.getCapacity(), iObj.getBarcode_num(), iObj.getNeed_take_blood(),
+		iObj.getOrder_num(), iObj.getLiscode());
+	
 
+		/*string sql = "INSERT INTO `t_sample` (`id`,`name`, `spec`,`code`,`is_print`,`capacity`,`liscode`,`barcode_num`,`need_take_blood`,`order_num`,`del_flag`) VALUES (?,?,?,?,?,?,?,?,?,?,0)";
+		return sqlSession->executeUpdate(sql, "%s%s%s%s%ui%s%s%ui%ui%ui",iObj.getId(), iObj.getName(), iObj.getSpec(),
+			iObj.getCode(), iObj.getIs_print(), iObj.getCapacity(), iObj.getLiscode(), iObj.getBarcode_num(), iObj.getNeed_take_blood()
+			, iObj.getOrder_num());*/
 }
 
 

@@ -18,10 +18,11 @@ Uint64JsonVO::Wrapper InsertSampleController::execAddSample(const InsertSampleDT
 			return jvo;
 		}
 		// 有效值校验
-		if (dto->code->empty() || dto->name->empty() || dto->liscode->empty())
-			/*dto->id->empty() || dto->is_print<0 || dto->capacity->empty()||
-			dto->barcode_num<0|| dto->need_take_blood < 0 || dto->order_num <0||
-			dto->spec->empty())*/
+		if (dto->code->empty() || dto->name->empty() || dto->liscode->empty()//||
+			//dto->id->empty() || dto->is_print<0 || dto->capacity->empty()||
+			//dto->barcode_num<0|| dto->need_take_blood < 0 || dto->order_num <0||
+			//dto->spec->empty()
+			)
 		{
 			jvo->init(UInt64(-1), RS_PARAMS_INVALID);
 			return jvo;

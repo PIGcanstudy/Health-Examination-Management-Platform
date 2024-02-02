@@ -45,7 +45,7 @@ public:
 	}
 
 	// 定义查询接口处理
-	ENDPOINT(API_M_GET, "/sample/query-sample", queryObtainSampleList, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
+	ENDPOINT(API_M_GET, "/sample/ObtainSampleList", queryObtainSampleList, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
 		API_HANDLER_QUERY_PARAM(uq, ObtainSampleListQuery, queryParams);
 		// 呼叫执行函数响应结果
