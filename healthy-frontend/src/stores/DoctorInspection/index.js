@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { queryDangerousInfo, queryAddConclusionList } from '@/apis/DoctorInspection/index.js'
+import { queryDangerousInfo, queryAddConclusionList } from '@/apis/doctorinspection/index.js'
 
 export const useDoctorInspectionStore = defineStore('DoctorInspection', () => {
   // 重写方法
