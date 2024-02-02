@@ -620,10 +620,6 @@ const cancelButton = () => {
 }
 
 .two-column-form .form-row {
-<<<<<<< HEAD
-=======
-
->>>>>>> 0d85e926594ca5157fd6388e4545787edc6fd5ab
   display: flex;
   flex-wrap: wrap;
   gap: 10px; /* 添加间隙 */
@@ -638,8 +634,4 @@ const cancelButton = () => {
   text-align: right; /* 按钮向右对齐 */
   padding: 10px; /* 添加一些内边距 */
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 0d85e926594ca5157fd6388e4545787edc6fd5ab
 </style>

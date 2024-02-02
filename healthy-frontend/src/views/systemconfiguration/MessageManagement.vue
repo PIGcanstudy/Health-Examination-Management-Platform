@@ -12,7 +12,8 @@
               <el-select v-model="basicForm.type"></el-select>
             </el-form-item>
             <el-form-item label="内容" :label-width="labelWidth">
-              <el-input type="textarea" :autosize="{ minRows: 4 }" v-model="basicForm.content" placeholder="请输入"></el-input>
+              <el-input type="textarea" :autosize="{ minRows: 4 }" v-model="basicForm.content"
+                placeholder="请输入"></el-input>
             </el-form-item>
             <el-form-item label="新创建账号推送">
               <el-switch v-model="basicForm.push" inline-prompt active-text="是" inactive-text="否"
@@ -28,7 +29,8 @@
               <div style="width: 100%; margin: 10px">
                 <CheckItems bottonTitle="请选择"></CheckItems>
               </div>
-              <div style="width: 100%; margin-inline: 30px">已选择 <span style="color: RGB(64, 158, 255)">{{ peopleNum }}</span> 人
+              <div style="width: 100%; margin-inline: 30px">已选择 <span style="color: RGB(64, 158, 255)">{{ peopleNum
+              }}</span> 人
               </div>
             </el-form-item>
           </el-form>
@@ -41,19 +43,14 @@
         </span>
       </template>
     </el-dialog>
-    <BaseDataList ref="BaseDataRef" :use-form="useForm" :form-data="formData" :table-data="tableData"
-      :table-column-attribute="tableColumnAttribute" :total="total" :use-pagination="usePagination"
-      :pagination-data="paginationData" :handle-edit="handleEdit" :use-fixed="useFixed"
+    <BaseDataList ref="BaseDataRef" use-form :form-data="formData" :table-data="tableData"
+      :table-column-attribute="tableColumnAttribute" :total="total" use-pagination
+      :pagination-data="paginationData" :handle-edit="handleEdit" use-fixed
       @update-table-data="handlePageChange" @update-selected-rows="selectRows">
       <!-- fixed固定列 -->
       <!-- 表格后面的操作选项群 -->
       <template #fixed="{ row }">
-        <el-button type="primary" style="margin-right: 5px" @click="handelLook(row)">
-          <el-icon>
-            <View></View>
-          </el-icon>
-          查看
-        </el-button>
+        <el-button type="primary" :icon="View" style="margin-right: 5px" @click="handelLook(row)">查看</el-button>
         <el-button type="danger" style="margin-right: 5px" @click="handleCancel(row)">撤回</el-button>
       </template>
 
@@ -99,18 +96,9 @@
       <!-- operation功能区域 -->
       <template #operation>
         <div class="operation">
-          <el-button type="primary" @click="dialogVisible = true">
-            <el-icon>
-              <Refresh></Refresh>
-            </el-icon>发送新消息</el-button>
-          <el-button type="danger" dark="true" @click="open">
-            <el-icon>
-              <Refresh></Refresh>
-            </el-icon>批量撤回</el-button>
-          <el-button type="primary">
-            <el-icon>
-              <Refresh></Refresh>
-            </el-icon>刷新</el-button>
+          <el-button type="primary" :icon="Plus" @click="dialogVisible = true">发送新消息</el-button>
+          <el-button type="danger" :icon="Delete" @click="open">批量撤回</el-button>
+          <el-button type="primary" :icon="Refresh">刷新</el-button>
 
           <el-button @click="closeForm">关闭搜索</el-button>
           <el-button @click="closeHint">关闭提示</el-button>
@@ -136,16 +124,14 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import { ArrowUp, ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit } from '@element-plus/icons-vue'
+import { ArrowUp, ArrowDown, Search, InfoFilled, View, Refresh, Plus, Delete } from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import CheckItems from '@/components/checkItems/CheckItems.vue'
 
 const useHint = ref(true)
 const useForm = ref(true)
-const usePagination = ref(true)
 const BaseDataRef = ref()
 const dialogVisible = ref(false)
-const useFixed = ref(true)
 const labelWidth = '125px'
 // table列
 const tableColumnAttribute = ref([
@@ -284,13 +270,13 @@ const open = () => {
     .then(() => {
       ElMessage({
         type: 'success',
-        message: 'Delete completed'
+        message: '撤回成功'
       })
     })
     .catch(() => {
       ElMessage({
         type: 'info',
-        message: 'Delete canceled',
+        message: '撤回取消',
       })
     })
 }

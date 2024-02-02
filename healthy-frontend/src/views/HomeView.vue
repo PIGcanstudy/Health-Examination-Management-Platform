@@ -50,15 +50,15 @@
             </span>
             <template #dropdown>
               <el-dropdown-menu style="display: ">
-                <router-link to="/home"><el-dropdown-item>基础数据</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>营销管理</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>体检登记</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>结果录入</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>主检评价</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>配置管理</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>系统配置</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>数据网报</el-dropdown-item></router-link>
-                <router-link to="/"><el-dropdown-item>查询统计</el-dropdown-item></router-link>
+                <router-link to="/basicdata"><el-dropdown-item>基础数据</el-dropdown-item></router-link>
+                <router-link to="/marketingmanagement"><el-dropdown-item>营销管理</el-dropdown-item></router-link>
+                <router-link to="/medicalregistration"><el-dropdown-item>体检登记</el-dropdown-item></router-link>
+                <router-link to="/resultsinput"><el-dropdown-item>结果录入</el-dropdown-item></router-link>
+                <router-link to="/masterinspection"><el-dropdown-item>主检评价</el-dropdown-item></router-link>
+                <router-link to="/configurationmanagement"><el-dropdown-item>配置管理</el-dropdown-item></router-link>
+                <router-link to="/systemconfiguration"><el-dropdown-item>系统配置</el-dropdown-item></router-link>
+                <router-link to="/dataonline"><el-dropdown-item>数据网报</el-dropdown-item></router-link>
+                <router-link to="/inspectionstatistics"><el-dropdown-item>查询统计</el-dropdown-item></router-link>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -78,9 +78,9 @@
               </div>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item>个人中心</el-dropdown-item>
+                  <router-link to="/personalcentre/PersonalCentre.vue"><el-dropdown-item>个人中心</el-dropdown-item></router-link>
                   <el-dropdown-item>修改密码</el-dropdown-item>
-                  <el-dropdown-item>退出登录</el-dropdown-item>
+                  <router-link to="/"><el-dropdown-item>退出登录</el-dropdown-item></router-link>
                 </el-dropdown-menu>
               </template>
             </el-dropdown>
