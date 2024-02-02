@@ -3,18 +3,18 @@ const baseUrl = ''
 
 //获取健康证详情
 export const downloadHelthcertidetail = (params) => {
-    return Request.requestJson(
+    return Request.requestForm(
         Request.GET,
-        baseUrl + '',
+        baseUrl + '/healthcertificate-manage/download-helthcertidetail',
         params
     )
 }
 
 //获取健康证列表
 export const queryHerlthcertiList = (params) => {
-    return Request.requestJson(
+    return Request.requestForm(
         Request.GET,
-        baseUrl + '',
+        baseUrl + '/healthcertificate-manage/query-herlthcertilist',
         params
     )
 }
@@ -23,7 +23,7 @@ export const queryHerlthcertiList = (params) => {
 export const modifyPrintConfirm = (params) => {
     return Request.requestJson(
         Request.PUT,
-        baseUrl + '',
+        baseUrl + '/healthcertificate-manage/modify-printconfirm',
     )
 }
 
@@ -31,7 +31,7 @@ export const modifyPrintConfirm = (params) => {
 export const queryHelthcertiList = (params) => {
     return Request.requestJson(
         Request.PUT,
-        baseUrl + '',
+        baseUrl + '​/healthcertificate-manage​/modify-printmore',
     )
 }
 
@@ -39,7 +39,7 @@ export const queryHelthcertiList = (params) => {
 export const uploadMore = (params) => {
     return Request.requestJson(
         Request.POST,
-        baseUrl + '',
+        baseUrl + '/healthcertificate-manage/upload-more',
     )
 }
 
@@ -47,6 +47,6 @@ export const uploadMore = (params) => {
 export const queryViewException = (params) => {
     return Request.requestJson(
         Request.GET,
-        baseUrl + '',
+        baseUrl + '/healthcertificate-manage/query-viewexception',
     )
 }

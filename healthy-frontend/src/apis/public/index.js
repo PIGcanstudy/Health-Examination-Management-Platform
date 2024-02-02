@@ -5,25 +5,24 @@ const baseUrl = ''
 export const  queryDictnameList = (params) => {
   return Request.requestJson(
     Request.GET,
-    baseUrl + '/',
-    params
+    baseUrl + '/common/query-dictnamelist',
   )
 }
 
 //获取工种名称列表（分页＋条件）
 export const  queryJobnameList = (params) => {
-  return Request.requestJson(
+  return Request.requestForm(
     Request.GET,
-    baseUrl + '/',
+    baseUrl + '/common/query-jobnamelist',
     params
   )
 }
 
 //获取组合项目列表（条件＋分页）
 export const queryPackageProlist = (params) => {
-  return Request.requestJson(
+  return Request.requestForm(
     Request.GET,
-    baseUrl + '/',
+    baseUrl + '/common/query-packageprolist',
     params
   )
 }
@@ -32,16 +31,15 @@ export const queryPackageProlist = (params) => {
 export const queryPackagePronamelist = (params) => {
   return Request.requestJson(
     Request.GET,
-    baseUrl + '/',
-    params
+    baseUrl + '/common/query-packagepronamelist',
   )
 }
 
 //获取套餐名称列表（条件+分页）
 export const queryPlannameList = (params) => {
-  return Request.requestJson(
+  return Request.requestForm(
     Request.GET,
-    baseUrl + '/',
+    baseUrl + '/common/query-plannamelist',
     params
   )
 }
@@ -59,17 +57,16 @@ export const queryPlanProlist = (params) => {
 export const querySelectionnameList = (params) => {
   return Request.requestJson(
     Request.GET,
-    baseUrl + '/',
-    params
+    baseUrl + '/common/query-planprolist',
   )
 }
 
 
 //获取术语名称列表（条件+分页）
 export const queryTermnameList = (params) => {
-  return Request.requestJson(
+  return Request.requestForm(
     Request.GET,
-    baseUrl + '/',
+    baseUrl + '​/common​/query-sectionnamelist',
     params
   )
 }
@@ -79,8 +76,7 @@ export const queryTermnameList = (params) => {
 export const queryTypeTree = (params) => {
   return Request.requestJson(
     Request.GET,
-    baseUrl + '/',
-    params
+    baseUrl + '​/common​/query-typetree'
   )
 }
 
@@ -88,7 +84,7 @@ export const queryTypeTree = (params) => {
 export const queryUesrnameList = (params) => {
   return Request.requestJson(
     Request.GET,
-    baseUrl + '/',
+    baseUrl + '/common/query-uesrnamelist',
     params
   )
 }
