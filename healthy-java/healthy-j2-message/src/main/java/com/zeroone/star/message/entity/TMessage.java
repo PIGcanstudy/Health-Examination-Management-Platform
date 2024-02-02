@@ -5,8 +5,11 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
@@ -37,6 +40,12 @@ public class TMessage implements Serializable {
      * 创建时间
      */
     @TableField(fill = FieldFill.INSERT)
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(
+            pattern = "yyyy-MM-dd HH:mm:ss",
+            timezone = "GMT+8"
+
+    )
     private LocalDateTime createTime;
 
     /**
@@ -47,6 +56,12 @@ public class TMessage implements Serializable {
     /**
      * 修改时间
      */
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(
+            pattern = "yyyy-MM-dd HH:mm:ss",
+            timezone = "GMT+8"
+
+    )
     private LocalDateTime updateTime;
 
     /**
@@ -73,6 +88,8 @@ public class TMessage implements Serializable {
      * 消息类型
      */
     private String type;
+
+
 
 
 }

@@ -2,7 +2,6 @@ package com.zeroone.star.project.j2.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiParam;
 import lombok.Data;
 
 /**
@@ -16,7 +15,7 @@ import lombok.Data;
  */
 @Data
 @ApiModel("消息详情")
-public class MessageSendDTO {
+public class MessageSendUpdateDTO {
 
 
     @ApiModelProperty(value = "查询Id",example = "1", required = true)
@@ -31,19 +30,13 @@ public class MessageSendDTO {
     @ApiModelProperty(value = "创建人",example = "张三")
     private String CreateBy;
     //创建时间
-    @ApiModelProperty(value = "创建时间",example = "2018-04-22 23:03:49")
+    @ApiModelProperty(value = "创建时间",example = "2024-01-15")
     private String CreateTime;
     //状态
-    @ApiModelProperty(value = "状态",example = "1")
+    @ApiModelProperty(value = "状态",required = true ,example = "1")
     private Integer Status;
     //更新时间
-    @ApiModelProperty(value = "更新时间",example = "2018-04-22 23:03:49")
+    @ApiModelProperty(value = "查询Id",example = "1")
     private String UpdateTime;
-
-    @ApiModelProperty(value = "删除标记 0 未删除 1 已删除",example = "1")
-    private Integer delFlag;
-
-    @ApiModelProperty(value = "修改人",example = "camille")
-    private String updateBy;
 
 }
