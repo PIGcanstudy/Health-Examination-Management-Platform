@@ -18,4 +18,6 @@ reportdetail:
   pdfname: 体检报告pdf路径
 reportreview:
  put:
-  summary: 体检报告审核（支持批量审核）   
+  summary: 体检报告审核（支持批量审核）
+ field: 
+  testNum: 体检编号   

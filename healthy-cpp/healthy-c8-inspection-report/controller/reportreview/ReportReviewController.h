@@ -18,12 +18,12 @@ class ReportReviewController : public oatpp::web::server::api::ApiController // 
 	// 3 定义接口
 public:
 	// 3.1 定义修改接口描述
-	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("reportreview.put.summary"), modifyReportReview, Uint64JsonVO::Wrapper);
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("reportreview.put.summary"), modifyReportReview, StringJsonVO::Wrapper);
 	// 3.2 定义修改接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/inspection-report/modify-reportreview", modifyReportReview, BODY_DTO(ReportReviewDTO::Wrapper, dto), execModifyReportReview(dto));
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/inspection-report/modify-reportreview", modifyReportReview, BODY_DTO(List<ReportReviewDTO::Wrapper>, dtoArray), execModifyReportReview(dtoArray));
 private:
 	// 3.3 演示修改数据
-	Uint64JsonVO::Wrapper execModifyReportReview(const ReportReviewDTO::Wrapper& dto);
+	StringJsonVO::Wrapper execModifyReportReview(const List<ReportReviewDTO::Wrapper>& dtoArray);
 };
 
 // 0 取消API控制器使用宏

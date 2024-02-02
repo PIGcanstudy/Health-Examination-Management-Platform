@@ -6,14 +6,17 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * 示例传输对象
+ * 报告审核传输对象
  */
 class ReportReviewDTO : public oatpp::DTO
 {
 	DTO_INIT(ReportReviewDTO, DTO);
-	//列表
-
+	// 体检编号
+	DTO_FIELD(String, testNum);
+	DTO_FIELD_INFO(testNum) {
+		info->description = ZH_WORDS_GETTER("reportreview.field.testNum");
+	}
 };
 
 #include OATPP_CODEGEN_END(DTO)
-#endif // !_SAMPLE_DTO_
+#endif // 
