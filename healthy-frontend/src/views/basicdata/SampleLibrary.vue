@@ -2,7 +2,7 @@
  * @Author: setti5 2283356040@qq.com
  * @Date: 2024-01-30 15:48:01
  * @LastEditors: setti5 2283356040@qq.com
- * @LastEditTime: 2024-02-01 16:33:56
+ * @LastEditTime: 2024-02-02 16:52:52
  * @FilePath: \zero-one-healthy-check\healthy-frontend\src\views\basicdata\SampleLibrary.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -25,7 +25,8 @@
     >
       <!-- fixed固定列 -->
       <template #fixed="{ row }">
-        <el-button type="primary" style="margin-right: 5px" @click="handelLook(row)">
+        <!-- <el-button type="primary" style="margin-right: 5px" @click="handelLook(row)"> -->
+        <el-button type="primary" style="margin-right: 5px" @click="onCheckDialog">
           <el-icon><View></View></el-icon>
           查看
         </el-button>
@@ -39,7 +40,7 @@
 
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>
+              <el-dropdown-item @click="onEditDialog">
                 <el-icon><Edit></Edit></el-icon>
                 修改
               </el-dropdown-item>
@@ -77,57 +78,12 @@
       <!-- operation功能区域 -->
       <template #operation>
         <div class="operation">
-          <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true">
+          <!-- <el-button type="primary" style="margin-right: 10px" @click="dialogVisible = true"> -->
+          <el-button type="primary" style="margin-right: 10px" @click="onAddDialog">
             <el-icon><Plus></Plus></el-icon>
             新增
           </el-button>
-          <!-- 新增对话框区域 -->
-          <el-dialog v-model="dialogVisible" title="新增" width="50%" :before-close="handleClose">
-            <el-col>
-              <el-form ref="formRef" :model="basicForm" :rules="rules" inline>
-                <el-form-item label="名称" :label-width="labelWidth" required>
-                  <el-input v-model="basicForm.sampleName" placeholder="请输入名称" style="width: 200px"></el-input>
-                </el-form-item>
-                <el-form-item label="条码份数" :label-width="labelWidth" required>
-                  <el-input v-model="basicForm.barcodeCopies" style="width: 200px"></el-input>
-                </el-form-item>
-                <el-form-item label="规格" :label-width="labelWidth" required>
-                  <el-input v-model="basicForm.specification" placeholder="请输入规格" style="width: 200px"></el-input>
-                </el-form-item>
-                <el-form-item label="是否采血" :label-width="labelWidth">
-                  <el-radio-group v-model="basicForm.isBloodSampling" style="width: 200px">
-                    <el-radio label="是" />
-                    <el-radio label="否" />
-                  </el-radio-group>
-                </el-form-item>
-                <el-form-item label="标本代码" :label-width="labelWidth" required>
-                  <el-input v-model="basicForm.sampleCode" style="width: 200px"></el-input>
-                </el-form-item>
-                <el-form-item label="排序" :label-width="labelWidth" required>
-                  <el-input v-model="basicForm.rank" style="width: 200px"></el-input>
-                </el-form-item>
-                <el-form-item label="是否打印" :label-width="labelWidth">
-                  <el-radio-group v-model="basicForm.isPrint" style="width: 200px">
-                    <el-radio label="是" />
-                    <el-radio label="否" />
-                  </el-radio-group>
-                </el-form-item>
-                <el-form-item label="关联码" :label-width="labelWidth">
-                  <el-input v-model="basicForm.associationCode" style="width: 200px"></el-input>
-                </el-form-item>
-                <el-form-item label="容量" :label-width="labelWidth">
-                  <el-input v-model="basicForm.capacity" style="width: 200px"></el-input>
-                </el-form-item>
-              </el-form>
-            </el-col>
 
-            <template #footer>
-              <span class="dialog-footer">
-                <el-button @click="dialogVisible = false">取消</el-button>
-                <el-button type="primary" @click="dialogVisible = false">提交</el-button>
-              </span>
-            </template>
-          </el-dialog>
           <el-dropdown>
             <el-button style="margin-right: 8px">
               更多操作
@@ -160,7 +116,6 @@
               <el-dropdown-menu>
                 <el-dropdown-item> 动态列 </el-dropdown-item>
                 <el-dropdown-item divided><input type="checkbox" />名称</el-dropdown-item>
-
                 <el-dropdown-item><input type="checkbox" />条码份数</el-dropdown-item>
                 <el-dropdown-item><input type="checkbox" />规格</el-dropdown-item>
                 <el-dropdown-item><input type="checkbox" />是否采血</el-dropdown-item>
@@ -187,7 +142,7 @@
       </template>
     </BaseDataList>
 
-    <!-- <SampleLibraryForm :title="title"></SampleLibraryForm> -->
+    <SampleLibraryDialog ref="openDialogFormRef" :title="title"></SampleLibraryDialog>
   </div>
 </template>
 
@@ -195,21 +150,43 @@
 import { ref, reactive, onMounted } from 'vue'
 import { ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit, Operation } from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
-// import SampleLibraryForm from '@/views/basicdata/SampleLibrary/SampleLibraryForm.vue'
+import SampleLibraryDialog from './SampleLibrary/SampleLibraryDialog.vue'
+
+// 弹出对话框相关逻辑
+const openDialogFormRef = ref(null)
+const title = ref('')
+const onAddDialog = () => {
+  // openDialogFormRef.value.open([])
+  title.value = '新增'
+  openDialogFormRef.value.dialogVisible = true
+}
+const onCheckDialog = () => {
+  // openDialogFormRef.value.open(row)
+  title.value = '查看'
+  openDialogFormRef.value.dialogVisible = true
+}
+const onEditDialog = () => {
+  // openDialogFormRef.value.open(row)
+  title.value = '修改'
+  openDialogFormRef.value.dialogVisible = true
+}
+
+function handelLook(row) {
+  console.log(row)
+}
 
 const selectValue = ref('')
 const useHint = ref(true)
 const useForm = ref(true)
 const usePagination = ref(true)
 const BaseDataRef = ref()
-const dialogVisible = ref(false)
 const useFixed = ref(true)
-const labelWidth = '120px'
+
 // table列
 const tableColumnAttribute = ref([
   { prop: 'sampleName', label: '名称', width: '200', align: 'center' },
   { prop: 'barcodeCopies', label: '条码份数', width: '120', align: 'center' },
-  { prop: 'specification', label: '规格', width: '120', align: 'center' },
+  { prop: 'sampleStandards', label: '规格', width: '120', align: 'center' },
   { prop: 'isBloodSampling', label: '是否采血', width: '120', align: 'center' },
   { prop: 'sampleCode', label: '标本代码', width: '120', align: 'center' },
   { prop: 'rank', label: '排序', width: '120', align: 'center' },
@@ -222,7 +199,7 @@ const tableData = ref([
   {
     sampleName: '心电图',
     barcodeCopies: '1',
-    specification: '留底',
+    sampleStandards: '留底',
     isBloodSampling: '1',
     sampleCode: '11',
     rank: '1',
@@ -233,7 +210,7 @@ const tableData = ref([
   {
     sampleName: '基因-话甘宁',
     barcodeCopies: '1',
-    specification: '留底',
+    sampleStandards: '留底',
     isBloodSampling: '0',
     sampleCode: '23',
     rank: '0',
@@ -244,7 +221,7 @@ const tableData = ref([
   {
     sampleName: '驾驶员体检',
     barcodeCopies: '3',
-    specification: ' ',
+    sampleStandards: ' ',
     isBloodSampling: '1',
     sampleCode: '02',
     rank: '15',
@@ -255,7 +232,7 @@ const tableData = ref([
   {
     sampleName: '一般检查',
     barcodeCopies: '4',
-    specification: '黄管',
+    sampleStandards: '黄管',
     isBloodSampling: '0',
     sampleCode: ' ',
     rank: '23',
@@ -266,7 +243,7 @@ const tableData = ref([
   {
     sampleName: '肠镜',
     barcodeCopies: '1',
-    specification: ' ',
+    sampleStandards: ' ',
     isBloodSampling: '1',
     sampleCode: '13',
     rank: '24',
@@ -277,7 +254,7 @@ const tableData = ref([
   {
     sampleName: '乐山市峨边盛和矿业',
     barcodeCopies: '--',
-    specification: '健康体检',
+    sampleStandards: '健康体检',
     isBloodSampling: '1',
     sampleCode: ' ',
     rank: '2',
@@ -288,7 +265,7 @@ const tableData = ref([
   {
     sampleName: '乐山市峨边盛和矿业',
     barcodeCopies: '--',
-    specification: '健康体检',
+    sampleStandards: '健康体检',
     isBloodSampling: '1',
     sampleCode: '44',
     rank: '国有企业',
@@ -297,32 +274,12 @@ const tableData = ref([
     capacity: '--'
   }
 ])
-function handelLook(row) {
-  console.log(row)
-}
+
+// 表格之上的搜索区域表单
 const formData = reactive({
   sampleName: '',
   sampleCode: '',
   contactPerson: ''
-})
-// 基础信息表单
-const basicForm = reactive({
-  sampleName: '',
-  barcodeCopies: 0,
-  specification: '',
-  isBloodSampling: '否',
-  sampleCode: '',
-  rank: 30,
-  isPrint: '否',
-  associationCode: '',
-  capacity: ''
-})
-
-const formRef = ref(null)
-const rules = ref({
-  sampleName: [{ required: true, message: '名称不能为空!', trigger: 'change' }],
-  specification: [{ required: true, message: '规格不能为空!', trigger: 'change' }],
-  sampleCode: [{ type: 'date', required: true, message: '标本代码不能为空!', trigger: 'change' }]
 })
 
 const closeForm = () => {
@@ -350,7 +307,7 @@ const clearRows = () => {
 }
 // 重置表单方法
 const resetForm = () => {
-  ;(formData.sampleName = ''), (formData.specification = ''), (formData.contactPerson = ''), (formData.contactPhone = '')
+  ;(formData.sampleName = ''), (formData.sampleStandards = ''), (formData.contactPerson = ''), (formData.contactPhone = '')
 }
 const total = tableData.value.length
 // 分页参数
