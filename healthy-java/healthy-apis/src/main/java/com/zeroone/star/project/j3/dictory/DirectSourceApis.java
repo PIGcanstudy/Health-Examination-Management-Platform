@@ -39,7 +39,7 @@ public interface DirectSourceApis {
      * @auther MSNzqs
      * @return
      */
-    JsonVO<List<String>> queryDataTitle();
+    JsonVO<List<String>> queryDictDataTitle();
 
     /**
      * 根据条件及分页查询字典数据列表

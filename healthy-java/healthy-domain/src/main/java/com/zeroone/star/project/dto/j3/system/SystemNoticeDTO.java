@@ -17,7 +17,7 @@ public class SystemNoticeDTO implements Serializable {
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
     @ApiModelProperty(value = "删除标记")
-    private Integer delFlag;
+    private Boolean delFlag;
     @ApiModelProperty(value = "修改人")
     private String updateBy;
     @ApiModelProperty(value = "修改时间")

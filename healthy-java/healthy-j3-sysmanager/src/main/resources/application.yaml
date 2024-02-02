@@ -4,4 +4,8 @@ spring:
 server:
   port: ${sp.sys}
   servlet:
-   context-path: /sysmanager
+    context-path: /sysmanager
+
+application:
+  datacenterId: 2
+  workerId: 1

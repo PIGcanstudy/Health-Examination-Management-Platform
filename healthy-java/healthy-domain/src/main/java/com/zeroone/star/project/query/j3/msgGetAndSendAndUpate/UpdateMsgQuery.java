@@ -26,15 +26,15 @@ public class UpdateMsgQuery implements Serializable {
     @ApiModelProperty(value = "消息id不能为空")
     private String id;
 
-    @NotBlank(message = "消息人不能为空")
-    @ApiModelProperty(value = "修改人不能为空")
-    private String updateByID;
+//    @NotBlank(message = "消息人不能为空")
+//    @ApiModelProperty(value = "修改人")
+//    private String updateByID;
 
-    @NotBlank(message = "修改时间不能为空")
-    @ApiModelProperty(value = "修改时间不能为空", example = "2023-10-01 14:36:12")
-    @TableField(fill = FieldFill.INSERT)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime updateTime;
+//    @NotBlank(message = "修改时间不能为空")
+//    @ApiModelProperty(value = "修改时间不能为空", example = "2023-10-01 14:36:12")
+//    @TableField(fill = FieldFill.INSERT)
+//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    private LocalDateTime updateTime;
 
     @ApiModelProperty(value = "消息类型")
     private String type;

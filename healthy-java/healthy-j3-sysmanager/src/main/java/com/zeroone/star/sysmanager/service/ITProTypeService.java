@@ -1,6 +1,7 @@
 package com.zeroone.star.sysmanager.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.dto.j3.typeLibrary.TypeLibDeleteDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeAddDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeLibraryTreeDTO;
 import com.zeroone.star.project.dto.j3.typeLibrary.typeUpdateDTO;
@@ -30,4 +31,6 @@ public interface ITProTypeService extends IService<ProType> {
     typeAddVO addType(typeAddDTO typeadddto);
 
     typeUpdateVO updateType(typeUpdateDTO typeupdatevo);
+
+    Integer removeType(String[] ids);
 }

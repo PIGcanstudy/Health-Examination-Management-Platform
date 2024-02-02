@@ -46,12 +46,12 @@ public interface MessageApis {
      * @param sendMsgQuery
      * @return
      */
-    JsonVO<Boolean> querySendMessage(SendMsgQuery sendMsgQuery);
+    JsonVO<Boolean> querySendMessage(SendMsgQuery sendMsgQuery) throws Exception;
 
     /**
      * 更新消息
      * @param updateMsgQuery
      * @return
      */
-    JsonVO<Boolean> updateMessage(UpdateMsgQuery updateMsgQuery);
+    JsonVO<Boolean> updateMessage(UpdateMsgQuery updateMsgQuery) throws Exception;
 }

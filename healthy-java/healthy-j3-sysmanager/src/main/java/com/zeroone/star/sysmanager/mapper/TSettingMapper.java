@@ -2,8 +2,10 @@ package com.zeroone.star.sysmanager.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zeroone.star.project.dto.j3.system.SystemNoticeDTO;
 import com.zeroone.star.sysmanager.entity.TSetting;
 import org.apache.ibatis.annotations.Mapper;
+import org.mapstruct.factory.Mappers;
 
 /**
  * <p>
@@ -15,5 +17,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface TSettingMapper extends BaseMapper<TSetting> {
+
 
 }

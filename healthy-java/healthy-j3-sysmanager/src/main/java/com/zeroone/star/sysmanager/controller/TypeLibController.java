@@ -14,6 +14,7 @@ import com.zeroone.star.project.vo.j3.typeLibrary.typeUpdateVO;
 import com.zeroone.star.sysmanager.service.ITProTypeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -59,9 +60,16 @@ public class TypeLibController implements TypeLibApis {
         List<TProTypeVO> tProTypeListByPage = itProTypeService.getTProTypeListByPage(typeLibraryQuery);
         return JsonVO.success(tProTypeListByPage);
     }
+
+    @PostMapping("remove-typelib")
+    @ApiOperation("删除节点")
     @Override
-    public JsonVO<Integer> removeTypeLib(TypeLibDeleteDTO typeLibDeleteDTO) {
-        return null;
+    public JsonVO<Integer> removeTypeLib(@RequestParam String[] ids) {
+        JsonVO<Integer> vo = new JsonVO<>();
+        Integer i = itProTypeService.removeType(ids);
+        vo.setMessage("删除了"+i+"节点");
+        vo.setData(i);
+        return vo;
     }
 
     @Override

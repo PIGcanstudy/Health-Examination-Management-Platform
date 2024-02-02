@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
 /**
@@ -26,6 +27,6 @@ public class DictDataQuery extends PageQuery {
     /**
      * 是否启用 0 启用 1 禁用
      */
-    @ApiModelProperty(value = "状态", example = "1")
-    private Boolean status;
+    @ApiModelProperty(value = "状态", example = "0")
+    private int status;
 }

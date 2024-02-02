@@ -2,7 +2,13 @@ package com.zeroone.star.sysmanager.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.dto.j3.system.SystemNoticeDTO;
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.j3.sysConfig.TSettingVO;
 import com.zeroone.star.sysmanager.entity.TSetting;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.validation.Valid;
 
 /**
  * <p>
@@ -13,5 +19,9 @@ import com.zeroone.star.sysmanager.entity.TSetting;
  * @since 2024-01-24
  */
 public interface ITSettingService extends IService<TSetting> {
+    JsonVO<SystemNoticeDTO> addSystemNotice(SystemNoticeDTO systemNoticeDTO) throws Exception;
 
+    JsonVO<SystemNoticeDTO> modifySystemNotice(@RequestBody @Valid SystemNoticeDTO systemNoticeDTO) throws Exception;
+
+    JsonVO<TSettingVO> querySystemNotice();
 }

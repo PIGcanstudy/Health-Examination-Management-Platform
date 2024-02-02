@@ -36,28 +36,32 @@ public class DirectSourceController implements DirectSourceApis {
     @PostMapping("/addDictData")
     @Override
     public JsonVO<Boolean> AddDictData(AddDictDataDTO addDictDataDTO) {
-        return null;
+        JsonVO<Boolean> booleanJsonVO = itDictDataService.AddDictData(addDictDataDTO);
+        return booleanJsonVO;
     }
 
     @ApiOperation("修改字典数据")
     @PostMapping ("/modifyDictData")
     @Override
     public JsonVO<Boolean> ModifyDictData(ModifyDictData modifyDictData) {
-        return null;
+        JsonVO<Boolean> booleanJsonVO = itDictDataService.ModifyDictData(modifyDictData);
+        return booleanJsonVO;
     }
 
 
     @ApiOperation("查询字典数据名称列表")
-    @GetMapping("/queryDataTitle")
+    @GetMapping("/queryDictDataTitle")
     @Override
-    public JsonVO<List<String>> queryDataTitle() {
-        return null;
+    public JsonVO<List<String>> queryDictDataTitle() {
+        List<String> data = itDictDataService.getDictDataTitle();
+        return JsonVO.success(data);
     }
     @ApiOperation("查询字典数据列表")
     @PostMapping("/queryDictDataByCondition")
     @Override
     public JsonVO<PageDTO<DictDataDTO>> queryDictDataByCondition(DictDataQuery condition) {
-        return null;
+        PageDTO<DictDataDTO> data = itDictDataService.ListPage(condition);
+        return JsonVO.success(data);
     }
 
     @ApiOperation("根据id批量删除数据字典")
