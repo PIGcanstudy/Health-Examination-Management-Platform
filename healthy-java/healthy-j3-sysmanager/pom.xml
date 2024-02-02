@@ -87,7 +87,7 @@
                     <!-- Docker 远程管理地址-->
                     <dockerHost>https://8.130.131.5:2375</dockerHost>
                     <!-- CA 证书位置 -->
-                    <certPath>/home/docker-ca</certPath>
+                    <certPath>/home/docker-ca/docker-ca</certPath>
                     <!-- 镜像设置 -->
                     <images>
                         <image>
