@@ -74,12 +74,14 @@ public class TypeLibController implements TypeLibApis {
 
     @Override
     @PostMapping("/addType")
+    @ApiOperation("添加类型")
     public JsonVO<typeAddVO> addType(@RequestBody typeAddDTO typeadddto) {
         return JsonVO.success(typeService.addType(typeadddto));
     }
 
     @Override
     @PostMapping("/updateType")
+    @ApiOperation("修改类型")
     public JsonVO<Object> updateType(@RequestBody typeUpdateDTO typeupdatedto) {
         typeUpdateVO typeUpdateVO = typeService.updateType(typeupdatedto);
         if(ObjectUtil.isNotNull(typeUpdateVO)){
