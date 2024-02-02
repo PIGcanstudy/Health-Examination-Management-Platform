@@ -3,7 +3,7 @@
     <el-container class="sec-container">
       <el-aside :style="{ maxWidth: isCollapsed ? '0' : '221px' }">
         <!-- 侧边栏菜单 -->
-        <el-menu default-active="/home" class="el-menu-vertical-demo" active-text-color="#409EFF" text-color="#fff" background-color="#545c64" unique-opened router>
+        <el-menu :default-active="route.path" class="el-menu-vertical-demo" active-text-color="#409EFF" text-color="#fff" background-color="#545c64" unique-opened router>
           <el-menu-item index="/home">
             <el-icon>
               <icon-menu />
@@ -43,7 +43,7 @@
           <!-- 下拉菜单 -->
           <!-- TODO 路由菜单导航还需完善-->
           <el-dropdown>
-            <span class="el-dropdown-link" style="font-size: 20px;">
+            <span class="el-dropdown-link" style="font-size: 20px">
               <el-icon>
                 <Grid />
               </el-icon>
@@ -68,13 +68,13 @@
           <!-- 用户信息 -->
           <div>
             <el-dropdown class="ml-2">
-              <div style="display: flex;">
+              <div style="display: flex">
                 <el-button type="" circle style="margin-right: 15px">
                   <el-icon :size="18">
                     <UserFilled />
                   </el-icon>
                 </el-button>
-                <span style="align-self: center;">{{ userInfo }}</span>
+                <span style="align-self: center">{{ userInfo }}</span>
               </div>
               <template #dropdown>
                 <el-dropdown-menu>
@@ -100,10 +100,13 @@ import router from '@/router'
 import { userStore } from '../stores/user'
 import { ArrowDown, Grid, UserFilled } from '@element-plus/icons-vue'
 import basicdata from '@/stores/menus/basicdata.js'
-
 import { Check, CircleCheck, CirclePlus, CirclePlusFilled, Plus } from '@element-plus/icons-vue'
 import testMenus from '../stores/menus/healthcheck'
+import { useRoute } from 'vue-router'
 // import { Expand } from '@element-plus/icons-vue'
+
+// 将default-active设为当前路由
+const route = useRoute()
 
 // 本界面变量及函数
 const isCollapsed = ref(false)
