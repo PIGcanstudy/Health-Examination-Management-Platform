@@ -20,6 +20,7 @@
 #include "Router.h"
 #include "ApiHelper.h"
 #include "GetPD/GetPDController.h"
+#include "Pic/PicController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
@@ -54,6 +55,8 @@ void Router::initRouter()
 	//#TIP :系统扩展路由定义，写在这个后面
 		// 绑定示例控制器
 	ROUTER_SIMPLE_BIND(GetPDController);
+	// 绑定文件控制器
+	ROUTER_SIMPLE_BIND(PicController);
 }
 
 #ifdef HTTP_SERVER_DEMO
