@@ -1,16 +1,16 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import {
-  querydictnamelist,
-  queryjobnamelist,
-  querypackageprolist,
-  querypackagepronamelist,
-  queryplannamelist,
-  queryplanprolist,
-  queryselectionnamelist,
-  querytermnamelist,
-  querytypetree,
-  queryuesrnamelist
+  queryDictnameList,
+  queryJobnameList,
+  queryPackageProlist,
+  queryPackagePronamelist,
+  queryPlannameList,
+  queryPlanProlist,
+  querySelectionnameList,
+  queryTermnameList,
+  queryTypeTree,
+  queryUesrnameList
 } from '@/apis/public/index.js'
 
 export const usePublicStore = defineStore('public', () => {
@@ -35,15 +35,15 @@ export const usePublicStore = defineStore('public', () => {
   return {
     tableData,
     total,
-    querydictnamelist,
-    queryjobnamelist,
-    querypackageprolist,
-    querypackagepronamelist,
-    queryplannamelist,
-    queryplanprolist,
-    queryselectionnamelist,
-    querytermnamelist,
-    querytypetree,
-    queryuesrnamelist
+    queryDictnameList,
+    queryJobnameList,
+    queryPackageProlist,
+    queryPackagePronamelist,
+    queryPlannameList,
+    queryPlanProlist,
+    querySelectionnameList,
+    queryTermnameList,
+    queryTypeTree,
+    queryUesrnameList
   }
 })

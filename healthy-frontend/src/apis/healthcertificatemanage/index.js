@@ -2,51 +2,51 @@ import Request from '@/apis/request.js'
 const baseUrl = ''
 
 //获取健康证详情
-export const downloadhelthcertidetail = (params) => {
-    return Request.requestJson(
+export const downloadHelthcertidetail = (params) => {
+    return Request.requestForm(
         Request.GET,
-        baseUrl + '',
+        baseUrl + '/healthcertificate-manage/download-helthcertidetail',
         params
     )
 }
 
 //获取健康证列表
-export const queryherlthcertilist = (params) => {
-    return Request.requestJson(
+export const queryHerlthcertiList = (params) => {
+    return Request.requestForm(
         Request.GET,
-        baseUrl + '',
+        baseUrl + '/healthcertificate-manage/query-herlthcertilist',
         params
     )
 }
 
 //打印确认（支持批量）
-export const modifyprintconfirm = (params) => {
+export const modifyPrintConfirm = (params) => {
     return Request.requestJson(
         Request.PUT,
-        baseUrl + '',
+        baseUrl + '/healthcertificate-manage/modify-printconfirm',
     )
 }
 
 //批量打印（批量打印）
-export const queryHelthcertilist = (params) => {
+export const queryHelthcertiList = (params) => {
     return Request.requestJson(
         Request.PUT,
-        baseUrl + '',
+        baseUrl + '​/healthcertificate-manage​/modify-printmore',
     )
 }
 
 //批量上传
-export const uploadmore = (params) => {
+export const uploadMore = (params) => {
     return Request.requestJson(
         Request.POST,
-        baseUrl + '',
+        baseUrl + '/healthcertificate-manage/upload-more',
     )
 }
 
 //查看异常
-export const queryviewexception = (params) => {
+export const queryViewException = (params) => {
     return Request.requestJson(
         Request.GET,
-        baseUrl + '',
+        baseUrl + '/healthcertificate-manage/query-viewexception',
     )
 }
