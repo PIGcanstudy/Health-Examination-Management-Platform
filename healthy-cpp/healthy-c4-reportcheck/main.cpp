@@ -1,21 +1,4 @@
-/*
- Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/10/24 23:02:34
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #include "stdafx.h"
 #include "StringUtil.h"
 #include "ServerInfo.h"
@@ -30,6 +13,10 @@
 #ifdef LINUX
 #include "NacosClient.h"
 #endif
+#include "ServerInfo.h"
+#include "NacosClient.h"
+#include "FastDfsClient.h"
+#include <uselib/fastdfs/TestFastDfs.h>
 
 // 是否是发布Swagger文档包
 #ifndef _RELEASE_DOC_
@@ -131,7 +118,6 @@ bool getStartArg(int argc, char* argv[]) {
 #endif
 	return isSetDb;
 }
-
 int main(int argc, char* argv[]) {
 #ifdef HTTP_SERVER_DEMO
 	// 测试生成 JWT Token
@@ -140,7 +126,6 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
-
 #ifdef LINUX
 	// 创建Nacos客户端对象
 	NacosClient nacosClient(

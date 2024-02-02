@@ -1,23 +1,5 @@
-/*
- Copyright Zero One Star. All rights reserved.
-
- @Author: awei
- @Date: 2022/10/24 23:29:51
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
-#ifdef USE_DFS
-
+#ifndef _USE_DFS
+#define _USE_DFS
 #include "stdafx.h"
 #include <iostream>
 #include "TestFastDfs.h"
@@ -26,34 +8,7 @@
 #include "NacosClient.h"
 #include "FastDfsClient.h"
 
-void TestFastDfs::testDfs(string fileName)
-{
-#ifdef LINUX
-	//定义客户端对象
-	FastDfsClient client("conf/client.conf");
-#else
-	//定义客户端对象
-	FastDfsClient client("39.101.128.111");
-#endif
-
-	//测试上传
-	std::string fieldName = client.uploadFile(fileName);
-	std::cout << "upload fieldname is : " << fieldName << std::endl;
-	//测试下载
-	if (!fieldName.empty())
-	{
-		std::string path = "./public/fastdfs";
-		fileName = client.downloadFile(fieldName, &path);
-		std::cout << "download savepath is : " << fileName << std::endl;
-	}
-	//测试删除文件
-	if (!fieldName.empty())
-	{
-		std::cout << "delete file result is : " << client.deleteFile(fieldName) << std::endl;
-	}
-}
-
-void TestFastDfs::testDfsWithConf(string fileName)
+std::string PreviewReportFastDfs::pdfDfsWithConf(string fileName)
 {
 //	// 定义一个Nacos客户端对象，用于获取配置
 //	NacosClient ns(ServerInfo::getInstance().getNacosAddr(), ServerInfo::getInstance().getNacosNs());
@@ -85,6 +40,7 @@ void TestFastDfs::testDfsWithConf(string fileName)
 	std::string downloadUrl = urlPrefix + fieldName;
 	// 输出下载路径
 	std::cout << "download url: " << downloadUrl << std::endl;
+	return downloadUrl;
 }
 
-#endif // USE_DFS
+#endif // _USE_DFS
