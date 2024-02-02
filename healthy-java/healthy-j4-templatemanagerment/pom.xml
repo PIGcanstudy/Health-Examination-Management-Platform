@@ -92,7 +92,7 @@
                     <!-- Docker 远程管理地址-->
                     <dockerHost>https://8.138.89.105:2375</dockerHost>
                     <!-- CA 证书位置 -->
-                    <certPath>/home/docker-ca</certPath>
+                    <certPath>D:\Project\01 Project\24-1-Java\8.138.89.105\8.138.89.105</certPath>
                     <!-- 镜像设置 -->
                     <images>
                         <image>
