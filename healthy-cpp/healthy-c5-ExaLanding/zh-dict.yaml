@@ -15,6 +15,13 @@ exalanding:
   groupId: 分组
   workName: 单位名称
   mobile: 手机号码
+  feild: 
+  physical: 体检类型
+
+ feild:
+  sex: 性别
+  groupUnitName: 单位名称
+  groupName: 分组名称
 questatistics:
  remove:
   summary: 删除人员

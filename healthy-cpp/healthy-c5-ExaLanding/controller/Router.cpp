@@ -29,6 +29,10 @@
 #include "Exalanding/PeopleListController.h"
 #include"registration/ModifyInformationController.h"
 #include"questatistics/perdelController.h"
+#include"Exalanding/GroupOrderListController.h"
+#include"Exalanding/SaveInfoController.h"
+
+
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
 // 简化绑定控制器宏定义
@@ -56,6 +60,8 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(PeopleListController);
 	ROUTER_SIMPLE_BIND(ModifyInformationController);
 	ROUTER_SIMPLE_BIND(perdelController);
+	ROUTER_SIMPLE_BIND(GroupOrderListController);
+	ROUTER_SIMPLE_BIND(SaveInfoController);
 
 }
 
