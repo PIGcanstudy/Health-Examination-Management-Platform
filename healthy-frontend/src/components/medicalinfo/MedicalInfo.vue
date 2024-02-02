@@ -43,28 +43,29 @@
         </ul>
       </div>
       <!-- 个人信息 -->
-        <el-form ref="personInfo" :model="personInfo" label-width="80px" :rules="rules" class="flex-form">
-          <div v-for="field in props.fieldConfig">
-            <el-form-item :label="field.label" :prop="field.prop" v-if="field.type === 'input'">
-              <el-input
-                v-model="personInfo[field.prop]"
-                :placeholder="field.placeholder"
-                @click.native="field.methodBound ? onInputClick() : null"
-                :readonly="field.readonly"
-                :disabled="field.disabled" />
-            </el-form-item>
-            <el-form-item :label="field.label" :prop="field.prop" v-if="field.type === 'select'">
-              <el-select v-model="personInfo[field.prop]" :placeholder="field.placeholder" :readonly="field.readonly" :disabled="field.disabled">
-                <el-option v-for="option in field.options" :label="option.label" :value="option.value" />
-              </el-select>
-            </el-form-item>
-          </div>
-        </el-form>
+      <el-form ref="medicalInfoRdivef" :model="personInfo" label-width="80px" :rules="rules" class="flex-form">
+        <div v-for="field in props.fieldConfig">
+          <el-form-item v-if="field.type === 'input'" :label="field.label" :prop="field.prop">
+            <el-input
+              v-model="personInfo[field.prop]"
+              :placeholder="field.placeholder"
+              :readonly="field.readonly"
+              :disabled="field.disabled"
+              @click.native="field.methodBound ? onInputClick() : null"
+            />
+          </el-form-item>
+          <el-form-item v-if="field.type === 'select'" :label="field.label" :prop="field.prop">
+            <el-select v-model="personInfo[field.prop]" :placeholder="field.placeholder" :readonly="field.readonly" :disabled="field.disabled">
+              <el-option v-for="option in field.options" :label="option.label" :value="option.value" />
+            </el-select>
+          </el-form-item>
+        </div>
+      </el-form>
     </div>
   </div>
 </template>
 <script setup>
-import { ref, computed, watch, toRefs } from 'vue'
+import { ref, computed, watch, toRefs, defineEmits, defineExpose } from 'vue'
 import { ElDialog, ElUpload, ElButton, ElMessageBox, ElMessage } from 'element-plus'
 /* 向父组件传递的数据 */
 const props = defineProps({
@@ -102,7 +103,7 @@ const props = defineProps({
     type: Array,
     required: false,
     default: () => [
-      { prop: 'physical_id', label: '体检编号', type: 'input', placeholder: '提交后系统自动生成',disabled: true },
+      { prop: 'physical_id', label: '体检编号', type: 'input', placeholder: '提交后系统自动生成', disabled: true },
       { prop: 'id_card', label: '身份证号', type: 'input', readonly: true },
       { prop: 'person_name', label: '姓名', type: 'input', readonly: true },
       { prop: 'sex', label: '性别', type: 'input', readonly: true },
@@ -110,15 +111,25 @@ const props = defineProps({
       { prop: 'physical_type', label: '体检类型', type: 'input', readonly: true },
       { prop: 'mobile', label: '联系电话', type: 'input', readonly: true },
       { prop: 'unit_name', label: '单位名称', type: 'input', readonly: true },
-      { prop: 'marry_type', label: '婚姻状态', type: 'select', options: [
-        { label: '未婚', value: '未婚' },
-        { label: '已婚', value: '已婚' },
-        { label: '离异', value: '离异' },
-      ]},
-      { prop: 'type_name', label: '分组名称', type: 'select', options: [
-        { label: '男', value: '男' },
-        { label: '女', value: '女' }
-      ]}
+      {
+        prop: 'marry_type',
+        label: '婚姻状态',
+        type: 'select',
+        options: [
+          { label: '未婚', value: '未婚' },
+          { label: '已婚', value: '已婚' },
+          { label: '离异', value: '离异' }
+        ]
+      },
+      {
+        prop: 'type_name',
+        label: '分组名称',
+        type: 'select',
+        options: [
+          { label: '男', value: '男' },
+          { label: '女', value: '女' }
+        ]
+      }
     ]
   },
   // 输入框中必填的信息(须与prop值一致)
@@ -128,7 +139,30 @@ const props = defineProps({
     default: () => ['id_card']
   },
   onInputClick: Function,
+  // 暴露出输入框的值
+  modelValue: Object
 })
+const medicalInfoRef = ref(null)
+// 方法来执行表单验证
+const validate = async () => {
+  try {
+    await formRef.value.validate()
+    return true // 验证通过
+  } catch (error) {
+    return false // 验证失败
+  }
+}
+// 暴露 validate 方法供父组件调用
+defineExpose({ validate })
+
+const emit = defineEmits(['update:modelValue'])
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    emit('update:modelValue', newValue)
+  },
+  { deep: true }
+)
 
 // 根据当前流程判断展示的图片
 function getImagePath(index) {
@@ -330,5 +364,4 @@ const cropperImageStyle = computed(() => ({
   font-family: SimSun;
   font-weight: 700;
 }
-
 </style>

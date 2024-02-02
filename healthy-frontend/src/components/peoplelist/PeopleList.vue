@@ -62,7 +62,7 @@
 
           <!-- 从父组件传入的其他表单项(插槽方式，暂时保留) -->
           <!-- 以下是示例代码，在没有接口数据传入之前，没有死数据填充会导致被折叠的输入框不展开 -->
-          <div v-if="isShowInput">
+          <template v-if="isShowInput">
             <!-- 身份证搜索框(插槽) -->
             <slot name="id-input"></slot>
             <el-form-item prop="serialNumber">
@@ -71,10 +71,7 @@
             <el-form-item prop="workplace">
               <el-input v-model="form.workplace" placeholder="请输入单位名称" clearable></el-input>
             </el-form-item>
-            <el-form-item prop="workplace">
-              <el-input v-model="form.workplace" placeholder="请输入单位名称" clearable></el-input>
-            </el-form-item>
-          </div>
+          </template>
 
           <!-- 表单按钮区域 -->
           <el-form-item>
@@ -164,13 +161,13 @@ const props = defineProps({
     default: true
   },
   // 当前checkbox状态
-  // checkboxItem: {
-  //   type: Array,
-  //   require: true,
-  //   default: () => {
-  //     return ['已检', '未检']
-  //   }
-  // },
+  checkboxItem: {
+    type: Array,
+    require: true,
+    default: () => {
+      return ['已检', '未检']
+    }
+  },
   // 当前switch状态
   checkSwitchItem: {
     type: Array,
@@ -195,10 +192,10 @@ const props = defineProps({
     default: true
   },
   // 是否显示身份证号搜索框
-  // isShowIdInput: {
-  //   type: Boolean,
-  //   default: false
-  // },
+  isShowIdInput: {
+    type: Boolean,
+    default: false
+  },
   // 表格的列属性
   tableColumnAttribute: {
     type: Array,
@@ -392,10 +389,12 @@ defineExpose({
 .Leftside_bar {
   width: 100%;
   height: 100%;
+  background-color: #fff;
 }
 
 .card-header {
-  height: 5%;
+  min-height: 5%;
+  width: 100%;
   display: flex;
   text-align: center;
   justify-content: center;
@@ -431,5 +430,7 @@ defineExpose({
   align-items: center;
   text-align: center;
   margin-top: 30px;
+  position: absolute;
+  bottom: 0;
 }
 </style>

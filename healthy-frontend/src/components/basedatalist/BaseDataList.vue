@@ -13,11 +13,21 @@
         <!-- 多选清除栏 -->
         <slot name="hint"></slot>
         <!-- table表格 -->
-        <el-table ref="tableRef" :data="props?.tableData" border @selection-change="handleSelectionChange">
+        <el-table ref="tableRef" :data="props?.tableData" border @selection-change="handleSelectionChange" @select="selectTc"
+        v-if="childrenData"
+        row-key="id"
+        lazy
+        :load="load"
+        :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
           <!-- 多选列 -->
           <el-table-column v-if="useSelection" type="selection"></el-table-column>
           <!-- 表格内容 -->
-          <el-table-column v-for="item in props.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label" :width="item.width" :align="item.align" />
+          <el-table-column v-for="item in props.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label" :width="item.width" :align="item.align">
+            <!-- 是否使用switch开关 -->
+            <template v-if="item.useSwitch" #default="{ row }">
+              <el-switch :model-value="row[item.prop] ? true : false" inline-prompt active-text="启用" inactive-text="停用" size="large" @change="(state) => emits('updateSwitchState', state, row)" />
+            </template>
+          </el-table-column>
           <!-- 固定列 -->
           <el-table-column v-if="props.useFixed" fixed="right" label="操作" width="220">
             <template #default="{ row }">
@@ -42,8 +52,14 @@
 </template>
 
 <script setup>
-import { watch, ref, defineEmits } from 'vue'
+import { watch, ref } from 'vue'
+const childrenData = ref(true)
 const props = defineProps({
+  //是否使用树形数据
+  childrenData: {
+    type: Boolean,
+    default: false
+  },
   // 是否使用Form表单
   useForm: {
     type: Boolean,
@@ -91,11 +107,15 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
-  // 编辑方法
-  handleEdit: Function,
-  handleDelete: Function
+  // 是否使用关凯
+  useSwitch: {
+    type: Boolean,
+    default: false
+  }
+  // handleEdit: Function,
+  // handleDelete: Function
 })
-const emits = defineEmits(['updateTableData', 'update:modelValue', 'update-table-data', 'update-selected-rows'])
+const emits = defineEmits(['updateTableData', 'update:modelValue', 'update-table-data', 'update-selected-rows', 'updateSwitchState'])
 // 实现 form表单v-model 逻辑
 watch(
   () => props.formData,
@@ -116,6 +136,15 @@ function clearSelectedRows() {
 const handleSelectionChange = (selectRows) => {
   rows.value = selectRows
   emits('update-selected-rows', selectRows)
+}
+
+// 套餐项目-表格绑定事件selectTc
+const selectTc = (selection, row) => {
+  // 当表格数据都没有被勾选的时候 就返回
+  // 主要用于将当前勾选的表格状态清除
+  if (selection.length == 0) return
+  tableRef.value.toggleRowSelection(row, true)
+  emits('update-selected-row', selection) 
 }
 defineExpose({
   // 暴露选中的row

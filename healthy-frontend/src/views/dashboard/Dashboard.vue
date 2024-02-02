@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    
     <div class="btn01">
       <el-button @click="enter01" style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
     </div>
@@ -15,11 +16,9 @@
     </div>
 
     <div class="btn03">
+      <el-button @click="enter03" style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
       <el-button style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
-    </div>
-    <div class="icon03">
       <img src="../../assets/dashboard/icon03.png" style="height: 400px; width: 434px" />
-    </div>
 
     <div class="btn04">
       <el-button style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
@@ -41,7 +40,9 @@
     <div class="icon06">
       <img src="../../assets/dashboard/icon06.png" style="height: 195px; width: 350px" />
     </div>
+
   </div>
+</div>
 </template>
 
 <script setup>
@@ -51,6 +52,14 @@ const router = useRouter()
 
 function enter01() {
   router.push('/healthcheck')
+}
+
+function enter02() {
+  router.push('/employmentcheck')
+}
+
+function enter03() {
+  router.push('/careercheck')
 }
 </script>
 

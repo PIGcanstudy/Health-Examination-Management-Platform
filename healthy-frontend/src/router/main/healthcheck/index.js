@@ -36,7 +36,7 @@ const routes = [
       {
         // 体检登记
         path: '/healthcheck/MedicalRegistration.vue',
-        name: 'medicalregistration',
+        name: 'MedicalRezgistration',
         component: () => import('@/views/healthcheck/MedicalRegistration.vue')
       },
       {
@@ -60,7 +60,7 @@ const routes = [
       {
         // 体检报告
         path: '/healthcheck/MedicalReport.vue',
-        name: 'medicalreport',
+        name: 'MedicalReport',
         component: () => import('@/views/healthcheck/MedicalReport.vue')
       },
       {
