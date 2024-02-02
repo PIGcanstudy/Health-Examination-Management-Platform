@@ -100,7 +100,7 @@ export const queryUserNameList = (params) => {
     )
   }
 
-//   设置用户状态
+//设置用户状态
 export const setUserStatus = (params) => {
     return Request.requestJson(
       Request.GET,
