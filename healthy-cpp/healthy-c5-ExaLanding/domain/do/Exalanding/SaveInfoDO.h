@@ -8,6 +8,12 @@
  */
 class SaveInfoDO
 {
+	// id
+protected: string id; public: string getId(void) const {
+	return id;
+}public: void setId(string var) {
+	id = var;
+};
 	// 身份证号
 	CC_SYNTHESIZE(string, id_card, Id_card);
 	//姓名
@@ -20,6 +26,10 @@ class SaveInfoDO
 	CC_SYNTHESIZE(string, mobile, Mobile);
 	//婚姻状态
 	CC_SYNTHESIZE(string, is_marry, Is_marry);
+	//是否通过检查(1-登记，2-在检,3-总检,4-已完成)
+	CC_SYNTHESIZE(int, is_pass, Is_pass);
+	//体检类型
+	CC_SYNTHESIZE(string, physical_type, Physical_type);
 public:
 	SaveInfoDO() {}
 	SaveInfoDO(string id_card, string person_name, string sex, int age, string mobile,string is_marry)

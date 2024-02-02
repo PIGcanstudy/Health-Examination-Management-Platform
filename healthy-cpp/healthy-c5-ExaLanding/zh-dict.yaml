@@ -19,10 +19,14 @@
   get: 
    summary: 获取一条示例数据
   field:
+   id: 数据库表字段id
    id_card: 身份证号
    person_name: 姓名
    sex: 性别
    age: 年龄
    mobile: 联系电话
    is_marry: 是否结婚
+   is_pass: 是否通过检查(1-登记，2-在检,3-总检,4-已完成)
+  physical_type: 体检类型
+
  

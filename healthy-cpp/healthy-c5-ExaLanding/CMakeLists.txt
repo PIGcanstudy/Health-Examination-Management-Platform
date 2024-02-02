@@ -63,7 +63,7 @@ if(WIN32)
 endif()
 
 # 编译可执行文件
-add_executable (${appName} ${SC_FILES}  "domain/query/Exalanding/SaveInfoQuery.h" "domain/vo/Exalanding/SaveInfoVO.h" "domain/dto/Exalanding/SaveInfoDTO.h" "domain/do/Exalanding/SaveInfoDO.h" "controller/Exalanding/SaveInfoController.h" "controller/Exalanding/SaveInfoController.cpp")
+add_executable (${appName} ${SC_FILES}  "domain/query/Exalanding/SaveInfoQuery.h" "domain/vo/Exalanding/SaveInfoVO.h" "domain/dto/Exalanding/SaveInfoDTO.h" "domain/do/Exalanding/SaveInfoDO.h" "controller/Exalanding/SaveInfoController.h" "controller/Exalanding/SaveInfoController.cpp" "dao/Exalanding/SaveInfoDAO.h" "dao/Exalanding/SaveInfoDAO.cpp" "dao/Exalanding/SaveInfoMapper.h" "service/Exalanding/SaveInfoService.h" "service/Exalanding/SaveInfoService.cpp")
 
 # 链接库
 target_link_libraries (${appName} "lib-common" "lib-oatpp" "lib-mysql")

@@ -13,6 +13,8 @@ class SaveInfoQuery : public PageQuery
 {
 	// 定义初始化
 	DTO_INIT(SaveInfoQuery, PageQuery);
+	// id
+	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("exalanding.saveinfo.field.id"));
 	// 身份证号
 	API_DTO_FIELD_DEFAULT(String, id_card, ZH_WORDS_GETTER("exalanding.saveinfo.field.id_card"));
 	//姓名
@@ -25,6 +27,10 @@ class SaveInfoQuery : public PageQuery
 	API_DTO_FIELD_DEFAULT(String, mobile, ZH_WORDS_GETTER("exalanding.saveinfo.field.mobile"));
 	//婚姻状态
 	API_DTO_FIELD_DEFAULT(String, is_marry, ZH_WORDS_GETTER("exalanding.saveinfo.field.is_marry"));
+	//是否通过检查(1-登记，2-在检,3-总检,4-已完成)
+	API_DTO_FIELD_DEFAULT(UInt32, is_pass, ZH_WORDS_GETTER("exalanding.saveinfo.field.is_pass"));
+	//体检类型
+	API_DTO_FIELD_DEFAULT(String, physical_type, ZH_WORDS_GETTER("exalanding.saveinfo.field.physical_type"));
 };
 
 #include OATPP_CODEGEN_END(DTO)
