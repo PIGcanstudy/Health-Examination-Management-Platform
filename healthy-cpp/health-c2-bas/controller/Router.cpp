@@ -1,29 +1,12 @@
-/*
- Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/12/03 14:58:34
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #include "stdafx.h"
 #include "Router.h"
 #include "ApiHelper.h"
 #include "positive/resRuleController.h" //puck
-#include "positive/DeatilController.h" //È¦È¦
-#include "positive/ModifyResultController.h" //È¦È¦
+#include "positive/DeatilController.h" //åœˆåœˆ
+#include "positive/ModifyResultController.h" //åœˆåœˆ
 #include "positive/resultController.h" //elysia
-#include "sample/SampleController.h" //¿ìÀÖÎåÏãµ°
+#include "sample/SampleController.h" //å¿«ä¹äº”é¦™è›‹
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
@@ -31,14 +14,16 @@
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
 #endif
+#include "sample/ObtainSampleListController.h"
+#include "sample/InsertSampleController.h"
 
-// Èç¹û¶¨ÒåÁË¹Ø±ÕSwaggerÎÄµµºê
+// å¦‚æžœå®šä¹‰äº†å…³é—­Swaggeræ–‡æ¡£å®
 #ifdef CLOSE_SWAGGER_DOC
-// ¼ò»¯°ó¶¨¿ØÖÆÆ÷ºê¶¨Òå
+// ç®€åŒ–ç»‘å®šæŽ§åˆ¶å™¨å®å®šä¹‰
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 router->addController(__CLASS__::createShared())
 #else
-// ¼ò»¯°ó¶¨¿ØÖÆÆ÷ºê¶¨Òå
+// ç®€åŒ–ç»‘å®šæŽ§åˆ¶å™¨å®å®šä¹‰
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 BIND_CONTROLLER(docEndpoints, router, __CLASS__)
 #endif
@@ -55,30 +40,31 @@ void Router::initRouter()
 	createSampleRouter();
 #endif
 
-	//#TIP :ÏµÍ³À©Õ¹Â·ÓÉ¶¨Òå£¬Ð´ÔÚÕâ¸öºóÃæ
-	// -puck
+	//#TIP :ç³»ç»Ÿæ‰©å±•è·¯ç”±å®šä¹‰ï¼Œå†™åœ¨è¿™ä¸ªåŽé¢
+	ROUTER_SIMPLE_BIND(ObtainSampleListController);//èŽ·å–æ ·æœ¬åˆ—è¡¨-æ— äºº
+	ROUTER_SIMPLE_BIND(InsertSampleController);//æ–°å¢žæ ·æœ¬-æ— äºº	// -puck
 	ROUTER_SIMPLE_BIND(resRuleController);
-	//°ó¶¨ÑôÐÔ½á¹ûÏêÏ¸¿ØÖÆÆ÷-È¦È¦
+	//ç»‘å®šé˜³æ€§ç»“æžœè¯¦ç»†æŽ§åˆ¶å™¨-åœˆåœˆ
 	ROUTER_SIMPLE_BIND(DeatilController);
-	//°ó¶¨ÐÞ¸ÄÑôÐÔ½á¹û¿ØÖÆÆ÷-È¦È¦
+	//ç»‘å®šä¿®æ”¹é˜³æ€§ç»“æžœæŽ§åˆ¶å™¨-åœˆåœˆ
 	ROUTER_SIMPLE_BIND(ModifyResultController);
 	// -elysia
 	ROUTER_SIMPLE_BIND(resultController);
-	//¿ìÀÖÎåÏãµ°
+	//å¿«ä¹äº”é¦™è›‹
 	ROUTER_SIMPLE_BIND(SampleController);
 }
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
-	// °ó¶¨Ê¾Àý¿ØÖÆÆ÷
+	// ç»‘å®šç¤ºä¾‹æŽ§åˆ¶å™¨
 	ROUTER_SIMPLE_BIND(SampleController);
-	// °ó¶¨ÓÃ»§¿ØÖÆÆ÷
+	// ç»‘å®šç”¨æˆ·æŽ§åˆ¶å™¨
 	ROUTER_SIMPLE_BIND(UserController);
-	// °ó¶¨ÎÄ¼þ¿ØÖÆÆ÷
+	// ç»‘å®šæ–‡ä»¶æŽ§åˆ¶å™¨
 	ROUTER_SIMPLE_BIND(FileController);
 	
-	// °ó¶¨WebSocket¿ØÖÆÆ÷
+	// ç»‘å®šWebSocketæŽ§åˆ¶å™¨
 	router->addController(WSContorller::createShared());
 }
 #endif // !_ROUTER_
