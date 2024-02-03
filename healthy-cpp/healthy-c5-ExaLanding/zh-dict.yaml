@@ -2,6 +2,8 @@ Exalanding:
  feild: 
   physical: 体检类型
   personName: 人员姓名
+  Unit_name: 单位名称
+  name: 分组名称
 exalanding:
  put:
   modifyInformation: 修改人员信息
@@ -17,11 +19,21 @@ exalanding:
   mobile: 手机号码
   feild: 
   physical: 体检类型
-
+ file:
+  upload: 
+   summary: 上传文件   
+  editor-upload-image:
+   summary: 上传图片
+  field:
+   img-url: 图片src
+   img-alt: 图片描述
+   img-href: 图片链接
  feild:
   sex: 性别
   groupUnitName: 单位名称
   groupName: 分组名称
+  Unit_name: 单位名称
+  name: 分组名称
 questatistics:
  remove:
   summary: 删除人员

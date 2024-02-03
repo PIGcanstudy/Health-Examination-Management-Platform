@@ -33,6 +33,9 @@
 #include"Exalanding/SaveInfoController.h"
 #include "GetPD/GetPDController.h"
 #include "Pic/PicController.h"
+#include "Exalanding/TicketGroupNameListController.h"
+#include "Exalanding/GroupPersonController.h"
+#include "Exalanding/FileController.h"
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -66,6 +69,9 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(GetPDController);
 	// 绑定文件控制器
 	ROUTER_SIMPLE_BIND(PicController);
+	ROUTER_SIMPLE_BIND(TicketGroupNameListController);
+	ROUTER_SIMPLE_BIND(GroupPersonController);
+	ROUTER_SIMPLE_BIND(FileController);
 }
 
 #ifdef HTTP_SERVER_DEMO

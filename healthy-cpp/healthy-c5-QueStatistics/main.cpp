@@ -34,7 +34,7 @@
 // 是否是发布Swagger文档包
 #ifndef _RELEASE_DOC_
 // 查看Swagger文档的时候不需要连接数据库，解开下面的注释关闭启动连接数据库
-#define _RELEASE_DOC_
+//#define _RELEASE_DOC_
 #endif
 
 /**
@@ -45,12 +45,12 @@
  */
 bool getStartArg(int argc, char* argv[]) {
 	// 服务器端口
-	std::string serverPort = "8090";
+	std::string serverPort = "8091";
 	// 数据库连接信息
 	std::string dbUsername = "root";
-	std::string dbPassword = "myslbks";
+	std::string dbPassword = "zo_plant_c1_group";
 	std::string dbName = "zo_healthy";
-	std::string dbHost = "localhost";
+	std::string dbHost = "8.137.107.43";
 	int dbPort = 3306;
 	int dbMax = 5;
 #ifdef LINUX
