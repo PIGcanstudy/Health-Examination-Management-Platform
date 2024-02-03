@@ -33,3 +33,9 @@ threelevcheck:
   createTime: 创建时间
   updateId: 修改人
   updateTime: 修改时间
+
+countcheck:
+ query-all:
+  summary: 获取审批统计信息--快乐五香蛋
+ field:
+  already: 默认传入参数为4，4在数据库中代表已审核完成
