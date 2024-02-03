@@ -28,4 +28,60 @@ questatistics:
 saveinfo:
   field:
    id_card: 身份证号
- 
+
+GetPD:
+ get:
+  summary: 获取体检人员详情
+ post:
+  summary: 新增一条示例数据
+ put:
+  summary: 修改一条示例数据
+ delete:
+  summary: 删除一条示例数据
+ query-one:
+  summary: 使用声明式服务查询一条数据
+ query-all:
+  summary: 使用声明式服务查询多条数据
+ field:
+  id: 编号
+  age: 年龄
+  name: 姓名
+  sex: 性别，如：男
+  id_card: 身份证号
+  work_name: 单位名称
+  phone: 联系电话
+
+file:
+ upload: 
+  summary: 单文件上传
+ upload-more:
+  summary: 多文件上传
+ download:
+  summary: 下载文件
+ html:
+  summary: HTML静态页面访问
+ editor-upload-image:
+  summary: editor上传图片示例接口
+ field:
+  filename: 文件名
+  img-url: 图片src
+  img-alt: 图片文字描述
+  img-href: 图片链接地址
+excel:
+ sheet:
+  s1: 数据表1
+  s2: 数据表2
+ header:
+  h1: 表头1
+  h2: 表头2
+  h3: 表头3
+  h4: 表头4
+  h5: 表头5
+mail:
+ topic: 测试主题
+ body1: <html><meta charset=\"UTF-8\"><body><p>我是<b>中文</b></p><p><font color=red>我是红色的中文</font></p></body></html>
+ body2: 我是中文，文字消息内容。
+pdf:
+ title: 测试标题
+ content: 测试内容
+ foot: 测试底部

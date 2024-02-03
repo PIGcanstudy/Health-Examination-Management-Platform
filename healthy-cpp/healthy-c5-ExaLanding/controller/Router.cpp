@@ -31,7 +31,8 @@
 #include"questatistics/perdelController.h"
 #include"Exalanding/GroupOrderListController.h"
 #include"Exalanding/SaveInfoController.h"
-
+#include "GetPD/GetPDController.h"
+#include "Pic/PicController.h"
 
 // 如果定义了关闭Swagger文档宏
 #ifdef CLOSE_SWAGGER_DOC
@@ -62,7 +63,9 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(perdelController);
 	ROUTER_SIMPLE_BIND(GroupOrderListController);
 	ROUTER_SIMPLE_BIND(SaveInfoController);
-
+	ROUTER_SIMPLE_BIND(GetPDController);
+	// 绑定文件控制器
+	ROUTER_SIMPLE_BIND(PicController);
 }
 
 #ifdef HTTP_SERVER_DEMO
