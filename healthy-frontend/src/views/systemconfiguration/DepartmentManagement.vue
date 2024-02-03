@@ -97,6 +97,69 @@
 
 <script setup>
 import { ref } from 'vue'
+import {usephysicalexaminationStore} from'@stores/physicalexamination/index.js'
+//stores方法
+// const physicalexaminationStore=usephysicalexaminationStore()
+
+//  const modifyreference = async (params) => {
+//    return await physicalexaminationStore.modifyreference(params)
+//  }
+//  const removereference = async (params) => {
+//    return await physicalexaminationStore.removereference(params)
+//  } 
+//  const queryall = async (params) => {
+//    return await physicalexaminationStore.queryall(params)
+//  }
+//  const queryrules = async (params) => {
+//    return await physicalexaminationStore.queryrules(params)
+//  }
+//  const modifyrules = async (params) => {
+//    return await physicalexaminationStore.modifyrules(params)
+//  }
+//  const getlistdetails = async (params) => {
+//    return await physicalexaminationStore.getlistdetails(params)
+//  }
+//  const addlistdetails = async (params) => {
+//    return await physicalexaminationStore.addlistdetails(params)
+//  }
+//  const addproject = async (params) => {
+//    return await physicalexaminationStore.addproject(params)
+//  }
+//  constselectproject = async (params) => {
+//    return await physicalexaminationStore.selectproject(params)
+//  }
+//  const getproject = async (params) => {
+//    return await physicalexaminationStore.getproject(params)
+//  }
+//  const addvalue = async (params) => {
+//    return await physicalexaminationStore.addvalue(params)
+//  }
+//  const getvalue = async (params) => {
+//    return await physicalexaminationStore.getvalue(params)
+//  }
+//  const newpackage = async (params) => {
+//    return await physicalexaminationStore.newpackage(params)
+//  }
+//  const deletepackage = async (params) => {
+//    return await physicalexaminationStore.deletepackage(params)
+//  }
+//  const modifypackage = async (params) => {
+//    return await physicalexaminationStore.modifypackage(params)
+//  }
+//  const deltbp = async (params) => {
+//    return await physicalexaminationStore.deltbp(params)
+//  }
+//  const updatetbp = async (params) => {
+//    return await physicalexaminationStore.updatetbp(params)
+//  }
+//  const deletepackagerisis = async (params) => {
+//    return await physicalexaminationStore.deletepackagerisis(params)
+//  }
+//  const modifypackagerisis = async (params) => {
+//    return await physicalexaminationStore.deletepackagerisis(params)
+//  }
+
+
 
 const value1 = ref(true)
 const input = ref('')
