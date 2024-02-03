@@ -20,5 +20,11 @@ public interface PermissionApis {
 
     public JsonVO<PermissionDTO> add(PermissionDTO permission);
 
+    /**
+     * @author 黑子的篮球
+     */
+    public JsonVO<List<PermissionDTO>> getResourcesNameTree(); //获取名称资源树
+
+    public JsonVO<List<PermissionDTO>> getResourceList();  //搜索资源列表
 
 }

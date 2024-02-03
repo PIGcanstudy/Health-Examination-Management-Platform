@@ -23,7 +23,7 @@ public class PermissionDTO {
     @ApiModelProperty(value = "查询Id",example = "123456789")
     private String id;
 
-    @ApiModelProperty(value = "菜单类型",example = "0 -1 1")
+    @ApiModelProperty(value = "菜单类型",example = "0")
     private Boolean type;
 
     @ApiModelProperty(value = "上级id",example = "123456789")
@@ -50,13 +50,13 @@ public class PermissionDTO {
     @ApiModelProperty(value = "排序的权值",example = "10.2")
     private BigDecimal sortOrder;
 
-    @ApiModelProperty(value = "是否启用",example = "0 启动 1禁用")
+    @ApiModelProperty(value = "是否启用",example = "0")
     private Boolean status;
 
     @ApiModelProperty(value = "按钮类型",example = "disable")
     private String buttonType;
 
-    @ApiModelProperty(value = "始终显示",example = "0 1")
+    @ApiModelProperty(value = "始终显示",example = "0")
     private Boolean showAlways;
 
     /**
@@ -68,7 +68,7 @@ public class PermissionDTO {
     @ApiModelProperty(value = "是否显示左侧菜单",example = "1")
     private Boolean showLeft;
 
-    @ApiModelProperty(value = "等级",example = "1 2 3 4")
+    @ApiModelProperty(value = "等级",example = "1")
     private Integer level;
 
 }

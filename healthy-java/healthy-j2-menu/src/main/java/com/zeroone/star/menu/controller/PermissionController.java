@@ -41,10 +41,25 @@ public class PermissionController implements PermissionApis {
         return null;
     }
 
-    @ApiOperation("获取权限菜单树")
+    @ApiOperation("添加资源")
     @PostMapping("add")
     @Override
     public JsonVO<PermissionDTO> add(PermissionDTO permission) {
+        return null;
+    }
+
+
+    @ApiOperation("获取资源名称树")
+    @GetMapping("getResourcesNameTree")
+    @Override
+    public JsonVO<List<PermissionDTO>> getResourcesNameTree() {
+        return null;
+    }
+
+    @ApiOperation("搜索资源列表")
+    @GetMapping("getResourceList")
+    @Override
+    public JsonVO<List<PermissionDTO>> getResourceList() {
         return null;
     }
 
