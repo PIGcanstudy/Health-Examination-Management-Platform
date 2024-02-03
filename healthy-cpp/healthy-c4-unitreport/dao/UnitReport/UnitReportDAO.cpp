@@ -2,7 +2,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: กฃบร
- @Date: 2024/01/14 16:32:41
+ @Date: 2024/01/27 20:48:57
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,19 +16,14 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-
 #include "stdafx.h"
-#include "MedExamUnitOrderController.h"
+#include "UnitReportDAO.h"
+#include "UnitReportMapper.h"
 
-MedExamUnitOrderJsonVO::Wrapper MedExamUnitOrderController::execQueryMedExamUnitOrder(const MedExamUnitOrderQuery::Wrapper& query)
+list<UnitReportDO> UnitReportDAO::selectAll()
 {
-	MedExamUnitOrderJsonVO::Wrapper vo = MedExamUnitOrderJsonVO::createShared();
-	auto dto = MedExamUnitOrderListDTO::createShared();
-	if (query->pageIndex == 1) {
-		vo->success(dto);
-	}
-	else {
-		vo->fail(dto);
-	}
-	return vo;
+	string sql = "SELECT code, physical_unit, physical_date, physical_project, concluding_observations, physical_type, entrust_unit, physical_number, evaluation_basis FROM t_unit_report";
+	UnitReportMapper mapper;                                                            
+	auto result = sqlSession->executeQuery<UnitReportDO, UnitReportMapper>(sql, mapper);
+	return result;
 }

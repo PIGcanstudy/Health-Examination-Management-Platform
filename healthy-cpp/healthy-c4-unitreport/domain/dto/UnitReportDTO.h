@@ -31,8 +31,8 @@ class UnitReportDTO : public oatpp::DTO
 {
 	DTO_INIT(UnitReportDTO, DTO)
 	// 报告编号
-	DTO_FIELD(String, unit_code);
-	DTO_FIELD_INFO(unit_code) {
+	DTO_FIELD(String, code);
+	DTO_FIELD_INFO(code) {
 		info->description = ZH_WORDS_GETTER("UnitReport.field.unit-code");
 	}
 	// 体检单位
@@ -77,7 +77,7 @@ class UnitReportDTO : public oatpp::DTO
 	}
 public:
 	UnitReportDTO() {
-		unit_code = "1";
+		code = "1";
 		physical_unit = "1";
 		physical_date = "1";
 	}

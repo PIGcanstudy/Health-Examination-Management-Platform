@@ -2,7 +2,7 @@
  Copyright Zero One Star. All rights reserved.
 
  @Author: 。好
- @Date: 2024/01/14 21:48:24
+ @Date: 2024/01/27 20:28:39
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,19 +16,17 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-#ifndef _MEDEXAMUINTORDERVO_H_
-#define _MEDEXAMUINTORDERVO_H_
+#ifndef _UNITREPORTSERVICE_H_
+#define _UNITREPORTSERVICE_H_
 
-#include "../GlobalInclude.h"
-#include "domain/dto/MedExamUnitOrderDTO.h"
+#include "domain/dto/UnitReportDTO.h"
+#include "domain/vo/UnitReportJsonVO.h"
 
-#include OATPP_CODEGEN_BEGIN(DTO)
-
-class MedExamUnitOrderJsonVO : public JsonVO<MedExamUnitOrderListDTO::Wrapper>
+class UnitReportService
 {
-	DTO_INIT(MedExamUnitOrderJsonVO, JsonVO<MedExamUnitOrderListDTO::Wrapper>)
+public:
+	// 获取报告详情
+	UnitReportListDTO::Wrapper listAll();
 };
 
-#include OATPP_CODEGEN_END(DTO)
-
-#endif // !_MEDEXAMUINTORDERVO_H_
+#endif // !_UNITREPORTSERVICE_H_
