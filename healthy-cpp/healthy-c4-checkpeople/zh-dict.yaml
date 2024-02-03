@@ -1,14 +1,14 @@
 unit:
 query:
-   summary:获取人员详情
+   summary:鑾峰彇浜哄憳璇︽儏
 add:
-   summary:添加人员
+   summary:娣诲姞浜哄憳
 field:
-   idCard:证件号码
-   personName:姓名 
-   sex:性别
-   birth:出生日期
-   age:年龄
-   isMarry:是否结婚
-   mobile:手机号码
-   orderId:订单id
+   idCard:璇佷欢鍙风爜
+   personName:濮撳悕 
+   sex:鎬у埆
+   birth:鍑虹敓鏃ユ湡
+   age:骞撮緞
+   isMarry:鏄惁缁撳
+   mobile:鎵嬫満鍙风爜
+   orderId:璁㈠崟id

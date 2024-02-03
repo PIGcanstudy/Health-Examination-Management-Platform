@@ -27,11 +27,12 @@
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
 #endif
+
 #include "medexamprintreport/MedExamPrintReportController.h"
 #include "previewreport/PreviewReportController.h"
-#include "downloadreport/DownloadReportController.h"
-#include "printreport/PrintReportController.h"
-#include "printreport/DownloadSampleCodeController.h"
+#include "printReport/printReportController.h"
+#include "downloadReport/downloadReportController.h"
+#include "printreport/downloadSampleCodeController.h"
 
 
 // 如果定义了关闭Swagger文档宏
@@ -63,6 +64,8 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(DownloadReportController);
 	ROUTER_SIMPLE_BIND(PrintReportController);
 	ROUTER_SIMPLE_BIND(DownloadSampleCodeController);
+	ROUTER_SIMPLE_BIND(MedExamPrintReportController);
+	ROUTER_SIMPLE_BIND(PreviewReportController);
 }
 
 #ifdef HTTP_SERVER_DEMO

@@ -43,3 +43,17 @@ addition:
  test:
   testReportName: 职业健康体检报告
   sampleCodeName: 职业健康体检条码
+pdf:
+ title: 个人信息
+ name: 姓名 
+ sex: 性别
+ age: 年龄
+ idCard: 身份证号 
+ mobile: 联系电话
+ physicalType: 体检种类
+ dept: 工作单位
+ conclusion: 健康检查结论
+ handleOpinion: 处理意见
+ inspectionDoctor: 主检医生
+ inspectionDate: 体检日期
+ diagnosticUnit: 检查单位

@@ -2,6 +2,7 @@
 
 PhysicalExaminationPersonnelJsonVO::Wrapper PhysicalExaminationPersonnelController::execQueryPhysicalExaminationPersonnel(const ReportStatisticsQuery::Wrapper& query)
 {
+	cout << "find sucess";
 	return PhysicalExaminationPersonnelJsonVO::Wrapper();
 }
 

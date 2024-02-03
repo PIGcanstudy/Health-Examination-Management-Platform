@@ -14,7 +14,7 @@ class CheckReportListDTO : public oatpp::DTO
 {
 	DTO_INIT(CheckReportListDTO, DTO);
 	// 唯一编号
-	API_DTO_FIELD_DEFAULT(String, iid, ZH_WORDS_GETTER("report.field.id"));
+	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("report.field.id"));
 
 	// 姓名
 	API_DTO_FIELD_DEFAULT(String, person_name, ZH_WORDS_GETTER("report.field.name"));
@@ -23,7 +23,7 @@ class CheckReportListDTO : public oatpp::DTO
 	API_DTO_FIELD_DEFAULT(String, sex, ZH_WORDS_GETTER("report.field.sex"));
 
 	// 年龄
-	API_DTO_FIELD_DEFAULT(String, age, ZH_WORDS_GETTER("report.field.age"));
+	API_DTO_FIELD_DEFAULT(UInt32, age, ZH_WORDS_GETTER("report.field.age"));
 
 	// 是否过审
 	API_DTO_FIELD_DEFAULT(Boolean, statu, ZH_WORDS_GETTER("report.field.statu"));

@@ -62,7 +62,7 @@ if(WIN32)
 endif()
 
 # 编译可执行文件
-add_executable (${appName} ${SC_FILES} "domain/dto/unitpeople/UnitPeopleDTO.h" "domain/do/unitpeople/UnitPeopleDO.h" "domain/query/unitpeople/UnitPeopleQuery.h" "domain/vo/unitpeople/UnitPeopleVO.h")
+add_executable (${appName} ${SC_FILES} "domain/dto/unitpeople/UnitPeopleDTO.h" "domain/do/unitpeople/UnitPeopleDO.h" "domain/query/unitpeople/UnitPeopleQuery.h" "domain/vo/unitpeople/UnitPeopleVO.h" "dao/unitpeople/UnitPeopleDAO.h" "dao/unitpeople/UnitPeopleDAO.cpp" "dao/unitpeople/UnitPeopleMapper.h" "service/unitpeople/UnitPeopleService.h" "service/unitpeople/UnitPeopleService.cpp")
 
 # 链接库
 target_link_libraries (${appName} "lib-common" "lib-oatpp" "lib-mysql")
