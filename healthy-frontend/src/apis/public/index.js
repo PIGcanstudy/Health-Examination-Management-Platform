@@ -48,7 +48,7 @@ export const queryPlannameList = (params) => {
 export const queryPlanProlist = (params) => {
   return Request.requestJson(
     Request.GET,
-    baseUrl + '/',
+    baseUrl + '/common/query-planprolist',
     params
   )
 }
@@ -57,7 +57,7 @@ export const queryPlanProlist = (params) => {
 export const querySelectionnameList = (params) => {
   return Request.requestJson(
     Request.GET,
-    baseUrl + '/common/query-planprolist',
+    baseUrl + '/common/query-sectionnamelist',
   )
 }
 
@@ -66,7 +66,7 @@ export const querySelectionnameList = (params) => {
 export const queryTermnameList = (params) => {
   return Request.requestForm(
     Request.GET,
-    baseUrl + '​/common​/query-sectionnamelist',
+    baseUrl + '/common/query-termnamelist',
     params
   )
 }

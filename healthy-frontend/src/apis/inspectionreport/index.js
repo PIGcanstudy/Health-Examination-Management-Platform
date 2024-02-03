@@ -1,5 +1,5 @@
 import Request from '@/apis/request.js'
-const baseUrl = 'http://localhost:8090/swagger/ui#'
+const baseUrl = ''
 
 //获取体检报告列表
 export const ReportList = (params) => {
