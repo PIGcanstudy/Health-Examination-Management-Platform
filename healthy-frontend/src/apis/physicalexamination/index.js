@@ -69,11 +69,11 @@ export const modifypackage = (params) => {
   export const getpackagelist = (params) => {
     return Request.requestForm(Request.GET, baseUrl + '/basis/query-package', params)
   } 
-//   del-TBP
+//   基础项目-删除项目
 export const deltbp = (params) => {
     return Request.requestJson(Request.DELETE, baseUrl + '/combo/del-TBP', params)
   } 
-
+  // 修改指定项目
   export const updatetbp = (params) => {
     return Request.requestJson(Request.POSTE, baseUrl + '/combo/update-TBP', params)
   } 
