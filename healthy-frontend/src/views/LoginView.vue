@@ -34,7 +34,6 @@
           <div class="wrapper">
             <el-form :model="formData" status-icon label-width="60px" class="form">
               <h2>登录</h2>
-
               <el-form-item label="账号" prop="username">
                 <el-input v-model="formData.username"></el-input>
               </el-form-item>
