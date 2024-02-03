@@ -2,33 +2,10 @@ import { defineStore } from 'pinia'
 import healthcheck from './menus/healthcheck'
 import careercheck from './menus/careercheck'
 import employmentcheck from './menus/employmentcheck'
-import configurationmanagement from './menus/configurationmanagement'
-import dataonline from './menus/dataonline'
-import basicdata from './menus/basicdata'
-import marketingmanagement from './menus/marketingmanagement'
-import medicalregistration from './menus/medicalregistration'
-import resultsinput from './menus/resultsinput'
-import masterinspection from './menus/masterinspection'
-import systemconfiguration from './menus/systemconfiguration'
-import inspectionstatistics from './menus/inspectionstatistics'
-import personalcentre from './menus/personalcentre'
+
 import Request from '@/apis/request'
 // 测试菜单数据
-let testMenus = [
-  healthcheck,
-  careercheck,
-  employmentcheck,
-  basicdata,
-  marketingmanagement,
-  medicalregistration,
-  resultsinput,
-  masterinspection,
-  inspectionstatistics,
-  configurationmanagement,
-  systemconfiguration,
-  dataonline,
-  personalcentre
-]
+let testMenus = [healthcheck, careercheck, employmentcheck]
 
 export const userStore = defineStore('user', {
   state: () => ({
