@@ -11,9 +11,9 @@
 class UnitPhysicalExaminationOrdersDAO : public BaseDAO
 {
 public:
+	// 统计数据条数
+	uint64_t count(const UnitPhysicalExaminationOrdersQuery::Wrapper& query);
 	// 分页查询数据
 	list<UnitPhysicalExaminationOrdersDO> selectWithPage(const UnitPhysicalExaminationOrdersQuery::Wrapper& query);
-	// 通过单位名称和订单签订区间查询数据
-	list<UnitPhysicalExaminationOrdersDO> selectByName(const string& name , const string& beginTime, const string& endTime);
 };
 #endif // !_SAMPLE_DAO_

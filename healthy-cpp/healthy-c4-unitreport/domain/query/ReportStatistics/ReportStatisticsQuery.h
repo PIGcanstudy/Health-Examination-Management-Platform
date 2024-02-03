@@ -20,8 +20,8 @@ class ReportStatisticsQuery : public PageQuery
 	DTO_INIT(ReportStatisticsQuery, PageQuery);
 	//订单编号
 	API_DTO_FIELD_DEFAULT(String, code, ZH_WORDS_GETTER("unitreport.order.code"));
-	//统计表类型用数字来表示1："体检人员汇总表" 2："复查人员汇总表" 3："复查结果汇总表"
-	API_DTO_FIELD_DEFAULT(UInt32, type, ZH_WORDS_GETTER("unitreport.summaryTable.type"));
+	////统计表类型用数字来表示1："体检人员汇总表" 2："复查人员汇总表" 3："复查结果汇总表"
+	//API_DTO_FIELD_DEFAULT(UInt32, type, ZH_WORDS_GETTER("unitreport.summaryTable.type"));
 };
 
 #include OATPP_CODEGEN_END(DTO)

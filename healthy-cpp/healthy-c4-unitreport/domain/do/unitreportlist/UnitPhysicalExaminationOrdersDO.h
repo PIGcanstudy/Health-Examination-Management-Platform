@@ -17,17 +17,15 @@ class UnitPhysicalExaminationOrdersDO
 	// 订单日期
 	CC_SYNTHESIZE(string, signingTime, SigningTime);
 	// 是否上报
-	CC_SYNTHESIZE(string, Escalation, Escalation);
+	CC_SYNTHESIZE(int, Escalation, Escalation);
 	// 检测类型
-	CC_SYNTHESIZE(string, detectionType, DetectionType);
+	CC_SYNTHESIZE(int, detectionType, DetectionType);
 public:
 	UnitPhysicalExaminationOrdersDO() 
 	{
 		name = "";
 		code = "";
 		signingTime = "";
-		Escalation = "";
-		detectionType = "";
 	}
 };
 

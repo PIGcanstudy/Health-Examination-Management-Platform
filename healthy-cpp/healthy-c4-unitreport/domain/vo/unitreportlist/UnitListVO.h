@@ -36,9 +36,9 @@ class UnitListJsonVO : public JsonVO<UnitListDTO::Wrapper>
 /**
  * 示例分页显示JsonVO，用于响应给客户端的Json对象
  */
-class UnitListPageJsonVO : public JsonVO<UnitListDTO::Wrapper> 
+class UnitListPageJsonVO : public JsonVO<UnitListPageDTO::Wrapper> 
 {
-	DTO_INIT(UnitListPageJsonVO, JsonVO<UnitListDTO::Wrapper>);
+	DTO_INIT(UnitListPageJsonVO, JsonVO<UnitListPageDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)

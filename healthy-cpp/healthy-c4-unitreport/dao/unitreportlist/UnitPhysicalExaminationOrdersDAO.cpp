@@ -8,27 +8,35 @@
 SqlParams params; \
 sql<<" WHERE 1=1"; \
 if (query->name) { \
-	sql << " AND `name`=?"; \
+	sql << " AND `group_unit_name`=?"; \
 	SQLPARAMS_PUSH(params, "s", std::string, query->name.getValue("")); \
 } \
-if (query->sex) { \
-	sql << " AND sex=?"; \
-	SQLPARAMS_PUSH(params, "s", std::string, query->sex.getValue("")); \
+if (query->beginTime){ \
+	sql << " AND date(signing_time) >= ? ";\
+	SQLPARAMS_PUSH(params, "s", std::string, query->beginTime.getValue("")); \
 } \
-if (query->age) { \
-	sql << " AND age=?"; \
-	SQLPARAMS_PUSH(params, "i", int, query->age.getValue(0)); \
+if (query->endTime){ \
+	sql << " AND date(signing_time) <= ? ";\
+	SQLPARAMS_PUSH(params, "s", std::string, query->endTime.getValue("")); \
+} \
+
+
+uint64_t UnitPhysicalExaminationOrdersDAO::count(const UnitPhysicalExaminationOrdersQuery::Wrapper & query)
+{
+	stringstream sql;
+	sql << "SELECT COUNT(*) FROM t_group_order";
+	SAMPLE_TERAM_PARSE(query, sql);
+	string sqlStr = sql.str();
+	return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
 list<UnitPhysicalExaminationOrdersDO> UnitPhysicalExaminationOrdersDAO::selectWithPage(const UnitPhysicalExaminationOrdersQuery::Wrapper& query)
 {
 	stringstream sql;
-
-	return list<UnitPhysicalExaminationOrdersDO>();
-}
-
-list<UnitPhysicalExaminationOrdersDO> UnitPhysicalExaminationOrdersDAO::selectByName(const string& name, const string& beginTime, const string& endTime)
-{
-
-	return list<UnitPhysicalExaminationOrdersDO>();
+	sql << "select group_unit_name,order_code,date(signing_time),state,sporadic_physical from t_group_order ";
+	SAMPLE_TERAM_PARSE(query, sql);
+	sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
+	UnitPhysicalExaminationOrdersMapper mapper;
+	string sqlStr = sql.str();
+	return sqlSession->executeQuery<UnitPhysicalExaminationOrdersDO, UnitPhysicalExaminationOrdersMapper>(sqlStr, mapper, params);
 }

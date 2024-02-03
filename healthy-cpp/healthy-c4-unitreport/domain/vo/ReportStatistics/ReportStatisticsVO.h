@@ -33,6 +33,11 @@ class PhysicalExaminationPersonnelJsonVO : public JsonVO<PhysicalExaminationPers
 	DTO_INIT(PhysicalExaminationPersonnelJsonVO, JsonVO<PhysicalExaminationPersonnelDTO::Wrapper>);
 };
 
+class PhysicalExaminationPersonnelPageJsonVO : public JsonVO<PhysicalExaminationPersonnelPageDTO::Wrapper>
+{
+	DTO_INIT(PhysicalExaminationPersonnelPageJsonVO, JsonVO<PhysicalExaminationPersonnelPageDTO::Wrapper>);
+};
+
 /**
  *复查人员汇总表示例显示JsonVO，用于响应给客户端的Json对象
  */
@@ -41,12 +46,22 @@ class ReviewPersonnelJsonVO : public JsonVO<ReviewPersonnelDTO::Wrapper>
 	DTO_INIT(ReviewPersonnelJsonVO, JsonVO<ReviewPersonnelDTO::Wrapper>);
 };
 
+class ReviewPersonnelPageJsonVO : public JsonVO<ReviewPersonnelPageDTO::Wrapper>
+{
+	DTO_INIT(ReviewPersonnelPageJsonVO, JsonVO<ReviewPersonnelPageDTO::Wrapper>);
+};
+
 /**
  *  复查结果汇总表示例显示JsonVO，用于响应给客户端的Json对象
  */
 class ReviewResultsJsonVO : public JsonVO<ReviewResultsDTO::Wrapper>
 {
 	DTO_INIT(ReviewResultsJsonVO, JsonVO<ReviewResultsDTO::Wrapper>);
+};
+
+class ReviewResultsPageJsonVO : public JsonVO<ReviewResultsPageDTO::Wrapper>
+{
+	DTO_INIT(ReviewResultsPageJsonVO, JsonVO<ReviewResultsPageDTO::Wrapper>);
 };
 
 #include OATPP_CODEGEN_END(DTO)
