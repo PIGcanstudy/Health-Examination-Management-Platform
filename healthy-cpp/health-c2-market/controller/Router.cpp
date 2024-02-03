@@ -21,7 +21,7 @@
 #include "ApiHelper.h"
 #include "check/ThreeLevCheckController.h"
 #include "check/CountCheckController.h"
-
+#include "groupapprove/GroupApproveController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
@@ -56,8 +56,10 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(ThreeLevCheckController);
 	//快乐五香蛋
 	ROUTER_SIMPLE_BIND(CountCheckController);
-
+	ROUTER_SIMPLE_BIND(GroupApproveController);//go
 }
+
+
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
@@ -68,6 +70,7 @@ void Router::createSampleRouter()
 	ROUTER_SIMPLE_BIND(UserController);
 	// 绑定文件控制器
 	ROUTER_SIMPLE_BIND(FileController);
+
 	
 	// 绑定WebSocket控制器
 	router->addController(WSContorller::createShared());
