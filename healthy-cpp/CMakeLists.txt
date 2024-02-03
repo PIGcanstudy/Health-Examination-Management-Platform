@@ -141,7 +141,7 @@ add_subdirectory ("lib-common")
 if(UNIX)
 	add_subdirectory ("nacos-register")
 endif()
-add_subdirectory ("arch-demo")
+# add_subdirectory ("arch-demo")
 # 在后面添加你的模块
 add_subdirectory ("health-c2-bas")
 add_subdirectory ("health-c2-market")
