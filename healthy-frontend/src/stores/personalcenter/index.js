@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { modifyPersonalInfo, changeMail,changePassword,changePhone,passwordAuthentication,queryEmailCode,querySmsCode } from '@/apis/personal/index.js'
-export const personalCenterStores = defineStore('personalCenterStores', () => {
+export const usePersonalCenterStores = defineStore('personalCenterStores', () => {
 /**
  * 个人中心-j1
  * stores

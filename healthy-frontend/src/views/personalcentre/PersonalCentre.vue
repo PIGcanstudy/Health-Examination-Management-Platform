@@ -109,6 +109,10 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
+import { usePersonalCenterStore } from '@/stores/personalcenter/index.js'
+
+/* Stores中的方法 */
+const personalCenterStore = usePersonalCenterStore()
 
 // 基本信息表单---label位置
 const labelPosition = ref('left')
