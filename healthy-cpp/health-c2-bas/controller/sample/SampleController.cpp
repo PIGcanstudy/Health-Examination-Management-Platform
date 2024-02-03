@@ -1,7 +1,7 @@
 #include "SampleController.h"
 #include "stdafx.h"
-#include "../../domain/dto/bas/SampleDTO.h"
-#include "../../service/bas/SampleService.h"
+#include "../../domain/dto/sample/SampleDTO.h"
+#include "../../service/sample/SampleService.h"
 
 StringJsonVO::Wrapper SampleController::execModifySample(const SampleDTO::Wrapper& dto)
 {

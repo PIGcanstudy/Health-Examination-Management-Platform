@@ -23,7 +23,7 @@
 #include "positive/DeatilController.h" //»¶»¶
 #include "positive/ModifyResultController.h" //»¶»¶
 #include "positive/resultController.h" //elysia
-#include "bas/SampleController.h"
+#include "sample/SampleController.h" //øÏ¿÷ŒÂœ„µ∞
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"

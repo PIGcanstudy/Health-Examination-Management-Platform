@@ -2,7 +2,7 @@
 #ifndef _SAMPLE_SERVICE_
 #define _SAMPLE_SERVICE_
 #include <list>
-#include "../../domain/dto/bas/SampleDTO.h"
+#include "../../domain/dto/sample/SampleDTO.h"
 
 /**
  * 示例服务实现，演示基础的示例服务实现

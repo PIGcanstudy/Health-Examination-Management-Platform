@@ -3,7 +3,7 @@
 #define _SAMPLE_CONTROLLER_
 
 #include "domain/vo/BaseJsonVO.h"
-#include "../../domain/dto/bas/SampleDTO.h"
+#include "../../domain/dto/sample/SampleDTO.h"
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
 //单位分页查询实体
@@ -17,7 +17,7 @@ public://定义接口
 	// 3.1 定义修改接口描述
 	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("sample.put.summary"), modifySample, StringJsonVO::Wrapper);
 	// 3.2 定义修改接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/bas", modifySample, BODY_DTO(SampleDTO::Wrapper, dto), execModifySample(dto));
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/sample", modifySample, BODY_DTO(SampleDTO::Wrapper, dto), execModifySample(dto));
 
 private://定义接口执行函数
 
