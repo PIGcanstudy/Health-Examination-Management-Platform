@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "SampleService.h"
-#include "../../dao/bas/SampleDAO.h"
+#include "../../dao/sample/SampleDAO.h"
 #include "../../domain/do/sample/SampleDO.h"
 
 bool SampleService::updateData(const SampleDTO::Wrapper& dto)
