@@ -33,7 +33,11 @@ public:
 	uint64_t count(const InquiryDetailQuery::Wrapper& query);
 	// 修改数据
 	int update(const InquiryDetailDO& uObj);
-	
+
 	list<InquiryDetailDO> selectWithPage(const InquiryDetailQuery::Wrapper& query);
+	//通过id查询数据
+	list<InquiryDetailDO> selectById(const string& id);
+
+
 };
 #endif // !_InquiryDetail_DAO_

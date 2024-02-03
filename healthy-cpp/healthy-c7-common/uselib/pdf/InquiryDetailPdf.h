@@ -8,14 +8,10 @@
 class InquiryDetailPdf
 {
 public:
-
-	//static void InquiryDetailText(const InquiryDetailDO& Do);
-	//static void InquiryDetailTpl(const InquiryDeatilDO& Do);
+	// Ä£°å»æÖÆ
+	static void InquiryDetailText(const InquiryDetailDO& Do);
+	//static void InquiryDetailTpl(const InquiryDetailDO& Do);
 };	
 
 
 #endif // !_INQUIRYDETAILPDF_H_
-
-
-
-

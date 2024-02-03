@@ -24,14 +24,17 @@
 //定义条件解析宏，减少重复代码
 #define SAMPLE_TERAM_PARSE(query, sql) \
     SqlParams params; \
-    sql << "WHERE 1=1"; \
+    if (query->id) { \
+        sql << " AND a.id=?"; \
+        SQLPARAMS_PUSH(params, "i", int, query->id.getValue(0)); \
+    } \
     if (query->workYear) { \
         sql << " AND work_year=?"; \
-        SQLPARAMS_PUSH(params, "s", std::string, query->workYear.getValue(0)); \
+        SQLPARAMS_PUSH(params, "i", int, query->workYear.getValue(0)); \
     } \
     if (query->workMonth) { \
         sql << " AND work_month=?"; \
-        SQLPARAMS_PUSH(params, "s",  std::string, query->workMonth.getValue(0)); \
+        SQLPARAMS_PUSH(params, "i",  int, query->workMonth.getValue(0)); \
     } \
     if (query->isMarry) { \
         sql << " AND is_marry=?"; \
@@ -39,11 +42,11 @@
     } \
     if (query->exposureWorkYear) { \
         sql << " AND exposure_work_year=?"; \
-        SQLPARAMS_PUSH(params, "s", std::string, query->exposureWorkYear.getValue(0)); \
+        SQLPARAMS_PUSH(params, "i", int, query->exposureWorkYear.getValue(0)); \
     } \
     if (query->exposureWorkMonth) { \
         sql << " AND exposure_work_month=?"; \
-        SQLPARAMS_PUSH(params, "s", std::string, query->exposureWorkMonth.getValue(0)); \
+        SQLPARAMS_PUSH(params, "i", int, query->exposureWorkMonth.getValue(0)); \
     } \
     if (query->education) { \
         sql << " AND education=?"; \
@@ -64,23 +67,23 @@
     if (query->department) { \
         sql << " AND department=?"; \
         SQLPARAMS_PUSH(params, "s", std::string, query->department.getValue("")); \
-    } \
+    } 
 
 
 uint64_t InquiryDetailDAO::count(const InquiryDetailQuery::Wrapper & query)
 {
-    stringstream sql;
-    sql << "SELECT COUNT(*) FROM t_group_person JOIN t_interrogation ON t_group_person.id =t_interrogation.id";
+    stringstream sql; 
+    sql << "SELECT COUNT(*) FROM t_group_person AS a JOIN t_interrogation AS b ON a.id = b.id";
     SAMPLE_TERAM_PARSE(query, sql);
     string sqlStr = sql.str();
     return sqlSession->executeQueryNumerical(sqlStr, params);
 }
 
 
-std::list<InquiryDetailDO> InquiryDetailDAO::selectWithPage(const InquiryDetailQuery::Wrapper & query)
+list<InquiryDetailDO> InquiryDetailDAO::selectWithPage(const InquiryDetailQuery::Wrapper & query)
 {
     stringstream sql;
-    sql << "SELECT a.id,b.work_year, b.work_month, a.is_marry, b.exposure_work_year, b.exposure_work_month, b.education, b.family_address, a.work_type_text, a.work_name, a.department FROM t_group_person AS a JOIN t_interrogation AS b ON t_group_person.id =t_interrogation.id";
+    sql << "SELECT a.id, b.work_year, b.work_month, a.is_marry, b.exposure_work_year, b.exposure_work_month, b.education, b.family_address, a.work_type_text, a.work_name, a.department FROM t_group_person AS a JOIN t_interrogation AS b ON a.id = b.id";
     SAMPLE_TERAM_PARSE(query, sql);
     sql << " LIMIT " << ((query->pageIndex - 1) * query->pageSize) << "," << query->pageSize;
     InquiryDetailMapper mapper;
@@ -91,8 +94,15 @@ std::list<InquiryDetailDO> InquiryDetailDAO::selectWithPage(const InquiryDetailQ
 
 int InquiryDetailDAO::update(const InquiryDetailDO& uObj)
 {
-    string sql = "UPDATE `table_int` AS `b`, `table_group` AS `a` SET `b`.`work_year` = ?, `b`.`work_month` = ?, `a`.`is_marry` = ?, `b`.`exposure_work_year` = ?, `b`.`exposure_work_month` = ?, `b`.`education` = ?, `b`.`family_address` = ?, `a`.`work_type_text` = ?, `a`.`work_name` = ?, `a`.`department` = ? WHERE `a`.`id` = `b`.`id`";
+    string sql = "UPDATE `t_interrogation` AS `b`, `t_group_person` AS `a` SET `b`.`work_year` = ?, `b`.`work_month` = ?, `a`.`is_marry` = ?, `b`.`exposure_work_year` = ?, `b`.`exposure_work_month` = ?, `b`.`education` = ?, `b`.`family_address` = ?, `a`.`work_type_text` = ?, `a`.`work_name` = ?, `a`.`department` = ? WHERE `a`.`id` = ? && `b`.`id` = ?";
 
-    return sqlSession->executeUpdate(sql,"%i%i%s%i%i%s%s%s%s%s", uObj.getWorkYear(), uObj.getWorkMonth(), uObj.getIsMarry(), uObj.getExposureWorkYear(), uObj.getExposureWorkMonth(), uObj.getEducation(), uObj.getFamilyAddress(), uObj.getWorkTypeText(), uObj.getWorkName(), uObj.getDepartment());
+    return sqlSession->executeUpdate(sql,"%i%i%s%i%i%s%s%s%s%s%i%i", uObj.getWorkYear(), uObj.getWorkMonth(), uObj.getIsMarry(), uObj.getExposureWorkYear(), uObj.getExposureWorkMonth(), uObj.getEducation(), uObj.getFamilyAddress(), uObj.getWorkTypeText(), uObj.getWorkName(), uObj.getDepartment(),uObj.getId(), uObj.getId());
 }
 
+
+list<InquiryDetailDO> InquiryDetailDAO::selectById(const string& id)
+{
+    string sql = "SELECT a.id, b.work_year, b.work_month, a.is_marry, b.exposure_work_year, b.exposure_work_month, b.education, b.family_address, a.work_type_text, a.work_name, a.department FROM t_group_person AS a JOIN t_interrogation AS b ON a.id = b.id WHERE a.id LIKE CONCAT('%', ? ,'%')";
+    InquiryDetailMapper mapper;
+    return sqlSession->executeQuery<InquiryDetailDO, InquiryDetailMapper>(sql, mapper, "%s", id);
+}

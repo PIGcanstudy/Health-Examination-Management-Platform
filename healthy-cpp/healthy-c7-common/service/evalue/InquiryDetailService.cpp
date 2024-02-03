@@ -1,8 +1,8 @@
 /*
  Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/10/25 11:13:11
+ @Author: lenyan~
+ @Date: 2024/2/3
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -19,12 +19,11 @@
 #include "stdafx.h"
 #include "InquiryDetailService.h"
 #include "../../dao/evalue/InquiryDetailDAO.h"
-#include "domain/dto/evalue/InquiryDetailDTO.h"
+
 #include "uselib/fastdfs/InquiryDetailFastDfs.h"
 #include "uselib/pdf/InquiryDetailPdf.h"
 
-
-
+//总条数
 InquiryDetailPageDTO::Wrapper InquiryDetailService::listAll(const InquiryDetailQuery::Wrapper& query)
 {
 	// 构建返回对象
@@ -61,29 +60,7 @@ InquiryDetailPageDTO::Wrapper InquiryDetailService::listAll(const InquiryDetailQ
 	return pages;
 }
 
-// Pdf使用
-//InquiryDetailDTO::Wrapper InquiryDetailService::listByName(const InquiryDetailQuery::Wrapper& query)
-//{
-//	// 构建返回对象
-//	auto pages = InquiryDetailDTO::createShared();
-//	InquiryDetailDAO dao;
-//	InquiryDetailPdf pdf;
-//	InquiryDetailFastDfs FastDfs;
-//	list<InquiryDetailDO> result = dao.selectByName(query->personName);
-//	// 将DO转换成DTO
-//	for (InquiryDetailDO sub : result)
-//	{
-//		auto dto = InquiryDetailListDTO::createShared();
-//		pdf.InquiryDetailText(sub);
-//		//pdf.InquiryDetailTpl(sub);
-//		dto->downloadUrl = FastDfs.InquiryDetailDfsWithConf("InquiryDetailReport.pdf");
-//		pages = dto;
-//	}
-//	return pages;
-//}
-
-
-
+//更新数据表
 bool InquiryDetailService::updateData(const InquiryDetailDTO::Wrapper& dto)
 {
 	// 组装DO数据
@@ -96,3 +73,24 @@ bool InquiryDetailService::updateData(const InquiryDetailDTO::Wrapper& dto)
 		InquiryDetailDAO dao;
 	return dao.update(data) == 1;
 }
+//pdf根据id生成对应的fastpdf
+InquiryDetailDTO::Wrapper InquiryDetailService::listById(const InquiryDetailQuery::Wrapper& query)
+{
+	// 构建返回对象
+	auto pages = InquiryDetailDTO::createShared();
+	InquiryDetailDAO dao;
+	InquiryDetailPdf pdf;
+	InquiryDetailFastDfs FastDfs;
+	list<InquiryDetailDO> result = dao.selectById(to_string(query->id));
+	// 将DO转换成DTO
+	for (InquiryDetailDO sub : result)
+	{
+		auto dto = InquiryDetailDTO::createShared();
+		pdf.InquiryDetailText(sub);
+		//pdf.InquiryDetailTpl(sub);
+		dto->downloadUrl = FastDfs.InquiryDetailDfsWithConf("InquiryDetailReport.pdf");
+		pages = dto;
+	}
+	return pages;
+}
+

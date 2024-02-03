@@ -26,17 +26,17 @@
  */
 class InquiryDetailDO
 {
-	CC_SYNTHESIZE(string, id, Id);
+	CC_SYNTHESIZE(uint64_t, id, Id);
 	// 工龄年段
-	CC_SYNTHESIZE(string, workYear, WorkYear);
+	CC_SYNTHESIZE(uint64_t, workYear, WorkYear);
 	// 工龄月段
-	CC_SYNTHESIZE(string, workMonth, WorkMonth);
+	CC_SYNTHESIZE(uint64_t, workMonth, WorkMonth);
 	// 结婚状况
 	CC_SYNTHESIZE(string, isMarry, IsMarry);
 	//按需年龄
-	CC_SYNTHESIZE(string, exposureWorkYear, ExposureWorkYear);
+	CC_SYNTHESIZE(uint64_t, exposureWorkYear, ExposureWorkYear);
 	//按需月龄
-	CC_SYNTHESIZE(string, exposureWorkMonth, ExposureWorkMonth);
+	CC_SYNTHESIZE(uint64_t, exposureWorkMonth, ExposureWorkMonth);
 
 	//非必须
 	
@@ -55,12 +55,12 @@ class InquiryDetailDO
 
 public:
 	InquiryDetailDO() {
-		id = "";
-		workYear = "";
-		workMonth = "";
+		id = 1;
+		workYear = 0;
+		workMonth = 0;
 		isMarry = "";
-		exposureWorkYear = "";
-		exposureWorkMonth = "";
+		exposureWorkYear = 0;
+		exposureWorkMonth = 0;
 
 		//非必须，可以为空
 		education = "";

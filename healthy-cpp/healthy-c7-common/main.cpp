@@ -9,7 +9,7 @@
  You may obtain a copy of the License at
 
 	  https://www.apache.org/licenses/LICENSE-2.0
-		
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -35,7 +35,6 @@
 //#include "ServerInfo.h"
 //#include "NacosClient.h"
 //#include "FastDfsClient.h"
-
 //#include "uselib/pdf/InquiryDetailPdf.h"
 //#include "uselib/fastdfs/InquiryDetailFastDfs.h"
 
@@ -57,7 +56,7 @@ bool getStartArg(int argc, char* argv[]) {
 	// 数据库连接信息
 	std::string dbUsername = "root";
 	std::string dbPassword = "123456";
-	std::string dbName = "zo_healthy";
+	std::string dbName = "healthy";
 	std::string dbHost = "192.168.0.102";
 	int dbPort = 3306;
 	int dbMax = 5;
@@ -147,8 +146,11 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
-	//InquiryDetailFastDfs("D:\\zero-one-star\\zero-one-healthy-check\\healthy-cpp\\out\\build\\x64-Debug\\healthy-c7-common\\test-text.pdf");
-    //InquiryDetailPdf::InquiryDetailText(Do);
+
+	//测试PDF上传fastpdf是否成功
+	//InquiryDetailFastDfs::InquiryDetailDfsWithConf("G:/mywork/zero-one-healthy-check/healthy-cpp/out/build/x64-Debug/healthy-c7-common/test-text.pdf");
+    //测试pdf是否生成成功
+	//InquiryDetailPdf::InquiryDetailText();
 	//InquiryDetailPdf::InquiryDetailTpl();
 
 

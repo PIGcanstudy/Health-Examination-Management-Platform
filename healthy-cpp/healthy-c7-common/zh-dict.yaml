@@ -13,6 +13,7 @@ inquiry:
   workTypeText: 工种名称
   workName: 工种其他名称
   department: 所属部门
+  pdfDownloadUrl: pdf下载地址
 pdf:
   title: 职业健康检查问诊明细报告
   id: 主键
@@ -26,4 +27,3 @@ pdf:
   workTypeText: 工种名称
   workName: 工种其他名称
   department: 所属部门
-        

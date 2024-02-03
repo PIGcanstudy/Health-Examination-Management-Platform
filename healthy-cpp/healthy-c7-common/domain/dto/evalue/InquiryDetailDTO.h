@@ -31,18 +31,18 @@
 class InquiryDetailDTO : public oatpp::DTO
 {
 	DTO_INIT(InquiryDetailDTO, DTO);
-
-	API_DTO_FIELD_DEFAULT(String, id, ZH_WORDS_GETTER("inquiry.field.id"));
+	//id主键
+	API_DTO_FIELD_DEFAULT(UInt64, id, ZH_WORDS_GETTER("inquiry.field.id"));
 	// 工龄年段
-	API_DTO_FIELD_DEFAULT(String, workYear, ZH_WORDS_GETTER("inquiry.field.workYear"));
+	API_DTO_FIELD_DEFAULT(UInt64, workYear, ZH_WORDS_GETTER("inquiry.field.workYear"));
 	// 工龄月段
-	API_DTO_FIELD_DEFAULT(String, workMonth, ZH_WORDS_GETTER("inquiry.field.workMonth"));
+	API_DTO_FIELD_DEFAULT(UInt64, workMonth, ZH_WORDS_GETTER("inquiry.field.workMonth"));
 	// 结婚状况
 	API_DTO_FIELD_DEFAULT(String, isMarry, ZH_WORDS_GETTER("inquiry.field.isMarry"));
 	//按需年龄
-	API_DTO_FIELD_DEFAULT(String, exposureWorkYear, ZH_WORDS_GETTER("inquiry.field.exposureWorkYear"));
+	API_DTO_FIELD_DEFAULT(UInt64, exposureWorkYear, ZH_WORDS_GETTER("inquiry.field.exposureWorkYear"));
 	//按需月龄
-	API_DTO_FIELD_DEFAULT(String, exposureWorkMonth, ZH_WORDS_GETTER("inquiry.field.exposureWorkMonth"));
+	API_DTO_FIELD_DEFAULT(UInt64, exposureWorkMonth, ZH_WORDS_GETTER("inquiry.field.exposureWorkMonth"));
 
 	//非必须
 	
@@ -56,6 +56,8 @@ class InquiryDetailDTO : public oatpp::DTO
 	API_DTO_FIELD_DEFAULT(String, workName, ZH_WORDS_GETTER("inquiry.field.workName"));
 	//所属部门
 	API_DTO_FIELD_DEFAULT(String, department, ZH_WORDS_GETTER("inquiry.field.department"));
+
+	API_DTO_FIELD_DEFAULT(String, downloadUrl, ZH_WORDS_GETTER("inquiry.field.pdfDownloadUrl"));
 
 };
 
