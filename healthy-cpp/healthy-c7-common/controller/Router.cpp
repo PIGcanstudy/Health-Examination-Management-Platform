@@ -56,7 +56,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(ReportController);
 	ROUTER_SIMPLE_BIND(TermController);
 	ROUTER_SIMPLE_BIND(PositiveConrtoller);
-ROUTER_SIMPLE_BIND(ItemResultController);
+	ROUTER_SIMPLE_BIND(ItemResultController);
 	ROUTER_SIMPLE_BIND(InquiryDetailController);
 	ROUTER_SIMPLE_BIND(ReviewController);
 	ROUTER_SIMPLE_BIND(AddNewItemsController);
@@ -75,7 +75,7 @@ void Router::createSampleRouter()
 	ROUTER_SIMPLE_BIND(UserController);
 	// 绑定文件控制器
 	ROUTER_SIMPLE_BIND(FileController);
-	
+
 	// 绑定WebSocket控制器
 	router->addController(WSContorller::createShared());
 }

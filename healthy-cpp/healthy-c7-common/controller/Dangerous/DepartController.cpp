@@ -1,5 +1,5 @@
-#include "DepartController.h"
 #include "stdafx.h"
+#include "DepartController.h"
 #include "../../service/Dangerous/DepartListService.h"
 #include "../ApiDeclarativeServicesHelper.h"
 

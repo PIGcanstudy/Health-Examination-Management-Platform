@@ -31,7 +31,7 @@ class ReportService
 {
 public:
 	// 查询所有数据
-	ReportDTO::Wrapper ReportService::listId(const ReportQuery::Wrapper& query);
+	ReportDTO::Wrapper listId(const ReportQuery::Wrapper& query);
 };
 
 #endif // !_REPORT_SERVICE_

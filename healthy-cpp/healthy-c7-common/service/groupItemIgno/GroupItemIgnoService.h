@@ -3,7 +3,7 @@
 #ifndef _GROUPITEMIGNO_SERVICE_
 #define _GROUPITEMIGNO_SERVICE_
 
-#include "domain\dto\groupItemIgno\GroupItemIgnoDTO.h"
+#include "domain/dto/groupItemIgno/GroupItemIgnoDTO.h"
 
 /**
  * 示例服务实现，演示基础的示例服务实现

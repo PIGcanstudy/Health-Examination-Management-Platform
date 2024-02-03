@@ -21,7 +21,7 @@ link_directories (${PROJECT_BINARY_DIR}/lib-oatpp)
 link_directories (${PROJECT_BINARY_DIR}/lib-mysql)
 link_directories (${PROJECT_BINARY_DIR}/lib-common)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 # 如果是Linux环境
 if(UNIX)

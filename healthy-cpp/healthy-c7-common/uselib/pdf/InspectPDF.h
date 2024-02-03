@@ -29,7 +29,7 @@ class InspectPdf
 public:
 	// Ä£°å»æÖÆ
 	static void ReportText(const ReportDO & Do);
-	static void InspectPdf::testText();
+	static void testText();
 };
 
 #endif // !_INSPECT_PDF_H_

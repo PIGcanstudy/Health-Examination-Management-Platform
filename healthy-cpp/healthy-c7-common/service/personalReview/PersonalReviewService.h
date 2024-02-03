@@ -3,7 +3,7 @@
 #ifndef _PERSONALREVIEW_SERVICE_
 #define _PERSONALREVIEW_SERVICE_
 
-#include "domain\dto\personalReview\PersonalReviewDTO.h"
+#include "domain/dto/personalReview/PersonalReviewDTO.h"
 
 /**
  * 示例服务实现，演示基础的示例服务实现

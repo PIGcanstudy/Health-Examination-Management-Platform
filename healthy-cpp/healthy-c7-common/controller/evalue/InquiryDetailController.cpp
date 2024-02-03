@@ -22,7 +22,7 @@
 
 // 这个结构体代表了查询细节的 JSON 响应的包装器。
 // 它作为 execQueryInquiryDetail 函数的返回类型。
-struct InquiryDetailJsonVO::Wrapper InquiryDetailController::execQueryInquiryDetail(const InquiryDetailQuery::Wrapper& query)
+InquiryDetailJsonVO::Wrapper InquiryDetailController::execQueryInquiryDetail(const InquiryDetailQuery::Wrapper& query)
 {
     // 测试数据
 
