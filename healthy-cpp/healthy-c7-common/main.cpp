@@ -9,7 +9,7 @@
  You may obtain a copy of the License at
 
 	  https://www.apache.org/licenses/LICENSE-2.0
-
+		
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -31,13 +31,13 @@
 #include "NacosClient.h"
 #endif
 
-//pdf相关头文件
-#include "ServerInfo.h"
-#include "NacosClient.h"
-#include "FastDfsClient.h"
+////pdf相关头文件
+//#include "ServerInfo.h"
+//#include "NacosClient.h"
+//#include "FastDfsClient.h"
 
-#include "uselib/pdf/InquiryDetailPdf.h"
-#include "uselib/fastdfs/InquiryDetailFastDfs.h"
+//#include "uselib/pdf/InquiryDetailPdf.h"
+//#include "uselib/fastdfs/InquiryDetailFastDfs.h"
 
 // 是否是发布Swagger文档包
 #ifndef _RELEASE_DOC_
@@ -148,7 +148,7 @@ int main(int argc, char* argv[]) {
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
 	//InquiryDetailFastDfs("D:\\zero-one-star\\zero-one-healthy-check\\healthy-cpp\\out\\build\\x64-Debug\\healthy-c7-common\\test-text.pdf");
-    InquiryDetailPdf::InquiryDetailText(DO);
+    //InquiryDetailPdf::InquiryDetailText(Do);
 	//InquiryDetailPdf::InquiryDetailTpl();
 
 

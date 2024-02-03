@@ -53,17 +53,17 @@ public:
 		API_DEF_ADD_PAGE_PARAMS();
 		// 定义其他查询参数描述
 
-		API_DEF_ADD_QUERY_PARAMS(UInt64, "id", ZH_WORDS_GETTER("inquiry.field.Id"), 1, false);
+		API_DEF_ADD_QUERY_PARAMS(String, "id", ZH_WORDS_GETTER("inquiry.field.Id"), 1, false);
 		// 工龄年段
-		API_DEF_ADD_QUERY_PARAMS(UInt64, "workYear", ZH_WORDS_GETTER("inquiry.field.workYear"), 1, false);
+		API_DEF_ADD_QUERY_PARAMS(String, "workYear", ZH_WORDS_GETTER("inquiry.field.workYear"), 1, false);
 		// 工龄月段
-		API_DEF_ADD_QUERY_PARAMS(UInt64, "workMonth", ZH_WORDS_GETTER("inquiry.field.workMonth"), 1, false);
+		API_DEF_ADD_QUERY_PARAMS(String, "workMonth", ZH_WORDS_GETTER("inquiry.field.workMonth"), 1, false);
 		// 结婚状况
 		API_DEF_ADD_QUERY_PARAMS(String, "isMarry", ZH_WORDS_GETTER("inquiry.field.isMarry"), "marry", false);
 		//按需年龄
-		API_DEF_ADD_QUERY_PARAMS(UInt64, "exposureWorkYear", ZH_WORDS_GETTER("inquiry.field.exposureWorkYear"), 1, false);
+		API_DEF_ADD_QUERY_PARAMS(String, "exposureWorkYear", ZH_WORDS_GETTER("inquiry.field.exposureWorkYear"), 1, false);
 		//按需月龄
-		API_DEF_ADD_QUERY_PARAMS(UInt64, "exposureWorkMonth", ZH_WORDS_GETTER("inquiry.field.exposureWorkMonth"), 1, false);
+		API_DEF_ADD_QUERY_PARAMS(String, "exposureWorkMonth", ZH_WORDS_GETTER("inquiry.field.exposureWorkMonth"), 1, false);
 
 		//非必须
 

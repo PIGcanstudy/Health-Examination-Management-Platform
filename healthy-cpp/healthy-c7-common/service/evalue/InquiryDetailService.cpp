@@ -19,6 +19,9 @@
 #include "stdafx.h"
 #include "InquiryDetailService.h"
 #include "../../dao/evalue/InquiryDetailDAO.h"
+#include "domain/dto/evalue/InquiryDetailDTO.h"
+#include "uselib/fastdfs/InquiryDetailFastDfs.h"
+#include "uselib/pdf/InquiryDetailPdf.h"
 
 
 
@@ -58,18 +61,28 @@ InquiryDetailPageDTO::Wrapper InquiryDetailService::listAll(const InquiryDetailQ
 	return pages;
 }
 
-
-//uint64_t InquiryDetailService::saveData(const InquiryDetailDTO::Wrapper& dto)
+// Pdf使用
+//InquiryDetailDTO::Wrapper InquiryDetailService::listByName(const InquiryDetailQuery::Wrapper& query)
 //{
-//	// 组装DO数据
-//	InquiryDetailDO data;
-//	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, WorkYear, workYear, WorkMonth, workMonth, IsMarry, isMarry, ExposureWorkYear, exposureWorkYear,
-//		ExposureWorkMonth, exposureWorkMonth, Education, education, FamilyAddress, familyAddress, WorkTypeText, workTypeText,
-//		WorkName, workName, Department, department)
-//		// 执行数据添加
-//		InquiryDetailDAO dao;
-//	return dao.insert(data);
+//	// 构建返回对象
+//	auto pages = InquiryDetailDTO::createShared();
+//	InquiryDetailDAO dao;
+//	InquiryDetailPdf pdf;
+//	InquiryDetailFastDfs FastDfs;
+//	list<InquiryDetailDO> result = dao.selectByName(query->personName);
+//	// 将DO转换成DTO
+//	for (InquiryDetailDO sub : result)
+//	{
+//		auto dto = InquiryDetailListDTO::createShared();
+//		pdf.InquiryDetailText(sub);
+//		//pdf.InquiryDetailTpl(sub);
+//		dto->downloadUrl = FastDfs.InquiryDetailDfsWithConf("InquiryDetailReport.pdf");
+//		pages = dto;
+//	}
+//	return pages;
 //}
+
+
 
 bool InquiryDetailService::updateData(const InquiryDetailDTO::Wrapper& dto)
 {

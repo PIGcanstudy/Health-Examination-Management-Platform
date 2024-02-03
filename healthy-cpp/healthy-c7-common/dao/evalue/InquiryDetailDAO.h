@@ -33,6 +33,7 @@ public:
 	uint64_t count(const InquiryDetailQuery::Wrapper& query);
 	// ÐÞ¸ÄÊý¾Ý
 	int update(const InquiryDetailDO& uObj);
+	
 	list<InquiryDetailDO> selectWithPage(const InquiryDetailQuery::Wrapper& query);
 };
 #endif // !_InquiryDetail_DAO_

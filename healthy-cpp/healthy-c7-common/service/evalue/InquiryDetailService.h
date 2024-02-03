@@ -32,6 +32,8 @@ class InquiryDetailService
 public:
 	// 分页查询所有数据
 	InquiryDetailPageDTO::Wrapper listAll(const InquiryDetailQuery::Wrapper& query);
+	//Pdf
+	InquiryDetailDTO::Wrapper listByName(const InquiryDetailQuery::Wrapper& query);
 	// 保存数据
 	//uint64_t saveData(const InquiryDetailDTO::Wrapper& dto);
 	// 修改数据

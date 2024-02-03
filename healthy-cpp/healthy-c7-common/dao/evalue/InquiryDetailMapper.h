@@ -28,12 +28,12 @@ class InquiryDetailMapper : public Mapper<InquiryDetailDO> {
 public:
 	InquiryDetailDO mapper(ResultSet* resultSet) const override {
 		InquiryDetailDO data;
-		data.setId(resultSet->getUInt64(1));
-		data.setWorkYear(resultSet->getUInt64(2));
-		data.setWorkMonth(resultSet->getUInt64(3));
+		data.setId(resultSet->getString(1));
+		data.setWorkYear(resultSet->getString(2));
+		data.setWorkMonth(resultSet->getString(3));
 		data.setIsMarry(resultSet->getString(4));
-		data.setExposureWorkYear(resultSet->getUInt64(5));
-		data.setExposureWorkMonth(resultSet->getUInt64(6));
+		data.setExposureWorkYear(resultSet->getString(5));
+		data.setExposureWorkMonth(resultSet->getString(6));
 		data.setEducation(resultSet->getString(7));
 		data.setFamilyAddress(resultSet->getString(8));
 		data.setWorkTypeText(resultSet->getString(9));

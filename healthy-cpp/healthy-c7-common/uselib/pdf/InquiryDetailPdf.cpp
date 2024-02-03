@@ -21,7 +21,7 @@
 #include <iostream>
 #include "PdfComponent.h"
 #include "ServerInfo.h"
-
+#include "domain/do/evalue/InquiryDetailDO.h"
 // 条形码码生成需要导入头文件
 #include "zxing/MultiFormatWriter.h"
 #include "zxing/CharacterSet.h"
@@ -31,42 +31,42 @@
 using namespace ZXing;
 
  //条形码在线预览 https://zxing-cpp.github.io/zxing-cpp/demo_writer.html
-void addBarCodeToPdf(PdfComponent* pdf) {
-	// 设置条码绘制相关参数
-	int width = 200, height = 20; // 长宽
-	int margin = 10; // 间距
-	int eccLevel = 0; // ecc等级0 -10
-	CharacterSet encoding = CharacterSet::UTF8; // 编码
-	BarcodeFormat format = BarcodeFormatFromString("Code93"); //格式化类型
-	// 定义条码中的内容
-	std::string input = "11111111";
-	// 条码临时保存位置
-	std::string filepath = "tmp.jpg";
-	try {
-		// 生成图形
-		auto writer = MultiFormatWriter(format).setMargin(margin).setEncoding(encoding).setEccLevel(eccLevel);
-		BitMatrix matrix = writer.encode(input, width, height);
-		auto bitmap = ToMatrix<uint8_t>(matrix);
-		// 保存到文件
-		int success = stbi_write_jpg(filepath.c_str(), bitmap.width(), bitmap.height(), 1, bitmap.data(), 0);
-		// 绘制到PDF
-		if (success)
-		{
-			// 加载图片文件
-			HPDF_Image image = HPDF_LoadJpegImageFromFile(pdf->getDoc(), filepath.c_str());
-			// 绘制图片到PDF中
-			HPDF_UINT iw = HPDF_Image_GetWidth(image);
-			HPDF_UINT ih = HPDF_Image_GetHeight(image);
-			HPDF_Page_DrawImage(pdf->getCurrPage(), image, 30, 70, iw, ih);
-		}
-	}
-	catch (const std::exception& e) {
-		std::cerr << e.what() << std::endl;
-	}
-}
+//void addBarCodeToPdf(PdfComponent* pdf) {
+//	// 设置条码绘制相关参数
+//	int width = 200, height = 20; // 长宽
+//	int margin = 10; // 间距
+//	int eccLevel = 0; // ecc等级0 -10
+//	CharacterSet encoding = CharacterSet::UTF8; // 编码
+//	BarcodeFormat format = BarcodeFormatFromString("Code93"); //格式化类型
+//	// 定义条码中的内容
+//	std::string input = "11111111";
+//	// 条码临时保存位置
+//	std::string filepath = "tmp.jpg";
+//	try {
+//		// 生成图形
+//		auto writer = MultiFormatWriter(format).setMargin(margin).setEncoding(encoding).setEccLevel(eccLevel);
+//		BitMatrix matrix = writer.encode(input, width, height);
+//		auto bitmap = ToMatrix<uint8_t>(matrix);
+//		// 保存到文件
+//		int success = stbi_write_jpg(filepath.c_str(), bitmap.width(), bitmap.height(), 1, bitmap.data(), 0);
+//		// 绘制到PDF
+//		if (success)
+//		{
+//			// 加载图片文件
+//			HPDF_Image image = HPDF_LoadJpegImageFromFile(pdf->getDoc(), filepath.c_str());
+//			// 绘制图片到PDF中
+//			HPDF_UINT iw = HPDF_Image_GetWidth(image);
+//			HPDF_UINT ih = HPDF_Image_GetHeight(image);
+//			HPDF_Page_DrawImage(pdf->getCurrPage(), image, 30, 70, iw, ih);
+//		}
+//	}
+//	catch (const std::exception& e) {
+//		std::cerr << e.what() << std::endl;
+//	}
+//}
 
 
-//void InquiryDetailPdf::InquiryDetailTpl()
+//void InquiryDetailPdf::InquiryDetailTpl(const InquiryDeatilDO& Do)
 //{
 //	// 测试注册渲染模板
 //	PdfComponent::registerTplRender("InquiryDetail", [](YAML::Node* node, PdfComponent* pdf, void* realData)
@@ -125,31 +125,31 @@ void addBarCodeToPdf(PdfComponent* pdf) {
 //	pdf.drawWithTemplate("tpl/test.yaml", "InquiryDetail", &content);
 //}
 
-void InquiryDetailPdf::InquiryDetailText(const InquiryDeatilDO& Do)
-{
-	PdfComponent pdf;
-	// 创建一个页面
-	HPDF_Page newPage = pdf.getNewPage(); 
-	// 设置页面字体
-	HPDF_Page_SetFontAndSize(newPage, pdf.getCnSFont("SimSun"), 20);
-	// 绘制字体
-	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.title"), +": " + Do.getName(), HPDF_Page_GetHeight(newPage) - 20);
-	pdf.drawText(ZH_WORDS_GETTER("pdf.id"), +": " + Do.getName(), 50.0,780.0);
-	pdf.drawText(ZH_WORDS_GETTER("pdf.workYear"), +": " + Do.getName(), 50.0,740.0);
-	pdf.drawText(ZH_WORDS_GETTER("pdf.workMonth"), +": " + Do.getName(), 250.0,740.0);
-	pdf.drawText(ZH_WORDS_GETTER("pdf.isMarry"), +": " + Do.getName(), 50.0,700.0);
-	pdf.drawText(ZH_WORDS_GETTER("pdf.exposureWorkYear"), +": " + Do.getName(), 50.0, 660.0);
-	pdf.drawText(ZH_WORDS_GETTER("pdf.exposureWorkMonth"), +": " + Do.getName(), 250.0, 660.0);
-	pdf.drawText(ZH_WORDS_GETTER("pdf.education"), +": " + Do.getName(), 50.0, 620.0);
-	pdf.drawText(ZH_WORDS_GETTER("pdf.familyAddress"), +": " + Do.getName(), 250.0,620.0);
-	pdf.drawText(ZH_WORDS_GETTER("pdf.workTypeText"), +": " + Do.getName(), 50.0, 580.0);
-	pdf.drawText(ZH_WORDS_GETTER("pdf.workName"), +": " + Do.getName(), 50, 540.0);
-	pdf.drawText(ZH_WORDS_GETTER("pdf.department"), +": " + Do.getName(), 50.0, 500.0);
-
-
-	/*pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.title"), HPDF_Page_GetHeight(newPage) - 20);
-	pdf.drawTextCenter(ZH_WORDS_GETTER("pdf.content"));
-	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.foot"), 20);*/
-	// 保存到文件
-	pdf.saveDocToFile("test-text.pdf");
-}
+//void InquiryDetailPdf::InquiryDetailText(const InquiryDetailDO& Do)
+//{
+//	PdfComponent pdf;
+//	// 创建一个页面
+//	HPDF_Page newPage = pdf.getNewPage(); 
+//	// 设置页面字体
+//	HPDF_Page_SetFontAndSize(newPage, pdf.getCnSFont("SimSun"), 20);
+//	// 绘制字体
+//	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.title"), HPDF_Page_GetHeight(newPage) - 20);
+//	pdf.drawText(ZH_WORDS_GETTER("pdf.id") +": " + Do.getId(), 50.0,780.0 ,newPage);
+//	pdf.drawText(ZH_WORDS_GETTER("pdf.workYear") +": " + Do.getWorkYear(), 50.0,740.0, newPage);
+//	pdf.drawText(ZH_WORDS_GETTER("pdf.workMonth")+": " + Do.getWorkMonth(), 250.0,740.0, newPage);
+//	pdf.drawText(ZH_WORDS_GETTER("pdf.isMarry") +": " + Do.getIsMarry(), 50.0,700.0, newPage);
+//	pdf.drawText(ZH_WORDS_GETTER("pdf.exposureWorkYear") +": " + Do.getExposureWorkYear(), 50.0, 660.0, newPage);
+//	pdf.drawText(ZH_WORDS_GETTER("pdf.exposureWorkMonth") +": " + Do.getExposureWorkMonth(), 250.0, 660.0, newPage);
+//	pdf.drawText(ZH_WORDS_GETTER("pdf.education") +": " + Do.getEducation(), 50.0, 620.0, newPage);
+//	pdf.drawText(ZH_WORDS_GETTER("pdf.familyAddress") +": " + Do.getFamilyAddress(), 250.0,620.0, newPage);
+//	pdf.drawText(ZH_WORDS_GETTER("pdf.workTypeText")+": " + Do.getWorkTypeText(), 50.0, 580.0, newPage);
+//	pdf.drawText(ZH_WORDS_GETTER("pdf.workName") +": " + Do.getWorkName(), 50, 540.0, newPage);
+//	pdf.drawText(ZH_WORDS_GETTER("pdf.department") +": " + Do.getDepartment(), 50.0, 500.0, newPage);
+//
+//
+//	/*pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.title"), HPDF_Page_GetHeight(newPage) - 20);
+//	pdf.drawTextCenter(ZH_WORDS_GETTER("pdf.content"));
+//	pdf.drawTextCenterH(ZH_WORDS_GETTER("pdf.foot"), 20);*/
+//	// 保存到文件
+//	pdf.saveDocToFile("test-text.pdf");
+//}

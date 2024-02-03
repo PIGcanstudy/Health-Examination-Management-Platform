@@ -27,11 +27,11 @@
     sql << "WHERE 1=1"; \
     if (query->workYear) { \
         sql << " AND work_year=?"; \
-        SQLPARAMS_PUSH(params, "i", int, query->workYear.getValue(0)); \
+        SQLPARAMS_PUSH(params, "s", std::string, query->workYear.getValue(0)); \
     } \
     if (query->workMonth) { \
         sql << " AND work_month=?"; \
-        SQLPARAMS_PUSH(params, "i",  int, query->workMonth.getValue(0)); \
+        SQLPARAMS_PUSH(params, "s",  std::string, query->workMonth.getValue(0)); \
     } \
     if (query->isMarry) { \
         sql << " AND is_marry=?"; \
@@ -39,11 +39,11 @@
     } \
     if (query->exposureWorkYear) { \
         sql << " AND exposure_work_year=?"; \
-        SQLPARAMS_PUSH(params, "i", int, query->exposureWorkYear.getValue(0)); \
+        SQLPARAMS_PUSH(params, "s", std::string, query->exposureWorkYear.getValue(0)); \
     } \
     if (query->exposureWorkMonth) { \
         sql << " AND exposure_work_month=?"; \
-        SQLPARAMS_PUSH(params, "i", int, query->exposureWorkMonth.getValue(0)); \
+        SQLPARAMS_PUSH(params, "s", std::string, query->exposureWorkMonth.getValue(0)); \
     } \
     if (query->education) { \
         sql << " AND education=?"; \
@@ -77,7 +77,7 @@ uint64_t InquiryDetailDAO::count(const InquiryDetailQuery::Wrapper & query)
 }
 
 
-list<InquiryDetailDO> InquiryDetailDAO::selectWithPage(const InquiryDetailQuery::Wrapper & query)
+std::list<InquiryDetailDO> InquiryDetailDAO::selectWithPage(const InquiryDetailQuery::Wrapper & query)
 {
     stringstream sql;
     sql << "SELECT a.id,b.work_year, b.work_month, a.is_marry, b.exposure_work_year, b.exposure_work_month, b.education, b.family_address, a.work_type_text, a.work_name, a.department FROM t_group_person AS a JOIN t_interrogation AS b ON t_group_person.id =t_interrogation.id";
