@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { exportFormDepartment, importUserData,modifyPassword,resetPassword,addUser,
-deleteUserList,modifyUserInfo,queryUserData,queryUserList,queryUserNameList,setUserStatus } from '@/apis/personal/index.js'
-export const userManagementStores = defineStore('userManagementStores', () => {
+deleteUserList,modifyUserInfo,queryUserData,queryUserList,queryUserNameList,setUserStatus } from '@/apis/usermanagement/index.js'
+export const useUserManagementStores = defineStore('userManagementStores', () => {
 /**
  * 用户管理-j1
  * stores

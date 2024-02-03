@@ -27,7 +27,7 @@ export const changeMail = (params) => {
   )
 }
 
-// 修改密码
+// 修改密码-1
 export const changePassword = (params) => {
     return Request.requestJson(
       Request.POST,

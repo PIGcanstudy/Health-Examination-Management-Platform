@@ -99,7 +99,7 @@
     </el-form>
     <template #footer>
       <div style="flex: auto">
-        <el-button type="primary">提交</el-button>
+        <el-button type="primary" @click="submitMm" >提交</el-button>
         <el-button @click="closeDrawer">取消</el-button>
       </div>
     </template>
@@ -107,8 +107,12 @@
   <!--  -->
 </template>
 
-<script lang="ts" setup>
+<script  setup>
 import { ref, reactive } from 'vue'
+import { usePersonalCenterStores } from '@/stores/personalcenter/index.js'
+
+/* Stores中的方法 */
+const personalCenterStore = usePersonalCenterStores()
 
 // 基本信息表单---label位置
 const labelPosition = ref('left')
@@ -155,6 +159,14 @@ const remakePw = reactive({
   newPassword: '',
   confirm: ''
 })
+
+// 提交修改密码表单
+const submitMm = () => {
+  const result = personalCenterStore.changePasswordStore(remakePw);
+  if(result.code == 200){
+    return 
+  }
+}
 
 // 点击修改打开抽屉
 const handleDrawer = () => {
