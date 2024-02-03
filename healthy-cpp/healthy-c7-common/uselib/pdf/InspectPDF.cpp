@@ -17,7 +17,7 @@
  limitations under the License.
 */
 #include "stdafx.h"
-#include "InspectPdf.h"
+#include "InspectPDF.h"
 #include <iostream>
 #include "PdfComponent.h"
 #include "ServerInfo.h"
