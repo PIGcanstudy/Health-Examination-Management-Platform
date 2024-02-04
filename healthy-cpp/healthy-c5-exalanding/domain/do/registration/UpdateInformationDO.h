@@ -22,27 +22,27 @@
 #include "../DoInclude.h"
 
 /**
- * 示例数据库实体类
+ * 绀轰緥鏁版嵁搴撳疄浣撶被
  */
 class UpdateInformationDO
 {
-	// 人员姓名
+	// 浜哄憳濮撳悕
 	CC_SYNTHESIZE(string, personName, PersonName);
-	// 性别
+	// 鎬у埆
 	CC_SYNTHESIZE(string, sex, Sex);
-	// 年龄
+	// 骞撮緞
 	CC_SYNTHESIZE(uint64_t, age, Age);
-	// 结婚状况
+	// 缁撳鐘跺喌
 	CC_SYNTHESIZE(string, isMarry, IsMarry);
-	// 证件号码
+	// 璇佷欢鍙风爜
 	CC_SYNTHESIZE(string, idCard, IdCard);
-	// 出生日期
+	// 鍑虹敓鏃ユ湡
 	CC_SYNTHESIZE(string, birth, Birth);
-	// 分组
+	// 鍒嗙粍
 	CC_SYNTHESIZE(string, groupId, GroupId);
-	// 单位名称
+	// 鍗曚綅鍚嶇О
 	CC_SYNTHESIZE(string, workName, WorkName);
-	// 手机号码
+	// 鎵嬫満鍙风爜
 	CC_SYNTHESIZE(string, mobile, Mobile);
 
 
