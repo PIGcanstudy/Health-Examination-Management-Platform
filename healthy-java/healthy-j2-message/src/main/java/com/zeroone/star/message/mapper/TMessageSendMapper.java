@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j2.dto.MessageSendUnReadDTO;
 import com.zeroone.star.project.j2.query.MessageSendUnReadQuery;
-import javafx.scene.control.Pagination;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
