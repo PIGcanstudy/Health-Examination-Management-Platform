@@ -19,7 +19,7 @@ sample:
 
 threelevcheck:
  post:
-  summary: 新增一条三级审查记录
+  summary: 新增一条三级审查记录-luoluo
  field:
   id: 复查内容表 主键
   orderId: 订单id
@@ -64,3 +64,24 @@ groupapprove:
   is_can_service: 是否可以为委托单位提供职业健康检查服务
   reason: 不能为委托单位提供职业健康检查服务，原因
   conclusion_person_in_charge: 质控科负责人或体检中心负责人
+
+contract:
+ get:
+  summary1: 查询名称列表数据-ping
+  summary2: 查询合同基本信息-ping
+ field:
+  type: 体检类型
+  signingTime: 签订时间
+  groupUnitName: 委托单位
+  orderName: 合同名称
+  orderId: 合同编号
+  physicalType: 委托内容
+  deptName: 编制部门
+  createId: 编制人
+  auditUserName: 审核人
+  auditState: 审核状态
+  personName: 联系人
+  mobile: 联系电话
+  auditTime: 审核日期
+  salesDirectorName: 销售负责人
+  dTime: 交付时间

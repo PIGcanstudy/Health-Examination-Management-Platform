@@ -20,8 +20,9 @@
 #include "Router.h"
 #include "ApiHelper.h"
 #include "check/ThreeLevCheckController.h"
-#include "check/CountCheckController.h"
+#include "check/CountCheckController.h"//快乐五香蛋
 #include "groupapprove/GroupApproveController.h"
+#include "controller/contract/NameListController.h"//获取订单名称列表,获取基本信息-ping
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
@@ -54,9 +55,9 @@ void Router::initRouter()
 
 	//#TIP :系统扩展路由定义，写在这个后面
 	ROUTER_SIMPLE_BIND(ThreeLevCheckController);
-	//快乐五香蛋
-	ROUTER_SIMPLE_BIND(CountCheckController);
+	ROUTER_SIMPLE_BIND(CountCheckController);//快乐五香蛋
 	ROUTER_SIMPLE_BIND(GroupApproveController);//go
+	ROUTER_SIMPLE_BIND(NameListController);//获取订单名称列表,获取基本信息-ping
 }
 
 
