@@ -24,6 +24,38 @@
         :progress-steps="progressSteps"
         :person-info="personInfo"
       />
+      <div style="margin-bottom: 10px">
+        <el-button v-if="isShow" type="primary" style="background-color: #f16643; border-color: #f16643" disabled @click="dialogFormVisible=true"
+          ><el-icon style="margin-right: 2px"> <Delete /> </el-icon>弃检项目
+        </el-button>
+
+        <!-- 对话框 -->
+     <el-dialog v-model="dialogFormVisible" title="弃检项目" width="1025px">
+
+<!-- 表单 -->
+<el-form :label-position="right" :inline="true" :model="formInline" class="demo-form-inline">
+<el-form-item label="术语内容">
+<el-input v-model="formInline.synr" type="textarea" placeholder="请输入术语内容"/>
+</el-form-item>
+</el-form>
+
+<!-- 底栏 -->
+<template #footer>
+  <span class="dialog-footer">
+    <el-button
+      @click="dialogFormVisible = false;resetFrom()"
+      >取消</el-button
+    >
+    <el-button
+      type="primary"
+      @click="onSubmit();resetFrom()"
+    >
+      提交
+    </el-button>
+  </span>
+</template>
+</el-dialog>
+      </div>
       <BaseDataList :use-form="useForm" :form-data="formData" :table-data="tableData" :table-column-attribute="tableColumnAttribute">
       <!-- form表单区域 -->
       <template #form>
@@ -58,6 +90,10 @@ import PeopleList from '@/components/peoplelist/PeopleList-Rom.vue'
 import MedicalInfo from '@/components/medicalinfo/MedicalInfo.vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import TestArea from '@/components/checkitems/TestArea.vue'
+import { useResultentryStores } from '@/stores/resultentry/index.js'
+
+/* Stores中的方法 */
+const resultentryStore = useMessageModuleStores()
 
 // PeopleList的变量
 const title = ref('人员查询')
@@ -166,6 +202,13 @@ const defaultTableData = [
   }
 ]
 // MedicalInfo的变量
+const dialogFormVisible = ref(false)
+//按钮显示
+const isShow = ref(true)
+const formInline = reactive({
+  synrL:""
+})
+
 const currentProgress = ref(1)
 const progressSteps = ref(['登记', '在检', '总检', '已完成'])
 const personInfo = ref({
@@ -180,6 +223,47 @@ const personInfo = ref({
   marry_type: '',
   type_name: ''
 })
+
+// 提交表单
+const onSubmit = () => {
+  
+  // eslint-disable-next-line no-undef
+  ElMessageBox.confirm(
+    '当前项目已保存结果,确认弃检吗?',
+    '弃检确认',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    }
+  )
+    .then(() => {
+                //发送请求
+              const result = resultentryStore.modifywaiveCheck()
+              if(result.code != 200){
+                //改变按钮名字和点击事件
+                return
+              }
+      ElMessage({
+        type: 'success',
+        message: '取消了当前的操作行为'
+      })
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: '撤回取消',
+      })
+    })
+}
+
+// 清空表单
+const resetFrom = () => {
+ // 将表单中的输入框清空
+ for (const key in formInline) {
+  formInline[key] = ''
+  }
+}
 
 //BaseDataList
 // table列

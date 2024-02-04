@@ -254,11 +254,7 @@ const basicForm = reactive({
   px: '',
   bz: ''
 })
-// 联系人表单
-const contactForm = reactive({
-  people: '',
-  phone: ''
-})
+
 const closeForm = () => {
   useForm.value = !useForm.value
 }
