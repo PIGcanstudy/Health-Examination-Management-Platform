@@ -10,6 +10,7 @@ import com.zeroone.star.project.j2.dto.DepartmentDTO;
 import com.zeroone.star.project.j2.query.DepartmentQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import com.zeroone.star.project.vo.department.DepartmentMenuVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +27,7 @@ import java.util.List;
  * @since 2024-01-15
  */
 @RestController
+@Api(tags = "部门")
 @RequestMapping("/department/t-department")
 public class TDepartmentController implements DepartmentApis {
     @Resource

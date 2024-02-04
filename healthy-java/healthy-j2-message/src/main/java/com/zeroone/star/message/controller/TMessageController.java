@@ -31,7 +31,7 @@ import java.util.List;
  * @since 2024-01-15
  */
 @RestController
-@Api(tags = "消息列表")
+@Api(tags = "消息")
 @RequestMapping("/message/t-message")
 public class TMessageController implements MessageApis {
     @Resource
