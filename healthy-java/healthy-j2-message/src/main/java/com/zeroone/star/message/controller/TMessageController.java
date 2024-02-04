@@ -3,6 +3,8 @@ package com.zeroone.star.message.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.zeroone.star.message.entity.TMessage;
+import com.zeroone.star.message.mapper.TMessageMapper;
+import com.zeroone.star.message.mapper.TMessageSendMapper;
 import com.zeroone.star.message.service.ITMessageService;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j2.MessageApis;
@@ -11,12 +13,14 @@ import com.zeroone.star.project.j2.query.MessageQuery;
 import com.zeroone.star.project.vo.JsonVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotBlank;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -32,6 +36,8 @@ import java.util.Date;
 public class TMessageController implements MessageApis {
     @Resource
     ITMessageService itMessageService;
+
+
 
 
     @ApiOperation("获取消息列表")
@@ -71,5 +77,8 @@ public class TMessageController implements MessageApis {
         BeanUtil.copyProperties(message, messageDTO);
         return JsonVO.success(messageDTO);
     }
+
+
+
 }
 
