@@ -77,7 +77,7 @@
                 <el-form-item style="width: 100%" class="result" label="体检结论与处理意见" prop="result">
                   <el-input v-model="formData.result" :autosize="{ minRows: 6 }" placeholder="请输入" clearable
                     type="textarea" />
-                <CheckItems bottonTitle="选"></CheckItems>
+                  <CheckItems bottonTitle="选"></CheckItems>
                 </el-form-item>
               </el-row>
             </el-form>
