@@ -60,12 +60,12 @@ export default (router) => {
       //提交的时候携带登录凭证
       let store = userStore()
       let token = store.getToken
-      token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJpZCI6MTQ4ODk4MjAxNiwiZXhwIjoxNzA3MTMxMjMyLCJhdXRob3JpdGllcyI6WyJST0xFX1NVUEVSX0FETUlOIl0sImp0aSI6IjEyMTRmOTExLWFjNGItNGQ0ZS1iNDFhLWQ3NGM0N2RjNDBlMyIsImNsaWVudF9pZCI6ImhlYWx0aHktbWFuYWdlciIsInVzZXJuYW1lIjoiYWRtaW4ifQ.hWpNYo5Algmx0Dp2OxDrtBYxeis29UxRuGT0MpJ8ko74P8viq3X0A1IuAds2cJ502qLkd7JraW_fkFs6gnc_VytkX71wzoeIQ7hWJI9WZ4ODEbHRs_yijIXOgc2sYuNojCFDFkx0TAAbJfs_ulFC4QWgqYEM392rIwCuFTJlkuuyNit0WE05dAWRNGkQiC7fFtHWhYIj8Ru8kkEZCmqfF0sv684V7UmsUzSlN_gVU7JnSG3Z9zCxg2BKTlSRQx5J36VqP2H8Jxck84B9aV_6JLqeZlGGUR5YnlnkhWR4YP8RnmFNR_syNNiduSaeaQmUvrB9YKx96r8ISrx9vUPrjQ'
+      // token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJpZCI6MTQ4ODk4MjAxNiwiZXhwIjoxNzA3MTMxMjMyLCJhdXRob3JpdGllcyI6WyJST0xFX1NVUEVSX0FETUlOIl0sImp0aSI6IjEyMTRmOTExLWFjNGItNGQ0ZS1iNDFhLWQ3NGM0N2RjNDBlMyIsImNsaWVudF9pZCI6ImhlYWx0aHktbWFuYWdlciIsInVzZXJuYW1lIjoiYWRtaW4ifQ.hWpNYo5Algmx0Dp2OxDrtBYxeis29UxRuGT0MpJ8ko74P8viq3X0A1IuAds2cJ502qLkd7JraW_fkFs6gnc_VytkX71wzoeIQ7hWJI9WZ4ODEbHRs_yijIXOgc2sYuNojCFDFkx0TAAbJfs_ulFC4QWgqYEM392rIwCuFTJlkuuyNit0WE05dAWRNGkQiC7fFtHWhYIj8Ru8kkEZCmqfF0sv684V7UmsUzSlN_gVU7JnSG3Z9zCxg2BKTlSRQx5J36VqP2H8Jxck84B9aV_6JLqeZlGGUR5YnlnkhWR4YP8RnmFNR_syNNiduSaeaQmUvrB9YKx96r8ISrx9vUPrjQ'      
       if (token) {
         config.headers.common['Authorization'] = 'Bearer ' + token
       }
            //加请求头
-       config.headers.common['Access-Control-Allow-Origin'] = '*'
+      //  config.headers.common['Access-Control-Allow-Origin'] = '*'
       //处理提交方式参数序列化操作
       if (config.upType === http.upType.json) {
         config.headers['Content-Type'] = 'application/json;charset=UTF-8'
