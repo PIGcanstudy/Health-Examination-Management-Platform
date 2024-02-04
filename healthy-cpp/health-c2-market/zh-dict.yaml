@@ -19,7 +19,7 @@ sample:
 
 threelevcheck:
  post:
-  summary: 新增一条三级审查记录-luoluo
+  summary: 新增一条三级审查记录
  field:
   id: 复查内容表 主键
   orderId: 订单id

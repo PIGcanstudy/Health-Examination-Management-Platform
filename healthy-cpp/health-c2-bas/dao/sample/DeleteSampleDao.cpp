@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "DeleteSampleDAO.h"
+#include "DeleteSampleDao.h"
 #include "DeleteSampleMapper.h"
 #include <sstream>
 

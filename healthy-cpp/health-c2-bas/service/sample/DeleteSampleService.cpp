@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "DeleteSampleService.h"
-#include "../../dao/sample/DeleteSampleDAO.h"
+#include "../../dao/sample/DeleteSampleDao.h"
 
 bool DeleteSampleService::removeData(const string& id)
 {
