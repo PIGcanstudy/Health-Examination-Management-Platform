@@ -93,7 +93,7 @@ import TestArea from '@/components/checkitems/TestArea.vue'
 import { useResultentryStores } from '@/stores/resultentry/index.js'
 
 /* Stores中的方法 */
-const resultentryStore = useMessageModuleStores()
+const resultentryStore = useResultentryStores()
 
 // PeopleList的变量
 const title = ref('人员查询')

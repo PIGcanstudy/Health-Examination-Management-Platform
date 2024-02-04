@@ -51,7 +51,7 @@
           >编辑</el-button>
         <el-button link type="primary" size="small">禁用</el-button>
         <el-button link type="primary" size="small">删除</el-button>
-        <el-button link type="primary" size="small">修改密码</el-button>
+        <el-button link type="primary" size="small" @click="handleDrawer">修改密码</el-button>
       </template>
     </el-table-column>
       </el-table>
@@ -99,15 +99,72 @@
        <el-button>取消</el-button>
       </template>
       </el-drawer>
+      <!-- 修改密码抽屉 -->
+  <el-drawer v-if="drawerVisible" v-model="drawer" title="修改密码">
+    <el-form v-model="remakePw" style="margin-top: 15px" :label-position="drawerLabel">
+      <el-form-item label="*原密码" label-width="100">
+        <el-input v-model="remakePw.oldPassword" show-password type="password" placeholder="请输入现在使用的密码"></el-input>
+      </el-form-item>
+      <el-form-item label="*新密码" label-width="100">
+        <el-input v-model="remakePw.newPassword" show-password type="password" placeholder="请输入新密码,长度为6-20个字符"></el-input>
+      </el-form-item>
+      <el-form-item label="*确认新密码" label-width="100">
+        <el-input v-model="remakePw.confirm" show-password type="password" placeholder="请再次输入新密码"></el-input>
+      </el-form-item>
+    </el-form>
+    <template #footer>
+      <div style="flex: auto">
+        <el-button type="primary" @click="editMm" >提交</el-button>
+        <el-button @click="closeDrawer">取消</el-button>
+      </div>
+    </template>
+  </el-drawer>
       </el-main>
     </el-container>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref,reactive } from 'vue'
 import NewButtonCG from '@/components/details/NewButtonCG.vue'
 import { defineProps } from 'vue'
+import { useUserManagementStores } from '@/stores/usermanagement/index.js'
+
+/* Stores中的方法 */
+const userManagementStore = useUserManagementStores()
   
+// 抽屉显隐
+const drawer = ref(true)
+
+// 切换抽屉
+const drawerVisible = ref(false)
+
+// 点击取消关闭抽屉
+const closeDrawer = () => {
+  drawerVisible.value = !drawerVisible.value
+}
+
+
+// 修改密码表单
+const remakePw = reactive({
+  id:'1488982016',
+  oldPassword: '',
+  newPassword: '',
+  confirm: '',
+  pass_strength: '弱'
+})
+
+// 点击修改打开抽屉
+const handleDrawer = () => {
+  drawerVisible.value = !drawerVisible.value
+}
+
+//修改密码
+const editMm = () => {
+  const result = userManagementStore.modifyPasswordStore(remakePw)
+  if(result.code == 200){
+    console.log('修改成功')
+  }
+}
   const props = defineProps({
     tableData: {
       type: Array,

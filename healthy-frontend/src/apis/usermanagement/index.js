@@ -1,5 +1,7 @@
 import Request from '@/apis/request.js'
-const baseUrl = 'http://localhost:10100/api'
+// const baseUrl = 'http://47.115.229.44:10101'
+// const baseUrl = '/sysmanager'
+const baseUrl = ''
 
 /**
  * 用户管理 

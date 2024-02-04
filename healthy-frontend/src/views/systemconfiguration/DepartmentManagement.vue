@@ -97,7 +97,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import {usephysicalexaminationStore} from'@stores/physicalexamination/index.js'
+import { usephysicalexaminationStore } from '@/stores/physicalexamination/index.js'
 //stores方法
 // const physicalexaminationStore=usephysicalexaminationStore()
 
