@@ -18,7 +18,12 @@ export const downloadFile = (params) => {
   return Request.requestJson(Request.GET, baseUrl + '/downloadReport', params)
 }
 
-// 报告下载
+// 报告打印
 export const modifyPrintReport = (params) => {
   return Request.requestJson(Request.PUT, baseUrl + '/printConfire', params)
 }
+
+// 报告打印
+// export const downloadFile = (params) => {
+//   return Request.requestJson(Request.PUT, baseUrl + '/downloadSampleCode', params)
+// }

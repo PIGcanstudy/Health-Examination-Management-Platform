@@ -116,8 +116,6 @@ import Head from '@/components/head/Head.vue'
 import Excel from '@/components/excel/Excel.vue'
 import SelectList from '@/components/selectList/SelectList.vue'
 import CheckItems from '@/components/checkitems/CheckItems.vue'
-import { useUnitreportStore } from '@/stores/unitreport/index.js'
-const UnitreportStore = useUnitreportStore()
 
 // 修改&保存按钮
 const isDisabled = ref(true)
