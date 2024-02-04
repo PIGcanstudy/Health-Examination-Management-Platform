@@ -3,7 +3,7 @@
 #include "Router.h"
 #include "ApiHelper.h"
 #include "sample/ObtainSampleDetailsController.h"//获取样本详情-睡不着
-#include "sample/DeleteSampleController.h"//删除样本-睡不着
+#include "sample/DeletesampleController.h"//删除样本-睡不着
 #include "positive/resRuleController.h" //puck
 #include "positive/DeatilController.h" //圈圈
 #include "positive/ModifyResultController.h" //圈圈
