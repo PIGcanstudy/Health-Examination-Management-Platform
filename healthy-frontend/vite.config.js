@@ -24,8 +24,7 @@ export default ({ mode }) =>
           // rewrite: (path) => path.replace(/^\/api/, '')
 
           //TODO[TEST_CODE]:使用ApiPost云MOCK
-          target:
-            'https://console-mock.apipost.cn/mock/99738a62-8857-4bb2-8010-c92424b03584',
+          target: 'https://console-mock.apipost.cn/mock/99738a62-8857-4bb2-8010-c92424b03584',
           rewrite: (path) => path.replace(/^\/api/, '')
         },
         '/captcha': {
@@ -42,11 +41,7 @@ export default ({ mode }) =>
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
-              return id
-                .toString()
-                .split('node_modules/')[1]
-                .split('/')[0]
-                .toString()
+              return id.toString().split('node_modules/')[1].split('/')[0].toString()
             }
           }
         }
