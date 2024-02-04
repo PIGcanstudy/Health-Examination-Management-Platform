@@ -44,6 +44,7 @@
                 <el-button type="primary" @click="submitForm()">登录</el-button>
               </el-form-item>
             </el-form>
+
             <div style="margin-left: 40px">
               <!-- TODO[TEST_CODE]: 测试代码后期发布需要删除 -->
               <router-link to="/sample">进入示例演示页面</router-link>
@@ -89,7 +90,7 @@ function doLogin(code) {
     },
     () => {
       // 跳转到首页
-      $router.push('/home')
+      $router.push('/dashboard')
       // 登录成功提示
       ElMessage.success('登录成功，前往首页')
     },
@@ -103,10 +104,10 @@ function doLogin(code) {
 function submitForm() {
   //TODO[TEST_CODE]:测试直接进入主界面
   //$router.push('/home')
-  doLogin('res.captchaVerification')
+  // doLogin('res.captchaVerification')
 
   // 弹出验证码框
-  //useVerify('blockPuzzle')
+  useVerify('blockPuzzle')
 }
 
 // 验证码组件引用

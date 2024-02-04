@@ -95,30 +95,30 @@
       <!-- 原表格，可以注释掉以测试列表样式 -->
       <el-table v-loading="openLoading" style="font-size: 12px; width: 100%; height: 350" table-layout="auto" :data="props?.tableData" @selection-change="handleSelectionChange">
         <!-- 第一列：多选 -->
-        <el-table-column v-if="props?.useSelectColumn" type="selection" width="55"></el-table-column>
-        <el-table-column prop="name" label="姓名"></el-table-column>
-        <el-table-column prop="gender" label="性别"></el-table-column>
-        <el-table-column prop="age" label="年龄"></el-table-column>
+        <el-table-column v-if="props?.useSelectColumn" type="selection" width="15" />
+        <!-- <el-table-column prop="name" label="姓名" width="55"></el-table-column>
+        <el-table-column prop="gender" label="性别" width="55"></el-table-column>
+        <el-table-column prop="age" label="年龄" width="55"></el-table-column>
         <el-table-column prop="tag" label="标签" style="display: flex">
           <template #default>
             <el-tag :type="info">好</el-tag>
             <el-tag :type="info">坏</el-tag>
           </template>
-        </el-table-column>
+        </el-table-column> -->
 
-        <!-- <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" :label="item.label"> -->
-        <!-- 表格的列内容如果使用tag -->
-        <!-- <template v-if="item.useTag" #default="{ row }">
+        <el-table-column v-for="item in props?.tableColumnAttribute" :key="item" :prop="item.prop" class-name="class-name">
+          <!-- 表格的列内容如果使用tag -->
+          <template v-if="item.useTag" #default="{ row }">
             <el-tag :type="row[item.prop].tagType">
               {{ row[item.prop].value }}
             </el-tag>
           </template>
-        </el-table-column> -->
+        </el-table-column>
 
         <!-- 表格没有数据的样式 -->
-        <template #empty>
+        <!-- <template #empty>
           <el-empty class="emptyTable" description="没有数据"></el-empty>
-        </template>
+        </template> -->
       </el-table>
 
       <!-- 分页器 -->
@@ -149,7 +149,7 @@ const props = defineProps({
     required: 'true',
     default: '人员列表'
   },
-  // 是否使用el-card的header
+  // 是否使用header
   useHeader: {
     type: Boolean,
     default: true
@@ -164,7 +164,7 @@ const props = defineProps({
     type: Array,
     require: true,
     default: () => {
-      return ['已检', '未检']
+      return ['已检', '未检', '已登记', '未登记', '未确认', '已确认', '在检', '待检', '已总检']
     }
   },
   // 当前switch状态
@@ -199,7 +199,7 @@ const props = defineProps({
   tableColumnAttribute: {
     type: Array,
     require: true,
-    default: () => []
+    default: () => ['你好', '不好']
   },
   // 表格数据
   tableData: {
@@ -238,10 +238,11 @@ const props = defineProps({
 })
 
 // 表单验证逻辑
+const formRef = ref([])
 const form = ref({
   // 设置默认选择哪个状态
-  // checkbox: props.checkboxItem[0],
-  checkbox: '已检',
+  checkbox: props.checkboxItem[0],
+  // checkbox: '已检',
   switch: false,
   name: '',
   id: '',
@@ -250,16 +251,37 @@ const form = ref({
   endDate: ''
 })
 
-// 滑块开关的loading
-const openSwitchLoading = ref(true)
-// 调用父组件数据修改滑块开关的函数：updateSwitchState
+// 表格的loading
+const openLoading = ref(false)
 
-// 调用父组件更新表格的数据
-const emits = defineEmits(['updateSwitchState', 'updateTableData', 'selectTableChange'])
+// 滑块开关的loading
+const openSwitchLoading = ref(false)
+
+// 定义行数据
+const rows = ref([])
+
+// 处理表格的选择框发生变化时的回调函数
 const handleSelectionChange = (newRows) => {
   rows.value = newRows
-  // 通过emit向父组件传递数据
-  emits('selectTableChange', newRows)
+  // 通过emit向父组件传递数据( 这里是向父组件传递一个数组, 数组中存放的是被选中的行数据的长度)
+  emits('selectTableChange', newRows.length)
+}
+
+// 调用父组件更新表格的数据
+// 调用父组件数据修改滑块开关的函数：updateSwitchState
+const emits = defineEmits(['updateSwitchState'], ['updateTableData'], ['selectTableChange'])
+
+const handleSizeChange = (pageSize) => {
+  // 当前页的数据容量改变，重置页码为1
+  paginationData.value.pageSize = pageSize
+  paginationData.value.currentPage = 1
+  // 传入当期那页面的容量大小和当前页码
+  emits('updateTableData', pageSize, paginationData.value.currentPage)
+}
+const handleCurrentChange = (currentPage) => {
+  paginationData.value.currentPage = currentPage
+  // 传入当前页码容量(默认值5)和当前页码
+  emits('updateTableData', paginationData.value.pageSize, currentPage)
 }
 
 // 提交表单查询逻辑
@@ -280,11 +302,6 @@ const isShowInput = ref(false)
 const toggleCollapse = () => {
   isShowInput.value = !isShowInput.value
 }
-
-// 行数据处理
-const rows = ref([])
-// 表格的loading
-const openLoading = ref(false)
 
 // 表格数据存放区域
 // const defaultTableData = [
@@ -356,23 +373,11 @@ const paginationData = ref({
   pageSize: props.pageSizes ? props.pageSizes[0] : 5
 })
 
-const handleSizeChange = (pageSize) => {
-  // 当前页的数据容量改变，重置页码为1
-  paginationData.value.currentPage = 1
-  // 传入当期那页面的容量大小和当前页面
-  emits('updateTableData', pageSize, paginationData.value.currentPage)
-}
-const handleCurrentChange = (currentPage) => {
-  paginationData.value.currentPage = currentPage
-  // 传入当前页码容量(默认值5)和当前页码
-  emits('updateTableData', paginationData.value.pageSize, currentPage)
-}
-
 // 表单的相关属性方法还未解决完
 defineExpose({
   // 表单部分
-  // form,
-  // formRef,
+  form,
+  formRef,
   // 开关的loading
   openSwitchLoading,
   // 暴露出被选中的row
