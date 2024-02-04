@@ -33,13 +33,20 @@ public class SectionOfficeEntityServiceImpl extends ServiceImpl<GetSectionOffice
     public PageDTO<GetSectionOfficeVO> listAllSectionOffice(GetSectionOfficeQuery query){
 
         QueryWrapper<SectionOfficeEntity> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("del_flag",0);
 
-
-        queryWrapper.like("section_code",query.getSectionCode()).eq("del_flag",0)
-                .or().like("section_name",query.getSectionName()).eq("del_flag",0)
-                .or().like("section_alphbet",query.getSectionAlphbet()).eq("del_flag",0)
-                .or().like("check_type",query.getCheckType()).eq("del_flag",0);
-
+        if (query.getSectionCode() != null) {
+            queryWrapper.like("section_code",query.getSectionCode());
+        }
+        if (query.getSectionName() != null) {
+            queryWrapper.like("section_name",query.getSectionName());
+        }
+        if (query.getSectionAlphbet() != null) {
+            queryWrapper.like("section_alphbet",query.getSectionAlphbet());
+        }
+        if (query.getCheckType() != null) {
+            queryWrapper.like("check_type",query.getCheckType());
+        }
 
         Page<SectionOfficeEntity> page = new Page<>(query.getPageIndex(),query.getPageSize());
         Page result = baseMapper.selectPage(page, queryWrapper);
