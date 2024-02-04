@@ -27,7 +27,7 @@ import java.util.List;
  * @date 2024/01/15 22:10
  **/
 @RestController
-@RequestMapping("/j3-typeLib")
+@RequestMapping("/sysconfig-typeLib")
 @Api("类型库")
 public class TypeLibController implements TypeLibApis {
     @Resource

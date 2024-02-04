@@ -25,7 +25,7 @@ import java.util.List;
  * @date 2024/01/15 21:57
  **/
 @RestController
-@RequestMapping("/j3-message")
+@RequestMapping("/sysconfig-message")
 @Api("消息管理")
 public class MessageController implements MessageApis {
     @Resource

@@ -28,7 +28,7 @@ import java.util.List;
  * @date 2024/01/15 22:04
  **/
 @RestController
-@RequestMapping("/j3-directSource")
+@RequestMapping("/sysconfig-directSource")
 @Api(tags = "字典数据")
 public class DirectSourceController implements DirectSourceApis {
 

@@ -19,7 +19,7 @@ import javax.validation.Valid;
  * @date 2024/01/15 22:10
  **/
 @RestController
-@RequestMapping("/j3-sysConfig")
+@RequestMapping("/sysconfig-sysConfig")
 @Api("系统公告配置")
 public class SysConfigController implements SysConfigApis {
     @Autowired

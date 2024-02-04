@@ -27,7 +27,7 @@ import java.util.logging.ErrorManager;
  * @date 2024/01/23 19:41
  **/
 @RestController
-@RequestMapping("/j3-stopWord")
+@RequestMapping("/sysconfig-stopWord")
 @Api("禁用词管理")
 public class StopWordController implements StopWordApis {
 

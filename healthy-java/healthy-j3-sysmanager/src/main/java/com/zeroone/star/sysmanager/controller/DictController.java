@@ -27,7 +27,7 @@ import java.util.List;
  * @Version 0.1
  */
 @RestController
-@RequestMapping("/j3-dict")
+@RequestMapping("/sysconfig-dict")
 @Api("数据字典")
 public class DictController implements DictApis {
     @Autowired
