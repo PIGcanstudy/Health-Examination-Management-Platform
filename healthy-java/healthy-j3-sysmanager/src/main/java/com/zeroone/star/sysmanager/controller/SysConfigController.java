@@ -23,7 +23,7 @@ import javax.validation.Valid;
  **/
 @RestController
 @RequestMapping("/j3-sysConfig")
-@Api("系统配置")
+@Api("系统公告配置")
 public class SysConfigController implements SysConfigApis {
     @Autowired
     private TSettingServiceImpl tSettingService;

@@ -20,19 +20,19 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StopWordDTO extends PageDTO {
-    @ApiModelProperty(value = "ID", example = "1")
+    @ApiModelProperty(value = "ID", example = "1",required = true)
     private String id;
-    @ApiModelProperty(value = "创建者", example = "John Doe")
+    @ApiModelProperty(value = "创建者", example = "John Doe",required = true)
     private String createBy;
-    @ApiModelProperty(value = "创建时间", example = "2022-01-01 12:00:00")
+    @ApiModelProperty(value = "创建时间", example = "2022-01-01 12:00:00",required = true)
     private String createTime;
-    @ApiModelProperty(value = "删除标志", example = "0")
+    @ApiModelProperty(value = "删除标志", example = "0",required = true)
     private String delFlag;
-    @ApiModelProperty(value = "更新者", example = "Jane Smith")
+    @ApiModelProperty(value = "更新者", example = "Jane Smith",required = true)
     private String updateBy;
-    @ApiModelProperty(value = "更新时间", example = "2022-01-02 15:00:00")
+    @ApiModelProperty(value = "更新时间", example = "2022-01-02 15:00:00",required = true)
     private String updateTime;
-    @ApiModelProperty(value = "禁用词", example = "stop word")
+    @ApiModelProperty(value = "禁用词", example = "stop word",required = true)
     private String title;
 
 }

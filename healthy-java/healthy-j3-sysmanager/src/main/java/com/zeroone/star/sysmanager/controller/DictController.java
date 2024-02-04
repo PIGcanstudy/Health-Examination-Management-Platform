@@ -28,13 +28,13 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/j3-dict")
-@Api("字典控制")
+@Api("数据字典")
 public class DictController implements DictApis {
     @Autowired
     DictService dictService;
 
     @GetMapping(value = "/getAllDict")
-    @ApiOperation(value = "分页获取全部字典")
+    @ApiOperation(value = "获取字典列表")
     public JsonVO<List<DictDTO>> getAll() {
 
         List<DictDTO> list = dictService.findAllOrderBySortOrder();
@@ -45,7 +45,7 @@ public class DictController implements DictApis {
     }
 
     @PostMapping(value = "/addDict")
-    @ApiOperation(value = "添加字典")
+    @ApiOperation(value = "新增字典")
     public JsonVO<Boolean> add(com.zeroone.star.project.dto.j3.dictory.DictDTO dict) {
 
         if (dict == null || dict.getType() == null ||

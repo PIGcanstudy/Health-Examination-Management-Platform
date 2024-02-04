@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 /**
  * <p>
@@ -20,10 +21,12 @@ import javax.validation.constraints.Min;
 @Setter
 @ToString
 public class PageQuery {
+    @NotBlank(message = "页码不能为空")
     @Min(value = 1, message = "页码最小值为1")
-    @ApiModelProperty(value = "查询页码", example = "1")
+    @ApiModelProperty(value = "查询页码", example = "1",required = true)
     private long pageIndex;
+    @NotBlank(message = "条数不能为空")
     @Min(value = 1, message = "条数最小值为1")
-    @ApiModelProperty(value = "查询条数", example = "10")
+    @ApiModelProperty(value = "查询条数", example = "10",required = true)
     private long pageSize;
 }

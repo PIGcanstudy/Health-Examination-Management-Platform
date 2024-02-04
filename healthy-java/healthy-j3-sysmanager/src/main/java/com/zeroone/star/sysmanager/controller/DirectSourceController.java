@@ -51,14 +51,14 @@ public class DirectSourceController implements DirectSourceApis {
     }
 
 
-    @ApiOperation("查询字典数据名称列表")
+    @ApiOperation("获取字典数据名称列表")
     @GetMapping("/queryDictDataTitle")
     @Override
     public JsonVO<List<String>> queryDictDataTitle() {
         List<String> data = itDictDataService.getDictDataTitle();
         return JsonVO.success(data);
     }
-    @ApiOperation("查询字典数据列表")
+    @ApiOperation("获取字典数据列表")
     @PostMapping("/queryDictDataByCondition")
     @Override
     public JsonVO<PageDTO<DictDataDTO>> queryDictDataByCondition(DictDataQuery condition) {
@@ -66,8 +66,8 @@ public class DirectSourceController implements DirectSourceApis {
         return JsonVO.success(data);
     }
 
-    @ApiOperation("根据id批量删除数据字典")
-    @PostMapping("/deleteByIds")
+    @ApiOperation("删除字典数据")
+    @DeleteMapping("/deleteByIds")
     @Override
     public JsonVO<Boolean> deleteByIds(@RequestParam String[] ids) {
         for (String id : ids) { //这些id是t_dict_data里面的id

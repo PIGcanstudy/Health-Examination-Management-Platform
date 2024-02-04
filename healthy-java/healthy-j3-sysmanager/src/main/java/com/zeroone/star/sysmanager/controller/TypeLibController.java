@@ -41,7 +41,7 @@ public class TypeLibController implements TypeLibApis {
      * @return
      */
     @GetMapping("get-TProTypeTree")
-    @ApiOperation("获取类型树接口")
+    @ApiOperation("获取类型树")
     @Override
     public JsonVO<List<TProTypeVO>> getAllProTypeByTree(typeLibraryTreeDTO typeLibraryTreedto) {
         List<TProTypeVO> allProTypeByTree = itProTypeService.getAllProTypeByTree(typeLibraryTreedto);
@@ -61,8 +61,8 @@ public class TypeLibController implements TypeLibApis {
         return JsonVO.success(tProTypeListByPage);
     }
 
-    @PostMapping("remove-typelib")
-    @ApiOperation("删除节点")
+    @DeleteMapping("remove-typelib")
+    @ApiOperation("删除类型")
     @Override
     public JsonVO<Integer> removeTypeLib(@RequestParam String[] ids) {
         JsonVO<Integer> vo = new JsonVO<>();
@@ -74,13 +74,13 @@ public class TypeLibController implements TypeLibApis {
 
     @Override
     @PostMapping("/addType")
-    @ApiOperation("添加类型")
+    @ApiOperation("新增类型")
     public JsonVO<typeAddVO> addType(@RequestBody typeAddDTO typeadddto) {
         return JsonVO.success(typeService.addType(typeadddto));
     }
 
     @Override
-    @PostMapping("/updateType")
+    @PutMapping("/updateType")
     @ApiOperation("修改类型")
     public JsonVO<Object> updateType(@RequestBody typeUpdateDTO typeupdatedto) {
         typeUpdateVO typeUpdateVO = typeService.updateType(typeupdatedto);

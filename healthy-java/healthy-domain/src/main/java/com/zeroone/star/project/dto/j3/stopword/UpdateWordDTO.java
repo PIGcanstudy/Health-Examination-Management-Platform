@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateWordDTO {
-    @ApiModelProperty(value = "ID", example = "1")
+    @ApiModelProperty(value = "ID", example = "1",required = true)
     private String id;
     @ApiModelProperty(value = "禁用词", example = "stop word")
     private String title;

@@ -26,7 +26,7 @@ public class SendMsgQuery implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @NotBlank(message = "消息id不能为空")
-    @ApiModelProperty(value = "消息id不能为空", example = "1")
+    @ApiModelProperty(value = "消息id不能为空", example = "1",required = true)
     private String id;
 
 //    @NotBlank(message = "创建人不能为空")
@@ -39,25 +39,25 @@ public class SendMsgQuery implements Serializable {
 //    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 //    private LocalDateTime createTime;
 
-    @ApiModelProperty(value = "消息类型")
+    @ApiModelProperty(value = "消息类型",required = true)
     private String type;
 
-    @ApiModelProperty(value = "标题")
+    @ApiModelProperty(value = "标题",required = true)
     private String title;
 
-    @ApiModelProperty(value = "内容")
+    @ApiModelProperty(value = "内容",required = true)
     private String content;
 
-    @ApiModelProperty(value = "是否发送给新人 0 否 1 是")
+    @ApiModelProperty(value = "是否发送给新人 0 否 1 是",required = true)
     private Boolean createSend;
 
     @Min(value = 0, message = "全体用户")
     @Max(value = 1, message = "指定用户")
     @TableField(exist = false)
-    @ApiModelProperty(value = "发送范围")
+    @ApiModelProperty(value = "发送范围",required = true)
     private Integer range;
 
     @TableField(exist = false)
-    @ApiModelProperty(value = "发送指定用户id")
+    @ApiModelProperty(value = "发送指定用户id",required = true)
     private String[] userIds;
 }

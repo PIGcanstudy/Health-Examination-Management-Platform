@@ -23,7 +23,7 @@ public class UpdateMsgQuery implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @NotBlank(message = "消息id不能为空")
-    @ApiModelProperty(value = "消息id不能为空")
+    @ApiModelProperty(value = "消息id不能为空",required = true)
     private String id;
 
 //    @NotBlank(message = "消息人不能为空")

@@ -33,7 +33,7 @@ public class StopWordController implements StopWordApis {
 
     @Resource
     private ITStopWordService stopWordService;
-    @ApiOperation("分页查找禁用词")
+    @ApiOperation("获取禁用词列表（条件+分页）")
     @GetMapping("/queryStopWord")
     @Override
     public JsonVO<PageDTO<StopWordDTO>> queryStopWord(StopWordQuery query) {
@@ -63,7 +63,7 @@ public class StopWordController implements StopWordApis {
     }
 
     @DeleteMapping("/deleteWordsByIds")
-    @ApiOperation("批量删除禁用词")
+    @ApiOperation("删除禁用词（支持批量删除）")
     @Override
     public JsonVO<Boolean> deleteWordsByIds(@RequestParam List<String> ids) {
         boolean success = stopWordService.removeByIds(ids);

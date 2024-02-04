@@ -26,12 +26,12 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/j3-message")
-@Api("消息控制")
+@Api("消息管理")
 public class MessageController implements MessageApis {
     @Resource
     private ITMessageService messageService;
 
-    @ApiOperation("批量删除消息")
+    @ApiOperation("删除撤回消息")
     @DeleteMapping("/deleteByIds")
     @Override
     public JsonVO<Boolean> deleteByIds(@RequestParam List<String> ids) {
@@ -42,7 +42,7 @@ public class MessageController implements MessageApis {
         return JsonVO.fail(success);
     }
 
-    @ApiOperation("获取消息详情页列表")
+    @ApiOperation("获取指定消息发送详情列表")
     @GetMapping("/queryMessageDetail")
     @Override
     public JsonVO<PageDTO<MessageResponseDTO>> selectMessageDetailPage(MessageSendDTO messageSend) {
@@ -66,7 +66,7 @@ public class MessageController implements MessageApis {
         return booleanJsonVO;
     }
 
-    @ApiOperation("更新消息")
+    @ApiOperation("修改消息")
     @PutMapping("/updateMessage")
     @Override
     public JsonVO<Boolean> updateMessage(UpdateMsgQuery updateMsgQuery) throws Exception {

@@ -18,16 +18,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class typeAddDTO {
-    @ApiModelProperty(value = "创建者id",example = "1")
+    @ApiModelProperty(value = "创建者id",example = "1",required = true)
     private Long createId;
-    @ApiModelProperty(value = "类型名称",example = "经济类型")
+    @ApiModelProperty(value = "类型名称",example = "经济类型",required = true)
     private String typeName;
-    @ApiModelProperty(value = "类型编码",example = "TYPE_003")
+    @ApiModelProperty(value = "类型编码",example = "TYPE_003",required = true)
     private String typeCode;
-    @ApiModelProperty(value = "上级类型",example = "行业类型")
+    @ApiModelProperty(value = "上级类型",example = "行业类型",required = true)
     private String fatherType;
-    @ApiModelProperty(value = "排序",example = "2")
+    @ApiModelProperty(value = "排序",example = "2",required = true)
     private Integer orderNum;
-    @ApiModelProperty(value = "备注",example = "这里是备注")
+    @ApiModelProperty(value = "备注",example = "这里是备注",required = true)
     private String remark;
 }
