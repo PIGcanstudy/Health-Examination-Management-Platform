@@ -8,7 +8,12 @@
           <el-form-item label="登录账号:">
             <span>admin</span>
           </el-form-item>
-          <el-form-item label="用户头像:"></el-form-item>
+          <el-form-item label="用户头像:">
+            <el-upload class="avatar-uploader" :show-file-list="false" auto-upload="false" :on-change="onSelectFile">
+              <img v-if="imgUrl" :src="imgUrl" class="avatar" />
+              <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+            </el-upload>
+          </el-form-item>
           <el-form-item label="性别">
             <el-select v-model="baseFormation.gender" style="width: 220px">
               <el-option v-for="item in genderOptions" :key="item" :label="item.label" :value="item.value"></el-option>
@@ -27,7 +32,13 @@
           <el-form-item label="用户类型:">
             <span>管理员</span>
           </el-form-item>
-          <el-form-item label="签字文件"> 文件上传 </el-form-item>
+          <el-form-item label="签字文件">
+            <el-upload class="avatar-uploader" :show-file-list="false" auto-upload="false" :on-change="onSelectFile2">
+              <img v-if="imgUrl2" :src="imgUrl2" class="avatar" />
+              <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+            </el-upload>
+          </el-form-item>
+          <el-button type="primary" size="large" class="saveButton" @click="saveOperation">保存</el-button>
         </el-form>
       </el-tab-pane>
       <el-tab-pane label="安全设置">
@@ -47,7 +58,7 @@
               <div class="topic">绑定手机</div>
               <div class="bottom">已绑定手机: <span>18782059031</span></div>
             </div>
-            <el-button link class="button">修改</el-button>
+            <el-button link class="button" @click="editPhone">修改</el-button>
           </div>
           <el-divider></el-divider>
           <div class="item">
@@ -55,7 +66,7 @@
               <div class="topic">绑定邮箱</div>
               <div class="bottom">已绑定邮箱 <span>admin@exrick.cn</span></div>
             </div>
-            <el-button link class="button">修改</el-button>
+            <el-button link class="button" @click="editMailbox">修改</el-button>
           </div>
           <el-divider></el-divider>
           <div class="item">
@@ -104,11 +115,32 @@
       </div>
     </template>
   </el-drawer>
+  <!-- 密码验证弹窗 -->
+  <el-dialog v-model="confirmPassword">
+    <template #header="{ titleId }">
+      <h1 :id="titleId" style="color: rgb(23, 35, 61)">身份认证</h1>
+      <el-divider></el-divider>
+    </template>
+    <div class="center" style="text-align: center">
+      <el-icon style="color: rgb(81, 90, 110); font-size: 30px"><Lock></Lock></el-icon>
+      <h2 style="font-weight: 700; color: rgb(47, 48, 51); margin-bottom: 45px">密码认证</h2>
+      <span style="color: rgb(81, 90, 110); font-size: 16px">请输入您的密码</span>
+      <br />
+      <el-input v-model="confirmInp" type="password" size="large" show-password style="width: 250px; margin-top: 20px" placeholder="请输入您的密码"></el-input>
+    </div>
+    <template #footer>
+      <div class="footer" style="text-align: center">
+        <el-button size="large" @click="cancelConfirm">取消</el-button>
+        <el-button type="primary" size="large" style="margin-left: 25px" @click="commitConfirm">提交</el-button>
+      </div>
+    </template>
+  </el-dialog>
   <!--  -->
 </template>
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
+import { Plus, Lock } from '@element-plus/icons-vue'
 
 // 基本信息表单---label位置
 const labelPosition = ref('left')
@@ -149,6 +181,12 @@ const drawerVisible = ref(false)
 // 抽屉显隐
 const drawer = ref(true)
 
+// 密码验证弹窗显隐
+const confirmPassword = ref(false)
+
+// 密码验证---绑定值
+const confirmInp = ref()
+
 // 修改密码表单
 const remakePw = reactive({
   oldPassword: '',
@@ -158,16 +196,57 @@ const remakePw = reactive({
 
 // 点击修改打开抽屉
 const handleDrawer = () => {
-  drawerVisible.value = !drawerVisible.value
+  drawerVisible.value = true
 }
 
 // 点击取消关闭抽屉
 const closeDrawer = () => {
-  drawerVisible.value = !drawerVisible.value
+  drawerVisible.value = false
 }
 
 // 消息通知---系统消息开关
 const systemMessages = ref(true)
+
+// 用户头像
+const imgUrl = ref()
+
+// 用户头像---上传预览
+const onSelectFile = (uploadFile) => {
+  imgUrl.value = URL.createObjectURL(uploadFile.raw)
+}
+
+// 签字文件
+const imgUrl2 = ref()
+
+// 签字文件---上传预览
+const onSelectFile2 = (uploadFile) => {
+  imgUrl.value = URL.createObjectURL(uploadFile.raw)
+}
+
+// 基本信息---保存
+const saveOperation = () => {
+  console.log('保存')
+}
+
+// 安全设置---修改绑定手机
+const editPhone = () => {
+  confirmPassword.value = true
+}
+
+// 安全设置---修改绑定邮箱
+const editMailbox = () => {
+  confirmPassword.value = true
+}
+
+// 密码验证---取消按钮
+const cancelConfirm = () => {
+  confirmPassword.value = false
+}
+
+// 密码验证---提交按钮
+const commitConfirm = () => {
+  confirmPassword.value = false
+}
 </script>
 
 <style lang="scss" scoped>
@@ -206,5 +285,40 @@ h1 {
     color: rgba(0, 0, 0, 0.45);
     font-size: 14px;
   }
+}
+
+// 上传头像---签字文件样式
+.avatar-uploader {
+  :deep() {
+    .avatar {
+      width: 130px;
+      height: 130px;
+      display: block;
+    }
+    .el-upload {
+      border: 1px dashed var(--el-border-color);
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: var(--el-transition-duration-fast);
+    }
+    .el-upload:hover {
+      border-color: var(--el-color-primary);
+    }
+    .el-icon.avatar-uploader-icon {
+      font-size: 28px;
+      color: #8c939d;
+      width: 130px;
+      height: 130px;
+      text-align: center;
+    }
+  }
+}
+
+// 保存按钮样式
+.saveButton {
+  width: 100px;
+  margin-left: 120px;
 }
 </style>
