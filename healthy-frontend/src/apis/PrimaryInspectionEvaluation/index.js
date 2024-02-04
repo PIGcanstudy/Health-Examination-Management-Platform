@@ -2,6 +2,7 @@ import Request from '@/apis/request.js'
 const baseUrl = ''
 
 /* 该接口文件的封装顺序参考接口文档网址从上到下排列 */
+/* 对应亿图脑图中的主检评价接口，页面对应医生总检 */
 
 // 获取体检项目结果明细（后端缺页面，接口只有危险值提示的参数）  1
 export const queryDangerousInfo = (params) => {

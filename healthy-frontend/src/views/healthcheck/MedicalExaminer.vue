@@ -2,8 +2,7 @@
 <template>
   <el-container style="background-color: #f0f0f0; padding: 10px; height: 100%">
     <el-aside style="width: 20%" :style="{ maxWidth: isCollapsed ? '0' : '20%' }">
-      <PeopleListPPZ title="团检人员">
-        <!-- 表单 -->
+      <!-- <PeopleListPPZ title="团检人员">
         <template #form>
           <el-form :model="form">
             <el-form-item prop="date">
@@ -16,7 +15,6 @@
             <el-form-item prop="name">
               <el-input v-model="form.name" placeholder="请输入关键字" clearable />
             </el-form-item>
-            <!-- 重置 -->
             <el-button :size="small" @click="onSubmit">重置</el-button>
           </el-form>
         </template>
@@ -24,7 +22,24 @@
         <template #table>
           <List></List>
         </template>
-      </PeopleListPPZ>
+      </PeopleListPPZ> -->
+
+      <Peoplelist
+        :table-column-attribute="tableColumnAttribute"
+        :table-data="publicStore.tableData"
+        :page-sizes="[5]"
+        :total="publicStore.total"
+        :use-select-column="false"
+        @update-table-data="
+          (pageSize, pageIndex) => {
+            getTableData({
+              pageSize,
+              pageIndex
+            })
+          }
+        "
+        ref="PeopleListRef"
+      ></Peoplelist>
     </el-aside>
 
     <div class="collapse" style="height: 100%; line-height: 100vh; margin: 4px" @click="isCollapsed = !isCollapsed">
@@ -265,12 +280,44 @@
 </template>
 
 <script setup>
-import PeopleListPPZ from '@/components/peoplelist/PeopleList-PPZ.vue'
+// import PeopleListPPZ from '@/components/peoplelist/PeopleList-PPZ.vue'
 import List from '@/components/peoplelist/List.vue'
 import { Upload, CirclePlus, Download, ArrowLeft, ArrowRight, UploadFilled, Plus } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 import { defineProps, defineEmits } from 'vue'
 import { ElMessage } from 'element-plus'
+import Peoplelist from '@/components/peoplelist/PeopleList.vue'
+import { usePublicStore } from '@/stores/public/index.js'
+// 定义方法调用仓库接口
+const publicStore = usePublicStore()
+
+// 定义表格列属性
+const tableColumnAttribute = ref([
+  {
+    prop: 'PeopleName',
+    label: '姓名'
+  },
+  {
+    prop: 'gender',
+    label: '性别'
+  },
+  {
+    prop: 'age',
+    label: '年龄'
+  },
+  {
+    prop: 'tagType',
+    label: '标签'
+  }
+])
+const PeopleListRef = ref(null)
+const rowId = ref('')
+const getTableData = async (params) => {
+  console.log('res')
+  PeopleListRef.value.openLoading = !PeopleListRef.value.openLoading
+  await publicStore.queryUesrnameList(params)
+  PeopleListRef.value.openLoading = !PeopleListRef.value.openLoading
+}
 
 const form = ref({
   date: '',

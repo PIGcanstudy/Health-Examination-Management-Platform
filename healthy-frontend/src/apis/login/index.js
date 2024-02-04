@@ -12,7 +12,7 @@ const currBaseUrl = '/login/'
  */
 export const login = (data, success, fail) => {
   const $store = userStore()
-  Request.requestForm(Request.POST, currBaseUrl + 'auth-login', data)
+  Request.requestForm(Request.POST, currBaseUrl + '/auth-login', data)
     .then((data) => {
       // 记录Token到本地
       if (data.data) {
