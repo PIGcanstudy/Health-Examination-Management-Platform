@@ -3,6 +3,8 @@ package com.zeroone.star.term.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zeroone.star.term.entity.OfficeTermEntity;
 
+import java.util.List;
+
 
 /**
  * 科室术语表(OfficeTerm)表服务接口
@@ -13,7 +15,7 @@ import com.zeroone.star.term.entity.OfficeTermEntity;
 public interface OfficeTermService extends IService<OfficeTermEntity> {
     /**
      * 删除术语
-     * @param office_id
+     * @param ids
      */
-    void deletetermanagement(Integer office_id);
+    Boolean deletetermanagement(List<String> ids);
 }

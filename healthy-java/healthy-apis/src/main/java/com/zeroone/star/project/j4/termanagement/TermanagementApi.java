@@ -2,11 +2,13 @@ package com.zeroone.star.project.j4.termanagement;
 
 import com.zeroone.star.project.vo.JsonVO;
 
+import java.util.List;
+
 public interface TermanagementApi {
     /**
      * 删除术语
-     * @param office_id
+     * @param ids
      * @return
      */
-    JsonVO<Void> deletetermanagement(Integer office_id);
+    JsonVO<Boolean> deletetermanagement(List<String> ids);
 }

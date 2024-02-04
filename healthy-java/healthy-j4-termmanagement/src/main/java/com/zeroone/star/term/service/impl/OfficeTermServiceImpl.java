@@ -8,6 +8,8 @@ import com.zeroone.star.term.service.OfficeTermService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 科室术语表(OfficeTerm)表服务实现类
  *
@@ -20,12 +22,9 @@ public class OfficeTermServiceImpl extends ServiceImpl<TermanagementMapper, Offi
     OfficeTermService officeTermService;
 
     @Override
-    public void deletetermanagement(Integer office_id) {
+    public Boolean deletetermanagement(List ids) {
 //        删除科室false返回异常
-        if(!removeById(office_id)){
-            throw new OrgStructureException("科室不存在");
-        }else {
-            removeById(office_id);
-        }
+        int i = baseMapper.deleteBatchIds(ids);
+        return true;
     }
 }

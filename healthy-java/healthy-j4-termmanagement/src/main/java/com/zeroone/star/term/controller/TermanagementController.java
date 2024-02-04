@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/terms")
 @Api(tags = "术语管理接口")
@@ -22,8 +24,7 @@ public class TermanagementController implements TermanagementApi {
     @Override
     @DeleteMapping("delete-termanagement")
     @ApiOperation(value = "删除术语")
-    public JsonVO<Void> deletetermanagement(Integer office_id) {
-        officeTermService.deletetermanagement(office_id);
-        return JsonVO.success(null);
+    public JsonVO<Boolean> deletetermanagement(List<String> ids) {
+        return JsonVO.success(officeTermService.deletetermanagement(ids));
     }
 }
