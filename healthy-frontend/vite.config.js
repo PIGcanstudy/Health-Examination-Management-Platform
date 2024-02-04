@@ -20,7 +20,7 @@ export default ({ mode }) =>
       proxy: {
         '/api': {
           changeOrigin: true,
-          // target: 'http://localhost:10100',
+          // target: 'http://8.130.30.150:10001',
           // rewrite: (path) => path.replace(/^\/api/, '')
 
           //TODO[TEST_CODE]:使用ApiPost云MOCK
