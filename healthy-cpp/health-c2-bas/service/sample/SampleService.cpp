@@ -1,4 +1,3 @@
-#pragma once
 #include "stdafx.h"
 #include "SampleService.h"
 #include "../../dao/sample/SampleDAO.h"

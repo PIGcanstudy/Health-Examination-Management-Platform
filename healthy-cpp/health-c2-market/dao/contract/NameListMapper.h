@@ -3,7 +3,7 @@
 #define _NAMELIST_MAPPER_
 
 #include "Mapper.h"
-#include "../../domain/do/contract/NameLIstDO.h"
+#include "../../domain/do/contract/NameListDO.h"
 
 /**
  * 名称列表表字段匹配映射
