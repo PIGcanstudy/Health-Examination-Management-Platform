@@ -1,14 +1,14 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import {MessageQueryAll, removeByIds,MessageSendQuery,MessageSendUnRead,addUupdateMessageSender} from '@/apis/personal/index.js'
+import { MessageQueryAll, removeByIds, MessageSendQuery, MessageSendUnRead, addUpdateMessageSender } from '@/apis/personal/index.js'
 export const useMessageModuleStores = defineStore('messageModuleStores', () => {
-/**
- * 消息模块-j2
- * stores
- * zlw
- * @param {} params 
- * @returns 
- */
+  /**
+   * 消息模块-j2
+   * stores
+   * zlw
+   * @param {} params
+   * @returns
+   */
   // 重写方法
   const MessageQueryAllStore = async (params) => {
     return await MessageQueryAll(params)
@@ -22,16 +22,16 @@ export const useMessageModuleStores = defineStore('messageModuleStores', () => {
   const MessageSendUnReadStore = async (params) => {
     return await MessageSendUnRead(params)
   }
-  const addUupdateMessageSenderStore = async (params) => {
-    return await addUupdateMessageSender(params)
+  const addUpdateMessageSenderStore = async (params) => {
+    return await addUpdateMessageSender(params)
   }
-  
+
   // 暴露出的数据
   return {
     MessageQueryAllStore,
     removeByIdsStore,
     MessageSendQueryStore,
     MessageSendUnReadStore,
-    addUupdateMessageSenderStore
+    addUpdateMessageSenderStore
   }
 })
