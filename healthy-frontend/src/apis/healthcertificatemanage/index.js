@@ -2,7 +2,7 @@ import Request from '@/apis/request.js'
 const baseUrl = ''
 
 //获取健康证详情
-export const downloadHelthcertidetail = (params) => {
+export const getHelthcertidetailApi = (params) => {
     return Request.requestForm(
         Request.GET,
         baseUrl + '/healthcertificate-manage/download-helthcertidetail',
@@ -11,7 +11,7 @@ export const downloadHelthcertidetail = (params) => {
 }
 
 //获取健康证列表
-export const queryHerlthcertiList = (params) => {
+export const getHerlthcertiListApi = (params) => {
     return Request.requestForm(
         Request.GET,
         baseUrl + '/healthcertificate-manage/query-herlthcertilist',
@@ -20,7 +20,7 @@ export const queryHerlthcertiList = (params) => {
 }
 
 //打印确认（支持批量）
-export const modifyPrintConfirm = (params) => {
+export const putPrintConfirmApi = (params) => {
     return Request.requestJson(
         Request.PUT,
         baseUrl + '/healthcertificate-manage/modify-printconfirm',
@@ -28,7 +28,7 @@ export const modifyPrintConfirm = (params) => {
 }
 
 //批量打印（批量打印）
-export const queryHelthcertiList = (params) => {
+export const putHelthcertiListApi = (params) => {
     return Request.requestJson(
         Request.PUT,
         baseUrl + '​/healthcertificate-manage​/modify-printmore',
@@ -36,7 +36,7 @@ export const queryHelthcertiList = (params) => {
 }
 
 //批量上传
-export const uploadMore = (params) => {
+export const postMoreApi = (params) => {
     return Request.requestJson(
         Request.POST,
         baseUrl + '/healthcertificate-manage/upload-more',
@@ -44,7 +44,7 @@ export const uploadMore = (params) => {
 }
 
 //查看异常
-export const queryViewException = (params) => {
+export const getViewExceptionApi = (params) => {
     return Request.requestJson(
         Request.GET,
         baseUrl + '/healthcertificate-manage/query-viewexception',
