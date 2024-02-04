@@ -17,7 +17,7 @@
  limitations under the License.
 */
 #include "stdafx.h"
-#include "DeleteSampleController.h"
+#include "DeletesampleController.h"
 #include "../../service/sample/DeleteSampleService.h"
 #include "../ApiDeclarativeServicesHelper.h"
 
