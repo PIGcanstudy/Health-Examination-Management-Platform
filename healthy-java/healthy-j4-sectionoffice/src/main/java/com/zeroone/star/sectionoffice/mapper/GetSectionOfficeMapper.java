@@ -13,9 +13,5 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 @Mapper
 public interface GetSectionOfficeMapper extends BaseMapper<SectionOfficeEntity> {
-    Page<GetSectionOfficeVO> selectAll(Page<GetSectionOfficeQuery> page, @Param("query") GetSectionOfficeQuery query);
-
-
-
-
+    // Page<GetSectionOfficeVO> selectAll(Page<GetSectionOfficeQuery> page, @Param("query") GetSectionOfficeQuery query);
 }

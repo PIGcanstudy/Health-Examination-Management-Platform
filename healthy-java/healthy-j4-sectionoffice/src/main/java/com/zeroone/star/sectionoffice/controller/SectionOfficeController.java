@@ -54,7 +54,7 @@ public class SectionOfficeController implements SectionOfficeApi {
 
     @Override
     @GetMapping("query-section-office-detail")
-    @ApiOperation(value = "獲取科室詳情")
+    @ApiOperation(value = "获取科室详情")
     public JsonVO<GetSectionOfficeVO> GetAllSectionOffice(SectionOfficeDetailQuery query) {
         return JsonVO.success((sectionOfficeService.getAllSectionOffice(query)));
     }

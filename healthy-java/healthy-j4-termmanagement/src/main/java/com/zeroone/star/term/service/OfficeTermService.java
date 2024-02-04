@@ -1,6 +1,8 @@
 package com.zeroone.star.term.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zeroone.star.project.vo.JsonVO;
+import com.zeroone.star.project.vo.ResultStatus;
 import com.zeroone.star.term.entity.OfficeTermEntity;
 
 import java.util.List;
@@ -17,5 +19,5 @@ public interface OfficeTermService extends IService<OfficeTermEntity> {
      * 删除术语
      * @param ids
      */
-    Boolean deletetermanagement(List<String> ids);
+    JsonVO<ResultStatus> deletetermanagement(List<String> ids);
 }

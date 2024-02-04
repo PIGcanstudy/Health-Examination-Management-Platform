@@ -77,7 +77,6 @@ public class TOfficeTermServiceImpl extends ServiceImpl<TOfficeTermMapper, TOffi
         return PageDTO.create(termName);
     }
 
-
     @Override
     public TermDetailVo queryTermDetail(String id) {
 
@@ -86,7 +85,7 @@ public class TOfficeTermServiceImpl extends ServiceImpl<TOfficeTermMapper, TOffi
 
     @Override
     public JsonVO<Boolean> addTerm(TermDetailDto termDetailDto) throws Exception {
-        //根据科室名称获取科室表的id，即术语表的office——id
+        //根据科室名称获取科室表的id，即术语表的office_id
         TSectionOffice tSectionOffice = new TSectionOffice();
         //然后添加数据到术语表
         TOfficeTerm tOfficeTerm = new TOfficeTerm();

@@ -1,33 +1,27 @@
 package com.zeroone.star.sectionoffice.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.alibaba.cloud.commons.lang.StringUtils;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.dto.GetSecNameDTO;
-import com.zeroone.star.project.j4.dto.GetSectionOfficetDTO;
 import com.zeroone.star.project.j4.query.GetSectionOfficeQuery;
 import com.zeroone.star.project.j4.query.SectionOfficeDetailQuery;
-import com.zeroone.star.project.j4.vo.BasePortfolioListVO;
 import com.zeroone.star.project.j4.vo.GetSecNameVO;
 import com.zeroone.star.project.j4.vo.GetSectionOfficeVO;
-import com.zeroone.star.sectionoffice.common.ConvertUtil;
 import com.zeroone.star.sectionoffice.entity.SectionOfficeEntity;
-import com.zeroone.star.sectionoffice.entity.TSectionOffice;
 import com.zeroone.star.sectionoffice.mapper.GetSectionOfficeMapper;
 import com.zeroone.star.sectionoffice.service.SectionOfficeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class SectionOfficeEntityServiceImpl extends ServiceImpl<GetSectionOfficeMapper, SectionOfficeEntity> implements SectionOfficeService {
-    @Autowired
+    @Resource
     private GetSectionOfficeMapper getSectionOfficeMapper;
 
     /**
@@ -39,29 +33,23 @@ public class SectionOfficeEntityServiceImpl extends ServiceImpl<GetSectionOffice
     public PageDTO<GetSectionOfficeVO> listAllSectionOffice(GetSectionOfficeQuery query){
 
         QueryWrapper<SectionOfficeEntity> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("del_flag",0);
-        if (query.getSectionCode() != null) {
-            queryWrapper.like("section_code",query.getSectionCode());
-        }
-        if (query.getSectionName() != null) {
-            queryWrapper.like("section_name",query.getSectionName());
-        }
-        if (query.getSectionAlphbet() != null) {
-            queryWrapper.like("section_alphbet",query.getSectionAlphbet());
-        }
-        if (query.getCheckType() != null) {
-            queryWrapper.like("check_type",query.getCheckType());
-        }
 
-            Page<SectionOfficeEntity> page = new Page<>(query.getPageIndex(),query.getPageSize());
-            Page result = baseMapper.selectPage(page, queryWrapper);
-            List records = result.getRecords();
-            List list = new ArrayList<>();
-            records.forEach(item->{
-                GetSectionOfficeVO vo = new GetSectionOfficeVO();
-                BeanUtil.copyProperties(item,vo);
-                list.add(vo);
-            });
+
+        queryWrapper.like("section_code",query.getSectionCode()).eq("del_flag",0)
+                .or().like("section_name",query.getSectionName()).eq("del_flag",0)
+                .or().like("section_alphbet",query.getSectionAlphbet()).eq("del_flag",0)
+                .or().like("check_type",query.getCheckType()).eq("del_flag",0);
+
+
+        Page<SectionOfficeEntity> page = new Page<>(query.getPageIndex(),query.getPageSize());
+        Page result = baseMapper.selectPage(page, queryWrapper);
+        List records = result.getRecords();
+        List list = new ArrayList<>();
+        records.forEach(item->{
+            GetSectionOfficeVO vo = new GetSectionOfficeVO();
+            BeanUtil.copyProperties(item,vo);
+            list.add(vo);
+        });
 
         return PageDTO.create(result);
 
@@ -123,11 +111,11 @@ public class SectionOfficeEntityServiceImpl extends ServiceImpl<GetSectionOffice
     public GetSectionOfficeVO getAllSectionOffice(SectionOfficeDetailQuery query) {
         QueryWrapper<SectionOfficeEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("del_flag",0);
-        if(query.getSectionCode()!= null){
+        if(query.getSectionCode() != null){
             queryWrapper.eq("section_code",query.getSectionCode());
         }
-        if(query.getId()!= null){
-            queryWrapper.eq("id",query.getId());
+        if(query.getId() != null){
+            queryWrapper.eq("id",String.valueOf(query.getId()));
         }
         SectionOfficeEntity sectionOfficeEntity = baseMapper.selectOne(queryWrapper);
         GetSectionOfficeVO result  = new GetSectionOfficeVO();
