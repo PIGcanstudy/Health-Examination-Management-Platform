@@ -30,6 +30,6 @@ export const MessageSendUnRead = (params) => {
 }
 
 //修改消息状态
-export const addUupdateMessageSender = (params) => {
+export const addUpdateMessageSender = (params) => {
   return Request.requestForm(Request.GET, baseUrl + '/message/t-message-send/updateMessageSend', params)
 }
