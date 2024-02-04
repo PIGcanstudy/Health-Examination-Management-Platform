@@ -1,9 +1,11 @@
 package com.zeroone.star.project.j4.tsectionoffice;
 
+import cn.hutool.db.Page;
 import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.dto.GetSecNameDTO;
 import com.zeroone.star.project.j4.dto.GetSectionOfficetDTO;
 import com.zeroone.star.project.j4.query.GetSectionOfficeQuery;
+import com.zeroone.star.project.j4.query.SectionOfficeDetailQuery;
 import com.zeroone.star.project.j4.vo.GetSecNameVO;
 import com.zeroone.star.project.j4.vo.GetSectionOfficeVO;
 import com.zeroone.star.project.vo.JsonVO;
@@ -20,7 +22,7 @@ public interface SectionOfficeApi {
 
     JsonVO<PageDTO<GetSectionOfficeVO>> queryAllSectionOffice(GetSectionOfficeQuery getSectionOfficeQuery);
 
-    JsonVO<List<GetSecNameVO>> GetAllSecName(GetSecNameDTO getSecNameDTO);
+    JsonVO<PageDTO<GetSecNameVO>> GetAllSecName(GetSecNameDTO getSecNameDTO);
 
-    JsonVO<List<GetSectionOfficeVO>> GetAllSectionOffice(GetSectionOfficetDTO getSectionOfficetDTO);
+    JsonVO<GetSectionOfficeVO> GetAllSectionOffice(SectionOfficeDetailQuery query);
 }

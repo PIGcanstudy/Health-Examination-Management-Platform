@@ -6,6 +6,7 @@ import com.zeroone.star.project.dto.PageDTO;
 import com.zeroone.star.project.j4.dto.GetSecNameDTO;
 import com.zeroone.star.project.j4.dto.GetSectionOfficetDTO;
 import com.zeroone.star.project.j4.query.GetSectionOfficeQuery;
+import com.zeroone.star.project.j4.query.SectionOfficeDetailQuery;
 import com.zeroone.star.project.j4.vo.GetSecNameVO;
 import com.zeroone.star.project.j4.vo.GetSectionOfficeVO;
 import com.zeroone.star.sectionoffice.entity.SectionOfficeEntity;
@@ -35,7 +36,11 @@ public interface SectionOfficeService extends IService<SectionOfficeEntity> {
      * @param getSecNameDTO
      * @return
      */
-    List<GetSecNameVO> listAllName(GetSecNameDTO getSecNameDTO);
+    PageDTO<GetSecNameVO> listAllName(GetSecNameDTO getSecNameDTO);
 
-    List<GetSectionOfficeVO> getAllSectionOffice(GetSectionOfficetDTO getSectionOfficetDTO);
+
+    /**
+     *     获取科室详情
+     */
+    GetSectionOfficeVO getAllSectionOffice(SectionOfficeDetailQuery query);
 }

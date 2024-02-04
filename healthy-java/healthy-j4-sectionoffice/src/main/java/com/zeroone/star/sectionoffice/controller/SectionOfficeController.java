@@ -1,6 +1,7 @@
 package com.zeroone.star.sectionoffice.controller;
 
 import com.zeroone.star.project.dto.PageDTO;
+import com.zeroone.star.project.j4.query.SectionOfficeDetailQuery;
 import com.zeroone.star.project.j4.tsectionoffice.SectionOfficeApi;
 import com.zeroone.star.project.j4.dto.GetSecNameDTO;
 import com.zeroone.star.project.j4.dto.GetSectionOfficetDTO;
@@ -46,13 +47,16 @@ public class SectionOfficeController implements SectionOfficeApi {
     @Override
     @GetMapping("query-allsection-office-name")
     @ApiOperation(value = "获取科室名称列表")
-    public JsonVO<List<GetSecNameVO>> GetAllSecName(GetSecNameDTO getSecNameDTO) {
-        return JsonVO.success((sectionOfficeService.listAllName(getSecNameDTO)));
+    public JsonVO<PageDTO<GetSecNameVO>> GetAllSecName(GetSecNameDTO getSecNameDTO) {
+        return JsonVO.success(sectionOfficeService.listAllName(getSecNameDTO));
     }
 
+
     @Override
-    public JsonVO<List<GetSectionOfficeVO>> GetAllSectionOffice(GetSectionOfficetDTO getSectionOfficetDTO) {
-        return JsonVO.success((sectionOfficeService.getAllSectionOffice(getSectionOfficetDTO)));
+    @GetMapping("query-section-office-detail")
+    @ApiOperation(value = "獲取科室詳情")
+    public JsonVO<GetSectionOfficeVO> GetAllSectionOffice(SectionOfficeDetailQuery query) {
+        return JsonVO.success((sectionOfficeService.getAllSectionOffice(query)));
     }
 
 

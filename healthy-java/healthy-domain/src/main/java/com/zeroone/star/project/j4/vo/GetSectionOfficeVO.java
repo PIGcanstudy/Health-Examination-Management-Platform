@@ -11,6 +11,8 @@ import java.io.Serializable;
 @Setter
 @ApiModel(value = "获取科室管理列表(分页+条件)")
 public class GetSectionOfficeVO implements Serializable {
+    @ApiModelProperty(value = "ID",example = "1454369800754171904",required = true)
+    private String id;
     //编码
     @ApiModelProperty(value = "编码",example = "001",required = true)
     private String sectionCode;
