@@ -25,7 +25,7 @@ import java.util.Objects;
  * @version 1.0.0
  */
 @RestController
-@RequestMapping("template-management")
+@RequestMapping("/template")
 @Api(tags = "模板管理接口")
 @Validated
 public class TemplateMController implements TemplateMApis {

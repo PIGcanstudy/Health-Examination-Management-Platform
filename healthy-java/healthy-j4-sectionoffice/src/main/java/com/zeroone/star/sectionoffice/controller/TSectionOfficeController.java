@@ -26,7 +26,7 @@ import java.util.List;
  */
 @RestController
 @Api(tags = "科室管理")
-@RequestMapping("/sectionOffice/t-section-office")
+@RequestMapping("/sectionoffice")
 @Validated
 public class TSectionOfficeController implements TSectionOfficeApis {
 
