@@ -26,6 +26,22 @@
               </el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
+          <el-sub-menu v-for="item in expandMenu" :key="item.id" :index="item.id">
+            <template #title>
+              <el-icon>
+                <component :is="item.icon" />
+              </el-icon>
+              <span>{{ item.text }}</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item v-for="i in item.children" :key="i.id" :index="i.href">
+                <el-icon>
+                  <component :is="i.icon" />
+                </el-icon>
+                {{ i.text }}
+              </el-menu-item>
+            </el-menu-item-group>
+          </el-sub-menu>
         </el-menu>
       </el-aside>
 
@@ -95,29 +111,59 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
-import router from '@/router'
-import { userStore } from '../stores/user'
+import { reactive, ref, watch } from 'vue'
+import { userStore } from '../stores/user.js'
+import { useMenuStore } from '../stores/menu.js'
 import { ArrowDown, Grid, UserFilled } from '@element-plus/icons-vue'
-import basicdata from '@/stores/menus/basicdata.js'
 import { Check, CircleCheck, CirclePlus, CirclePlusFilled, Plus } from '@element-plus/icons-vue'
 import testMenus from '../stores/menus/healthcheck'
-import { useRoute } from 'vue-router'
-// import { Expand } from '@element-plus/icons-vue'
-
-// 将default-active设为当前路由
-const route = useRoute()
-
-// 本界面变量及函数
-const isCollapsed = ref(false)
+import { useRoute, useRouter } from 'vue-router'
 //定义仓库
 const store = userStore()
+const menuStore = useMenuStore()
+// 固定菜单数据
+const menu = store.getMenus
+// 拓展菜单可根据需要动态变化
+const route = useRoute() // 获取当前路由
+let expandMenu = reactive()
+watch(
+  () => route.path,
+  (newPath) => {
+    // 获取第一个固定路由
+    let fixedPath = menuStore.judegeRouter(newPath)
+    // 判断路由,加载不同菜单
+    if (fixedPath === '/basicdata') {
+      expandMenu = menuStore.basicdata
+    } else if (fixedPath === '/marketingmanagement') {
+      expandMenu = menuStore.marketingmanagement
+    } else if (fixedPath === '/medicalregistration') {
+      expandMenu = menuStore.medicalregistration
+    } else if (fixedPath === '/resultsinput') {
+      expandMenu = menuStore.resultsinput
+    } else if (fixedPath === '/masterinspection') {
+      expandMenu = menuStore.masterinspection
+    } else if (fixedPath === '/inspectionstatistics') {
+      expandMenu = menuStore.inspectionstatistics
+    } else if (fixedPath === '/configurationmanagement') {
+      expandMenu = menuStore.configurationmanagement
+    } else if (fixedPath === '/systemconfiguration') {
+      expandMenu = menuStore.systemconfiguration
+    } else if (fixedPath === '/dataonline') {
+      expandMenu = menuStore.dataonline
+    } else if (fixedPath === '/personalcentre') {
+      expandMenu = menuStore.personalcentre
+    } else {
+      expandMenu = []
+    }
+  },
+  // 确保组件加载前执行
+  { immediate: true }
+)
+// 是否收缩侧边栏
+const isCollapsed = ref(false)
 
 // 用户信息提示
 const userInfo = ref(store.getUser === null ? '游客' : store.getUser.username)
-
-// 首页菜单数据e
-const menu = store.getMenus
 </script>
 <style lang="scss" scoped>
 .sec-container {

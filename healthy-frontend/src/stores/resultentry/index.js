@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { addDepartRes, addRPProCheck,modifywaiveCheck,queryList,clAbanProj,queryBasicInfoMation,queryLifeHistory,queryPastMedicalHistory,
     queryProfessionalHistory,Interro,barcod,report,baseProject,queryPerson,queryPerson,uploadxxx,info } from '@/apis/personal/index.js'
-export const resultentryStores = defineStore('resultentryStores', () => {
+export const useResultentryStores = defineStore('resultentryStores', () => {
 /**
  * 结果录入-c6
  * stores

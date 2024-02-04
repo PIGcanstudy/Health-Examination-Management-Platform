@@ -127,6 +127,10 @@ import { ElMessage } from 'element-plus'
 import { ArrowUp, ArrowDown, Search, InfoFilled, View, Refresh, Plus, Delete } from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import CheckItems from '@/components/checkItems/CheckItems.vue'
+import { useMessageModuleStores } from '@/stores/messagemodule/index.js'
+
+/* Stores中的方法 */
+const messageModuleStore = useMessageModuleStores()
 
 const useHint = ref(true)
 const useForm = ref(true)
@@ -142,6 +146,19 @@ const tableColumnAttribute = ref([
   { prop: 'range', label: '发送范围' },
   { prop: 'date', label: '创建时间' }
 ])
+
+
+//初始化方法
+created:{
+  //加载table数据
+  const result = messageModuleStore.MessageQueryAllStore(formData)
+  if(result.code === 200){
+    //渲染数据
+    const data = result.data
+    //TODO
+  }
+}
+
 // table数据
 const tableData = ref([
   {
@@ -161,6 +178,11 @@ const tableData = ref([
   }
 ])
 function handelLook(row) {
+  //发送获取消息详情请求
+  const result = messageModuleStore.MessageSendQueryStore(row[id])
+  if(result.code === 200){
+    //弹框
+  }
   console.log(row)
 }
 
@@ -256,6 +278,7 @@ onMounted(() => {
   handlePageChange(paginationData.value.pageSize, paginationData.value.currentPage)
 })
 
+const idArray = ref([])
 const open = () => {
   // eslint-disable-next-line no-undef
   ElMessageBox.confirm(
@@ -268,6 +291,14 @@ const open = () => {
     }
   )
     .then(() => {
+              //发送删除消息请求
+              for(const key in selectRows){
+                  idArray.push(selectRows[key])
+              }
+              const result = messageModuleStore.removeByIdsStore(idArray)
+              if(result.code != 200){
+                return
+              }
       ElMessage({
         type: 'success',
         message: '撤回成功'

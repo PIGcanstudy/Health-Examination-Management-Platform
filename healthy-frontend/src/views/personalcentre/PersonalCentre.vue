@@ -8,7 +8,7 @@
           <el-form-item label="登录账号:">
             <span>admin</span>
           </el-form-item>
-          <el-form-item label="用户头像:"> 文件上传 </el-form-item>
+          <el-form-item label="用户头像:"></el-form-item>
           <el-form-item label="性别">
             <el-select v-model="baseFormation.gender" style="width: 220px">
               <el-option v-for="item in genderOptions" :key="item" :label="item.label" :value="item.value"></el-option>
@@ -39,7 +39,7 @@
               <div class="bottom">当前密码强度: <span style="color: rgb(250, 173, 20)">中</span></div>
             </div>
 
-            <el-button link class="button">修改</el-button>
+            <el-button link class="button" @click="handleDrawer">修改</el-button>
           </div>
           <el-divider></el-divider>
           <div class="item">
@@ -84,23 +84,35 @@
       </el-tab-pane>
     </el-tabs>
   </el-card>
-  <el-drawer v-model="drawer" title="修改密码" label-position="drawerLabel">
-    <el-form v-model="remakePw" style="margin-top: 15px">
+  <!-- 修改密码抽屉 -->
+  <el-drawer v-if="drawerVisible" v-model="drawer" title="修改密码">
+    <el-form v-model="remakePw" style="margin-top: 15px" :label-position="drawerLabel">
       <el-form-item label="*原密码" label-width="100">
-        <el-input v-model="remakePw.oldPassword" placeholder="请输入现在使用的密码"></el-input>
+        <el-input v-model="remakePw.oldPassword" show-password type="password" placeholder="请输入现在使用的密码"></el-input>
       </el-form-item>
       <el-form-item label="*新密码" label-width="100">
-        <el-input v-model="remakePw.newPassword" placeholder="请输入新密码,长度为6-20个字符"></el-input>
+        <el-input v-model="remakePw.newPassword" show-password type="password" placeholder="请输入新密码,长度为6-20个字符"></el-input>
       </el-form-item>
       <el-form-item label="*确认新密码" label-width="100">
-        <el-input v-model="remakePw.confirm" placeholder="请再次输入新密码"></el-input>
+        <el-input v-model="remakePw.confirm" show-password type="password" placeholder="请再次输入新密码"></el-input>
       </el-form-item>
     </el-form>
+    <template #footer>
+      <div style="flex: auto">
+        <el-button type="primary" @click="submitMm" >提交</el-button>
+        <el-button @click="closeDrawer">取消</el-button>
+      </div>
+    </template>
   </el-drawer>
+  <!--  -->
 </template>
 
-<script lang="ts" setup>
+<script  setup>
 import { ref, reactive } from 'vue'
+import { usePersonalCenterStores } from '@/stores/personalcenter/index.js'
+
+/* Stores中的方法 */
+const personalCenterStore = usePersonalCenterStores()
 
 // 基本信息表单---label位置
 const labelPosition = ref('left')
@@ -135,6 +147,9 @@ const genderOptions = ref([
   }
 ])
 
+// 切换抽屉
+const drawerVisible = ref(false)
+
 // 抽屉显隐
 const drawer = ref(true)
 
@@ -144,6 +159,24 @@ const remakePw = reactive({
   newPassword: '',
   confirm: ''
 })
+
+// 提交修改密码表单
+const submitMm = () => {
+  const result = personalCenterStore.changePasswordStore(remakePw);
+  if(result.code == 200){
+    return 
+  }
+}
+
+// 点击修改打开抽屉
+const handleDrawer = () => {
+  drawerVisible.value = !drawerVisible.value
+}
+
+// 点击取消关闭抽屉
+const closeDrawer = () => {
+  drawerVisible.value = !drawerVisible.value
+}
 
 // 消息通知---系统消息开关
 const systemMessages = ref(true)
