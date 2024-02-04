@@ -6,7 +6,7 @@ class perdelService
 {
 public:
 	// 通过id删除体检人员
-	bool removeData(const std::tring& id);
+	bool removeData(const std::string& id);
 };
 
 #endif // !_PERDEL_SERVICE_H_
