@@ -1,8 +1,9 @@
 import Request from '@/apis/request.js'
+import { get } from 'echarts/lib/CoordinateSystem'
 const baseUrl = ''
 
 //获取字典数据名称列表（用于输入表单下拉列表）
-export const  queryDictnameList = (params) => {
+export const  getDictnameListApi = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/common/query-dictnamelist',
@@ -10,7 +11,7 @@ export const  queryDictnameList = (params) => {
 }
 
 //获取工种名称列表（分页＋条件）
-export const  queryJobnameList = (params) => {
+export const  getJobnameListApi = (params) => {
   return Request.requestForm(
     Request.GET,
     baseUrl + '/common/query-jobnamelist',
@@ -19,7 +20,7 @@ export const  queryJobnameList = (params) => {
 }
 
 //获取组合项目列表（条件＋分页）
-export const queryPackageProlist = (params) => {
+export const getPackageProlistApi = (params) => {
   return Request.requestForm(
     Request.GET,
     baseUrl + '/common/query-packageprolist',
@@ -28,7 +29,7 @@ export const queryPackageProlist = (params) => {
 }
 
 //获取组合项目名称列表（用于输入表单下拉列表）
-export const queryPackagePronamelist = (params) => {
+export const getPackagePronamelistApi = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/common/query-packagepronamelist',
@@ -36,7 +37,7 @@ export const queryPackagePronamelist = (params) => {
 }
 
 //获取套餐名称列表（条件+分页）
-export const queryPlannameList = (params) => {
+export const getPlannameListApi = (params) => {
   return Request.requestForm(
     Request.GET,
     baseUrl + '/common/query-plannamelist',
@@ -45,7 +46,7 @@ export const queryPlannameList = (params) => {
 }
 
 //获取套餐组合项目列表
-export const queryPlanProlist = (params) => {
+export const getPlanProlistApi = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/common/query-planprolist',
@@ -54,7 +55,7 @@ export const queryPlanProlist = (params) => {
 }
 
 //科室名称列表
-export const querySelectionnameList = (params) => {
+export const getSelectionnameListApi = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/common/query-sectionnamelist',
@@ -63,7 +64,7 @@ export const querySelectionnameList = (params) => {
 
 
 //获取术语名称列表（条件+分页）
-export const queryTermnameList = (params) => {
+export const getTermnameListApi = (params) => {
   return Request.requestForm(
     Request.GET,
     baseUrl + '/common/query-termnamelist',
@@ -73,7 +74,7 @@ export const queryTermnameList = (params) => {
 
 
 //获取类型树
-export const queryTypeTree = (params) => {
+export const getTypeTreeApi = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '​/common​/query-typetree'
@@ -81,7 +82,7 @@ export const queryTypeTree = (params) => {
 }
 
 //获取用户名称列表（用于输入表单下拉列表框）
-export const queryUesrnameList = (params) => {
+export const getUesrnameListApi = (params) => {
   return Request.requestJson(
     Request.GET,
     baseUrl + '/common/query-uesrnamelist',
