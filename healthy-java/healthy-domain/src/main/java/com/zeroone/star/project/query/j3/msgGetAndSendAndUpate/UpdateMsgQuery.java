@@ -36,15 +36,15 @@ public class UpdateMsgQuery implements Serializable {
 //    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 //    private LocalDateTime updateTime;
 
-    @ApiModelProperty(value = "消息类型")
+    @ApiModelProperty(value = "消息类型",required = true)
     private String type;
 
-    @ApiModelProperty(value = "标题")
+    @ApiModelProperty(value = "标题",required = true)
     private String title;
 
-    @ApiModelProperty(value = "内容")
+    @ApiModelProperty(value = "内容",required = true)
     private String content;
 
-    @ApiModelProperty(value = "是否发送给新人 0 否 1 是")
+    @ApiModelProperty(value = "是否发送给新人 0 否 1 是",required = true)
     private Boolean createSend;
 }

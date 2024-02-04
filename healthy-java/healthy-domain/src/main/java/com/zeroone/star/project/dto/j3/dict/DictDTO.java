@@ -36,13 +36,6 @@ public class DictDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 唯一标识
-     */
-    @Id
-    @ApiModelProperty(value = "字典id",required = true)
-    private Long id;
-
-    /**
      * 创建人
      */
     @NotBlank(message = "创建人不能为空")
