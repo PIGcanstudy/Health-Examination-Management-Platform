@@ -103,3 +103,33 @@ modify:
   name: 名称
   code: 样本代码
   liscode: 关联码
+
+sampleDetails:
+ get:
+  summary: 获取样本详情-睡不着
+ delete:
+  summary: 删除数据
+ field:
+  name: 名称
+  barcode_num: 条码份数
+  spec: 规格
+  need_take_blood: 是否采血
+  code: 样本代码
+  order_num: 排序
+  is_print: 是否打印
+  liscode: 关联码
+  capacity: 容量
+ 
+
+DeleteSample:
+ delete:
+  summary: 删除数据-睡不着
+ field:
+  del_flag: 是否删除
+  create_id: 创建人
+  create_time: 创建时间
+  update_id: 修改人
+  update_time: 修改时间
+  delete_id: 删除人
+  delete_time: 删除时间
+  department_id: 所属部门

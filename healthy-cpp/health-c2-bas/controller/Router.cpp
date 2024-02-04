@@ -2,28 +2,30 @@
 #include "stdafx.h"
 #include "Router.h"
 #include "ApiHelper.h"
+#include "sample/ObtainSampleDetailsController.h"//»ñÈ¡Ñù±¾ÏêÇé-Ë¯²»×Å
+#include "sample/DeleteSampleController.h"//É¾³ýÑù±¾-Ë¯²»×Å
 #include "positive/resRuleController.h" //puck
-#include "positive/DeatilController.h" //åœˆåœˆ
-#include "positive/ModifyResultController.h" //åœˆåœˆ
+#include "positive/DeatilController.h" //È¦È¦
+#include "positive/ModifyResultController.h" //È¦È¦
 #include "positive/resultController.h" //elysia
-#include "sample/SampleController.h" //å¿«ä¹äº”é¦™è›‹
+#include "sample/SampleController.h" //¿ìÀÖÎåÏãµ°
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
-#include "sample/SampleController.h"
+#include "sample/SampleLibController.h"//--×¢Òâ--
 #include "file/FileController.h"
 #include "uselib/ws/WSController.h"
 #endif
-#include "sample/ObtainSampleListController.h"
-#include "sample/InsertSampleController.h"
+#include "sample/ObtainSampleListController.h"//»ñÈ¡Ñù±¾ÁÐ±í-ÎÞÈË
+#include "sample/InsertSampleController.h"//ÐÂÔöÑù±¾-ÎÞÈË	
 
-// å¦‚æžœå®šä¹‰äº†å…³é—­Swaggeræ–‡æ¡£å®
+// Èç¹û¶¨ÒåÁË¹Ø±ÕSwaggerÎÄµµºê
 #ifdef CLOSE_SWAGGER_DOC
-// ç®€åŒ–ç»‘å®šæŽ§åˆ¶å™¨å®å®šä¹‰
+// ¼ò»¯°ó¶¨¿ØÖÆÆ÷ºê¶¨Òå
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 router->addController(__CLASS__::createShared())
 #else
-// ç®€åŒ–ç»‘å®šæŽ§åˆ¶å™¨å®å®šä¹‰
+// ¼ò»¯°ó¶¨¿ØÖÆÆ÷ºê¶¨Òå
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 BIND_CONTROLLER(docEndpoints, router, __CLASS__)
 #endif
@@ -40,31 +42,37 @@ void Router::initRouter()
 	createSampleRouter();
 #endif
 
-	//#TIP :ç³»ç»Ÿæ‰©å±•è·¯ç”±å®šä¹‰ï¼Œå†™åœ¨è¿™ä¸ªåŽé¢
-	ROUTER_SIMPLE_BIND(ObtainSampleListController);//èŽ·å–æ ·æœ¬åˆ—è¡¨-æ— äºº
-	ROUTER_SIMPLE_BIND(InsertSampleController);//æ–°å¢žæ ·æœ¬-æ— äºº	// -puck
+	//#TIP :ÏµÍ³À©Õ¹Â·ÓÉ¶¨Òå£¬Ð´ÔÚÕâ¸öºóÃæ
+
+	// °ó¶¨Ñù±¾ÏêÇé¿ØÖÆÆ÷-Ë¯²»×Å
+	ROUTER_SIMPLE_BIND(ObtainSampleDetailsController);
+	//°ó¶¨É¾³ýÑù±¾¿ØÖÆÆ÷-Ë¯²»×Å
+	ROUTER_SIMPLE_BIND(DeleteSampleController);
+	ROUTER_SIMPLE_BIND(ObtainSampleListController);//»ñÈ¡Ñù±¾ÁÐ±í-ÎÞÈË
+	ROUTER_SIMPLE_BIND(InsertSampleController);//ÐÂÔöÑù±¾-ÎÞÈË	
+	// -puck
 	ROUTER_SIMPLE_BIND(resRuleController);
-	//ç»‘å®šé˜³æ€§ç»“æžœè¯¦ç»†æŽ§åˆ¶å™¨-åœˆåœˆ
+	//°ó¶¨ÑôÐÔ½á¹ûÏêÏ¸¿ØÖÆÆ÷-È¦È¦
 	ROUTER_SIMPLE_BIND(DeatilController);
-	//ç»‘å®šä¿®æ”¹é˜³æ€§ç»“æžœæŽ§åˆ¶å™¨-åœˆåœˆ
+	//°ó¶¨ÐÞ¸ÄÑôÐÔ½á¹û¿ØÖÆÆ÷-È¦È¦
 	ROUTER_SIMPLE_BIND(ModifyResultController);
 	// -elysia
 	ROUTER_SIMPLE_BIND(resultController);
-	//å¿«ä¹äº”é¦™è›‹
+	//¿ìÀÖÎåÏãµ°
 	ROUTER_SIMPLE_BIND(SampleController);
 }
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
-	// ç»‘å®šç¤ºä¾‹æŽ§åˆ¶å™¨
+	// °ó¶¨Ê¾Àý¿ØÖÆÆ÷
 	ROUTER_SIMPLE_BIND(SampleController);
-	// ç»‘å®šç”¨æˆ·æŽ§åˆ¶å™¨
+	// °ó¶¨ÓÃ»§¿ØÖÆÆ÷
 	ROUTER_SIMPLE_BIND(UserController);
-	// ç»‘å®šæ–‡ä»¶æŽ§åˆ¶å™¨
+	// °ó¶¨ÎÄ¼þ¿ØÖÆÆ÷
 	ROUTER_SIMPLE_BIND(FileController);
 	
-	// ç»‘å®šWebSocketæŽ§åˆ¶å™¨
+	// °ó¶¨WebSocket¿ØÖÆÆ÷
 	router->addController(WSContorller::createShared());
 }
 #endif // !_ROUTER_
