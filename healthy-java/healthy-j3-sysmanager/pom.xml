@@ -105,7 +105,7 @@
                                 <namingStrategy>alias</namingStrategy>
                                 <!-- 端口映射 -->
                                 <ports>
-                                    <port>10086:10086</port>
+                                    <port>10010:10010</port>
                                 </ports>
                                 <!-- 数据卷 -->
                                 <volumes>
