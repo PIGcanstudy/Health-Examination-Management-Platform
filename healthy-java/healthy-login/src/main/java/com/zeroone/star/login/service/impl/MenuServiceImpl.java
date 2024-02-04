@@ -25,23 +25,25 @@ import java.util.List;
  * @author 阿伟学长
  * @version 1.0.0
  */
-class MenuTreeNodMapper implements TreeNodeMapper<Menu> {
+class MenuTreeNodMapper implements TreeNodeMapper<TPermission> {
     @Override
-    public TreeNode objectMapper(Menu menu) {
+    public TreeNode objectMapper(TPermission menu) {
         MenuTreeVO treeNode = new MenuTreeVO();
         // 首先设置TreeNode计算层数使用属性
         treeNode.setTnId(menu.getId().toString());
-        if (menu.getParentMenuId() == null) {
+        if (menu.getParentId() == null) {
             treeNode.setTnPid(null);
         } else {
-            treeNode.setTnPid(menu.getParentMenuId().toString());
+            treeNode.setTnPid(menu.getParentId().toString());
         }
         // 设置扩展属性
-        treeNode.setId(menu.getId());
+        treeNode.setId(menu.getId().intValue());
         treeNode.setIcon(menu.getIcon());
         treeNode.setText(menu.getName());
         treeNode.setHref(menu.getPath());
-        treeNode.setPid(menu.getParentMenuId());
+        if (menu.getParentId() != null) {
+            treeNode.setPid(menu.getParentId().intValue());
+        }
         return treeNode;
     }
 }
@@ -61,43 +63,17 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     @Override
     public List<MenuTreeVO> listMenuByRoleName(List<String> roleNames) {
         //1 定义一个存储数据库查询菜单数据的容器
-//        List<Menu> menus = new ArrayList<>();
         List<TPermission> permissions = new ArrayList<>();
         //2 遍历获取角色获取所有的菜单列表
         roleNames.forEach(roleName -> {
             //通过角色名获取菜单列表
             List<TPermission> tPermissions = permissionMapper.selectByRoleName(roleName);
-//            List<Menu> tMenus = baseMapper.selectByRoleName(roleName);
-//            if (tMenus != null && !tMenus.isEmpty()) {
-//                menus.addAll(tMenus);
-//            }
             if (tPermissions != null && !tPermissions.isEmpty()) {
                 permissions.addAll(tPermissions);
             }
         });
         //3 转换树形结构并返回
-//        return TreeUtils.listToTree(menus, new MenuTreeNodMapper());
-        return TreeUtils.listToTree(permissions, new PermissionTreeNodMapper());
-    }
-}
-
-class PermissionTreeNodMapper implements TreeNodeMapper<TPermission> {
-    @Override
-    public TreeNode objectMapper(TPermission permission) {
-        MenuTreeVO treeNode = new MenuTreeVO();
-        // 首先设置TreeNode计算层数使用属性
-        treeNode.setTnId(permission.getId().toString());
-        if (permission.getParentId() == null) {
-            treeNode.setTnPid(null);
-        } else {
-            treeNode.setTnPid(permission.getParentId().toString());
-        }
-        // 设置扩展属性
-        treeNode.setId(permission.getId().intValue());
-        treeNode.setIcon(permission.getIcon());
-        treeNode.setText(permission.getName());
-        treeNode.setHref(permission.getPath());
-        treeNode.setPid(permission.getParentId().intValue());
-        return treeNode;
+        MenuTreeNodMapper menuTreeNodMapper = new MenuTreeNodMapper();
+        return TreeUtils.listToTree(permissions, menuTreeNodMapper);
     }
 }
