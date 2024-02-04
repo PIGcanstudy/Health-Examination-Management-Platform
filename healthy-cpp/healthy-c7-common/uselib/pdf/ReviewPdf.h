@@ -1,7 +1,8 @@
 #pragma once
-#include "domain/do/review/ReviewDO.h"
 #ifndef _REVIEWPDF_H_
 #define _REVIEWPDF_H_
+#include "domain/do/review/ReviewDO.h"
+
 /**
  * PDF×é¼þ
  */

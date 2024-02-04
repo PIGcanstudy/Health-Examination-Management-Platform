@@ -1,4 +1,3 @@
-#include "ReportController.h"
 /*
  Copyright Zero One Star. All rights reserved.
 
@@ -19,6 +18,7 @@
 */
 
 #include "stdafx.h"
+#include "ReportController.h"
 #include <iostream>
 // FastDFS需要导入的头
 #include "ServerInfo.h"

@@ -24,7 +24,7 @@
 #include "uselib/ws/WSController.h"
 
 #endif
-#include "controller/ReportView/ReportController.h"
+#include "ReportView/ReportController.h"
 
 
 #ifdef CLOSE_SWAGGER_DOC

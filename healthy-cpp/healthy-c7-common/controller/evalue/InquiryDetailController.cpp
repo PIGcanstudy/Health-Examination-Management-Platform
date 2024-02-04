@@ -19,14 +19,56 @@
 
 #include "stdafx.h"
 #include "InquiryDetailController.h"
+#include "domain/dto/evalue/InquiryDetailDTO.h"
+#include "../../service/evalue/InquiryDetailService.h"
 
 // 这个结构体代表了查询细节的 JSON 响应的包装器。
 // 它作为 execQueryInquiryDetail 函数的返回类型。
-InquiryDetailJsonVO::Wrapper InquiryDetailController::execQueryInquiryDetail(const InquiryDetailQuery::Wrapper& query)
+//查询数据
+InquiryDetailPageJsonVO::Wrapper InquiryDetailController::execQueryInquiryDetail(const InquiryDetailQuery::Wrapper& query, const PayloadDTO& payload)
 {
-    // 测试数据
+	// 定义一个Service
+	InquiryDetailService service;
+	// 查询数据
+	auto result = service.listAll(query);
+	// 响应结果
+	auto jvo = InquiryDetailPageJsonVO::createShared();
+	jvo->success(result);
+	return jvo;
+}
+//修改数据
+Uint64JsonVO::Wrapper InquiryDetailController::execModifyInquiryDetail(const InquiryDetailDTO::Wrapper& dto)
+{
+	// 定义返回数据对象
+	auto jvo = Uint64JsonVO::createShared();
+	// 参数校验
+	if (!dto->id)
+	{
+		jvo->init(UInt64(-1), RS_PARAMS_INVALID);
+		return jvo;
+	}
+	// 定义一个Service
+	InquiryDetailService service;
+	// 执行数据修改
+	if (service.updateData(dto)) {
+		jvo->success(dto->id);
+	}
+	else
+	{
+		jvo->fail(dto->id);
+	}
+	// 响应结果
+	return jvo;
+}
 
-    // TODO: 实现查询和获取查询细节的逻辑。
-
-    return {}; // 目前返回一个空的包装器。
+//PDF
+InquiryDetailJsonVO::Wrapper InquiryDetailController::execQueryPdf(const InquiryDetailQuery::Wrapper& query)
+{
+	// 定义一个Service
+	InquiryDetailService service;
+	// 查询数据
+	auto result = service.listById(query);
+	auto jvo = InquiryDetailJsonVO::createShared();
+	jvo->success(result);
+	return jvo;
 }
