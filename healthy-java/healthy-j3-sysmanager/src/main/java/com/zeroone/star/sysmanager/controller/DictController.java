@@ -57,7 +57,7 @@ public class DictController implements DictApis {
     }
 
 
-    @GetMapping(value = "/updatedict")
+    @PutMapping(value = "/updatedict")
     @ApiOperation(value = "修改字典")
     public JsonVO<Boolean> update(com.zeroone.star.project.dto.j3.dictory.DictDTO dict) {
         if (dictService.findByType(dict.getType()) != null) {
@@ -67,7 +67,7 @@ public class DictController implements DictApis {
         return JsonVO.success(Boolean.TRUE);
 
     }
-    @GetMapping(value = "/deletedict")
+    @DeleteMapping(value = "/deletedict")
     @ApiOperation(value = "删除字典")
     public JsonVO<Boolean> delete(com.zeroone.star.project.dto.j3.dictory.DictDTO dict) {
         if (dictService.findByType(dict.getType()) != null) {

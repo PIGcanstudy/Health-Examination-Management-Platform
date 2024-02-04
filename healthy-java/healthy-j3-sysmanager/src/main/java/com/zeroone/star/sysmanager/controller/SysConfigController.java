@@ -8,10 +8,7 @@ import com.zeroone.star.sysmanager.service.impl.TSettingServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -36,7 +33,7 @@ public class SysConfigController implements SysConfigApis {
     }
 
     @ApiOperation("修改公告")
-    @PostMapping("/modifySystemNotice")
+    @PutMapping("/modifySystemNotice")
     @Override
     public JsonVO<SystemNoticeDTO> modifySystemNotice(SystemNoticeDTO systemNoticeDTO) throws Exception {
         JsonVO<SystemNoticeDTO> jsonVO = tSettingService.modifySystemNotice(systemNoticeDTO);
@@ -44,7 +41,7 @@ public class SysConfigController implements SysConfigApis {
     }
 
     @ApiOperation("获取公告")
-    @PostMapping("/querySystemNotice")
+    @GetMapping("/querySystemNotice")
     @Override
     public JsonVO<TSettingVO> querySystemNotice() {
         return tSettingService.querySystemNotice();

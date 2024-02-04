@@ -43,7 +43,7 @@ public class DirectSourceController implements DirectSourceApis {
     }
 
     @ApiOperation("修改字典数据")
-    @PostMapping ("/modifyDictData")
+    @PutMapping ("/modifyDictData")
     @Override
     public JsonVO<Boolean> ModifyDictData(ModifyDictData modifyDictData) {
         JsonVO<Boolean> booleanJsonVO = itDictDataService.ModifyDictData(modifyDictData);
@@ -59,7 +59,7 @@ public class DirectSourceController implements DirectSourceApis {
         return JsonVO.success(data);
     }
     @ApiOperation("获取字典数据列表")
-    @PostMapping("/queryDictDataByCondition")
+    @GetMapping("/queryDictDataByCondition")
     @Override
     public JsonVO<PageDTO<DictDataDTO>> queryDictDataByCondition(DictDataQuery condition) {
         PageDTO<DictDataDTO> data = itDictDataService.ListPage(condition);
