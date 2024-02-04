@@ -36,5 +36,5 @@ public interface DictApis {
      * 删除字典
      * @return
      */
-    JsonVO<Boolean> delete(com.zeroone.star.project.dto.j3.dictory.DictDTO dict);
+    JsonVO<Boolean> delete(List<String> ids);
 }

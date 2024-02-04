@@ -69,11 +69,8 @@ public class DictController implements DictApis {
     }
     @DeleteMapping(value = "/deletedict")
     @ApiOperation(value = "删除字典")
-    public JsonVO<Boolean> delete(com.zeroone.star.project.dto.j3.dictory.DictDTO dict) {
-        if (dictService.findByType(dict.getType()) != null) {
-            return JsonVO.fail(Boolean.FALSE);
-        }
-        dictService.removeById(dict);
+    public JsonVO<Boolean> delete(@RequestParam List<String> ids) {
+        dictService.removeByIds(ids);
         return JsonVO.success(Boolean.TRUE);
     }
 }

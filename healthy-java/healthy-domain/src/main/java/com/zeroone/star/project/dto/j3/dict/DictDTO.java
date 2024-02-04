@@ -79,7 +79,7 @@ public class DictDTO implements Serializable {
     /**
      * 字典备注
      */
-    @ApiModelProperty(value = "字典备注",required = true)
+    @ApiModelProperty(value = "字典备注")
     private String description;
 
     /**
