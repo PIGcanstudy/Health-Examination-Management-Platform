@@ -79,6 +79,31 @@
             </template>
           </el-dropdown>
 
+          <!-- 消息 -->
+          <el-dropdown>
+            <span class="el-dropdown-link" style="font-size: 20px">
+              <el-icon>
+                <BellFilled />
+              </el-icon>
+            </span>
+            <template #dropdown>
+              <el-card class="box-card" style="width: 320px;">
+                <template #header>
+                  <div class="card-header" style="display: flex;justify-content: space-between;">
+                    <span style="font-size: large;">消息通知</span>
+                    <el-button class="button" type="primary" text>刷新</el-button>
+                  </div>
+                </template>
+                <el-empty description="暂无新的未读消息" />
+                <template #footer>
+                  <div style="display: flex;justify-content: center;">
+                    <router-link to="/" style="color: #4599F2;background: none;font-size: small;" >查看更多</router-link>
+                  </div>
+                </template>
+              </el-card>
+            </template>
+          </el-dropdown>
+
           <!-- <el-divider direction="vertical" /> -->
 
           <!-- 用户信息 -->
@@ -114,7 +139,7 @@
 import { reactive, ref, watch } from 'vue'
 import { userStore } from '../stores/user.js'
 import { useMenuStore } from '../stores/menu.js'
-import { ArrowDown, Grid, UserFilled } from '@element-plus/icons-vue'
+import { ArrowDown, Grid, UserFilled, BellFilled } from '@element-plus/icons-vue'
 import { Check, CircleCheck, CirclePlus, CirclePlusFilled, Plus } from '@element-plus/icons-vue'
 import testMenus from '../stores/menus/healthcheck'
 import { useRoute, useRouter } from 'vue-router'
