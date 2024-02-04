@@ -152,10 +152,11 @@ const tableColumnAttribute = ref([
 created:{
   //加载table数据
   const result = messageModuleStore.MessageQueryAllStore(formData)
+  const data = res
   if(result.code === 200){
     //渲染数据
     const data = result.data
-    //TODO
+    tableData = data
   }
 }
 
@@ -179,10 +180,10 @@ const tableData = ref([
 ])
 function handelLook(row) {
   //发送获取消息详情请求
-  const result = messageModuleStore.MessageSendQueryStore(row[id])
-  if(result.code === 200){
-    //弹框
-  }
+  // const result = messageModuleStore.MessageSendQueryStore(row[id])
+  // if(result.code === 200){
+  //   //弹框
+  // }
   console.log(row)
 }
 

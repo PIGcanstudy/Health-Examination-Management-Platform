@@ -26,6 +26,7 @@ export default ({ mode }) =>
           //TODO[TEST_CODE]:使用ApiPost云MOCK
           target:
             'https://console-mock.apipost.cn/mock/99738a62-8857-4bb2-8010-c92424b03584',
+            // 'http://8.130.20.246:10001/api/',
           rewrite: (path) => path.replace(/^\/api/, '')
         },
         '/captcha': {
