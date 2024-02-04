@@ -1,6 +1,11 @@
-inquiry:
- put:
+InquiryDetail:
+ get:
   summary: 获取问诊明细
+ put:
+  summary: 修改问诊明细
+ pdf:
+  summary: 获取问诊明细PDF
+inquiry:
  field:
   id: 主键
   workYear: 工龄年段
