@@ -44,7 +44,7 @@
 
   </div> -->
   <div class="main" >
-    <img src="../../assets/dashboard/allicon.png" style="width:1200px;left: 150px;top: 300px;" />
+    <img src="../../assets/dashboard/allicon.png" style="width:1200px;left: 150px;top: 280px;" />
     <div class="btn01">
       <el-button @click="enter01" style=" width: 130px; height: 50px; font-size: larger; font-weight: 200;">点击进入</el-button>
     </div>
@@ -111,7 +111,7 @@ function enter03() {
 }
 .btn01 {
   left: 548px;
-  top: 450px;
+  top: 430px;
   z-index: 9999;
   position: fixed;
 }
@@ -123,7 +123,7 @@ function enter03() {
 }
 .btn02 {
   left: 550px;
-  top: 625px;
+  top: 605px;
   z-index: 9999;
   position: fixed;
 }
@@ -135,7 +135,7 @@ function enter03() {
 }
 .btn03 {
   left: 460px;
-  top: 470px;
+  top: 450px;
   z-index: 9999;
   position: absolute;
 }
@@ -147,7 +147,7 @@ function enter03() {
 }
 .btn04 {
   left: 875px;
-  top: 355px;
+  top: 335px;
   z-index: 9999;
   position: absolute;
 }
@@ -158,7 +158,7 @@ function enter03() {
 }
 .btn05 {
   left: 1215px;
-  top: 375px;
+  top: 355px;
   z-index: 9999;
   position: absolute;
 }
@@ -170,7 +170,7 @@ function enter03() {
 }
 .btn06 {
   left: 1213px;
-  top: 555px;
+  top: 535px;
   z-index: 9999;
   position: absolute;
 }
