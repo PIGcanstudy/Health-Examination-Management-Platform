@@ -2,7 +2,7 @@ import Request from '../request'
 import { userStore } from '@/stores/user'
 
 // 定义一个功能模块基础url，方便替换
-const currBaseUrl = '/login/'
+const currBaseUrl = '/login'
 
 /**
  * 登录接口

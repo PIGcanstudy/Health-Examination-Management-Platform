@@ -1,29 +1,13 @@
 <template>
   <div style="position: relative">
-    <div
-      v-if="type === '2'"
-      class="verify-img-out"
-      :style="{ height: parseInt(setSize.imgHeight) + vSpace + 'px' }"
-    >
-      <div
-        class="verify-img-panel"
-        :style="{ width: setSize.imgWidth, height: setSize.imgHeight }"
-      >
-        <img
-          :src="'data:image/png;base64,' + backImgBase"
-          alt=""
-          style="width: 100%; height: 100%; display: block"
-        />
-        <div class="verify-refresh" @click="refresh" v-show="showRefresh">
+    <div v-if="type === '2'" class="verify-img-out" :style="{ height: parseInt(setSize.imgHeight) + vSpace + 'px' }">
+      <div class="verify-img-panel" :style="{ width: setSize.imgWidth, height: setSize.imgHeight }">
+        <img :src="'data:image/png;base64,' + backImgBase" alt="" style="width: 100%; height: 100%; display: block" />
+        <div v-show="showRefresh" class="verify-refresh" @click="refresh">
           <i class="iconfont icon-refresh"></i>
         </div>
         <transition name="tips">
-          <span
-            class="verify-tips"
-            v-if="tipWords"
-            :class="passFlag ? 'suc-bg' : 'err-bg'"
-            >{{ tipWords }}</span
-          >
+          <span v-if="tipWords" class="verify-tips" :class="passFlag ? 'suc-bg' : 'err-bg'">{{ tipWords }}</span>
         </transition>
       </div>
     </div>
@@ -49,8 +33,6 @@
         <span class="verify-msg" v-text="finishText"></span>
         <div
           class="verify-move-block"
-          @touchstart="start"
-          @mousedown="start"
           :style="{
             width: barSize.height,
             height: barSize.height,
@@ -58,11 +40,11 @@
             left: moveBlockLeft,
             transition: transitionLeft
           }"
+          @touchstart="start"
+          @mousedown="start"
         >
-          <i
-            :class="['verify-icon iconfont', iconClass]"
-            :style="{ color: iconColor }"
-          ></i>
+          <!-- <i :class="['verify-icon iconfont', iconClass]" :style="{ color: iconColor },"></i> -->
+          <i :class="['verify-icon iconfont', iconClass]" style="top: 25px; right: 8px"></i>
           <div
             v-if="type === '2'"
             class="verify-sub-block"
@@ -73,16 +55,7 @@
               'background-size': setSize.imgWidth + ' ' + setSize.imgHeight
             }"
           >
-            <img
-              :src="'data:image/png;base64,' + blockBackImgBase"
-              alt=""
-              style="
-                width: 100%;
-                height: 100%;
-                display: block;
-                -webkit-user-drag: none;
-              "
-            />
+            <img :src="'data:image/png;base64,' + blockBackImgBase" alt="" style="width: 100%; height: 100%; display: block; -webkit-user-drag: none" />
           </div>
         </div>
       </div>
@@ -97,17 +70,7 @@
 import { aesEncrypt } from '../utils/ase'
 import { resetSize } from '../utils/util'
 import { reqGet, reqCheck } from './../api/index'
-import {
-  computed,
-  onMounted,
-  reactive,
-  ref,
-  watch,
-  nextTick,
-  toRefs,
-  watchEffect,
-  getCurrentInstance
-} from 'vue'
+import { computed, onMounted, reactive, ref, watch, nextTick, toRefs, watchEffect, getCurrentInstance } from 'vue'
 //  "captchaType":"blockPuzzle",
 export default {
   name: 'VerifySlide',
@@ -161,16 +124,7 @@ export default {
     }
   },
   setup(props, context) {
-    const {
-      mode,
-      captchaType,
-      vSpace,
-      imgSize,
-      barSize,
-      type,
-      blockSize,
-      explain
-    } = toRefs(props)
+    const { mode, captchaType, vSpace, imgSize, barSize, type, blockSize, explain } = toRefs(props)
     const { proxy } = getCurrentInstance()
     let secretKey = ref(''), //后端返回的ase加密秘钥
       passFlag = ref(''), //是否通过的标识
@@ -272,9 +226,7 @@ export default {
         x = e.touches[0].pageX
       }
       console.log(barArea)
-      startLeft.value = Math.floor(
-        x - barArea.value.getBoundingClientRect().left
-      )
+      startLeft.value = Math.floor(x - barArea.value.getBoundingClientRect().left)
       startMoveTime.value = +new Date() //开始滑动的时间
       if (isEnd.value == false) {
         text.value = ''
@@ -299,16 +251,8 @@ export default {
         }
         var bar_area_left = barArea.value.getBoundingClientRect().left
         var move_block_left = x - bar_area_left //小方块相对于父元素的left值
-        if (
-          move_block_left >=
-          barArea.value.offsetWidth -
-            parseInt(parseInt(blockSize.value.width) / 2) -
-            2
-        ) {
-          move_block_left =
-            barArea.value.offsetWidth -
-            parseInt(parseInt(blockSize.value.width) / 2) -
-            2
+        if (move_block_left >= barArea.value.offsetWidth - parseInt(parseInt(blockSize.value.width) / 2) - 2) {
+          move_block_left = barArea.value.offsetWidth - parseInt(parseInt(blockSize.value.width) / 2) - 2
         }
         if (move_block_left <= 0) {
           move_block_left = parseInt(parseInt(blockSize.value.width) / 2)
@@ -323,18 +267,11 @@ export default {
       endMovetime.value = +new Date()
       //判断是否重合
       if (status.value && isEnd.value == false) {
-        var moveLeftDistance = parseInt(
-          (moveBlockLeft.value || '').replace('px', '')
-        )
+        var moveLeftDistance = parseInt((moveBlockLeft.value || '').replace('px', ''))
         moveLeftDistance = (moveLeftDistance * 310) / parseInt(setSize.imgWidth)
         let data = {
           captchaType: captchaType.value,
-          pointJson: secretKey.value
-            ? aesEncrypt(
-                JSON.stringify({ x: moveLeftDistance, y: 5.0 }),
-                secretKey.value
-              )
-            : JSON.stringify({ x: moveLeftDistance, y: 5.0 }),
+          pointJson: secretKey.value ? aesEncrypt(JSON.stringify({ x: moveLeftDistance, y: 5.0 }), secretKey.value) : JSON.stringify({ x: moveLeftDistance, y: 5.0 }),
           token: backToken.value
         }
         reqCheck(data).then((res) => {
@@ -353,20 +290,10 @@ export default {
               }, 1500)
             }
             passFlag.value = true
-            tipWords.value = `${(
-              (endMovetime.value - startMoveTime.value) /
-              1000
-            ).toFixed(2)}s验证成功`
+            tipWords.value = `${((endMovetime.value - startMoveTime.value) / 1000).toFixed(2)}s验证成功`
             var captchaVerification = secretKey.value
-              ? aesEncrypt(
-                  backToken.value +
-                    '---' +
-                    JSON.stringify({ x: moveLeftDistance, y: 5.0 }),
-                  secretKey.value
-                )
-              : backToken.value +
-                '---' +
-                JSON.stringify({ x: moveLeftDistance, y: 5.0 })
+              ? aesEncrypt(backToken.value + '---' + JSON.stringify({ x: moveLeftDistance, y: 5.0 }), secretKey.value)
+              : backToken.value + '---' + JSON.stringify({ x: moveLeftDistance, y: 5.0 })
             setTimeout(() => {
               tipWords.value = ''
               proxy.$parent.closeBox()
