@@ -2,12 +2,12 @@ import Request from '@/apis/request.js'
 const baseUrl = ''
 
 //获取字典数据名称列表（用于输入表单下拉列表）
-export const queryDictnameList = (params) => {
+export const queryDictnameListApi = (params) => {
   return Request.requestJson(Request.GET, baseUrl + '/common/query-dictnamelist')
 }
 
 //获取工种名称列表（分页＋条件）
-export const queryJobnameList = (params) => {
+export const queryJobnameListApi = (params) => {
   return Request.requestForm(Request.GET, baseUrl + '/common/query-jobnamelist', params)
 }
 
