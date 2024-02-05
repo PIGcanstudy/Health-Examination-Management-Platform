@@ -23,11 +23,13 @@ export default ({ mode }) =>
           // target: 'http://localhost:10100',
           // rewrite: (path) => path.replace(/^\/api/, '')
 
-          //TODO[TEST_CODE]:使用ApiPost云MOCK
-          target:
-            'https://console-mock.apipost.cn/mock/99738a62-8857-4bb2-8010-c92424b03584',
-            // 'http://8.130.20.246:10001/api/',
+          // TODO[TEST_CODE]:使用ApiPost云MOCK
+          target: 'https://console-mock.apipost.cn/mock/99738a62-8857-4bb2-8010-c92424b03584',
           rewrite: (path) => path.replace(/^\/api/, '')
+
+          // target:
+          //   'http://8.130.107.61:8090',
+          //   rewrite: (path) => path.replace(/^\/api/, '')
         },
         '/captcha': {
           changeOrigin: true,

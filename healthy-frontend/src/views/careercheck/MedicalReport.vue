@@ -24,6 +24,11 @@ import PeoplleList from '@/components/peoplelist/PeopleList.vue'
 import PdfObject from '@/components/pdfobject/PdfObject.vue'
 import Head from '@/components/head/Head.vue'
 
+import { useinspectionreportStore } from '@/stores/inspectionreport/index.js'
+import {usePublicStore} from '@/stores/Public/index.js'
+
+
+
 // 列表数据
 const listsData = [
   {
