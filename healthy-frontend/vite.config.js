@@ -23,13 +23,8 @@ export default ({ mode }) =>
           target: 'http://8.130.20.246:10001',
           // rewrite: (path) => path.replace(/^\/api/, '')
 
-<<<<<<< HEAD
-          // TODO[TEST_CODE]:使用ApiPost云MOCK
-          target: 'https://console-mock.apipost.cn/mock/99738a62-8857-4bb2-8010-c92424b03584',
-=======
           //TODO[TEST_CODE]:使用ApiPost云MOCK
           //target: 'http://47.122.19.207:10200',
->>>>>>> f1-pagedevelop-seven
           rewrite: (path) => path.replace(/^\/api/, '')
 
           // target:
