@@ -1,20 +1,20 @@
 #pragma once
-#ifndef _UPLOADMOREDTO_
-#define _UPLOADMOREDTO_
+#ifndef _UPLOADMORE_DTO_
+#define _UPLOADMORE_DTO_
 #include "../../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * 报告审核传输对象
+ * 健康证上传传输对象，获取personId
  */
 class UploadMoreDTO : public oatpp::DTO
 {
 	DTO_INIT(UploadMoreDTO, DTO);
-	// 健康证文件名
-	DTO_FIELD(String, fileName);
-	DTO_FIELD_INFO(fileName) {
-		info->description = ZH_WORDS_GETTER("uploadmore.field.fileName");
+	// 人员id
+	DTO_FIELD(String, personId);
+	DTO_FIELD_INFO(personId) {
+		info->description = ZH_WORDS_GETTER("uploadmore.field.personId");
 	}
 };
 

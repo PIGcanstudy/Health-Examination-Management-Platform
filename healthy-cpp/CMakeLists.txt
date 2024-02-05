@@ -1,4 +1,4 @@
-﻿# CMakeList.txt: 顶层 CMake 项目文件，在此处执行全局配置
+# CMakeList.txt: 顶层 CMake 项目文件，在此处执行全局配置
 # 并包含子项目。
 #
 cmake_minimum_required (VERSION 3.8)
@@ -9,6 +9,7 @@ project ("zero-one-healthy-check")
 # 设置安装目录前缀
 if(NOT WIN32)
 	set (CMAKE_INSTALL_PREFIX "../install/${PROJECT_NAME}" CACHE PATH "install path prefix" FORCE )
+endif()
 
 # C++标准
 set (CMAKE_CXX_STANDARD 17)
