@@ -2,7 +2,7 @@
  * @Author: setti5 2283356040@qq.com
  * @Date: 2024-01-30 15:48:01
  * @LastEditors: setti5 2283356040@qq.com
- * @LastEditTime: 2024-02-02 16:52:52
+ * @LastEditTime: 2024-02-05 14:53:58
  * @FilePath: \zero-one-healthy-check\healthy-frontend\src\views\basicdata\SampleLibrary.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -142,7 +142,7 @@
       </template>
     </BaseDataList>
 
-    <SampleLibraryDialog ref="openDialogFormRef" :title="title"></SampleLibraryDialog>
+    <SampleLibraryDialog ref="openDialogFormRef" :title="title" :handle-submit="handleSubmit"></SampleLibraryDialog>
   </div>
 </template>
 
@@ -151,6 +151,7 @@ import { ref, reactive, onMounted } from 'vue'
 import { ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit, Operation } from '@element-plus/icons-vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import SampleLibraryDialog from './SampleLibrary/SampleLibraryDialog.vue'
+import { ElMessage } from 'element-plus'
 
 // 弹出对话框相关逻辑
 const openDialogFormRef = ref(null)
@@ -292,6 +293,31 @@ const closeHint = () => {
 const handleEdit = (row) => {
   console.log(row)
 }
+
+const handleSubmit = () => {
+  openDialogFormRef.value.basicFormRef.validate((valid) => {
+    if (valid) {
+      const params = {
+        ...openDialogFormRef.value.basicForm
+      }
+      params.dialogVisible = params.dialogVisible ? 1 : 0
+      if (title.value === '新增') {
+        ElMessage({
+          message: '添加成功',
+          type: 'success'
+        })
+      } else {
+        ElMessage({
+          message: '修改成功',
+          type: 'success'
+        })
+      }
+
+      openDialogFormRef.value.dialogVisible = false
+    }
+  })
+}
+
 // 显示选中几项
 const selectedTotal = ref(0)
 // 选中的row

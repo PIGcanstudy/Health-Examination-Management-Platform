@@ -2,7 +2,7 @@
 <template>
   <el-container style="background-color: #f0f0f0; padding: 10px; height: 100%">
     <el-aside style="width: 20%" :style="{ maxWidth: isCollapsed ? '0' : '20%' }">
-      <!-- <PeopleListPPZ title="团检人员">
+      <PeopleListPPZ title="团检人员">
         <template #form>
           <el-form :model="form">
             <el-form-item prop="date">
@@ -22,9 +22,9 @@
         <template #table>
           <List></List>
         </template>
-      </PeopleListPPZ> -->
+      </PeopleListPPZ>
 
-      <Peoplelist
+      <!-- <Peoplelist
         :table-column-attribute="tableColumnAttribute"
         :table-data="publicStore.tableData"
         :page-sizes="[5]"
@@ -39,7 +39,7 @@
           }
         "
         ref="PeopleListRef"
-      ></Peoplelist>
+      ></Peoplelist> -->
     </el-aside>
 
     <div class="collapse" style="height: 100%; line-height: 100vh; margin: 4px" @click="isCollapsed = !isCollapsed">
@@ -101,14 +101,13 @@
                   ><el-icon style="margin-right: 10px"><Plus /></el-icon>读取二代身份证</el-button
                 >
               </div>
-
               <el-col>
                 <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" :inline="true" label-width="120px" style="padding: 16px 26px" status-icon>
                   <el-form-item label="人员姓名" required>
-                    <el-input v-model="ruleForm.name" />
+                    <el-input v-model="ruleForm.name" placeholder="强输入人员姓名" />
                   </el-form-item>
                   <el-form-item label="证件号码">
-                    <el-input v-model="ruleForm.idNumber" />
+                    <el-input v-model="ruleForm.idNumber" placeholder="强输入证件号码" />
                   </el-form-item>
                   <el-form-item label="性别" required>
                     <el-radio-group v-model="ruleForm.gender" style="width: 200px">
@@ -122,10 +121,10 @@
                     </el-form-item>
                   </el-form-item>
                   <el-form-item label="年龄" required>
-                    <el-input v-model="ruleForm.age" />
+                    <el-input v-model="ruleForm.age" placeholder="强输入年龄" />
                   </el-form-item>
                   <el-form-item label="手机号码" required>
-                    <el-input v-model="ruleForm.phoneNumber" />
+                    <el-input v-model="ruleForm.phoneNumber" placeholder="强输入手机号码" />
                   </el-form-item>
                   <el-form-item label="婚姻状况">
                     <el-select v-model="ruleForm.maritalStatus" placeholder="请选择" style="width: 200px">
@@ -223,7 +222,7 @@
       <div class="right-part" style="position: absolute; top: 0; right: 0; width: 40%; height: 100%">
         <el-card class="title-bar" body-style="font-weight: 700">订单信息</el-card>
         <el-card style="height: 30%" shadow="hover">
-          <el-form :inline="true" :model="formInline" label-width="70px" style="font-size: 12px" disabled="true">
+          <el-form ref="OrderInfoRef" :inline="true" :model="formInline" label-width="70px" style="font-size: 12px" disabled="true">
             <el-form-item label="体检单位" style="width: 155px">
               <el-input />
             </el-form-item>
@@ -280,13 +279,12 @@
 </template>
 
 <script setup>
-// import PeopleListPPZ from '@/components/peoplelist/PeopleList-PPZ.vue'
+import PeopleListPPZ from '@/components/peoplelist/PeopleList-PPZ.vue'
 import List from '@/components/peoplelist/List.vue'
 import { Upload, CirclePlus, Download, ArrowLeft, ArrowRight, UploadFilled, Plus } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 import { defineProps, defineEmits } from 'vue'
 import { ElMessage } from 'element-plus'
-import Peoplelist from '@/components/peoplelist/PeopleList.vue'
 import { usePublicStore } from '@/stores/public/index.js'
 // 定义方法调用仓库接口
 const publicStore = usePublicStore()
@@ -353,8 +351,17 @@ const rules = ref({
   phoneNumber: [{ required: true, message: '手机号码有误!', trigger: 'change' }],
   maritalStatus: [{ message: '手机号码有误!', trigger: 'change' }]
 })
+
+// 订单信息表单罗辑
+const OrderInfoRef = ref(null)
+
 const submitForm = () => {
   console.log('提交成功')
+  ElMessage({
+    message: '提交成功',
+    type: 'success'
+  })
+  dialogFormVisible.value = false
 }
 
 const props = defineProps({

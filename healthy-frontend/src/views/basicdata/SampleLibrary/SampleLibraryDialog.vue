@@ -77,8 +77,8 @@
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogVisible = false">取消</el-button>
-          <!-- <el-button type="primary" @click="props.handleSubmit">提交</el-button> -->
-          <el-button type="primary" @click="dialogVisible = false">提交</el-button>
+          <!-- <el-button type="primary" @click="dialogVisible = false">提交</el-button> -->
+          <el-button type="primary" @click="props.handleSubmit">提交</el-button>
         </span>
       </template>
     </el-dialog>
@@ -121,12 +121,12 @@ const open = (row) => {
 }
 
 const props = defineProps({
-  // handleSubmit: {
-  //   type: Function,
-  //   default: () => {
-  //     console.log('submit')
-  //   }
-  // },
+  handleSubmit: {
+    type: Function,
+    default: () => {
+      console.log('submit')
+    }
+  },
   title: {
     type: String,
     default: '新增'
