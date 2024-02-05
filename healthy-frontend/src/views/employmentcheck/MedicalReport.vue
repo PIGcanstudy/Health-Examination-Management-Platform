@@ -99,6 +99,7 @@ import Head from '@/components/head/Head.vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
 import { ref } from 'vue'
 import { ArrowUp, ArrowDown, UploadFilled } from '@element-plus/icons-vue'
+
 /* BaseDataList的变量 */
 const tableColumnAttribute = ref([
   { prop: 'id', label: '体检编号', width: 150, align: 'center' },

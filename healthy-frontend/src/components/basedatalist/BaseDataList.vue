@@ -13,12 +13,18 @@
         <!-- 多选清除栏 -->
         <slot name="hint"></slot>
         <!-- table表格 -->
-        <el-table ref="tableRef" :data="props?.tableData" border @selection-change="handleSelectionChange" @select="selectTc"
-        v-if="childrenData"
-        row-key="id"
-        lazy
-        :load="load"
-        :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+        <el-table
+          v-if="childrenData"
+          ref="tableRef"
+          :data="props?.tableData"
+          border
+          row-key="id"
+          lazy
+          :load="load"
+          :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+          @selection-change="handleSelectionChange"
+          @select="selectTc"
+        >
           <!-- 多选列 -->
           <el-table-column v-if="useSelection" type="selection"></el-table-column>
           <!-- 表格内容 -->
@@ -144,7 +150,7 @@ const selectTc = (selection, row) => {
   // 主要用于将当前勾选的表格状态清除
   if (selection.length == 0) return
   tableRef.value.toggleRowSelection(row, true)
-  emits('update-selected-row', selection) 
+  emits('update-selected-row', selection)
 }
 defineExpose({
   // 暴露选中的row

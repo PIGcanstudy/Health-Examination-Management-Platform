@@ -2,7 +2,7 @@ import Request from '../request'
 import { userStore } from '@/stores/user'
 
 // 定义一个功能模块基础url，方便替换
-const currBaseUrl = '/login/'
+const currBaseUrl = '/login'
 
 /**
  * 登录接口
@@ -12,7 +12,7 @@ const currBaseUrl = '/login/'
  */
 export const login = (data, success, fail) => {
   const $store = userStore()
-  Request.requestForm(Request.POST, currBaseUrl + 'auth-login', data)
+  Request.requestForm(Request.POST, currBaseUrl + '/auth-login', data)
     .then((data) => {
       // 记录Token到本地
       if (data.data) {
