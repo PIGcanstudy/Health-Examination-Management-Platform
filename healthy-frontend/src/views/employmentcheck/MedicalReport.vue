@@ -97,8 +97,23 @@
 <script setup>
 import Head from '@/components/head/Head.vue'
 import BaseDataList from '@/components/basedatalist/BaseDataList.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { ArrowUp, ArrowDown, UploadFilled } from '@element-plus/icons-vue'
+import {useinspectionreportStore} from '@/stores/inspectionreport/index.js'
+const store =useinspectionreportStore()
+let dataList=ref()
+
+onMounted(()=>{
+  dataList=store.getReportList()
+  tableData=dataList.data.data.rows
+})
+
+const tableData = ref([
+   { id: '1', idCard: '肝炎筛查', userName: 188, sex: 0.8, age: 150.4, checkTime: '一号套餐' },
+  // { id: '2', projectName: '肝炎筛查', originalPrice: 188, discount: 0.8, discountPrice: 150.4, projectType: '一号套餐' },
+  // { id: '1', projectName: '肝炎筛查', originalPrice: 188, discount: 0.8, discountPrice: 150.4, projectType: '一号套餐' },
+  // { id: '1', projectName: '肝炎筛查', originalPrice: 188, discount: 0.8, discountPrice: 150.4, projectType: '一号套餐' }
+])
 /* BaseDataList的变量 */
 const tableColumnAttribute = ref([
   { prop: 'id', label: '体检编号', width: 150, align: 'center' },
@@ -111,7 +126,7 @@ const tableColumnAttribute = ref([
   { prop: 'untiName', label: '单位名称', width: 150, align: 'center' },
   { prop: 'reviewStatus', label: '审核状态', width: 250, align: 'center' }
 ])
-const tableData = ref([])
+
 // 获取用户输入数据或设置初值
 const searchData = ref({
   serialNumber: '',
