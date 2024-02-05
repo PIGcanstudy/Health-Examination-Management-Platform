@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { MessageQueryAll, removeByIds, MessageSendQuery, MessageSendUnRead, addUpdateMessageSender } from '@/apis/personal/index.js'
+import { MessageQueryAll, removeByIds, MessageSendQuery, MessageSendUnRead, addUpdateMessageSender } from '@/apis/messagemodule/index.js'
 export const useMessageModuleStores = defineStore('messageModuleStores', () => {
   /**
    * 消息模块-j2
