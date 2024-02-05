@@ -42,6 +42,10 @@ export default ({ mode }) =>
       assetsDir: 'static',
       chunkSizeWarningLimit: 1000,
       rollupOptions: {
+        external: [
+          'echarts/lib/CoordinateSystem'
+          // 如果有其他外部依赖，也需要添加
+        ],
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
