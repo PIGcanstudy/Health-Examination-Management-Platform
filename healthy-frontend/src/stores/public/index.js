@@ -11,7 +11,7 @@ import {
   queryTermnameList,
   queryTypeTree,
   queryUesrnameList
-} from '@/s/public/index.js'
+} from '@/apis/public/index.js'
 
 export const usePublicStore = defineStore('public', () => {
   // 重写方法
