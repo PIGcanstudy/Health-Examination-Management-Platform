@@ -1,19 +1,35 @@
-<!--
- * @Author: setti5 2283356040@qq.com
- * @Date: 2024-01-22 18:16:25
- * @LastEditors: setti5 2283356040@qq.com
- * @LastEditTime: 2024-01-29 20:43:39
- * @FilePath: \zero-one-healthy-check\healthy-frontend\src\views\healthcheck\MedivalExaminer.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<!-- 职业体检系统：体检人员 -->
+<!-- 体检人员 -->
 <template>
-  <el-container style="background-color: #f0f0f0; padding: 10px" class="container">
+  <el-container style="background-color: #f0f0f0; padding: 10px; height: 100%">
     <el-aside style="width: 20%" :style="{ maxWidth: isCollapsed ? '0' : '20%' }">
-      <PeopleList
-        title="团检订单"
+      <PeopleListPPZ title="团检人员">
+        <template #form>
+          <el-form :model="form">
+            <el-form-item prop="date">
+              <el-row clearable>
+                <el-date-picker v-model="form.startDate" type="date" placeholder="开始时间" style="width: 46%" />
+                <span style="width: 8%; padding: 0 4px">~</span>
+                <el-date-picker v-model="form.endDate" type="date" placeholder="结束时间" style="width: 46%" />
+              </el-row>
+            </el-form-item>
+            <el-form-item prop="name">
+              <el-input v-model="form.name" placeholder="请输入关键字" clearable />
+            </el-form-item>
+            <el-button :size="small" @click="onSubmit">重置</el-button>
+          </el-form>
+        </template>
+
+        <template #table>
+          <List></List>
+        </template>
+      </PeopleListPPZ>
+
+      <!-- <Peoplelist
         :table-column-attribute="tableColumnAttribute"
-        :style="isCollapsed ? 'display: none;' : 'min-width: 20%;'"
+        :table-data="publicStore.tableData"
+        :page-sizes="[5]"
+        :total="publicStore.total"
+        :use-select-column="false"
         @update-table-data="
           (pageSize, pageIndex) => {
             getTableData({
@@ -22,10 +38,10 @@
             })
           }
         "
-      />
+        ref="PeopleListRef"
+      ></Peoplelist> -->
     </el-aside>
 
-    <!-- 点击折叠侧边栏事件，未定义方法 -->
     <div class="collapse" style="height: 100%; line-height: 100vh; margin: 4px" @click="isCollapsed = !isCollapsed">
       <el-icon v-show="isCollapsed == false"><ArrowLeft /></el-icon>
       <el-icon v-show="isCollapsed == true"><ArrowRight /></el-icon>
@@ -85,45 +101,47 @@
                   ><el-icon style="margin-right: 10px"><Plus /></el-icon>读取二代身份证</el-button
                 >
               </div>
-
-              <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" :inline="true" label-width="120px" style="padding: 16px 26px" status-icon>
-                <el-form-item label="人员姓名" required>
-                  <el-input v-model="ruleForm.name" />
-                </el-form-item>
-                <el-form-item label="证件号码">
-                  <el-input v-model="ruleForm.idNumber" />
-                </el-form-item>
-                <el-form-item label="性别" required>
-                  <el-radio-group v-model="ruleForm.gender" style="width: 200px">
-                    <el-radio label="男" />
-                    <el-radio label="女" />
-                  </el-radio-group>
-                </el-form-item>
-                <el-form-item label="出生日期" required>
-                  <el-form-item>
-                    <el-date-picker v-model="ruleForm.birthday" type="date" placeholder="请选择" p style="width: 200px" />
+              <el-col>
+                <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" :inline="true" label-width="120px" style="padding: 16px 26px" status-icon>
+                  <el-form-item label="人员姓名" required>
+                    <el-input v-model="ruleForm.name" placeholder="强输入人员姓名" />
                   </el-form-item>
-                </el-form-item>
-                <el-form-item label="年龄" required>
-                  <el-input v-model="ruleForm.age" />
-                </el-form-item>
-                <el-form-item label="手机号码" required>
-                  <el-input v-model="ruleForm.phoneNumber" />
-                </el-form-item>
-                <el-form-item label="婚姻状况">
-                  <el-select v-model="ruleForm.maritalStatus" placeholder="请选择" style="width: 200px">
-                    <el-option label="未婚" value="未婚" />
-                    <el-option label="已婚" value="已婚" />
-                    <el-option label="离异" value="离异" />
-                    <el-option label="丧偶" value="丧偶" />
-                    <el-option label="其他" value="其他" />
-                  </el-select>
-                </el-form-item>
-                <el-form-item style="j;display: flex; margin-left: 500px;">
-                  <el-button @click="dialogFormVisible = false">取消</el-button>
-                  <el-button type="primary" @click="submitForm">提交</el-button>
-                </el-form-item>
-              </el-form>
+                  <el-form-item label="证件号码">
+                    <el-input v-model="ruleForm.idNumber" placeholder="强输入证件号码" />
+                  </el-form-item>
+                  <el-form-item label="性别" required>
+                    <el-radio-group v-model="ruleForm.gender" style="width: 200px">
+                      <el-radio label="男" />
+                      <el-radio label="女" />
+                    </el-radio-group>
+                  </el-form-item>
+                  <el-form-item label="出生日期" required>
+                    <el-form-item>
+                      <el-date-picker v-model="ruleForm.birthday" type="date" placeholder="请选择" p style="width: 200px" />
+                    </el-form-item>
+                  </el-form-item>
+                  <el-form-item label="年龄" required>
+                    <el-input v-model="ruleForm.age" placeholder="强输入年龄" />
+                  </el-form-item>
+                  <el-form-item label="手机号码" required>
+                    <el-input v-model="ruleForm.phoneNumber" placeholder="强输入手机号码" />
+                  </el-form-item>
+                  <el-form-item label="婚姻状况">
+                    <el-select v-model="ruleForm.maritalStatus" placeholder="请选择" style="width: 200px">
+                      <el-option label="未婚" value="未婚" />
+                      <el-option label="已婚" value="已婚" />
+                      <el-option label="离异" value="离异" />
+                      <el-option label="丧偶" value="丧偶" />
+                      <el-option label="其他" value="其他" />
+                    </el-select>
+                  </el-form-item>
+                </el-form>
+              </el-col>
+
+              <template #footer>
+                <el-button @click="dialogFormVisible = false">取消</el-button>
+                <el-button type="primary" @click="submitForm">提交</el-button>
+              </template>
             </el-dialog>
 
             <el-upload
@@ -204,7 +222,7 @@
       <div class="right-part" style="position: absolute; top: 0; right: 0; width: 40%; height: 100%">
         <el-card class="title-bar" body-style="font-weight: 700">订单信息</el-card>
         <el-card style="height: 30%" shadow="hover">
-          <el-form :inline="true" :model="formInline" label-width="70px" style="font-size: 12px" disabled="true">
+          <el-form ref="OrderInfoRef" :inline="true" :model="formInline" label-width="70px" style="font-size: 12px" disabled="true">
             <el-form-item label="体检单位" style="width: 155px">
               <el-input />
             </el-form-item>
@@ -261,11 +279,49 @@
 </template>
 
 <script setup>
-import PeopleList from '@/components/peoplelist/PeopleList.vue'
+import PeopleListPPZ from '@/components/peoplelist/PeopleList-PPZ.vue'
+import List from '@/components/peoplelist/List.vue'
 import { Upload, CirclePlus, Download, ArrowLeft, ArrowRight, UploadFilled, Plus } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 import { defineProps, defineEmits } from 'vue'
 import { ElMessage } from 'element-plus'
+import { usePublicStore } from '@/stores/public/index.js'
+// 定义方法调用仓库接口
+const publicStore = usePublicStore()
+
+// 定义表格列属性
+const tableColumnAttribute = ref([
+  {
+    prop: 'PeopleName',
+    label: '姓名'
+  },
+  {
+    prop: 'gender',
+    label: '性别'
+  },
+  {
+    prop: 'age',
+    label: '年龄'
+  },
+  {
+    prop: 'tagType',
+    label: '标签'
+  }
+])
+const PeopleListRef = ref(null)
+const rowId = ref('')
+const getTableData = async (params) => {
+  console.log('res')
+  PeopleListRef.value.openLoading = !PeopleListRef.value.openLoading
+  await publicStore.queryUesrnameList(params)
+  PeopleListRef.value.openLoading = !PeopleListRef.value.openLoading
+}
+
+const form = ref({
+  date: '',
+  startDate: '',
+  endDate: ''
+})
 
 const isCollapsed = ref(false)
 
@@ -295,8 +351,17 @@ const rules = ref({
   phoneNumber: [{ required: true, message: '手机号码有误!', trigger: 'change' }],
   maritalStatus: [{ message: '手机号码有误!', trigger: 'change' }]
 })
+
+// 订单信息表单罗辑
+const OrderInfoRef = ref(null)
+
 const submitForm = () => {
   console.log('提交成功')
+  ElMessage({
+    message: '提交成功',
+    type: 'success'
+  })
+  dialogFormVisible.value = false
 }
 
 const props = defineProps({
@@ -331,56 +396,55 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
-.container {
-  width: 100%;
-  height: 100vh;
+.el-container {
   overflow: hidden;
 }
 .body {
   display: flex;
   position: relative;
-}
-.center-part {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 59%;
-  align-items: center;
-  justify-content: center;
-  align-items: center;
-}
-.title-operation {
-  height: 5%;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  background-color: #f0faff;
-  border: 1px solid #abdcff;
 
-  span {
-    margin-right: 15px;
+  .center-part {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 59%;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .title-operation {
+    height: 5%;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    background-color: #f0faff;
+    border: 1px solid #abdcff;
+
+    span {
+      margin-right: 15px;
+      font-weight: 550;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+  }
+  p {
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .title-bar {
+    height: 5%;
+    font-size: 14px;
     font-weight: 550;
     display: flex;
     justify-content: center;
-    text-align: center;
     align-items: center;
+    background-color: #f0faff;
+    border: 1px solid #abdcff;
   }
-}
-p {
-  color: red;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.title-bar {
-  height: 5%;
-  font-size: 14px;
-  font-weight: 550;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f0faff;
-  border: 1px solid #abdcff;
 }
 </style>
