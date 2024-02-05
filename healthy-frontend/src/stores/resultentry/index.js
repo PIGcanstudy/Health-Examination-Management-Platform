@@ -1,15 +1,31 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { addDepartRes, addRPProCheck,modifywaiveCheck,queryList,clAbanProj,queryBasicInfoMation,queryLifeHistory,queryPastMedicalHistory,
-    queryProfessionalHistory,Interro,barcod,report,baseProject,queryPerson,uploadxxx,info } from '@/apis/personal/index.js'
+import {
+  addDepartRes,
+  addRPProCheck,
+  modifywaiveCheck,
+  queryList,
+  clAbanProj,
+  queryBasicInfoMation,
+  queryLifeHistory,
+  queryPastMedicalHistory,
+  queryProfessionalHistory,
+  Interro,
+  barcod,
+  report,
+  baseProject,
+  queryPerson,
+  uploadxxx,
+  info
+} from '@/apis/resultentry/index.js'
 export const useResultentryStores = defineStore('resultentryStores', () => {
-/**
- * 结果录入-c6
- * stores
- * zlw
- * @param {} params 
- * @returns 
- */
+  /**
+   * 结果录入-c6
+   * stores
+   * zlw
+   * @param {} params
+   * @returns
+   */
   // 重写方法
   const addDepartResStore = async (params) => {
     return await addDepartRes(params)
