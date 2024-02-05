@@ -97,3 +97,17 @@ pdf:
  title: 测试标题
  content: 测试内容
  foot: 测试底部
+use:
+ field:
+  type: 体检类型
+  id: 身份证号
+  u_name: 体检姓名
+  sex: 性别
+  age: 年龄
+  linkPhone: 联系电话
+  name: 单位名称
+  marriage: 婚姻状态
+  g_name: 分组名称
+  idCard: 身份证号
+  save_if: 是否保存
+  is_pass: 状态
