@@ -4,6 +4,7 @@ Exalanding:
   personName: 人员姓名
   Unit_name: 单位名称
   name: 分组名称
+
 exalanding:
  put:
   modifyInformation: 修改人员信息
@@ -34,6 +35,7 @@ exalanding:
   groupName: 分组名称
   Unit_name: 单位名称
   name: 分组名称
+
 questatistics:
  remove:
   summary: 删除人员
@@ -97,6 +99,7 @@ pdf:
  title: 测试标题
  content: 测试内容
  foot: 测试底部
+
 use:
  field:
   type: 体检类型
@@ -111,3 +114,11 @@ use:
   idCard: 身份证号
   save_if: 是否保存
   is_pass: 状态
+
+check:
+ field:
+  item: 项目名称
+  id_card: 原价
+  discount: 折扣
+  discount_price: 折扣价
+  physical_type: 项目类型

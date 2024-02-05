@@ -37,6 +37,7 @@
 #include "Exalanding/GroupPersonController.h"
 #include "Exalanding/FileController.h"
 #include "add/AddController.h"
+#include "Exalanding/CheckListController.h"
 
 
 // 如果定义了关闭Swagger文档宏
@@ -75,6 +76,7 @@ void Router::initRouter()
 	ROUTER_SIMPLE_BIND(GroupPersonController);
 	ROUTER_SIMPLE_BIND(FileController);
 	ROUTER_SIMPLE_BIND(AddController);
+	ROUTER_SIMPLE_BIND(CheckListController);
 
 }
 
