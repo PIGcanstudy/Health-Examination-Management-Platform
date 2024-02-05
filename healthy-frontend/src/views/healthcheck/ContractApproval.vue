@@ -1,4 +1,4 @@
-<!-- 合同审批 -->default
+<!-- 合同审批 -->
 <template>
   <el-container>
     <el-header class="header">

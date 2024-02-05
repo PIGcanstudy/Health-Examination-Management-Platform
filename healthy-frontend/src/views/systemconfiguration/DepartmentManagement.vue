@@ -41,13 +41,29 @@
 
   <el-container>
     <el-aside>
-      <div>当前选择编辑</div>
-      <el-input placeholder="输入部门名搜索"></el-input>
+      <el-aside width="400px">
+        <!-- 提示框 -->
+        <div class="hint">
+          <span>
+            <el-icon style="color: blue">
+              <InfoFilled></InfoFilled>
+            </el-icon>
+            当前选择编辑： {{ selectWhich }}
+          </span>
+        </div>
+        <el-input v-model="menuName" style="width: 380px; margin: 10px" placeholder="请输入菜单名搜索" :suffix-icon="Search" />
+      </el-aside>
     </el-aside>
     <el-main>
       <div display:column>
       <div display:flex class="text">上级部门<el-input v-model="input" class="input-1"/>
-        <el-button @click="Selectdepartment">选择部门</el-button>
+        <!-- 弹出框 -->
+        <el-popover placement="bottom" title="选择上级部门" :width="200" trigger="click" 
+        content="this is content, this is content, this is content">
+    <template #reference>
+     <el-button @click="Selectdepartment">选择部门</el-button>
+    </template>
+  </el-popover>
       </div>
       <div class="text">*部门名称 <el-input v-model="input" class="input-1"/></div>
       <div class="text">部门负责人 <el-input v-model="input" class="input-1"/>
@@ -73,7 +89,7 @@
      <el-button @click="adddeparitment">添加一级部门</el-button>
      <el-button @click="delete">批量删除</el-button>
      <el-button @click="refresh">刷新</el-button>
-     <el-input style="width: 150px;" placeholder="输入部门名搜索"></el-input>
+     <el-input v-model="departmentName" style="width: 380px; margin: 10px" placeholder="请输入菜单名搜索" :suffix-icon="Search" />
    </el-header>
      <div class="dis">已选择20项  <div>清空</div></div>
      <el-button @click="">关闭提示</el-button>
@@ -97,7 +113,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import {usephysicalexaminationStore} from'@stores/physicalexamination/index.js'
+import { ArrowUp, ArrowDown, Search, Plus, InfoFilled, Refresh, DeleteFilled, Bottom, View, Edit } from '@element-plus/icons-vue'
+// import {usephysicalexaminationStore} from'@stores/physicalexamination/index.js'
 //stores方法
 // const physicalexaminationStore=usephysicalexaminationStore()
 
@@ -164,7 +181,10 @@ import {usephysicalexaminationStore} from'@stores/physicalexamination/index.js'
 const value1 = ref(true)
 const input = ref('')
 const num = ref(1);
+const selectWhich = ref('')
+const menuName = ref('')
 const openbutton1 = ref(false)
+const departmentName=ref('')
 const add = () =>{
   openbutton1.value=true;
 };
@@ -201,5 +221,14 @@ const tableData = [{
 }
 .dis{
   display: flex;
+}
+.hint {
+  position: relative;
+  height: 48px;
+  padding: 10px;
+  border: 1px solid RGB(171, 220, 255);
+  border-radius: 5px;
+  margin: 10px 5px;
+  background-color: RGB(240, 250, 255);
 }
 </style>
