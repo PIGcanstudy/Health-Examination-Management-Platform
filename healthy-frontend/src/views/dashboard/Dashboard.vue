@@ -44,15 +44,15 @@
 
   </div> -->
   <div class="main" >
-    <img src="../../assets/dashboard/allicon.png" style="width: 70%;position:fixed;left: 0;right: 0;margin:0 auto;margin-left: 25%;margin-top: 15%;" />
+    <img src="../../assets/dashboard/allicon.png" style="width:1200px;left: 150px;top: 300px;" />
     <div class="btn01">
-      <el-button @click="enter01" style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
+      <el-button @click="enter01" style=" width: 130px; height: 50px; font-size: larger; font-weight: 200;">点击进入</el-button>
     </div>
     <div class="btn02">
-      <el-button @click="enter02" style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
+      <el-button @click="enter02" style="position: absolute; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
     </div>
     <div class="btn03">
-      <el-button @click="enter03" style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
+      <el-button @click="enter03" style=" width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
     </div>
     <div class="btn04">
       <el-button style="position: fixed; width: 130px; height: 50px; font-size: larger; font-weight: 200">点击进入</el-button>
@@ -95,6 +95,14 @@ function enter03() {
   border: 0;
   height: 90vh;
   width: 100%;
+  position: fixed;
+}
+.main01 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 90vh;
+  width: 100%;
 }
 .icon01 {
   position: fixed;
@@ -102,8 +110,8 @@ function enter03() {
   top: 200px;
 }
 .btn01 {
-  left: 575px;
-  top: 400px;
+  left: 548px;
+  top: 450px;
   z-index: 9999;
   position: fixed;
 }
@@ -114,8 +122,8 @@ function enter03() {
   top: 405px;
 }
 .btn02 {
-  left: 580px;
-  top: 570px;
+  left: 550px;
+  top: 625px;
   z-index: 9999;
   position: fixed;
 }
@@ -126,8 +134,8 @@ function enter03() {
   top: 200px;
 }
 .btn03 {
-  left: 485px;
-  top: 415px;
+  left: 460px;
+  top: 470px;
   z-index: 9999;
   position: absolute;
 }
@@ -138,8 +146,8 @@ function enter03() {
   top: 200px;
 }
 .btn04 {
-  left: 885px;
-  top: 305px;
+  left: 875px;
+  top: 355px;
   z-index: 9999;
   position: absolute;
 }
@@ -149,8 +157,8 @@ function enter03() {
   top: 200px;
 }
 .btn05 {
-  left: 1213px;
-  top: 325px;
+  left: 1215px;
+  top: 375px;
   z-index: 9999;
   position: absolute;
 }
@@ -162,7 +170,7 @@ function enter03() {
 }
 .btn06 {
   left: 1213px;
-  top: 500px;
+  top: 555px;
   z-index: 9999;
   position: absolute;
 }
