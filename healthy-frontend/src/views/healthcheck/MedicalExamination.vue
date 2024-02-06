@@ -99,7 +99,7 @@ const resultentryStore = useResultentryStores()
 const title = ref('人员查询')
 const checkboxItem = ref(['未检', '已检'])
 const isDateVisible = ref(false)
-const formConfig = ref({
+const formConfig = reactive({
   formItems: [
     {
       type: 'input',
