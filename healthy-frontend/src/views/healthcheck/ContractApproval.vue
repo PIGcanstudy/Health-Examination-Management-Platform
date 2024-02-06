@@ -115,7 +115,7 @@
         </el-tab-pane> </el-tabs>
         </el-aside>
         <el-container>
-          <el-main width="300px"> <div class="a">1.用人单位提供的资料（盖鲜章）</div>
+          <el-main width="300px"> <div class="a">1.用人单位提供的资料（盖鲜章）</div>radio4
             <div class="dialog-text">1.用人单位基本情况信息表</div>
             <el-radio-group v-model="radio1">
       <el-radio label="no" size="large">否</el-radio>
@@ -152,10 +152,15 @@
   </el-dialog>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref,reactive } from 'vue';
 import PeopleListCG from '@/components/peoplelist/PeopleList-CG.vue'
 import List from '@/components/peoplelist/List.vue'
 const value = ref('')
+
+//搜索框字段
+const form = reactive({
+  name:''
+})
 const options = [
   {
     value: '10条/页',
@@ -172,7 +177,7 @@ const options = [
 ]
 const num = ref(1);
 const handleChange = (value) => {
-  num++;
+  num.value++;
   console.log(value);
 };
 
