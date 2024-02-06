@@ -23,6 +23,7 @@
 #include "controller/Router.h"
 #include "controller/OtherComponent.hpp"
 #include "DbInit.h"
+#include "uselib/pdf/TestPdf.h"
 #ifdef HTTP_SERVER_DEMO
 #include "uselib/jwt/TestToken.h"
 #endif
@@ -140,7 +141,8 @@ int main(int argc, char* argv[]) {
 
 	// 服务器参数初始化
 	bool isSetDb = getStartArg(argc, argv);
-
+	TestPdf pdf;
+	pdf.testTpl();
 #ifdef LINUX
 	// 创建Nacos客户端对象
 	NacosClient nacosClient(

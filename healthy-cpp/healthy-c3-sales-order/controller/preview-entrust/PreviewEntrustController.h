@@ -5,6 +5,7 @@
 
 #include "domain/vo/BaseJsonVO.h"
 #include "domain/GlobalInclude.h"
+//#include "../../domain/query/preview-entrust/PreviewEntrustQuery.h"
 
 // 0 定义API控制器使用宏
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
@@ -26,7 +27,6 @@ public: // 3 定义接口
 		API_DEF_ADD_PATH_PARAMS(String, "orderId", ZH_WORDS_GETTER("order.field.id"), "", true);
 	}
 	API_HANDLER_ENDPOINT_AUTH(API_M_GET, "/sales/order/preview-entrust/{orderId}", previewEntrust, PATH(String, orderId), execPreviewEntrust(orderId));
-
 private: // 3.3 定义接口执行函数
 	StringJsonVO::Wrapper execPreviewEntrust(const String& orderId);
 };
