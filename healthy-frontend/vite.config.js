@@ -42,18 +42,11 @@ export default ({ mode }) =>
       assetsDir: 'static',
       chunkSizeWarningLimit: 1000,
       rollupOptions: {
-        external: [
-          'vue'
-          // 如果有其他外部依赖，也需要添加
-        ],
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
               return id.toString().split('node_modules/')[1].split('/')[0].toString()
             }
-          },
-          globals: {
-            vue: 'vue'
           }
         }
       }
