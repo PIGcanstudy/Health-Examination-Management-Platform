@@ -1,4 +1,4 @@
-﻿# CMakeList.txt: 顶层 CMake 项目文件，在此处执行全局配置
+# CMakeList.txt: 顶层 CMake 项目文件，在此处执行全局配置
 # 并包含子项目。
 #
 cmake_minimum_required (VERSION 3.8)
@@ -157,3 +157,6 @@ add_subdirectory ("healthy-c5-exalanding")
 add_subdirectory ("healthy-c5-questatistics") 
 add_subdirectory ("healthy-c6-resultentry")
 add_subdirectory ("healthy-c7-common")
+add_subdirectory ("healthy-c8-common")
+add_subdirectory ("healthy-c8-healthcertificate-manage")
+add_subdirectory ("healthy-c8-inspection-report")
