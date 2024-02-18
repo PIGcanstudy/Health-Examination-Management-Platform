@@ -16,8 +16,11 @@ public interface RedisConstant {
      */
     String RESOURCE_ROLES_MAP = "AUTH:RESOURCE_ROLES";
 
-    /***
+    /**
      * 用户token存入Redis的Key前缀
      */
     String USER_TOKEN = "AUTH:USER_TOKEN";
+
+    /*消息详情key*/
+    String MESSAGE_DETAIL = "message:detail";
 }
