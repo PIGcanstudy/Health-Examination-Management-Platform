@@ -26,6 +26,7 @@ public interface LoginApis {
      */
     JsonVO<Oauth2TokenDTO> authLogin(LoginDTO loginDTO);
 
+
     /**
      * 刷新Token认证
      * @param oauth2TokenDTO Token数据对象

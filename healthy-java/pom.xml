@@ -40,6 +40,8 @@
         <module>healthy-oauth2</module>
         <module>healthy-gateway</module>
         <module>healthy-login</module>
+        <module>healthy-j1-percenter</module>
+        <module>healthy-j1-sysmanager</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->

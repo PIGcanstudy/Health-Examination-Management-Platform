@@ -27,4 +27,5 @@ public interface OauthService {
      */
     @PostMapping("/oauth/token")
     JsonVO<Oauth2TokenDTO> postAccessToken(@RequestParam Map<String, String> parameters);
+
 }
